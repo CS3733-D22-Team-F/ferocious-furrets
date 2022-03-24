@@ -1,11 +1,12 @@
 package edu.wpi.furious_furrets;
 
-import java.io.*;
 import java.sql.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class LocationsDAO {
+
+  Connection connection;
 
   public void testConnection() throws SQLException, NoSuchElementException {
 
@@ -19,27 +20,18 @@ public class LocationsDAO {
     }
 
     System.out.println("Driver registered");
-    Connection connection = null;
+    connection = null;
 
     try {
       connection = DriverManager.getConnection("jdbc:derby:C:/Users/radcl/DB;create=true");
       assert (connection != null);
+      /*
+      TODO: Read in CSV file
+       */
+
+      initTable("dummy filename");
       // User menu
       menu();
-
-      Statement stm = connection.createStatement();
-      // stm.execute("INSERT into Students (sid, name, grade, classnum) values (1, 'Owen Radcliffe',
-      // 11, 13)");
-      // stm.execute("INSERT into Students values (2, 'Jack Hanlon', 10, 13)");
-      // stm.execute("insert into Students values (3, 'Raffi Alexander', 11, 15)");
-      // stm.execute("insert into Students values (4, 'Cole Parks', 11, 14)");
-      // String q1 = "Select * from Students where grade = 11";
-      // ResultSet rset1 = stm.executeQuery(q1);
-      // while (rset1.next()) {
-      //  System.out.println(rset1.getString("name"));
-      // }
-      // rset1.close();
-      // stm.close();
     } catch (SQLException e) {
       System.out.println("Connection failed");
       e.printStackTrace();
@@ -48,6 +40,17 @@ public class LocationsDAO {
 
     System.out.println("Derby connection established");
     connection.close();
+  }
+
+  private void initTable(String csvFilename) throws SQLException {
+    Statement stm = connection.createStatement();
+    // stm.execute(
+    // "Create table Locations (nodeID varchar(16), Name varchar(255), Xcoord int, Ycoord int, Floor
+    // int, Building varchar(255), NodeType varchar(255))");
+    // stm.execute(
+    // "Insert into Locations (nodeID, Name, XCoord, YCoord, Floor, Building, NodeType) values
+    // ('FDEPT001', 'CIM', 1617, 825, 1, 'Tower', 'DEPT')");
+    stm.close();
   }
 
   private void menu() throws NoSuchElementException {
@@ -91,19 +94,39 @@ public class LocationsDAO {
             break;
         }
       }
-    } catch (NoSuchElementException e) {
+    } catch (NoSuchElementException | SQLException e) {
       System.out.println("No line found");
       e.printStackTrace();
-      return;
     }
   }
   /*
    Option 1, The program displays the list of location nodes along with their attributes.
   Then the menu is displayed again and the user is prompted for the next selection.
    */
-  private ResultSet displayLocInfo() {
+  private void displayLocInfo() throws SQLException {
     System.out.println("Displaying Location Information...");
-    return null;
+    System.out.print("nodeID\tname\txcoord\tycoord\tfloor\tbuilding\tnodeType\n");
+    Statement stm = connection.createStatement();
+    String q = "Select * from Locations";
+    ResultSet rset = stm.executeQuery(q);
+    while (rset.next()) {
+      System.out.println(
+          rset.getString("nodeID")
+              + " "
+              + rset.getString("name")
+              + " "
+              + rset.getString("xcoord")
+              + " "
+              + rset.getString("ycoord")
+              + " "
+              + rset.getString("floor")
+              + " "
+              + rset.getString("building")
+              + " "
+              + rset.getString("nodeType"));
+    }
+    rset.close();
+    stm.close();
   }
 
   /*
