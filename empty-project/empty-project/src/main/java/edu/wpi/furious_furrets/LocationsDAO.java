@@ -24,18 +24,46 @@ public class LocationsDAO {
     try {
       connection = DriverManager.getConnection("jdbc:derby:C:/Users/radcl/DB;create=true");
       assert (connection != null);
-      System.out.println("---------------- User Menu ------------------------");
-      System.out.println(
-          "Please Enter A Number:\n"
-              + "1- Location Information\n"
-              + "2- Change Floor and Type\n"
-              + "3- Enter Location\n"
-              + "4- Delete Location\n"
-              + "5- Save Locations to CSV File\n"
-              + "6- Exit Program");
+      //User menu
+      menu();
 
-      Scanner inp = new Scanner(System.in);
-      int option = 0;
+      Statement stm = connection.createStatement();
+      // stm.execute("INSERT into Students (sid, name, grade, classnum) values (1, 'Owen Radcliffe',
+      // 11, 13)");
+      // stm.execute("INSERT into Students values (2, 'Jack Hanlon', 10, 13)");
+      // stm.execute("insert into Students values (3, 'Raffi Alexander', 11, 15)");
+      // stm.execute("insert into Students values (4, 'Cole Parks', 11, 14)");
+      // String q1 = "Select * from Students where grade = 11";
+      // ResultSet rset1 = stm.executeQuery(q1);
+      // while (rset1.next()) {
+      //  System.out.println(rset1.getString("name"));
+      // }
+      // rset1.close();
+      // stm.close();
+    } catch (SQLException e) {
+      System.out.println("Connection failed");
+      e.printStackTrace();
+      return;
+    }
+
+    System.out.println("Derby connection established");
+    connection.close();
+  }
+
+  private void menu() throws NoSuchElementException {
+    System.out.println("---------------- User Menu ------------------------");
+    System.out.println(
+        "Please Enter A Number:\n"
+            + "1- Location Information\n"
+            + "2- Change Floor and Type\n"
+            + "3- Enter Location\n"
+            + "4- Delete Location\n"
+            + "5- Save Locations to CSV File\n"
+            + "6- Exit Program");
+
+    Scanner inp = new Scanner(System.in);
+    int option = 0;
+    try {
       while (option != 6) {
         System.out.println("Option:");
         option = Integer.parseInt(inp.nextLine());
@@ -63,33 +91,12 @@ public class LocationsDAO {
             break;
         }
       }
-      Statement stm = connection.createStatement();
-      // stm.execute("INSERT into Students (sid, name, grade, classnum) values (1, 'Owen Radcliffe',
-      // 11, 13)");
-      // stm.execute("INSERT into Students values (2, 'Jack Hanlon', 10, 13)");
-      // stm.execute("insert into Students values (3, 'Raffi Alexander', 11, 15)");
-      // stm.execute("insert into Students values (4, 'Cole Parks', 11, 14)");
-      // String q1 = "Select * from Students where grade = 11";
-      // ResultSet rset1 = stm.executeQuery(q1);
-      // while (rset1.next()) {
-      //  System.out.println(rset1.getString("name"));
-      // }
-      // rset1.close();
-      // stm.close();
-    } catch (SQLException e) {
-      System.out.println("Connection failed");
-      e.printStackTrace();
-      return;
     } catch (NoSuchElementException e) {
       System.out.println("No line found");
       e.printStackTrace();
       return;
     }
-
-    System.out.println("Derby connection established");
-    connection.close();
   }
-
   /*
    Option 1, The program displays the list of location nodes along with their attributes.
   Then the menu is displayed again and the user is prompted for the next selection.
