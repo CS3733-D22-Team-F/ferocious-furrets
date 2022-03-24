@@ -8,6 +8,9 @@ plugins {
 }
 mainClassName = 'edu.wpi.furious_furrets.Main'
 
+run{
+    standardInput = System.in
+}
 repositories {
     mavenCentral()
     jcenter()
