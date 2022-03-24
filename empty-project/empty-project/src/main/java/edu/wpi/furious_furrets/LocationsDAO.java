@@ -24,7 +24,7 @@ public class LocationsDAO {
     try {
       connection = DriverManager.getConnection("jdbc:derby:C:/Users/radcl/DB;create=true");
       assert (connection != null);
-      //User menu
+      // User menu
       menu();
 
       Statement stm = connection.createStatement();

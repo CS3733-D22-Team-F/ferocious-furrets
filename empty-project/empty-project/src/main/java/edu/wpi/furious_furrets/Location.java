@@ -1,8 +1,8 @@
 package edu.wpi.furious_furrets;
 
 /*
-    Java object corresponding to Locations SQL database
- */
+   Java object corresponding to Locations SQL database
+*/
 public class Location {
   private String nodeID;
   private int xcoord;
