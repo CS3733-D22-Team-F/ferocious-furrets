@@ -11,7 +11,7 @@
       <Button layoutX="504.0" layoutY="363.0" mnemonicParsing="false" text="Call Service" textFill="#ff0000" />
       <Pane layoutX="37.0" layoutY="88.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -30,7 +30,7 @@
       </Label>
       <Pane layoutX="37.0" layoutY="149.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Equipments" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Equipments" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -39,7 +39,7 @@
       </Pane>
       <Pane layoutX="37.0" layoutY="210.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Tracking" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Tracking" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -48,7 +48,7 @@
       </Pane>
       <Pane layoutX="37.0" layoutY="272.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Additional" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Additional" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
