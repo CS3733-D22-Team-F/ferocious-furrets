@@ -1,5 +1,9 @@
 package edu.wpi.furious_furrets;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -26,13 +30,37 @@ public class LocationsDAO {
     connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:derby:C:/Users/radcl/Locations;create=true");
+      connection =
+          DriverManager.getConnection(
+              "jdbc:derby:C:\\Users\\radcl\\IdeaProjects\\furious-ferrets\\empty-project\\empty-project\\Locations;create=true");
       // "jdbc:derby:!(memory:){path}[;<;,create={create
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
       // TODO: parse csv file
-      Location loc = new Location("FDEPT002", 1, 1, "L1", "Tower", "DEPT", "dum", "dum");
-      csvLocations.add(loc);
+      String csvFilePath =
+          ("C:\\Users\\radcl\\IdeaProjects\\furious-ferrets\\empty-project\\empty-project\\src\\main\\java\\edu\\wpi\\furious_furrets\\TowerLocations.csv");
+      BufferedReader lineReader = new BufferedReader(new FileReader(csvFilePath));
+      String lineText = null;
+      lineReader.readLine(); // skip header line
+
+      // TODO: parse csv file
+
+      while ((lineText = lineReader.readLine()) != null) {
+        String[] data = lineText.split(",");
+        String nID = data[0];
+        int x = Integer.parseInt(data[1]);
+        int y = Integer.parseInt(data[2]);
+        String floor = data[3];
+        String building = data[4];
+        String nodeType = data[5];
+        String longName = data[6];
+        String shortName = data[7];
+        Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
+        csvLocations.add(l);
+        csvIDS.add(l.getNodeID());
+      }
+      // Location loc = new Location("FDEPT002", 1, 1, "L1", "Tower", "DEPT", "dum", "dum");
+      // csvLocations.add(loc);
       initTable(csvLocations);
       // User menu
       menu();
@@ -40,6 +68,10 @@ public class LocationsDAO {
       System.out.println("Connection failed");
       e.printStackTrace();
       return;
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
 
     System.out.println("Derby connection established");
@@ -51,9 +83,38 @@ public class LocationsDAO {
     stm.execute("DROP TABLE Locations");
     stm.execute(
         "Create table Locations (nodeID varchar(16), Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
-    stm.execute(
-        "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName, ShortName) values ('FDEPT001', 1617, 825, '1', 'Tower', 'DEPT', 'CIM', 'CIM')");
-    for (Location l : locationList) {}
+    // stm.execute(
+    // "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName,
+    // ShortName) values ('FDEPT001', 1617, 825, '1', 'Tower', 'DEPT', 'CIM', 'CIM')");
+    for (Location loc : locationList) {
+      String nodeID = loc.getNodeID();
+      int xcoord = loc.getXcoord();
+      int ycoord = loc.getYcoord();
+      String floor = loc.getFloor();
+      String building = loc.getBuilding();
+      String nodeType = loc.getNodeType();
+      String longName = loc.getLongName();
+      String shortName = loc.getShortName();
+      stm.execute(
+          "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName, ShortName) "
+              + "values ('"
+              + nodeID
+              + "',"
+              + xcoord
+              + ","
+              + ycoord
+              + ", '"
+              + floor
+              + "', '"
+              + building
+              + "', '"
+              + nodeType
+              + "', '"
+              + longName
+              + "', '"
+              + shortName
+              + "')");
+    }
 
     stm.close();
   }
