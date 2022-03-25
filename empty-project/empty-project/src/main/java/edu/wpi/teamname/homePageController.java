@@ -32,4 +32,7 @@ public class homePageController {
     stage.setScene(scene);
     stage.show();
   }
+
+  @FXML
+  void switchToMeals(ActionEvent event) throws IOException {}
 }

@@ -8,16 +8,6 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
    <children>
-      <Button layoutX="504.0" layoutY="363.0" mnemonicParsing="false" text="Call Service" textFill="#ff0000" />
-      <Pane layoutX="37.0" layoutY="88.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
-               <font>
-                  <Font name="Times New Roman" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
       <Label layoutX="180.0" layoutY="21.0" prefHeight="29.0" prefWidth="240.0" style="-fx-background-color: aliceblue;" text="Brigham and Women's" textFill="DEEPSKYBLUE">
          <font>
             <Font name="Times New Roman" size="26.0" />
@@ -28,7 +18,16 @@
             <Font name="Times New Roman" size="26.0" />
          </font>
       </Label>
-      <Pane layoutX="37.0" layoutY="149.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
+      <Pane layoutX="37.0" layoutY="57.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
+         <children>
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="Times New Roman" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="37.0" layoutY="118.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
             <Button fx:id="equipmentButton" layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToEquipment" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Equipments" textFill="DEEPSKYBLUE">
                <font>
@@ -37,18 +36,27 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="37.0" layoutY="210.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
+      <Pane layoutX="37.0" layoutY="179.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Tracking" textFill="DEEPSKYBLUE">
+            <Button fx:id = "mealsButton" layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction= "#switchToMeals" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Meals" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="37.0" layoutY="272.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
+      <Pane layoutX="37.0" layoutY="240.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Additional" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Medicine" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="Times New Roman" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="37.0" layoutY="301.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
+         <children>
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -82,5 +90,6 @@
          </font>
       </Label>
       <Button layoutX="30.0" layoutY="363.0" mnemonicParsing="false" text="User Sign in" textFill="DEEPSKYBLUE" />
+      <Button layoutX="504.0" layoutY="363.0" mnemonicParsing="false" text="Call Service" textFill="#ff0000" />
    </children>
 </AnchorPane>
