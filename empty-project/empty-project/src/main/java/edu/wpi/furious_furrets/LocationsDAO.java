@@ -31,6 +31,8 @@ public class LocationsDAO {
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
       // TODO: parse csv file
+      Location loc = new Location("FDEPT002", 1, 1, "L1", "Tower", "DEPT", "dum", "dum");
+      csvLocations.add(loc);
       initTable(csvLocations);
       // User menu
       menu();

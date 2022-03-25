@@ -7,7 +7,7 @@ public class Location {
   private String nodeID;
   private int xcoord;
   private int ycoord;
-  private int floor;
+  private String floor;
   private String building;
   private String nodeType;
   private String LongName;
@@ -21,7 +21,7 @@ public class Location {
       String nodeID,
       int xcoord,
       int ycoord,
-      int floor,
+      String floor,
       String building,
       String nodeType,
       String LongName,
@@ -35,8 +35,4 @@ public class Location {
     this.LongName = LongName;
     this.ShortName = ShortName;
   }
-
-  //  public String insertCmd(){
-  //    String cmd = "I"
-  //  }
 }
