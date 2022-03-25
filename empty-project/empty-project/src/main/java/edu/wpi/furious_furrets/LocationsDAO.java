@@ -30,7 +30,8 @@ public class LocationsDAO {
       // "jdbc:derby:!(memory:){path}[;<;,create={create
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
-      initTable("dummy filename");
+      // TODO: parse csv file
+      initTable(csvLocations);
       // User menu
       menu();
     } catch (SQLException e) {
@@ -43,13 +44,15 @@ public class LocationsDAO {
     connection.close();
   }
 
-  private void initTable(String locationList) throws SQLException {
+  private void initTable(ArrayList<Location> locationList) throws SQLException {
     Statement stm = connection.createStatement();
     stm.execute("DROP TABLE Locations");
     stm.execute(
         "Create table Locations (nodeID varchar(16), Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
     stm.execute(
         "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName, ShortName) values ('FDEPT001', 1617, 825, '1', 'Tower', 'DEPT', 'CIM', 'CIM')");
+    for (Location l : locationList) {}
+
     stm.close();
   }
 
@@ -177,8 +180,8 @@ public class LocationsDAO {
     System.out.println("Enter new Location node ID: ");
     Scanner newID = new Scanner(System.in);
     String nID = newID.nextLine();
-    // csvIDS.add(nID);
-    // Location loc = new Location(nID);
+    csvIDS.add(nID);
+    Location loc = new Location(nID);
     System.out.println("Adding New Location...");
     Statement stm = connection.createStatement();
     String cmd = "INSERT INTO Locations (nodeID) values ('" + nID + "')";
@@ -225,21 +228,23 @@ public class LocationsDAO {
     try {
       for (String id : csvIDS) {
         String nodeID =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
         String longName =
-            String.valueOf(stm.execute("SELECT longName FROM Locations WHERE nodeID = id"));
+            String.valueOf(
+                stm.execute("SELECT longName FROM Locations WHERE nodeID = '" + id + "'"));
         String shortName =
-            String.valueOf(stm.execute("SELECT shortName FROM Locations WHERE nodeID = id"));
+            String.valueOf(
+                stm.execute("SELECT shortName FROM Locations WHERE nodeID = '" + id + "'"));
         String xCoord =
-            String.valueOf(stm.execute("SELECT xcoord FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT xcoord FROM Locations WHERE nodeID = '" + id + "'"));
         String yCoord =
-            String.valueOf(stm.execute("SELECT ycoord FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT ycoord FROM Locations WHERE nodeID = '" + id + "'"));
         String floor =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
         String building =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
         String nodeType =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = id"));
+            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
       }
     } catch (SQLException e) {
       e.printStackTrace();

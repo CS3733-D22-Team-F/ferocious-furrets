@@ -35,4 +35,8 @@ public class Location {
     this.LongName = LongName;
     this.ShortName = ShortName;
   }
+
+  //  public String insertCmd(){
+  //    String cmd = "I"
+  //  }
 }
