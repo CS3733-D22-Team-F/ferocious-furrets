@@ -1,4 +1,3 @@
 package edu.wpi.teamname;
 
-public class returnHomePage {
-}
+public class returnHomePage {}
