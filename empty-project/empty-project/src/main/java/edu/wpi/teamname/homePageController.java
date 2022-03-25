@@ -34,5 +34,29 @@ public class homePageController {
   }
 
   @FXML
-  void switchToMeals(ActionEvent event) throws IOException {}
+  void switchToMeal(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("mealPage.fxml"));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
+  void switchToMedicine(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("medicinePage.fxml"));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
+  void switchToGift(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("giftPage.fxml"));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 }

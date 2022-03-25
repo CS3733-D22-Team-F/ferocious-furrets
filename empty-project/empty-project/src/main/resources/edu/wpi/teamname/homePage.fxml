@@ -38,7 +38,7 @@
       </Pane>
       <Pane layoutX="37.0" layoutY="179.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button fx:id = "mealsButton" layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction= "#switchToMeals" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Meals" textFill="DEEPSKYBLUE">
+            <Button fx:id="mealsButton" layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToMeal" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Meals" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -47,7 +47,7 @@
       </Pane>
       <Pane layoutX="37.0" layoutY="240.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Medicine" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToMedicine" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Medicine" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
@@ -56,7 +56,7 @@
       </Pane>
       <Pane layoutX="37.0" layoutY="301.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="3.0" mnemonicParsing="false" onAction="#switchToGift" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
