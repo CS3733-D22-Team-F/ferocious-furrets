@@ -10,7 +10,12 @@ public class Location {
   private int floor;
   private String building;
   private String nodeType;
-  private String name;
+  private String LongName;
+  private String ShortName;
+
+  public Location(String nodeID) {
+    this.nodeID = nodeID;
+  }
 
   public Location(
       String nodeID,
@@ -19,13 +24,15 @@ public class Location {
       int floor,
       String building,
       String nodeType,
-      String name) {
+      String LongName,
+      String ShortName) {
     this.nodeID = nodeID;
     this.xcoord = xcoord;
     this.ycoord = ycoord;
     this.floor = floor;
     this.building = building;
     this.nodeType = nodeType;
-    this.name = name;
+    this.LongName = LongName;
+    this.ShortName = ShortName;
   }
 }
