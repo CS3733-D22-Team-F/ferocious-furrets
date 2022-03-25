@@ -1,7 +1,8 @@
 package edu.wpi.teamname;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,7 +15,8 @@ public class homePageController {
   private Scene scene;
   private Parent root;
 
-  public void switchToLab(ActionEvent event) throws IOException {
+  @FXML
+  void switchToLab(ActionEvent event) throws IOException {
     root = FXMLLoader.load(getClass().getResource("labRequestPage.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);

@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.wpi.teamname.homePageController">
    <children>
       <Button layoutX="504.0" layoutY="363.0" mnemonicParsing="false" text="Call Service" textFill="#ff0000" />
       <Pane layoutX="37.0" layoutY="88.0" prefHeight="47.0" prefWidth="151.0" style="-fx-background-color: deepskyblue;">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
+            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Times New Roman" size="22.0" />
                </font>
