@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.wpi.teamname.labRequestController"
-            prefHeight="720.0" prefWidth="1280.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.labRequestController">
+   <children>
+      <Button layoutX="1144.0" layoutY="647.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+      <Label layoutX="552.0" layoutY="108.0" text="Lab Tests">
+         <font>
+            <Font name="Times New Roman" size="48.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="214.0" layoutY="194.0" mnemonicParsing="false" text="Blood Test">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="214.0" layoutY="260.0" mnemonicParsing="false" text="Urine Test">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="214.0" layoutY="326.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="249.0" text="CAT Scan">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="215.0" layoutY="392.0" mnemonicParsing="false" text="X-Ray Scan">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="214.0" layoutY="463.0" mnemonicParsing="false" text="MRI Scan">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="212.0" layoutY="568.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="260.0" text="Request">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label layoutX="856.0" layoutY="159.0" text="Review">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="692.0" layoutY="221.0" text="Item: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="692.0" layoutY="282.0" text="Price">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="691.0" layoutY="342.0" text="Docter: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
