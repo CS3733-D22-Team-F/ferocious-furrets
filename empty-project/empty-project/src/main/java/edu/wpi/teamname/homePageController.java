@@ -59,4 +59,13 @@ public class homePageController {
     stage.setScene(scene);
     stage.show();
   }
+
+  @FXML
+  void switchToLogIn(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(getClass().getResource("logInPage.fxml"));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 }
