@@ -28,13 +28,12 @@ public class LocationsDAO {
     connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:derby:Locations;create=true");
+      connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
       // "jdbc:derby:!(memory:){path}[;<;,create={create
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
       // TODO: parse csv file
-      String csvFilePath =
-          ("C:\\Users\\radcl\\IdeaProjects\\furious-ferrets\\empty-project\\empty-project\\src\\main\\java\\edu\\wpi\\furious_furrets\\TowerLocations.csv");
+      String csvFilePath = ("TowerLocations.csv");
       BufferedReader lineReader = new BufferedReader(new FileReader(csvFilePath));
       String lineText = null;
       lineReader.readLine(); // skip header line
@@ -76,40 +75,19 @@ public class LocationsDAO {
 
   private void initTable(ArrayList<Location> locationList) throws SQLException {
     Statement stm = connection.createStatement();
-    stm.execute("DROP TABLE Locations");
+    //    stm.execute("DROP TABLE Locations");
+    DatabaseMetaData databaseMetadata = connection.getMetaData();
+    ResultSet resultSet =
+        databaseMetadata.getTables(
+            null, null, "LOCATIONS", null); // CARTERS IF STATEMENT IF TABLE EXIST
+    if (resultSet.next()) {
+      stm.execute("DROP TABLE LOCATIONS");
+    }
     stm.execute(
         "Create table Locations (nodeID varchar(16), Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
-    // stm.execute(
-    // "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName,
-    // ShortName) values ('FDEPT001', 1617, 825, '1', 'Tower', 'DEPT', 'CIM', 'CIM')");
-    for (Location loc : locationList) {
-      String nodeID = loc.getNodeID();
-      int xcoord = loc.getXcoord();
-      int ycoord = loc.getYcoord();
-      String floor = loc.getFloor();
-      String building = loc.getBuilding();
-      String nodeType = loc.getNodeType();
-      String longName = loc.getLongName();
-      String shortName = loc.getShortName();
-      stm.execute(
-          "Insert into Locations (nodeID, XCoord, YCoord, Floor, Building, NodeType, LongName, ShortName) "
-              + "values ('"
-              + nodeID
-              + "',"
-              + xcoord
-              + ","
-              + ycoord
-              + ", '"
-              + floor
-              + "', '"
-              + building
-              + "', '"
-              + nodeType
-              + "', '"
-              + longName
-              + "', '"
-              + shortName
-              + "')");
+
+    for (Location currentLocation : locationList) {
+      stm.execute(currentLocation.generateInsertStatement());
     }
 
     stm.close();

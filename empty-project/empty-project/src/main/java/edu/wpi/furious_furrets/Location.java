@@ -99,4 +99,25 @@ public class Location {
   public void setShortName(String shortName) {
     this.shortName = shortName;
   }
+
+  /** @return */
+  public String generateInsertStatement() {
+    return "INSERT INTO Locations VALUES ('"
+        + this.nodeID
+        + "',"
+        + this.xcoord
+        + ","
+        + this.ycoord
+        + ", '"
+        + this.floor
+        + "', '"
+        + this.building
+        + "', '"
+        + this.nodeType
+        + "', '"
+        + this.longName
+        + "', '"
+        + this.shortName
+        + "')";
+  }
 }
