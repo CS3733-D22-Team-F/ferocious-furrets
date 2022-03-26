@@ -1,3 +1,7 @@
 package edu.wpi.teamname;
 
-public class labRequestController {}
+import javafx.event.ActionEvent;
+
+public class labRequestController extends returnHomePage{
+
+}

@@ -1,7 +1,5 @@
 package edu.wpi.teamname;
 
 public class loggedIn {
-    private boolean isLoggedIn;
-
-
+  private boolean isLoggedIn;
 }
