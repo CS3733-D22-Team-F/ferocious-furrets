@@ -1,6 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -33,8 +34,16 @@ public class LocationsDAO {
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
       // TODO: parse csv file
-      String csvFilePath = ("TowerLocations.csv");
-      BufferedReader lineReader = new BufferedReader(new FileReader(csvFilePath));
+
+      //      Scanner inp = new Scanner(System.in);
+      //      System.out.println("Enter filepath for CSV: ");
+      //      String csvFilePath = inp.nextLine();
+      //      String csvFilePath = ("src/TowerLocations.csv");
+      BufferedReader lineReader =
+          new BufferedReader(
+              new InputStreamReader(
+                  Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
+                  StandardCharsets.UTF_8));
       String lineText = null;
       lineReader.readLine(); // skip header line
 

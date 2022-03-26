@@ -10,5 +10,6 @@ public class Main {
     LocationsDAO ldao = new LocationsDAO();
     ldao.testConnection();
     // App.launch(App.class, args);
+
   }
 }
