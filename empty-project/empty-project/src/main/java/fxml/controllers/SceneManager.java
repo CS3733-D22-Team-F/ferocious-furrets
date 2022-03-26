@@ -1,6 +1,6 @@
 package fxml.controllers;
 
-import edu.wpi.teamname.App;
+import edu.wpi.teamname.Fapp;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class SceneManager {
     Scene scene = null;
 
     if (!h_map.containsKey(filename)) {
-      FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(filename));
+      FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(filename));
       // alt enter while hover over/cursor in red
       try {
         scene = new Scene(fxmlLoader.load());
