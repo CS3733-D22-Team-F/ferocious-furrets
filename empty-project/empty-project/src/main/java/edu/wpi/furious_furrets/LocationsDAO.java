@@ -1,9 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -13,6 +10,7 @@ public class LocationsDAO {
 
   private Connection connection;
   private ArrayList<Location> csvLocations = new ArrayList<Location>();
+  private ArrayList<Location> updatedLocations = new ArrayList<Location>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
 
   public void testConnection() throws SQLException, NoSuchElementException {
@@ -30,9 +28,7 @@ public class LocationsDAO {
     connection = null;
 
     try {
-      connection =
-          DriverManager.getConnection(
-              "jdbc:derby:C:\\Users\\radcl\\IdeaProjects\\furious-ferrets\\empty-project\\empty-project\\Locations;create=true");
+      connection = DriverManager.getConnection("jdbc:derby:Locations;create=true");
       // "jdbc:derby:!(memory:){path}[;<;,create={create
       // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
       assert (connection != null);
@@ -277,8 +273,8 @@ public class LocationsDAO {
   created from the Java objects.
    */
   private void saveLocation() {
-    System.out.println("Enter CSV File Name");
     Scanner in = new Scanner(System.in);
+    System.out.println("Enter CSV File Name");
     String csvName = in.nextLine();
 
     Statement stm = null;
@@ -290,26 +286,67 @@ public class LocationsDAO {
 
     try {
       for (String id : csvIDS) {
-        String nodeID =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
-        String longName =
-            String.valueOf(
-                stm.execute("SELECT longName FROM Locations WHERE nodeID = '" + id + "'"));
-        String shortName =
-            String.valueOf(
-                stm.execute("SELECT shortName FROM Locations WHERE nodeID = '" + id + "'"));
-        String xCoord =
-            String.valueOf(stm.execute("SELECT xcoord FROM Locations WHERE nodeID = '" + id + "'"));
-        String yCoord =
-            String.valueOf(stm.execute("SELECT ycoord FROM Locations WHERE nodeID = '" + id + "'"));
-        String floor =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
-        String building =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
-        String nodeType =
-            String.valueOf(stm.execute("SELECT nodeID FROM Locations WHERE nodeID = '" + id + "'"));
+        ResultSet rset;
+        rset = stm.executeQuery("SELECT * FROM Locations WHERE nodeID = '" + id + "'");
+
+        while (rset.next()) {
+          String nodeID = rset.getString("nodeID");
+          String longName = rset.getString("LongName");
+          String shortName = rset.getString("ShortName");
+          int xCoord = rset.getInt("xcoord");
+          //            Integer.parseInt(
+          //                String.valueOf(
+          //                    stm.execute("SELECT xcoord FROM Locations WHERE nodeID = '" + id +
+          // "'")));
+          int yCoord = rset.getInt("ycoord");
+          //            Integer.parseInt(
+          //                String.valueOf(
+          //                    stm.execute("SELECT ycoord FROM Locations WHERE nodeID = '" + id +
+          // "'")));
+          String floor = rset.getString("floor");
+          //            String.valueOf(stm.execute("SELECT floor FROM Locations WHERE nodeID = '" +
+          // id
+          // + "'"));
+          String building = rset.getString("building");
+          //            String.valueOf(
+          //                stm.execute("SELECT building FROM Locations WHERE nodeID = '" + id +
+          // "'"));
+          String nodeType = rset.getString("nodeType");
+          //            String.valueOf(
+          //                stm.execute("SELECT nodeType FROM Locations WHERE nodeID = '" + id +
+          // "'"));
+          Location newL =
+              new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
+          updatedLocations.add(newL);
+        }
+        rset.close();
+        File newCSV = new File(csvName);
+        FileWriter fw = new FileWriter(csvName);
+        fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName");
+        for (Location l : updatedLocations) {
+          fw.write(
+              l.getNodeID()
+                  + ","
+                  + l.getXcoord()
+                  + ","
+                  + l.getYcoord()
+                  + ","
+                  + l.getFloor()
+                  + ","
+                  + l.getBuilding()
+                  + ","
+                  + l.getNodeType()
+                  + ","
+                  + l.getLongName()
+                  + ","
+                  + l.getShortName()
+                  + "\n");
+        }
+        fw.close();
       }
     } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
       e.printStackTrace();
     }
 
