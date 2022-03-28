@@ -100,7 +100,11 @@ public class Location {
     this.shortName = shortName;
   }
 
-  /** @return */
+  /**
+   * @Method generateInsertStatement()
+   *
+   * @return SQL statement that INSERTs Location object into SQL table
+   */
   public String generateInsertStatement() {
     return "INSERT INTO Locations VALUES ('"
         + this.nodeID

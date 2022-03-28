@@ -14,6 +14,16 @@ public class LocationsDAO {
   private ArrayList<Location> updatedLocations = new ArrayList<Location>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
 
+  /**
+   * @throws SQLException
+   * @throws NoSuchElementException @Method testConnection() @Design Creates connection with Apache
+   *     Derby database. Uses BufferedReader to read in embedded CSV file, parsing it into Location
+   *     objects which will be INSERTed into SQL table in initTable() method. After parsing into
+   *     Location object, the object is added to csvLocations, an array list of all the Locations in
+   *     the csv file. This method then calls initTable(), passing csvLocations in as a param, and
+   *     menu() to display the user menu and prompt for action. Upon exit from the menu, the
+   *     connection is closed.
+   */
   public void testConnection() throws SQLException, NoSuchElementException {
 
     System.out.println("Database Setup");
@@ -30,15 +40,9 @@ public class LocationsDAO {
 
     try {
       connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
-      // "jdbc:derby:!(memory:){path}[;<;,create={create
-      // database:true_box},user={user:param},password={password:param},{:identifier}={:param}>]"
-      assert (connection != null);
-      // TODO: parse csv file
 
-      //      Scanner inp = new Scanner(System.in);
-      //      System.out.println("Enter filepath for CSV: ");
-      //      String csvFilePath = inp.nextLine();
-      //      String csvFilePath = ("src/TowerLocations.csv");
+      assert (connection != null);
+
       BufferedReader lineReader =
           new BufferedReader(
               new InputStreamReader(
@@ -46,8 +50,6 @@ public class LocationsDAO {
                   StandardCharsets.UTF_8));
       String lineText = null;
       lineReader.readLine(); // skip header line
-
-      // TODO: parse csv file
 
       while ((lineText = lineReader.readLine()) != null) {
         String[] data = lineText.split(",");
@@ -63,9 +65,9 @@ public class LocationsDAO {
         csvLocations.add(l);
         csvIDS.add(l.getNodeID());
       }
-      // Location loc = new Location("FDEPT002", 1, 1, "L1", "Tower", "DEPT", "dum", "dum");
-      // csvLocations.add(loc);
+
       initTable(csvLocations);
+
       // User menu
       menu();
     } catch (SQLException e) {
@@ -82,9 +84,22 @@ public class LocationsDAO {
     connection.close();
   }
 
+  /**
+   * Method: initTable(ArrayList<Location>)
+   *
+   * @param locationList An ArrayList of all the locations in the embedded CSV file. Provided as a
+   *     data structure for the Java objects made from the embedded CSV file. The ArrayList is used
+   *     to create a SQL table by generating INSERT INTO statements, which is done in the Location
+   *     class. @Design The method creates a SQL statement, and checks to see if the Location table
+   *     has been created already. If it has, DROP the table and create a new one, just create a new
+   *     one if it doesn't exist already. @SQLTable nodeID- Primary Key, node identifier Xcoord- x
+   *     coordinate of Location node Ycoord- y coordinate of Location node Floor- floor Location is
+   *     on Building- the building in which the Location is NodeType- denotes the subtype of
+   *     Location node LongName- name of Location, 255 char limit ShortName- abbreviated name of
+   *     Location, 128 char limit
+   */
   private void initTable(ArrayList<Location> locationList) throws SQLException {
     Statement stm = connection.createStatement();
-    //    stm.execute("DROP TABLE Locations");
     DatabaseMetaData databaseMetadata = connection.getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
@@ -102,6 +117,13 @@ public class LocationsDAO {
     stm.close();
   }
 
+  /**
+   * @Method menu() @Purpose Generate a command line UI menu that allows the user to select an
+   * option 1-6 @Design A switch statement in a while loop, with each option calling the respective
+   * method. The while loop terminates once option 6 is chosen, providing the "exit menu"
+   * functionality. If a number not between 1 and 6 is chosen, ask for number 1-6 and go back to
+   * starting menu.
+   */
   private void menu() throws NoSuchElementException {
     System.out.println("---------------- User Menu ------------------------");
 
@@ -149,9 +171,9 @@ public class LocationsDAO {
       e.printStackTrace();
     }
   }
-  /*
-   Option 1, The program displays the list of location nodes along with their attributes.
-  Then the menu is displayed again and the user is prompted for the next selection.
+  /**
+   * Option 1, The program displays the list of location nodes along with their attributes. Then the
+   * menu is displayed again and the user is prompted for the next selection.
    */
   private void displayLocInfo() throws SQLException {
     System.out.println("Displaying Location Information...");
@@ -179,10 +201,10 @@ public class LocationsDAO {
     stm.close();
   }
 
-  /*
-  Option 2, The user is prompted for the ID of the location node and then is prompted for
-  the new values of the floor and location type. Then the menu is displayed again and
-  the user is prompted for the next selection.
+  /**
+   * Option 2, The user is prompted for the ID of the location node and then is prompted for the new
+   * values of the floor and location type. Then the menu is displayed again and the user is
+   * prompted for the next selection.
    */
   private void updateLocation() throws SQLException {
     /*
@@ -214,10 +236,10 @@ public class LocationsDAO {
     System.out.println("Updating Location Information...");
   }
 
-  /*
-  Option 3, The user is prompted for the ID of the new location node. A new Java Location
-  object is created and the node is added to the SQL table. Then the menu is displayed
-   again and the user prompted for the next selection.
+  /**
+   * Option 3, The user is prompted for the ID of the new location node. A new Java Location object
+   * is created and the node is added to the SQL table. Then the menu is displayed again and the
+   * user prompted for the next selection.
    */
   private void insertLocation() throws SQLException {
     /*
@@ -235,11 +257,11 @@ public class LocationsDAO {
     stm.close();
   }
 
-  /*
-   Option 4, The user is prompted for the ID of the location node. The node is removed from
-   the SQL table, and the corresponding Java object is deleted. Then the menu is displayed
-   again and the user prompted for the next selection.
-  */
+  /**
+   * Option 4, The user is prompted for the ID of the location node. The node is removed from the
+   * SQL table, and the corresponding Java object is deleted. Then the menu is displayed again and
+   * the user prompted for the next selection.
+   */
   private void deleteLocation() throws SQLException {
     /*
     TODO: Delete from
@@ -254,10 +276,10 @@ public class LocationsDAO {
     stm.close();
   }
 
-  /*
-  Option 5, The user is prompted for the name of the CSV file. The program first loads all of the
-  contents of the SQL Location table into Java Location objects. Then the CSV file is
-  created from the Java objects.
+  /**
+   * Option 5, The user is prompted for the name of the CSV file. The program first loads all of the
+   * contents of the SQL Location table into Java Location objects. Then the CSV file is created
+   * from the Java objects.
    */
   private void saveLocation() {
     Scanner in = new Scanner(System.in);
