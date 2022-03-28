@@ -17,6 +17,8 @@ public class homePageController {
   private Parent root;
 
   @FXML private Button signInButton;
+  // Theme Color: #154487
+  // Button Color: #062558
 
   @FXML
   void switchToLab(ActionEvent event) throws IOException {
@@ -70,5 +72,10 @@ public class homePageController {
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
+  }
+
+  @FXML
+  public void exitProgram() {
+    System.exit(0);
   }
 }
