@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ferocious_furrets_jar</output-path>
     <root id="archive" name="ferocious-furrets.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/empty-project/empty-project/build/generated/sources/annotationProcessor/java/main/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/Fapp/build/generated/sources/annotationProcessor/java/main/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="empty-project.main" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.6.0/a3a6ec96c010875444b3ca31828108093758ec00/junit-platform-engine-1.6.0.jar" path-in-jar="/" />

@@ -5,8 +5,14 @@ plugins {
     id 'com.diffplug.gradle.spotless' version '3.27.1'
     id "io.freefair.lombok" version "5.0.0-rc6"
     id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
-mainClassName = 'Main'
+mainClassName = 'edu.wpi.teamname.Main'
+
+shadowJar {
+    baseName = 'shadowjar'
+    mergeServiceFiles()    //For Merging Service Descriptor Files
+}
 
 repositories {
     mavenCentral()
