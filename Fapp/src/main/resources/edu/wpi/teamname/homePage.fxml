@@ -1,103 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
    <children>
-      <Label alignment="CENTER" layoutX="213.0" layoutY="16.0" prefHeight="76.0" prefWidth="900.0" style="-fx-background-color: aliceblue;" text="Brigham and Women's Hospital" textFill="DEEPSKYBLUE">
-         <font>
-            <Font name="Times New Roman" size="65.0" />
-         </font>
-      </Label>
-      <Pane layoutX="46.0" layoutY="485.0" prefHeight="64.0" prefWidth="235.0" style="-fx-background-color: deepskyblue;">
+      <ImageView fitHeight="947.0" fitWidth="1382.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/HospitalPhoto.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="360.0">
          <children>
-            <Button layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToGift" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #001540;" text="Please Lon In" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
+                  <Font name="Palatino" size="24.0" />
                </font>
             </Button>
-         </children>
-      </Pane>
-      <Pane layoutX="349.0" layoutY="143.0" prefHeight="434.0" prefWidth="629.0" style="-fx-background-color: aqua;">
-         <children>
-            <Label layoutX="240.0" layoutY="167.0" text="MAPS">
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                <font>
-                  <Font size="58.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label alignment="CENTER" layoutX="1009.0" layoutY="416.0" prefHeight="47.0" prefWidth="209.0" text="Aviliable Equipment">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button fx:id="signInButton" layoutX="11.0" layoutY="663.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="46.0" prefWidth="380.0" text="User Sign in" textFill="DEEPSKYBLUE" />
-      <Button layoutX="1023.0" layoutY="633.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="246.0" text="Call Service" textFill="#ff0000" />
-      <Pane layoutX="45.0" layoutY="400.0" prefHeight="64.0" prefWidth="235.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Button layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToMedicine" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Medicine" textFill="DEEPSKYBLUE">
+                  <Font name="Palatino" size="24.0" />
+               </font></Button>
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" onAction="#switchToLab" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="LAB REQUEST" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Button layoutX="4.0" layoutY="-169.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
-         <font>
-            <Font name="Times New Roman" size="22.0" />
-         </font>
-      </Button>
-      <Pane layoutX="44.0" layoutY="320.0" prefHeight="64.0" prefWidth="235.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Button fx:id="mealsButton" layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToMeals" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Meals" textFill="DEEPSKYBLUE">
+                  <Font name="Palatino" size="24.0" />
+               </font></Button>
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" onAction="#switchToEquipment" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="EQUIPMENT" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Button layoutX="3.0" layoutY="-249.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Gifts" textFill="DEEPSKYBLUE">
-         <font>
-            <Font name="Times New Roman" size="22.0" />
-         </font>
-      </Button>
-      <Pane layoutX="44.0" layoutY="242.0" prefHeight="64.0" prefWidth="235.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Button fx:id="equipmentButton" layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToEquipment" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Equipments" textFill="DEEPSKYBLUE">
+                  <Font name="Palatino" size="24.0" />
+               </font></Button>
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" onAction="#switchToMedicine" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MEDICINE" textFill="#f2f2f2">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Pane layoutX="45.0" layoutY="162.0" prefHeight="64.0" prefWidth="235.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Button layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToLab" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Lab Request" textFill="DEEPSKYBLUE">
+                  <Font name="Palatino" size="24.0" />
+               </font></Button>
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" onAction="#switchToMeals" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MEALS" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Button layoutX="7.0" layoutY="-327.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="224.0" style="-fx-background-color: aliceblue;" text="Medicine" textFill="DEEPSKYBLUE">
+                  <Font name="Palatino" size="24.0" />
+               </font></Button>
+            <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
+            <Button mnemonicParsing="false" onAction="#switchToGift" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="GIFTS" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+         </children></VBox>
+      <Button layoutX="1093.0" layoutY="623.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="EXIT" textFill="#ffaa00">
          <font>
-            <Font name="Times New Roman" size="22.0" />
-         </font>
-      </Button>
-      <Label alignment="CENTER" layoutX="1008.0" layoutY="341.0" prefHeight="47.0" prefWidth="209.0" text="Aviliable Equipment">
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="1093.0" layoutY="521.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="CALL SERVICE" textFill="#ffaa00">
          <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="1006.0" layoutY="262.0" prefHeight="47.0" prefWidth="209.0" text="Aviliable Equipment">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+            <Font name="Palatino" size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>
