@@ -7,7 +7,7 @@ public class Main {
 
   public static void main(String[] args) throws SQLException, NoSuchElementException {
 
-    LocationsDAO ldao = new LocationsDAO();
+    LocationsDAOImpl ldao = new LocationsDAOImpl();
     ldao.testConnection();
     // App.launch(App.class, args);
 

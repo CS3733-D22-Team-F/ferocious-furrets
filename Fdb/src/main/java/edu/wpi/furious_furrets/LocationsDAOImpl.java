@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class LocationsDAO {
+public class LocationsDAOImpl {
 
   private Connection connection;
   private ArrayList<Location> csvLocations = new ArrayList<Location>();
@@ -175,7 +175,7 @@ public class LocationsDAO {
    * Option 1, The program displays the list of location nodes along with their attributes. Then the
    * menu is displayed again and the user is prompted for the next selection.
    */
-  private void displayLocInfo() throws SQLException {
+  public void displayLocInfo() throws SQLException {
     System.out.println("Displaying Location Information...");
     System.out.print("nodeID\tname\txcoord\tycoord\tfloor\tbuilding\tnodeType\n");
     Statement stm = connection.createStatement();
