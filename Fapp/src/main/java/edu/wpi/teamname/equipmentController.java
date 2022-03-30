@@ -24,20 +24,6 @@ public class equipmentController implements Initializable {
   private Scene scene;
   private Parent root;
 
-  @FXML
-  void returnHome(ActionEvent event) throws IOException {
-    root = FXMLLoader.load((getClass().getResource("homePage.fxml")));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root, 1280, 720);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  @FXML
-  void resetFunction(){
-
-  }
-
   @FXML private TextField patientNameTextField;
   @FXML private TextField patientNumber;
   @FXML private ChoiceBox<String> patientGender;
@@ -55,11 +41,38 @@ public class equipmentController implements Initializable {
   @FXML private Button submitButton;
   @FXML private Button backButton;
 
-  String[] genderTypes = {"Male", "Female", "Non-binary", "Prefer not to say"};
-  String[] providerTypes = {"Doctor", "Nurse", "BHW Staff", "Medical Student"};
+  /*
+   * genderTypes array to populate the patient gender choice box
+   */
+  private String[] genderTypes = {"Male", "Female", "Non-binary", "Prefer not to say"};
+
+  /*
+   * providerTypes array to populate the patient gender choice box
+   */
+  private String[] providerTypes = {"Doctor", "Nurse", "BHW Staff", "Medical Student"};
+
+  /*
+   * RETURN HOME FUNCTION FOR THE BACK BUTTON
+   */
+
+  @FXML
+  void returnHome(ActionEvent event) throws IOException {
+    root = FXMLLoader.load((getClass().getResource("homePage.fxml")));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root, 1280, 720);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
+  void resetFunction() {}
+
+  @FXML
+  void submitFunction() {}
 
   public equipmentController() {}
 
+  @FXML
   public ArrayList<Object> submit() {
     String patientName = patientNameTextField.getText();
     String patientNumberText = patientNumber.getText();
@@ -68,6 +81,21 @@ public class equipmentController implements Initializable {
     String item1Text = item1.getText();
     String item2Text = item2.getText();
     String item3Text = item3.getText();
+    String medicalTextArea = medField.getText();
+    String requestSignatureText = requesterSig.getText();
+    String dateText = String.valueOf(requestDate.getValue());
+
+    System.out.println(patientName);
+    System.out.println(patientNumberText);
+    System.out.println(patientGenderText);
+    System.out.println(providerTypeText);
+    System.out.println(item1Text);
+    System.out.println(item2Text);
+    System.out.println(item3Text);
+    System.out.println(medicalTextArea);
+    System.out.println(requestSignatureText);
+    System.out.println(dateText);
+
     return null;
   }
 
