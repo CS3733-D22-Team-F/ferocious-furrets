@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class LocationsDAOImpl {
+public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection;
   private ArrayList<Location> csvLocations = new ArrayList<Location>();
@@ -108,7 +108,7 @@ public class LocationsDAOImpl {
       stm.execute("DROP TABLE LOCATIONS");
     }
     stm.execute(
-        "Create table Locations (nodeID varchar(16), Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
+        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
 
     for (Location currentLocation : locationList) {
       stm.execute(currentLocation.generateInsertStatement());
@@ -144,13 +144,13 @@ public class LocationsDAOImpl {
         option = Integer.parseInt(inp.nextLine());
         switch (option) {
           case 1:
-            displayLocInfo();
+            getAllLocations();
             break;
           case 2:
             updateLocation();
             break;
           case 3:
-            insertLocation();
+            addLocation();
             break;
           case 4:
             deleteLocation();
@@ -175,7 +175,7 @@ public class LocationsDAOImpl {
    * Option 1, The program displays the list of location nodes along with their attributes. Then the
    * menu is displayed again and the user is prompted for the next selection.
    */
-  public void displayLocInfo() throws SQLException {
+  public ArrayList<Location> getAllLocations() throws SQLException {
     System.out.println("Displaying Location Information...");
     System.out.print("nodeID\tname\txcoord\tycoord\tfloor\tbuilding\tnodeType\n");
     Statement stm = connection.createStatement();
@@ -199,6 +199,7 @@ public class LocationsDAOImpl {
     }
     rset.close();
     stm.close();
+    return null; // fix
   }
 
   /**
@@ -206,7 +207,7 @@ public class LocationsDAOImpl {
    * values of the floor and location type. Then the menu is displayed again and the user is
    * prompted for the next selection.
    */
-  private void updateLocation() throws SQLException {
+  public void updateLocation() throws SQLException {
     /*
     TODO: Alter table
      */
@@ -241,7 +242,7 @@ public class LocationsDAOImpl {
    * is created and the node is added to the SQL table. Then the menu is displayed again and the
    * user prompted for the next selection.
    */
-  private void insertLocation() throws SQLException {
+  public void addLocation() throws SQLException {
     /*
     TODO: Test
      */
@@ -262,7 +263,7 @@ public class LocationsDAOImpl {
    * SQL table, and the corresponding Java object is deleted. Then the menu is displayed again and
    * the user prompted for the next selection.
    */
-  private void deleteLocation() throws SQLException {
+  public void deleteLocation() throws SQLException {
     /*
     TODO: Delete from
      */

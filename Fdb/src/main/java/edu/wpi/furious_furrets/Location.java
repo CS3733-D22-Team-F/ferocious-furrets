@@ -18,7 +18,7 @@ public class Location {
   }
 
   public Location(
-      String nodeID,
+      String nodeID, // primary key
       int xcoord,
       int ycoord,
       String floor,
