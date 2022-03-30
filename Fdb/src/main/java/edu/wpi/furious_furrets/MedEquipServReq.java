@@ -37,25 +37,19 @@ public class MedEquipServReq {
     return longName;
   }
 
-  //    public String generateInsertStatement() {
-  //        return "INSERT INTO Locations VALUES ('"
-  //                + this.reqID
-  //                + "',"
-  //                + this.nodeID
-  //                + ","
-  //                + this.assignedTo
-  //                + ", '"
-  //                + this.
-  //                + "', '"
-  //                + this.building
-  //                + "', '"
-  //                + this.nodeType
-  //                + "', '"
-  //                + this.longName
-  //                + "', '"
-  //                + this.shortName
-  //                + "')";
-  //    }
+  public String generateInsertStatement() {
+    return "INSERT INTO MedServReq VALUES ('"
+        + this.reqID
+        + "', '"
+        + this.nodeID
+        + "', '"
+        + this.employeeIDofAssignedTo
+        + "' , "
+        + this.status
+        + ", '"
+        + this.longName
+        + "')";
+  }
 
   /**
    * Equals method which checks the parameters are equal

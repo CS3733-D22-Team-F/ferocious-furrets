@@ -14,6 +14,10 @@ public class LocationsDAOImpl implements LocationDAO {
   private ArrayList<Location> updatedLocations = new ArrayList<Location>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
 
+  public LocationsDAOImpl(Connection dbConn) {
+    this.connection = dbConn;
+  }
+
   /**
    * @throws SQLException
    * @throws NoSuchElementException @Method testConnection() @Design Creates connection with Apache
@@ -24,81 +28,104 @@ public class LocationsDAOImpl implements LocationDAO {
    *     menu() to display the user menu and prompt for action. Upon exit from the menu, the
    *     connection is closed.
    */
-  public void testConnection() throws SQLException, NoSuchElementException {
-
-    System.out.println("Database Setup");
-
-    try {
-      Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
-    } catch (ClassNotFoundException e) {
-      System.out.println("Driver not found");
-      e.printStackTrace();
-    }
-
-    System.out.println("Driver registered");
-    connection = null;
-
-    try {
-      connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
-
-      assert (connection != null);
-
-      BufferedReader lineReader =
-          new BufferedReader(
-              new InputStreamReader(
-                  Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
-                  StandardCharsets.UTF_8));
-      String lineText = null;
-      lineReader.readLine(); // skip header line
-
-      while ((lineText = lineReader.readLine()) != null) {
-        String[] data = lineText.split(",");
-        String nID = data[0];
-        int x = Integer.parseInt(data[1]);
-        int y = Integer.parseInt(data[2]);
-        String floor = data[3];
-        String building = data[4];
-        String nodeType = data[5];
-        String longName = data[6];
-        String shortName = data[7];
-        Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
-        csvLocations.add(l);
-        csvIDS.add(l.getNodeID());
-      }
-
-      initTable(csvLocations);
-
-      // User menu
-      menu();
-    } catch (SQLException e) {
-      System.out.println("Connection failed");
-      e.printStackTrace();
-      return;
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    System.out.println("Derby connection established");
-    connection.close();
-  }
+  //  public void testConnection() throws SQLException, NoSuchElementException {
+  //
+  //    System.out.println("Database Setup");
+  //
+  //    try {
+  //      Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
+  //    } catch (ClassNotFoundException e) {
+  //      System.out.println("Driver not found");
+  //      e.printStackTrace();
+  //    }
+  //
+  //    System.out.println("Driver registered");
+  //    connection = null;
+  //
+  //    try {
+  //      connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
+  //
+  //      assert (connection != null);
+  //      //
+  //      //      BufferedReader lineReader =
+  //      //          new BufferedReader(
+  //      //              new InputStreamReader(
+  //      //
+  //      // Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
+  //      //                  StandardCharsets.UTF_8));
+  //      //      String lineText = null;
+  //      //      lineReader.readLine(); // skip header line
+  //      //
+  //      //      while ((lineText = lineReader.readLine()) != null) {
+  //      //        String[] data = lineText.split(",");
+  //      //        String nID = data[0];
+  //      //        int x = Integer.parseInt(data[1]);
+  //      //        int y = Integer.parseInt(data[2]);
+  //      //        String floor = data[3];
+  //      //        String building = data[4];
+  //      //        String nodeType = data[5];
+  //      //        String longName = data[6];
+  //      //        String shortName = data[7];
+  //      //        Location l = new Location(nID, x, y, floor, building, nodeType, longName,
+  //      // shortName);
+  //      //        csvLocations.add(l);
+  //      //        csvIDS.add(l.getNodeID());
+  //      //      }
+  //
+  //      initTable();
+  //
+  //      // User menu
+  //      menu();
+  //    } catch (SQLException e) {
+  //      System.out.println("Connection failed");
+  //      e.printStackTrace();
+  //      return;
+  //    } catch (FileNotFoundException e) {
+  //      e.printStackTrace();
+  //    } catch (IOException e) {
+  //      e.printStackTrace();
+  //    }
+  //
+  //    System.out.println("Derby connection established");
+  //    connection.close();
+  //  }
 
   /**
    * Method: initTable(ArrayList<Location>)
    *
-   * @param locationList An ArrayList of all the locations in the embedded CSV file. Provided as a
-   *     data structure for the Java objects made from the embedded CSV file. The ArrayList is used
-   *     to create a SQL table by generating INSERT INTO statements, which is done in the Location
-   *     class. @Design The method creates a SQL statement, and checks to see if the Location table
-   *     has been created already. If it has, DROP the table and create a new one, just create a new
-   *     one if it doesn't exist already. @SQLTable nodeID- Primary Key, node identifier Xcoord- x
-   *     coordinate of Location node Ycoord- y coordinate of Location node Floor- floor Location is
-   *     on Building- the building in which the Location is NodeType- denotes the subtype of
-   *     Location node LongName- name of Location, 255 char limit ShortName- abbreviated name of
-   *     Location, 128 char limit
+   * <p>An ArrayList of all the locations in the embedded CSV file. Provided as a data structure for
+   * the Java objects made from the embedded CSV file. The ArrayList is used to create a SQL table
+   * by generating INSERT INTO statements, which is done in the Location class. @Design The method
+   * creates a SQL statement, and checks to see if the Location table has been created already. If
+   * it has, DROP the table and create a new one, just create a new one if it doesn't exist
+   * already. @SQLTable nodeID- Primary Key, node identifier Xcoord- x coordinate of Location node
+   * Ycoord- y coordinate of Location node Floor- floor Location is on Building- the building in
+   * which the Location is NodeType- denotes the subtype of Location node LongName- name of
+   * Location, 255 char limit ShortName- abbreviated name of Location, 128 char limit
    */
-  private void initTable(ArrayList<Location> locationList) throws SQLException {
+  public void initTable() throws SQLException, IOException {
+    BufferedReader lineReader =
+        new BufferedReader(
+            new InputStreamReader(
+                Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
+                StandardCharsets.UTF_8));
+    String lineText = null;
+    lineReader.readLine(); // skip header line
+
+    while ((lineText = lineReader.readLine()) != null) {
+      String[] data = lineText.split(",");
+      String nID = data[0];
+      int x = Integer.parseInt(data[1]);
+      int y = Integer.parseInt(data[2]);
+      String floor = data[3];
+      String building = data[4];
+      String nodeType = data[5];
+      String longName = data[6];
+      String shortName = data[7];
+      Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
+      csvLocations.add(l);
+      csvIDS.add(l.getNodeID());
+    }
     Statement stm = connection.createStatement();
     DatabaseMetaData databaseMetadata = connection.getMetaData();
     ResultSet resultSet =
@@ -110,7 +137,7 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.execute(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
 
-    for (Location currentLocation : locationList) {
+    for (Location currentLocation : csvLocations) {
       stm.execute(currentLocation.generateInsertStatement());
     }
 

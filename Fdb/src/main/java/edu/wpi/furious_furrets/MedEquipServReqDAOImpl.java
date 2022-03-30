@@ -1,46 +1,73 @@
 package edu.wpi.furious_furrets;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
 
   private Connection connection;
   private ArrayList<MedEquipServReq> requests = new ArrayList<>();
+  private ArrayList<Location> updatedRequests = new ArrayList<Location>();
+  private ArrayList<String> reqIDs = new ArrayList<String>();
 
-  public void connectDatabase() throws SQLException, NoSuchElementException {
-
-    try {
-      Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
-    } catch (ClassNotFoundException e) {
-      System.out.println("Driver not found");
-      e.printStackTrace();
-    }
-
-    System.out.println("Driver registered");
-    connection = null;
-
-    try {
-      connection =
-          DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO DATABASE
-      assert (connection != null);
-      initTable();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed");
-      e.printStackTrace();
-      return;
-    }
-
-    System.out.println("Derby connection established");
-    connection.close();
+  public MedEquipServReqDAOImpl(Connection dbConnection) {
+    this.connection = dbConnection;
   }
 
-  private void initTable() throws SQLException {
+  //  public void connectDatabase() throws SQLException, NoSuchElementException {
+  //
+  //    try {
+  //      Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
+  //    } catch (ClassNotFoundException e) {
+  //      System.out.println("Driver not found");
+  //      e.printStackTrace();
+  //    }
+  //
+  //    System.out.println("Driver registered");
+  //    connection = null;
+  //
+  //    try {
+  //      connection = DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO
+  // DATABASE
+  //      assert (connection != null);
+  //      initTable();
+  //
+  //    } catch (SQLException e) {
+  //      System.out.println("Connection failed");
+  //      e.printStackTrace();
+  //      return;
+  //    }
+  //
+  //    System.out.println("Derby connection established");
+  //    connection.close();
+  //  }
+
+  public void initTable() throws SQLException, IOException {
+    BufferedReader lineReader =
+        new BufferedReader(
+            new InputStreamReader(
+                Main.class.getResourceAsStream("/edu/wpi/furious_furrets/MedEquipReq.csv"),
+                StandardCharsets.UTF_8));
+    String lineText = null;
+    lineReader.readLine(); // skip header line
+
+    while ((lineText = lineReader.readLine()) != null) {
+      String[] data = lineText.split(",");
+      String reqID = data[0];
+      String nodeID = data[1];
+      String employeeID = data[2];
+      int status = Integer.parseInt(data[3]);
+      String longName = data[4];
+      MedEquipServReq l = new MedEquipServReq(reqID, nodeID, employeeID, status, longName);
+      requests.add(l);
+      reqIDs.add(l.getNodeID());
+    }
     Statement stm = connection.createStatement();
     DatabaseMetaData databaseMetadata = connection.getMetaData();
     ResultSet resultSet =
@@ -53,6 +80,9 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
         "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status int, longName varChar(255), FOREIGN KEY (nodeID) REFERENCES Locations(nodeID))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+    for (MedEquipServReq currentReq : requests) {
+      stm.execute(currentReq.generateInsertStatement());
+    }
   }
 
   public ArrayList<MedEquipServReq> getAllRequests() throws SQLException {
