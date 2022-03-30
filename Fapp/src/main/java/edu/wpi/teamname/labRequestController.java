@@ -42,6 +42,7 @@ public class labRequestController extends returnHomePage {
         || roomTextField.getText().isEmpty()) {
       System.out.println("please make a choice");
     } else {
+      returnList.add("Lab Request");
       if (blood.isSelected()) {
         returnList.add("blood");
       }
@@ -61,6 +62,8 @@ public class labRequestController extends returnHomePage {
       nameField.setText(nameTextField.getText()); // set room number
       itemField.setText(returnList.toString());
 
+      returnList.add(nameField.getText());
+      returnList.add(roomField.getText());
       returnList.add("doctor"); // disable when log in process finished
       // returnList.add(doctorField.getText()); //enable when log in process finished
 
@@ -71,9 +74,32 @@ public class labRequestController extends returnHomePage {
   }
 
   // submit the Arraylist that contains the items and doctor
+  // Return formula: ['Service Type', 'Service1', 'Service2',..., 'Patient Name', 'Room Number',
+  // 'Doctor Name']
   public void submit() {
-    for (String s : itemList) {
-      System.out.println(s);
+    recieveData(itemList);
+  }
+
+  public void recieveData(ArrayList<String> list) {
+    String doctor = list.get(list.size() - 1); // doctor is the last item
+    list.remove(list.size() - 1); // remove the doctor in list
+    System.out.println("Doctor Name: " + doctor); // replace with CSV write code
+
+    String room = list.get(list.size() - 1); // room is the last item
+    list.remove(list.size() - 1); // remove the room in list
+    System.out.println("Room Number: " + room); // replace with CSV write code
+
+    String name = list.get(list.size() - 1); // name is the last item
+    list.remove(list.size() - 1); // remove the name in list
+    System.out.println("Patient Name: " + name); // replace with CSV write code
+
+    String serviceType = list.get(0); // service type is the first item
+    list.remove(0); // remove the service type from the list
+    System.out.println("Type: " + serviceType); // replace with CSV write code
+
+    // Everything remaining is service detail
+    for (String s : list) {
+      System.out.println(s); // replace with CSV write code
     }
   }
 
