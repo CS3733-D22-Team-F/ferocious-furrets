@@ -29,7 +29,8 @@ public class labRequestController extends returnHomePage {
   @FXML TextField roomTextField;
 
   public boolean requestLab() {
-    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned: items and doctor
+    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
+    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     // If any of the field is missing, pop up a notice
     if (!blood.isSelected()
             && !urine.isSelected()
@@ -41,41 +42,47 @@ public class labRequestController extends returnHomePage {
       System.out.println("please make a choice");
       return false;
     } else {
-      returnList.add("Lab Request");
       if (blood.isSelected()) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("blood");
         temp.add("1");
         returnList.add(temp);
+        serviceList.add("blood");
       }
       if (urine.isSelected()) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("urine");
         temp.add("1");
         returnList.add(temp);
+        serviceList.add("urine");
       }
       if (CAT.isSelected()) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("CAT");
         temp.add("1");
         returnList.add(temp);
+        serviceList.add("CAT");
       }
       if (xray.isSelected()) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("xray");
         temp.add("1");
         returnList.add(temp);
+        serviceList.add("xray");
       }
       if (MRI.isSelected()) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("MRI");
         temp.add("1");
         returnList.add(temp);
+        serviceList.add("MRI");
       }
+
       roomField.setText(roomTextField.getText()); // set room number
       nameField.setText(nameTextField.getText()); // set room number
-      itemField.setText(returnList.toString());
+      itemField.setText(serviceList.toString());
 
+      returnList.add("Lab Request");
       returnList.add(nameField.getText());
       returnList.add(roomField.getText());
       returnList.add("doctor"); // disable when log in process finished
@@ -108,8 +115,8 @@ public class labRequestController extends returnHomePage {
     list.remove(list.size() - 1); // remove the name in list
     System.out.println("Patient Name: " + name); // replace with CSV write code
 
-    String serviceType = (String) list.get(0); // service type is the first item
-    list.remove(0); // remove the service type from the list
+    String serviceType = (String) list.get(list.size() - 1); // service type is the first item
+    list.remove(list.size() - 1); // remove the service type from the list
     System.out.println("Type: " + serviceType); // replace with CSV write code
 
     // Everything remaining is service detail
