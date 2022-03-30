@@ -45,27 +45,27 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Label layoutX="665.0" layoutY="100.0" text="Review">
+      <Label layoutX="635.0" layoutY="100.0" text="Review">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label layoutX="665.0" layoutY="370.0" text="Item: ">
+      <Label layoutX="635.0" layoutY="370.0" text="Item: ">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label layoutX="665.0" layoutY="460.0" text="Docter: ">
+      <Label layoutX="635.0" layoutY="460.0" text="Docter: ">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="itemField" layoutX="830.0" layoutY="370.0" prefHeight="46.0" prefWidth="426.0" text="empty">
+      <Label fx:id="itemField" layoutX="800.0" layoutY="370.0" prefHeight="46.0" prefWidth="473.0" text="empty">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="doctorField" layoutX="830.0" layoutY="460.0" prefHeight="46.0" prefWidth="298.0" text="Doctor">
+      <Label fx:id="doctorField" layoutX="800.0" layoutY="460.0" prefHeight="46.0" prefWidth="298.0" text="Doctor">
          <font>
             <Font size="37.0" />
          </font>
@@ -85,22 +85,22 @@
             <Font size="37.0" />
          </font>
       </Label>
-      <Label layoutX="665.0" layoutY="190.0" text="Patient Name: ">
+      <Label layoutX="635.0" layoutY="190.0" text="Patient Name: ">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label layoutX="665.0" layoutY="280.0" text="Room Number: ">
+      <Label layoutX="635.0" layoutY="280.0" text="Room Number: ">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="nameField" layoutX="914.0" layoutY="190.0" prefHeight="46.0" prefWidth="345.0" text="empty">
+      <Label fx:id="nameField" layoutX="884.0" layoutY="190.0" prefHeight="46.0" prefWidth="345.0" text="empty">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="roomField" layoutX="914.0" layoutY="280.0" prefHeight="46.0" prefWidth="345.0" text="empty">
+      <Label fx:id="roomField" layoutX="884.0" layoutY="280.0" prefHeight="46.0" prefWidth="345.0" text="empty">
          <font>
             <Font size="37.0" />
          </font>
