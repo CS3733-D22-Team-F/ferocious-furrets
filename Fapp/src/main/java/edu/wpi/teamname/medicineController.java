@@ -1,3 +1,3 @@
 package edu.wpi.teamname;
 
-public class medicineController extends menu {}
+public class medicineController extends returnHomePage {}
