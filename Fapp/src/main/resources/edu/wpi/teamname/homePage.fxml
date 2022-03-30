@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -60,5 +62,21 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <MenuBar prefHeight="28.0" prefWidth="1282.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Navigate">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Map Service" />
+              <MenuItem mnemonicParsing="false" text="Lab Request" />
+                  <MenuItem mnemonicParsing="false" text="Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" text="Medicine Request" />
+                  <MenuItem mnemonicParsing="false" text="Meals" />
+                  <MenuItem mnemonicParsing="false" text="Gifts" />
+                  <MenuItem mnemonicParsing="false" text="Home" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

@@ -78,6 +78,8 @@ public class homePageController {
     stage.show();
   }
 
+
+
   @FXML
   public void exitProgram() {
     System.exit(0);
