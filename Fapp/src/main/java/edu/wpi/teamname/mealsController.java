@@ -1,3 +1,3 @@
 package edu.wpi.teamname;
 
-public class mealsController extends returnHomePage {}
+public class mealsController extends menu {}
