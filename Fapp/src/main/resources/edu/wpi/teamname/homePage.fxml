@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
    <children>
-      <ImageView fitHeight="947.0" fitWidth="1382.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-223.0" AnchorPane.leftAnchor="-92.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-4.0">
+      <ImageView fitHeight="947.0" fitWidth="1382.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@hospitalPhoto.jpg" />
+         </image>
       </ImageView>
-      <VBox layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="360.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="919.0" AnchorPane.topAnchor="1.0">
+      <VBox layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="360.0">
          <children>
-            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #001540;" text="Please Login In" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #001540;" text="Please Log In" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
@@ -52,31 +53,13 @@
                   <Font size="24.0" />
                </font></Button>
          </children></VBox>
-      <Button layoutX="1077.0" layoutY="487.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="CALL SERVICE" textFill="#ffaa00" AnchorPane.leftAnchor="1077.0" AnchorPane.rightAnchor="24.0">
-         <font>
-            <Font name="Palatino" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="1078.0" layoutY="602.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="EXIT" textFill="#ffaa00" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="1078.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="602.0">
+      <Button layoutX="1093.0" layoutY="623.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="EXIT" textFill="#ffaa00">
          <font>
             <Font size="18.0" />
-         </font>
-      </Button>
-      <MenuBar prefHeight="28.0" prefWidth="1282.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Navigate">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Map Service" />
-              <MenuItem mnemonicParsing="false" text="Lab Request" />
-                  <MenuItem fx:id="equipmentNavigation" mnemonicParsing="false" onAction="#gotoEquipment" text="Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" text="Medicine Request" />
-                  <MenuItem mnemonicParsing="false" text="Meals" />
-                  <MenuItem mnemonicParsing="false" text="Gifts" />
-                  <MenuItem mnemonicParsing="false" text="Home" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+         </font></Button>
+      <Button layoutX="1093.0" layoutY="521.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="CALL SERVICE" textFill="#ffaa00">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>
