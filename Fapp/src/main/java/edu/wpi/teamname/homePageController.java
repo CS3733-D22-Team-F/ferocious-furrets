@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class homePageController {
@@ -17,6 +18,9 @@ public class homePageController {
   private Parent root;
 
   @FXML private Button signInButton;
+  @FXML private AnchorPane reportAnchorPane;
+  // @FXML private MenuItem equipmentNavigation;
+
   // Theme Color: #154487
   // Button Color: #062558
 
@@ -78,7 +82,15 @@ public class homePageController {
     stage.show();
   }
 
-
+  public void gotoEquipment(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("equipmentPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    stage = (Stage) reportAnchorPane.getScene().getWindow();
+    stage.setScene(ReportManagerScene);
+    stage.show();
+  }
 
   @FXML
   public void exitProgram() {

@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
+<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
    <children>
       <ImageView fitHeight="947.0" fitWidth="1382.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-223.0" AnchorPane.leftAnchor="-92.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-4.0">
       </ImageView>
@@ -68,7 +68,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" text="Map Service" />
               <MenuItem mnemonicParsing="false" text="Lab Request" />
-                  <MenuItem mnemonicParsing="false" text="Equipment Delivery" />
+                  <MenuItem fx:id="equipmentNavigation" mnemonicParsing="false" onAction="#gotoEquipment" text="Equipment Delivery" />
                   <MenuItem mnemonicParsing="false" text="Medicine Request" />
                   <MenuItem mnemonicParsing="false" text="Meals" />
                   <MenuItem mnemonicParsing="false" text="Gifts" />
