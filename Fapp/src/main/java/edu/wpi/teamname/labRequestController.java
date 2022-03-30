@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 
 public class labRequestController extends returnHomePage {
 
-  private ArrayList<String> itemList = new ArrayList<String>();
+  private ArrayList<Object> itemList = new ArrayList<>();
 
   @FXML CheckBox blood;
   @FXML CheckBox urine;
@@ -18,7 +18,6 @@ public class labRequestController extends returnHomePage {
   @FXML CheckBox MRI;
 
   @FXML Label itemField;
-  @FXML Label priceField;
   @FXML Label doctorField;
   @FXML Label nameField;
   @FXML Label roomField;
@@ -29,9 +28,8 @@ public class labRequestController extends returnHomePage {
   @FXML TextField nameTextField;
   @FXML TextField roomTextField;
 
-  public void requestLab() {
-    ArrayList<String> returnList =
-        new ArrayList<String>(); // List will be returned: items and doctor
+  public boolean requestLab() {
+    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned: items and doctor
     // If any of the field is missing, pop up a notice
     if (!blood.isSelected()
             && !urine.isSelected()
@@ -41,22 +39,38 @@ public class labRequestController extends returnHomePage {
         || nameTextField.getText().isEmpty()
         || roomTextField.getText().isEmpty()) {
       System.out.println("please make a choice");
+      return false;
     } else {
       returnList.add("Lab Request");
       if (blood.isSelected()) {
-        returnList.add("blood");
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("blood");
+        temp.add("1");
+        returnList.add(temp);
       }
       if (urine.isSelected()) {
-        returnList.add("urine");
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("urine");
+        temp.add("1");
+        returnList.add(temp);
       }
       if (CAT.isSelected()) {
-        returnList.add("CAT");
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("CAT");
+        temp.add("1");
+        returnList.add(temp);
       }
       if (xray.isSelected()) {
-        returnList.add("xray");
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("xray");
+        temp.add("1");
+        returnList.add(temp);
       }
       if (MRI.isSelected()) {
-        returnList.add("MRI");
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("MRI");
+        temp.add("1");
+        returnList.add(temp);
       }
       roomField.setText(roomTextField.getText()); // set room number
       nameField.setText(nameTextField.getText()); // set room number
@@ -70,6 +84,7 @@ public class labRequestController extends returnHomePage {
       submitButton.disableProperty().setValue(false);
       previewButton.disableProperty().setValue(true);
       itemList = returnList;
+      return true;
     }
   }
 
@@ -77,29 +92,31 @@ public class labRequestController extends returnHomePage {
   // Return formula: ['Service Type', 'Service1', 'Service2',..., 'Patient Name', 'Room Number',
   // 'Doctor Name']
   public void submit() {
-    recieveData(itemList);
+    receiveData(itemList);
   }
 
-  public void recieveData(ArrayList<String> list) {
-    String doctor = list.get(list.size() - 1); // doctor is the last item
+  public void receiveData(ArrayList<Object> list) {
+    String doctor = (String) list.get(list.size() - 1); // doctor is the last item
     list.remove(list.size() - 1); // remove the doctor in list
     System.out.println("Doctor Name: " + doctor); // replace with CSV write code
 
-    String room = list.get(list.size() - 1); // room is the last item
+    String room = (String) list.get(list.size() - 1); // room is the last item
     list.remove(list.size() - 1); // remove the room in list
     System.out.println("Room Number: " + room); // replace with CSV write code
 
-    String name = list.get(list.size() - 1); // name is the last item
+    String name = (String) list.get(list.size() - 1); // name is the last item
     list.remove(list.size() - 1); // remove the name in list
     System.out.println("Patient Name: " + name); // replace with CSV write code
 
-    String serviceType = list.get(0); // service type is the first item
+    String serviceType = (String) list.get(0); // service type is the first item
     list.remove(0); // remove the service type from the list
     System.out.println("Type: " + serviceType); // replace with CSV write code
 
     // Everything remaining is service detail
-    for (String s : list) {
-      System.out.println(s); // replace with CSV write code
+    for (Object s : list) {
+      ArrayList temp = (ArrayList) s;
+      System.out.println("Service: " + temp.get(0));
+      System.out.println("Quantity: " + temp.get(1)); // replace with CSV write code
     }
   }
 
