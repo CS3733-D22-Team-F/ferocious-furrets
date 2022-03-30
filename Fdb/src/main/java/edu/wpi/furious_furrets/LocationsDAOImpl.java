@@ -1,3 +1,8 @@
+/**
+ * Implementation of the locations DAO including necessary methods for saving, deleting, updating, and
+ * adding new locations.
+ * @version 1.0
+ */
 package edu.wpi.furious_furrets;
 
 import javafx.fxml.FXML;
@@ -10,6 +15,9 @@ import java.util.Scanner;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ *
+ */
 public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection;
@@ -40,6 +48,7 @@ public class LocationsDAOImpl implements LocationDAO {
    *     the csv file. This method then calls initTable(), passing csvLocations in as a param, and
    *     menu() to display the user menu and prompt for action. Upon exit from the menu, the
    *     connection is closed.
+   * @deprecated
    */
     /*public void testConnection() throws SQLException, NoSuchElementException {
 
@@ -115,6 +124,9 @@ public class LocationsDAOImpl implements LocationDAO {
    * Ycoord- y coordinate of Location node Floor- floor Location is on Building- the building in
    * which the Location is NodeType- denotes the subtype of Location node LongName- name of
    * Location, 255 char limit ShortName- abbreviated name of Location, 128 char limit
+   *
+   * @throws SQLException
+   * @throws IOException
    */
   public void initTable() throws SQLException, IOException {
     BufferedReader lineReader =
@@ -163,6 +175,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * method. The while loop terminates once option 6 is chosen, providing the "exit menu"
    * functionality. If a number not between 1 and 6 is chosen, ask for number 1-6 and go back to
    * starting menu.
+   * @deprecated
    */
   /*private void menu() throws NoSuchElementException {
     System.out.println("---------------- User Menu ------------------------");
@@ -212,6 +225,12 @@ public class LocationsDAOImpl implements LocationDAO {
     }
   }*/
 
+  /**
+   * Taking in a ResultSet object take the locations in the form of  new Location objects
+   *
+   * @param rset ResultSet object to get locations from
+   * @throws SQLException
+   */
   public void locationsFromRSET(ResultSet rset) throws SQLException {
     while (rset.next()) {
       String nodeID = rset.getString("nodeID");
@@ -225,13 +244,14 @@ public class LocationsDAOImpl implements LocationDAO {
       Location newL =
               new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
       updatedLocations.add(newL);
-
     }
   }
 
   /**
-   * Option 1, The program displays the list of location nodes along with their attributes. Then the
-   * menu is displayed again and the user is prompted for the next selection.
+   * Displays the list of location nodes along with their attributes.
+   *
+   * @throws  SQLException
+   * @returns ArrayList of type Locations
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
 
@@ -245,9 +265,9 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * Option 2, The user is prompted for the ID of the location node and then is prompted for the new
-   * values of the floor and location type. Then the menu is displayed again and the user is
-   * prompted for the next selection.
+   *  Taking user input for the ID of the location node and the new values of the floor and location type.
+   *  The Location is then updated in the Locations DB
+   * @throws SQLException
    */
   public void updateLocation() throws SQLException {
 
@@ -278,9 +298,9 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * Option 3, The user is prompted for the ID of the new location node. A new Java Location object
-   * is created and the node is added to the SQL table. Then the menu is displayed again and the
-   * user prompted for the next selection.
+   * Taking user input for the ID of the new location node. A new Java Location object
+   * is created and the node is added to the SQL table.
+   * @throws SQLException
    */
   public void addLocation() throws SQLException {
 
@@ -294,9 +314,9 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * Option 4, The user is prompted for the ID of the location node. The node is removed from the
-   * SQL table, and the corresponding Java object is deleted. Then the menu is displayed again and
-   * the user prompted for the next selection.
+   * Taking user input for the ID of the location node. The node is removed from the
+   * SQL table, and the corresponding Java object is deleted.
+   * @throws SQLException
    */
   public void deleteLocation() throws SQLException {
 
@@ -310,7 +330,7 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * Option 5, The user is prompted for the name of the CSV file. The program first loads all of the
+   * Taking User input for the name of a CSV file. The program first loads all of the
    * contents of the SQL Location table into Java Location objects. Then the CSV file is created
    * from the Java objects.
    */
