@@ -34,8 +34,8 @@
       <change beforePath="$PROJECT_DIR$/Fdb/myDB/seg0/ca1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/myDB/seg0/ca1.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fdb/myDB/seg0/cb1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/myDB/seg0/cb1.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fdb/myDB/seg0/cf0.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/myDB/seg0/cf0.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationsDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReq.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAOImpl.java" afterDir="false" />
     </list>
@@ -132,6 +132,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ECB-Starter-Code" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">

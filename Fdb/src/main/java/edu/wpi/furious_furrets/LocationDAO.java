@@ -11,4 +11,6 @@ public interface LocationDAO {
   public void addLocation() throws SQLException;
 
   public void deleteLocation() throws SQLException;
+
+  public void saveLocation();
 }
