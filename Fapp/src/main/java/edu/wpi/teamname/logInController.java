@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class logInController extends returnHomePage {
+public class logInController extends menu {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label popUpLabel;
