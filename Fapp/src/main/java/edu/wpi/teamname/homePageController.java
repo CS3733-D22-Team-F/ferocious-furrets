@@ -31,11 +31,15 @@ public class homePageController {
 
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
-    root = FXMLLoader.load((getClass().getResource("equipmentPage.fxml")));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root, 1280, 720);
-    stage.setScene(scene);
-    stage.show();
+    try {
+      root = FXMLLoader.load((getClass().getResource("equipmentPage.fxml")));
+      stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      scene = new Scene(root, 1280, 720);
+      stage.setScene(scene);
+      stage.show();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
