@@ -24,4 +24,18 @@ public class DAOTester {
     assertNotNull(dao.getAllLocations());
     System.out.println(dao.getAllLocations().get(2).getLongName());
   }
+
+  /**
+   * Checks that the DAO can get data in the form of an Array List from the DB
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
+  @Test
+  public void testGetDataMedical() throws SQLException, IOException {
+    MedEquipServReqDAOImpl dao = new MedEquipServReqDAOImpl(conn);
+    dao.initTable();
+    assertNotNull(dao.getAllRequests());
+    System.out.println(dao.getAllRequests().get(2).getLongName());
+  }
 }

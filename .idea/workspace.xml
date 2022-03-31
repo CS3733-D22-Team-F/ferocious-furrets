@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45d7c034-aa50-4270-9169-31d60f8c4990" name="Changes" comment="added junit tests for the DAO and the Database handler">
+    <list default="true" id="45d7c034-aa50-4270-9169-31d60f8c4990" name="Changes" comment="more java docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/LocationsDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/main/java/edu/wpi/furious_furrets/MedEquipServReqDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fdb/src/test/java/edu/wpi/furious_furrets/DAOTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fdb/src/test/java/edu/wpi/furious_furrets/DAOTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648696725643</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="more java docs">
+      <created>1648697711970</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648697711970</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +293,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added junit tests for the DAO and the Database handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="added junit tests for the DAO and the Database handler" />
+    <MESSAGE value="more java docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="more java docs" />
   </component>
 </project>
