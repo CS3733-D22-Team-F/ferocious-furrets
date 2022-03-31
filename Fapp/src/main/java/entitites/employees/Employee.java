@@ -1,11 +1,9 @@
 package entitites.employees;
 
 public abstract class Employee {
-    private String position;
+  private String position;
 
-    public Employee(String position)
-    {
-        this.position = position;
-    }
+  public Employee(String position) {
+    this.position = position;
+  }
 }
-
