@@ -74,6 +74,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
                   <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />
                   <MenuItem mnemonicParsing="false" onAction="#returnToGifts" text="Gifts" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Quit" />
             </items>
           </Menu>
         </menus>

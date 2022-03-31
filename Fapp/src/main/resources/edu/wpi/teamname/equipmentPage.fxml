@@ -325,6 +325,12 @@
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="533.0">
                      <children>
                         <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetFunction" prefHeight="33.0" prefWidth="293.0" text="Reset Entire Form" />
+                        <Label text="Status: ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="statueChoice" prefWidth="150.0" />
                      </children>
                      <padding>
                         <Insets top="15.0" />

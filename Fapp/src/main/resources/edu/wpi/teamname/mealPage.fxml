@@ -1,60 +1,724 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<?import javafx.scene.layout.Pane?>
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.mealsController">
    <children>
-      <Button fx:id="myBackButton" layoutX="1171.0" layoutY="661.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
-      <Label layoutX="590.0" layoutY="25.0" text="Meals">
-         <font>
-            <Font size="62.0" />
-         </font>
-      </Label>
-      <Label layoutX = "180.0" layoutY = "144" text="Breakfast">
-         <font>
-            <Font size ="62.0" />
-         </font>
-      </Label>
-      <Pane layoutX="140.0" layoutY="244.0" prefHeight="360.0" prefWidth="320.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Label layoutX="20" layoutY="0" text="Breakfast Foods">
-               <font>
-                  <Font size = "30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label layoutX = "590.0" layoutY = "144" text="Lunch">
-         <font>
-            <Font size ="62.0" />
-         </font>
-      </Label>
-      <Pane layoutX="520.0" layoutY="244.0" prefHeight="360.0" prefWidth="320.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Label layoutX="20" layoutY="0" text="Lunch Foods">
-               <font>
-                  <Font size = "30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label layoutX = "960.0" layoutY = "144" text="Dinner">
-         <font>
-            <Font size ="62.0" />
-         </font>
-      </Label>
-      <Pane layoutX="900.0" layoutY="244.0" prefHeight="360.0" prefWidth="320.0" style="-fx-background-color: deepskyblue;">
-         <children>
-            <Label layoutX="20" layoutY="0" text="Dinner Foods">
-               <font>
-                  <Font size = "30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
+      <TabPane prefHeight="719.0" prefWidth="1277.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Breakfast">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="688.0" prefWidth="1280.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="688.0" prefWidth="1278.0">
+                                 <children>
+                                    <VBox layoutX="88.0" layoutY="87.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="pancakes" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Pancakes">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="scrEggs" mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="friedEggs" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fried Eggs">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="3">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="oats" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Oatmeal">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="fParfait1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Parfait">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Berries">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bananas">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Oranges">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Extra Yogurt">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Extra Fruit">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="865.0" layoutY="92.0" prefHeight="319.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="water1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Water">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="orJuice1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Orange Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="coffee1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Coffee">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="frSmoothie1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Smoothie">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="apJuice1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Apple Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="499.0" layoutY="85.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="toast" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Toast">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Butter">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="bacon" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Bacon">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="sausage" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Sausage">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="3">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="hash" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Hashbrowns">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="cup1" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Cup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Berries">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bananas">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Oranges">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="submitButton" layoutX="1056.0" layoutY="628.0" mnemonicParsing="false" onAction="#submit" text="submit" />
+                                    <Text layoutX="793.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Making Request:" wrappingWidth="167.64404296875" />
+                                    <TextField fx:id="employeeName" layoutX="865.0" layoutY="454.0" prefHeight="26.0" prefWidth="319.0" />
+                                    <Text layoutX="822.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Status:" />
+                                    <ChoiceBox fx:id="status" layoutX="916.0" layoutY="507.0" prefWidth="150.0" />
+                                    <Button layoutX="1135.0" layoutY="612.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="41.0" prefWidth="109.0" text="Home Page" textFill="DEEPSKYBLUE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Text layoutX="545.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Breakfast" wrappingWidth="180.99102783203125">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="turk" text="Lunch">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="688.0" prefWidth="1280.0" vvalue="1.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="688.0" prefWidth="1278.0">
+                                 <children>
+                                    <VBox layoutX="88.0" layoutY="87.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox mnemonicParsing="false" prefHeight="60.0" prefWidth="306.0" text="Turkey Sandwich">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Cheese">
+                                             <VBox.margin>
+                                                <Insets left="50.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Lettuce">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Mayo">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bacon">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="steak" mnemonicParsing="false" prefHeight="60.0" prefWidth="308.0" text="Steak and Cheese">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="tomato" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Tomato Soup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bowl ">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Cup">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="noodle" mnemonicParsing="false" prefHeight="60.0" prefWidth="333.0" text="Chicken Noodle Soup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bowl">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Cup">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="grCheese" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Grilled Cheese">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="865.0" layoutY="92.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="water2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Water">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="orJuice2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Orange Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="coffee2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Coffee">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="frSmoothie2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Smoothie">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="apJuice2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Apple Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="499.0" layoutY="85.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="cup2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Cup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Yogurt ">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="apple" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Apple">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="orange" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Orange">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="1">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="2">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="onRings" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Onion Rings">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Ketchup">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="frenchFries" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="French Fries">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Sweet Potatoe">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Regular">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Ketchup">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <Text layoutX="545.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" wrappingWidth="180.99102783203125">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Dinner">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="688.0" prefWidth="1280.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="688.0" prefWidth="1278.0">
+                                 <children>
+                                    <VBox layoutX="88.0" layoutY="87.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="chicken" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Chicken">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Fried">
+                                             <VBox.margin>
+                                                <Insets left="50.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Grilled">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="soup" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Soup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Chicken Noodle">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Tomatoe">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="chickWrap" mnemonicParsing="false" prefHeight="60.0" prefWidth="343.0" text="Chicken Ceasar Wrap">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="buffWrap" mnemonicParsing="false" prefHeight="60.0" prefWidth="345.0" text="Buffalo Chicken Wrap">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="frParfait" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Parfait">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Berries">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bananas">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Oranges">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Extra Yogurt">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Extra Fruit">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="865.0" layoutY="92.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="water3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Water">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="orJuice3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Orange Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="coffee3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Coffee">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="frSmoothie3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Smoothie">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="apJuice3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Apple Juice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="499.0" layoutY="85.0" prefHeight="530.0" prefWidth="356.0">
+                                       <children>
+                                          <CheckBox fx:id="potatoes" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Potatoes">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="rice" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Rice">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="friedveg" mnemonicParsing="false" prefHeight="60.0" prefWidth="294.0" text="Fried Vegetables">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="hash2" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Hashbrowns">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox fx:id="cup3" mnemonicParsing="false" prefHeight="47.0" prefWidth="264.0" text="Fruit Cup">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Berries">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Bananas">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="Oranges">
+                                             <VBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <Text layoutX="545.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner" wrappingWidth="180.99102783203125">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

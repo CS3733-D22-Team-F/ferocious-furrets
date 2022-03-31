@@ -1,3 +1,168 @@
 package edu.wpi.teamname;
 
-public class mealsController extends returnHomePage {}
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javax.swing.*;
+
+public class mealsController extends returnHomePage implements Initializable {
+  @FXML private ChoiceBox status;
+  @FXML private Button submitButton;
+  @FXML private CheckBox pancakes;
+  @FXML private CheckBox scrEggs;
+  @FXML private CheckBox friedEggs;
+  @FXML private CheckBox oats;
+  @FXML private CheckBox fParfait1;
+  @FXML private CheckBox toast;
+  @FXML private CheckBox bacon;
+  @FXML private CheckBox sausage;
+  @FXML private CheckBox hash;
+  @FXML private CheckBox cup1;
+  @FXML private CheckBox water1;
+  @FXML private CheckBox orJuice1;
+  @FXML private CheckBox coffee1;
+  @FXML private CheckBox frSmoothie1;
+  @FXML private CheckBox apJuice1;
+  //  @FXML private CheckBox turk;
+  //  @FXML private CheckBox steak;
+  //  @FXML private CheckBox tomato;
+  //  @FXML private CheckBox noodle;
+  //  @FXML private CheckBox grCheese;
+  //  @FXML private CheckBox cup2;
+  //  @FXML private CheckBox apple;
+  //  @FXML private CheckBox orange;
+  //  @FXML private CheckBox onRings;
+  //  @FXML private CheckBox frenchFries;
+  //  @FXML private CheckBox water2;
+  //  @FXML private CheckBox orJuice2;
+  //  @FXML private CheckBox coffee2;
+  //  @FXML private CheckBox frSmoothie2;
+  //  @FXML private CheckBox apJuice2;
+  //  @FXML private CheckBox chicken;
+  //  @FXML private CheckBox soup;
+  //  @FXML private CheckBox chickWrap;
+  //  @FXML private CheckBox buffWrap;
+  //  @FXML private CheckBox frParfait;
+  //  @FXML private CheckBox potatoes;
+  //  @FXML private CheckBox rice;
+  //  @FXML private CheckBox friedveg;
+  //  @FXML private CheckBox hash2;
+  //  @FXML private CheckBox cup3;
+  //  @FXML private CheckBox water3;
+  //  @FXML private CheckBox orJuice3;
+  //  @FXML private CheckBox coffee3;
+  //  @FXML private CheckBox frSmoothie3;
+  //  @FXML private CheckBox apJuice3;
+
+  public void submit() {
+    ArrayList<String> foodList = new ArrayList<>();
+    if (pancakes.isSelected()) {
+      foodList.add(pancakes.getText());
+    }
+    if (scrEggs.isSelected()) {
+      foodList.add(scrEggs.getText());
+    }
+    if (oats.isSelected()) {
+      foodList.add(oats.getText());
+    }
+    if (fParfait1.isSelected()) {
+      foodList.add(fParfait1.getText());
+    }
+    if (toast.isSelected()) {
+      foodList.add(toast.getText());
+    }
+    if (bacon.isSelected()) {
+      foodList.add(bacon.getText());
+    }
+    if (sausage.isSelected()) {
+      foodList.add(sausage.getText());
+    }
+    if (hash.isSelected()) {
+      foodList.add(hash.getText());
+    }
+    if (cup1.isSelected()) {
+      foodList.add(cup1.getText());
+    }
+    if (water1.isSelected()) {
+      foodList.add(water1.getText());
+    }
+    if (orJuice1.isSelected()) {
+      foodList.add(orJuice1.getText());
+    }
+    if (coffee1.isSelected()) {
+      foodList.add(coffee1.getText());
+    }
+    if (frSmoothie1.isSelected()) {
+      foodList.add(frSmoothie1.getText());
+    }
+    if (apJuice1.isSelected()) {
+      foodList.add(apJuice1.getText());
+    }
+    if (friedEggs.isSelected()) {
+      foodList.add(friedEggs.getText());
+    }
+
+    if (pancakes.isSelected()) {
+      pancakes.setSelected(false);
+    }
+    if (scrEggs.isSelected()) {
+      scrEggs.setSelected(false);
+    }
+    if (oats.isSelected()) {
+      oats.setSelected(false);
+    }
+    if (fParfait1.isSelected()) {
+      fParfait1.setSelected(false);
+    }
+    if (toast.isSelected()) {
+      toast.setSelected(false);
+    }
+    if (bacon.isSelected()) {
+      bacon.setSelected(false);
+    }
+    if (sausage.isSelected()) {
+      sausage.setSelected(false);
+    }
+    if (hash.isSelected()) {
+      hash.setSelected(false);
+    }
+    if (cup1.isSelected()) {
+      cup1.setSelected(false);
+    }
+    if (water1.isSelected()) {
+      water1.setSelected(false);
+    }
+    if (orJuice1.isSelected()) {
+      orJuice1.setSelected(false);
+    }
+    if (coffee1.isSelected()) {
+      coffee1.setSelected(false);
+    }
+    if (frSmoothie1.isSelected()) {
+      frSmoothie1.setSelected(false);
+    }
+    if (apJuice1.isSelected()) {
+      apJuice1.setSelected(false);
+    }
+    if (friedEggs.isSelected()) {
+      friedEggs.setSelected(false);
+    }
+
+    System.out.print(foodList);
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("black");
+    temp.add("processing");
+    temp.add("done");
+    status.getItems().addAll(temp);
+    status.setValue("black");
+  }
+}
