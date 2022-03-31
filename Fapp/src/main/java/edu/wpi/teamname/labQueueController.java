@@ -36,17 +36,20 @@ public class labQueueController implements Initializable {
     list1.add("MRI");
     list1.add("Patient1");
     list1.add("101");
+    list1.add("black");
     list1.add("doctor1");
     queue.getItems().add(list1.toString());
     list2.add("blood");
     list2.add("Patient2");
     list2.add("102");
+    list2.add("processing");
     list2.add("doctor2");
     queue.getItems().add(list2.toString());
     list3.add("MRI");
     list3.add("CAT");
     list3.add("Patient3");
     list3.add("103");
+    list3.add("done");
     list3.add("doctor3");
     queue.getItems().add(list3.toString());
     list4.add("blood");
@@ -55,12 +58,14 @@ public class labQueueController implements Initializable {
     list4.add("xray");
     list4.add("Patient4");
     list4.add("104");
+    list4.add("black");
     list4.add("doctor4");
     queue.getItems().add(list4.toString());
     list5.add("xray");
     list5.add("MRI");
     list5.add("Patient5");
     list5.add("105");
+    list5.add("done");
     list5.add("doctor5");
     queue.getItems().add(list5.toString());
   }

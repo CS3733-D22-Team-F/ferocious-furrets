@@ -2,18 +2,18 @@ package edu.wpi.teamname;
 
 import fxml.controllers.SceneManager;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class labRequestController extends returnHomePage {
+public class labRequestController extends returnHomePage implements Initializable {
 
   private ArrayList<Object> itemList = new ArrayList<>();
 
@@ -33,6 +33,18 @@ public class labRequestController extends returnHomePage {
 
   @FXML TextField nameTextField;
   @FXML TextField roomTextField;
+
+  @FXML ChoiceBox<Object> statueChoice;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("black");
+    temp.add("processing");
+    temp.add("done");
+    statueChoice.getItems().addAll(temp);
+    statueChoice.setValue("black");
+  }
 
   public boolean requestLab() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
@@ -91,6 +103,7 @@ public class labRequestController extends returnHomePage {
       returnList.add("Lab Request");
       returnList.add(nameField.getText());
       returnList.add(roomField.getText());
+      returnList.add(statueChoice.getValue());
       returnList.add("doctor"); // disable when log in process finished
       // returnList.add(doctorField.getText()); //enable when log in process finished
 
@@ -112,6 +125,10 @@ public class labRequestController extends returnHomePage {
     String doctor = (String) list.get(list.size() - 1); // doctor is the last item
     list.remove(list.size() - 1); // remove the doctor in list
     System.out.println("Doctor Name: " + doctor); // replace with CSV write code
+
+    String statue = (String) list.get(list.size() - 1); // statue is the last item
+    list.remove(list.size() - 1); // remove the statue in list
+    System.out.println("Statue: " + statue); // replace with CSV write code
 
     String room = (String) list.get(list.size() - 1); // room is the last item
     list.remove(list.size() - 1); // remove the room in list
