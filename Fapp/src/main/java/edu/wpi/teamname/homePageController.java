@@ -80,6 +80,17 @@ public class homePageController {
   }
 
   @FXML
+  public void returnToMap(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("mapPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
+  }
+
+  @FXML
   public void returnToEquipment(ActionEvent e) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("equipmentPage.fxml"));
