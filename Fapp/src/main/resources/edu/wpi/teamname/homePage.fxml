@@ -68,15 +68,20 @@
         <menus>
           <Menu mnemonicParsing="false" text="Navigation">
             <items>
-              <MenuItem mnemonicParsing="false" text="Maps" />
-                  <MenuItem fx:id="goToLabRequest" mnemonicParsing="false" text="Lab Request" />
+              <MenuItem mnemonicParsing="false" onAction="#returnToMap" text="Maps" />
+                  <MenuItem fx:id="goToLabRequest" mnemonicParsing="false" onAction="#returnToLab" text="Lab Request" />
                   <MenuItem fx:id="returnToEquipment" mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" text="Medicine" />
-                  <MenuItem mnemonicParsing="false" text="Meals" />
-                  <MenuItem mnemonicParsing="false" text="Gifts" />
+                  <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
+                  <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />
+                  <MenuItem mnemonicParsing="false" onAction="#returnToGifts" text="Gifts" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Quit" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
+      <Button layoutX="1093.0" layoutY="419.0" mnemonicParsing="false" onAction="#switchToRequests" prefHeight="85.0" prefWidth="179.0" style="-fx-background-color: #123090;" text="SERVICE REQUESTS" textFill="#ffaa00">
+         <font>
+            <Font name="Palatino" size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

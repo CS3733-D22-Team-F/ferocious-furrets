@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="882.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.equipmentController">
+<ScrollPane prefHeight="882.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.equipmentRequestController">
    <content>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" style="-fx-background-color: lightblue;">
          <children>
@@ -325,6 +325,12 @@
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="533.0">
                      <children>
                         <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetFunction" prefHeight="33.0" prefWidth="293.0" text="Reset Entire Form" />
+                        <Label text="Status: ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="statueChoice" prefWidth="150.0" />
                      </children>
                      <padding>
                         <Insets top="15.0" />

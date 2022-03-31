@@ -1,15 +1,14 @@
 package edu.wpi.teamname;
 
-import java.awt.*;
+import controllers.fxml.StageManager;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,8 +17,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class equipmentController implements Initializable {
+public class equipmentRequestController implements Initializable {
 
+  // TODO remove
   private Stage stage;
   private Scene scene;
   private Parent root;
@@ -37,6 +37,8 @@ public class equipmentController implements Initializable {
   @FXML private Button resetButton;
   @FXML private Button submitButton;
   @FXML private Button backButton;
+  @FXML private ChoiceBox statueChoice;
+  ArrayList<Object> requestList = new ArrayList<>();
 
   /*
    * genderTypes array to populate the patient gender choice box
@@ -54,11 +56,8 @@ public class equipmentController implements Initializable {
 
   @FXML
   void returnHome(ActionEvent event) throws IOException {
-    root = FXMLLoader.load((getClass().getResource("homePage.fxml")));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root, 1280, 720);
-    stage.setScene(scene);
-    stage.show();
+
+    StageManager.getInstance().setHomeScreen();
   }
 
   @FXML
@@ -78,7 +77,7 @@ public class equipmentController implements Initializable {
   @FXML
   void submitFunction() {}
 
-  public equipmentController() {}
+  public equipmentRequestController() {}
 
   @FXML
   public ArrayList<String> submit() {
@@ -96,18 +95,23 @@ public class equipmentController implements Initializable {
     String requestSignatureText = requesterSig.getText();
     String dateText = String.valueOf(requestDate.getValue());
 
-    equipmentRequest.add(patientName);
-    equipmentRequest.add(patientNumberText);
-    equipmentRequest.add(patientGenderText);
-    equipmentRequest.add(providerTypeText);
-    equipmentRequest.add(item1Text);
-    equipmentRequest.add(item2Text);
-    equipmentRequest.add(item3Text);
-    equipmentRequest.add(medicalTextArea);
-    equipmentRequest.add(requestSignatureText);
-    equipmentRequest.add(dateText);
+    System.out.println(patientName);
+    System.out.println(patientNumberText);
+    System.out.println(patientGenderText);
+    System.out.println(providerTypeText);
+    System.out.println(item1Text);
+    System.out.println(item2Text);
+    System.out.println(item3Text);
+    System.out.println(medicalTextArea);
+    System.out.println(requestSignatureText);
+    System.out.println(dateText);
 
-    System.out.println(equipmentRequest);
+    requestList.clear();
+    requestList.add("Equipment Request for patient " + patientName);
+    requestList.add("Assigned Doctor: " + requestSignatureText);
+    requestList.add("Status: " + statueChoice.getValue());
+    serviceRequestStorage.addToArrayList(requestList);
+
     return null;
   }
 
@@ -115,5 +119,11 @@ public class equipmentController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     patientGender.getItems().addAll(genderTypes);
     providerType.getItems().addAll(providerTypes);
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("");
+    temp.add("processing");
+    temp.add("done");
+    statueChoice.getItems().addAll(temp);
+    statueChoice.setValue("");
   }
 }

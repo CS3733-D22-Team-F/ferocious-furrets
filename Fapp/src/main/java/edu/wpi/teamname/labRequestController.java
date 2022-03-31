@@ -1,13 +1,19 @@
 package edu.wpi.teamname;
 
+import fxml.controllers.SceneManager;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
-public class labRequestController extends returnHomePage {
+public class labRequestController extends returnHomePage implements Initializable {
 
   private ArrayList<Object> itemList = new ArrayList<>();
 
@@ -27,10 +33,24 @@ public class labRequestController extends returnHomePage {
 
   @FXML TextField nameTextField;
   @FXML TextField roomTextField;
+  @FXML TextField doctorTextField;
+
+  @FXML ChoiceBox<Object> statueChoice;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("");
+    temp.add("processing");
+    temp.add("done");
+    statueChoice.getItems().addAll(temp);
+    statueChoice.setValue("");
+  }
 
   public boolean requestLab() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
+    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (!blood.isSelected()
             && !urine.isSelected()
@@ -38,7 +58,9 @@ public class labRequestController extends returnHomePage {
             && !xray.isSelected()
             && !MRI.isSelected()
         || nameTextField.getText().isEmpty()
-        || roomTextField.getText().isEmpty()) {
+        || roomTextField.getText().isEmpty()
+        || doctorTextField.getText().isEmpty()
+        || statueChoice.getValue().equals("")) {
       System.out.println("please make a choice");
       return false;
     } else {
@@ -80,17 +102,24 @@ public class labRequestController extends returnHomePage {
 
       roomField.setText(roomTextField.getText()); // set room number
       nameField.setText(nameTextField.getText()); // set room number
+      doctorField.setText(doctorTextField.getText());
       itemField.setText(serviceList.toString());
 
       returnList.add("Lab Request");
       returnList.add(nameField.getText());
       returnList.add(roomField.getText());
-      returnList.add("doctor"); // disable when log in process finished
+      returnList.add(statueChoice.getValue());
+      returnList.add(doctorField.getText()); // disable when log in process finished
       // returnList.add(doctorField.getText()); //enable when log in process finished
 
       submitButton.disableProperty().setValue(false);
       previewButton.disableProperty().setValue(true);
       itemList = returnList;
+
+      requestList.add("Lab Request for patient " + nameField.getText());
+      requestList.add("Assigned Doctor: " + doctorField.getText());
+      requestList.add("Status: " + statueChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
       return true;
     }
   }
@@ -106,6 +135,10 @@ public class labRequestController extends returnHomePage {
     String doctor = (String) list.get(list.size() - 1); // doctor is the last item
     list.remove(list.size() - 1); // remove the doctor in list
     System.out.println("Doctor Name: " + doctor); // replace with CSV write code
+
+    String statue = (String) list.get(list.size() - 1); // statue is the last item
+    list.remove(list.size() - 1); // remove the statue in list
+    System.out.println("Statue: " + statue); // replace with CSV write code
 
     String room = (String) list.get(list.size() - 1); // room is the last item
     list.remove(list.size() - 1); // remove the room in list
@@ -134,5 +167,12 @@ public class labRequestController extends returnHomePage {
     itemField.setText("empty");
     nameField.setText("empty");
     roomField.setText("empty");
+  }
+
+  public void showQueueScene(ActionEvent event) throws IOException {
+    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
   }
 }

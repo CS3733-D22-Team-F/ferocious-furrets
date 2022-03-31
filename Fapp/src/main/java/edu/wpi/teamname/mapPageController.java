@@ -1,3 +1,3 @@
 package edu.wpi.teamname;
 
-public class mapPageController {}
+public class mapPageController extends returnHomePage {}

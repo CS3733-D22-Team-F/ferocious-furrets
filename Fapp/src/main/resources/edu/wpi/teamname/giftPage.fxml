@@ -2,34 +2,130 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Ellipse?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.giftController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.giftController">
    <children>
-      <CheckBox layoutX="431.0" layoutY="221.0" mnemonicParsing="false" onAction="#sendGift" prefHeight="59.0" prefWidth="83.0" text="Send" />
-      <Button layoutX="431.0" layoutY="299.0" mnemonicParsing="false" onAction="#returnHome" prefHeight="29.0" prefWidth="108.0" text="Return Home" />
-      <Circle fill="#d03325" layoutX="176.0" layoutY="184.0" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="#ffc61f" layoutX="277.0" layoutY="231.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fill="DODGERBLUE" layoutX="207.0" layoutY="366.0" radiusX="50.0" radiusY="67.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line endX="94.0" endY="-20.000015258789062" layoutX="82.0" layoutY="251.0" startX="124.99998474121094" startY="48.0" />
-      <Line endX="27.000030517578125" endY="20.0" layoutX="243.0" layoutY="265.0" startX="-35.29289245605469" startY="34.707122802734375" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e5ba3" height="116.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="769.0" />
-      <Text fill="WHITE" layoutX="257.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BMH Gift Shop" wrappingWidth="326.1666717529297">
+      <Button layoutX="1144.0" layoutY="647.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+      <Label layoutX="495.0" layoutY="26.0" text="Gift Shop">
          <font>
-            <Font size="41.0" />
+            <Font name="Times New Roman" size="48.0" />
          </font>
-      </Text>
-      <Text layoutX="104.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Real Abstract Flowers">
+      </Label>
+      <CheckBox fx:id="blood" layoutX="91.0" layoutY="214.0" mnemonicParsing="false" onAction="#boxChange" text="Rose">
          <font>
-            <Font size="22.0" />
+            <Font size="36.0" />
          </font>
-      </Text>
+      </CheckBox>
+      <CheckBox fx:id="urine" layoutX="91.0" layoutY="280.0" mnemonicParsing="false" onAction="#boxChange" text="Teddy Bear">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="CAT" layoutX="91.0" layoutY="346.0" mnemonicParsing="false" onAction="#boxChange" prefHeight="48.0" prefWidth="249.0" text="Gift Card">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="92.0" layoutY="412.0" mnemonicParsing="false" onAction="#boxChange" text="Jasmine" fx:id="xray">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="MRI" layoutX="91.0" layoutY="483.0" mnemonicParsing="false" onAction="#boxChange" text="Chrysanthemum">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="previewButton" layoutX="213.0" layoutY="617.0" mnemonicParsing="false" onAction="#requestLab" prefHeight="78.0" prefWidth="260.0" text="Preview">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label layoutX="635.0" layoutY="100.0" text="Review">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="635.0" layoutY="370.0" text="Item: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="itemField" layoutX="800.0" layoutY="370.0" prefHeight="46.0" prefWidth="473.0" text="empty">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Button fx:id="submitButton" disable="true" layoutX="524.0" layoutY="616.0" mnemonicParsing="false" onAction="#submit" prefHeight="78.0" prefWidth="260.0" text="Submit">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label layoutX="91.0" layoutY="109.0" text="Patient Name: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="89.0" layoutY="160.0" text="Room Number: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="390.0" layoutY="280.0" text="Nurse:">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="635.0" layoutY="190.0" text="Patient Name: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="635.0" layoutY="280.0" text="Room Number: ">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameField" layoutX="884.0" layoutY="190.0" prefHeight="46.0" prefWidth="345.0" text="empty">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="roomField" layoutX="884.0" layoutY="280.0" prefHeight="46.0" prefWidth="345.0" text="empty">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameTextField" layoutX="332.0" layoutY="105.0" prefHeight="8.0" prefWidth="282.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="roomTextField" layoutX="332.0" layoutY="165.0" prefHeight="8.0" prefWidth="282.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nurseTextField" layoutX="390.0" layoutY="346.0" prefHeight="8.0" prefWidth="141.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Button layoutX="1014.0" layoutY="499.0" mnemonicParsing="false" onAction="#showQueueScene" prefHeight="78.0" prefWidth="260.0" text="Queue">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label layoutX="95.0" layoutY="561.0" text="Statue: ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="statueChoice" layoutX="205.0" layoutY="564.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
