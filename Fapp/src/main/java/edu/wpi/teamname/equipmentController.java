@@ -81,7 +81,10 @@ public class equipmentController implements Initializable {
   public equipmentController() {}
 
   @FXML
-  public ArrayList<Object> submit() {
+  public ArrayList<String> submit() {
+
+    ArrayList<String> equipmentRequest = new ArrayList<String>();
+
     String patientName = patientNameTextField.getText();
     String patientNumberText = patientNumber.getText();
     String patientGenderText = patientGender.getValue();
@@ -93,16 +96,18 @@ public class equipmentController implements Initializable {
     String requestSignatureText = requesterSig.getText();
     String dateText = String.valueOf(requestDate.getValue());
 
-    System.out.println(patientName);
-    System.out.println(patientNumberText);
-    System.out.println(patientGenderText);
-    System.out.println(providerTypeText);
-    System.out.println(item1Text);
-    System.out.println(item2Text);
-    System.out.println(item3Text);
-    System.out.println(medicalTextArea);
-    System.out.println(requestSignatureText);
-    System.out.println(dateText);
+    equipmentRequest.add(patientName);
+    equipmentRequest.add(patientNumberText);
+    equipmentRequest.add(patientGenderText);
+    equipmentRequest.add(providerTypeText);
+    equipmentRequest.add(item1Text);
+    equipmentRequest.add(item2Text);
+    equipmentRequest.add(item3Text);
+    equipmentRequest.add(medicalTextArea);
+    equipmentRequest.add(requestSignatureText);
+    equipmentRequest.add(dateText);
+
+    System.out.println(equipmentRequest);
     return null;
   }
 
