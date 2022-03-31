@@ -1,8 +1,8 @@
-package edu.wpi.furious_furrets.entitites.request;
+package edu.wpi.furious_furrets.entitites.request.deliveryRequest;
 
-public class giftRequest extends DeliveryRequest {
+public class patientDeliveryRequest extends DeliveryRequest {
 
-  public giftRequest(
+  public patientDeliveryRequest(
       String assign,
       int empID,
       String nID,

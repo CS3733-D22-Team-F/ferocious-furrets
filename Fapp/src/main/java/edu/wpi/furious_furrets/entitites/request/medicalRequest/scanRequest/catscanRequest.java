@@ -1,4 +1,6 @@
-package edu.wpi.furious_furrets.entitites.request;
+package edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest;
+
+import edu.wpi.furious_furrets.entitites.request.medicalRequest.MedicalRequest;
 
 public class catscanRequest extends MedicalRequest {
 
