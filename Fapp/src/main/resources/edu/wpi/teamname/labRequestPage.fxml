@@ -121,7 +121,7 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Label layoutX="95.0" layoutY="561.0" text="Statue: ">
+      <Label layoutX="95.0" layoutY="561.0" text="Status: ">
          <font>
             <Font size="24.0" />
          </font>

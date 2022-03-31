@@ -37,6 +37,7 @@ public class equipmentController implements Initializable {
   @FXML private Button resetButton;
   @FXML private Button submitButton;
   @FXML private Button backButton;
+  @FXML private ChoiceBox statueChoice;
 
   /*
    * genderTypes array to populate the patient gender choice box
@@ -110,5 +111,11 @@ public class equipmentController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     patientGender.getItems().addAll(genderTypes);
     providerType.getItems().addAll(providerTypes);
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("black");
+    temp.add("processing");
+    temp.add("done");
+    statueChoice.getItems().addAll(temp);
+    statueChoice.setValue("black");
   }
 }
