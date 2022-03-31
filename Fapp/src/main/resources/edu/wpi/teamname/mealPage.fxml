@@ -249,6 +249,11 @@
                                     <TextField fx:id="employeeName" layoutX="865.0" layoutY="454.0" prefHeight="26.0" prefWidth="319.0" />
                                     <Text layoutX="822.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Status:" />
                                     <ChoiceBox fx:id="status" layoutX="916.0" layoutY="507.0" prefWidth="150.0" />
+                                    <Button layoutX="1135.0" layoutY="612.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="41.0" prefWidth="109.0" text="Home Page" textFill="DEEPSKYBLUE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                           </content>
