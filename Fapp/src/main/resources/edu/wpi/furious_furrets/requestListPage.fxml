@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" onMouseEntered="#populateList" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.requestListController">
+    <children>
+        <Button fx:id="myBackButton" layoutX="1171.0" layoutY="661.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+    <ListView fx:id="requestList" layoutX="64.0" layoutY="216.0" prefHeight="432.0" prefWidth="1152.0" style="-fx-border-color: deepskyblue;">
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+    </ListView>
+    <Pane layoutX="64.0" layoutY="72.0" prefHeight="144.0" prefWidth="1152.0" style="-fx-background-color: deepskyblue;">
+        <Text layoutX="325.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Service Requests">
+            <font>
+                <Font name="Palatino Linotype" size="45.0" />
+            </font>
+        </Text>
+    </Pane>
+    </children>
+</AnchorPane>
