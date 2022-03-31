@@ -1,9 +1,9 @@
 package edu.wpi.teamname;
 
+import fxml.controllers.SceneManager;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,7 +22,15 @@ public class homePageController {
 
   @FXML
   void switchToLab(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("labRequestPage.fxml"));
+    scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
+  void switchToMap(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("mapPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
@@ -31,45 +39,40 @@ public class homePageController {
 
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
-    root = FXMLLoader.load((getClass().getResource("equipmentPage.fxml")));
+    scene = SceneManager.getInstance().setScene("equipmentPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root, 1280, 720);
     stage.setScene(scene);
     stage.show();
   }
 
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("medicinePage.fxml"));
+    scene = SceneManager.getInstance().setScene("medicinePage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("giftPage.fxml"));
+    scene = SceneManager.getInstance().setScene("giftPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("mealPage.fxml"));
+    scene = SceneManager.getInstance().setScene("mealPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
 
   @FXML
   public void switchToLogin(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("logInPage.fxml"));
+    scene = SceneManager.getInstance().setScene("logInPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }

@@ -12,18 +12,18 @@
    <children>
       <ImageView fitHeight="947.0" fitWidth="1382.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../../../../Downloads/HospitalPhoto.jpg" />
+            <Image url="@hospitalPhoto.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="360.0">
          <children>
-            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #001540;" text="Please Lon In" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #001540;" text="Please Log In" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </Button>
             <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToMap" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font></Button>
