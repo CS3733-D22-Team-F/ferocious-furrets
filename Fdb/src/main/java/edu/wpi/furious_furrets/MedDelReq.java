@@ -5,7 +5,7 @@
  */
 package edu.wpi.furious_furrets;
 
-public class MedEquipServReq {
+public class MedDelReq {
 
   private String reqID; // Primary Key
   private String nodeID; // Foreign Key from Location
@@ -20,7 +20,7 @@ public class MedEquipServReq {
    * @param employeeIDofAssignedTo
    * @param status
    */
-  public MedEquipServReq(String reqID, String nodeID, String employeeIDofAssignedTo, int status) {
+  public MedDelReq(String reqID, String nodeID, String employeeIDofAssignedTo, int status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.employeeIDofAssignedTo = employeeIDofAssignedTo;
@@ -61,7 +61,7 @@ public class MedEquipServReq {
    * @param o MedEquipServReq Object to be compared with the calling MedEquipServReq object
    * @return True or False
    */
-  public boolean equals(MedEquipServReq o) {
+  public boolean equals(MedDelReq o) {
     return (this.reqID.equals(o.nodeID))
         && (this.nodeID.equals(o.nodeID))
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))

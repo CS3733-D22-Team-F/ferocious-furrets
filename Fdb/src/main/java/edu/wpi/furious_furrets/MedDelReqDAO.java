@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface MedDelReqDAO {
-  public ArrayList<MedEquipServReq> getAllRequests() throws SQLException;
+  public ArrayList<MedDelReq> getAllRequests() throws SQLException;
 
   /**
    * @param reqID

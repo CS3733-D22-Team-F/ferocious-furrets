@@ -36,6 +36,6 @@ public class DAOTester {
     MedDelReqDAOImpl dao = new MedDelReqDAOImpl(conn);
     dao.initTable();
     assertNotNull(dao.getAllRequests());
-//    System.out.println(dao.getAllRequests().get(2).getLongName());
+    //    System.out.println(dao.getAllRequests().get(2).getLongName());
   }
 }
