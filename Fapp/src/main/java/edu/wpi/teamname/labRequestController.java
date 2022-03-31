@@ -33,22 +33,24 @@ public class labRequestController extends returnHomePage implements Initializabl
 
   @FXML TextField nameTextField;
   @FXML TextField roomTextField;
+  @FXML TextField doctorTextField;
 
   @FXML ChoiceBox<Object> statueChoice;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("black");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("black");
+    statueChoice.setValue("");
   }
 
   public boolean requestLab() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
+    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (!blood.isSelected()
             && !urine.isSelected()
@@ -56,7 +58,9 @@ public class labRequestController extends returnHomePage implements Initializabl
             && !xray.isSelected()
             && !MRI.isSelected()
         || nameTextField.getText().isEmpty()
-        || roomTextField.getText().isEmpty()) {
+        || roomTextField.getText().isEmpty()
+        || doctorTextField.getText().isEmpty()
+        || statueChoice.getValue().equals("")) {
       System.out.println("please make a choice");
       return false;
     } else {
@@ -98,18 +102,24 @@ public class labRequestController extends returnHomePage implements Initializabl
 
       roomField.setText(roomTextField.getText()); // set room number
       nameField.setText(nameTextField.getText()); // set room number
+      doctorField.setText(doctorTextField.getText());
       itemField.setText(serviceList.toString());
 
       returnList.add("Lab Request");
       returnList.add(nameField.getText());
       returnList.add(roomField.getText());
       returnList.add(statueChoice.getValue());
-      returnList.add("doctor"); // disable when log in process finished
+      returnList.add(doctorField.getText()); // disable when log in process finished
       // returnList.add(doctorField.getText()); //enable when log in process finished
 
       submitButton.disableProperty().setValue(false);
       previewButton.disableProperty().setValue(true);
       itemList = returnList;
+
+      requestList.add("Lab Request for patient " + nameField.getText());
+      requestList.add("Assigned Doctor: " + doctorField.getText());
+      requestList.add("Status: " + statueChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
       return true;
     }
   }

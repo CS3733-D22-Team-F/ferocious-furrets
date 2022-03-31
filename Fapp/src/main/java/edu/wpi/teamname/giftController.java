@@ -33,22 +33,24 @@ public class giftController extends returnHomePage implements Initializable {
 
   @FXML TextField nameTextField;
   @FXML TextField roomTextField;
+  @FXML TextField nurseTextField;
 
   @FXML ChoiceBox<Object> statueChoice;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("black");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("black");
+    statueChoice.setValue("");
   }
 
   public boolean requestLab() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
+    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (!blood.isSelected()
             && !urine.isSelected()
@@ -56,7 +58,9 @@ public class giftController extends returnHomePage implements Initializable {
             && !xray.isSelected()
             && !MRI.isSelected()
         || nameTextField.getText().isEmpty()
-        || roomTextField.getText().isEmpty()) {
+        || roomTextField.getText().isEmpty()
+        || nurseTextField.getText().isEmpty()
+        || statueChoice.getValue().equals("")) {
       System.out.println("please make a choice");
       return false;
     } else {
@@ -104,12 +108,17 @@ public class giftController extends returnHomePage implements Initializable {
       returnList.add(nameField.getText());
       returnList.add(roomField.getText());
       returnList.add(statueChoice.getValue());
-      returnList.add("doctor"); // disable when log in process finished
+      returnList.add(nurseTextField.getText()); // disable when log in process finished
       // returnList.add(doctorField.getText()); //enable when log in process finished
 
       submitButton.disableProperty().setValue(false);
       previewButton.disableProperty().setValue(true);
       itemList = returnList;
+
+      requestList.add("Gift for patient " + nameField.getText());
+      requestList.add("Delivery Nurse: " + nurseTextField.getText());
+      requestList.add("Status: " + statueChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
       return true;
     }
   }

@@ -146,6 +146,14 @@ public class homePageController {
   }
 
   @FXML
+  public void switchToRequests(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("requestListPage.fxml");
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
   public void exitProgram() {
     System.exit(0);
   }

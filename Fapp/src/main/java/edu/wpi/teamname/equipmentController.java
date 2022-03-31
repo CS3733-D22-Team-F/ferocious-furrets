@@ -38,6 +38,7 @@ public class equipmentController implements Initializable {
   @FXML private Button submitButton;
   @FXML private Button backButton;
   @FXML private ChoiceBox statueChoice;
+  ArrayList<Object> requestList = new ArrayList<>();
 
   /*
    * genderTypes array to populate the patient gender choice box
@@ -101,6 +102,13 @@ public class equipmentController implements Initializable {
     System.out.println(medicalTextArea);
     System.out.println(requestSignatureText);
     System.out.println(dateText);
+
+    requestList.clear();
+    requestList.add("Equipment Request for patient " + patientName);
+    requestList.add("Assigned Doctor: " + requestSignatureText);
+    requestList.add("Status: " + statueChoice.getValue());
+    serviceRequestStorage.addToArrayList(requestList);
+
     return null;
   }
 
@@ -109,10 +117,10 @@ public class equipmentController implements Initializable {
     patientGender.getItems().addAll(genderTypes);
     providerType.getItems().addAll(providerTypes);
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("black");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("black");
+    statueChoice.setValue("");
   }
 }
