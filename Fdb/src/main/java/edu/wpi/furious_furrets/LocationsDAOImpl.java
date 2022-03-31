@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-/** */
 public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection;
@@ -109,7 +108,7 @@ public class LocationsDAOImpl implements LocationDAO {
       }*/
 
   /**
-   * Method: initTable(ArrayList<Location>)
+   * Method: initTable()
    *
    * <p>An ArrayList of all the locations in the embedded CSV file. Provided as a data structure for
    * the Java objects made from the embedded CSV file. The ArrayList is used to create a SQL table

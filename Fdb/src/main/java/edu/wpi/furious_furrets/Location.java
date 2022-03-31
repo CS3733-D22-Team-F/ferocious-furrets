@@ -1,9 +1,10 @@
 package edu.wpi.furious_furrets;
 
-/*
+/**
    Java object corresponding to Locations SQL database
 */
 public class Location {
+
   private String nodeID;
   private int xcoord;
   private int ycoord;
@@ -17,6 +18,17 @@ public class Location {
     this.nodeID = nodeID;
   }
 
+  /**
+   * Constructor for location object
+   * @param nodeID
+   * @param xcoord
+   * @param ycoord
+   * @param floor
+   * @param building
+   * @param nodeType
+   * @param LongName
+   * @param ShortName
+   */
   public Location(
       String nodeID, // primary key
       int xcoord,
@@ -36,10 +48,18 @@ public class Location {
     this.shortName = ShortName;
   }
 
+  /**
+   * gets the ID of the Location Node
+   * @return string of ID
+   */
   public String getNodeID() {
     return nodeID;
   }
 
+  /**
+   * sets the nodeID of the location
+   * @param nodeID
+   */
   public void setNodeID(String nodeID) {
     this.nodeID = nodeID;
   }
