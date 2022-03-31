@@ -11,7 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javax.swing.*;
 
 public class mealsController extends returnHomePage implements Initializable {
-  @FXML private ChoiceBox status;
+  @FXML private ChoiceBox<Object> status;
   @FXML private Button submitButton;
   @FXML private CheckBox pancakes;
   @FXML private CheckBox scrEggs;
@@ -28,6 +28,7 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private CheckBox coffee1;
   @FXML private CheckBox frSmoothie1;
   @FXML private CheckBox apJuice1;
+  ArrayList<Object> returnList = new ArrayList<>();
   //  @FXML private CheckBox turk;
   //  @FXML private CheckBox steak;
   //  @FXML private CheckBox tomato;
@@ -58,6 +59,16 @@ public class mealsController extends returnHomePage implements Initializable {
   //  @FXML private CheckBox coffee3;
   //  @FXML private CheckBox frSmoothie3;
   //  @FXML private CheckBox apJuice3;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("blank");
+    temp.add("processing");
+    temp.add("done");
+    status.getItems().addAll(temp);
+    status.setValue("blank");
+  }
 
   public void submit() {
     ArrayList<String> foodList = new ArrayList<>();
@@ -107,6 +118,9 @@ public class mealsController extends returnHomePage implements Initializable {
       foodList.add(friedEggs.getText());
     }
 
+    returnList.add(status.getAccessibleText());
+    returnList.add(foodList);
+
     if (pancakes.isSelected()) {
       pancakes.setSelected(false);
     }
@@ -154,15 +168,5 @@ public class mealsController extends returnHomePage implements Initializable {
     }
 
     System.out.print(foodList);
-  }
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> temp = new ArrayList<>();
-    temp.add("black");
-    temp.add("processing");
-    temp.add("done");
-    status.getItems().addAll(temp);
-    status.setValue("black");
   }
 }

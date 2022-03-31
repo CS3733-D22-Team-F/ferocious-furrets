@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.mapPageController">
-
+   <children>
+      <JFXTreeTableView layoutX="79.0" layoutY="98.0" prefHeight="556.0" prefWidth="454.0">
+         <columns>
+            <TreeTableColumn prefWidth="75.0" text="Column X" />
+            <TreeTableColumn prefWidth="70.9287109375" text="Column X" />
+            <TreeTableColumn prefWidth="79.07133483886719" text="Column X" />
+            <TreeTableColumn prefWidth="75.0" text="Column X" />
+            <TreeTableColumn prefWidth="75.0" text="Column X" />
+            <TreeTableColumn prefWidth="75.0" text="Column X" />
+         </columns>
+      </JFXTreeTableView>
+      <Button layoutX="1145.0" layoutY="622.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="41.0" prefWidth="109.0" text="Home Page" textFill="DEEPSKYBLUE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

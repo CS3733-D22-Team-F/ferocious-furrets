@@ -2,12 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.medicineController">
    <children>
@@ -22,12 +24,12 @@
                         <TextField fx:id="patientRoom" layoutX="251.0" layoutY="106.0" prefHeight="18.0" prefWidth="233.0" />
                         <TextField fx:id="reqMedication" layoutX="251.0" layoutY="152.0" prefHeight="18.0" prefWidth="233.0" />
                         <TextField fx:id="reqDosage" layoutX="251.0" layoutY="246.0" prefHeight="18.0" prefWidth="233.0" />
-                        <Button fx:id="submitButton" layoutX="409.0" layoutY="423.0" mnemonicParsing="false" onAction="#submitMedRequest" text="Submit Request" />
-                        <TextField fx:id="additionalInfo" layoutX="254.0" layoutY="346.0" prefHeight="61.0" prefWidth="228.0" />
-                        <Button fx:id="cancelRequest" layoutX="38.0" layoutY="423.0" mnemonicParsing="false" onAction="#cancelMedRequest" text="Cancel" />
-                        <Button fx:id="resetMedRequest" layoutX="102.0" layoutY="423.0" mnemonicParsing="false" onAction="#resetMedRequest" text="Reset" />
+                        <Button fx:id="submitButton" layoutX="411.0" layoutY="470.0" mnemonicParsing="false" onAction="#submitMedRequest" text="Submit Request" />
+                        <TextField fx:id="additionalInfo" layoutX="254.0" layoutY="399.0" prefHeight="61.0" prefWidth="228.0" />
+                        <Button fx:id="cancelRequest" layoutX="38.0" layoutY="470.0" mnemonicParsing="false" onAction="#cancelMedRequest" text="Cancel" />
+                        <Button fx:id="resetMedRequest" layoutX="102.0" layoutY="470.0" mnemonicParsing="false" onAction="#resetMedRequest" text="Reset" />
                         <TextField fx:id="employeeName" layoutX="251.0" layoutY="291.0" prefHeight="18.0" prefWidth="233.0" />
-                        <VBox layoutX="11.0" layoutY="55.0" prefHeight="305.0" prefWidth="230.0">
+                        <VBox layoutX="11.0" layoutY="55.0" prefHeight="408.0" prefWidth="230.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Patients Name:" textAlignment="CENTER">
                                  <padding>
@@ -59,7 +61,12 @@
                                     <Insets top="30.0" />
                                  </padding>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Additional Information:" textAlignment="CENTER">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Request Status:">
+                                 <VBox.margin>
+                                    <Insets left="100.0" top="30.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="141.0" prefWidth="230.0" text="Additional Information:" textAlignment="CENTER">
                                  <padding>
                                     <Insets top="50.0" />
                                  </padding>
@@ -67,6 +74,7 @@
                            </children>
                         </VBox>
                         <TextField fx:id="reqDosage1" layoutX="251.0" layoutY="200.0" prefHeight="18.0" prefWidth="233.0" />
+                        <ChoiceBox fx:id="medRequestStatus" layoutX="254.0" layoutY="344.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>

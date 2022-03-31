@@ -68,7 +68,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Navigation">
             <items>
-              <MenuItem mnemonicParsing="false" text="Maps" />
+              <MenuItem mnemonicParsing="false" onAction="#returnToMap" text="Maps" />
                   <MenuItem fx:id="goToLabRequest" mnemonicParsing="false" onAction="#returnToLab" text="Lab Request" />
                   <MenuItem fx:id="returnToEquipment" mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
                   <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
