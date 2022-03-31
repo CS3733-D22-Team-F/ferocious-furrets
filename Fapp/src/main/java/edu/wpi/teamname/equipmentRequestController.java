@@ -1,7 +1,7 @@
 package edu.wpi.teamname;
 
 import controllers.fxml.StageManager;
-import java.awt.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class equipmentController implements Initializable {
+public class equipmentRequestController implements Initializable {
 
   // TODO remove
   private Stage stage;
@@ -77,7 +77,7 @@ public class equipmentController implements Initializable {
   @FXML
   void submitFunction() {}
 
-  public equipmentController() {}
+  public equipmentRequestController() {}
 
   @FXML
   public ArrayList<Object> submit() {
