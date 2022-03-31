@@ -29,11 +29,8 @@ public class equipmentController implements Initializable {
   @FXML private ChoiceBox<String> patientGender;
   @FXML private ChoiceBox<String> providerType;
   @FXML private TextField item1;
-  @FXML private ChoiceBox<Integer> quantity1;
   @FXML private TextField item2;
-  @FXML private ChoiceBox<Integer> quantity2;
   @FXML private TextField item3;
-  @FXML private ChoiceBox<Integer> quantity3;
   @FXML private TextArea medField;
   @FXML private TextField requesterSig;
   @FXML private DatePicker requestDate;
@@ -65,7 +62,18 @@ public class equipmentController implements Initializable {
   }
 
   @FXML
-  void resetFunction() {}
+  void resetFunction() {
+    patientNameTextField.clear();
+    patientNumber.clear();
+    patientGender.valueProperty().setValue(null);
+    providerType.valueProperty().setValue(null);
+    item1.clear();
+    item2.clear();
+    item3.clear();
+    medField.clear();
+    requesterSig.clear();
+    requestDate.valueProperty().setValue(null);
+  }
 
   @FXML
   void submitFunction() {}
@@ -95,7 +103,6 @@ public class equipmentController implements Initializable {
     System.out.println(medicalTextArea);
     System.out.println(requestSignatureText);
     System.out.println(dateText);
-
     return null;
   }
 
