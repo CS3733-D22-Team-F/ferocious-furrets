@@ -92,6 +92,50 @@ public class homePageController {
   }
 
   @FXML
+  public void returnToLab(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("labRequestPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
+  }
+
+  @FXML
+  public void returnToMedicine(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("medicinePage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
+  }
+
+  @FXML
+  public void returnToMeals(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("mealPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
+  }
+
+  @FXML
+  public void returnToGifts(ActionEvent e) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("giftPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
+  }
+
+  @FXML
   public void exitProgram() {
     System.exit(0);
   }
