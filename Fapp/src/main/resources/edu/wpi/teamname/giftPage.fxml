@@ -76,6 +76,11 @@
             <Font size="37.0" />
          </font>
       </Label>
+      <Label layoutX="390.0" layoutY="280.0" text="Nurse:">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
       <Label layoutX="635.0" layoutY="190.0" text="Patient Name: ">
          <font>
             <Font size="37.0" />
@@ -102,6 +107,11 @@
          </font>
       </TextField>
       <TextField fx:id="roomTextField" layoutX="332.0" layoutY="165.0" prefHeight="8.0" prefWidth="282.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nurseTextField" layoutX="390.0" layoutY="346.0" prefHeight="8.0" prefWidth="141.0">
          <font>
             <Font size="24.0" />
          </font>

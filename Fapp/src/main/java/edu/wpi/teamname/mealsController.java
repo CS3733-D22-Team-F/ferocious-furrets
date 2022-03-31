@@ -8,11 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javax.swing.*;
 
 public class mealsController extends returnHomePage implements Initializable {
   @FXML private ChoiceBox<Object> status;
   @FXML private Button submitButton;
+  @FXML private TextField employeeName;
   @FXML private CheckBox pancakes;
   @FXML private CheckBox scrEggs;
   @FXML private CheckBox friedEggs;
@@ -29,6 +31,7 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private CheckBox frSmoothie1;
   @FXML private CheckBox apJuice1;
   ArrayList<Object> returnList = new ArrayList<>();
+  ArrayList<Object> requestList = new ArrayList<>();
   //  @FXML private CheckBox turk;
   //  @FXML private CheckBox steak;
   //  @FXML private CheckBox tomato;
@@ -63,11 +66,11 @@ public class mealsController extends returnHomePage implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("blank");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     status.getItems().addAll(temp);
-    status.setValue("blank");
+    status.setValue("");
   }
 
   public void submit() {
@@ -168,5 +171,11 @@ public class mealsController extends returnHomePage implements Initializable {
     }
 
     System.out.print(foodList);
+
+    requestList.clear();
+    requestList.add("Meal Request");
+    requestList.add("Assigned Doctor: " + employeeName.getText());
+    requestList.add("Status: " + status.getValue());
+    serviceRequestStorage.addToArrayList(requestList);
   }
 }

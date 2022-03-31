@@ -37,11 +37,11 @@ public class medicineController extends returnHomePage implements Initializable 
 
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("blank");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     medRequestStatus.getItems().addAll(temp);
-    medRequestStatus.setValue("blank");
+    medRequestStatus.setValue("");
   }
 
   @FXML
@@ -93,6 +93,12 @@ public class medicineController extends returnHomePage implements Initializable 
     System.out.print(dosage);
     System.out.print(additional);
     System.out.print(employee);
+
+    requestList.clear();
+    requestList.add("Medicine Request for patient " + patientNameText);
+    requestList.add("Assigned Doctor: " + employee);
+    requestList.add("Status: " + medRequestStatus.getValue());
+    serviceRequestStorage.addToArrayList(requestList);
   }
 
   @FXML
