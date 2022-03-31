@@ -1,8 +1,17 @@
 package edu.wpi.furious_furrets;
 
 /**
-   Java object corresponding to Locations SQL database
-*/
+ *   Java object corresponding to Locations SQL database
+ *
+ *  Primary Key, node identifier
+ *  Xcoord- x coordinate of Location node
+ *  Ycoord- y coordinate of Location node
+ *  Floor- floor Location is on
+ *  Building- the building in which the Location is
+ *  NodeType- denotes the subtype of Location node
+ *  LongName- name of Location, 255 char limit
+ *  ShortName- abbreviated name of Location, 128 char limit
+ */
 public class Location {
 
   private String nodeID;
@@ -34,6 +43,7 @@ public class Location {
    * @param nodeType
    * @param LongName
    * @param ShortName
+   * @see Location
    */
   public Location(
       String nodeID, // primary key
@@ -57,6 +67,7 @@ public class Location {
   /**
    * gets the ID of the Location Node
    * @return string of ID
+   * @see Location
    */
   public String getNodeID() {
     return nodeID;
@@ -64,72 +75,142 @@ public class Location {
 
   /**
    * sets the nodeID of the location
-   * @param nodeID
+   * @param nodeID String
+   * @see Location
    */
   public void setNodeID(String nodeID) {
     this.nodeID = nodeID;
   }
 
+  /**
+   * gets Xcoord
+   * @return int
+   * @see Location
+   */
   public int getXcoord() {
     return xcoord;
   }
 
+  /**
+   * sets xcoord
+   * @param xcoord
+   * @see Location
+   */
   public void setXcoord(int xcoord) {
     this.xcoord = xcoord;
   }
 
+  /**
+   * gets y coord
+   * @return int
+   * @see Location
+   */
   public int getYcoord() {
     return ycoord;
   }
 
+  /**
+   * Sets y coord
+   * @param ycoord int
+   * @see Location
+   */
   public void setYcoord(int ycoord) {
     this.ycoord = ycoord;
   }
 
+  /**
+   * gets floor
+   * @return String
+   * @see Location
+   */
   public String getFloor() {
     return floor;
   }
 
+  /**
+   * Sets floor
+   * @param floor String
+   * @see Location
+   */
   public void setFloor(String floor) {
     this.floor = floor;
   }
 
+  /**
+   * gets Building
+   * @return String
+   * @see Location
+   */
   public String getBuilding() {
     return building;
   }
 
+  /**
+   *  sets building
+   * @param building String
+   * @see Location
+   */
   public void setBuilding(String building) {
     this.building = building;
   }
 
+  /**
+   * gets the nodeType
+   * @return String
+   * @see Location
+   */
   public String getNodeType() {
     return nodeType;
   }
 
+  /**
+   * sets the nodeType
+   * @param nodeType String
+   * @see Location
+   */
   public void setNodeType(String nodeType) {
     this.nodeType = nodeType;
   }
 
+  /**
+   * gets the longname
+   * @return String
+   * @see Location
+   */
   public String getLongName() {
     return longName;
   }
 
+  /**
+   * sets the long name
+   * @param longName String
+   */
   public void setLongName(String longName) {
     this.longName = longName;
   }
 
+  /**
+   * gets the short name
+   * @return String
+   * @see Location
+   */
   public String getShortName() {
     return shortName;
   }
 
+  /**
+   * sets the shortName
+   * @param shortName String
+   * @see Location
+   */
   public void setShortName(String shortName) {
     this.shortName = shortName;
   }
 
   /**
    * @Method generateInsertStatement()
-   *
-   * @return SQL statement that INSERTs Location object into SQL table
+   *SQL statement that INSERTs Location object into SQL table
+   * @return String
    */
   public String generateInsertStatement() {
     return "INSERT INTO Locations VALUES ('"

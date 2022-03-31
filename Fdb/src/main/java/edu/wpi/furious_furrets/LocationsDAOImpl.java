@@ -252,6 +252,7 @@ public class LocationsDAOImpl implements LocationDAO {
    *
    * @throws SQLException
    * @returns ArrayList of type Locations
+   * @see Location
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
 
