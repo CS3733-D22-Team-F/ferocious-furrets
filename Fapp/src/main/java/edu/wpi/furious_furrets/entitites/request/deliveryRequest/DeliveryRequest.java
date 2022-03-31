@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.entitites.request;
+package edu.wpi.furious_furrets.entitites.request.deliveryRequest;
 
 import edu.wpi.furious_furrets.entitites.Request;
 
