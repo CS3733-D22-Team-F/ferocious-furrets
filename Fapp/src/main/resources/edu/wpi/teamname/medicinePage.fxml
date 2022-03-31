@@ -1,69 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.medicineController">
    <children>
       <Button fx:id="myBackButton" layoutX="1171.0" layoutY="661.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
       <TabPane layoutX="2.0" layoutY="4.0" prefHeight="613.0" prefWidth="1264.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Acid Related Conditions">
+          <Tab text="Make A Medical Service Request">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="925.0">
                      <children>
-                        <Button layoutX="27.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Pantoprazole" />
-                        <Button layoutX="27.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Omeprazole" />
-                        <Button layoutX="27.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Sucralfate" />
-                        <Button layoutX="27.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Lansoprazole" />
-                        <Button layoutX="27.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Cimetidine" />
-                        <Button layoutX="150.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Nizatidine" />
-                        <Button layoutX="150.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Pirenzepine" />
-                        <Button layoutX="150.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Esomeprazole" />
-                        <Button layoutX="150.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Ranitidine" />
-                        <Button layoutX="150.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Tinidazole" />
-                        <Button layoutX="510.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Famotidine" />
-                        <Button layoutX="390.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Misoprostol" />
-                        <Button layoutX="390.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Rabeprazole" />
-                        <Button layoutX="390.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Clarithromycin" />
-                        <Button layoutX="390.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magnesium oxide" />
-                        <Button layoutX="390.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Carbenoxolone" />
-                        <Button layoutX="270.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Dexlansoprazole" />
-                        <Button layoutX="270.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Aluminum hydroxide" />
-                        <Button layoutX="270.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Calcium carbonate" />
-                        <Button layoutX="270.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Roxatidine acetate" />
-                        <Button layoutX="270.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magaldrate" />
-                        <Button layoutX="990.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Gefarnate" />
-                        <Button layoutX="990.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Lafutidine" />
-                        <Button layoutX="990.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Bismuth subnitrate" />
-                        <Button layoutX="870.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magnesium silicate" />
-                        <Button layoutX="750.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Methylmethionine chloride" />
-                        <Button layoutX="870.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Aluminium acetoacetate" />
-                        <Button layoutX="870.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Sulglicotide" />
-                        <Button layoutX="750.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Hydrotalcite" />
-                        <Button layoutX="750.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Troxipide" />
-                        <Button layoutX="750.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Proglumide" />
-                        <Button layoutX="630.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magnesium peroxide" />
-                        <Button layoutX="630.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Alginic acid" />
-                        <Button layoutX="630.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Zolimidine" />
-                        <Button layoutX="630.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Almasilate" />
-                        <Button layoutX="1110.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Aluminium glycinate" />
-                        <Button layoutX="990.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Acetoxolone" />
-                        <Button layoutX="870.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Aloglutamol" />
-                        <Button layoutX="750.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Niperotidine" />
-                        <Button layoutX="510.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Dexrabeprazole" />
-                        <Button layoutX="510.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Enprostil" />
-                        <Button layoutX="510.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Calcium silicate" />
-                        <Button layoutX="510.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Tetracycline" />
-                        <Button layoutX="630.0" layoutY="17.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Metronidazole" />
-                        <Button layoutX="870.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Amoxicillin" />
-                        <Button layoutX="990.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magnesium hydroxide" />
-                        <Button layoutX="1110.0" layoutY="388.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Magnesium carbonate" />
-                        <Button layoutX="1110.0" layoutY="203.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Aluminium phosphate" />
-                        <Button layoutX="1110.0" layoutY="110.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Rebamipide" />
-                        <Button layoutX="1110.0" layoutY="295.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="115.0" text="Vonoprazan" />
+                        <TextField fx:id="patientName" layoutX="251.0" layoutY="60.0" prefHeight="18.0" prefWidth="233.0" />
+                        <TextField fx:id="patientRoom" layoutX="251.0" layoutY="106.0" prefHeight="18.0" prefWidth="233.0" />
+                        <TextField fx:id="reqMedication" layoutX="251.0" layoutY="152.0" prefHeight="18.0" prefWidth="233.0" />
+                        <TextField fx:id="reqDosage" layoutX="251.0" layoutY="246.0" prefHeight="18.0" prefWidth="233.0" />
+                        <Button fx:id="submitButton" layoutX="409.0" layoutY="423.0" mnemonicParsing="false" onAction="#submitMedRequest" text="Submit Request" />
+                        <TextField fx:id="additionalInfo" layoutX="254.0" layoutY="346.0" prefHeight="61.0" prefWidth="228.0" />
+                        <Button fx:id="cancelRequest" layoutX="38.0" layoutY="423.0" mnemonicParsing="false" onAction="#cancelMedRequest" text="Cancel" />
+                        <Button fx:id="resetMedRequest" layoutX="102.0" layoutY="423.0" mnemonicParsing="false" onAction="#resetMedRequest" text="Reset" />
+                        <TextField fx:id="employeeName" layoutX="251.0" layoutY="291.0" prefHeight="18.0" prefWidth="233.0" />
+                        <VBox layoutX="11.0" layoutY="55.0" prefHeight="305.0" prefWidth="230.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Patients Name:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Desired Dosage:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Paitents Room Number:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Requested Medication:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Make A Medicine Request" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Requesting Employee's Name:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Additional Information:" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="50.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <TextField fx:id="reqDosage1" layoutX="251.0" layoutY="200.0" prefHeight="18.0" prefWidth="233.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -534,6 +537,5 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="55.0" layoutY="615.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="297.0" text="Create Custom Medication Request" />
    </children>
 </AnchorPane>
