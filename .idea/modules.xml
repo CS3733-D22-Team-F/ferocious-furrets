@@ -3,6 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS 3733.iml" filepath="$PROJECT_DIR$/.idea/CS 3733.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Fapp.iml" filepath="$PROJECT_DIR$/.idea/modules/Fapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Fapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Fapp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Fapp.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Fapp.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/empty-project.iml" filepath="$PROJECT_DIR$/.idea/modules/empty-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/empty-project.main.iml" filepath="$PROJECT_DIR$/.idea/modules/empty-project.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/empty-project.test.iml" filepath="$PROJECT_DIR$/.idea/modules/empty-project.test.iml" />
     </modules>
   </component>
 </project>

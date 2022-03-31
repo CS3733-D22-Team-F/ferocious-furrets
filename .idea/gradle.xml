@@ -5,11 +5,10 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/empty-project/empty-project" />
-        <option name="gradleJvm" value="11" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Fapp" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/empty-project/empty-project" />
+            <option value="$PROJECT_DIR$/Fapp" />
           </set>
         </option>
       </GradleProjectSettings>
