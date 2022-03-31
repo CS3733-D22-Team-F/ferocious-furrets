@@ -1,11 +1,17 @@
 package edu.wpi.teamname;
 
+import fxml.controllers.SceneManager;
+import java.io.IOException;
 import java.util.ArrayList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class labRequestController extends returnHomePage {
 
@@ -134,5 +140,12 @@ public class labRequestController extends returnHomePage {
     itemField.setText("empty");
     nameField.setText("empty");
     roomField.setText("empty");
+  }
+
+  public void showQueueScene(ActionEvent event) throws IOException {
+    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
   }
 }

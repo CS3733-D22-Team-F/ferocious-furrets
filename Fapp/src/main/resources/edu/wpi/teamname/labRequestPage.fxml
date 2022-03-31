@@ -115,5 +115,10 @@
             <Font size="24.0" />
          </font>
       </TextField>
+      <Button layoutX="1014.0" layoutY="499.0" mnemonicParsing="false" onAction="#showQueueScene" prefHeight="78.0" prefWidth="260.0" text="Queue">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
