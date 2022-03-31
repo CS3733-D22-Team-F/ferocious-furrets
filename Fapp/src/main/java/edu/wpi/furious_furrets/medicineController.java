@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.furious_furrets;
 
 import java.io.IOException;
 import java.net.URL;

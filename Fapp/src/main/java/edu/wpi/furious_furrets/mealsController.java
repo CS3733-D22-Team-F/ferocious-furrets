@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.furious_furrets;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javax.swing.*;
 
 public class mealsController extends returnHomePage implements Initializable {
   @FXML private ChoiceBox<Object> status;

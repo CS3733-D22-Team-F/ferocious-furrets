@@ -1,4 +1,4 @@
-package edu.wpi.teamname;
+package edu.wpi.furious_furrets;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

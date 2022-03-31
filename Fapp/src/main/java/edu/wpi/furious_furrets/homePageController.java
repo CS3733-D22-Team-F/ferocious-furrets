@@ -1,6 +1,6 @@
-package edu.wpi.teamname;
+package edu.wpi.furious_furrets;
 
-import fxml.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.SceneManager;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
