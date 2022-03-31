@@ -1,23 +1,19 @@
 /**
- * Implementation of the locations DAO including necessary methods for saving, deleting, updating, and
- * adding new locations.
+ * Implementation of the locations DAO including necessary methods for saving, deleting, updating,
+ * and adding new locations.
+ *
  * @version 1.0
  */
 package edu.wpi.furious_furrets;
 
-import javafx.fxml.FXML;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import javafx.scene.control.Button;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-/**
- *
- */
+/** */
 public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection;
@@ -50,67 +46,67 @@ public class LocationsDAOImpl implements LocationDAO {
    *     connection is closed.
    * @deprecated
    */
-    /*public void testConnection() throws SQLException, NoSuchElementException {
+  /*public void testConnection() throws SQLException, NoSuchElementException {
 
-      System.out.println("Database Setup");
+        System.out.println("Database Setup");
 
-      try {
-        Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
-      } catch (ClassNotFoundException e) {
-        System.out.println("Driver not found");
-        e.printStackTrace();
-      }
+        try {
+          Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");
+        } catch (ClassNotFoundException e) {
+          System.out.println("Driver not found");
+          e.printStackTrace();
+        }
 
-      System.out.println("Driver registered");
-      connection = null;
+        System.out.println("Driver registered");
+        connection = null;
 
-      try {
-        connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
+        try {
+          connection = DriverManager.getConnection("jdbc:derby:myDB;create=true");
 
-//        assert (connection != null);
-//
-//              BufferedReader lineReader =
-//                  new BufferedReader(
-//                      new InputStreamReader(
-//
-//         Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
-//                          StandardCharsets.UTF_8));
-//              String lineText = null;
-//              lineReader.readLine(); // skip header line
-//
-//              while ((lineText = lineReader.readLine()) != null) {
-//                String[] data = lineText.split(",");
-//                String nID = data[0];
-//                int x = Integer.parseInt(data[1]);
-//                int y = Integer.parseInt(data[2]);
-//                String floor = data[3];
-//                String building = data[4];
-//                String nodeType = data[5];
-//                String longName = data[6];
-//                String shortName = data[7];
-//                Location l = new Location(nID, x, y, floor, building, nodeType, longName,
-//         shortName);
-//                csvLocations.add(l);
-//                csvIDS.add(l.getNodeID());
-//              }
+  //        assert (connection != null);
+  //
+  //              BufferedReader lineReader =
+  //                  new BufferedReader(
+  //                      new InputStreamReader(
+  //
+  //         Main.class.getResourceAsStream("/edu/wpi/furious_furrets/TowerLocations.csv"),
+  //                          StandardCharsets.UTF_8));
+  //              String lineText = null;
+  //              lineReader.readLine(); // skip header line
+  //
+  //              while ((lineText = lineReader.readLine()) != null) {
+  //                String[] data = lineText.split(",");
+  //                String nID = data[0];
+  //                int x = Integer.parseInt(data[1]);
+  //                int y = Integer.parseInt(data[2]);
+  //                String floor = data[3];
+  //                String building = data[4];
+  //                String nodeType = data[5];
+  //                String longName = data[6];
+  //                String shortName = data[7];
+  //                Location l = new Location(nID, x, y, floor, building, nodeType, longName,
+  //         shortName);
+  //                csvLocations.add(l);
+  //                csvIDS.add(l.getNodeID());
+  //              }
 
-        initTable();
+          initTable();
 
-        // User menu
-        menu();
-      } catch (SQLException e) {
-        System.out.println("Connection failed");
-        e.printStackTrace();
-        return;
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+          // User menu
+          menu();
+        } catch (SQLException e) {
+          System.out.println("Connection failed");
+          e.printStackTrace();
+          return;
+        } catch (FileNotFoundException e) {
+          e.printStackTrace();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
 
-      System.out.println("Derby connection established");
-      connection.close();
-    }*/
+        System.out.println("Derby connection established");
+        connection.close();
+      }*/
 
   /**
    * Method: initTable(ArrayList<Location>)
@@ -175,6 +171,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * method. The while loop terminates once option 6 is chosen, providing the "exit menu"
    * functionality. If a number not between 1 and 6 is chosen, ask for number 1-6 and go back to
    * starting menu.
+   *
    * @deprecated
    */
   /*private void menu() throws NoSuchElementException {
@@ -226,7 +223,7 @@ public class LocationsDAOImpl implements LocationDAO {
   }*/
 
   /**
-   * Taking in a ResultSet object take the locations in the form of  new Location objects
+   * Taking in a ResultSet object take the locations in the form of new Location objects
    *
    * @param rset ResultSet object to get locations from
    * @throws SQLException
@@ -242,7 +239,7 @@ public class LocationsDAOImpl implements LocationDAO {
       String building = rset.getString("building");
       String nodeType = rset.getString("nodeType");
       Location newL =
-              new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
+          new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
       updatedLocations.add(newL);
     }
   }
@@ -250,7 +247,7 @@ public class LocationsDAOImpl implements LocationDAO {
   /**
    * Displays the list of location nodes along with their attributes.
    *
-   * @throws  SQLException
+   * @throws SQLException
    * @returns ArrayList of type Locations
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
@@ -265,8 +262,9 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   *  Taking user input for the ID of the location node and the new values of the floor and location type.
-   *  The Location is then updated in the Locations DB
+   * Taking user input for the ID of the location node and the new values of the floor and location
+   * type. The Location is then updated in the Locations DB
+   *
    * @throws SQLException
    */
   public void updateLocation() throws SQLException {
@@ -287,19 +285,19 @@ public class LocationsDAOImpl implements LocationDAO {
             + newFloor
             + "', nodeType = '"
             + newLocType
-                + "', nodeID = '"
-                + updatedID
+            + "', nodeID = '"
+            + updatedID
             + "' WHERE nodeID = '"
             + oldLocNodeID
             + "'";
     stm.execute(cmd);
     stm.close();
-
   }
 
   /**
-   * Taking user input for the ID of the new location node. A new Java Location object
-   * is created and the node is added to the SQL table.
+   * Taking user input for the ID of the new location node. A new Java Location object is created
+   * and the node is added to the SQL table.
+   *
    * @throws SQLException
    */
   public void addLocation() throws SQLException {
@@ -310,12 +308,12 @@ public class LocationsDAOImpl implements LocationDAO {
     String cmd = "INSERT INTO Locations (nodeID) values ('" + nID + "')";
     stm.execute(cmd);
     stm.close();
-
   }
 
   /**
-   * Taking user input for the ID of the location node. The node is removed from the
-   * SQL table, and the corresponding Java object is deleted.
+   * Taking user input for the ID of the location node. The node is removed from the SQL table, and
+   * the corresponding Java object is deleted.
+   *
    * @throws SQLException
    */
   public void deleteLocation() throws SQLException {
@@ -326,13 +324,12 @@ public class LocationsDAOImpl implements LocationDAO {
     String q = "Delete from Locations where nodeID = '" + oldID + "'";
     stm.execute(q);
     stm.close();
-
   }
 
   /**
-   * Taking User input for the name of a CSV file. The program first loads all of the
-   * contents of the SQL Location table into Java Location objects. Then the CSV file is created
-   * from the Java objects.
+   * Taking User input for the name of a CSV file. The program first loads all of the contents of
+   * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
+   * objects.
    */
   public void saveLocation() {
 

@@ -79,7 +79,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
-        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status int, longName varChar(255), FOREIGN KEY (nodeID) REFERENCES Locations(nodeID))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status int, longName varChar(255))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedEquipServReq currentReq : requests) {
       stm.execute(currentReq.generateInsertStatement());
     }
