@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45d7c034-aa50-4270-9169-31d60f8c4990" name="Changes" comment="even more java docs" />
+    <list default="true" id="45d7c034-aa50-4270-9169-31d60f8c4990" name="Changes" comment="changed javadoc export location in proj settings" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648698550929</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed javadoc export location in proj settings">
+      <created>1648698876239</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648698876239</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +314,7 @@
     <MESSAGE value="more java docs" />
     <MESSAGE value="another junit for medical requests" />
     <MESSAGE value="even more java docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="even more java docs" />
+    <MESSAGE value="changed javadoc export location in proj settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed javadoc export location in proj settings" />
   </component>
 </project>
