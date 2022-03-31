@@ -15,6 +15,7 @@ public class MedEquipServReq {
 
   /**
    * Construction for Med equip service request
+   *
    * @param reqID
    * @param nodeID
    * @param employeeIDofAssignedTo

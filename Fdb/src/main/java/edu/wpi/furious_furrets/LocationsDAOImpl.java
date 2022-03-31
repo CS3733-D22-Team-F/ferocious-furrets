@@ -1,9 +1,3 @@
-/**
- * Implementation of the locations DAO including necessary methods for saving, deleting, updating,
- * and adding new locations.
- *
- * @version 1.0
- */
 package edu.wpi.furious_furrets;
 
 import java.io.*;
@@ -12,7 +6,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
+/**
+ * Implementation of the locations DAO including necessary methods for saving, deleting, updating,
+ * and adding new locations.
+ *
+ * @version 1.0
+ */
 public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection;
@@ -32,6 +31,7 @@ public class LocationsDAOImpl implements LocationDAO {
 
   /**
    * Constructor that takes in a Connection object
+   *
    * @param dbConn
    */
   public LocationsDAOImpl(Connection dbConn) {

@@ -1,16 +1,12 @@
 package edu.wpi.furious_furrets;
 
 /**
- *   Java object corresponding to Locations SQL database
+ * Java object corresponding to Locations SQL database
  *
- *  Primary Key, node identifier
- *  Xcoord- x coordinate of Location node
- *  Ycoord- y coordinate of Location node
- *  Floor- floor Location is on
- *  Building- the building in which the Location is
- *  NodeType- denotes the subtype of Location node
- *  LongName- name of Location, 255 char limit
- *  ShortName- abbreviated name of Location, 128 char limit
+ * <p>Primary Key, node identifier Xcoord- x coordinate of Location node Ycoord- y coordinate of
+ * Location node Floor- floor Location is on Building- the building in which the Location is
+ * NodeType- denotes the subtype of Location node LongName- name of Location, 255 char limit
+ * ShortName- abbreviated name of Location, 128 char limit
  */
 public class Location {
 
@@ -30,10 +26,10 @@ public class Location {
   /**
    * Constructor for location object
    *
-   * Primary Key, node identifier Xcoord- x coordinate of Location node
-   *    *    * Ycoord- y coordinate of Location node Floor- floor Location is on Building- the building in
-   *    *    * which the Location is NodeType- denotes the subtype of Location node LongName- name of
-   *    *    * Location, 255 char limit ShortName- abbreviated name of Location, 128 char limit
+   * <p>Primary Key, node identifier Xcoord- x coordinate of Location node * * Ycoord- y coordinate
+   * of Location node Floor- floor Location is on Building- the building in * * which the Location
+   * is NodeType- denotes the subtype of Location node LongName- name of * * Location, 255 char
+   * limit ShortName- abbreviated name of Location, 128 char limit
    *
    * @param nodeID
    * @param xcoord
@@ -54,6 +50,7 @@ public class Location {
       String nodeType,
       String LongName,
       String ShortName) {
+
     this.nodeID = nodeID;
     this.xcoord = xcoord;
     this.ycoord = ycoord;
@@ -66,6 +63,7 @@ public class Location {
 
   /**
    * gets the ID of the Location Node
+   *
    * @return string of ID
    * @see Location
    */
@@ -75,6 +73,7 @@ public class Location {
 
   /**
    * sets the nodeID of the location
+   *
    * @param nodeID String
    * @see Location
    */
@@ -84,6 +83,7 @@ public class Location {
 
   /**
    * gets Xcoord
+   *
    * @return int
    * @see Location
    */
@@ -93,6 +93,7 @@ public class Location {
 
   /**
    * sets xcoord
+   *
    * @param xcoord
    * @see Location
    */
@@ -102,6 +103,7 @@ public class Location {
 
   /**
    * gets y coord
+   *
    * @return int
    * @see Location
    */
@@ -111,6 +113,7 @@ public class Location {
 
   /**
    * Sets y coord
+   *
    * @param ycoord int
    * @see Location
    */
@@ -120,6 +123,7 @@ public class Location {
 
   /**
    * gets floor
+   *
    * @return String
    * @see Location
    */
@@ -129,6 +133,7 @@ public class Location {
 
   /**
    * Sets floor
+   *
    * @param floor String
    * @see Location
    */
@@ -138,6 +143,7 @@ public class Location {
 
   /**
    * gets Building
+   *
    * @return String
    * @see Location
    */
@@ -146,7 +152,8 @@ public class Location {
   }
 
   /**
-   *  sets building
+   * sets building
+   *
    * @param building String
    * @see Location
    */
@@ -156,6 +163,7 @@ public class Location {
 
   /**
    * gets the nodeType
+   *
    * @return String
    * @see Location
    */
@@ -165,6 +173,7 @@ public class Location {
 
   /**
    * sets the nodeType
+   *
    * @param nodeType String
    * @see Location
    */
@@ -174,6 +183,7 @@ public class Location {
 
   /**
    * gets the longname
+   *
    * @return String
    * @see Location
    */
@@ -183,6 +193,7 @@ public class Location {
 
   /**
    * sets the long name
+   *
    * @param longName String
    */
   public void setLongName(String longName) {
@@ -191,6 +202,7 @@ public class Location {
 
   /**
    * gets the short name
+   *
    * @return String
    * @see Location
    */
@@ -200,6 +212,7 @@ public class Location {
 
   /**
    * sets the shortName
+   *
    * @param shortName String
    * @see Location
    */
@@ -208,8 +221,8 @@ public class Location {
   }
 
   /**
-   * @Method generateInsertStatement()
-   *SQL statement that INSERTs Location object into SQL table
+   * @Method generateInsertStatement() SQL statement that INSERTs Location object into SQL table
+   *
    * @return String
    */
   public String generateInsertStatement() {

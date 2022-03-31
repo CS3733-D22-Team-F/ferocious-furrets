@@ -1,15 +1,18 @@
-/**
- * Interface for the LocationDAO class to handle the location DB necessary function
- * @version 1.0
- */
 package edu.wpi.furious_furrets;
 
+/**
+ * Interface for the LocationDAO class to handle the location DB necessary function
+ *
+ * @version 1.0
+ */
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface LocationDAO {
+
   /**
    * Gets all Locations in the location db and outputs them in an ArrayList
+   *
    * @return ArrayList of type Location
    * @throws SQLException
    */

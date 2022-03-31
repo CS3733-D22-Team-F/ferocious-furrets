@@ -4,12 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Class for handling the connection to the DB, ensuring we only have on connection from the app
+ */
 public class DatabaseHandler {
+
+  /**
+   *
+   */
+  public DatabaseHandler() {}
 
   public Connection dbConnection;
 
-  public DatabaseHandler() {}
-
+  /**
+   * Connects to the database returns null object if connection failed
+   * @return Connection object
+   */
   public Connection connectDatabase() {
     try {
       Class.forName("org.apache.derby.iapi.jdbc.AutoloadedDriver");

@@ -5,13 +5,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
+/**
+ * its the Main class, it does what Main classes do, mains
+ */
 public class Main {
 
+  /**
+   * mian,main,ainm, naim, niam
+   * @param args
+   * @throws SQLException
+   * @throws NoSuchElementException
+   * @throws IOException
+   */
   public static void main(String[] args) throws SQLException, NoSuchElementException, IOException {
-  //objects for connection and the handler
+    // objects for connection and the handler
     DatabaseHandler dbConn = new DatabaseHandler();
     Connection conn = dbConn.connectDatabase();
-  //init tables for both the location and medical equip
+    // init tables for both the location and medical equip
     LocationsDAOImpl ldao = new LocationsDAOImpl(conn);
     ldao.initTable();
     MedEquipServReqDAOImpl mdao = new MedEquipServReqDAOImpl(conn);

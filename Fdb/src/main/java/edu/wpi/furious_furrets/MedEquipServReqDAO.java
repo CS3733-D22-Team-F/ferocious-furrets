@@ -1,6 +1,7 @@
 /**
- * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and updateRequest
- * function
+ * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and
+ * updateRequest function
+ *
  * @version 1.0
  */
 package edu.wpi.furious_furrets;
@@ -12,7 +13,6 @@ public interface MedEquipServReqDAO {
   public ArrayList<MedEquipServReq> getAllRequests() throws SQLException;
 
   /**
-   *
    * @param reqID
    * @param nodeID
    * @param employeeIDofAssignedTo
@@ -25,7 +25,6 @@ public interface MedEquipServReqDAO {
       throws SQLException;
 
   /**
-   *
    * @param reqID
    * @param nodeID
    * @param employeeIDofAssignedTo
@@ -38,7 +37,6 @@ public interface MedEquipServReqDAO {
       throws SQLException;
 
   /**
-   *
    * @param old_reqID
    * @param old_nodeID
    * @param reqID

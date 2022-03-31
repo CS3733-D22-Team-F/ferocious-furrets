@@ -1,5 +1,6 @@
 /**
- * DAO for the Medical Equipmend Service Request DB with the necessary add, delete and update functions
+ * DAO for the Medical Equipmend Service Request DB with the necessary add, delete and update
+ * functions
  *
  * @version 1.0
  */
@@ -23,6 +24,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
 
   /**
    * Constructor that takes in a Connection object to the DB
+   *
    * @param dbConnection
    */
   public MedEquipServReqDAOImpl(Connection dbConnection) {
@@ -58,13 +60,12 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
   //  }
 
   /**
-   *<p>An ArrayList of all the service requests in the embedded CSV file. Provided as a data structure for
-   *    * the Java objects made from the embedded CSV file. The ArrayList is used to create a SQL table
-   *    * by generating INSERT INTO statements.
-   *    @Design The method
-   *    * creates a SQL statement, and checks to see if the service request table has been created already. If
-   *    * it has, DROP the table and create a new one, just create a new one if it doesn't exist
-   *    * already.
+   * An ArrayList of all the service requests in the embedded CSV file. Provided as a data structure
+   * for * the Java objects made from the embedded CSV file. The ArrayList is used to create a SQL
+   * table * by generating INSERT INTO statements. @Design The method * creates a SQL statement, and
+   * checks to see if the service request table has been created already. If * it has, DROP the
+   * table and create a new one, just create a new one if it doesn't exist * already.
+   *
    * @throws SQLException
    * @throws IOException
    */
