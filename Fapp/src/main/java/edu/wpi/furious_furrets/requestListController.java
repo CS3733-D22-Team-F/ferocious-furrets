@@ -1,0 +1,23 @@
+package edu.wpi.furious_furrets;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+
+public class requestListController extends returnHomePage implements Initializable {
+
+  @FXML ListView requestList;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {}
+
+  public void populateList() {
+    requestList.getItems().clear();
+    for (ArrayList<Object> list : serviceRequestStorage.getArrayList()) {
+      requestList.getItems().add(list);
+    }
+  }
+}

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.homePageController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" snapToPixel="false" style="-fx-background-color: aliceblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.homePageController">
    <children>
       <Label alignment="CENTER" layoutX="213.0" layoutY="16.0" prefHeight="76.0" prefWidth="900.0" style="-fx-background-color: aliceblue;" text="Brigham and Women's Hospital" textFill="DEEPSKYBLUE">
          <font>
