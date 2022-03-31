@@ -9,6 +9,8 @@
         </processorPath>
         <module name="3733.Fapp.test" />
         <module name="3733.Fapp.main" />
+        <module name="Fdb.main" />
+        <module name="Fdb.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
