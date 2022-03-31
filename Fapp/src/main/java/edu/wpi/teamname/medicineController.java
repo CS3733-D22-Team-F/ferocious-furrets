@@ -1,23 +1,28 @@
 package edu.wpi.teamname;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.*;
 
-public class medicineController extends returnHomePage {
+public class medicineController extends returnHomePage implements Initializable {
   private Stage stage;
   private Scene scene;
   private Parent root;
 
   @FXML private Button newMedRequest;
+  @FXML private ChoiceBox medRequestStatus;
   @FXML private Button cancelRequest;
   @FXML private Button resetMedRequest;
   @FXML private Button submitButton;
@@ -27,6 +32,17 @@ public class medicineController extends returnHomePage {
   @FXML private TextField reqDosage;
   @FXML private TextField additionalInfo;
   @FXML private TextField employeeName;
+  ArrayList medRequestList = new ArrayList<>();
+  ArrayList<Object> requestList = new ArrayList<>();
+
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("blank");
+    temp.add("processing");
+    temp.add("done");
+    medRequestStatus.getItems().addAll(temp);
+    medRequestStatus.setValue("blank");
+  }
 
   @FXML
   void showPopUp(ActionEvent event) throws IOException {
@@ -63,6 +79,13 @@ public class medicineController extends returnHomePage {
     String dosage = patientRoom.getText();
     String additional = additionalInfo.getText();
     String employee = employeeName.getText();
+
+    medRequestList.add(patientNameText);
+    medRequestList.add(patientRoomText);
+    medRequestList.add(medication);
+    medRequestList.add(dosage);
+    medRequestList.add(additional);
+    medRequestList.add(employee);
 
     System.out.print(patientNameText);
     System.out.print(patientRoomText);
