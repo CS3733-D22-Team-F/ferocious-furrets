@@ -11,7 +11,6 @@ public class MedEquipServReq {
   private String nodeID; // Foreign Key from Location
   private String employeeIDofAssignedTo; // EMPLOYEE ID (PRIMARY KEY OF EMPLOYEE)
   private int status;
-  private String longName;
 
   /**
    * Construction for Med equip service request
@@ -20,15 +19,12 @@ public class MedEquipServReq {
    * @param nodeID
    * @param employeeIDofAssignedTo
    * @param status
-   * @param longName
    */
-  public MedEquipServReq(
-      String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName) {
+  public MedEquipServReq(String reqID, String nodeID, String employeeIDofAssignedTo, int status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.employeeIDofAssignedTo = employeeIDofAssignedTo;
     this.status = status;
-    this.longName = longName;
   }
 
   public String getReqID() {
@@ -47,10 +43,6 @@ public class MedEquipServReq {
     return status;
   }
 
-  public String getLongName() {
-    return longName;
-  }
-
   public String generateInsertStatement() {
     return "INSERT INTO MedServReq VALUES ('"
         + this.reqID
@@ -60,9 +52,7 @@ public class MedEquipServReq {
         + this.employeeIDofAssignedTo
         + "' , "
         + this.status
-        + ", '"
-        + this.longName
-        + "')";
+        + ")";
   }
 
   /**
@@ -75,8 +65,7 @@ public class MedEquipServReq {
     return (this.reqID.equals(o.nodeID))
         && (this.nodeID.equals(o.nodeID))
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
-        && (this.status == o.status)
-        && (this.longName.equals(o.longName));
+        && (this.status == o.status);
   }
 
   //  public static MedEquipServReq findByPrimaryKey(String reqID, ArrayList<MedEquipServReq> req) {

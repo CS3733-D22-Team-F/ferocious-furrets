@@ -33,9 +33,9 @@ public class DAOTester {
    */
   @Test
   public void testGetDataMedical() throws SQLException, IOException {
-    MedEquipServReqDAOImpl dao = new MedEquipServReqDAOImpl(conn);
+    MedDelReqDAOImpl dao = new MedDelReqDAOImpl(conn);
     dao.initTable();
     assertNotNull(dao.getAllRequests());
-    System.out.println(dao.getAllRequests().get(2).getLongName());
+//    System.out.println(dao.getAllRequests().get(2).getLongName());
   }
 }

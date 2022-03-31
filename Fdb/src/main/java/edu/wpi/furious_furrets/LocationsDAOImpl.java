@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+
 /**
  * Implementation of the locations DAO including necessary methods for saving, deleting, updating,
  * and adding new locations.

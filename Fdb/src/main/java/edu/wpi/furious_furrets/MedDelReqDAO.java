@@ -9,7 +9,7 @@ package edu.wpi.furious_furrets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface MedEquipServReqDAO {
+public interface MedDelReqDAO {
   public ArrayList<MedEquipServReq> getAllRequests() throws SQLException;
 
   /**
@@ -17,11 +17,9 @@ public interface MedEquipServReqDAO {
    * @param nodeID
    * @param employeeIDofAssignedTo
    * @param status
-   * @param longName
    * @throws SQLException
    */
-  public void addRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName)
+  public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException;
 
   /**
@@ -29,11 +27,9 @@ public interface MedEquipServReqDAO {
    * @param nodeID
    * @param employeeIDofAssignedTo
    * @param status
-   * @param longName
    * @throws SQLException
    */
-  public void deleteRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName)
+  public void deleteRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException;
 
   /**
@@ -43,7 +39,6 @@ public interface MedEquipServReqDAO {
    * @param nodeID
    * @param employeeIDofAssignedTo
    * @param status
-   * @param longName
    * @throws SQLException
    */
   public void updateRequest(

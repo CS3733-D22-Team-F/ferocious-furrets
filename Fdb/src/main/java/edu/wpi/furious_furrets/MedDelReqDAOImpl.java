@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
+public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   private Connection connection;
   private ArrayList<MedEquipServReq> requests = new ArrayList<>();
@@ -27,7 +27,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
    *
    * @param dbConnection
    */
-  public MedEquipServReqDAOImpl(Connection dbConnection) {
+  public MedDelReqDAOImpl(Connection dbConnection) {
     this.connection = dbConnection;
   }
 
@@ -85,7 +85,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
       String employeeID = data[2];
       int status = Integer.parseInt(data[3]);
       String longName = data[4];
-      MedEquipServReq l = new MedEquipServReq(reqID, nodeID, employeeID, status, longName);
+      MedEquipServReq l = new MedEquipServReq(reqID, nodeID, employeeID, status);
       requests.add(l);
       reqIDs.add(l.getNodeID());
     }
@@ -100,7 +100,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
-        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status int, longName varChar(255))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status int)"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedEquipServReq currentReq : requests) {
       stm.execute(currentReq.generateInsertStatement());
     }
@@ -120,19 +120,16 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
   }
 
   // todo test
-  public void addRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName)
+  public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException {
-    requests.add(new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status, longName));
+    requests.add(new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status));
     updateDatabase();
   }
 
   // TODO test
-  public void deleteRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName)
+  public void deleteRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException {
-    MedEquipServReq theReq =
-        new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status, longName);
+    MedEquipServReq theReq = new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status);
     for (MedEquipServReq currentReq : requests) {
       if (theReq.equals(currentReq)) {
         requests.remove(currentReq);
@@ -153,8 +150,7 @@ public class MedEquipServReqDAOImpl implements MedEquipServReqDAO {
       int status,
       String longName)
       throws SQLException {
-    MedEquipServReq newReq =
-        new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status, longName);
+    MedEquipServReq newReq = new MedEquipServReq(reqID, nodeID, employeeIDofAssignedTo, status);
     for (MedEquipServReq currentReq : requests) {
       if (old_reqID.equals(currentReq.getReqID())) {
         requests.remove(currentReq);
