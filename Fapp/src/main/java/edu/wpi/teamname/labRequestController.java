@@ -78,7 +78,6 @@ public class labRequestController extends returnHomePage {
         serviceList.add("MRI");
       }
 
-      requestObject request = new requestObject();
       roomField.setText(roomTextField.getText()); // set room number
       nameField.setText(nameTextField.getText()); // set room number
       itemField.setText(serviceList.toString());
