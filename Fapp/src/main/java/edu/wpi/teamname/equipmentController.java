@@ -1,5 +1,6 @@
 package edu.wpi.teamname;
 
+import controllers.fxml.StageManager;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -7,9 +8,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,6 +19,7 @@ import javafx.stage.Stage;
 
 public class equipmentController implements Initializable {
 
+  // TODO remove
   private Stage stage;
   private Scene scene;
   private Parent root;
@@ -55,11 +55,8 @@ public class equipmentController implements Initializable {
 
   @FXML
   void returnHome(ActionEvent event) throws IOException {
-    root = FXMLLoader.load((getClass().getResource("homePage.fxml")));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root, 1280, 720);
-    stage.setScene(scene);
-    stage.show();
+
+    StageManager.getInstance().setHomeScreen();
   }
 
   @FXML
