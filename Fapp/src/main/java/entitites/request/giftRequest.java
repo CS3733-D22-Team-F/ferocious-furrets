@@ -1,8 +1,8 @@
 package entitites.request;
 
-public class patientRequest extends DeliveryRequest {
+public class giftRequest extends DeliveryRequest {
 
-  public patientRequest(
+  public giftRequest(
       String assign,
       int empID,
       String nID,

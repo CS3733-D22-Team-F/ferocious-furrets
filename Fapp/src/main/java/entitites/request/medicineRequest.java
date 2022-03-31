@@ -1,8 +1,7 @@
 package entitites.request;
 
-public class mriRequest extends MedicalRequest {
-
-  public mriRequest(
+public class medicineRequest extends MedicalRequest {
+  public medicineRequest(
       String assign,
       int empID,
       String nID,
