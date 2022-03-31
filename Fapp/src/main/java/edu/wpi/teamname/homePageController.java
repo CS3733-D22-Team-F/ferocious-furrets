@@ -1,5 +1,6 @@
 package edu.wpi.teamname;
 
+import fxml.controllers.SceneManager;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +30,14 @@ public class homePageController {
     root = FXMLLoader.load(getClass().getResource("labRequestPage.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
+  void switchToMap(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("mapPage.fxml");
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
   }

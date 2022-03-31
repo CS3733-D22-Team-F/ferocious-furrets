@@ -23,7 +23,7 @@
                </font>
             </Button>
             <Line endX="259.2928466796875" endY="0.2928932309150696" startX="-100.0" stroke="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToMap" prefHeight="102.8" prefWidth="360.0" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font></Button>
