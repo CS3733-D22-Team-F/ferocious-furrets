@@ -18,6 +18,8 @@
       <module name="Fapp.main" target="11" />
       <module name="Fapp.test" target="11" />
       <module name="Fdb" target="11" />
+      <module name="Fdb.main" target="11" />
+      <module name="Fdb.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
