@@ -1,3 +1,7 @@
+/**
+ * Interface for the LocationDAO class to handle the location DB necessary function
+ * @version 1.0
+ */
 package edu.wpi.furious_furrets;
 
 import java.sql.SQLException;

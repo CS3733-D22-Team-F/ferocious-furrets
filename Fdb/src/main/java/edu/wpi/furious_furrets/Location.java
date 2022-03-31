@@ -20,6 +20,12 @@ public class Location {
 
   /**
    * Constructor for location object
+   *
+   * Primary Key, node identifier Xcoord- x coordinate of Location node
+   *    *    * Ycoord- y coordinate of Location node Floor- floor Location is on Building- the building in
+   *    *    * which the Location is NodeType- denotes the subtype of Location node LongName- name of
+   *    *    * Location, 255 char limit ShortName- abbreviated name of Location, 128 char limit
+   *
    * @param nodeID
    * @param xcoord
    * @param ycoord

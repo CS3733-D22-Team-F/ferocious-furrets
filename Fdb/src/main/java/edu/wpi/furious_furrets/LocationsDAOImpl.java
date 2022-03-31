@@ -30,6 +30,10 @@ public class LocationsDAOImpl implements LocationDAO {
   @FXML private TextField newLongName;
   @FXML private TextField newShortName;
 
+  /**
+   * Constructor that takes in a Connection object
+   * @param dbConn
+   */
   public LocationsDAOImpl(Connection dbConn) {
     this.connection = dbConn;
   }

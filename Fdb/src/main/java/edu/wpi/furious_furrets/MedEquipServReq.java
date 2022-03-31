@@ -1,3 +1,8 @@
+/**
+ * Medical Equipment service request class w/ getters and setters for the params
+ *
+ * @version 1.0
+ */
 package edu.wpi.furious_furrets;
 
 public class MedEquipServReq {
@@ -8,6 +13,14 @@ public class MedEquipServReq {
   private int status;
   private String longName;
 
+  /**
+   * Construction for Med equip service request
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
+   * @param longName
+   */
   public MedEquipServReq(
       String reqID, String nodeID, String employeeIDofAssignedTo, int status, String longName) {
     this.reqID = reqID;
