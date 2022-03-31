@@ -24,8 +24,8 @@ public class homePageController {
   // Button Color: #062558
 
   @FXML
-  void switchToLab(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
+  void switchToMedical(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("medicalPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
@@ -102,9 +102,9 @@ public class homePageController {
   }
 
   @FXML
-  public void returnToLab(ActionEvent e) throws IOException {
+  public void returnToMedical(ActionEvent e) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("labRequestPage.fxml"));
+    loader.setLocation(getClass().getResource("medicalPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();

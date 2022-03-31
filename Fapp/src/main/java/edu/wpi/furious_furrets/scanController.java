@@ -1,9 +1,10 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.SceneManager;
-import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.bloodLabRequest;
-import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.labRequest;
-import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.urineLabRequest;
+import edu.wpi.furious_furrets.entitites.request.medicalRequest.MedicalRequest;
+import edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest.catscanRequest;
+import edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest.mriScanRequest;
+import edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest.xrayScanRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class labRequestController extends returnHomePage implements Initializable {
+public class scanController extends returnHomePage implements Initializable {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
@@ -34,17 +35,15 @@ public class labRequestController extends returnHomePage implements Initializabl
     statueChoice.getItems().addAll(temp);
     statueChoice.setValue("blank");
     ArrayList<Object> temp1 = new ArrayList<>();
-    temp1.add("blood");
-    temp1.add("urine");
+    temp1.add("CAT");
+    temp1.add("xray");
+    temp1.add("MRI");
     typeChoice.getItems().addAll(temp1);
-    typeChoice.setValue("blood");
+    typeChoice.setValue("CAT");
   }
 
   // Use Try/Catch when call this function
-  public labRequest submit() {
-    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
-    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
-    ArrayList<Object> requestList = new ArrayList<>();
+  public MedicalRequest submit() {
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -54,29 +53,38 @@ public class labRequestController extends returnHomePage implements Initializabl
       System.out.println("There are still blank field");
       return null;
     } else {
-      if (typeChoice.getValue().equals("blood")) {
-        bloodLabRequest newRequest =
-            new bloodLabRequest(
+      if (typeChoice.getValue().equals("CAT")) {
+        catscanRequest newRequest =
+            new catscanRequest(
                 userField.getText(),
                 Integer.parseInt(employeeIDField.getText()),
                 nodeField.getText(),
                 statueChoice.getValue().toString(),
-                "Lab",
+                "Scan",
                 "",
+                "");
+        return newRequest;
+      } else if (typeChoice.getValue().equals("xray")) {
+        xrayScanRequest newRequest =
+            new xrayScanRequest(
+                userField.getText(),
+                Integer.parseInt(employeeIDField.getText()),
+                nodeField.getText(),
+                statueChoice.getValue().toString(),
+                "Scan",
                 "",
-                typeChoice.getValue().toString());
+                "");
         return newRequest;
       } else {
-        urineLabRequest newRequest =
-            new urineLabRequest(
+        mriScanRequest newRequest =
+            new mriScanRequest(
                 userField.getText(),
                 Integer.parseInt(employeeIDField.getText()),
                 nodeField.getText(),
                 statueChoice.getValue().toString(),
-                "Lab",
+                "Scan",
                 "",
-                "",
-                typeChoice.getValue().toString());
+                "");
         return newRequest;
       }
     }

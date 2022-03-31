@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scanButton" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.medicalController">
+   <children>
+      <Button layoutX="1154.0" layoutY="657.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+      <JFXButton layoutX="265.0" layoutY="226.0" onAction="#switchToLab" prefHeight="213.0" prefWidth="351.0" style="-fx-background-color: aliceblue;" text="Lab">
+         <font>
+            <Font size="36.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="656.0" layoutY="226.0" onAction="#switchToScan" prefHeight="213.0" prefWidth="351.0" style="-fx-background-color: aliceblue;" text="Scan">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
