@@ -11,14 +11,7 @@ public class requestObject {
   private long requestID;
   private String status;
 
-  public requestObject(
-      String request,
-      String patient,
-      int roomNumber,
-      String doctor,
-      long requestID,
-      ArrayList<String> serviceDetail,
-      String status) {
+  public requestObject(String request, String patient, int roomNumber, String doctor, long requestID, ArrayList<String> serviceDetail, String status) {
     this.request = request;
     this.patient = patient;
     this.roomNumber = roomNumber;
