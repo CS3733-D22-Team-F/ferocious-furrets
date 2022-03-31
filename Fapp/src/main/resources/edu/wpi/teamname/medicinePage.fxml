@@ -23,25 +23,19 @@
                         <TextField fx:id="patientName" layoutX="251.0" layoutY="60.0" prefHeight="18.0" prefWidth="233.0" />
                         <TextField fx:id="patientRoom" layoutX="251.0" layoutY="106.0" prefHeight="18.0" prefWidth="233.0" />
                         <TextField fx:id="reqMedication" layoutX="251.0" layoutY="152.0" prefHeight="18.0" prefWidth="233.0" />
-                        <TextField fx:id="reqDosage" layoutX="251.0" layoutY="246.0" prefHeight="18.0" prefWidth="233.0" />
-                        <Button fx:id="submitButton" layoutX="411.0" layoutY="470.0" mnemonicParsing="false" onAction="#submitMedRequest" text="Submit Request" />
-                        <TextField fx:id="additionalInfo" layoutX="254.0" layoutY="399.0" prefHeight="61.0" prefWidth="228.0" />
-                        <Button fx:id="cancelRequest" layoutX="38.0" layoutY="470.0" mnemonicParsing="false" onAction="#cancelMedRequest" text="Cancel" />
-                        <Button fx:id="resetMedRequest" layoutX="102.0" layoutY="470.0" mnemonicParsing="false" onAction="#resetMedRequest" text="Reset" />
-                        <TextField fx:id="employeeName" layoutX="251.0" layoutY="291.0" prefHeight="18.0" prefWidth="233.0" />
-                        <VBox layoutX="11.0" layoutY="55.0" prefHeight="408.0" prefWidth="230.0">
+                        <TextField fx:id="employeeID" layoutX="251.0" layoutY="246.0" prefHeight="18.0" prefWidth="233.0" />
+                        <Button fx:id="submitButton" layoutX="411.0" layoutY="522.0" mnemonicParsing="false" onAction="#submitMedRequest" text="Submit Request" />
+                        <TextField fx:id="floorNum" layoutX="261.0" layoutY="424.0" prefHeight="24.0" prefWidth="228.0" />
+                        <Button fx:id="cancelRequest" layoutX="39.0" layoutY="522.0" mnemonicParsing="false" onAction="#cancelMedRequest" text="Cancel" />
+                        <Button fx:id="resetMedRequest" layoutX="102.0" layoutY="522.0" mnemonicParsing="false" onAction="#resetMedRequest" text="Reset" />
+                        <VBox layoutX="11.0" layoutY="55.0" prefHeight="460.0" prefWidth="230.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Patients Name:" textAlignment="CENTER">
                                  <padding>
                                     <Insets top="10.0" />
                                  </padding>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Desired Dosage:" textAlignment="CENTER">
-                                 <padding>
-                                    <Insets top="30.0" />
-                                 </padding>
-                              </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Paitents Room Number:" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Room Number:" textAlignment="CENTER">
                                  <padding>
                                     <Insets top="30.0" />
                                  </padding>
@@ -51,12 +45,12 @@
                                     <Insets top="30.0" />
                                  </padding>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Make A Medicine Request" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Please Enter Desired Dosage:" textAlignment="CENTER">
                                  <padding>
                                     <Insets top="30.0" />
                                  </padding>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Requesting Employee's Name:" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="233.0" text="Requesting Employee's ID:" textAlignment="CENTER">
                                  <padding>
                                     <Insets top="30.0" />
                                  </padding>
@@ -66,15 +60,21 @@
                                     <Insets left="100.0" top="30.0" />
                                  </VBox.margin>
                               </Text>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="141.0" prefWidth="230.0" text="Additional Information:" textAlignment="CENTER">
-                                 <padding>
-                                    <Insets top="50.0" />
-                                 </padding>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Location of Service:">
+                                 <VBox.margin>
+                                    <Insets left="70.0" top="40.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="108.0" prefWidth="230.0" text="Floor Number:" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
                               </Label>
                            </children>
                         </VBox>
-                        <TextField fx:id="reqDosage1" layoutX="251.0" layoutY="200.0" prefHeight="18.0" prefWidth="233.0" />
-                        <ChoiceBox fx:id="medRequestStatus" layoutX="254.0" layoutY="344.0" prefWidth="150.0" />
+                        <TextField fx:id="reqDosage" layoutX="251.0" layoutY="200.0" prefHeight="18.0" prefWidth="233.0" />
+                        <ChoiceBox fx:id="medRequestStatus" layoutX="257.0" layoutY="305.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="locations" layoutX="256.0" layoutY="348.0" prefHeight="26.0" prefWidth="151.0" />
                      </children>
                   </AnchorPane>
             </content>
