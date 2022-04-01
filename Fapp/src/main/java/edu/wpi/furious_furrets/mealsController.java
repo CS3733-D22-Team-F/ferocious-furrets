@@ -35,7 +35,6 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private CheckBox frSmoothie1;
   @FXML private CheckBox apJuice1;
   ArrayList<Object> returnList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
   //  @FXML private CheckBox turk;
   //  @FXML private CheckBox steak;
   //  @FXML private CheckBox tomato;
@@ -86,6 +85,7 @@ public class mealsController extends returnHomePage implements Initializable {
   /** Submits meal request from user inputs */
   public void submit() {
     ArrayList<String> foodList = new ArrayList<>();
+    ArrayList<Object> requestList = new ArrayList<>();
     if (pancakes.isSelected()) {
       foodList.add(pancakes.getText());
     }

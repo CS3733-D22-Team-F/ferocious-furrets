@@ -40,11 +40,11 @@ public class labRequestController extends returnHomePage implements Initializabl
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("blank");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("blank");
+    statueChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("blood");
     temp1.add("urine");
@@ -69,7 +69,7 @@ public class labRequestController extends returnHomePage implements Initializabl
         || userField.getText().equals("")
         || typeChoice.getValue().equals("")
         || statueChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
+      System.out.println("There are still blank fields");
       return null;
     } else {
       if (typeChoice.getValue().equals("blood")) {
@@ -83,6 +83,12 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "",
                 "",
                 typeChoice.getValue().toString());
+
+        requestList.clear();
+        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else {
         urineLabRequest newRequest =
@@ -95,6 +101,12 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "",
                 "",
                 typeChoice.getValue().toString());
+
+        requestList.clear();
+        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       }
     }
