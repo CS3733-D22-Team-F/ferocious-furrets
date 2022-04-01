@@ -13,7 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 public class equipmentRequestController extends returnHomePage implements Initializable {
+/**
+ * controll for equipment requests
+ *
+ * @see Initializable
+ */
+public class equipmentRequestController implements Initializable {
 
   // TODO remove
   private Stage stage;
@@ -27,7 +34,22 @@ public class equipmentRequestController extends returnHomePage implements Initia
   @FXML private ChoiceBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
+  @FXML private Button backButton;
+  @FXML private ChoiceBox statueChoice;
 
+  /**
+   * RETURN HOME FUNCTION FOR THE BACK BUTTON
+   *
+   * @param event ActionEvent
+   * @throws IOException
+   */
+  @FXML
+  void returnHome(ActionEvent event) throws IOException {
+
+    StageManager.getInstance().setHomeScreen();
+  }
+
+  /** clear input fields */
   @FXML
   void resetFunction() {
     nodeField.clear();
@@ -38,6 +60,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
     userField.clear();
   }
 
+  /** TODO ? */
   @FXML
   public equipmentDeliveryRequest submit() {
     if (nodeField.getText().equals("")
@@ -65,8 +88,15 @@ public class equipmentRequestController extends returnHomePage implements Initia
       userField.clear();
       return equipServiceRequest;
     }
+
   }
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> statusDrop = new ArrayList<>();

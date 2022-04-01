@@ -9,6 +9,12 @@ package edu.wpi.furious_furrets.database;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Interface for the MedDelReqDAO class to handle the Medical delivery DB necessary function
+ *
+ * @see MedDelReq
+ * @version 1.0
+ */
 public interface MedDelReqDAO {
   public ArrayList<MedDelReq> getAllRequests() throws SQLException;
 
@@ -18,6 +24,7 @@ public interface MedDelReqDAO {
    * @param employeeIDofAssignedTo
    * @param status
    * @throws SQLException
+   * @see MedDelReq
    */
   public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException;
@@ -28,6 +35,7 @@ public interface MedDelReqDAO {
    * @param employeeIDofAssignedTo
    * @param status
    * @throws SQLException
+   * @see MedDelReq
    */
   public void deleteRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException;
@@ -40,6 +48,7 @@ public interface MedDelReqDAO {
    * @param employeeIDofAssignedTo
    * @param status
    * @throws SQLException
+   * @see MedDelReq
    */
   public void updateRequest(
       String old_reqID,

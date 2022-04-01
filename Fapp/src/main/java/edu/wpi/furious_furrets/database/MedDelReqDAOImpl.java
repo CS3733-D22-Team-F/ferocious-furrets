@@ -15,6 +15,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Implementation of the MedDelReq Interface
+ *
+ * @see MedDelReq
+ * @see MedDelReqDAO
+ */
 public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   private Connection connection;
@@ -25,6 +31,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   /**
    * Constructor that takes in a Connection object to the DB
    *
+   * @deprecated
    * @param dbConnection
    */
   public MedDelReqDAOImpl(Connection dbConnection) {
@@ -107,6 +114,11 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     }
   }
 
+  /**
+   * @deprecated
+   * @return
+   * @throws SQLException
+   */
   public ArrayList<MedDelReq> getAllRequests() throws SQLException {
     updateDatabase();
     return requests;
@@ -121,6 +133,17 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   }
 
   // todo test
+
+  /**
+   * takes user input adds a request
+   *
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
+   * @throws SQLException
+   * @see MedDelReq
+   */
   public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException {
     requests.add(new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status));
@@ -128,6 +151,17 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   }
 
   // TODO test
+
+  /**
+   * takes user input deletes a request
+   *
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
+   * @throws SQLException
+   * @see MedDelReq
+   */
   public void deleteRequest(String reqID, String nodeID, String employeeIDofAssignedTo, int status)
       throws SQLException {
     MedDelReq theReq = new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status);
@@ -142,6 +176,20 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   }
 
   // TODO test
+
+  /**
+   * Takes user input and updates a request
+   *
+   * @param old_reqID
+   * @param old_nodeID
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
+   * @param longName
+   * @throws SQLException
+   * @see MedDelReq
+   */
   public void updateRequest(
       String old_reqID,
       String old_nodeID,
@@ -164,6 +212,12 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   }
 
   // TODO finish
+
+  /**
+   * updates the database
+   *
+   * @throws SQLException
+   */
   private void updateDatabase() throws SQLException {
 
     Statement stm = connection.createStatement();

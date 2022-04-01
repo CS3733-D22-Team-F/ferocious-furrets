@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.bloodLabRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.labRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.urineLabRequest;
@@ -16,6 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ * lab request controller
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class labRequestController extends returnHomePage implements Initializable {
 
   @FXML TextField nodeField;
@@ -25,14 +31,20 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
   @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("blank");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("blank");
+    statueChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("blood");
     temp1.add("urine");
@@ -41,6 +53,12 @@ public class labRequestController extends returnHomePage implements Initializabl
   }
 
   // Use Try/Catch when call this function
+
+  /**
+   * Use Try/Catch when call this function submits a labrequest from user inputs
+   *
+   * @return labRequest object
+   */
   public labRequest submit() {
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
@@ -48,7 +66,7 @@ public class labRequestController extends returnHomePage implements Initializabl
         || userField.getText().equals("")
         || typeChoice.getValue().equals("")
         || statueChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
+      System.out.println("There are still blank fields");
       return null;
     } else {
       if (typeChoice.getValue().equals("blood")) {
@@ -62,6 +80,12 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "",
                 "",
                 typeChoice.getValue().toString());
+
+        requestList.clear();
+        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else {
         urineLabRequest newRequest =
@@ -74,11 +98,23 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "",
                 "",
                 typeChoice.getValue().toString());
+
+        requestList.clear();
+        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       }
     }
   }
 
+  /**
+   * shows the queue scene for lab requests
+   *
+   * @param event
+   * @throws IOException
+   */
   public void showQueueScene(ActionEvent event) throws IOException {
     Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

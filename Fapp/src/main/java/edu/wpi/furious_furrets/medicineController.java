@@ -16,6 +16,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * controller for medicine scene
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class medicineController extends returnHomePage implements Initializable {
   private Stage stage;
   private Scene scene;
@@ -34,8 +40,13 @@ public class medicineController extends returnHomePage implements Initializable 
   @FXML private TextField floorNum;
   @FXML private TextField employeeID;
   ArrayList medRequestList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> locationDrop = new ArrayList<>();
@@ -62,6 +73,12 @@ public class medicineController extends returnHomePage implements Initializable 
     locations.setValue("");
   }
 
+  /**
+   * shows a popup
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   void showPopUp(ActionEvent event) throws IOException {
     try {
@@ -79,6 +96,11 @@ public class medicineController extends returnHomePage implements Initializable 
     }
   }
 
+  /**
+   * resets inputs fields
+   *
+   * @param event
+   */
   @FXML
   void resetMedRequest(ActionEvent event) {
     patientName.clear(); //
@@ -89,6 +111,11 @@ public class medicineController extends returnHomePage implements Initializable 
     floorNum.clear(); //
   }
 
+  /**
+   * using user inputs submits a medical request
+   *
+   * @param event
+   */
   @FXML
   void submitMedRequest(ActionEvent event) {
     String patientNameText = patientName.getText();
@@ -97,6 +124,8 @@ public class medicineController extends returnHomePage implements Initializable 
     String dosage = reqDosage.getText();
     String floorNumText = floorNum.getText();
     String employee = employeeID.getText();
+
+    ArrayList<Object> requestList = new ArrayList<>();
 
     medRequestList.add(patientNameText);
     medRequestList.add(patientRoomText);
@@ -135,6 +164,12 @@ public class medicineController extends returnHomePage implements Initializable 
     locations.setValue("");
   }
 
+  /**
+   * cancels a medical request
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   private void cancelMedRequest(ActionEvent event) throws IOException {
     try {

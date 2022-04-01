@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -12,6 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Lab queue controll
+ *
+ * @see Initializable
+ */
 public class labQueueController implements Initializable {
 
   @FXML private ListView queue;
@@ -21,6 +26,11 @@ public class labQueueController implements Initializable {
   ArrayList<String> list4 = new ArrayList();
   ArrayList<String> list5 = new ArrayList();
 
+  /**
+   * Switch to lab scene
+   *
+   * @param event
+   */
   @FXML
   void switchToLab(ActionEvent event) {
     Scene scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
@@ -29,6 +39,12 @@ public class labQueueController implements Initializable {
     stage.show();
   }
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     list1.add("blood");
