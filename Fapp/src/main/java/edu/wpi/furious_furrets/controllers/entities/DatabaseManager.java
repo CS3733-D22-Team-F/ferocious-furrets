@@ -2,6 +2,10 @@ package edu.wpi.furious_furrets.controllers.entities;
 
 import java.util.ArrayList;
 
+/**
+ * Abstract for the DatabaseManager
+ * @version 1.0
+ */
 public abstract class DatabaseManager {
 
   public DatabaseManager() {}

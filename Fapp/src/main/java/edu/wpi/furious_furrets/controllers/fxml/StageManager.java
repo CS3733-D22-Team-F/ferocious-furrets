@@ -3,6 +3,9 @@ package edu.wpi.furious_furrets.controllers.fxml;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Stage manager class, singleton so there can be one instance
+ */
 public class StageManager {
 
   // atributes

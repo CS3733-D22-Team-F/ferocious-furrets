@@ -6,7 +6,11 @@ import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-// A singleton controller meant for further implementation later
+/**
+ * do not use, use one in fxml folder
+ * //TODO get rid of
+ * @deprecated
+ */
 public class SceneManager {
   // <> generic doesn;t care accepts all key,object type pair
   // smart compiler <> alt + enter
@@ -16,12 +20,23 @@ public class SceneManager {
   private SceneManager() {}
 
   // sole and only instance of scene manger
+
+  /**
+   * @deprecated
+   * @return
+   */
   public static SceneManager getInstance() {
     // seperation for ease of control i.e intilization method
     if (m_SceneManager == null) m_SceneManager = new SceneManager();
     return m_SceneManager;
   }
 
+  /**
+   * deprecated do not use,
+   * @deprecated
+   * @param filename
+   * @return
+   */
   public Scene setScene(String filename) // acess from anywhere global
       { // higlight tab /shift+tab
     Scene scene = null;

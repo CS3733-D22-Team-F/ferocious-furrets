@@ -19,6 +19,10 @@ public class Location {
   private String longName;
   private String shortName;
 
+  /**
+   * Constructor
+   * @param nodeID primary key
+   */
   public Location(String nodeID) {
     this.nodeID = nodeID;
   }

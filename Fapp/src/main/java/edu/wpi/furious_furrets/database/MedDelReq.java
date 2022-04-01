@@ -5,6 +5,9 @@
  */
 package edu.wpi.furious_furrets.database;
 
+/**
+ * Medical Delivery request object
+ */
 public class MedDelReq {
 
   private String reqID; // Primary Key
@@ -15,9 +18,9 @@ public class MedDelReq {
   /**
    * Construction for Med equip service request
    *
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
+   * @param reqID primary key
+   * @param nodeID foreign key
+   * @param employeeIDofAssignedTo employee id
    * @param status
    */
   public MedDelReq(String reqID, String nodeID, String employeeIDofAssignedTo, int status) {
@@ -27,22 +30,42 @@ public class MedDelReq {
     this.status = status;
   }
 
+  /**
+   *  return primary key request id
+   * @return String
+   */
   public String getReqID() {
     return reqID;
   }
 
+  /**
+   * return foreign key node id
+   * @return String
+   */
   public String getNodeID() {
     return nodeID;
   }
 
+  /**
+   * return employee id
+   * @return String
+   */
   public String getEmployeeIDofAssignedTo() {
     return employeeIDofAssignedTo;
   }
 
+  /**
+   * Return status
+   * @return int
+   */
   public int getStatus() {
     return status;
   }
 
+  /**
+   * SQL insert statement
+   * @return String statement
+   */
   public String generateInsertStatement() {
     return "INSERT INTO MedServReq VALUES ('"
         + this.reqID
@@ -67,10 +90,5 @@ public class MedDelReq {
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
         && (this.status == o.status);
   }
-
-  //  public static MedEquipServReq findByPrimaryKey(String reqID, ArrayList<MedEquipServReq> req) {
-  //    for (MedEquipServReq currentReq : req) {
-  //    }
-  //  }
 
 }

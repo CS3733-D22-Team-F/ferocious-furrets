@@ -6,6 +6,9 @@ import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
+/**
+ * Scene manager class, singleton so there can only be one instance
+ */
 public class SceneManager {
   // <> generic doesn't care accepts all key,object type pair
   // smart compiler <> alt + enter

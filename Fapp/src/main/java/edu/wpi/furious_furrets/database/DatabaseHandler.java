@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /** Class for handling the connection to the DB, ensuring we only have on connection from the app */
 public class DatabaseHandler {
 
-  /** */
+  /** constructor*/
   public DatabaseHandler() {}
 
   public Connection dbConnection;
