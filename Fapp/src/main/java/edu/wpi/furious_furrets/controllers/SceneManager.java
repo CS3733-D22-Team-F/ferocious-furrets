@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 /**
- * do not use, use one in fxml folder
- * //TODO get rid of
+ * do not use, use one in fxml folder //TODO get rid of
+ *
  * @deprecated
  */
 public class SceneManager {
@@ -25,7 +25,7 @@ public class SceneManager {
    * @deprecated
    * @return
    */
-  public static SceneManager getInstance() {
+  private static SceneManager getInstance() {
     // seperation for ease of control i.e intilization method
     if (m_SceneManager == null) m_SceneManager = new SceneManager();
     return m_SceneManager;
@@ -33,6 +33,7 @@ public class SceneManager {
 
   /**
    * deprecated do not use,
+   *
    * @deprecated
    * @param filename
    * @return

@@ -1,8 +1,6 @@
 package edu.wpi.furious_furrets.controllers.scene_application;
 
-/**
- * Abstract for a servce request for class
- */
+/** Abstract for a servce request for class */
 public abstract class ServiceRequestForm {
 
   /** Assign an employee to a service request */

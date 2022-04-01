@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -12,6 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * control for the queue for gifts
+ *
+ * @see Initializable
+ */
 public class giftQueueController implements Initializable {
 
   @FXML private ListView queue;
@@ -21,6 +26,11 @@ public class giftQueueController implements Initializable {
   ArrayList<String> list4 = new ArrayList();
   ArrayList<String> list5 = new ArrayList();
 
+  /**
+   * Switch to the gift scene
+   *
+   * @param event ActionEvent
+   */
   @FXML
   void switchToGift(ActionEvent event) {
     Scene scene = SceneManager.getInstance().setScene("giftPage.fxml");
@@ -29,6 +39,12 @@ public class giftQueueController implements Initializable {
     stage.show();
   }
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     list1.add("Jasmine");

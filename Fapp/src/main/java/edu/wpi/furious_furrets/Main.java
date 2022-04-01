@@ -6,7 +6,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
-
+  /**
+   * its main, it does main things, not not main things
+   *
+   * @param args
+   * @throws SQLException
+   * @throws IOException
+   */
   public static void main(String[] args) throws SQLException, IOException {
     // objects for connection and the handler
     DatabaseHandler dbConn = new DatabaseHandler();

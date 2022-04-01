@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,6 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ * control for gift service requests TODO has labrequests functions, probably deprecated
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class giftController extends returnHomePage implements Initializable {
 
   private ArrayList<Object> itemList = new ArrayList<>();
@@ -37,6 +43,12 @@ public class giftController extends returnHomePage implements Initializable {
 
   @FXML ChoiceBox<Object> statueChoice;
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
@@ -47,6 +59,11 @@ public class giftController extends returnHomePage implements Initializable {
     statueChoice.setValue("");
   }
 
+  /**
+   * takes user input and requests a gift, lab? TODO
+   *
+   * @return boolean
+   */
   public boolean requestLab() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
@@ -123,13 +140,19 @@ public class giftController extends returnHomePage implements Initializable {
     }
   }
 
-  // submit the Arraylist that contains the items and doctor
-  // Return formula: ['Service Type', 'Service1', 'Service2',..., 'Patient Name', 'Room Number',
-  // 'Doctor Name']
+  /**
+   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
+   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
+   */
   public void submit() {
     receiveData(itemList);
   }
 
+  /**
+   * Takes data from an arraylist and outputs the service and quantity
+   *
+   * @param list ArrayList
+   */
   public void receiveData(ArrayList<Object> list) {
     String doctor = (String) list.get(list.size() - 1); // doctor is the last item
     list.remove(list.size() - 1); // remove the doctor in list
@@ -159,7 +182,7 @@ public class giftController extends returnHomePage implements Initializable {
     }
   }
 
-  // enable Preview and disable Submit when change choice
+  /** enable Preview and disable Submit when change choice */
   public void boxChange() {
     submitButton.disableProperty().setValue(true);
     previewButton.disableProperty().setValue(false);
@@ -168,6 +191,10 @@ public class giftController extends returnHomePage implements Initializable {
     roomField.setText("empty");
   }
 
+  /**
+   * @param event ActionEvent
+   * @throws IOException
+   */
   public void showQueueScene(ActionEvent event) throws IOException {
     Scene scene = SceneManager.getInstance().setScene("giftRequestQueue.fxml");
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -21,6 +21,7 @@ public class Location {
 
   /**
    * Constructor
+   *
    * @param nodeID primary key
    */
   public Location(String nodeID) {

@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/** control for the home page */
 public class homePageController {
 
   private Stage stage;
@@ -23,14 +24,28 @@ public class homePageController {
   // Theme Color: #154487
   // Button Color: #062558
 
+  /**
+   * switch to medical scene
+   *
+   * @param event ActionEvent
+   * @throws IOException
+   */
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
+    // TODO fix
     scene = SceneManager.getInstance().setScene("medicalPage.fxml");
+
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
   }
 
+  /**
+   * switch to map scene
+   *
+   * @param event ActionEvent
+   * @throws IOException
+   */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("mapPage.fxml");
@@ -39,6 +54,12 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * switch to equipment scene
+   *
+   * @param event ActionEvent
+   * @throws IOException
+   */
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("equipmentPage.fxml");
@@ -47,6 +68,12 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * switch to medicine scene
+   *
+   * @param event ActionEvent
+   * @throws IOException
+   */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("medicinePage.fxml");
@@ -55,6 +82,12 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * switch to gift scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("giftPage.fxml");
@@ -63,6 +96,12 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * switch to meal scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("mealPage.fxml");
@@ -71,6 +110,12 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * switch to login scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void switchToLogin(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("logInPage.fxml");
@@ -79,8 +124,14 @@ public class homePageController {
     stage.show();
   }
 
+  /**
+   * return to the map scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToMap(ActionEvent e) throws IOException {
+  public void returnToMap(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("mapPage.fxml"));
     Parent ReportManager = loader.load();
@@ -90,8 +141,14 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * return to the equipment scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToEquipment(ActionEvent e) throws IOException {
+  public void returnToEquipment(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("equipmentPage.fxml"));
     Parent ReportManager = loader.load();
@@ -101,8 +158,14 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * return to the medical scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToMedical(ActionEvent e) throws IOException {
+  public void returnToMedical(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("medicalPage.fxml"));
     Parent ReportManager = loader.load();
@@ -112,8 +175,14 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * return to medicine scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToMedicine(ActionEvent e) throws IOException {
+  public void returnToMedicine(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("medicinePage.fxml"));
     Parent ReportManager = loader.load();
@@ -123,8 +192,14 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * return to meal scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToMeals(ActionEvent e) throws IOException {
+  public void returnToMeals(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("mealPage.fxml"));
     Parent ReportManager = loader.load();
@@ -134,8 +209,14 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * return to gifts scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
-  public void returnToGifts(ActionEvent e) throws IOException {
+  public void returnToGifts(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("giftPage.fxml"));
     Parent ReportManager = loader.load();
@@ -145,6 +226,10 @@ public class homePageController {
     window.show();
   }
 
+  /**
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void switchToRequests(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("requestListPage.fxml");
@@ -153,6 +238,7 @@ public class homePageController {
     stage.show();
   }
 
+  /** exits */
   @FXML
   public void exitProgram() {
     System.exit(0);

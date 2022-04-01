@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.bloodLabRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.labRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest.urineLabRequest;
@@ -16,6 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ * lab request controller
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class labRequestController extends returnHomePage implements Initializable {
 
   @FXML TextField nodeField;
@@ -25,6 +31,12 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
   @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
@@ -41,6 +53,12 @@ public class labRequestController extends returnHomePage implements Initializabl
   }
 
   // Use Try/Catch when call this function
+
+  /**
+   * Use Try/Catch when call this function submits a labrequest from user inputs
+   *
+   * @return labRequest object
+   */
   public labRequest submit() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
@@ -82,6 +100,12 @@ public class labRequestController extends returnHomePage implements Initializabl
     }
   }
 
+  /**
+   * shows the queue scene for lab requests
+   *
+   * @param event
+   * @throws IOException
+   */
   public void showQueueScene(ActionEvent event) throws IOException {
     Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

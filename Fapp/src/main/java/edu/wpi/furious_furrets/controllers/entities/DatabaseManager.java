@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Abstract for the DatabaseManager
+ *
  * @version 1.0
  */
 public abstract class DatabaseManager {

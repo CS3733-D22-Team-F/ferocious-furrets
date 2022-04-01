@@ -8,9 +8,11 @@ package edu.wpi.furious_furrets.database;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 /**
  * Interface for the MedDelReqDAO class to handle the Medical delivery DB necessary function
- *@see MedDelReq
+ *
+ * @see MedDelReq
  * @version 1.0
  */
 public interface MedDelReqDAO {

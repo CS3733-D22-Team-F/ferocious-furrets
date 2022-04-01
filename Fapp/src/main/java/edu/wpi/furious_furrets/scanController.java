@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.SceneManager;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.MedicalRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest.catscanRequest;
 import edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest.mriScanRequest;
@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/** controller for scan scene */
 public class scanController extends returnHomePage implements Initializable {
 
   @FXML TextField nodeField;
@@ -26,6 +27,12 @@ public class scanController extends returnHomePage implements Initializable {
   @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
   @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
@@ -42,7 +49,11 @@ public class scanController extends returnHomePage implements Initializable {
     typeChoice.setValue("CAT");
   }
 
-  // Use Try/Catch when call this function
+  /**
+   * Use Try/Catch when call this function submits a medical request using user inputs
+   *
+   * @return MedicalRequest object
+   */
   public MedicalRequest submit() {
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
@@ -90,6 +101,12 @@ public class scanController extends returnHomePage implements Initializable {
     }
   }
 
+  /**
+   * shows the queue scene
+   *
+   * @param event
+   * @throws IOException
+   */
   public void showQueueScene(ActionEvent event) throws IOException {
     Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

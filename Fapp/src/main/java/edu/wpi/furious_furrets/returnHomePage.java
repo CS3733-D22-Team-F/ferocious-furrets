@@ -9,11 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/** its says in title */
 public class returnHomePage {
   private Stage stage;
   private Scene scene;
   private Parent root;
 
+  /**
+   * goes back to home page
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   private void backToHomePage(ActionEvent event) throws IOException {
     root = FXMLLoader.load(getClass().getResource("homePage.fxml"));

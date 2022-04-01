@@ -1,0 +1,12 @@
+edu.wpi.furious_furrets
+edu.wpi.furious_furrets.controllers
+edu.wpi.furious_furrets.controllers.entities
+edu.wpi.furious_furrets.controllers.fxml
+edu.wpi.furious_furrets.controllers.scene_application
+edu.wpi.furious_furrets.database
+edu.wpi.furious_furrets.entitites
+edu.wpi.furious_furrets.entitites.employees
+edu.wpi.furious_furrets.entitites.request.deliveryRequest
+edu.wpi.furious_furrets.entitites.request.medicalRequest
+edu.wpi.furious_furrets.entitites.request.medicalRequest.labRequest
+edu.wpi.furious_furrets.entitites.request.medicalRequest.scanRequest

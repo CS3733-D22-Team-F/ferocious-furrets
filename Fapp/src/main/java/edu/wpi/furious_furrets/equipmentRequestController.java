@@ -16,6 +16,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * controll for equipment requests
+ *
+ * @see Initializable
+ */
 public class equipmentRequestController implements Initializable {
 
   // TODO remove
@@ -39,26 +44,25 @@ public class equipmentRequestController implements Initializable {
   @FXML private ChoiceBox statueChoice;
   ArrayList<Object> requestList = new ArrayList<>();
 
-  /*
-   * genderTypes array to populate the patient gender choice box
-   */
+  /** genderTypes array to populate the patient gender choice box */
   private String[] genderTypes = {"Male", "Female", "Non-binary", "Prefer not to say"};
 
-  /*
-   * providerTypes array to populate the patient gender choice box
-   */
+  /** providerTypes array to populate the patient gender choice box */
   private String[] providerTypes = {"Doctor", "Nurse", "BHW Staff", "Medical Student"};
 
-  /*
+  /**
    * RETURN HOME FUNCTION FOR THE BACK BUTTON
+   *
+   * @param event ActionEvent
+   * @throws IOException
    */
-
   @FXML
   void returnHome(ActionEvent event) throws IOException {
 
     StageManager.getInstance().setHomeScreen();
   }
 
+  /** clear input fields */
   @FXML
   void resetFunction() {
     patientNameTextField.clear();
@@ -73,11 +77,18 @@ public class equipmentRequestController implements Initializable {
     requestDate.valueProperty().setValue(null);
   }
 
+  /** TODO ? */
   @FXML
   void submitFunction() {}
 
+  /** TODO ? */
   public equipmentRequestController() {}
 
+  /**
+   * submits the inputs fields into an arraylist
+   *
+   * @return ArrayList
+   */
   @FXML
   public ArrayList<Object> submit() {
     String patientName = patientNameTextField.getText();
@@ -111,6 +122,12 @@ public class equipmentRequestController implements Initializable {
     return null;
   }
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     patientGender.getItems().addAll(genderTypes);

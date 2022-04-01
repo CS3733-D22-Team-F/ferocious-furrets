@@ -4,15 +4,13 @@ import edu.wpi.furious_furrets.entitites.Request;
 import java.util.LinkedList;
 
 /**
- *  Service Request manager class, singleton so there can only be one instance at a time.
- *  Include necessay functions for service request ie. add, remove
+ * Service Request manager class, singleton so there can only be one instance at a time. Include
+ * necessay functions for service request ie. add, remove
  */
 public class ServiceRequestManager {
   private ServiceRequestManager m_ServiceRequestManager;
 
-  /**
-   * Constuctor
-   */
+  /** Constuctor */
   private ServiceRequestManager() {}
 
   /**

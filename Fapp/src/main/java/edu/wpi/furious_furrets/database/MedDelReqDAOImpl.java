@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Implementation of the MedDelReq Interface
+ *
  * @see MedDelReq
  * @see MedDelReqDAO
  */
@@ -29,6 +30,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   /**
    * Constructor that takes in a Connection object to the DB
+   *
    * @deprecated
    * @param dbConnection
    */
@@ -134,6 +136,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   /**
    * takes user input adds a request
+   *
    * @param reqID
    * @param nodeID
    * @param employeeIDofAssignedTo
@@ -150,7 +153,8 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   // TODO test
 
   /**
-   *  takes user input deletes a request
+   * takes user input deletes a request
+   *
    * @param reqID
    * @param nodeID
    * @param employeeIDofAssignedTo
@@ -175,6 +179,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   /**
    * Takes user input and updates a request
+   *
    * @param old_reqID
    * @param old_nodeID
    * @param reqID
@@ -210,6 +215,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   /**
    * updates the database
+   *
    * @throws SQLException
    */
   private void updateDatabase() throws SQLException {

@@ -5,9 +5,7 @@
  */
 package edu.wpi.furious_furrets.database;
 
-/**
- * Medical Delivery request object
- */
+/** Medical Delivery request object */
 public class MedDelReq {
 
   private String reqID; // Primary Key
@@ -31,7 +29,8 @@ public class MedDelReq {
   }
 
   /**
-   *  return primary key request id
+   * return primary key request id
+   *
    * @return String
    */
   public String getReqID() {
@@ -40,6 +39,7 @@ public class MedDelReq {
 
   /**
    * return foreign key node id
+   *
    * @return String
    */
   public String getNodeID() {
@@ -48,6 +48,7 @@ public class MedDelReq {
 
   /**
    * return employee id
+   *
    * @return String
    */
   public String getEmployeeIDofAssignedTo() {
@@ -56,6 +57,7 @@ public class MedDelReq {
 
   /**
    * Return status
+   *
    * @return int
    */
   public int getStatus() {
@@ -64,6 +66,7 @@ public class MedDelReq {
 
   /**
    * SQL insert statement
+   *
    * @return String statement
    */
   public String generateInsertStatement() {
@@ -90,5 +93,4 @@ public class MedDelReq {
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
         && (this.status == o.status);
   }
-
 }

@@ -10,6 +10,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+/**
+ * controller for meal scene
+ *
+ * @see Initializable
+ */
 public class mealsController extends returnHomePage implements Initializable {
   @FXML private ChoiceBox<Object> status;
   @FXML private Button submitButton;
@@ -62,6 +67,12 @@ public class mealsController extends returnHomePage implements Initializable {
   //  @FXML private CheckBox frSmoothie3;
   //  @FXML private CheckBox apJuice3;
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
@@ -72,6 +83,7 @@ public class mealsController extends returnHomePage implements Initializable {
     status.setValue("");
   }
 
+  /** Submits meal request from user inputs */
   public void submit() {
     ArrayList<String> foodList = new ArrayList<>();
     if (pancakes.isSelected()) {
