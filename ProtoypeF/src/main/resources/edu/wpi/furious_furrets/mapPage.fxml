@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapPageController">
+   <children>
+      <ImageView fx:id="mapHolder" fitHeight="450.0" fitWidth="480.0" layoutX="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@FloorMap/Floor1.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="823.0" layoutY="412.0" onAction="#popUpAdd" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ADD" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="823.0" layoutY="512.0" onAction="#popUpDelete" prefHeight="80.0" prefWidth="200.0" ripplerFill="RED" style="-fx-background-color: #062558;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="823.0" layoutY="612.0" prefHeight="80.0" prefWidth="200.0" ripplerFill="RED" style="-fx-background-color: #062558;" text="MODIFY" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1063.0" layoutY="612.0" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME PAGE" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1063.0" layoutY="512.0" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1063.0" layoutY="412.0" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="LOAD" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <MenuBar layoutX="813.0" layoutY="5.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Change Map">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL1" text="Lower 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL2" text="Lower 2" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="table" prefHeight="720.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="nodeID" prefWidth="87.0800952911377" text="nodeID" />
+            <TableColumn prefWidth="49.194175720214844" text="xcoord" fx:id="xcoord" />
+            <TableColumn fx:id="ycoord" prefWidth="51.034088134765625" text="ycoord" />
+            <TableColumn fx:id="Floor" prefWidth="62.95404052734375" text="Floor" />
+            <TableColumn fx:id="Building" prefWidth="78.06661987304688" text="Building" />
+            <TableColumn fx:id="nodeType" prefWidth="111.82745361328125" text="nodeType" />
+            <TableColumn fx:id="longName" prefWidth="256.67254638671875" text="longName" />
+            <TableColumn fx:id="shortName" prefWidth="101.5877685546875" text="shortName" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
