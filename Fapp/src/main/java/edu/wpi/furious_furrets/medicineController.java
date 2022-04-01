@@ -34,7 +34,6 @@ public class medicineController extends returnHomePage implements Initializable 
   @FXML private TextField floorNum;
   @FXML private TextField employeeID;
   ArrayList medRequestList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
 
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> statusDrop = new ArrayList<>();
@@ -97,6 +96,8 @@ public class medicineController extends returnHomePage implements Initializable 
     String dosage = reqDosage.getText();
     String floorNumText = floorNum.getText();
     String employee = employeeID.getText();
+
+    ArrayList<Object> requestList = new ArrayList<>();
 
     medRequestList.add(patientNameText);
     medRequestList.add(patientRoomText);

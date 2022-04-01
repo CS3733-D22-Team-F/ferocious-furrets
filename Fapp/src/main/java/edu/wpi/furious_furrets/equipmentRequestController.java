@@ -37,7 +37,6 @@ public class equipmentRequestController implements Initializable {
   @FXML private Button submitButton;
   @FXML private Button backButton;
   @FXML private ChoiceBox statueChoice;
-  ArrayList<Object> requestList = new ArrayList<>();
 
   /*
    * genderTypes array to populate the patient gender choice box
@@ -90,6 +89,8 @@ public class equipmentRequestController implements Initializable {
     String medicalTextArea = medField.getText();
     String requestSignatureText = requesterSig.getText();
     String dateText = String.valueOf(requestDate.getValue());
+
+    ArrayList<Object> requestList = new ArrayList<>();
 
     System.out.println(patientName);
     System.out.println(patientNumberText);

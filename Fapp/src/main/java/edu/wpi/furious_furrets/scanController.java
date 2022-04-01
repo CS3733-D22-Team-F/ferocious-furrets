@@ -29,11 +29,11 @@ public class scanController extends returnHomePage implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("blank");
+    temp.add("");
     temp.add("processing");
     temp.add("done");
     statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("blank");
+    statueChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("CAT");
     temp1.add("xray");
@@ -44,13 +44,14 @@ public class scanController extends returnHomePage implements Initializable {
 
   // Use Try/Catch when call this function
   public MedicalRequest submit() {
+    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
         || userField.getText().equals("")
         || typeChoice.getValue().equals("")
         || statueChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
+      System.out.println("There are still blank fields");
       return null;
     } else {
       if (typeChoice.getValue().equals("CAT")) {
@@ -63,6 +64,11 @@ public class scanController extends returnHomePage implements Initializable {
                 "Scan",
                 "",
                 "");
+        requestList.clear();
+        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue().toString());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else if (typeChoice.getValue().equals("xray")) {
         xrayScanRequest newRequest =
@@ -74,6 +80,11 @@ public class scanController extends returnHomePage implements Initializable {
                 "Scan",
                 "",
                 "");
+        requestList.clear();
+        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue().toString());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else {
         mriScanRequest newRequest =
@@ -85,6 +96,11 @@ public class scanController extends returnHomePage implements Initializable {
                 "Scan",
                 "",
                 "");
+        requestList.clear();
+        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
+        requestList.add("Assigned Doctor: " + userField.getText());
+        requestList.add("Status: " + statueChoice.getValue().toString());
+        serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       }
     }
