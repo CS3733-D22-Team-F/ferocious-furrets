@@ -19,4 +19,44 @@ public abstract class Request {
     this.sts = sts;
     this.reqType = reqType;
   }
+
+  public String getAssign() {
+    return assign;
+  }
+
+  public void setAssign(String assign) {
+    this.assign = assign;
+  }
+
+  public int getEmpID() {
+    return empID;
+  }
+
+  public void setEmpID(int empID) {
+    this.empID = empID;
+  }
+
+  public String getnID() {
+    return nID;
+  }
+
+  public void setnID(String nID) {
+    this.nID = nID;
+  }
+
+  public String getSts() {
+    return sts;
+  }
+
+  public void setSts(String sts) {
+    this.sts = sts;
+  }
+
+  public String getReqType() {
+    return reqType;
+  }
+
+  public void setReqType(String reqType) {
+    this.reqType = reqType;
+  }
 }

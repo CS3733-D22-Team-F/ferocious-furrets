@@ -60,9 +60,6 @@ public class labRequestController extends returnHomePage implements Initializabl
    * @return labRequest object
    */
   public labRequest submit() {
-    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
-    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
-    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
