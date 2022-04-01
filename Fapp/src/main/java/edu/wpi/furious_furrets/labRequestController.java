@@ -42,9 +42,6 @@ public class labRequestController extends returnHomePage implements Initializabl
 
   // Use Try/Catch when call this function
   public labRequest submit() {
-    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
-    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
-    ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
