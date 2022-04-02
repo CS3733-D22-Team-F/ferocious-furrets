@@ -1,0 +1,12 @@
+cs3733 Team F
+
+***************************
+Github Rules for Branching:
+***************************
+
+    - Stay on master
+    - Branch when working on distinct features
+    - Periodically pull master into your branch to minimize errors
+    - Do not to branch off of an existing branch
+    - Ensure that commit messages are constructive and can be understood by someone glancing at the message
+    - Commit and push often
