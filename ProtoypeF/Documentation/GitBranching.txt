@@ -10,3 +10,15 @@ Github Rules for Branching:
     - Do not to branch off of an existing branch
     - Ensure that commit messages are constructive and can be understood by someone glancing at the message
     - Commit and push often
+
+***************************
+Github Steps for Pushing/Merging
+***************************
+    1.commit
+    2.PULL
+    3.Merge, check with the author of each merge conflict to determine which stays
+    4. commit
+    5.PULL
+    6.PUSH
+
+    steps are the same for merging, just a branch goes away
