@@ -22,10 +22,10 @@ public class medicineController extends returnHomePage implements Initializable 
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
   @FXML private TextField typeOfMed;
-  @FXML private ChoiceBox statusChoice;
+  @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private ChoiceBox typeChoice;
+  @FXML private ComboBox typeChoice;
 
   @FXML
   void resetFunction() {
@@ -34,6 +34,7 @@ public class medicineController extends returnHomePage implements Initializable 
     userField.clear();
     typeOfMed.clear();
     statusChoice.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
     userField.clear();
   }
 
@@ -67,6 +68,7 @@ public class medicineController extends returnHomePage implements Initializable 
       userField.clear();
       typeOfMed.clear();
       statusChoice.valueProperty().setValue(null);
+      typeChoice.valueProperty().setValue(null);
       userField.clear();
 
       return medicineDeliveryRequest;
