@@ -8,6 +8,7 @@ public abstract class Request {
       nID; // nodeID is the key for the location in which the request is directed to (Check
   // Locations.csv for examples)
   private String sts; // Status of the request (In Progress or Done)
+  // TODO enum
   private String
       reqType; // Type of request made, Patient Bed (PTBD), Recliner (RECL), X-Ray Machine (XRAY),
   // Infusion Pump (IPMP)

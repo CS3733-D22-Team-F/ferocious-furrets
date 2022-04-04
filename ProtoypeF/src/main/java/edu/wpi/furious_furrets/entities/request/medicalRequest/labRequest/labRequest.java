@@ -6,6 +6,16 @@ public abstract class labRequest extends MedicalRequest {
 
   protected String sampleType;
 
+  /**
+   * @param assign employee string
+   * @param empID employee id
+   * @param nID location node id
+   * @param sts status
+   * @param reqType request type
+   * @param equipID id of equipment
+   * @param equipType type of equipment , MRI, CAT, etc
+   * @param sampleType type of sample, blood, etc
+   */
   public labRequest(
       String assign,
       int empID,
