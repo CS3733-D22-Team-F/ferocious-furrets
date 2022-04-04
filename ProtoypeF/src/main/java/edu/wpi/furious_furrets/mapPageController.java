@@ -125,6 +125,15 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  public void popUpReset() throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("mapResetPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+  }
+
   public String generateNodeID(String nodeType, String floor, int x, int y)
       throws SQLException, IOException {
     String nNodeType = nodeType;
@@ -134,7 +143,8 @@ public class mapPageController extends returnHomePage implements Initializable {
     LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
 
     Statement stm = DatabaseManager.initalizeDatabaseManager().getConn().createStatement();
-    String cmd = "SELECT * FROM Locations WHERE nodeType = nType AND floor = nFloor";
+    String cmd =
+        "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
     ResultSet rset = stm.executeQuery(cmd);
     while (rset.next()) {
       roomNum++;

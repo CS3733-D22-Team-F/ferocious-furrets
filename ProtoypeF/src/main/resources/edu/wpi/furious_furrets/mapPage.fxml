@@ -38,7 +38,7 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1063.0" layoutY="412.0" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="LOAD" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="1063.0" layoutY="412.0" onAction="#popUpReset" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="LOAD" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
