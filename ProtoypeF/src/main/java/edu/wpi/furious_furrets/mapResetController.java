@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class mapDeleteController implements Initializable {
+public class mapResetController implements Initializable {
 
   @FXML private TextField idField;
   @FXML Button cancel;
@@ -31,11 +31,11 @@ public class mapDeleteController implements Initializable {
     idField.clear();
   }
 
-  public void delete(ActionEvent event) throws SQLException, IOException {
+  public void resetFile(ActionEvent event) throws SQLException, IOException {
 
     if (idField.getText() != null) {
       try {
-        deleteLocation(idField.getText());
+        resetFromCSV(idField.getText());
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
@@ -44,7 +44,10 @@ public class mapDeleteController implements Initializable {
     }
   }
 
-  public void deleteLocation(String oldID) throws SQLException, IOException {
-    DatabaseManager.getLdao().deleteLocation(oldID);
+  public void resetFromCSV(String filename) throws SQLException, IOException {
+
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // TODO: Incorporate JavaFX FileChooser
+    DatabaseManager.getLdao().resetMapFromCSV("/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 }
