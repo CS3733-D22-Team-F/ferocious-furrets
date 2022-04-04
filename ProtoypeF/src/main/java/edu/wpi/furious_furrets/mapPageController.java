@@ -69,7 +69,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = LDAOImpl.getAllLocations();
+      nLocations = DatabaseManager.getLdao().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -104,6 +104,15 @@ public class mapPageController extends returnHomePage implements Initializable {
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    ArrayList<Location> nLocations = null;
+    try {
+      nLocations = DatabaseManager.getLdao().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
+    table.setItems(locationList);
   }
 
   public void popUpDelete() throws IOException {
@@ -113,6 +122,14 @@ public class mapPageController extends returnHomePage implements Initializable {
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    ArrayList<Location> nLocations = null;
+    try {
+      nLocations = DatabaseManager.getLdao().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
+    table.setItems(locationList);
   }
 
   public void popUpSave() throws IOException {
@@ -132,10 +149,10 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
     // update table view
-    LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = LDAOImpl.getAllLocations();
+      nLocations = DatabaseManager.getLdao().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }

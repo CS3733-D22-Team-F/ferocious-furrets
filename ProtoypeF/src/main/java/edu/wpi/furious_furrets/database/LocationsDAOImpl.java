@@ -279,13 +279,12 @@ public class LocationsDAOImpl implements LocationDAO {
    * and the node is added to the SQL table.
    *
    * @throws SQLException
+   * @param newLocation
    */
-  public void addLocation() throws SQLException {
+  public void addLocation(Location newLocation) throws SQLException {
 
-    String nID = newLocNodeID.getText();
-    Location loc = new Location(nID);
     Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd = "INSERT INTO Locations (nodeID) values ('" + nID + "')";
+    String cmd = newLocation.generateInsertStatement();
     stm.execute(cmd);
     stm.close();
   }
@@ -295,13 +294,13 @@ public class LocationsDAOImpl implements LocationDAO {
    * the corresponding Java object is deleted.
    *
    * @throws SQLException
+   * @param nID
    */
-  public void deleteLocation() throws SQLException {
+  public void deleteLocation(String nID) throws SQLException {
 
-    String oldID = oldLocNodeID.getText();
-    csvIDS.remove(oldID);
-    Statement stm = connection.createStatement();
-    String q = "Delete from Locations where nodeID = '" + oldID + "'";
+    // csvIDS.remove(nID);
+    Statement stm = DatabaseManager.getConn().createStatement();
+    String q = "Delete from Locations where nodeID = '" + nID + "'";
     stm.execute(q);
     stm.close();
   }
