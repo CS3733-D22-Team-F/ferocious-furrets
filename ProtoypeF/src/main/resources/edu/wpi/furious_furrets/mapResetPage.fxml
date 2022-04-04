@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapBackUpController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapResetController">
    <children>
       <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
-      <JFXButton layoutX="233.0" layoutY="334.0" onAction="#backUp" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Back Up To File" />
+      <JFXButton layoutX="233.0" layoutY="334.0" onAction="#resetFile" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reload Map" />
       <JFXButton layoutX="358.0" layoutY="334.0" onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
-      <TextField fx:id="idField" layoutX="233.0" layoutY="138.0" promptText="File Path to CSV">
+      <TextField fx:id="idField" layoutX="233.0" layoutY="138.0" promptText="Name of CSV File">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="82.0" layoutY="138.0" prefHeight="35.0" prefWidth="122.0" text="CSV File Path:">
+      <Label layoutX="82.0" layoutY="138.0" prefHeight="35.0" prefWidth="122.0" text="CSV Filename:">
          <font>
             <Font size="18.0" />
          </font>

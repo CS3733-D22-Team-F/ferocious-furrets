@@ -7,7 +7,6 @@ import edu.wpi.furious_furrets.database.LocationsDAOImpl;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -60,17 +59,17 @@ public class mapPageController extends returnHomePage implements Initializable {
     nodeType.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeType"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
     shortName.setCellValueFactory(new PropertyValueFactory<Location, String>("shortName"));
-    BufferedReader lineReader =
-        new BufferedReader(
-            new InputStreamReader(
-                LocationsDAOImpl.class.getResourceAsStream(
-                    "/edu/wpi/furious_furrets/TowerLocations.csv"),
-                StandardCharsets.UTF_8));
+    //    BufferedReader lineReader =
+    //        new BufferedReader(
+    //            new InputStreamReader(
+    //                LocationsDAOImpl.class.getResourceAsStream(
+    //                    "/edu/wpi/furious_furrets/TowerLocations.csv"),
+    //                StandardCharsets.UTF_8));
 
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
+    LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = LDAOImpl.getAllLocations();
+      nLocations = DatabaseManager.getLdao().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -105,6 +104,15 @@ public class mapPageController extends returnHomePage implements Initializable {
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    ArrayList<Location> nLocations = null;
+    try {
+      nLocations = DatabaseManager.getLdao().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
+    table.setItems(locationList);
   }
 
   public void popUpDelete() throws IOException {
@@ -114,6 +122,14 @@ public class mapPageController extends returnHomePage implements Initializable {
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    ArrayList<Location> nLocations = null;
+    try {
+      nLocations = DatabaseManager.getLdao().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
+    table.setItems(locationList);
   }
 
   public void popUpSave() throws IOException {
@@ -125,6 +141,25 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  public void popUpReset() throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("mapResetPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+    // update table view
+    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    ArrayList<Location> nLocations = null;
+    try {
+      nLocations = DatabaseManager.getLdao().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
+    table.setItems(locationList);
+  }
+
   public String generateNodeID(String nodeType, String floor, int x, int y)
       throws SQLException, IOException {
     String nNodeType = nodeType;
@@ -134,7 +169,8 @@ public class mapPageController extends returnHomePage implements Initializable {
     LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
 
     Statement stm = DatabaseManager.initalizeDatabaseManager().getConn().createStatement();
-    String cmd = "SELECT * FROM Locations WHERE nodeType = nType AND floor = nFloor";
+    String cmd =
+        "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
     ResultSet rset = stm.executeQuery(cmd);
     while (rset.next()) {
       roomNum++;
@@ -171,78 +207,5 @@ public class mapPageController extends returnHomePage implements Initializable {
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
     return nID;
-  }
-
-  public void locationsFromRSET(ResultSet rset) throws SQLException {
-    while (rset.next()) {
-      String nodeID = rset.getString("nodeID");
-      String longName = rset.getString("LongName");
-      String shortName = rset.getString("ShortName");
-      int xCoord = rset.getInt("xcoord");
-      int yCoord = rset.getInt("ycoord");
-      String floor = rset.getString("floor");
-      String building = rset.getString("building");
-      String nodeType = rset.getString("nodeType");
-      Location newL =
-          new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-      LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-      ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();
-      nLocation.add(newL);
-      LDAOImpl.setUpdatedLocations(nLocation);
-    }
-  }
-
-  public void saveLocationToCSV() {
-
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocationsNew.csv";
-
-    Statement stm = null;
-    try {
-      stm = connection.createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
-
-    try {
-      for (String id : csvIDS) {
-        ResultSet rset;
-        rset = stm.executeQuery("SELECT * FROM Locations WHERE nodeID = '" + id + "'");
-
-        locationsFromRSET(rset);
-
-        rset.close();
-        File newCSV = new File(csvName);
-        FileWriter fw = new FileWriter(csvName);
-        fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-        for (Location l : updatedLocations) {
-          fw.write(
-              l.getNodeID()
-                  + ","
-                  + l.getXcoord()
-                  + ","
-                  + l.getYcoord()
-                  + ","
-                  + l.getFloor()
-                  + ","
-                  + l.getBuilding()
-                  + ","
-                  + l.getNodeType()
-                  + ","
-                  + l.getLongName()
-                  + ","
-                  + l.getShortName()
-                  + "\n");
-        }
-        fw.close();
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 }

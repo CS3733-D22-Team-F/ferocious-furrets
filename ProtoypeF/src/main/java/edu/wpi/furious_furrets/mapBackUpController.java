@@ -2,14 +2,10 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import edu.wpi.furious_furrets.database.Location;
-import edu.wpi.furious_furrets.database.LocationsDAOImpl;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -51,7 +47,8 @@ public class mapBackUpController implements Initializable {
     }
   }
 
-  public void locationsFromRSET(ResultSet rset) throws SQLException {
+  public ArrayList<Location> locationsFromRSET(ResultSet rset) throws SQLException {
+    ArrayList<Location> allLocations = new ArrayList<Location>();
     while (rset.next()) {
       String nodeID = rset.getString("nodeID");
       String longName = rset.getString("LongName");
@@ -63,65 +60,16 @@ public class mapBackUpController implements Initializable {
       String nodeType = rset.getString("nodeType");
       Location newL =
           new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-      LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-      ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();
-      nLocation.add(newL);
-      LDAOImpl.setUpdatedLocations(nLocation);
+      allLocations.add(newL);
     }
+    return allLocations;
   }
 
   public void backUpToCSV(String filename) throws SQLException, IOException {
 
-    // String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-
-    Statement stm = null;
-    try {
-      stm = DatabaseManager.getConn().createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
-
-    try {
-      for (String id : csvIDS) {
-        ResultSet rset;
-        rset = stm.executeQuery("SELECT * FROM Locations WHERE nodeID = '" + id + "'");
-
-        locationsFromRSET(rset);
-
-        rset.close();
-        File newCSV = new File(filename);
-        FileWriter fw = new FileWriter(filename);
-        fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-        for (Location l : updatedLocations) {
-          fw.write(
-              l.getNodeID()
-                  + ","
-                  + l.getXcoord()
-                  + ","
-                  + l.getYcoord()
-                  + ","
-                  + l.getFloor()
-                  + ","
-                  + l.getBuilding()
-                  + ","
-                  + l.getNodeType()
-                  + ","
-                  + l.getLongName()
-                  + ","
-                  + l.getShortName()
-                  + "\n");
-        }
-        fw.close();
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    DatabaseManager.getLdao()
+        .backUpToCSV("src/main/resources/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 }
