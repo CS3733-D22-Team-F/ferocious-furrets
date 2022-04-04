@@ -1,25 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.logInController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.logInController">
    <children>
-      <AnchorPane layoutX="728.0" layoutY="101.0" prefHeight="519.0" prefWidth="499.0" style="-fx-background-color: #9C2B27;">
+      <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@bwhbackground.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="751.0" layoutY="-2.0" opacity="0.98" prefHeight="863.0" prefWidth="544.0" style="-fx-background-color: #123090 #123090;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="751.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="86.0" layoutY="90.0" prefHeight="340.0" prefWidth="327.0" spacing="50.0">
+            <VBox layoutX="47.0" layoutY="19.0">
                <children>
-                  <JFXTextField promptText="Enter Username" unFocusColor="#dad6d6">
+                  <VBox alignment="CENTER" prefHeight="528.0" prefWidth="455.0" spacing="45.0">
+                     <children>
+                        <ImageView fitHeight="225.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@loginpfp.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Sign In" textFill="#a8a8a8">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usernameField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
                      <padding>
-                        <Insets left="25.0" right="25.0" top="50.0" />
-                     </padding></JFXTextField>
-                  <JFXTextField promptText="Enter Password">
+                        <Insets left="2.0" />
+                     </padding>
+                  </VBox>
+                  <Label fx:id="popUpLabel" prefHeight="11.0" prefWidth="247.0" textFill="#eb3333">
                      <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding></JFXTextField>
-               </children></VBox>
+                        <Insets bottom="15.0" top="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="100.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox prefHeight="204.0" prefWidth="455.0" spacing="40.0">
+                     <children>
+                        <JFXButton onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Login" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Sign Up" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="793.0" onAction="#backToHomePage" prefHeight="42.0" prefWidth="96.0" style="-fx-background-color: #123090;" text="Home" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
