@@ -31,21 +31,23 @@ public interface LocationDAO {
    * and the node is added to the SQL table.
    *
    * @throws SQLException
+   * @param newLocation
    */
-  public void addLocation() throws SQLException;
+  public void addLocation(Location newLocation) throws SQLException;
 
   /**
    * Taking user input for the ID of the location node. The node is removed from the SQL table, and
    * the corresponding Java object is deleted.
    *
    * @throws SQLException
+   * @param nID
    */
-  public void deleteLocation() throws SQLException;
+  public void deleteLocation(String nID) throws SQLException;
 
   /**
    * Taking User input for the name of a CSV file. The program first loads all of the contents of
    * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
    * objects.
    */
-  public void saveLocationToCSV();
+  public void saveLocationToCSV() throws SQLException;
 }

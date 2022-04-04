@@ -18,8 +18,11 @@ public class logInController extends returnHomePage {
   @FXML
   private void logIn() {
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
-      popUpLabel.setText("Log In Success");
+      // popUpLabel.setTextFill(Color.color(71.0, 236.0, 48.0));
+      popUpLabel.setText("Login Successful");
+
     } else {
+      // popUpLabel.setTextFill(Color.color(228.0, 70.0, 42.0));
       popUpLabel.setText("Wrong username or password, try again");
     }
   }
