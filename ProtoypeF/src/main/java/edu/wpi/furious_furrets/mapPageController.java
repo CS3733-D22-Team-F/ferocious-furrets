@@ -116,6 +116,15 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  public void popUpSave() throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("mapBackUpPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+  }
+
   public String generateNodeID(String nodeType, String floor, int x, int y)
       throws SQLException, IOException {
     String nNodeType = nodeType;
