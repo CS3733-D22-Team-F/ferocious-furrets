@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Merged csv-save branch into master">
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapResetController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapResetPage.fxml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/database/LocationsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/database/LocationsDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapBackUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapBackUpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocationsNew.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocationsNew.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocationsTest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocationsTest.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapResetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapResetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapBackUpPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapBackUpPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapResetPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapResetPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +115,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+    <configuration name="ProtoypeF [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProtoypeF [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -217,11 +236,13 @@
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
+      <item itemvalue="Gradle.ProtoypeF [build]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
+        <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       </list>
     </recent_temporary>
@@ -249,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649080027261</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset.">
+      <created>1649083847218</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649083847218</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +297,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added UI for backing Locations up to a csv" />
     <MESSAGE value="Merged csv-save branch into master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged csv-save branch into master" />
+    <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

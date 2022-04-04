@@ -145,69 +145,13 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * @Method menu() @Purpose Generate a command line UI menu that allows the user to select an
-   * option 1-6 @Design A switch statement in a while loop, with each option calling the respective
-   * method. The while loop terminates once option 6 is chosen, providing the "exit menu"
-   * functionality. If a number not between 1 and 6 is chosen, ask for number 1-6 and go back to
-   * starting menu.
-   *
-   * @deprecated
-   */
-  /*private void menu() throws NoSuchElementException {
-    System.out.println("---------------- User Menu ------------------------");
-
-    Scanner inp = new Scanner(System.in);
-    int option = 0;
-    try {
-      while (option != 6) {
-        System.out.println(
-            "Please Enter A Number:\n"
-                + "1- Location Information\n"
-                + "2- Change Floor and Type\n"
-                + "3- Enter Location\n"
-                + "4- Delete Location\n"
-                + "5- Save Locations to CSV File\n"
-                + "6- Exit Program");
-
-        System.out.println("Option:");
-        option = Integer.parseInt(inp.nextLine());
-        switch (option) {
-          case 1:
-            getAllLocations();
-            break;
-          case 2:
-            updateLocation();
-            break;
-          case 3:
-            addLocation();
-            break;
-          case 4:
-            deleteLocation();
-            break;
-          case 5:
-            saveLocation();
-            break;
-          case 6:
-            System.out.println("Exiting program...");
-            return;
-          default:
-            System.out.println("Please enter an option 1-6");
-            break;
-        }
-      }
-    } catch (NoSuchElementException | SQLException e) {
-      System.out.println("No line found");
-      e.printStackTrace();
-    }
-  }*/
-
-  /**
    * Taking in a ResultSet object take the locations in the form of new Location objects
    *
    * @param rset ResultSet object to get locations from
    * @throws SQLException
    */
-  public void locationsFromRSET(ResultSet rset) throws SQLException {
+  public ArrayList<Location> locationsFromRSET(ResultSet rset) throws SQLException {
+    ArrayList<Location> allLocations = new ArrayList<Location>();
     while (rset.next()) {
       String nodeID = rset.getString("nodeID");
       String longName = rset.getString("LongName");
@@ -219,8 +163,9 @@ public class LocationsDAOImpl implements LocationDAO {
       String nodeType = rset.getString("nodeType");
       Location newL =
           new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-      updatedLocations.add(newL);
+      allLocations.add(newL);
     }
+    return allLocations;
   }
 
   /**
@@ -232,13 +177,13 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
 
-    Statement stm = connection.createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
     String q = "SELECT * FROM Locations";
     ResultSet rset = stm.executeQuery(q);
-    locationsFromRSET(rset);
+    ArrayList<Location> allLocations = locationsFromRSET(rset);
     rset.close();
     stm.close();
-    return updatedLocations; // fix
+    return allLocations; // fix
   }
 
   /**
@@ -259,7 +204,7 @@ public class LocationsDAOImpl implements LocationDAO {
 
     String updatedID = "";
 
-    Statement stm = connection.createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
     String cmd =
         "UPDATE Locations SET floor = '"
             + newFloor
@@ -284,7 +229,7 @@ public class LocationsDAOImpl implements LocationDAO {
 
     String nID = newLocNodeID.getText();
     Location loc = new Location(nID);
-    Statement stm = connection.createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
     String cmd = "INSERT INTO Locations (nodeID) values ('" + nID + "')";
     stm.execute(cmd);
     stm.close();

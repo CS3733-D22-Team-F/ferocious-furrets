@@ -31,7 +31,7 @@ public class mapResetController implements Initializable {
     idField.clear();
   }
 
-  public void reset(ActionEvent event) throws SQLException, IOException {
+  public void resetFile(ActionEvent event) throws SQLException, IOException {
 
     if (idField.getText() != null) {
       try {
@@ -46,9 +46,8 @@ public class mapResetController implements Initializable {
 
   public void resetFromCSV(String filename) throws SQLException, IOException {
 
-    // String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-
-    DatabaseManager.getLdao().resetMapFromCSV(filename);
+    DatabaseManager.getLdao().resetMapFromCSV("/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 }
