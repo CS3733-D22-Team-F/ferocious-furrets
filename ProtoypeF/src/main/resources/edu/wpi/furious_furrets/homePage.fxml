@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.homePageController">
+<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.homePageController">
    <children>
       <ImageView fitHeight="947.0" fitWidth="1396.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-204.19146728515625" AnchorPane.leftAnchor="-92.0" AnchorPane.rightAnchor="-24.0" AnchorPane.topAnchor="-4.80853271484375">
          <image>
@@ -24,7 +24,7 @@
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" styleClass="button-blue" stylesheets="@style.css" text="MAP" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="MAP" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
