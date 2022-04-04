@@ -3,6 +3,7 @@ package edu.wpi.furious_furrets;
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -241,7 +242,7 @@ public class homePageController {
 
   /** exits */
   @FXML
-  public void exitProgram() {
+  public void exitProgram() throws SQLException {
     DatabaseManager.getLdao().saveLocationToCSV();
     DatabaseManager.getMdao().saveRequestToCSV();
     System.out.println("Locations table updated to csv :)");

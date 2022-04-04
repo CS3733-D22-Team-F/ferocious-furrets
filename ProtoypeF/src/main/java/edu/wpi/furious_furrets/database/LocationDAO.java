@@ -49,5 +49,5 @@ public interface LocationDAO {
    * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
    * objects.
    */
-  public void saveLocationToCSV();
+  public void saveLocationToCSV() throws SQLException;
 }

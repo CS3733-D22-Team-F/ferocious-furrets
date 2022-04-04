@@ -197,6 +197,7 @@ public class LocationsDAOImpl implements LocationDAO {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    stm.close();
   }
 
   /**
@@ -310,13 +311,13 @@ public class LocationsDAOImpl implements LocationDAO {
    * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
    * objects.
    */
-  public void saveLocationToCSV() {
+  public void saveLocationToCSV() throws SQLException {
 
     String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv";
 
     Statement stm = null;
     try {
-      stm = connection.createStatement();
+      stm = DatabaseManager.getConn().createStatement();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -357,6 +358,7 @@ public class LocationsDAOImpl implements LocationDAO {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    stm.close();
   }
 
   public Connection getConnection() {

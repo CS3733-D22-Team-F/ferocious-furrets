@@ -59,7 +59,7 @@ public class mapAddController implements Initializable {
         "SERV - Hospital Non-medical Services, Interpreters, Shuttles, Spiritual Library,\n"
             + "Patient Financial, etc.");
     nodeBox.getItems().addAll(temp);
-    nodeBox.setValue("Patient Room -PATI");
+    nodeBox.setValue("PATI - Patient Room");
   }
 
   public void cancel() {
@@ -157,6 +157,7 @@ public class mapAddController implements Initializable {
 
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
+    stm.close();
     return nID;
   }
 
