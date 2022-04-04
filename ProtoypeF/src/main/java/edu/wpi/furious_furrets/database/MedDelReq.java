@@ -8,10 +8,10 @@ package edu.wpi.furious_furrets.database;
 /** Medical Delivery request object */
 public class MedDelReq {
 
-  private String reqID; // Primary Key
-  private String nodeID; // Foreign Key from Location
-  private String employeeIDofAssignedTo; // EMPLOYEE ID (PRIMARY KEY OF EMPLOYEE)
-  private String status;
+  private final String reqID; // Primary Key
+  private final String nodeID; // Foreign Key from Location
+  private final String employeeIDofAssignedTo; // EMPLOYEE ID (PRIMARY KEY OF EMPLOYEE)
+  private final String status; // status of the request
   private String name;
 
   /**

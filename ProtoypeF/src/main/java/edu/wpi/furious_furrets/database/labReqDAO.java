@@ -4,10 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Interface for the MedDelReqDAO class to handle the Medical delivery DB necessary function
+ * TODO change comments Interface for the labReqDAO class to handle the Medical delivery DB
+ * necessary function
  *
  * @version 1.0
- * @see MedDelReq
+ * @see LabRequest
  */
 public interface labReqDAO {
 
@@ -26,13 +27,18 @@ public interface labReqDAO {
       throws SQLException;
 
   /**
-   * @param reqID
+   * @param req LabRequest object
    * @throws SQLException
    */
   void deleteRequest(LabRequest req) throws SQLException;
 
   /**
-   * @param reqID
+   * @param upReq LabRequest being updated
+   * @param newReqID String new reqID
+   * @param newNodeID String new nodeID
+   * @param newEmployeeIDofAssignTo String employeeID
+   * @param newStatus String newStatus
+   * @param newType String
    * @throws SQLException
    */
   void updateRequest(

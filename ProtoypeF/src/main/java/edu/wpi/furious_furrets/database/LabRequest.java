@@ -1,5 +1,5 @@
 /**
- * Medical Equipment service request class w/ getters and setters for the params
+ * Lab request service request class w/ getters and setters for the params
  *
  * @version 1.0
  */
@@ -11,9 +11,9 @@ public class LabRequest {
   private final String reqID; // Primary Key
   private final String nodeID; // Foreign Key from Location
   private final String employeeIDofAssignedTo; // EMPLOYEE ID (PRIMARY KEY OF EMPLOYEE)
-  private final String status;
-  private final String type;
-  private String name;
+  private final String status; // status of request (completed, not completed, etc)
+  private final String type; // type of lab request (blood etc)
+  // private String name;
 
   /**
    * Construction for Med equip service request
@@ -21,7 +21,7 @@ public class LabRequest {
    * @param reqID primary key
    * @param nodeID foreign key
    * @param employeeIDofAssignedTo employee id
-   * @param status
+   * @param status status of the request
    */
   public LabRequest(
       String reqID, String nodeID, String employeeIDofAssignedTo, String status, String type) {
@@ -87,7 +87,9 @@ public class LabRequest {
         + this.employeeIDofAssignedTo
         + "' , '"
         + this.status
-        + "' )";
+        + "' , '"
+        + this.type
+        + "')";
   }
 
   /**
@@ -100,7 +102,7 @@ public class LabRequest {
     return (this.reqID.equals(o.nodeID))
         && (this.nodeID.equals(o.nodeID))
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
-        && (this.status == o.status)
-        && (this.type == o.type);
+        && (this.status.equals(o.status))
+        && (this.type.equals(o.type));
   }
 }

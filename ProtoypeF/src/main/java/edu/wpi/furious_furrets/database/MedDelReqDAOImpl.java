@@ -10,8 +10,6 @@ import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,15 +20,14 @@ import java.util.ArrayList;
  */
 public class MedDelReqDAOImpl implements MedDelReqDAO {
 
-  private Connection connection;
-  private ArrayList<MedDelReq> requests = new ArrayList<>();
-  private ArrayList<MedDelReq> updatedRequests = new ArrayList<MedDelReq>();
-  private ArrayList<String> reqIDs = new ArrayList<String>();
+  private final Connection connection;
+  private final ArrayList<MedDelReq> requests = new ArrayList<>();
+  private final ArrayList<MedDelReq> updatedRequests = new ArrayList<MedDelReq>();
+  private final ArrayList<String> reqIDs = new ArrayList<String>();
 
   /**
    * Constructor that takes in a Connection object to the DB
    *
-   * @deprecated
    * @param dbConnection
    */
   public MedDelReqDAOImpl(Connection dbConnection) {
@@ -86,9 +83,9 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   }
 
   /**
-   * @deprecated
    * @return
    * @throws SQLException
+   * @deprecated
    */
   public ArrayList<MedDelReq> getAllRequests() throws SQLException {
     updateDatabase();
