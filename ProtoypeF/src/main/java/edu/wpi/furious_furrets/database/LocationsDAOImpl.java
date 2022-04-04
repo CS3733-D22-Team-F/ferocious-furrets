@@ -144,6 +144,61 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.close();
   }
 
+  public void backUpToCSV(String filename) throws SQLException, IOException {
+
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // TODO: Incorporate JavaFX FileChooser
+
+    Statement stm = null;
+    try {
+      stm = DatabaseManager.getConn().createStatement();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
+    //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
+    //    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
+
+    try {
+      // for (String id : csvIDS) {
+      ResultSet rset;
+      rset = stm.executeQuery("SELECT * FROM Locations");
+
+      ArrayList<Location> allLocations = locationsFromRSET(rset);
+
+      rset.close();
+      File newCSV = new File(filename);
+      FileWriter fw = new FileWriter(filename);
+      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
+      for (Location l : allLocations) {
+        fw.write(
+            l.getNodeID()
+                + ","
+                + l.getXcoord()
+                + ","
+                + l.getYcoord()
+                + ","
+                + l.getFloor()
+                + ","
+                + l.getBuilding()
+                + ","
+                + l.getNodeType()
+                + ","
+                + l.getLongName()
+                + ","
+                + l.getShortName()
+                + "\n");
+      }
+      fw.close();
+      // }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   /**
    * Taking in a ResultSet object take the locations in the form of new Location objects
    *
@@ -268,37 +323,36 @@ public class LocationsDAOImpl implements LocationDAO {
     }
 
     try {
-      for (String id : csvIDS) {
-        ResultSet rset;
-        rset = stm.executeQuery("SELECT * FROM Locations WHERE nodeID = '" + id + "'");
 
-        locationsFromRSET(rset);
+      ResultSet rset;
+      rset = stm.executeQuery("SELECT * FROM Locations");
 
-        rset.close();
-        File newCSV = new File(csvName);
-        FileWriter fw = new FileWriter(csvName);
-        fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-        for (Location l : csvLocations) {
-          fw.write(
-              l.getNodeID()
-                  + ","
-                  + l.getXcoord()
-                  + ","
-                  + l.getYcoord()
-                  + ","
-                  + l.getFloor()
-                  + ","
-                  + l.getBuilding()
-                  + ","
-                  + l.getNodeType()
-                  + ","
-                  + l.getLongName()
-                  + ","
-                  + l.getShortName()
-                  + "\n");
-        }
-        fw.close();
+      ArrayList<Location> allLocations = locationsFromRSET(rset);
+
+      rset.close();
+      File newCSV = new File(csvName);
+      FileWriter fw = new FileWriter(csvName);
+      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
+      for (Location l : allLocations) {
+        fw.write(
+            l.getNodeID()
+                + ","
+                + l.getXcoord()
+                + ","
+                + l.getYcoord()
+                + ","
+                + l.getFloor()
+                + ","
+                + l.getBuilding()
+                + ","
+                + l.getNodeType()
+                + ","
+                + l.getLongName()
+                + ","
+                + l.getShortName()
+                + "\n");
       }
+      fw.close();
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (IOException e) {

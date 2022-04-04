@@ -2,13 +2,10 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import edu.wpi.furious_furrets.database.Location;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -72,54 +69,7 @@ public class mapBackUpController implements Initializable {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-
-    Statement stm = null;
-    try {
-      stm = DatabaseManager.getConn().createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-    //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-    //    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
-
-    try {
-      // for (String id : csvIDS) {
-      ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM Locations");
-
-      ArrayList<Location> allLocations = locationsFromRSET(rset);
-
-      rset.close();
-      File newCSV = new File(filename);
-      FileWriter fw = new FileWriter(filename);
-      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-      for (Location l : allLocations) {
-        fw.write(
-            l.getNodeID()
-                + ","
-                + l.getXcoord()
-                + ","
-                + l.getYcoord()
-                + ","
-                + l.getFloor()
-                + ","
-                + l.getBuilding()
-                + ","
-                + l.getNodeType()
-                + ","
-                + l.getLongName()
-                + ","
-                + l.getShortName()
-                + "\n");
-      }
-      fw.close();
-      // }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    DatabaseManager.getLdao()
+        .backUpToCSV("src/main/resources/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 }

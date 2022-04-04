@@ -158,7 +158,7 @@ public class mapAddController implements Initializable {
 
     String nID = generateNodeID(nodeType, floor, x, y);
     LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-    Statement stm = DatabaseInitializer.getConnection().dbConnection.createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
 
     Location l = new Location(nID, x, y, floor, "Tower", nodeType, longN, shortN);
     ArrayList<Location> nLocations = LDAOImpl.getAllLocations();
