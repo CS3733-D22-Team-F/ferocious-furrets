@@ -23,9 +23,10 @@ public class scanController extends returnHomePage implements Initializable {
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
   @FXML TextField userField;
+  @FXML Button reset;
 
-  @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
-  @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
+  @FXML ComboBox typeChoice; // Lab Type Choice Box
+  @FXML ComboBox statusChoice; // Status Choice Box
 
   /**
    * inits
@@ -39,14 +40,22 @@ public class scanController extends returnHomePage implements Initializable {
     temp.add("");
     temp.add("processing");
     temp.add("done");
-    statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("");
+    statusChoice.getItems().addAll(temp);
+    statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("CAT");
     temp1.add("xray");
     temp1.add("MRI");
     typeChoice.getItems().addAll(temp1);
     typeChoice.setValue("CAT");
+  }
+
+  public void reset() {
+    nodeField.clear();
+    employeeIDField.clear();
+    userField.clear();
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null); // Status Choice Box
   }
 
   /**
@@ -61,7 +70,7 @@ public class scanController extends returnHomePage implements Initializable {
         || employeeIDField.getText().equals("")
         || userField.getText().equals("")
         || typeChoice.getValue().equals("")
-        || statueChoice.getValue().equals("")) {
+        || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
       return null;
     } else {
@@ -71,14 +80,14 @@ public class scanController extends returnHomePage implements Initializable {
                 userField.getText(),
                 Integer.parseInt(employeeIDField.getText()),
                 nodeField.getText(),
-                statueChoice.getValue().toString(),
+                statusChoice.getValue().toString(),
                 "Scan",
                 "",
                 "");
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statueChoice.getValue().toString());
+        requestList.add("Status: " + statusChoice.getValue().toString());
         serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else if (typeChoice.getValue().equals("xray")) {
@@ -87,14 +96,14 @@ public class scanController extends returnHomePage implements Initializable {
                 userField.getText(),
                 Integer.parseInt(employeeIDField.getText()),
                 nodeField.getText(),
-                statueChoice.getValue().toString(),
+                statusChoice.getValue().toString(),
                 "Scan",
                 "",
                 "");
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statueChoice.getValue().toString());
+        requestList.add("Status: " + statusChoice.getValue().toString());
         serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else {
@@ -103,14 +112,14 @@ public class scanController extends returnHomePage implements Initializable {
                 userField.getText(),
                 Integer.parseInt(employeeIDField.getText()),
                 nodeField.getText(),
-                statueChoice.getValue().toString(),
+                statusChoice.getValue().toString(),
                 "Scan",
                 "",
                 "");
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statueChoice.getValue().toString());
+        requestList.add("Status: " + statusChoice.getValue().toString());
         serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       }
