@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Added UI for backing Locations up to a csv">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added resized hospital image to login page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/bwhbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,8 +220,16 @@
       <workItem from="1649032831496" duration="682000" />
       <workItem from="1649041080141" duration="2093000" />
       <workItem from="1649112455770" duration="335000" />
-      <workItem from="1649112804344" duration="438000" />
+      <workItem from="1649112804344" duration="1095000" />
     </task>
+    <task id="LOCAL-00001" summary="added resized hospital image to login page">
+      <created>1649114165912</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649114165912</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +248,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added UI for backing Locations up to a csv" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UI for backing Locations up to a csv" />
+    <MESSAGE value="added resized hospital image to login page" />
+    <option name="LAST_COMMIT_MESSAGE" value="added resized hospital image to login page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
