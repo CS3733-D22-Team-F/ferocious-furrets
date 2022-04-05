@@ -18,11 +18,24 @@ public class logInController extends returnHomePage {
   @FXML
   private void logIn() {
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
-      // popUpLabel.setTextFill(Color.color(71.0, 236.0, 48.0));
+      popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
-
+    } else if (usernameField.getText().equals("nurse") && passwordField.getText().equals("nurse")) {
+      popUpLabel.setStyle("-fx-text-fill: green;");
+      popUpLabel.setText("Login Successful");
+    } else if (usernameField.getText().equals("doctor")
+        && passwordField.getText().equals("doctor")) {
+      popUpLabel.setStyle("-fx-text-fill: green;");
+      popUpLabel.setText("Login Successful");
+    } else if (usernameField.getText().equals("doctor")
+        && passwordField.getText().equals("doctor")) {
+      popUpLabel.setStyle("-fx-text-fill: green;");
+      popUpLabel.setText("Login Successful");
+    } else if (usernameField.getText().equals("staff") && passwordField.getText().equals("staff")) {
+      popUpLabel.setStyle("-fx-text-fill: green;");
+      popUpLabel.setText("Login Successful");
     } else {
-      // popUpLabel.setTextFill(Color.color(228.0, 70.0, 42.0));
+      popUpLabel.setStyle("-fx-text-fill: red;");
       popUpLabel.setText("Wrong username or password, try again");
     }
   }
