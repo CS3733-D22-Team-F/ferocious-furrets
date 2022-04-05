@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets.entities.location;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
  */
 public class LocationsDAOImpl implements LocationDAO {
 
-  private Connection connection;
+  private Connection connection = DatabaseManager.getConn();
   private ArrayList<Location> csvLocations = new ArrayList<Location>();
   private ArrayList<Location> updatedLocations = new ArrayList<Location>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
@@ -31,14 +31,8 @@ public class LocationsDAOImpl implements LocationDAO {
   @FXML private TextField newLongName;
   @FXML private TextField newShortName;
 
-  /**
-   * Constructor that takes in a Connection object
-   *
-   * @param dbConn
-   */
-  public LocationsDAOImpl(Connection dbConn) {
-    this.connection = dbConn;
-  }
+  /** Constructor that takes in a Connection object */
+  public LocationsDAOImpl() {}
 
   /**
    * Method: initTable()
@@ -64,7 +58,7 @@ public class LocationsDAOImpl implements LocationDAO {
         new BufferedReader(
             new InputStreamReader(
                 LocationsDAOImpl.class.getResourceAsStream(
-                    "/edu/wpi/furious_furrets/TowerLocations.csv"),
+                    "/edu/wpi/furious_furrets/csv/TowerLocations.csv"),
                 StandardCharsets.UTF_8));
     String lineText;
     lineReader.readLine(); // skip header line
@@ -413,7 +407,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void saveLocationToCSV() throws SQLException {
 
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv";
+    String csvName = "src/main/resources/edu/wpi/furious_furrets/csv/TowerLocations.csv";
 
     Statement stm = null;
     try {

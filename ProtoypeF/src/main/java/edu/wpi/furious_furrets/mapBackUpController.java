@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.Location;
 import java.io.File;
 import java.io.IOException;
@@ -97,7 +97,7 @@ public class mapBackUpController implements Initializable {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-    DatabaseManager.getLdao()
+    DatabaseManager.getLocationDAO()
         .backUpToCSV("src/main/resources/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 
@@ -105,6 +105,6 @@ public class mapBackUpController implements Initializable {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-    DatabaseManager.getLdao().backUpToCSVFileChosen(file);
+    DatabaseManager.getLocationDAO().backUpToCSVFileChosen(file);
   }
 }

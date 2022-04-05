@@ -1,7 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.Location;
 import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import java.io.*;
@@ -36,7 +35,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   @FXML TableColumn<Location, String> Building;
   @FXML TableColumn<Location, String> longName;
 
-  private Connection connection = DatabaseInitializer.getConnection().getDbConnection();
+  private Connection connection = DatabaseManager.getConn();
 
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
@@ -52,7 +51,7 @@ public class mapPageController extends returnHomePage implements Initializable {
 
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = DatabaseManager.getLdao().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -101,7 +100,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = DatabaseManager.getLdao().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -118,7 +117,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = DatabaseManager.getLdao().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -146,7 +145,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = DatabaseManager.getLdao().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -160,7 +159,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     String nFloor = floor;
     int roomNum = 0;
     String rNum;
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
+    LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
 
     Statement stm = DatabaseManager.getConn().createStatement();
     String cmd =

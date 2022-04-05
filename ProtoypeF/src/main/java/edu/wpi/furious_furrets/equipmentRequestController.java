@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
 import java.net.URL;
 import java.sql.SQLException;
@@ -86,7 +86,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
       statusChoice.valueProperty().setValue(null);
       userField.clear();
 
-      DatabaseManager.getMdao()
+      DatabaseManager.getMedEquipDelReqDAO()
           .addRequest(
               addedDeliveryRequest.getReqID(),
               addedDeliveryRequest.getNodeID(),

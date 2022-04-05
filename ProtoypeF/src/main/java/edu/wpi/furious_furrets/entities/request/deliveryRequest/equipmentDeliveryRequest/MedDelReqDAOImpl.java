@@ -6,7 +6,7 @@
  */
 package edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
@@ -43,7 +43,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
         new BufferedReader(
             new InputStreamReader(
                 MedDelReqDAOImpl.class.getResourceAsStream(
-                    "/edu/wpi/furious_furrets/MedEquipReq.csv"),
+                    "/edu/wpi/furious_furrets/csv/MedEquipReq.csv"),
                 StandardCharsets.UTF_8));
     String lineText = null;
     lineReader.readLine(); // skip header line
@@ -74,14 +74,17 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     DatabaseMetaData databaseMetadata = conn.getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
-            null, null, "MEDEQUIPREQ", null); // CARTERS IF STATEMENT IF TABLE EXIST
+            null,
+            null,
+            "MEDICALEQUIPMENTDELIVERYREQUEST",
+            null); // CARTERS IF STATEMENT IF TABLE EXIST
     if (resultSet.next()) {
-      stm.execute("DROP TABLE MEDEQUIPREQ");
+      stm.execute("DROP TABLE medicalEquipmentDeliveryRequest");
     }
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
-        "CREATE TABLE medEquipReq (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+        "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedDelReq currentReq : requests) {
       stm.execute(currentReq.generateInsertStatement());
     }
@@ -113,7 +116,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
             equipmentID));
     reqIDs.add(reqID);
     String add =
-        "INSERT INTO MEDSERVREQ values ("
+        "INSERT INTO medicalEquipmentDeliveryRequest values ("
             + "'"
             + reqID
             + "', '"
@@ -183,7 +186,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   private void updateDatabase() throws SQLException {
 
     Statement stm = conn.createStatement();
-    String q = "SELECT * FROM Locations";
+    String q = "SELECT * FROM medicalEquipmentDeliveryRequest";
     ResultSet rset = stm.executeQuery(q);
     while (rset.next()) {
       for (MedDelReq currentReq : requests) {
@@ -217,7 +220,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
   public void saveRequestToCSV() {
 
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/MedEquipReq.csv";
+    String csvName = "src/main/resources/edu/wpi/furious_furrets/csv/MedEquipReq.csv";
 
     Statement stm = null;
     try {
@@ -229,7 +232,9 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     try {
       for (String id : reqIDs) {
         ResultSet rset;
-        rset = stm.executeQuery("SELECT * FROM MEDSERVREQ WHERE REQID = '" + id + "'");
+        rset =
+            stm.executeQuery(
+                "SELECT * FROM medicalEquipmentDeliveryRequest WHERE REQID = '" + id + "'");
 
         requestsFromRSET(rset);
 

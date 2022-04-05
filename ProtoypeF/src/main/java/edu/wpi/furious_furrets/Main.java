@@ -1,7 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.entities.database.*;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.sql.SQLException;
 

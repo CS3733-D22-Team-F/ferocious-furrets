@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.medicalEquipment;
 
 /** Equipment object */
 public class MedEquip {
@@ -55,7 +55,7 @@ public class MedEquip {
    * @return String
    */
   public String generateInsertStatement() {
-    return "INSERT INTO MEDEQUIP VALUES ('"
+    return "INSERT INTO medEquip VALUES ('"
         + this.equipID
         + "', '"
         + this.equipType

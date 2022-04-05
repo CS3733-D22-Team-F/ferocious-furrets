@@ -1,8 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import com.jfoenix.controls.JFXCheckBox;
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.Location;
 import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class mapAddController implements Initializable {
 
   @FXML private JFXCheckBox isModify;
 
-  private final Connection connection = DatabaseInitializer.getConnection().getDbConnection();
+  private final Connection connection = DatabaseManager.getConn();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -115,7 +114,7 @@ public class mapAddController implements Initializable {
                 nodeBox.getValue().substring(0, 4),
                 longField.getText(),
                 shortField.getText());
-        DatabaseManager.getLdao().addLocation(l);
+        DatabaseManager.getLocationDAO().addLocation(l);
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
@@ -141,9 +140,9 @@ public class mapAddController implements Initializable {
     String nFloor = floor;
     int roomNum = 1;
     String rNum;
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
+    LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
 
-    Statement stm = DatabaseInitializer.getConnection().dbConnection.createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
     String cmd =
         "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
     ResultSet rset = stm.executeQuery(cmd);

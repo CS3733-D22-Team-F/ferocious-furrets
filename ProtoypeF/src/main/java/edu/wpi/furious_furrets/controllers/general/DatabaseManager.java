@@ -1,24 +1,27 @@
-package edu.wpi.furious_furrets.controllers.entities;
+package edu.wpi.furious_furrets.controllers.general;
 
 import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
 import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
+import edu.wpi.furious_furrets.entities.medicalEquipment.MedEquipDAOImpl;
 import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
  * access a DAO call DatabaseManager.getWantedDAO()
  *
  * @see LocationsDAOImpl
- * @see edu.wpi.furious_furrets.database.MedDelReq
+ * @see edu.wpi.furious_furrets.entities.database.DatabaseInitializer
  */
 public class DatabaseManager {
 
-  private static final Connection conn = DatabaseInitializer.getConnection().dbConnection;
-  private static final LocationsDAOImpl ldao = new LocationsDAOImpl(conn);
-  private static final MedDelReqDAOImpl mdao = new MedDelReqDAOImpl();
+  private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
+  private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
+  private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
   //  private static final labReqDAOImpl lrdao = new labReqDAOImpl(conn);
 
   private static DatabaseManager DatabaseManager;
@@ -33,8 +36,9 @@ public class DatabaseManager {
    * @throws IOException
    */
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
-    ldao.initTable();
-    mdao.initTable();
+    locationsDAO.initTable();
+    medicalEquipmentDeliveryRequestDAO.initTable();
+    medicalEquipmentDAO.initTable();
     return Helper.dbMan;
   }
 
@@ -48,12 +52,27 @@ public class DatabaseManager {
   }
 
   /**
+   * Runs SQL statement
+   *
+   * @param statement statement to run
+   * @throws SQLException if there is an error with the statement (santax, etc)
+   */
+  public static void runStatement(String statement) throws SQLException {
+    Statement stm = conn.createStatement();
+    try {
+      stm.execute(statement);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
    * gets the LocatationDAOImpl object Use to use the addLocation, update, delete, etc
    *
    * @return LocationsDAOImpl
    */
-  public static LocationsDAOImpl getLdao() {
-    return ldao;
+  public static LocationsDAOImpl getLocationDAO() {
+    return locationsDAO;
   }
 
   /**
@@ -61,12 +80,16 @@ public class DatabaseManager {
    *
    * @return MedDelReqDAOImpl
    */
-  public static MedDelReqDAOImpl getMdao() {
-    return mdao;
+  public static MedDelReqDAOImpl getMedEquipDelReqDAO() {
+    return medicalEquipmentDeliveryRequestDAO;
+  }
+
+  public static MedEquipDAOImpl getMedEquipDAO() {
+    return medicalEquipmentDAO;
   }
 
   /**
-   * gets the labReqDAOImpl object Use to use the addLocation, update, delete, etc
+   * gets the labReqDAOImpl object Use to use the a ddLocation, update, delete, etc
    *
    * @return labReqDAOImpl
    */

@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.medicalEquipment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

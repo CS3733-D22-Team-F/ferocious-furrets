@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /** Class for handling the connection to the DB, ensuring we only have on connection from the app */
 public class DatabaseInitializer {
 
-  public Connection dbConnection;
+  private Connection dbConnection;
 
   /** Constructor */
   private DatabaseInitializer() {
@@ -28,7 +28,7 @@ public class DatabaseInitializer {
    *
    * @return Connection object
    */
-  public Connection connectDatabase() {
+  private Connection connectDatabase() {
     try {
       Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
     } catch (ClassNotFoundException e) {

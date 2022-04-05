@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class mapResetController implements Initializable {
   @FXML Button delete;
   @FXML Button select;
 
-  LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+  LocationsDAOImpl LDAOImpl = new LocationsDAOImpl();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
@@ -78,11 +78,12 @@ public class mapResetController implements Initializable {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-    DatabaseManager.getLdao().resetMapFromCSV("/edu/wpi/furious_furrets/" + filename + ".csv");
+    DatabaseManager.getLocationDAO()
+        .resetMapFromCSV("/edu/wpi/furious_furrets/" + filename + ".csv");
   }
 
   public void resetFromCSVFile(File file) throws SQLException, IOException {
     // System.out.println(file.getPath());
-    DatabaseManager.getLdao().resetMapFromCSVFileChosen(file);
+    DatabaseManager.getLocationDAO().resetMapFromCSVFileChosen(file);
   }
 }

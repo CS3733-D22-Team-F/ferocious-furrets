@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.Location;
 import java.net.URL;
 import java.sql.SQLException;
@@ -44,7 +44,7 @@ public class fullLocationController implements Initializable {
 
     ArrayList<Location> nLocations = null;
     try {
-      nLocations = DatabaseManager.getLdao().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
       e.printStackTrace();
     }

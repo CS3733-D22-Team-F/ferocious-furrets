@@ -2,7 +2,7 @@ package edu.wpi.furious_furrets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class DAOTester {
    */
   @Test
   public void testGetData() throws SQLException, IOException {
-    LocationsDAOImpl dao = new LocationsDAOImpl(conn);
+    LocationsDAOImpl dao = new LocationsDAOImpl();
     dao.initTable();
     assertNotNull(dao.getAllLocations());
     System.out.println(dao.getAllLocations().get(2).getLongName());

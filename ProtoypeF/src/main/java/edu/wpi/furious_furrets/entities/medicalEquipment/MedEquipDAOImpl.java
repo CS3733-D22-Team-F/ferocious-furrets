@@ -1,6 +1,6 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.medicalEquipment;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class MedEquipDAOImpl implements MedEquipDAO {
 
-  private Connection connection;
   private ArrayList<MedEquip> csvMedEquip = new ArrayList<MedEquip>();
   private ArrayList<MedEquip> updatedMedEquip = new ArrayList<MedEquip>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
@@ -16,14 +15,8 @@ public class MedEquipDAOImpl implements MedEquipDAO {
   // FXML ojects not added
   //
 
-  /**
-   * Constructor that takes in a Connection object
-   *
-   * @param dbConn
-   */
-  public MedEquipDAOImpl(Connection dbConn) {
-    this.connection = dbConn;
-  }
+  /** Constructor */
+  public MedEquipDAOImpl() {}
 
   public void initTable() throws SQLException, IOException {
     csvIDS.clear();
@@ -32,7 +25,8 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     BufferedReader lineReader =
         new BufferedReader(
             new InputStreamReader(
-                MedEquipDAOImpl.class.getResourceAsStream("/edu/wpi/furious_furrets/MedEquip.csv"),
+                MedEquipDAOImpl.class.getResourceAsStream(
+                    "/edu/wpi/furious_furrets/csv/MedEquip.csv"),
                 StandardCharsets.UTF_8));
     String lineText;
     lineReader.readLine(); // skip header line
@@ -46,16 +40,16 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       csvMedEquip.add(m);
       csvIDS.add(m.getNodeID());
     }
-    Statement stm = connection.createStatement();
-    DatabaseMetaData databaseMetadata = connection.getMetaData();
+    Statement stm = DatabaseManager.getConn().createStatement();
+    DatabaseMetaData databaseMetadata = DatabaseManager.getConn().getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
-            null, null, "MEDEQUIP", null); // CARTERS IF STATEMENT IF TABLE EXIST
+            null, null, "MEDICALEQUIPMENT", null); // CARTERS IF STATEMENT IF TABLE EXIST
     if (resultSet.next()) {
-      stm.execute("DROP TABLE MEDEQUIP");
+      stm.execute("DROP TABLE MedicalEquipment");
     }
     stm.execute(
-        "CREATE TABLE MEDEQUIP (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16))");
+        "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16))");
 
     for (MedEquip currentMedEquip : csvMedEquip) {
       stm.execute(currentMedEquip.generateInsertStatement());
@@ -86,7 +80,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     try {
       // for (String id : csvIDS) {
       ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM MEDEQUIP");
+      rset = stm.executeQuery("SELECT * FROM MedicalEquipment");
 
       ArrayList<MedEquip> allMedEquip = medEquipFromRSET(rset);
 
@@ -137,12 +131,12 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     DatabaseMetaData databaseMetadata = DatabaseManager.getConn().getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
-            null, null, "MEDEQUIP", null); // CARTERS IF STATEMENT IF TABLE EXIST
+            null, null, "MedicalEquipment", null); // CARTERS IF STATEMENT IF TABLE EXIST
     if (resultSet.next()) {
-      stm.execute("DROP TABLE MEDEQUIP");
+      stm.execute("DROP TABLE MedicalEquipment");
     }
     stm.execute(
-        "CREATE TABLE MEDEQUIP (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16))");
+        "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16))");
 
     for (MedEquip currentMedEquip : csvMedEquip) {
       stm.execute(currentMedEquip.generateInsertStatement());
@@ -177,7 +171,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
    */
   public ArrayList<MedEquip> getAllEquipment() throws SQLException {
     Statement stm = DatabaseManager.getConn().createStatement();
-    String q = "SELECT * FROM MEDEQUIP";
+    String q = "SELECT * FROM MedicalEquipment";
     ResultSet rset = stm.executeQuery(q);
     ArrayList<MedEquip> allMedEquip = medEquipFromRSET(rset);
     rset.close();
@@ -200,7 +194,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
 
     String updatedID = "";
     Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd = "UPDATE MEDEQUIP SET nodeID = '" + newNodeID + "'";
+    String cmd = "UPDATE MedicalEquipment SET nodeID = '" + newNodeID + "'";
     stm.execute(cmd);
     stm.close();
   }
@@ -229,7 +223,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
   public void deleteMedEquip(String eID) throws SQLException {
 
     Statement stm = DatabaseManager.getConn().createStatement();
-    String q = "Delete from MEDEQUIP where nodeID = '" + eID + "'";
+    String q = "Delete from MedicalEquipment where nodeID = '" + eID + "'";
     stm.execute(q);
     stm.close();
   }
@@ -240,7 +234,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
 
     Statement stm = null;
     try {
-      stm = connection.createStatement();
+      stm = DatabaseManager.getConn().createStatement();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -248,7 +242,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     try {
 
       ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM MEDEQUIP");
+      rset = stm.executeQuery("SELECT * FROM MedicalEquipment");
 
       ArrayList<MedEquip> allMedEquip = medEquipFromRSET(rset);
 
@@ -265,23 +259,5 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Returns the connection object used for the Derby connection
-   *
-   * @return
-   */
-  public Connection getConnection() {
-    return connection;
-  }
-
-  /**
-   * Sets the connection object used for the Derby connection
-   *
-   * @param connection
-   */
-  public void setConnection(Connection connection) {
-    this.connection = connection;
   }
 }

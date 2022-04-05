@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
+import edu.wpi.furious_furrets.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -59,6 +59,6 @@ public class mapDeleteController implements Initializable {
    * @throws IOException
    */
   public void deleteLocation(String oldID) throws SQLException, IOException {
-    DatabaseManager.getLdao().deleteLocation(oldID);
+    DatabaseManager.getLocationDAO().deleteLocation(oldID);
   }
 }
