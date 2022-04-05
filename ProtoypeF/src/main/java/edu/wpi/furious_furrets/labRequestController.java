@@ -4,10 +4,6 @@ import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.labRequest;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.urineLabRequest;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +13,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 /**
  * lab request controller
  *
@@ -25,17 +26,22 @@ import javafx.stage.Stage;
  */
 public class labRequestController extends returnHomePage implements Initializable {
 
-  @FXML TextField nodeField;
-  @FXML TextField employeeIDField;
-  @FXML TextField userField;
+  @FXML
+  TextField nodeField;
+  @FXML
+  TextField employeeIDField;
+  @FXML
+  TextField userField;
 
-  @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
-  @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
+  @FXML
+  ChoiceBox<Object> typeChoice; // Lab Type Choice Box
+  @FXML
+  ChoiceBox<Object> statueChoice; // Status Choice Box
 
   /**
    * inits
    *
-   * @param location URL
+   * @param location  URL
    * @param resources ResourceBundle
    */
   @Override
@@ -60,31 +66,33 @@ public class labRequestController extends returnHomePage implements Initializabl
    *
    * @return labRequest object
    */
+
+
   public labRequest submit() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
-        || typeChoice.getValue().equals("")
-        || statueChoice.getValue().equals("")) {
+            || employeeIDField.getText().equals("")
+            || userField.getText().equals("")
+            || typeChoice.getValue().equals("")
+            || statueChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
       return null;
     } else {
       if (typeChoice.getValue().equals("blood")) {
         bloodLabRequest newRequest =
-            new bloodLabRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
-                nodeField.getText(),
-                statueChoice.getValue().toString(),
-                "Lab",
-                "",
-                "",
-                typeChoice.getValue().toString(),
-                null);
+                new bloodLabRequest(
+                        userField.getText(),
+                        Integer.parseInt(employeeIDField.getText()),
+                        nodeField.getText(),
+                        statueChoice.getValue().toString(),
+                        "Lab",
+                        "",
+                        "",
+                        typeChoice.getValue().toString(),
+                        null);
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
@@ -94,16 +102,16 @@ public class labRequestController extends returnHomePage implements Initializabl
         return newRequest;
       } else {
         urineLabRequest newRequest =
-            new urineLabRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
-                nodeField.getText(),
-                statueChoice.getValue().toString(),
-                "Lab",
-                "",
-                "",
-                typeChoice.getValue().toString(),
-                null); // TODO
+                new urineLabRequest(
+                        userField.getText(),
+                        Integer.parseInt(employeeIDField.getText()),
+                        nodeField.getText(),
+                        statueChoice.getValue().toString(),
+                        "Lab",
+                        "",
+                        "",
+                        typeChoice.getValue().toString(),
+                        null); // TODO
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
