@@ -186,21 +186,22 @@ public class giftController extends returnHomePage implements Initializable {
     nodeID.clear();
     statusChoice.valueProperty().set(null);
     patientName.clear();
-    if (roseB) {
-      rose.fire();
-    }
-    if (teddyB) {
-      teddyBear.fire();
-    }
-    if (giftB) {
-      giftCard.fire();
-    }
-    if (jasmineB) {
-      jasmine.fire();
-    }
-    if (chrysB) {
-      chrys.fire();
-    }
+//TODO: fix checkbox reset
+//    if (roseB) {
+//      rose.fire();
+//    }
+//    if (teddyB) {
+//      teddyBear.fire();
+//    }
+//    if (giftB) {
+//      giftCard.fire();
+//    }
+//    if (jasmineB) {
+//      jasmine.fire();
+//    }
+//    if (chrysB) {
+//      chrys.fire();
+//    }
     return giftRequest;
   }
 
