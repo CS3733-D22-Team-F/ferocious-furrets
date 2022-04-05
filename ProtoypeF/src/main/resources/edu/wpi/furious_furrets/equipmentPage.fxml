@@ -1,67 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.equipmentRequestController">
    <children>
-      <Button layoutX="1144.0" layoutY="647.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+      <VBox alignment="TOP_RIGHT" layoutX="42.0" layoutY="90.0" prefHeight="444.0" prefWidth="273.0">
+         <children>
+            <Label text="Node ID:">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Employee ID: ">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Assigned User:">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Equipment Type:">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="TOP_RIGHT" text="Status:">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
       <Label layoutX="441.0" layoutY="13.0" text="Medical Equipment Request">
          <font>
             <Font name="Times New Roman" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="submitButton" layoutX="321.0" layoutY="586.0" mnemonicParsing="false" onAction="#submit" prefHeight="78.0" prefWidth="260.0" text="Submit">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
-      <Label layoutX="91.0" layoutY="109.0" text="Node ID:">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <Label layoutX="89.0" layoutY="160.0" text="Employee ID: ">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <TextField fx:id="nodeField" layoutX="332.0" layoutY="105.0" prefHeight="8.0" prefWidth="282.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="employeeIDField" layoutX="332.0" layoutY="165.0" prefHeight="8.0" prefWidth="282.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <ChoiceBox fx:id="statusChoice" layoutX="324.0" layoutY="422.0" prefHeight="42.0" prefWidth="290.0" />
-      <ChoiceBox fx:id="typeChoice" layoutX="325.0" layoutY="369.0" prefHeight="42.0" prefWidth="298.0" />
-      <Label layoutX="90.0" layoutY="220.0" text="Assigned User:">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userField" layoutX="333.0" layoutY="225.0" prefHeight="8.0" prefWidth="282.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <Label layoutX="87.0" layoutY="419.0" text="Status:">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <Label layoutX="42.0" layoutY="363.0" text="Equipment Type:">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <Button fx:id="resetButton" layoutX="657.0" layoutY="612.0" mnemonicParsing="false" onAction="#resetFunction" text="Reset" />
+      <VBox layoutX="322.0" layoutY="101.0" prefHeight="396.0" prefWidth="299.0">
+         <children>
+            <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="employeeIDField" prefHeight="8.0" prefWidth="282.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin>
+            </TextField>
+            <JFXComboBox fx:id="typeChoice" prefHeight="39.0" prefWidth="299.0">
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </JFXComboBox>
+            <JFXComboBox fx:id="statusChoice" prefHeight="43.0" prefWidth="299.0">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXComboBox>
+         </children>
+      </VBox>
+      <HBox layoutX="290.0" layoutY="513.0" prefHeight="36.0" prefWidth="315.0">
+         <children>
+            <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="47.0" prefWidth="99.0" ripplerFill="#f3ba48" text="Submit" textFill="#123090" />
+            <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#resetFunction" prefHeight="36.0" prefWidth="101.0" ripplerFill="#f5bc4b" text="Reset" textFill="#123090" />
+            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="44.0" prefWidth="101.0" ripplerFill="#f3ba48" text="Home" textFill="#123090" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
