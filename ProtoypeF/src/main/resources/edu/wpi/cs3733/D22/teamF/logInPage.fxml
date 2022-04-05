@@ -25,9 +25,9 @@
                               <Image url="@loginpfp.png" />
                            </image>
                         </ImageView>
-                        <Label text="Sign In" textFill="#a8a8a8">
+                        <Label text="Sign In" textFill="WHITE">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
                         <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="-fx-text-fill: white;" unFocusColor="white">
@@ -46,7 +46,7 @@
                               <Insets left="25.0" right="25.0" />
                            </padding>
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </JFXPasswordField>
                      </children>
@@ -82,7 +82,6 @@
                         </JFXButton>
                      </children>
                   </VBox>
-                  <Label text="Label" />
                </children>
             </VBox>
          </children>
