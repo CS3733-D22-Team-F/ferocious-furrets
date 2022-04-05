@@ -101,6 +101,14 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.close();
   }
 
+  /**
+   * Replicates the initTable method but with a user specified filename, drops old Locations table
+   * and recreates with specified file
+   *
+   * @param filename csv file that contains the location nodes replacing the old map
+   * @throws IOException
+   * @throws SQLException
+   */
   public void resetMapFromCSV(String filename) throws IOException, SQLException {
     csvLocations.clear();
     csvIDS.clear();
@@ -144,6 +152,13 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.close();
   }
 
+  /**
+   * Saves the Locations table to a csv file
+   *
+   * @param filename is the name of the file the map will be backed up to
+   * @throws SQLException
+   * @throws IOException
+   */
   public void backUpToCSV(String filename) throws SQLException, IOException {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
@@ -156,12 +171,7 @@ public class LocationsDAOImpl implements LocationDAO {
       e.printStackTrace();
     }
 
-    //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-    //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-    //    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
-
     try {
-      // for (String id : csvIDS) {
       ResultSet rset;
       rset = stm.executeQuery("SELECT * FROM Locations");
 

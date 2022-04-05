@@ -17,29 +17,24 @@ import javafx.stage.Stage;
 /** Controller for gift scene */
 public class giftController extends returnHomePage implements Initializable {
 
-  private ArrayList<Object> itemList = new ArrayList<>();
-
   @FXML CheckBox rose;
   @FXML CheckBox teddyBear;
   @FXML CheckBox giftCard;
   @FXML CheckBox jasmine;
   @FXML CheckBox chrys;
-
   @FXML Label employeeField;
   @FXML Label doctorField;
   @FXML Label nodeField;
   @FXML Label itemField;
-
   @FXML Button submitButton;
   @FXML Button previewButton;
-
   @FXML TextField employeeID;
   @FXML TextField nodeID;
   @FXML TextField patientName;
   @FXML TextField assigned;
-
   @FXML ChoiceBox<Object> statusChoice;
   String reqType = "";
+  private ArrayList<Object> itemList = new ArrayList<>();
 
   /**
    * init
@@ -158,7 +153,8 @@ public class giftController extends returnHomePage implements Initializable {
             statusChoice.getValue().toString(),
             reqType,
             null,
-            null);
+            null,
+            null); // TODO
     //    System.out.println(giftRequest.getAssign());
     //    System.out.println(giftRequest.getnID());
     //    System.out.println(giftRequest.getSts());
