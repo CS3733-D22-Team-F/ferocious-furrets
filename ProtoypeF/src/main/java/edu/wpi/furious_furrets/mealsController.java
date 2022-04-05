@@ -7,23 +7,24 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class mealsController extends returnHomePage implements Initializable {
-  @FXML private ChoiceBox<Object> status;
+
+  ArrayList<Object> returnList = new ArrayList<>();
+  ArrayList<Object> requestList = new ArrayList<>();
+  @FXML private ComboBox<Object> status;
 
   // submit button sendind delivery
-  @FXML private Button submitButton;
+  // @FXML private Button submitButton;
   @FXML private TextField employeeName;
   @FXML private TextField employeeID;
   @FXML private TextField nodeID;
   @FXML private TextField requestType;
   @FXML private TextField deliveryType;
   @FXML private TextField deliveryID;
-
   @FXML private CheckBox pancakes;
   @FXML private CheckBox scrEggs;
   @FXML private CheckBox friedEggs;
@@ -39,8 +40,6 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private CheckBox coffee1;
   @FXML private CheckBox frSmoothie1;
   @FXML private CheckBox apJuice1;
-  ArrayList<Object> returnList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
   //  @FXML private CheckBox turk;
   //  @FXML private CheckBox steak;
   //  @FXML private CheckBox tomato;
@@ -208,7 +207,8 @@ public class mealsController extends returnHomePage implements Initializable {
               (String) status.getValue(),
               requestType.getText(),
               null,
-              null);
+              null,
+              null); // TODO
       System.out.println("Meal Sent");
 
       employeeName.setText("");
@@ -220,5 +220,5 @@ public class mealsController extends returnHomePage implements Initializable {
       deliveryType.setText("");
       return sendMealRequest;
     }
-  };
+  }
 }

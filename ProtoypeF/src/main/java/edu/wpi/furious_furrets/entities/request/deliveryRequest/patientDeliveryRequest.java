@@ -9,7 +9,8 @@ public class patientDeliveryRequest extends DeliveryRequest {
       String sts,
       String reqType,
       String deliveryID,
-      String deliveryType) {
-    super(assign, empID, nID, sts, reqType, deliveryID, deliveryType);
+      String deliveryType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, deliveryID, deliveryType, reqID);
   }
 }

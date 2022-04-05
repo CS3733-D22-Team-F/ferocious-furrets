@@ -25,15 +25,24 @@ public class mapBackUpController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
 
+  /** Cancel add, close window */
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }
 
+  /** set all fields to blank */
   public void reset() {
     idField.clear();
   }
 
+  /**
+   * calls method to back up CSV file upon clicking of button
+   *
+   * @param event
+   * @throws SQLException
+   * @throws IOException
+   */
   public void backUp(ActionEvent event) throws SQLException, IOException {
 
     if (idField.getText() != null) {
@@ -47,6 +56,11 @@ public class mapBackUpController implements Initializable {
     }
   }
 
+  /**
+   * @param rset
+   * @return Array List of all Locations in the Locations table
+   * @throws SQLException
+   */
   public ArrayList<Location> locationsFromRSET(ResultSet rset) throws SQLException {
     ArrayList<Location> allLocations = new ArrayList<Location>();
     while (rset.next()) {
@@ -65,6 +79,7 @@ public class mapBackUpController implements Initializable {
     return allLocations;
   }
 
+  /** Take in a filename from the user and call LocationDAOImpl to back up file */
   public void backUpToCSV(String filename) throws SQLException, IOException {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";

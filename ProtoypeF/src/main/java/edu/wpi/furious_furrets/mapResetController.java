@@ -31,6 +31,13 @@ public class mapResetController implements Initializable {
     idField.clear();
   }
 
+  /**
+   * Calls method to reset map locations to locations from a user specified file
+   *
+   * @param event
+   * @throws SQLException
+   * @throws IOException
+   */
   public void resetFile(ActionEvent event) throws SQLException, IOException {
 
     if (idField.getText() != null) {
@@ -44,6 +51,13 @@ public class mapResetController implements Initializable {
     }
   }
 
+  /**
+   * Calls LocationDAOImpl to reset the Locations table to a specified csv
+   *
+   * @param filename is a csv file that contains location nodes
+   * @throws SQLException
+   * @throws IOException
+   */
   public void resetFromCSV(String filename) throws SQLException, IOException {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
