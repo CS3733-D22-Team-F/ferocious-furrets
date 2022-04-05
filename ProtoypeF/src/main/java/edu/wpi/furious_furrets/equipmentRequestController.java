@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,8 +25,8 @@ public class equipmentRequestController extends returnHomePage implements Initia
   @FXML private TextField nodeField;
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
-  @FXML private ChoiceBox typeChoice;
-  @FXML private ChoiceBox statusChoice;
+  @FXML private ComboBox typeChoice;
+  @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
 
