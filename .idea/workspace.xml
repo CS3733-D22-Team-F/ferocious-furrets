@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed bug that would crash program if lab request page was selected. Modified filepaths for load/reset functionalities to account for refactored file system.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_22__7_52_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_22__7_52_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_22__8_46_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_22__8_46_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/medicalEquipment/MedEquip.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/medicalEquipment/MedEquip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
-    </list>
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed bug that would crash program if lab request page was selected. Modified filepaths for load/reset functionalities to account for refactored file system." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -279,9 +268,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
+        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle.ProtoypeF [runShadow]" />
         <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
-        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
       </list>
     </recent_temporary>
@@ -368,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649162134827</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Built csv file for medical equipment">
+      <created>1649165058177</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649165058178</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +404,8 @@
     <MESSAGE value="Added File Explorer window to load/reset CSV functionality for UX" />
     <MESSAGE value="Worked on login page, opening login page upon startup" />
     <MESSAGE value="Fixed bug that would crash program if lab request page was selected. Modified filepaths for load/reset functionalities to account for refactored file system." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug that would crash program if lab request page was selected. Modified filepaths for load/reset functionalities to account for refactored file system." />
+    <MESSAGE value="Built csv file for medical equipment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Built csv file for medical equipment" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
