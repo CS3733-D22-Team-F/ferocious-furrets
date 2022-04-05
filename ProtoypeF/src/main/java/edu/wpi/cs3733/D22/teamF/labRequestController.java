@@ -81,10 +81,11 @@ public class labRequestController extends returnHomePage implements Initializabl
       } else {
         sampleType = "Urine";
       }
-      // TODO reqID
+      int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
+      String reqID = generateReqID(curLabReqSize, sampleType);
       labRequest newRequest =
           new labRequest(
-              null,
+              reqID,
               nodeField.getText(),
               employeeIDField.getText(),
               userField.getText(),
@@ -132,5 +133,17 @@ public class labRequestController extends returnHomePage implements Initializabl
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+  }
+
+  // TODO make a interaface for all controllers
+  public String generateReqID(int requestListLength, String sampleType) {
+    String reqAbb = "LR";
+    String sAb = "";
+    if (sampleType.equals("Urine")) {
+      sAb = "U";
+    } else if (sampleType.equals("Blood")) {
+      sAb = "B";
+    }
+    return reqAbb + sAb + (requestListLength + 1);
   }
 }

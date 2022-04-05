@@ -199,13 +199,16 @@ public class mealsController extends returnHomePage implements Initializable {
       System.out.println("Meal Not Sent");
       return sendMealRequest;
     } else {
+
+      // String reqID = generateReqID()//TODO
+
       mealDeliveryRequest sendMealRequest =
           new mealDeliveryRequest(
               null,
               nodeID.getText(),
               employeeID.getText(),
               null, // TODO ADD REQUESTER ID FIELD
-              requestType.getText().toString(),
+              requestType.getText(),
               "Delivery",
               "Meal");
       System.out.println("Meal Sent");
@@ -219,5 +222,11 @@ public class mealsController extends returnHomePage implements Initializable {
       deliveryType.setText("");
       return sendMealRequest;
     }
+  }
+
+  public String generateReqID(int requestListLength, String nodeID) {
+    String reqAbb = "MR";
+
+    return reqAbb + nodeID + (requestListLength + 1);
   }
 }

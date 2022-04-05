@@ -183,4 +183,10 @@ public class giftController extends returnHomePage implements Initializable {
     stage.setScene(scene);
     stage.show();
   }
+
+  public String generateReqID(int requestListLength, String giftID) {
+    String reqAbb = "GR";
+
+    return reqAbb + giftID + (requestListLength + 1);
+  }
 }
