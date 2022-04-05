@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXBadge?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane onMouseEntered="#populateList" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.requestListController">
+<AnchorPane onMouseEntered="#populateList" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.requestListController">
    <children>
       <VBox layoutX="74.0" layoutY="66.0" prefHeight="567.0" prefWidth="664.0">
          <children>
@@ -30,12 +24,12 @@
             </Pane>
             <Pane prefHeight="64.0" prefWidth="664.0">
                <children>
-                  <JFXTextArea layoutX="447.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="              Status " unFocusColor="#4240a8">
+                  <JFXTextArea editable="false" layoutX="447.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="              Status " unFocusColor="#4240a8">
                      <font>
                         <Font name="Serif Italic" size="24.0" />
                      </font>
                   </JFXTextArea>
-                  <JFXTextArea layoutX="236.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="         Assigned " unFocusColor="#4240a8">
+                  <JFXTextArea editable="false" layoutX="236.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="         Assigned " unFocusColor="#4240a8">
                      <font>
                         <Font name="Serif Italic" size="24.0" />
                      </font>
@@ -43,7 +37,7 @@
                         <Insets />
                      </opaqueInsets>
                   </JFXTextArea>
-                  <JFXTextArea layoutY="-1.0" prefHeight="64.0" prefWidth="242.0" text="   Request Type " unFocusColor="#4240a8">
+                  <JFXTextArea editable="false" layoutY="-1.0" prefHeight="64.0" prefWidth="242.0" text="   Request Type " unFocusColor="#4240a8">
                      <font>
                         <Font name="Serif Italic" size="24.0" />
                      </font>
