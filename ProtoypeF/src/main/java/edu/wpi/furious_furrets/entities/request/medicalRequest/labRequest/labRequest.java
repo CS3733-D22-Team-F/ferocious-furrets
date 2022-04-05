@@ -24,8 +24,9 @@ public abstract class labRequest extends MedicalRequest {
       String reqType,
       String equipID,
       String equipType,
-      String sampleType) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType);
+      String sampleType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, equipID, equipType, reqID);
     this.sampleType = sampleType;
   }
 }

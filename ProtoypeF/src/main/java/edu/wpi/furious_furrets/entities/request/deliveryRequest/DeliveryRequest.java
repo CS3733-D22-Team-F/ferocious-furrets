@@ -14,8 +14,9 @@ public abstract class DeliveryRequest extends Request {
       String sts,
       String reqType,
       String deliveryID,
-      String deliveryType) {
-    super(assign, empID, nID, sts, reqType);
+      String deliveryType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, reqID);
     this.deliveryID = deliveryID;
     this.deliveryType = deliveryType;
   }

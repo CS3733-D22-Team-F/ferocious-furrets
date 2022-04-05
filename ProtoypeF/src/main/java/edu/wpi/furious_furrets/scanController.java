@@ -14,7 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /** controller for scan scene */
@@ -74,7 +75,8 @@ public class scanController extends returnHomePage implements Initializable {
                 statueChoice.getValue().toString(),
                 "Scan",
                 "",
-                "");
+                "",
+                null); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
@@ -90,7 +92,8 @@ public class scanController extends returnHomePage implements Initializable {
                 statueChoice.getValue().toString(),
                 "Scan",
                 "",
-                "");
+                "",
+                null); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
@@ -106,7 +109,8 @@ public class scanController extends returnHomePage implements Initializable {
                 statueChoice.getValue().toString(),
                 "Scan",
                 "",
-                "");
+                "",
+                null); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
