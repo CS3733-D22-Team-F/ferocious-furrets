@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.database.LocationsDAOImpl;
+import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
