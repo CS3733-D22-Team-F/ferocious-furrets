@@ -75,23 +75,11 @@ public class giftController extends returnHomePage implements Initializable {
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
-    //    roseB = rose.isSelected();
-    //    giftB = giftCard.isSelected();
-    //    jasmineB = jasmine.isSelected();
-    //    chrysB = chrys.isSelected();
     if ((!roseB && !teddyB && !giftB && !jasmineB && !chrysB)
         || employeeID.getText().isEmpty()
         || nodeID.getText().isEmpty()
         || assigned.getText().isEmpty()
         || patientName.getText().isEmpty()) {
-      //      System.out.println(roseB);
-      //      System.out.println(teddyB);
-      //      System.out.println(jasmineB);
-      //      System.out.println(chrysB);
-      //      System.out.println(employeeID.getText().isEmpty());
-      //      System.out.println(nodeID.getText().isEmpty());
-      //      System.out.println(assigned.getText().isEmpty());
-      //      System.out.println(patientName.getText().isEmpty());
       System.out.println("please make a choice");
       return false;
     } else {
@@ -100,7 +88,7 @@ public class giftController extends returnHomePage implements Initializable {
         temp.add("rose");
         temp.add("1");
         returnList.add(temp);
-        serviceList.add("rose");
+        serviceList.add("Rose");
         reqType = "Rose: ";
       }
       if (teddyB) {
@@ -186,22 +174,21 @@ public class giftController extends returnHomePage implements Initializable {
     nodeID.clear();
     statusChoice.valueProperty().set(null);
     patientName.clear();
-//TODO: fix checkbox reset
-//    if (roseB) {
-//      rose.fire();
-//    }
-//    if (teddyB) {
-//      teddyBear.fire();
-//    }
-//    if (giftB) {
-//      giftCard.fire();
-//    }
-//    if (jasmineB) {
-//      jasmine.fire();
-//    }
-//    if (chrysB) {
-//      chrys.fire();
-//    }
+    if ((rose != null) && roseB) {
+      rose.fire();
+    }
+    if ((teddyBear != null) && teddyB) {
+      teddyBear.fire();
+    }
+    if ((giftCard != null) && giftB) {
+      giftCard.fire();
+    }
+    if ((jasmine != null) && jasmineB) {
+      jasmine.fire();
+    }
+    if ((chrys != null) && chrysB) {
+      chrys.fire();
+    }
     return giftRequest;
   }
 
