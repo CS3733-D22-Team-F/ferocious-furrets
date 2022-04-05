@@ -1,21 +1,17 @@
-package edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest;
+package edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest;
 
 import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
 
-public abstract class labRequest extends MedicalRequest {
+public class mriScanRequest extends MedicalRequest {
 
-  protected String sampleType;
-
-  public labRequest(
+  public mriScanRequest(
       String reqID,
       String nodeID,
       String assignedEmpID,
       String requesterEmpID,
       String status,
       String reqType,
-      String medicalType,
-      String sampleType) {
+      String medicalType) {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);
-    this.sampleType = sampleType;
   }
 }

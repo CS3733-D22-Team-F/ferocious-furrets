@@ -2,9 +2,9 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.catscanRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.xrayScanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.catScanRequest.catscanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest.mriScanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.xrayScanRequest.xrayScanRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -84,14 +84,13 @@ public class scanController extends returnHomePage implements Initializable {
       if (typeChoice.getValue().equals("CAT")) {
         catscanRequest newRequest =
             new catscanRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
+                null,
                 nodeField.getText(),
+                employeeIDField.getText(),
+                userField.getText(),
                 statusChoice.getValue().toString(),
-                "Scan",
-                "",
-                "",
-                null); // TODO
+                "Medical",
+                "catScan"); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
@@ -101,14 +100,13 @@ public class scanController extends returnHomePage implements Initializable {
       } else if (typeChoice.getValue().equals("xray")) {
         xrayScanRequest newRequest =
             new xrayScanRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
+                null,
                 nodeField.getText(),
+                employeeIDField.getText(),
+                userField.getText(),
                 statusChoice.getValue().toString(),
-                "Scan",
-                "",
-                "",
-                null); // TODO
+                "Medical",
+                "xrayScan"); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
@@ -118,14 +116,13 @@ public class scanController extends returnHomePage implements Initializable {
       } else {
         mriScanRequest newRequest =
             new mriScanRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
+                null,
                 nodeField.getText(),
+                employeeIDField.getText(),
+                userField.getText(),
                 statusChoice.getValue().toString(),
-                "Scan",
-                "",
-                "",
-                null); // TODO
+                "Medical",
+                "mriScan"); // TODO
         requestList.clear();
         requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());

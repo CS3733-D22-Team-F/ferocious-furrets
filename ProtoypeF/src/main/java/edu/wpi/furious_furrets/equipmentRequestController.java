@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
   }
 
   @FXML
-  public equipmentDeliveryRequest submit() throws SQLException {
+  public MedDelReq submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -57,16 +57,28 @@ public class equipmentRequestController extends returnHomePage implements Initia
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
       int reqID = (int) (Math.random() * 1000) + 1;
-      equipmentDeliveryRequest equipServiceRequest =
-          new equipmentDeliveryRequest(
-              userField.getText(),
-              Integer.parseInt(employeeIDField.getText()),
+      //      equipmentDeliveryRequest equipServiceRequest =
+      //          new equipmentDeliveryRequest(
+      //              userField.getText(),
+      //              Integer.parseInt(employeeIDField.getText()),
+      //              nodeField.getText(),
+      //              statusChoice.getValue().toString(),
+      //              typeChoice.getValue().toString(),
+      //              Integer.toString(reqID),
+      //              null,
+      //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
+
+      MedDelReq addedDeliveryRequest =
+          new MedDelReq(
+              String.valueOf(reqID),
               nodeField.getText(),
+              employeeIDField.getText(),
+              userField.getText(),
               statusChoice.getValue().toString(),
-              typeChoice.getValue().toString(),
-              Integer.toString(reqID),
-              null,
-              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
+              "Delivery",
+              "Equipment",
+              null // TODO ADD EQUIPMENT ID TO UI
+              );
       nodeField.clear();
       employeeIDField.clear();
       userField.clear();
@@ -76,12 +88,14 @@ public class equipmentRequestController extends returnHomePage implements Initia
 
       DatabaseManager.getMdao()
           .addRequest(
-              equipServiceRequest.getDeliveryID(),
-              equipServiceRequest.getnID(),
-              equipServiceRequest.getAssign(),
-              equipServiceRequest.getSts());
+              addedDeliveryRequest.getReqID(),
+              addedDeliveryRequest.getNodeID(),
+              addedDeliveryRequest.getAssignedEmpID(),
+              addedDeliveryRequest.getRequesterEmpID(),
+              addedDeliveryRequest.getStatus(),
+              addedDeliveryRequest.getRequestedEquipmentID());
 
-      return equipServiceRequest;
+      return addedDeliveryRequest;
     }
   }
 

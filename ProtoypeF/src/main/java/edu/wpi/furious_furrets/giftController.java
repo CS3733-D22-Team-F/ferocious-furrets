@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest.giftDeliveryRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -147,14 +147,14 @@ public class giftController extends returnHomePage implements Initializable {
   public giftDeliveryRequest submitButton() {
     giftDeliveryRequest giftRequest =
         new giftDeliveryRequest(
-            assigned.getText(),
-            Integer.parseInt(employeeID.getText()),
+            null,
             nodeID.getText(),
+            assigned.getText(),
+            null, // requester FIELD
             statusChoice.getValue().toString(),
-            reqType,
-            null,
-            null,
-            null); // TODO
+            "Delivery",
+            "Gift");
+
     //    System.out.println(giftRequest.getAssign());
     //    System.out.println(giftRequest.getnID());
     //    System.out.println(giftRequest.getSts());
