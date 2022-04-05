@@ -15,10 +15,14 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class mapAddController implements Initializable {
@@ -158,6 +162,19 @@ public class mapAddController implements Initializable {
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
     return nID;
+  }
+
+  public void popUpTracker() throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+    xField.setText(coordTempHolder.getxValue());
+    yField.setText(coordTempHolder.getyValue());
+    floorField.setText(coordTempHolder.getFloorValue());
   }
 
   //  public void addLocation(
