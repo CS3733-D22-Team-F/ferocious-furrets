@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed bug on Service Request page allowing user to edit label fields">
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/labRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/labRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/MedEquipReq.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/MedEquipReq.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/TowerLocations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/giftRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/giftRequestQueue.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +110,7 @@
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -218,17 +222,6 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <list>
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
