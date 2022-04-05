@@ -29,8 +29,8 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML TextField employeeIDField;
   @FXML TextField userField;
 
-  @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
-  @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
+  @FXML ComboBox typeChoice; // Lab Type Choice Box
+  @FXML ComboBox statusChoice; // Status Choice Box
 
   /**
    * inits
@@ -121,7 +121,7 @@ public class labRequestController extends returnHomePage implements Initializabl
     employeeIDField.clear();
     userField.clear();
     typeChoice.valueProperty().setValue(null);
-    statueChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null);
   }
 
   /**

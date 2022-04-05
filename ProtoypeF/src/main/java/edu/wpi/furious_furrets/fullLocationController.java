@@ -2,7 +2,7 @@ package edu.wpi.furious_furrets;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.database.Location;
+import edu.wpi.furious_furrets.entities.location.Location;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;

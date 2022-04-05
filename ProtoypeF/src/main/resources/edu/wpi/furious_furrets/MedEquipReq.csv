@@ -1,1 +1,1 @@
-reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status, deliveryType
+reqID, equipmentID, nodeID, assignedEmployeeID, requesterEmployeeID, status
