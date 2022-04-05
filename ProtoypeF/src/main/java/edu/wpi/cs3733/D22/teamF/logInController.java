@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.furious_furrets.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
