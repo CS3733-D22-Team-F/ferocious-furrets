@@ -1,0 +1,668 @@
+Index: ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/Request.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.cs3733.D22.teamF.entities.request;\r\n\r\npublic abstract class Request {\r\n\r\n  private String reqID; // id of request\r\n  private String assignedEmpID; // Employee that is assigned the task (First name, Last name)\r\n  private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)\r\n  private String\r\n          nodeID; // nodeID is the key for the location in which the request is directed to (Check\r\n  // Locations.csv for examples)\r\n  private String status; // Status of the request (In Progress or Done)\r\n  // TODO enum\r\n  private String reqType; // Type of request made\r\n\r\n  /**\r\n   * @param reqID          reqID\r\n   * @param nodeID         location node ID\r\n   * @param assignedEmpID  requester name\r\n   * @param requesterEmpID requester id\r\n   * @param status         request status processing/done\r\n   * @param reqType        request tpye Medical/Delivery\r\n   */\r\n  public Request(\r\n          String reqID,\r\n          String nodeID,\r\n          String assignedEmpID,\r\n          String requesterEmpID,\r\n          String status,\r\n          String reqType) {\r\n    this.reqID = reqID;\r\n    this.nodeID = nodeID;\r\n    this.assignedEmpID = assignedEmpID;\r\n    this.requesterEmpID = requesterEmpID;\r\n    this.status = status;\r\n    this.reqType = reqType;\r\n  }\r\n\r\n  public String getAssignedEmpID() {\r\n    return assignedEmpID;\r\n  }\r\n\r\n  public void setAssignedEmpID(String assignedEmpID) {\r\n    this.assignedEmpID = assignedEmpID;\r\n  }\r\n\r\n  public String getRequesterEmpID() {\r\n    return requesterEmpID;\r\n  }\r\n\r\n  public void setRequesterEmpID(String requesterEmpID) {\r\n    this.requesterEmpID = requesterEmpID;\r\n  }\r\n\r\n  public String getNodeID() {\r\n    return nodeID;\r\n  }\r\n\r\n  public void setNodeID(String NodeID) {\r\n    this.nodeID = nodeID;\r\n  }\r\n\r\n  public String getStatus() {\r\n    return status;\r\n  }\r\n\r\n  public void setStatus(String status) {\r\n    this.status = status;\r\n  }\r\n\r\n  public String getReqType() {\r\n    return reqType;\r\n  }\r\n\r\n  public void setReqType(String reqType) {\r\n    this.reqType = reqType;\r\n  }\r\n\r\n  public String getReqID() {\r\n    return reqID;\r\n  }\r\n\r\n  public void setReqID(String reqID) {\r\n    this.reqID = reqID;\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/Request.java b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/Request.java
+--- a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/Request.java	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/Request.java	(date 1649200303125)
+@@ -6,27 +6,27 @@
+   private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
+   private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
+   private String
+-          nodeID; // nodeID is the key for the location in which the request is directed to (Check
++      nodeID; // nodeID is the key for the location in which the request is directed to (Check
+   // Locations.csv for examples)
+   private String status; // Status of the request (In Progress or Done)
+   // TODO enum
+   private String reqType; // Type of request made
+ 
+   /**
+-   * @param reqID          reqID
+-   * @param nodeID         location node ID
+-   * @param assignedEmpID  requester name
++   * @param reqID reqID
++   * @param nodeID location node ID
++   * @param assignedEmpID requester name
+    * @param requesterEmpID requester id
+-   * @param status         request status processing/done
+-   * @param reqType        request tpye Medical/Delivery
++   * @param status request status processing/done
++   * @param reqType request tpye Medical/Delivery
+    */
+   public Request(
+-          String reqID,
+-          String nodeID,
+-          String assignedEmpID,
+-          String requesterEmpID,
+-          String status,
+-          String reqType) {
++      String reqID,
++      String nodeID,
++      String assignedEmpID,
++      String requesterEmpID,
++      String status,
++      String reqType) {
+     this.reqID = reqID;
+     this.nodeID = nodeID;
+     this.assignedEmpID = assignedEmpID;
+Index: ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labRequestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.cs3733.D22.teamF;\r\n\r\nimport edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;\r\nimport edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;\r\nimport edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.ComboBox;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.ResourceBundle;\r\n\r\n/**\r\n * lab request controller\r\n *\r\n * @see returnHomePage\r\n * @see Initializable\r\n */\r\npublic class labRequestController extends returnHomePage implements Initializable {\r\n\r\n  @FXML\r\n  TextField nodeField;\r\n  @FXML\r\n  TextField employeeIDField;\r\n  @FXML\r\n  TextField userField;\r\n\r\n  @FXML\r\n  ComboBox typeChoice; // Lab Type Choice Box\r\n  @FXML\r\n  ComboBox statusChoice; // Status Choice Box\r\n\r\n\r\n  /**\r\n   * inits\r\n   *\r\n   * @param location  URL\r\n   * @param resources ResourceBundle\r\n   */\r\n  @Override\r\n  public void initialize(URL location, ResourceBundle resources) {\r\n    ArrayList<Object> temp = new ArrayList<>();\r\n    temp.add(\"\");\r\n    temp.add(\"processing\");\r\n    temp.add(\"done\");\r\n    statusChoice.getItems().addAll(temp);\r\n    statusChoice.setValue(\"\");\r\n    ArrayList<Object> temp1 = new ArrayList<>();\r\n    temp1.add(\"\");\r\n    temp1.add(\"blood\");\r\n    temp1.add(\"urine\");\r\n    typeChoice.getItems().addAll(temp1);\r\n    typeChoice.setValue(\"\");\r\n  }\r\n\r\n  // Use Try/Catch when call this function\r\n\r\n  /**\r\n   * Use Try/Catch when call this function submits a labrequest from user inputs\r\n   *\r\n   * @return labRequest object\r\n   */\r\n  public labRequest submit() throws SQLException {\r\n    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned\r\n    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label\r\n    ArrayList<Object> requestList = new ArrayList<>();\r\n    String sampleType = null;\r\n    // If any of the field is missing, pop up a notice\r\n    if (nodeField.getText().equals(\"\")\r\n            || employeeIDField.getText().equals(\"\")\r\n            || userField.getText().equals(\"\")\r\n            || typeChoice.getValue().equals(\"\")\r\n            || statusChoice.getValue().equals(\"\")) {\r\n      System.out.println(\"There are still blank fields\");\r\n      return null;\r\n    } else {\r\n\r\n      if (typeChoice.getValue().equals(\"blood\")) {\r\n        sampleType = \"Blood\";\r\n      } else {\r\n        sampleType = \"Urine\";\r\n      }\r\n      int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();\r\n      String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());\r\n      labRequest newRequest =\r\n              new labRequest(\r\n                      reqID,\r\n                      nodeField.getText(),\r\n                      employeeIDField.getText(),\r\n                      userField.getText(),\r\n                      statusChoice.getValue().toString(),\r\n                      \"Medical\",\r\n                      \"Lab\",\r\n                      sampleType);\r\n      requestList.clear();\r\n      requestList.add(\"Lab Request of type: \" + typeChoice.getValue().toString());\r\n      requestList.add(\"Assigned Doctor: \" + userField.getText());\r\n      requestList.add(\"Status: \" + statusChoice.getValue());\r\n      serviceRequestStorage.addToArrayList(requestList);\r\n      DatabaseManager.getLabRequestDAO()\r\n              .addRequest(\r\n                      newRequest.getReqID(),\r\n                      newRequest.getNodeID(),\r\n                      newRequest.getAssignedEmpID(),\r\n                      newRequest.getRequesterEmpID(),\r\n                      newRequest.getStatus(),\r\n                      newRequest.getReqType(),\r\n                      newRequest.getMedicalType(),\r\n                      newRequest.getSampleType());\r\n      return newRequest;\r\n    }\r\n  }\r\n\r\n  @FXML\r\n  public void reset() {\r\n    nodeField.clear();\r\n    employeeIDField.clear();\r\n    userField.clear();\r\n    typeChoice.valueProperty().setValue(null);\r\n    statusChoice.valueProperty().setValue(null);\r\n  }\r\n\r\n  /**\r\n   * shows the queue scene for lab requests\r\n   *\r\n   * @param event\r\n   * @throws IOException\r\n   */\r\n  public void showQueueScene(ActionEvent event) throws IOException {\r\n    Scene scene = SceneManager.getInstance().setScene(\"labRequestQueue.fxml\");\r\n    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n    stage.setScene(scene);\r\n    stage.show();\r\n  }\r\n\r\n  // TODO make a interaface for all controllers\r\n  public String generateReqID(int requestListLength, String sampleType, String nodeID) {\r\n    String reqAbb = \"LR\";\r\n    String sAb = \"\";\r\n    if (sampleType.equals(\"Urine\")) {\r\n      sAb = \"U\";\r\n    } else if (sampleType.equals(\"Blood\")) {\r\n      sAb = \"B\";\r\n    }\r\n    return reqAbb + sAb + (requestListLength + 1) + nodeID;\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labRequestController.java b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labRequestController.java
+--- a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labRequestController.java	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labRequestController.java	(date 1649200303360)
+@@ -3,6 +3,11 @@
+ import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+ import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;
++import java.io.IOException;
++import java.net.URL;
++import java.sql.SQLException;
++import java.util.ArrayList;
++import java.util.ResourceBundle;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+ import javafx.fxml.Initializable;
+@@ -12,12 +17,6 @@
+ import javafx.scene.control.TextField;
+ import javafx.stage.Stage;
+ 
+-import java.io.IOException;
+-import java.net.URL;
+-import java.sql.SQLException;
+-import java.util.ArrayList;
+-import java.util.ResourceBundle;
+-
+ /**
+  * lab request controller
+  *
+@@ -26,23 +25,17 @@
+  */
+ public class labRequestController extends returnHomePage implements Initializable {
+ 
+-  @FXML
+-  TextField nodeField;
+-  @FXML
+-  TextField employeeIDField;
+-  @FXML
+-  TextField userField;
++  @FXML TextField nodeField;
++  @FXML TextField employeeIDField;
++  @FXML TextField userField;
+ 
+-  @FXML
+-  ComboBox typeChoice; // Lab Type Choice Box
+-  @FXML
+-  ComboBox statusChoice; // Status Choice Box
+-
++  @FXML ComboBox typeChoice; // Lab Type Choice Box
++  @FXML ComboBox statusChoice; // Status Choice Box
+ 
+   /**
+    * inits
+    *
+-   * @param location  URL
++   * @param location URL
+    * @param resources ResourceBundle
+    */
+   @Override
+@@ -75,10 +68,10 @@
+     String sampleType = null;
+     // If any of the field is missing, pop up a notice
+     if (nodeField.getText().equals("")
+-            || employeeIDField.getText().equals("")
+-            || userField.getText().equals("")
+-            || typeChoice.getValue().equals("")
+-            || statusChoice.getValue().equals("")) {
++        || employeeIDField.getText().equals("")
++        || userField.getText().equals("")
++        || typeChoice.getValue().equals("")
++        || statusChoice.getValue().equals("")) {
+       System.out.println("There are still blank fields");
+       return null;
+     } else {
+@@ -91,30 +84,30 @@
+       int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
+       String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
+       labRequest newRequest =
+-              new labRequest(
+-                      reqID,
+-                      nodeField.getText(),
+-                      employeeIDField.getText(),
+-                      userField.getText(),
+-                      statusChoice.getValue().toString(),
+-                      "Medical",
+-                      "Lab",
+-                      sampleType);
++          new labRequest(
++              reqID,
++              nodeField.getText(),
++              employeeIDField.getText(),
++              userField.getText(),
++              statusChoice.getValue().toString(),
++              "Medical",
++              "Lab",
++              sampleType);
+       requestList.clear();
+       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+       requestList.add("Assigned Doctor: " + userField.getText());
+       requestList.add("Status: " + statusChoice.getValue());
+       serviceRequestStorage.addToArrayList(requestList);
+       DatabaseManager.getLabRequestDAO()
+-              .addRequest(
+-                      newRequest.getReqID(),
+-                      newRequest.getNodeID(),
+-                      newRequest.getAssignedEmpID(),
+-                      newRequest.getRequesterEmpID(),
+-                      newRequest.getStatus(),
+-                      newRequest.getReqType(),
+-                      newRequest.getMedicalType(),
+-                      newRequest.getSampleType());
++          .addRequest(
++              newRequest.getReqID(),
++              newRequest.getNodeID(),
++              newRequest.getAssignedEmpID(),
++              newRequest.getRequesterEmpID(),
++              newRequest.getStatus(),
++              newRequest.getReqType(),
++              newRequest.getMedicalType(),
++              newRequest.getSampleType());
+       return newRequest;
+     }
+   }
+Index: ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/equipmentRequestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.cs3733.D22.teamF;\r\n\r\nimport edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;\r\nimport edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.ComboBox;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.net.URL;\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class equipmentRequestController extends returnHomePage implements Initializable {\r\n\r\n  // TODO remove\r\n  private Stage stage;\r\n  private Scene scene;\r\n  private Parent root;\r\n\r\n  @FXML\r\n  private TextField nodeField;\r\n  @FXML\r\n  private TextField employeeIDField;\r\n  @FXML\r\n  private TextField userField;\r\n  @FXML\r\n  private ComboBox typeChoice;\r\n  @FXML\r\n  private ComboBox statusChoice;\r\n  @FXML\r\n  private Button resetButton;\r\n  @FXML\r\n  private Button submitButton;\r\n\r\n\r\n  @FXML\r\n  void resetFunction() {\r\n    nodeField.clear();\r\n    employeeIDField.clear();\r\n    userField.clear();\r\n    typeChoice.valueProperty().setValue(null);\r\n    statusChoice.valueProperty().setValue(null);\r\n    userField.clear();\r\n  }\r\n\r\n  @FXML\r\n  public MedDelReq submit() throws SQLException {\r\n\r\n    ArrayList<Object> requestList = new ArrayList<>();\r\n    if (nodeField.getText().equals(\"\")\r\n            || employeeIDField.getText().equals(\"\")\r\n            || userField.getText().equals(\"\")\r\n            || typeChoice.getValue().equals(\"\")\r\n            || statusChoice.getValue().equals(\"\")) {\r\n      System.out.println(\"There are still blank field\");\r\n      return null;\r\n    } else {\r\n      requestList.clear();\r\n      requestList.add(\"Equipment Request of type: \" + typeChoice.getValue().toString());\r\n      requestList.add(\"Assigned Doctor: \" + userField.getText());\r\n      requestList.add(\"Status: \" + statusChoice.getValue());\r\n      serviceRequestStorage.addToArrayList(requestList);\r\n\r\n      //      equipmentDeliveryRequest equipServiceRequest =\r\n      //          new equipmentDeliveryRequest(\r\n      //              userField.getText(),\r\n      //              Integer.parseInt(employeeIDField.getText()),\r\n      //              nodeField.getText(),\r\n      //              statusChoice.getValue().toString(),\r\n      //              typeChoice.getValue().toString(),\r\n      //              Integer.toString(reqID),\r\n      //              null,\r\n      //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?\r\n      String equipID =\r\n              DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());\r\n      int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();\r\n      String reqID = generateReqID(requestListSize, equipID, nodeField.getText());\r\n\r\n      MedDelReq addedDeliveryRequest =\r\n              new MedDelReq(\r\n                      reqID,\r\n                      nodeField.getText(),\r\n                      employeeIDField.getText(),\r\n                      userField.getText(),\r\n                      statusChoice.getValue().toString(),\r\n                      \"Delivery\",\r\n                      \"Equipment\",\r\n                      equipID // TODO ADD EQUIPMENT ID TO UI\r\n              );\r\n\r\n\r\n      nodeField.clear();\r\n      employeeIDField.clear();\r\n      userField.clear();\r\n      typeChoice.valueProperty().setValue(null);\r\n      statusChoice.valueProperty().setValue(null);\r\n      userField.clear();\r\n\r\n      DatabaseManager.getMedEquipDelReqDAO()\r\n              .addRequest(\r\n                      addedDeliveryRequest.getReqID(),\r\n                      addedDeliveryRequest.getNodeID(),\r\n                      addedDeliveryRequest.getAssignedEmpID(),\r\n                      addedDeliveryRequest.getRequesterEmpID(),\r\n                      addedDeliveryRequest.getStatus(),\r\n                      addedDeliveryRequest.getRequestedEquipmentID());\r\n\r\n      return addedDeliveryRequest;\r\n    }\r\n  }\r\n\r\n  @Override\r\n  public void initialize(URL location, ResourceBundle resources) {\r\n    ArrayList<Object> statusDrop = new ArrayList<>();\r\n    ArrayList<Object> equipmentType = new ArrayList<>();\r\n    statusDrop.add(\"\");\r\n    statusDrop.add(\"processing\");\r\n    statusDrop.add(\"done\");\r\n    statusChoice.getItems().addAll(statusDrop);\r\n    statusChoice.setValue(\"\");\r\n    equipmentType.add(\"Bed\");\r\n    equipmentType.add(\"X-Ray\");\r\n    equipmentType.add(\"Infusion Pump\");\r\n    equipmentType.add(\"Recliner\");\r\n    typeChoice.getItems().addAll(equipmentType);\r\n  }\r\n\r\n  // TODO make a interaface for all controllers\r\n  public String generateReqID(int requestListLength, String equipID, String nodeID) {\r\n    String reqAbb = \"ER\";\r\n\r\n    return reqAbb + equipID + (requestListLength + 1) + nodeID;\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/equipmentRequestController.java b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/equipmentRequestController.java
+--- a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/equipmentRequestController.java	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/equipmentRequestController.java	(date 1649200303215)
+@@ -2,6 +2,10 @@
+ 
+ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+ import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
++import java.net.URL;
++import java.sql.SQLException;
++import java.util.ArrayList;
++import java.util.ResourceBundle;
+ import javafx.fxml.FXML;
+ import javafx.fxml.Initializable;
+ import javafx.scene.Parent;
+@@ -11,11 +15,6 @@
+ import javafx.scene.control.TextField;
+ import javafx.stage.Stage;
+ 
+-import java.net.URL;
+-import java.sql.SQLException;
+-import java.util.ArrayList;
+-import java.util.ResourceBundle;
+-
+ public class equipmentRequestController extends returnHomePage implements Initializable {
+ 
+   // TODO remove
+@@ -23,21 +22,13 @@
+   private Scene scene;
+   private Parent root;
+ 
+-  @FXML
+-  private TextField nodeField;
+-  @FXML
+-  private TextField employeeIDField;
+-  @FXML
+-  private TextField userField;
+-  @FXML
+-  private ComboBox typeChoice;
+-  @FXML
+-  private ComboBox statusChoice;
+-  @FXML
+-  private Button resetButton;
+-  @FXML
+-  private Button submitButton;
+-
++  @FXML private TextField nodeField;
++  @FXML private TextField employeeIDField;
++  @FXML private TextField userField;
++  @FXML private ComboBox typeChoice;
++  @FXML private ComboBox statusChoice;
++  @FXML private Button resetButton;
++  @FXML private Button submitButton;
+ 
+   @FXML
+   void resetFunction() {
+@@ -54,10 +45,10 @@
+ 
+     ArrayList<Object> requestList = new ArrayList<>();
+     if (nodeField.getText().equals("")
+-            || employeeIDField.getText().equals("")
+-            || userField.getText().equals("")
+-            || typeChoice.getValue().equals("")
+-            || statusChoice.getValue().equals("")) {
++        || employeeIDField.getText().equals("")
++        || userField.getText().equals("")
++        || typeChoice.getValue().equals("")
++        || statusChoice.getValue().equals("")) {
+       System.out.println("There are still blank field");
+       return null;
+     } else {
+@@ -78,23 +69,22 @@
+       //              null,
+       //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
+       String equipID =
+-              DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());
++          DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());
+       int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();
+       String reqID = generateReqID(requestListSize, equipID, nodeField.getText());
+ 
+       MedDelReq addedDeliveryRequest =
+-              new MedDelReq(
+-                      reqID,
+-                      nodeField.getText(),
+-                      employeeIDField.getText(),
+-                      userField.getText(),
+-                      statusChoice.getValue().toString(),
+-                      "Delivery",
+-                      "Equipment",
+-                      equipID // TODO ADD EQUIPMENT ID TO UI
++          new MedDelReq(
++              reqID,
++              nodeField.getText(),
++              employeeIDField.getText(),
++              userField.getText(),
++              statusChoice.getValue().toString(),
++              "Delivery",
++              "Equipment",
++              equipID // TODO ADD EQUIPMENT ID TO UI
+               );
+ 
+-
+       nodeField.clear();
+       employeeIDField.clear();
+       userField.clear();
+@@ -103,13 +93,13 @@
+       userField.clear();
+ 
+       DatabaseManager.getMedEquipDelReqDAO()
+-              .addRequest(
+-                      addedDeliveryRequest.getReqID(),
+-                      addedDeliveryRequest.getNodeID(),
+-                      addedDeliveryRequest.getAssignedEmpID(),
+-                      addedDeliveryRequest.getRequesterEmpID(),
+-                      addedDeliveryRequest.getStatus(),
+-                      addedDeliveryRequest.getRequestedEquipmentID());
++          .addRequest(
++              addedDeliveryRequest.getReqID(),
++              addedDeliveryRequest.getNodeID(),
++              addedDeliveryRequest.getAssignedEmpID(),
++              addedDeliveryRequest.getRequesterEmpID(),
++              addedDeliveryRequest.getStatus(),
++              addedDeliveryRequest.getRequestedEquipmentID());
+ 
+       return addedDeliveryRequest;
+     }
+Index: ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import com.jfoenix.controls.JFXButton?>\r\n<?import javafx.scene.control.Menu?>\r\n<?import javafx.scene.control.MenuBar?>\r\n<?import javafx.scene.control.MenuItem?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane prefHeight=\"720.0\" prefWidth=\"1280.0\" style=\"-fx-background-color: #154487;\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"edu.wpi.cs3733.D22.teamF.mapPageController\">\r\n   <children>\r\n      <ImageView fx:id=\"mapHolder\" fitHeight=\"650.0\" fitWidth=\"920.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@FloorMap/Floor1.jpg\" />\r\n         </image>\r\n      </ImageView>\r\n      <MenuBar layoutX=\"20.0\" layoutY=\"18.0\">\r\n        <menus>\r\n          <Menu mnemonicParsing=\"false\" text=\"Change Map\">\r\n            <items>\r\n              <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF3\" text=\"Floor 3\" />\r\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF2\" text=\"Floor 2\" />\r\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF1\" text=\"Floor 1\" />\r\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToL1\" text=\"Lower 1\" />\r\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToL2\" text=\"Lower 2\" />\r\n            </items>\r\n          </Menu>\r\n        </menus>\r\n      </MenuBar>\r\n      <TableView fx:id=\"table\" layoutX=\"813.0\" prefHeight=\"720.0\" prefWidth=\"467.0\">\r\n        <columns>\r\n            <TableColumn fx:id=\"Building\" prefWidth=\"104.2301025390625\" text=\"Building\" />\r\n            <TableColumn fx:id=\"Floor\" prefWidth=\"77.2698974609375\" text=\"Floor\" />\r\n            <TableColumn fx:id=\"longName\" prefWidth=\"285.03564453125\" text=\"longName\" />\r\n        </columns>\r\n      </TableView>\r\n      <HBox layoutY=\"650.0\" prefHeight=\"70.0\" prefWidth=\"814.0\">\r\n         <children>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#popUpAdd\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"ADD\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#popUpDelete\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"RED\" style=\"-fx-background-color: #062558;\" text=\"DELETE\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#popUpSave\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"SAVE\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#popUpReset\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"LOAD\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#backToHomePage\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"HOME\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n            <JFXButton buttonType=\"RAISED\" onAction=\"#openFullTable\" prefHeight=\"70.0\" prefWidth=\"271.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"FULL TABLE\" textFill=\"WHITE\">\r\n               <font>\r\n                  <Font size=\"24.0\" />\r\n               </font>\r\n            </JFXButton>\r\n         </children>\r\n      </HBox>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml b/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml
+--- a/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml	(date 1649200297530)
+@@ -12,6 +12,8 @@
+ <?import javafx.scene.layout.HBox?>
+ <?import javafx.scene.text.Font?>
+ 
++<?import javafx.scene.control.TitledPane?>
++<?import javafx.scene.control.Label?>
+ <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapPageController">
+    <children>
+       <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
+@@ -73,5 +75,99 @@
+             </JFXButton>
+          </children>
+       </HBox>
++       <TitledPane fx:id="legend" animated="false" layoutX="146.0" layoutY="18.0" prefHeight="247.0" prefWidth="207.0" text="Legend">
++           <content>
++               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="200.0">
++                   <children>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/PATI Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/STOR Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/DIRT Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/HALL Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/ELEV Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/REST Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/STAI Icon.png" />
++                           </image>
++                       </ImageView>
++                       <Label layoutX="49.0" layoutY="2.0" text="Patient" />
++                       <Label layoutX="52.0" layoutY="16.0" text="Room" />
++                       <Label layoutX="47.0" layoutY="39.0" text="Storage" />
++                       <Label layoutX="55.0" layoutY="62.0" text="Dirty" />
++                       <Label layoutX="39.0" layoutY="77.0" text="Equipment" />
++                       <Label layoutX="46.0" layoutY="99.0" text="Hallway" />
++                       <Label layoutX="46.0" layoutY="129.0" text="Elevator" />
++                       <Label layoutX="42.0" layoutY="159.0" text="Restroom" />
++                       <Label layoutX="43.0" layoutY="189.0" text="Staircase" />
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/DEPT Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/LABS Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/INFO Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/CONF Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/EXIT Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/RETL Icon.png" />
++                           </image>
++                       </ImageView>
++                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                               <Image url="@Icons/MapIcons/SERV Icon.png" />
++                           </image>
++                       </ImageView>
++                       <Label layoutX="135.0" layoutY="8.0" text="Department" />
++                       <Label layoutX="155.0" layoutY="39.0" text="Labs" />
++                       <Label layoutX="136.0" layoutY="68.0" text="Information" />
++                       <Label layoutX="136.0" layoutY="99.0" text="Conference" />
++                       <Label layoutX="133.0" layoutY="129.0" text="Exit/Entrance" />
++                       <Label layoutX="141.0" layoutY="159.0" text="Retail" />
++                       <Label layoutX="139.0" layoutY="190.0" text="Services" />
++                   </children>
++               </AnchorPane>
++           </content>
++       </TitledPane>
+    </children>
+ </AnchorPane>
+Index: ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/LabRequestDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/**\r\n * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and updateRequest function\r\n *\r\n * @version 1.0\r\n */\r\npackage edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;\r\n\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\n\r\n/**\r\n * Interface for the LabRequestDAO class to handle the labRequest DB necessary function\r\n *\r\n * @version 1.0\r\n * @see labRequest\r\n */\r\npublic interface LabRequestDAO {\r\n  ArrayList<labRequest> getAllRequests() throws SQLException;\r\n\r\n  /**\r\n   *\r\n   * @param reqID request ID\r\n   * @param nodeID id of location node\r\n   * @param assignedEmpID employee name\r\n   * @param requesterEmpID employee id\r\n   * @param status status of request processing/done\r\n   * @param reqType type of Request, for this always medical\r\n   * @param medicalType type of medical, for this Lab\r\n   * @param sampleType type of sample blood/urine\r\n   * @throws SQLException\r\n   */\r\n  void addRequest(\r\n          String reqID,\r\n          String nodeID,\r\n          String assignedEmpID,\r\n          String requesterEmpID,\r\n          String status,\r\n          String reqType,\r\n          String medicalType,\r\n          String sampleType)\r\n          throws SQLException;\r\n\r\n  /**\r\n   * deletes a request object\r\n   * @param deletedObject labRequest\r\n   * @throws SQLException\r\n   */\r\n  void deleteRequest(labRequest deletedObject) throws SQLException;\r\n\r\n  /**\r\n   *\r\n   * @param updatingRequest labRequest to update\r\n   * @param reqID new reqID\r\n   * @param nodeID new nodeID\r\n   * @param assignedEmpID new assignedEmpID\r\n   * @param requesterEmpID new erquesterID\r\n   * @param status new status\r\n   * @param reqType new reqtype\r\n   * @param medicalType new\r\n   * @param sampleType new\r\n   * @throws SQLException\r\n   */\r\n  void updateRequest(\r\n          labRequest updatingRequest,\r\n          String reqID,\r\n          String nodeID,\r\n          String assignedEmpID,\r\n          String requesterEmpID,\r\n          String status,\r\n          String reqType,\r\n          String medicalType,\r\n          String sampleType)\r\n          throws SQLException;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/LabRequestDAO.java b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/LabRequestDAO.java
+--- a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/LabRequestDAO.java	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/LabRequestDAO.java	(date 1649200302999)
+@@ -1,5 +1,6 @@
+ /**
+- * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and updateRequest function
++ * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and
++ * updateRequest function
+  *
+  * @version 1.0
+  */
+@@ -18,7 +19,6 @@
+   ArrayList<labRequest> getAllRequests() throws SQLException;
+ 
+   /**
+-   *
+    * @param reqID request ID
+    * @param nodeID id of location node
+    * @param assignedEmpID employee name
+@@ -30,25 +30,25 @@
+    * @throws SQLException
+    */
+   void addRequest(
+-          String reqID,
+-          String nodeID,
+-          String assignedEmpID,
+-          String requesterEmpID,
+-          String status,
+-          String reqType,
+-          String medicalType,
+-          String sampleType)
+-          throws SQLException;
++      String reqID,
++      String nodeID,
++      String assignedEmpID,
++      String requesterEmpID,
++      String status,
++      String reqType,
++      String medicalType,
++      String sampleType)
++      throws SQLException;
+ 
+   /**
+    * deletes a request object
++   *
+    * @param deletedObject labRequest
+    * @throws SQLException
+    */
+   void deleteRequest(labRequest deletedObject) throws SQLException;
+ 
+   /**
+-   *
+    * @param updatingRequest labRequest to update
+    * @param reqID new reqID
+    * @param nodeID new nodeID
+@@ -61,14 +61,14 @@
+    * @throws SQLException
+    */
+   void updateRequest(
+-          labRequest updatingRequest,
+-          String reqID,
+-          String nodeID,
+-          String assignedEmpID,
+-          String requesterEmpID,
+-          String status,
+-          String reqType,
+-          String medicalType,
+-          String sampleType)
+-          throws SQLException;
++      labRequest updatingRequest,
++      String reqID,
++      String nodeID,
++      String assignedEmpID,
++      String requesterEmpID,
++      String status,
++      String reqType,
++      String medicalType,
++      String sampleType)
++      throws SQLException;
+ }
+Index: ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/labRequest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;\r\n\r\nimport edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;\r\n\r\n/**\r\n * object for labRequest ie blood/ urine tests\r\n */\r\npublic class labRequest extends MedicalRequest {\r\n\r\n    protected String sampleType;\r\n\r\n    /**\r\n     * @param reqID          reqID\r\n     * @param nodeID         location nodeID\r\n     * @param assignedEmpID  name of employee\r\n     * @param requesterEmpID id of employee\r\n     * @param status         Status\r\n     * @param reqType        reqType\r\n     * @param medicalType    lab/scan\r\n     * @param sampleType     type of sample blood/urine\r\n     */\r\n    public labRequest(\r\n            String reqID,\r\n            String nodeID,\r\n            String assignedEmpID,\r\n            String requesterEmpID,\r\n            String status,\r\n            String reqType,\r\n            String medicalType,\r\n            String sampleType) {\r\n        super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);\r\n        this.sampleType = sampleType;\r\n    }\r\n\r\n    /**\r\n     * getter for sample type\r\n     *\r\n     * @return String\r\n     */\r\n    public String getSampleType() {\r\n        return sampleType;\r\n    }\r\n\r\n    /**\r\n     * setter for sampleType\r\n     *\r\n     * @param sampleType String\r\n     */\r\n    public void setSampleType(String sampleType) {\r\n        this.sampleType = sampleType;\r\n    }\r\n\r\n    /**\r\n     * SQL insert statement\r\n     *\r\n     * @return String statement\r\n     */\r\n    public String generateInsertStatement() {\r\n        return \"INSERT INTO LABREQUEST VALUES ('\"\r\n                + this.getReqID()\r\n                + \"', '\"\r\n                + this.getNodeID()\r\n                + \"', '\"\r\n                + this.getAssignedEmpID()\r\n                + \"' , '\"\r\n                + this.getRequesterEmpID()\r\n                + \"' , '\"\r\n                + this.getStatus()\r\n                + \"' , '\"\r\n                + this.getReqType()\r\n                + \"' , '\"\r\n                + this.getMedicalType()\r\n                + \"' , '\"\r\n                + this.getSampleType()\r\n                + \"' )\";\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/labRequest.java b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/labRequest.java
+--- a/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/labRequest.java	(revision f1a11552483af0679c4ca96907bf6a8e8e379252)
++++ b/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/labRequest/labRequest.java	(date 1649200302965)
+@@ -2,76 +2,74 @@
+ 
+ import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
+ 
+-/**
+- * object for labRequest ie blood/ urine tests
+- */
++/** object for labRequest ie blood/ urine tests */
+ public class labRequest extends MedicalRequest {
+ 
+-    protected String sampleType;
++  protected String sampleType;
+ 
+-    /**
+-     * @param reqID          reqID
+-     * @param nodeID         location nodeID
+-     * @param assignedEmpID  name of employee
+-     * @param requesterEmpID id of employee
+-     * @param status         Status
+-     * @param reqType        reqType
+-     * @param medicalType    lab/scan
+-     * @param sampleType     type of sample blood/urine
+-     */
+-    public labRequest(
+-            String reqID,
+-            String nodeID,
+-            String assignedEmpID,
+-            String requesterEmpID,
+-            String status,
+-            String reqType,
+-            String medicalType,
+-            String sampleType) {
+-        super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);
+-        this.sampleType = sampleType;
+-    }
++  /**
++   * @param reqID reqID
++   * @param nodeID location nodeID
++   * @param assignedEmpID name of employee
++   * @param requesterEmpID id of employee
++   * @param status Status
++   * @param reqType reqType
++   * @param medicalType lab/scan
++   * @param sampleType type of sample blood/urine
++   */
++  public labRequest(
++      String reqID,
++      String nodeID,
++      String assignedEmpID,
++      String requesterEmpID,
++      String status,
++      String reqType,
++      String medicalType,
++      String sampleType) {
++    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);
++    this.sampleType = sampleType;
++  }
+ 
+-    /**
+-     * getter for sample type
+-     *
+-     * @return String
+-     */
+-    public String getSampleType() {
+-        return sampleType;
+-    }
++  /**
++   * getter for sample type
++   *
++   * @return String
++   */
++  public String getSampleType() {
++    return sampleType;
++  }
+ 
+-    /**
+-     * setter for sampleType
+-     *
+-     * @param sampleType String
+-     */
+-    public void setSampleType(String sampleType) {
+-        this.sampleType = sampleType;
+-    }
++  /**
++   * setter for sampleType
++   *
++   * @param sampleType String
++   */
++  public void setSampleType(String sampleType) {
++    this.sampleType = sampleType;
++  }
+ 
+-    /**
+-     * SQL insert statement
+-     *
+-     * @return String statement
+-     */
+-    public String generateInsertStatement() {
+-        return "INSERT INTO LABREQUEST VALUES ('"
+-                + this.getReqID()
+-                + "', '"
+-                + this.getNodeID()
+-                + "', '"
+-                + this.getAssignedEmpID()
+-                + "' , '"
+-                + this.getRequesterEmpID()
+-                + "' , '"
+-                + this.getStatus()
+-                + "' , '"
+-                + this.getReqType()
+-                + "' , '"
+-                + this.getMedicalType()
+-                + "' , '"
+-                + this.getSampleType()
+-                + "' )";
+-    }
++  /**
++   * SQL insert statement
++   *
++   * @return String statement
++   */
++  public String generateInsertStatement() {
++    return "INSERT INTO LABREQUEST VALUES ('"
++        + this.getReqID()
++        + "', '"
++        + this.getNodeID()
++        + "', '"
++        + this.getAssignedEmpID()
++        + "' , '"
++        + this.getRequesterEmpID()
++        + "' , '"
++        + this.getStatus()
++        + "' , '"
++        + this.getReqType()
++        + "' , '"
++        + this.getMedicalType()
++        + "' , '"
++        + this.getSampleType()
++        + "' )";
++  }
+ }
