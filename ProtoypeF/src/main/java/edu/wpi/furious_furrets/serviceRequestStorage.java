@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 /** class for the storage of the service requests */
 public class serviceRequestStorage {
-  private static ArrayList<ArrayList<Object>> storageArrayList = new ArrayList<>();
+  private static final ArrayList<ArrayList<Object>> storageArrayList = new ArrayList<>();
 
   /**
-   * addes input array list to the storageArrayList
+   * adds input array list to the storageArrayList
    *
    * @param inputArrayList ArrayList
    */
@@ -21,7 +21,6 @@ public class serviceRequestStorage {
    * @return ArrayList of ArrayLists
    */
   public static ArrayList<ArrayList<Object>> getArrayList() {
-
     return storageArrayList;
   }
 }

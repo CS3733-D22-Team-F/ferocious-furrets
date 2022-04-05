@@ -19,7 +19,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/** controller for scan scene */
+/**
+ * controller for scan scene
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class scanController extends returnHomePage implements Initializable {
 
   @FXML TextField nodeField;

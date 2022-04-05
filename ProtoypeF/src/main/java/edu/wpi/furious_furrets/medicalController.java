@@ -12,9 +12,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * controller for medical scene
+ * controller for medical equipment/lab request scene
  *
  * @see returnHomePage
+ * @see Initializable
  */
 public class medicalController extends returnHomePage implements Initializable {
 
@@ -51,6 +52,12 @@ public class medicalController extends returnHomePage implements Initializable {
     stage.show();
   }
 
+  /**
+   * inits TODO?
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     // BackgroundImage scanImage = new BackgroundImage(new

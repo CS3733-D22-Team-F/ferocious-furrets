@@ -7,7 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
-/** controll for request list */
+/**
+ * controller for request list
+ *
+ * @see returnHomePage
+ * @see Initializable
+ */
 public class requestListController extends returnHomePage implements Initializable {
 
   @FXML ListView requestList;
@@ -15,13 +20,13 @@ public class requestListController extends returnHomePage implements Initializab
   /**
    * inits
    *
-   * @param location
-   * @param resources
+   * @param location URL
+   * @param resources ResourceBundle
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
 
-  /** adds items to the list */
+  /** adds items to the list to requestList ArrayList */
   public void populateList() {
     requestList.getItems().clear();
     for (ArrayList<Object> list : serviceRequestStorage.getArrayList()) {

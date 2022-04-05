@@ -76,6 +76,12 @@ public class medicineController extends returnHomePage implements Initializable 
     }
   }
 
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
   public void initialize(URL location, ResourceBundle resources) {
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> medicineType = new ArrayList<>();

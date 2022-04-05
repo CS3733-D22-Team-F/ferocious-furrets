@@ -3,20 +3,13 @@ package edu.wpi.furious_furrets;
 /** object for requests */
 public class requestObject {
   private String employee;
-
-  private enum status {
-    blank,
-    processing,
-    done
-  };
-
   private String nodeID;
 
   /**
-   * constructer
+   * constructor
    *
-   * @param employee String
-   * @param nodeID String
+   * @param employee String id of the employee
+   * @param nodeID String id of the location node
    */
   public requestObject(String employee, String nodeID) {
     this.employee = employee;
@@ -57,5 +50,11 @@ public class requestObject {
    */
   public void setNodeID(String nodeID) {
     this.nodeID = nodeID;
+  }
+
+  private enum status {
+    blank,
+    processing,
+    done
   }
 }

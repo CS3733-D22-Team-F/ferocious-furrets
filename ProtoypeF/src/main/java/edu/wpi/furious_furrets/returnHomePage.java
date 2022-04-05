@@ -18,7 +18,7 @@ public class returnHomePage {
   /**
    * goes back to home page
    *
-   * @param event
+   * @param event ActionEvent
    * @throws IOException
    */
   @FXML
