@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -29,8 +30,8 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML TextField employeeIDField;
   @FXML TextField userField;
 
-  @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
-  @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
+  @FXML ComboBox typeChoice; // Lab Type Choice Box
+  @FXML ComboBox statueChoice; // Status Choice Box
 
   /**
    * inits
