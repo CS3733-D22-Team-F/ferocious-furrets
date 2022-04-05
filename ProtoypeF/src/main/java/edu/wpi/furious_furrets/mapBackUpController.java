@@ -2,6 +2,7 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import edu.wpi.furious_furrets.database.Location;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class mapBackUpController implements Initializable {
@@ -21,6 +23,7 @@ public class mapBackUpController implements Initializable {
   @FXML Button cancel;
   @FXML Button reset;
   @FXML Button delete;
+  @FXML Button select;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
@@ -34,6 +37,16 @@ public class mapBackUpController implements Initializable {
   /** set all fields to blank */
   public void reset() {
     idField.clear();
+  }
+
+  public void selectFile() throws SQLException, IOException {
+    FileChooser fChoose = new FileChooser();
+    fChoose.setTitle("Open CSV File");
+    Stage stage = (Stage) select.getScene().getWindow();
+    File file = fChoose.showOpenDialog(stage);
+    backUpToCSVFile(file);
+    //    String path = file.getPath();
+    stage.close();
   }
 
   /**
@@ -86,5 +99,12 @@ public class mapBackUpController implements Initializable {
     // TODO: Incorporate JavaFX FileChooser
     DatabaseManager.getLdao()
         .backUpToCSV("src/main/resources/edu/wpi/furious_furrets/" + filename + ".csv");
+  }
+
+  public void backUpToCSVFile(File file) throws SQLException, IOException {
+
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // TODO: Incorporate JavaFX FileChooser
+    DatabaseManager.getLdao().backUpToCSVFileChosen(file);
   }
 }
