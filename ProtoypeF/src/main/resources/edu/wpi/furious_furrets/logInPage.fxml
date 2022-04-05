@@ -54,9 +54,9 @@
                         <Insets left="2.0" />
                      </padding>
                   </VBox>
-                  <Label fx:id="popUpLabel" prefHeight="11.0" prefWidth="247.0" textFill="#eb3333">
+                  <Label fx:id="popUpLabel" prefHeight="47.0" prefWidth="331.0" textFill="#eb3333">
                      <padding>
-                        <Insets bottom="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="115.0" top="15.0" />
                      </padding>
                      <VBox.margin>
                         <Insets left="100.0" />
@@ -82,6 +82,7 @@
                         </JFXButton>
                      </children>
                   </VBox>
+                  <Label text="Label" />
                </children>
             </VBox>
          </children>

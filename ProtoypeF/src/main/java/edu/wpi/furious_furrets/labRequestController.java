@@ -47,6 +47,7 @@ public class labRequestController extends returnHomePage implements Initializabl
     statueChoice.getItems().addAll(temp);
     statueChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
+    temp1.add("");
     temp1.add("blood");
     temp1.add("urine");
     typeChoice.getItems().addAll(temp1);
