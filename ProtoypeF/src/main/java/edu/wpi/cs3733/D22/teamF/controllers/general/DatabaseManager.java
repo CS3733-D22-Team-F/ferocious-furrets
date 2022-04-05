@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.LabRequestDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class DatabaseManager {
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
-  //  private static final labReqDAOImpl lrdao = new labReqDAOImpl(conn);
+  private static final LabRequestDAOImpl labRequestDAO = new LabRequestDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -39,6 +40,7 @@ public class DatabaseManager {
     locationsDAO.initTable();
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
+    labRequestDAO.initTable();
     return Helper.dbMan;
   }
 
@@ -86,6 +88,11 @@ public class DatabaseManager {
 
   public static MedEquipDAOImpl getMedEquipDAO() {
     return medicalEquipmentDAO;
+  }
+
+  /** gets the LabRequestDAO */
+  public static LabRequestDAOImpl getLabRequestDAO() {
+    return labRequestDAO;
   }
 
   /**

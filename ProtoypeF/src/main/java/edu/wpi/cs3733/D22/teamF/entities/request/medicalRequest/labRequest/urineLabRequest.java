@@ -1,9 +1,17 @@
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.urineLabRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;
-
+/** @deprecated */
 public class urineLabRequest extends labRequest {
-
+  /**
+   * @param reqID
+   * @param nodeID
+   * @param assignedEmpID
+   * @param requesterEmpID
+   * @param status
+   * @param reqType
+   * @param medicalType
+   * @param sampleType
+   */
   public urineLabRequest(
       String reqID,
       String nodeID,
