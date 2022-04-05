@@ -1,3 +1,4 @@
 reqID, equipID, nodeID, assEmpID, reqEmpID, status
 706,4,fSTOR00203,7,8,processing
 948,5,fSTOR00203,8,8,processing
+835,6,fSTOR00303,99,99,processing

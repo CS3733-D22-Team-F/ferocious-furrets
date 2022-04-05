@@ -86,7 +86,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
         // TODO update status constraint when status is decided
         "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedDelReq currentReq : requests) {
-      //System.out.println(currentReq.generateInsertStatement());
+      // System.out.println(currentReq.generateInsertStatement());
       stm.execute(currentReq.generateInsertStatement());
     }
   }
