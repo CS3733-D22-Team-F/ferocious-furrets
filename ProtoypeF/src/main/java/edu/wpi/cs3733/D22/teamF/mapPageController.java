@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,8 @@ public class mapPageController extends returnHomePage implements Initializable {
   @FXML ImageView mapHolder;
 
   @FXML TableView<Location> table;
+
+  @FXML TitledPane legend;
 
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
@@ -48,6 +51,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
     Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
+    legend.setExpanded(false);
 
     ArrayList<Location> nLocations = null;
     try {

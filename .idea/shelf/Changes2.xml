@@ -1,0 +1,94 @@
+<changelist name="Changes2" date="1649201040422" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/EquipmentIcons/Bed Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/Bed Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/CONF Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/CONF Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/DEPT Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/DEPT Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/DIRT Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/DIRT Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/ELEV Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/ELEV Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/EXIT Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/EXIT Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/HALL Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/HALL Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/INFO Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/INFO Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/EquipmentIcons/Infusion Pump Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/Infusion Pump Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/LABS Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/LABS Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/PATI Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/PATI Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/EquipmentIcons/Recliner Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/Recliner Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/REST Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/REST Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/RETL Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/RETL Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/SERV Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/SERV Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/STAI Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/STAI Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/MapIcons/STOR Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/STOR Icon.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Icons/EquipmentIcons/X-Ray Icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes2/X-Ray Icon.png" />
+  </binary>
+</changelist>
