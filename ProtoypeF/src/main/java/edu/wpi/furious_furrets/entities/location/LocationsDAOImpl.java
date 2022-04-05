@@ -152,6 +152,46 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.close();
   }
 
+  public void resetMapFromCSVFileChosen(File file) throws IOException, SQLException {
+    csvLocations.clear();
+    csvIDS.clear();
+    updatedLocations.clear();
+    BufferedReader lineReader = new BufferedReader(new FileReader(file));
+    String lineText;
+    lineReader.readLine(); // skip header line
+
+    while ((lineText = lineReader.readLine()) != null) {
+      String[] data = lineText.split(",");
+      String nID = data[0];
+      int x = Integer.parseInt(data[1]);
+      int y = Integer.parseInt(data[2]);
+      String floor = data[3];
+      String building = data[4];
+      String nodeType = data[5];
+      String longName = data[6];
+      String shortName = data[7];
+      Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
+      csvLocations.add(l);
+      csvIDS.add(l.getNodeID());
+    }
+    Statement stm = DatabaseManager.getConn().createStatement();
+    DatabaseMetaData databaseMetadata = DatabaseManager.getConn().getMetaData();
+    ResultSet resultSet =
+        databaseMetadata.getTables(
+            null, null, "LOCATIONS", null); // CARTERS IF STATEMENT IF TABLE EXIST
+    if (resultSet.next()) {
+      stm.execute("DROP TABLE LOCATIONS");
+    }
+    stm.execute(
+        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
+
+    for (Location currentLocation : csvLocations) {
+      stm.execute(currentLocation.generateInsertStatement());
+    }
+
+    stm.close();
+  }
+
   /**
    * Saves the Locations table to a csv file
    *
@@ -179,6 +219,56 @@ public class LocationsDAOImpl implements LocationDAO {
 
       rset.close();
       File newCSV = new File(filename);
+      FileWriter fw = new FileWriter(filename);
+      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
+      for (Location l : allLocations) {
+        fw.write(
+            l.getNodeID()
+                + ","
+                + l.getXcoord()
+                + ","
+                + l.getYcoord()
+                + ","
+                + l.getFloor()
+                + ","
+                + l.getBuilding()
+                + ","
+                + l.getNodeType()
+                + ","
+                + l.getLongName()
+                + ","
+                + l.getShortName()
+                + "\n");
+      }
+      fw.close();
+      // }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    stm.close();
+  }
+
+  public void backUpToCSVFileChosen(File filename) throws SQLException, IOException {
+
+    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
+    // TODO: Incorporate JavaFX FileChooser
+
+    Statement stm = null;
+    try {
+      stm = DatabaseManager.getConn().createStatement();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    try {
+      ResultSet rset;
+      rset = stm.executeQuery("SELECT * FROM Locations");
+
+      ArrayList<Location> allLocations = locationsFromRSET(rset);
+
+      rset.close();
       FileWriter fw = new FileWriter(filename);
       fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
       for (Location l : allLocations) {
