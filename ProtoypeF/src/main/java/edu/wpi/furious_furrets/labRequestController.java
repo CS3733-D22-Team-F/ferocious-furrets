@@ -1,9 +1,9 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest.bloodLabRequest;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.labRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.urineLabRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.urineLabRequest.urineLabRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML TextField userField;
 
   @FXML ComboBox typeChoice; // Lab Type Choice Box
-  @FXML ComboBox statueChoice; // Status Choice Box
+  @FXML ComboBox statusChoice; // Status Choice Box
 
   /**
    * inits
@@ -44,8 +44,8 @@ public class labRequestController extends returnHomePage implements Initializabl
     temp.add("");
     temp.add("processing");
     temp.add("done");
-    statueChoice.getItems().addAll(temp);
-    statueChoice.setValue("");
+    statusChoice.getItems().addAll(temp);
+    statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("");
     temp1.add("blood");
@@ -70,46 +70,44 @@ public class labRequestController extends returnHomePage implements Initializabl
         || employeeIDField.getText().equals("")
         || userField.getText().equals("")
         || typeChoice.getValue().equals("")
-        || statueChoice.getValue().equals("")) {
+        || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
       return null;
     } else {
       if (typeChoice.getValue().equals("blood")) {
         bloodLabRequest newRequest =
             new bloodLabRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
+                null,
                 nodeField.getText(),
-                statueChoice.getValue().toString(),
+                employeeIDField.getText(),
+                userField.getText(),
+                statusChoice.getValue().toString(),
+                "Medical",
                 "Lab",
-                "",
-                "",
-                typeChoice.getValue().toString(),
-                null);
+                "Blood");
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statueChoice.getValue());
+        requestList.add("Status: " + statusChoice.getValue());
         serviceRequestStorage.addToArrayList(requestList);
         return newRequest;
       } else {
         urineLabRequest newRequest =
             new urineLabRequest(
-                userField.getText(),
-                Integer.parseInt(employeeIDField.getText()),
+                null,
                 nodeField.getText(),
-                statueChoice.getValue().toString(),
+                employeeIDField.getText(),
+                userField.getText(),
+                statusChoice.getValue().toString(),
+                "Medical",
                 "Lab",
-                "",
-                "",
-                typeChoice.getValue().toString(),
-                null); // TODO
+                "Urine");
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statueChoice.getValue());
+        requestList.add("Status: " + statusChoice.getValue());
         serviceRequestStorage.addToArrayList(requestList);
         // TODO
         // DatabaseManager.getlrdao().addRequest(newRequest.getReqID());
@@ -124,7 +122,7 @@ public class labRequestController extends returnHomePage implements Initializabl
     employeeIDField.clear();
     userField.clear();
     typeChoice.valueProperty().setValue(null);
-    statueChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null);
   }
 
   /**

@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

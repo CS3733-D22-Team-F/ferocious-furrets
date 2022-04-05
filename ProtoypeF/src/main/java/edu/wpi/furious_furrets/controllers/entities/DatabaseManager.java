@@ -1,9 +1,8 @@
 package edu.wpi.furious_furrets.controllers.entities;
 
-import edu.wpi.furious_furrets.database.DatabaseInitializer;
-import edu.wpi.furious_furrets.database.LocationsDAOImpl;
-import edu.wpi.furious_furrets.database.MedDelReqDAOImpl;
-import edu.wpi.furious_furrets.database.labReqDAOImpl;
+import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
+import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,8 +18,8 @@ public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().dbConnection;
   private static final LocationsDAOImpl ldao = new LocationsDAOImpl(conn);
-  private static final MedDelReqDAOImpl mdao = new MedDelReqDAOImpl(conn);
-  private static final labReqDAOImpl lrdao = new labReqDAOImpl(conn);
+  private static final MedDelReqDAOImpl mdao = new MedDelReqDAOImpl();
+  //  private static final labReqDAOImpl lrdao = new labReqDAOImpl(conn);
 
   private static DatabaseManager DatabaseManager;
 
@@ -71,9 +70,9 @@ public class DatabaseManager {
    *
    * @return labReqDAOImpl
    */
-  public static labReqDAOImpl getlrdao() {
-    return lrdao;
-  }
+  //  public static labReqDAOImpl getlrdao() {
+  //    return lrdao;
+  //  }
 
   /** helper */
   private static class Helper {

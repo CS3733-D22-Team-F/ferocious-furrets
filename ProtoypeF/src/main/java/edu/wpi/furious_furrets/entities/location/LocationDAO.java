@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.location;
 
 /**
  * Interface for the LocationDAO class to handle the location DB necessary function

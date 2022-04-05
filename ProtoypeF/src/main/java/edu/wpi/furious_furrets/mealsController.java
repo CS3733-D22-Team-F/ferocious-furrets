@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.mealDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.mealDeliveryRequest.mealDeliveryRequest;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -201,14 +201,13 @@ public class mealsController extends returnHomePage implements Initializable {
     } else {
       mealDeliveryRequest sendMealRequest =
           new mealDeliveryRequest(
-              employeeName.getText(),
-              Integer.parseInt(employeeID.getText()),
+              null,
               nodeID.getText(),
-              (String) status.getValue(),
-              requestType.getText(),
-              null,
-              null,
-              null); // TODO
+              employeeID.getText(),
+              null, // TODO ADD REQUESTER ID FIELD
+              requestType.getText().toString(),
+              "Delivery",
+              "Meal");
       System.out.println("Meal Sent");
 
       employeeName.setText("");

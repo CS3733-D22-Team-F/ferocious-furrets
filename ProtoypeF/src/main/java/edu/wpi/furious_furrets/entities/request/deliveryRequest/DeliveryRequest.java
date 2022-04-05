@@ -1,32 +1,21 @@
 package edu.wpi.furious_furrets.entities.request.deliveryRequest;
 
-import edu.wpi.furious_furrets.entities.Request;
+import edu.wpi.furious_furrets.entities.request.Request;
 
 public abstract class DeliveryRequest extends Request {
 
-  private String deliveryID;
   private String deliveryType;
 
   public DeliveryRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String deliveryID,
-      String deliveryType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, reqID);
-    this.deliveryID = deliveryID;
+      String deliveryType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
     this.deliveryType = deliveryType;
-  }
-
-  public String getDeliveryID() {
-    return deliveryID;
-  }
-
-  public void setDeliveryID(String deliveryID) {
-    this.deliveryID = deliveryID;
   }
 
   public String getDeliveryType() {

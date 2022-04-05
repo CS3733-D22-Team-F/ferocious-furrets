@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.location;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import java.io.*;

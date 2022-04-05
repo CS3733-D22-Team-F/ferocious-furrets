@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.location;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
