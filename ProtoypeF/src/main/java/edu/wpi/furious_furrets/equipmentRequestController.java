@@ -10,8 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -65,7 +65,8 @@ public class equipmentRequestController extends returnHomePage implements Initia
               statusChoice.getValue().toString(),
               typeChoice.getValue().toString(),
               Integer.toString(reqID),
-              null);
+              null,
+              null); // TODO
       nodeField.clear();
       employeeIDField.clear();
       userField.clear();

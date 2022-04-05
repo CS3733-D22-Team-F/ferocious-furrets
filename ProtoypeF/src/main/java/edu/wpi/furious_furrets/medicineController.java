@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -22,10 +22,10 @@ public class medicineController extends returnHomePage implements Initializable 
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
   @FXML private TextField typeOfMed;
-  @FXML private ChoiceBox statusChoice;
+  @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private ChoiceBox typeChoice;
+  @FXML private ComboBox typeChoice;
 
   @FXML
   void resetFunction() {
@@ -34,6 +34,7 @@ public class medicineController extends returnHomePage implements Initializable 
     userField.clear();
     typeOfMed.clear();
     statusChoice.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
     userField.clear();
   }
 
@@ -61,12 +62,14 @@ public class medicineController extends returnHomePage implements Initializable 
               statusChoice.getValue().toString(),
               typeOfMed.getText(),
               null,
-              null);
+              null,
+              null); // TODO
       nodeField.clear();
       employeeIDField.clear();
       userField.clear();
       typeOfMed.clear();
       statusChoice.valueProperty().setValue(null);
+      typeChoice.valueProperty().setValue(null);
       userField.clear();
 
       return medicineDeliveryRequest;
