@@ -1,7 +1,11 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.furious_furrets;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest.giftDeliveryRequest;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
+import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,24 +21,33 @@ import javafx.stage.Stage;
 /** Controller for gift scene */
 public class giftController extends returnHomePage implements Initializable {
 
-  @FXML CheckBox rose;
-  @FXML CheckBox teddyBear;
-  @FXML CheckBox giftCard;
-  @FXML CheckBox jasmine;
-  @FXML CheckBox chrys;
-  @FXML Label employeeField;
-  @FXML Label doctorField;
-  @FXML Label nodeField;
-  @FXML Label itemField;
-  @FXML Button submitButton;
-  @FXML Button previewButton;
+  private ArrayList<Object> itemList = new ArrayList<>();
+
+  @FXML JFXCheckBox rose;
+  @FXML JFXCheckBox teddyBear;
+  @FXML JFXCheckBox giftCard;
+  @FXML JFXCheckBox jasmine;
+  @FXML JFXCheckBox chrys;
+
+  @FXML JFXTextArea employeeField;
+  @FXML JFXTextArea nodeField;
+  @FXML JFXTextArea itemField;
+
+  @FXML JFXButton submitButton;
+  @FXML JFXButton previewButton;
+
   @FXML TextField employeeID;
   @FXML TextField nodeID;
   @FXML TextField patientName;
   @FXML TextField assigned;
-  @FXML ChoiceBox<Object> statusChoice;
+
+  @FXML JFXComboBox statusChoice;
+  boolean roseB = false;
+  boolean teddyB = false;
+  boolean giftB = false;
+  boolean jasmineB = false;
+  boolean chrysB = false;
   String reqType = "";
-  private ArrayList<Object> itemList = new ArrayList<>();
 
   /**
    * init
@@ -62,11 +75,7 @@ public class giftController extends returnHomePage implements Initializable {
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
     // If any of the field is missing, pop up a notice
-    if ((!rose.isSelected()
-            && !teddyBear.isSelected()
-            && !giftCard.isSelected()
-            && !jasmine.isSelected()
-            && !chrys.isSelected())
+    if ((!roseB && !teddyB && !giftB && !jasmineB && !chrysB)
         || employeeID.getText().isEmpty()
         || nodeID.getText().isEmpty()
         || assigned.getText().isEmpty()
@@ -74,15 +83,15 @@ public class giftController extends returnHomePage implements Initializable {
       System.out.println("please make a choice");
       return false;
     } else {
-      if (rose.isSelected()) {
+      if (roseB) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("rose");
         temp.add("1");
         returnList.add(temp);
-        serviceList.add("rose");
+        serviceList.add("Rose");
         reqType = "Rose: ";
       }
-      if (teddyBear.isSelected()) {
+      if (teddyB) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("Teddy Bear");
         temp.add("1");
@@ -90,7 +99,7 @@ public class giftController extends returnHomePage implements Initializable {
         serviceList.add("Teddy Bear");
         reqType = reqType + "Teddy Bear: ";
       }
-      if (giftCard.isSelected()) {
+      if (giftB) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("Gift Card");
         temp.add("1");
@@ -98,7 +107,7 @@ public class giftController extends returnHomePage implements Initializable {
         serviceList.add("Gift Card");
         reqType = reqType + "Gift Card: ";
       }
-      if (jasmine.isSelected()) {
+      if (jasmineB) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("Jasmine");
         temp.add("1");
@@ -106,7 +115,7 @@ public class giftController extends returnHomePage implements Initializable {
         serviceList.add("Jasmine");
         reqType = reqType + "Jasmine: ";
       }
-      if (chrys.isSelected()) {
+      if (chrysB) {
         ArrayList<String> temp = new ArrayList<>();
         temp.add("Chrysanthemum");
         temp.add("1");
@@ -147,28 +156,87 @@ public class giftController extends returnHomePage implements Initializable {
   public giftDeliveryRequest submitButton() {
     giftDeliveryRequest giftRequest =
         new giftDeliveryRequest(
-            null,
-            nodeID.getText(),
             assigned.getText(),
-            null, // requester FIELD
+            Integer.parseInt(employeeID.getText()),
+            nodeID.getText(),
             statusChoice.getValue().toString(),
-            "Delivery",
-            "Gift");
-
-    //    System.out.println(giftRequest.getAssign());
-    //    System.out.println(giftRequest.getnID());
-    //    System.out.println(giftRequest.getSts());
-    //    System.out.println(giftRequest.getReqType());
+            reqType,
+            "",
+            "",
+            "");
+    submitButton.disableProperty().setValue(true);
+    previewButton.disableProperty().setValue(false);
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    assigned.clear();
+    employeeID.clear();
+    nodeID.clear();
+    statusChoice.valueProperty().set(null);
+    patientName.clear();
+    if ((rose != null) && roseB) {
+      rose.fire();
+    }
+    if ((teddyBear != null) && teddyB) {
+      teddyBear.fire();
+    }
+    if ((giftCard != null) && giftB) {
+      giftCard.fire();
+    }
+    if ((jasmine != null) && jasmineB) {
+      jasmine.fire();
+    }
+    if ((chrys != null) && chrysB) {
+      chrys.fire();
+    }
     return giftRequest;
   }
 
-  /** enable Preview and disable Submit when change choice */
-  public void boxChange() {
+  public void boxChangeRose() {
     submitButton.disableProperty().setValue(true);
     previewButton.disableProperty().setValue(false);
-    itemField.setText("empty");
-    employeeField.setText("empty");
-    nodeField.setText("empty");
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    roseB = !roseB;
+    System.out.println("changed");
+  }
+
+  public void boxChangeTeddy() {
+    submitButton.disableProperty().setValue(true);
+    previewButton.disableProperty().setValue(false);
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    teddyB = !teddyB;
+    System.out.println("changed");
+  }
+
+  public void boxChangeGift() {
+    submitButton.disableProperty().setValue(true);
+    previewButton.disableProperty().setValue(false);
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    giftB = !giftB;
+  }
+
+  public void boxChangeJas() {
+    submitButton.disableProperty().setValue(true);
+    previewButton.disableProperty().setValue(false);
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    jasmineB = !jasmineB;
+  }
+
+  public void boxChangeChrys() {
+    submitButton.disableProperty().setValue(true);
+    previewButton.disableProperty().setValue(false);
+    itemField.setText("Empty");
+    employeeField.setText("Empty");
+    nodeField.setText("Empty");
+    chrysB = !chrysB;
   }
 
   /**
@@ -182,11 +250,5 @@ public class giftController extends returnHomePage implements Initializable {
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-  }
-
-  public String generateReqID(int requestListLength, String giftID) {
-    String reqAbb = "GR";
-
-    return reqAbb + giftID + (requestListLength + 1);
   }
 }
