@@ -22,20 +22,25 @@ public class logInController extends returnHomePage {
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
       popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
+      success = true;
     } else if (usernameField.getText().equals("nurse") && passwordField.getText().equals("nurse")) {
       popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
+      success = true;
     } else if (usernameField.getText().equals("doctor")
         && passwordField.getText().equals("doctor")) {
       popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
+      success = true;
     } else if (usernameField.getText().equals("doctor")
         && passwordField.getText().equals("doctor")) {
       popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
+      success = true;
     } else if (usernameField.getText().equals("staff") && passwordField.getText().equals("staff")) {
       popUpLabel.setStyle("-fx-text-fill: green;");
       popUpLabel.setText("Login Successful");
+      success = true;
     } else {
       popUpLabel.setStyle("-fx-text-fill: red;");
       popUpLabel.setText("Wrong username or password, try again");
