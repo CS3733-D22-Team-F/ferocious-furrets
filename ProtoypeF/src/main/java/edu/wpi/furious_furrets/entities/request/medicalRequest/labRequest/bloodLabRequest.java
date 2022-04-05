@@ -10,7 +10,8 @@ public class bloodLabRequest extends labRequest {
       String reqType,
       String equipID,
       String equipType,
-      String sampleType) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType, sampleType);
+      String sampleType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, equipID, equipType, sampleType, reqID);
   }
 }

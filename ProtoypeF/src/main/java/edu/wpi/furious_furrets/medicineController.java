@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -62,7 +62,8 @@ public class medicineController extends returnHomePage implements Initializable 
               statusChoice.getValue().toString(),
               typeOfMed.getText(),
               null,
-              null);
+              null,
+              null); // TODO
       nodeField.clear();
       employeeIDField.clear();
       userField.clear();

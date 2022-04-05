@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 public class mealsController extends returnHomePage implements Initializable {
+
   @FXML private ComboBox<Object> status;
 
   // submit button sendind delivery
@@ -20,7 +21,6 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private TextField requestType;
   @FXML private TextField deliveryType;
   @FXML private TextField deliveryID;
-
   @FXML private CheckBox pancakes;
   @FXML private CheckBox scrEggs;
   @FXML private CheckBox friedEggs;
@@ -36,8 +36,6 @@ public class mealsController extends returnHomePage implements Initializable {
   @FXML private CheckBox coffee1;
   @FXML private CheckBox frSmoothie1;
   @FXML private CheckBox apJuice1;
-  ArrayList<Object> returnList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
   //  @FXML private CheckBox turk;
   //  @FXML private CheckBox steak;
   //  @FXML private CheckBox tomato;
@@ -205,7 +203,8 @@ public class mealsController extends returnHomePage implements Initializable {
               (String) status.getValue(),
               requestType.getText(),
               null,
-              null);
+              null,
+              null); // TODO
       System.out.println("Meal Sent");
 
       employeeName.setText("");
@@ -217,5 +216,5 @@ public class mealsController extends returnHomePage implements Initializable {
       deliveryType.setText("");
       return sendMealRequest;
     }
-  };
+  }
 }
