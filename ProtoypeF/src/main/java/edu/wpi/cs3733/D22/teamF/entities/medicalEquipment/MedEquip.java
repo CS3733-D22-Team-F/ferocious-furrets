@@ -55,7 +55,7 @@ public class MedEquip {
    * @return String
    */
   public String generateInsertStatement() {
-    return "INSERT INTO medEquip VALUES ('"
+    return "INSERT INTO MEDICALEQUIPMENT VALUES ('"
         + this.equipID
         + "', '"
         + this.equipType
