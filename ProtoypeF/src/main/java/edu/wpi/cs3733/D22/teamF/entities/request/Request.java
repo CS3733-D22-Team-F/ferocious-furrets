@@ -10,9 +10,7 @@ public abstract class Request {
   // Locations.csv for examples)
   private String status; // Status of the request (In Progress or Done)
   // TODO enum
-  private String
-      reqType; // Type of request made, Patient Bed (PTBD), Recliner (RECL), X-Ray Machine (XRAY),
-  // Infusion Pump (IPMP)
+  private String reqType; // Type of request made
 
   public Request(
       String reqID,

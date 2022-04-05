@@ -17,4 +17,12 @@ public abstract class MedicalRequest extends Request {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
     this.medicalType = medicalType;
   }
+
+  public String getMedicalType() {
+    return medicalType;
+  }
+
+  public void setMedicalType(String medicalType) {
+    this.medicalType = medicalType;
+  }
 }

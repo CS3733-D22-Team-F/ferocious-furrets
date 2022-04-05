@@ -1,11 +1,11 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.bloodLabRequest.bloodLabRequest;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.urineLabRequest.urineLabRequest;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -61,10 +61,11 @@ public class labRequestController extends returnHomePage implements Initializabl
    *
    * @return labRequest object
    */
-  public labRequest submit() {
+  public labRequest submit() throws SQLException {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
+    String sampleType = null;
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -74,45 +75,40 @@ public class labRequestController extends returnHomePage implements Initializabl
       System.out.println("There are still blank fields");
       return null;
     } else {
+
       if (typeChoice.getValue().equals("blood")) {
-        bloodLabRequest newRequest =
-            new bloodLabRequest(
-                null,
-                nodeField.getText(),
-                employeeIDField.getText(),
-                userField.getText(),
-                statusChoice.getValue().toString(),
-                "Medical",
-                "Lab",
-                "Blood");
-
-        requestList.clear();
-        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
-        requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statusChoice.getValue());
-        serviceRequestStorage.addToArrayList(requestList);
-        return newRequest;
+        sampleType = "Blood";
       } else {
-        urineLabRequest newRequest =
-            new urineLabRequest(
-                null,
-                nodeField.getText(),
-                employeeIDField.getText(),
-                userField.getText(),
-                statusChoice.getValue().toString(),
-                "Medical",
-                "Lab",
-                "Urine");
-
-        requestList.clear();
-        requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
-        requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statusChoice.getValue());
-        serviceRequestStorage.addToArrayList(requestList);
-        // TODO
-        // DatabaseManager.getlrdao().addRequest(newRequest.getReqID());
-        return newRequest;
+        sampleType = "Urine";
       }
+      // TODO reqID
+      labRequest newRequest =
+          new labRequest(
+              null,
+              nodeField.getText(),
+              employeeIDField.getText(),
+              userField.getText(),
+              statusChoice.getValue().toString(),
+              "Medical",
+              "Lab",
+              sampleType);
+      requestList.clear();
+      requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
+      requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("Status: " + statusChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
+
+      DatabaseManager.getLabRequestDAO()
+          .addRequest(
+              newRequest.getReqID(),
+              newRequest.getNodeID(),
+              newRequest.getAssignedEmpID(),
+              newRequest.getRequesterEmpID(),
+              newRequest.getStatus(),
+              newRequest.getReqType(),
+              newRequest.getMedicalType(),
+              newRequest.getSampleType());
+      return newRequest;
     }
   }
 
