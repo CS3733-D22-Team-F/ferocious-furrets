@@ -3,11 +3,6 @@ package edu.wpi.cs3733.D22.teamF;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +12,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 /**
  * lab request controller
  *
@@ -25,17 +26,23 @@ import javafx.stage.Stage;
  */
 public class labRequestController extends returnHomePage implements Initializable {
 
-  @FXML TextField nodeField;
-  @FXML TextField employeeIDField;
-  @FXML TextField userField;
+  @FXML
+  TextField nodeField;
+  @FXML
+  TextField employeeIDField;
+  @FXML
+  TextField userField;
 
-  @FXML ComboBox typeChoice; // Lab Type Choice Box
-  @FXML ComboBox statusChoice; // Status Choice Box
+  @FXML
+  ComboBox typeChoice; // Lab Type Choice Box
+  @FXML
+  ComboBox statusChoice; // Status Choice Box
+
 
   /**
    * inits
    *
-   * @param location URL
+   * @param location  URL
    * @param resources ResourceBundle
    */
   @Override
@@ -68,10 +75,10 @@ public class labRequestController extends returnHomePage implements Initializabl
     String sampleType = null;
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
-        || typeChoice.getValue().equals("")
-        || statusChoice.getValue().equals("")) {
+            || employeeIDField.getText().equals("")
+            || userField.getText().equals("")
+            || typeChoice.getValue().equals("")
+            || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
       return null;
     } else {
@@ -82,33 +89,32 @@ public class labRequestController extends returnHomePage implements Initializabl
         sampleType = "Urine";
       }
       int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
-      String reqID = generateReqID(curLabReqSize, sampleType);
+      String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
       labRequest newRequest =
-          new labRequest(
-              reqID,
-              nodeField.getText(),
-              employeeIDField.getText(),
-              userField.getText(),
-              statusChoice.getValue().toString(),
-              "Medical",
-              "Lab",
-              sampleType);
+              new labRequest(
+                      reqID,
+                      nodeField.getText(),
+                      employeeIDField.getText(),
+                      userField.getText(),
+                      statusChoice.getValue().toString(),
+                      "Medical",
+                      "Lab",
+                      sampleType);
       requestList.clear();
       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
-
       DatabaseManager.getLabRequestDAO()
-          .addRequest(
-              newRequest.getReqID(),
-              newRequest.getNodeID(),
-              newRequest.getAssignedEmpID(),
-              newRequest.getRequesterEmpID(),
-              newRequest.getStatus(),
-              newRequest.getReqType(),
-              newRequest.getMedicalType(),
-              newRequest.getSampleType());
+              .addRequest(
+                      newRequest.getReqID(),
+                      newRequest.getNodeID(),
+                      newRequest.getAssignedEmpID(),
+                      newRequest.getRequesterEmpID(),
+                      newRequest.getStatus(),
+                      newRequest.getReqType(),
+                      newRequest.getMedicalType(),
+                      newRequest.getSampleType());
       return newRequest;
     }
   }
@@ -136,7 +142,7 @@ public class labRequestController extends returnHomePage implements Initializabl
   }
 
   // TODO make a interaface for all controllers
-  public String generateReqID(int requestListLength, String sampleType) {
+  public String generateReqID(int requestListLength, String sampleType, String nodeID) {
     String reqAbb = "LR";
     String sAb = "";
     if (sampleType.equals("Urine")) {
@@ -144,6 +150,6 @@ public class labRequestController extends returnHomePage implements Initializabl
     } else if (sampleType.equals("Blood")) {
       sAb = "B";
     }
-    return reqAbb + sAb + (requestListLength + 1);
+    return reqAbb + sAb + (requestListLength + 1) + nodeID;
   }
 }
