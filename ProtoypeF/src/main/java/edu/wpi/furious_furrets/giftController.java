@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest.giftDeliveryRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

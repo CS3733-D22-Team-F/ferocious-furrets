@@ -1,10 +1,10 @@
 /**
- * TODO change comments DAO for the lab Request Service Request DB with the necessary add, delete
- * and update functions
+ * DAO for the Medical Equipmend Service Request DB with the necessary add, delete and update
+ * functions
  *
  * @version 1.0
  */
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
 import java.io.*;
@@ -13,24 +13,24 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Implementation of the LabRequest Interface
+ * Implementation of the MedDelReq Interface
  *
  * @see MedDelReq
  * @see MedDelReqDAO
  */
-public class labReqDAOImpl implements labReqDAO {
+public class MedDelReqDAOImpl implements MedDelReqDAO {
 
-  private final ArrayList<LabRequest> requests = new ArrayList<>();
-  private final ArrayList<LabRequest> updatedRequests = new ArrayList<LabRequest>();
-  private final ArrayList<String> reqIDs = new ArrayList<String>();
   private final Connection connection;
+  private final ArrayList<MedDelReq> requests = new ArrayList<>();
+  private final ArrayList<MedDelReq> updatedRequests = new ArrayList<MedDelReq>();
+  private final ArrayList<String> reqIDs = new ArrayList<String>();
 
   /**
    * Constructor that takes in a Connection object to the DB
    *
    * @param dbConnection
    */
-  public labReqDAOImpl(Connection dbConnection) {
+  public MedDelReqDAOImpl(Connection dbConnection) {
     this.connection = dbConnection;
   }
 
@@ -48,7 +48,8 @@ public class labReqDAOImpl implements labReqDAO {
     BufferedReader lineReader =
         new BufferedReader(
             new InputStreamReader(
-                labReqDAOImpl.class.getResourceAsStream("/edu/wpi/furious_furrets/LabReq.csv"),
+                MedDelReqDAOImpl.class.getResourceAsStream(
+                    "/edu/wpi/furious_furrets/MedEquipReq.csv"),
                 StandardCharsets.UTF_8));
     String lineText = null;
     lineReader.readLine(); // skip header line
@@ -58,10 +59,9 @@ public class labReqDAOImpl implements labReqDAO {
       String reqID = data[0];
       String nodeID = data[1];
       String employeeID = data[2];
-      String status = data[3];
-      String type = data[4];
+      //      int status = Integer.parseInt(data[3]);
       // String longName = data[4];
-      LabRequest l = new LabRequest(reqID, nodeID, employeeID, status, type);
+      MedDelReq l = new MedDelReq(reqID, nodeID, employeeID, data[3]);
       requests.add(l);
       reqIDs.add(l.getReqID());
     }
@@ -69,43 +69,53 @@ public class labReqDAOImpl implements labReqDAO {
     DatabaseMetaData databaseMetadata = connection.getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
-            null, null, "LABSERVREQ", null); // CARTERS IF STATEMENT IF TABLE EXIST
+            null, null, "MEDSERVREQ", null); // CARTERS IF STATEMENT IF TABLE EXIST
     if (resultSet.next()) {
-      stm.execute("DROP TABLE LABSERVREQ");
+      stm.execute("DROP TABLE MEDSERVREQ");
     }
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
-        "CREATE TABLE labServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status varChar(16), type varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
-    for (LabRequest currentReq : requests) {
+        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+    for (MedDelReq currentReq : requests) {
       stm.execute(currentReq.generateInsertStatement());
     }
   }
 
   /**
-   * @return ArrayList </LabRequest> of all the requests
+   * @return
    * @throws SQLException
+   * @deprecated
    */
-  public ArrayList<LabRequest> getAllRequests() throws SQLException {
+  public ArrayList<MedDelReq> getAllRequests() throws SQLException {
     updateDatabase();
     return requests;
+    //    Statement stm = connection.createStatement();
+    //    String q = "SELECT * FROM Locations";
+    //    ResultSet rset = stm.executeQuery(q);
+    //    while (rset.next()) {
+    //      requests.add(new MedEquipServReq(rset.getString("reqID"), rset.getString("nodeID"),
+    // rset.getString("employeeID"), rset.getInt("status"), rset.))
+    //    }
+    //      return null;
   }
 
   // todo test
 
   /**
-   * @param reqID id of request
-   * @param nodeID id of location
-   * @param employeeIDofAssignedTo id of employee
-   * @param status status of request
-   * @param type
+   * takes user input adds a request
+   *
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
    * @throws SQLException
+   * @see MedDelReq
    */
-  public void addRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, String status, String type)
+  public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, String status)
       throws SQLException {
     Statement stm = DatabaseManager.getConn().createStatement();
-    requests.add(new LabRequest(reqID, nodeID, employeeIDofAssignedTo, status, type));
+    requests.add(new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status));
     reqIDs.add(reqID);
     String add =
         "INSERT INTO MEDSERVREQ values ('"
@@ -116,8 +126,6 @@ public class labReqDAOImpl implements labReqDAO {
             + employeeIDofAssignedTo
             + "' , '"
             + status
-            + "' , '"
-            + type
             + "')";
     System.out.println(add);
     stm.execute(add);
@@ -129,15 +137,19 @@ public class labReqDAOImpl implements labReqDAO {
   /**
    * takes user input deletes a request
    *
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
    * @throws SQLException
    * @see MedDelReq
    */
-  public void deleteRequest(LabRequest delReq) throws SQLException {
-    // labReqest delRequest = requests.get(reqID);
-
-    // LabRequest theReq = new LabRequest(reqID, nodeID, employeeIDofAssignedTo, status, type);
-    for (LabRequest currentReq : requests) {
-      if (delReq.equals(currentReq)) {
+  public void deleteRequest(
+      String reqID, String nodeID, String employeeIDofAssignedTo, String status)
+      throws SQLException {
+    MedDelReq theReq = new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status);
+    for (MedDelReq currentReq : requests) {
+      if (theReq.equals(currentReq)) {
         requests.remove(currentReq);
         System.out.println("found and removed :)");
         break;
@@ -149,43 +161,30 @@ public class labReqDAOImpl implements labReqDAO {
   // TODO test
 
   /**
-   * @param upReq
-   * @param newReqID
-   * @param newNodeID
-   * @param newEmployeeIDofAssignTo
-   * @param newStatus
-   * @param newType
+   * Takes user input and updates a request
+   *
+   * @param old_reqID
+   * @param old_nodeID
+   * @param reqID
+   * @param nodeID
+   * @param employeeIDofAssignedTo
+   * @param status
+   * @param longName
    * @throws SQLException
+   * @see MedDelReq
    */
   public void updateRequest(
-      LabRequest upReq,
-      String newReqID,
-      String newNodeID,
-      String newEmployeeIDofAssignTo,
-      String newStatus,
-      String newType)
+      String old_reqID,
+      String old_nodeID,
+      String reqID,
+      String nodeID,
+      String employeeIDofAssignedTo,
+      String status,
+      String longName)
       throws SQLException {
-
-    if (newReqID == null) {
-      newReqID = upReq.getReqID();
-    }
-    if (newNodeID == null) {
-      newNodeID = upReq.getNodeID();
-    }
-    if (newEmployeeIDofAssignTo == "") {
-      newEmployeeIDofAssignTo = upReq.getEmployeeIDofAssignedTo();
-    }
-    if (newStatus == null) {
-      newStatus = upReq.getStatus();
-    }
-    if (newType == null) {
-      newType = upReq.getType();
-    }
-
-    LabRequest newReq =
-        new LabRequest(newReqID, newNodeID, newEmployeeIDofAssignTo, newStatus, newType);
-    for (LabRequest currentReq : requests) {
-      if (upReq.equals(currentReq.getReqID())) {
+    MedDelReq newReq = new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status);
+    for (MedDelReq currentReq : requests) {
+      if (old_reqID.equals(currentReq.getReqID())) {
         requests.remove(currentReq);
         requests.add(newReq);
         System.out.println("found and replaced :)");
@@ -208,32 +207,27 @@ public class labReqDAOImpl implements labReqDAO {
     String q = "SELECT * FROM Locations";
     ResultSet rset = stm.executeQuery(q);
     while (rset.next()) {
-      for (LabRequest currentReq : requests) {
+      for (MedDelReq currentReq : requests) {
         // some sort of checker.....
       }
     }
   }
 
-  /**
-   * @param rset
-   * @throws SQLException
-   */
   public void requestsFromRSET(ResultSet rset) throws SQLException {
     while (rset.next()) {
       String reqID = rset.getString("reqID");
       String nodeID = rset.getString("nodeID");
       String employee = rset.getString("employeeID");
       String status = rset.getString("status");
-      String type = rset.getString("type");
       // String longName = rset.getString("longName");
-      LabRequest newR = new LabRequest(reqID, nodeID, employee, status, type);
+      MedDelReq newR = new MedDelReq(reqID, nodeID, employee, status);
       updatedRequests.add(newR);
     }
   }
 
   public void saveRequestToCSV() {
 
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/LabReq.csv";
+    String csvName = "src/main/resources/edu/wpi/furious_furrets/MedEquipReq.csv";
 
     Statement stm = null;
     try {
@@ -245,7 +239,7 @@ public class labReqDAOImpl implements labReqDAO {
     try {
       for (String id : reqIDs) {
         ResultSet rset;
-        rset = stm.executeQuery("SELECT * FROM LABSERVREQ WHERE REQID = '" + id + "'");
+        rset = stm.executeQuery("SELECT * FROM MEDSERVREQ WHERE REQID = '" + id + "'");
 
         requestsFromRSET(rset);
 
@@ -253,7 +247,7 @@ public class labReqDAOImpl implements labReqDAO {
         File newCSV = new File(csvName);
         FileWriter fw = new FileWriter(csvName);
         fw.write("reqID, nodeID, employee, status\n");
-        for (LabRequest l : updatedRequests) {
+        for (MedDelReq l : updatedRequests) {
           fw.write(
               l.getReqID()
                   + ","

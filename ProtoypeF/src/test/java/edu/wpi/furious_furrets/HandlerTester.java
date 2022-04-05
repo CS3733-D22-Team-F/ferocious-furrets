@@ -2,7 +2,8 @@ package edu.wpi.furious_furrets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.wpi.furious_furrets.database.*;
+import edu.wpi.furious_furrets.entities.database.*;
+import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.junit.jupiter.api.*;

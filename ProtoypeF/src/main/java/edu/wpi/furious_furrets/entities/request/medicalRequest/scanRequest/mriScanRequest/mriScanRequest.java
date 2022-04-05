@@ -1,9 +1,10 @@
-package edu.wpi.furious_furrets.entities.request.deliveryRequest;
+package edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest;
 
 import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
 
-public class medicineDeliveryRequest extends MedicalRequest {
-  public medicineDeliveryRequest(
+public class mriScanRequest extends MedicalRequest {
+
+  public mriScanRequest(
       String assign,
       int empID,
       String nID,

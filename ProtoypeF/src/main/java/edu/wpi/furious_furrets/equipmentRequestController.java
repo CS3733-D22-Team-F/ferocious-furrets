@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.equipmentDeliveryRequest;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;

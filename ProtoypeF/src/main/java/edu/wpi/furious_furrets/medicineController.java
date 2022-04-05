@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets;
 
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.medicineDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.medicineDeliveryRequest.medicineDeliveryRequest;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

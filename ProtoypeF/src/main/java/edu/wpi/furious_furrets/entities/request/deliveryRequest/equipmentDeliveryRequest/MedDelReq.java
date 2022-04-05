@@ -1,19 +1,18 @@
 /**
- * Lab request service request class w/ getters and setters for the params
+ * Medical Equipment service request class w/ getters and setters for the params
  *
  * @version 1.0
  */
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
 
-/** lab request object */
-public class LabRequest {
+/** Medical Delivery request object */
+public class MedDelReq {
 
   private final String reqID; // Primary Key
   private final String nodeID; // Foreign Key from Location
   private final String employeeIDofAssignedTo; // EMPLOYEE ID (PRIMARY KEY OF EMPLOYEE)
-  private final String status; // status of request (completed, not completed, etc)
-  private final String type; // type of lab request (blood etc)
-  // private String name;
+  private final String status; // status of the request
+  private String name;
 
   /**
    * Construction for Med equip service request
@@ -21,15 +20,13 @@ public class LabRequest {
    * @param reqID primary key
    * @param nodeID foreign key
    * @param employeeIDofAssignedTo employee id
-   * @param status status of the request
+   * @param status
    */
-  public LabRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, String status, String type) {
+  public MedDelReq(String reqID, String nodeID, String employeeIDofAssignedTo, String status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.employeeIDofAssignedTo = employeeIDofAssignedTo;
     this.status = status;
-    this.type = type;
   }
 
   /**
@@ -62,15 +59,10 @@ public class LabRequest {
   /**
    * Return status
    *
-   * @return String
+   * @return int
    */
   public String getStatus() {
     return status;
-  }
-
-  /** @return String */
-  public String getType() {
-    return type;
   }
 
   /**
@@ -87,9 +79,7 @@ public class LabRequest {
         + this.employeeIDofAssignedTo
         + "' , '"
         + this.status
-        + "' , '"
-        + this.type
-        + "')";
+        + "' )";
   }
 
   /**
@@ -98,11 +88,10 @@ public class LabRequest {
    * @param o MedEquipServReq Object to be compared with the calling MedEquipServReq object
    * @return True or False
    */
-  public boolean equals(LabRequest o) {
+  public boolean equals(MedDelReq o) {
     return (this.reqID.equals(o.nodeID))
         && (this.nodeID.equals(o.nodeID))
         && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
-        && (this.status.equals(o.status))
-        && (this.type.equals(o.type));
+        && (this.status == o.status);
   }
 }

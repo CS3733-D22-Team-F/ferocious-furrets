@@ -3,7 +3,8 @@ package edu.wpi.furious_furrets;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.database.*;
+import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;

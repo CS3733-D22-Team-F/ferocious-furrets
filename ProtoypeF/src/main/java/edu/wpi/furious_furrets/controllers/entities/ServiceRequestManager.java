@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets.controllers.entities;
 
-import edu.wpi.furious_furrets.entities.Request;
+import edu.wpi.furious_furrets.entities.request.Request;
 import java.util.LinkedList;
 
 /**

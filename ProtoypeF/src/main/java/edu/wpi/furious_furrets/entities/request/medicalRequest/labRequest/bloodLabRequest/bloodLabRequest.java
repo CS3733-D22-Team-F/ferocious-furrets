@@ -1,4 +1,6 @@
-package edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest;
+package edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest;
+
+import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.labRequest;
 
 public class bloodLabRequest extends labRequest {
 

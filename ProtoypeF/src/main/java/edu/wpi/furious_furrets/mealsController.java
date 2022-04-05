@@ -1,7 +1,7 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.mealDeliveryRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.mealDeliveryRequest.mealDeliveryRequest;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

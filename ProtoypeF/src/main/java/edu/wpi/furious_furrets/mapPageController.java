@@ -1,10 +1,9 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
-import edu.wpi.furious_furrets.database.DatabaseInitializer;
-import edu.wpi.furious_furrets.database.Location;
-import edu.wpi.furious_furrets.database.LocationsDAOImpl;
-import java.awt.*;
+import edu.wpi.furious_furrets.entities.database.DatabaseInitializer;
+import edu.wpi.furious_furrets.entities.location.Location;
+import edu.wpi.furious_furrets.entities.location.LocationsDAOImpl;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;

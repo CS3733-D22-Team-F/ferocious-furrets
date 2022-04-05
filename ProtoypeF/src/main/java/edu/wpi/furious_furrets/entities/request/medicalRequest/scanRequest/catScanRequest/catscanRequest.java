@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest;
+package edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.catScanRequest;
 
 import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
 

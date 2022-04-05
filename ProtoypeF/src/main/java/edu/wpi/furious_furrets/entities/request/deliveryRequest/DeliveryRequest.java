@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets.entities.request.deliveryRequest;
 
-import edu.wpi.furious_furrets.entities.Request;
+import edu.wpi.furious_furrets.entities.request.Request;
 
 public abstract class DeliveryRequest extends Request {
 

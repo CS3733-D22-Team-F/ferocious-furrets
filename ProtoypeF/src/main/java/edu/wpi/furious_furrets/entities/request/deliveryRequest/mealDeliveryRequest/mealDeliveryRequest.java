@@ -1,4 +1,6 @@
-package edu.wpi.furious_furrets.entities.request.deliveryRequest;
+package edu.wpi.furious_furrets.entities.request.deliveryRequest.mealDeliveryRequest;
+
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
 
 public class mealDeliveryRequest extends DeliveryRequest {
 

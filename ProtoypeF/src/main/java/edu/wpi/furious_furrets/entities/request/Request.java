@@ -1,4 +1,4 @@
-package edu.wpi.furious_furrets.entities;
+package edu.wpi.furious_furrets.entities.request;
 
 public abstract class Request {
 

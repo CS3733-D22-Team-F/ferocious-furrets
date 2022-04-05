@@ -1,4 +1,6 @@
-package edu.wpi.furious_furrets.entities.request.deliveryRequest;
+package edu.wpi.furious_furrets.entities.request.deliveryRequest.floralDeliveryRequest;
+
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
 
 public class floralDeliveryRequest extends DeliveryRequest {
 

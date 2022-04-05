@@ -2,9 +2,9 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.catscanRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.xrayScanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.catScanRequest.catscanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.mriScanRequest.mriScanRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.scanRequest.xrayScanRequest.xrayScanRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

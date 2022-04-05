@@ -1,6 +1,6 @@
 package edu.wpi.furious_furrets.entities.request.medicalRequest;
 
-import edu.wpi.furious_furrets.entities.Request;
+import edu.wpi.furious_furrets.entities.request.Request;
 
 public abstract class MedicalRequest extends Request {
 

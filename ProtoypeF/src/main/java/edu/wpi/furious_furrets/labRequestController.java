@@ -1,9 +1,9 @@
 package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.bloodLabRequest.bloodLabRequest;
 import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.labRequest;
-import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.urineLabRequest;
+import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.urineLabRequest.urineLabRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

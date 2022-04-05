@@ -4,7 +4,7 @@
  *
  * @version 1.0
  */
-package edu.wpi.furious_furrets.database;
+package edu.wpi.furious_furrets.entities.request.deliveryRequest.equipmentDeliveryRequest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
