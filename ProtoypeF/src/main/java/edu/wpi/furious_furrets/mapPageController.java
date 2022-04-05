@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,14 +33,9 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   @FXML TableView<Location> table;
 
-  @FXML TableColumn<Location, String> nodeID;
-  @FXML TableColumn<Location, Integer> xcoord;
-  @FXML TableColumn<Location, Integer> ycoord;
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
-  @FXML TableColumn<Location, String> nodeType;
   @FXML TableColumn<Location, String> longName;
-  @FXML TableColumn<Location, String> shortName;
 
   private Connection connection = DatabaseInitializer.getConnection().getDbConnection();
 
@@ -51,22 +47,10 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    nodeID.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeID"));
-    xcoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>("xcoord"));
-    ycoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>("ycoord"));
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
     Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
-    nodeType.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeType"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
-    shortName.setCellValueFactory(new PropertyValueFactory<Location, String>("shortName"));
-    //    BufferedReader lineReader =
-    //        new BufferedReader(
-    //            new InputStreamReader(
-    //                LocationsDAOImpl.class.getResourceAsStream(
-    //                    "/edu/wpi/furious_furrets/TowerLocations.csv"),
-    //                StandardCharsets.UTF_8));
 
-    LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;
     try {
       nLocations = DatabaseManager.getLdao().getAllLocations();
@@ -75,6 +59,16 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+  }
+
+  @FXML
+  void openFullTable(ActionEvent event) throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("fullLocationPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
   }
 
   public void changeToF1() {
@@ -103,6 +97,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     ArrayList<Location> nLocations = null;

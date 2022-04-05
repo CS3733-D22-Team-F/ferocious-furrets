@@ -10,7 +10,8 @@ public class medicineDeliveryRequest extends MedicalRequest {
       String sts,
       String reqType,
       String equipID,
-      String equipType) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType);
+      String equipType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, equipID, equipType, reqID);
   }
 }

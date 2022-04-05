@@ -13,7 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -28,8 +29,8 @@ public class labRequestController extends returnHomePage implements Initializabl
   @FXML TextField employeeIDField;
   @FXML TextField userField;
 
-  @FXML ChoiceBox<Object> typeChoice; // Lab Type Choice Box
-  @FXML ChoiceBox<Object> statueChoice; // Status Choice Box
+  @FXML ComboBox typeChoice; // Lab Type Choice Box
+  @FXML ComboBox statueChoice; // Status Choice Box
 
   /**
    * inits
@@ -82,7 +83,8 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "Lab",
                 "",
                 "",
-                typeChoice.getValue().toString());
+                typeChoice.getValue().toString(),
+                null);
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
@@ -100,13 +102,16 @@ public class labRequestController extends returnHomePage implements Initializabl
                 "Lab",
                 "",
                 "",
-                typeChoice.getValue().toString());
+                typeChoice.getValue().toString(),
+                null); // TODO
 
         requestList.clear();
         requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
         requestList.add("Assigned Doctor: " + userField.getText());
         requestList.add("Status: " + statueChoice.getValue());
         serviceRequestStorage.addToArrayList(requestList);
+        // TODO
+        // DatabaseManager.getlrdao().addRequest(newRequest.getReqID());
         return newRequest;
       }
     }

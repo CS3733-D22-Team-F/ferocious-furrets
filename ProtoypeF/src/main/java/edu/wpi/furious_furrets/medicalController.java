@@ -2,8 +2,11 @@ package edu.wpi.furious_furrets;
 
 import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,10 +16,12 @@ import javafx.stage.Stage;
  *
  * @see returnHomePage
  */
-public class medicalController extends returnHomePage {
+public class medicalController extends returnHomePage implements Initializable {
 
   private Stage stage;
   private Scene scene;
+
+  // @FXML private JFXButton scanButton;
 
   /**
    * switch to the lab scene
@@ -44,5 +49,12 @@ public class medicalController extends returnHomePage {
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    // BackgroundImage scanImage = new BackgroundImage(new
+    // Image(getClass().getResource("Images/Scanimage.jpeg")));
+    // scanButton.setStyle("-fx-background-image: 'Images/Scanimage.jpeg'");
   }
 }
