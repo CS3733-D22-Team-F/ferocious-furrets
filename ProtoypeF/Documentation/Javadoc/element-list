@@ -1,8 +1,8 @@
 edu.wpi.furious_furrets
-edu.wpi.furious_furrets.controllers
-edu.wpi.furious_furrets.controllers.entities
-edu.wpi.furious_furrets.controllers.fxml
-edu.wpi.furious_furrets.controllers.scene_application
+edu.wpi.cs3733.D22.teamF.controllers
+edu.wpi.cs3733.D22.teamF.controllers.general
+edu.wpi.cs3733.D22.teamF.controllers.fxml
+edu.wpi.cs3733.D22.teamF.controllers.scene_application
 edu.wpi.furious_furrets.database
 edu.wpi.furious_furrets.entitites
 edu.wpi.furious_furrets.entitites.employees
