@@ -56,7 +56,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
-      int reqID = (int) (Math.random() * 1000) + 1;
+
       //      equipmentDeliveryRequest equipServiceRequest =
       //          new equipmentDeliveryRequest(
       //              userField.getText(),
@@ -69,9 +69,12 @@ public class equipmentRequestController extends returnHomePage implements Initia
       //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
       String equipID =
           DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());
+      int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();
+      String reqID = generateReqID(requestListSize, equipID);
+
       MedDelReq addedDeliveryRequest =
           new MedDelReq(
-              String.valueOf(reqID),
+              reqID,
               nodeField.getText(),
               employeeIDField.getText(),
               userField.getText(),
@@ -114,5 +117,12 @@ public class equipmentRequestController extends returnHomePage implements Initia
     equipmentType.add("Infusion Pump");
     equipmentType.add("Recliner");
     typeChoice.getItems().addAll(equipmentType);
+  }
+
+  // TODO make a interaface for all controllers
+  public String generateReqID(int requestListLength, String equipID) {
+    String reqAbb = "ER";
+
+    return reqAbb + equipID + (requestListLength + 1);
   }
 }
