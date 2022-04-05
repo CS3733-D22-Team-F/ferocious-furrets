@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Added UI for backing Locations up to a csv">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/bwhbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +31,6 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Fapp" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ProtoypeF" type="f1a62948:ProjectNode" />
               </path>
               <path>
@@ -54,6 +48,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -70,14 +65,12 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27F4rhBPSgmbzg50QYJvc0kAZdh" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="derby" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -86,17 +79,44 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45632184" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.wpi.furious_furrets" />
+    </key>
   </component>
   <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+    <configuration name="ProtoypeF [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProtoypeF [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -197,11 +217,13 @@
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
+      <item itemvalue="Gradle.ProtoypeF [build]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
+        <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       </list>
     </recent_temporary>
@@ -221,9 +243,38 @@
       <workItem from="1649032756025" duration="11000" />
       <workItem from="1649032831496" duration="682000" />
       <workItem from="1649041080141" duration="2093000" />
-      <workItem from="1649112455770" duration="335000" />
-      <workItem from="1649112804344" duration="438000" />
+      <workItem from="1649091344339" duration="2290000" />
+      <workItem from="1649103500273" duration="10705000" />
     </task>
+    <task id="LOCAL-00001" summary="Merged csv-save branch into master">
+      <created>1649080027261</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649080027261</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset.">
+      <created>1649083847218</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649083847218</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Reset map from csv functionality">
+      <created>1649087543939</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649087543939</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page">
+      <created>1649119106029</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649119106030</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +285,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="azu-map" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -242,7 +305,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added UI for backing Locations up to a csv" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UI for backing Locations up to a csv" />
+    <MESSAGE value="Merged csv-save branch into master" />
+    <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
+    <MESSAGE value="Reset map from csv functionality" />
+    <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
+    <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

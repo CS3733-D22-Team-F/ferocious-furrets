@@ -1,0 +1,391 @@
+Index: ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import com.jfoenix.controls.JFXButton?>\n<?import com.jfoenix.controls.JFXCheckBox?>\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.ChoiceBox?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Font?>\n\n<AnchorPane prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"edu.wpi.furious_furrets.mapAddController\">\n   <children>\n      <HBox layoutX=\"44.0\" layoutY=\"32.0\" prefHeight=\"291.0\" prefWidth=\"527.0\">\n         <children>\n            <VBox alignment=\"TOP_RIGHT\" prefHeight=\"300.0\" prefWidth=\"122.0\">\n               <children>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"nodeType: \">\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" top=\"15.0\" />\n                     </VBox.margin>\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                  </Label>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"Floor:\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                  </Label>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"X: \">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets top=\"15.0\" />\n                     </VBox.margin>\n                  </Label>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"Y:\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets top=\"15.0\" />\n                     </VBox.margin>\n                  </Label>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"Long Name:\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets top=\"15.0\" />\n                     </VBox.margin>\n                  </Label>\n                  <Label prefHeight=\"35.0\" prefWidth=\"156.0\" text=\"Short Name:\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets top=\"15.0\" />\n                     </VBox.margin>\n                  </Label>\n               </children>\n            </VBox>\n            <VBox prefHeight=\"291.0\" prefWidth=\"410.0\">\n               <children>\n                  <ChoiceBox fx:id=\"nodeBox\" prefHeight=\"26.0\" prefWidth=\"416.0\">\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" top=\"15.0\" />\n                     </VBox.margin>\n                  </ChoiceBox>\n                  <TextField fx:id=\"floorField\" promptText=\"Please Type In Floor\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" />\n                     </VBox.margin>\n                  </TextField>\n                  <TextField promptText=\"Please Type In X Value\" fx:id=\"xField\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" />\n                     </VBox.margin>\n                  </TextField>\n                  <TextField fx:id=\"yField\" promptText=\"Please Type In Y Value\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" />\n                     </VBox.margin>\n                  </TextField>\n                  <TextField fx:id=\"longField\" prefHeight=\"35.0\" prefWidth=\"209.0\" promptText=\"Please Type In Long Name\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                     <VBox.margin>\n                        <Insets bottom=\"15.0\" />\n                     </VBox.margin>\n                  </TextField>\n                  <TextField fx:id=\"shortField\" promptText=\"Please Type In Short Name\">\n                     <font>\n                        <Font size=\"18.0\" />\n                     </font>\n                  </TextField>\n               </children>\n            </VBox>\n         </children>\n      </HBox>\n      <JFXButton fx:id=\"cancel\" layoutX=\"104.0\" layoutY=\"334.0\" onAction=\"#cancel\" prefHeight=\"49.0\" prefWidth=\"122.0\" ripplerFill=\"RED\" text=\"Cancel\" />\n      <JFXButton layoutX=\"233.0\" layoutY=\"334.0\" onAction=\"#submit\" prefHeight=\"49.0\" prefWidth=\"122.0\" ripplerFill=\"#182c9e\" text=\"Submit\" />\n      <JFXButton layoutX=\"358.0\" layoutY=\"334.0\" onAction=\"#reset\" prefHeight=\"49.0\" prefWidth=\"122.0\" ripplerFill=\"#182c9e\" text=\"Reset\" />\n      <JFXCheckBox fx:id=\"isModify\" checkedColor=\"#10429c\" layoutX=\"274.0\" layoutY=\"12.0\" prefHeight=\"26.0\" prefWidth=\"68.0\" text=\"Modify\" unCheckedColor=\"#00000065\" />\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml
+--- a/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml	(revision 81af45c57eefafe310c498333f0b3f89decdfc92)
++++ b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml	(date 1649105528866)
+@@ -13,7 +13,7 @@
+ 
+ <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapAddController">
+    <children>
+-      <HBox layoutX="44.0" layoutY="32.0" prefHeight="291.0" prefWidth="527.0">
++      <HBox layoutX="24.0" layoutY="32.0" prefHeight="291.0" prefWidth="560.0">
+          <children>
+             <VBox alignment="TOP_RIGHT" prefHeight="300.0" prefWidth="122.0">
+                <children>
+@@ -108,6 +108,15 @@
+                         <Font size="18.0" />
+                      </font>
+                   </TextField>
++               </children>
++            </VBox>
++            <VBox prefHeight="291.0" prefWidth="88.0">
++               <children>
++                  <JFXButton alignment="CENTER" onAction="#popUpTracker" prefHeight="59.0" prefWidth="65.0" text="Choose&#10;From&#10;Map&#10;">
++                     <VBox.margin>
++                        <Insets top="125.0" />
++                     </VBox.margin>
++                  </JFXButton>
+                </children>
+             </VBox>
+          </children>
+Index: ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import com.jfoenix.controls.*?>\n<?import javafx.scene.control.*?>\n<?import javafx.scene.image.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<AnchorPane prefHeight=\"720.0\" prefWidth=\"1280.0\" style=\"-fx-background-color: #154487;\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"edu.wpi.furious_furrets.mapPageController\">\n   <children>\n      <ImageView fx:id=\"mapHolder\" fitHeight=\"450.0\" fitWidth=\"480.0\" layoutX=\"800.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n         <image>\n            <Image url=\"@FloorMap/Floor1.jpg\" />\n         </image>\n      </ImageView>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"823.0\" layoutY=\"412.0\" onAction=\"#popUpAdd\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"ADD\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"823.0\" layoutY=\"512.0\" onAction=\"#popUpDelete\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"RED\" style=\"-fx-background-color: #062558;\" text=\"DELETE\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"823.0\" layoutY=\"612.0\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"RED\" style=\"-fx-background-color: #062558;\" text=\"MODIFY\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"1063.0\" layoutY=\"612.0\" onAction=\"#backToHomePage\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"HOME PAGE\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"1063.0\" layoutY=\"512.0\" onAction=\"#popUpSave\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"SAVE\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <JFXButton buttonType=\"RAISED\" layoutX=\"1063.0\" layoutY=\"412.0\" onAction=\"#popUpReset\" prefHeight=\"80.0\" prefWidth=\"200.0\" ripplerFill=\"WHITE\" style=\"-fx-background-color: #062558;\" text=\"LOAD\" textFill=\"WHITE\">\n         <font>\n            <Font size=\"24.0\" />\n         </font>\n      </JFXButton>\n      <MenuBar layoutX=\"813.0\" layoutY=\"5.0\">\n        <menus>\n          <Menu mnemonicParsing=\"false\" text=\"Change Map\">\n            <items>\n              <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF3\" text=\"Floor 3\" />\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF2\" text=\"Floor 2\" />\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToF1\" text=\"Floor 1\" />\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToL1\" text=\"Lower 1\" />\n                  <MenuItem mnemonicParsing=\"false\" onAction=\"#changeToL2\" text=\"Lower 2\" />\n            </items>\n          </Menu>\n        </menus>\n      </MenuBar>\n      <TableView fx:id=\"table\" prefHeight=\"720.0\" prefWidth=\"800.0\">\n        <columns>\n          <TableColumn fx:id=\"nodeID\" prefWidth=\"87.0800952911377\" text=\"nodeID\" />\n            <TableColumn prefWidth=\"49.194175720214844\" text=\"xcoord\" fx:id=\"xcoord\" />\n            <TableColumn fx:id=\"ycoord\" prefWidth=\"51.034088134765625\" text=\"ycoord\" />\n            <TableColumn fx:id=\"Floor\" prefWidth=\"62.95404052734375\" text=\"Floor\" />\n            <TableColumn fx:id=\"Building\" prefWidth=\"78.06661987304688\" text=\"Building\" />\n            <TableColumn fx:id=\"nodeType\" prefWidth=\"111.82745361328125\" text=\"nodeType\" />\n            <TableColumn fx:id=\"longName\" prefWidth=\"256.67254638671875\" text=\"longName\" />\n            <TableColumn fx:id=\"shortName\" prefWidth=\"101.5877685546875\" text=\"shortName\" />\n        </columns>\n      </TableView>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml
+--- a/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml	(revision 81af45c57eefafe310c498333f0b3f89decdfc92)
++++ b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml	(date 1649112408817)
+@@ -1,12 +1,17 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+-<?import com.jfoenix.controls.*?>
+-<?import javafx.scene.control.*?>
+-<?import javafx.scene.image.*?>
+-<?import javafx.scene.layout.*?>
+-<?import javafx.scene.text.*?>
++<?import com.jfoenix.controls.JFXButton?>
++<?import javafx.scene.control.Menu?>
++<?import javafx.scene.control.MenuBar?>
++<?import javafx.scene.control.MenuItem?>
++<?import javafx.scene.control.TableColumn?>
++<?import javafx.scene.control.TableView?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapPageController">
++<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapPageController">
+    <children>
+       <ImageView fx:id="mapHolder" fitHeight="450.0" fitWidth="480.0" layoutX="800.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+@@ -64,7 +69,6 @@
+             <TableColumn fx:id="Floor" prefWidth="62.95404052734375" text="Floor" />
+             <TableColumn fx:id="Building" prefWidth="78.06661987304688" text="Building" />
+             <TableColumn fx:id="nodeType" prefWidth="111.82745361328125" text="nodeType" />
+-            <TableColumn fx:id="longName" prefWidth="256.67254638671875" text="longName" />
+             <TableColumn fx:id="shortName" prefWidth="101.5877685546875" text="shortName" />
+         </columns>
+       </TableView>
+Index: ProtoypeF/src/main/java/edu/wpi/furious_furrets/coordTempHolder.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/coordTempHolder.java b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/coordTempHolder.java
+new file mode 100644
+--- /dev/null	(date 1649108026698)
++++ b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/coordTempHolder.java	(date 1649108026698)
+@@ -0,0 +1,31 @@
++package edu.wpi.furious_furrets;
++
++public class coordTempHolder {
++  private static String xValue;
++  private static String yValue;
++  private static String floorValue;
++
++  public static String getxValue() {
++    return xValue;
++  }
++
++  public static void setxValue(String xValue) {
++    coordTempHolder.xValue = xValue;
++  }
++
++  public static String getyValue() {
++    return yValue;
++  }
++
++  public static void setyValue(String yValue) {
++    coordTempHolder.yValue = yValue;
++  }
++
++  public static String getFloorValue() {
++    return floorValue;
++  }
++
++  public static void setFloorValue(String floorValue) {
++    coordTempHolder.floorValue = floorValue;
++  }
++}
+Index: ProtoypeF/src/main/resources/edu/wpi/furious_furrets/fullLocationPage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/fullLocationPage.fxml b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/fullLocationPage.fxml
+new file mode 100644
+--- /dev/null	(date 1649113181850)
++++ b/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/fullLocationPage.fxml	(date 1649113181850)
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import com.jfoenix.controls.JFXButton?>
++<?import javafx.scene.control.TableColumn?>
++<?import javafx.scene.control.TableView?>
++<?import javafx.scene.layout.AnchorPane?>
++
++<AnchorPane prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.fullLocationController">
++   <children>
++      <TableView fx:id="table" prefHeight="720.0" prefWidth="800.0">
++         <columns>
++            <TableColumn fx:id="nodeID" prefWidth="87.0800952911377" text="nodeID" />
++            <TableColumn prefWidth="49.194175720214844" text="xcoord" fx:id="xcoord" />
++            <TableColumn fx:id="ycoord" prefWidth="51.034088134765625" text="ycoord" />
++            <TableColumn fx:id="Floor" prefWidth="62.95404052734375" text="Floor" />
++            <TableColumn fx:id="Building" prefWidth="78.06661987304688" text="Building" />
++            <TableColumn fx:id="nodeType" prefWidth="111.82745361328125" text="nodeType" />
++            <TableColumn fx:id="longName" prefWidth="256.67254638671875" text="longName" />
++            <TableColumn fx:id="shortName" prefWidth="101.5877685546875" text="shortName" />
++         </columns>
++      </TableView>
++      <JFXButton layoutX="835.0" layoutY="630.0" prefHeight="58.0" prefWidth="139.0" ripplerFill="RED" style="-fx-background-color: aliceblue;" text="Close Page" textFill="RED" />
++   </children>
++</AnchorPane>
+Index: ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.furious_furrets;\n\nimport edu.wpi.furious_furrets.controllers.entities.DatabaseManager;\nimport edu.wpi.furious_furrets.database.DatabaseInitializer;\nimport edu.wpi.furious_furrets.database.Location;\nimport edu.wpi.furious_furrets.database.LocationsDAOImpl;\nimport java.awt.*;\nimport java.io.*;\nimport java.net.URL;\nimport java.sql.*;\nimport java.sql.Connection;\nimport java.util.ArrayList;\nimport java.util.ResourceBundle;\nimport javafx.collections.FXCollections;\nimport javafx.collections.ObservableList;\nimport javafx.fxml.FXML;\nimport javafx.fxml.FXMLLoader;\nimport javafx.fxml.Initializable;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.TableColumn;\nimport javafx.scene.control.TableView;\nimport javafx.scene.control.cell.PropertyValueFactory;\nimport javafx.scene.image.Image;\nimport javafx.scene.image.ImageView;\nimport javafx.stage.Modality;\nimport javafx.stage.Stage;\n\npublic class mapPageController extends returnHomePage implements Initializable {\n\n  @FXML ImageView mapHolder;\n\n  @FXML TableView<Location> table;\n\n  @FXML TableColumn<Location, String> nodeID;\n  @FXML TableColumn<Location, Integer> xcoord;\n  @FXML TableColumn<Location, Integer> ycoord;\n  @FXML TableColumn<Location, String> Floor;\n  @FXML TableColumn<Location, String> Building;\n  @FXML TableColumn<Location, String> nodeType;\n  @FXML TableColumn<Location, String> longName;\n  @FXML TableColumn<Location, String> shortName;\n\n  private Connection connection = DatabaseInitializer.getConnection().getDbConnection();\n\n  Image F1 = new Image(getClass().getResourceAsStream(\"FloorMap/Floor1.jpg\"));\n  Image F2 = new Image(getClass().getResourceAsStream(\"FloorMap/Floor2.jpg\"));\n  Image F3 = new Image(getClass().getResourceAsStream(\"FloorMap/Floor3.jpg\"));\n  Image L1 = new Image(getClass().getResourceAsStream(\"FloorMap/Lower1.jpg\"));\n  Image L2 = new Image(getClass().getResourceAsStream(\"FloorMap/Lower2.jpg\"));\n\n  @Override\n  public void initialize(URL location, ResourceBundle resources) {\n    nodeID.setCellValueFactory(new PropertyValueFactory<Location, String>(\"nodeID\"));\n    xcoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>(\"xcoord\"));\n    ycoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>(\"ycoord\"));\n    Floor.setCellValueFactory(new PropertyValueFactory<Location, String>(\"Floor\"));\n    Building.setCellValueFactory(new PropertyValueFactory<Location, String>(\"Building\"));\n    nodeType.setCellValueFactory(new PropertyValueFactory<Location, String>(\"nodeType\"));\n    longName.setCellValueFactory(new PropertyValueFactory<Location, String>(\"longName\"));\n    shortName.setCellValueFactory(new PropertyValueFactory<Location, String>(\"shortName\"));\n    //    BufferedReader lineReader =\n    //        new BufferedReader(\n    //            new InputStreamReader(\n    //                LocationsDAOImpl.class.getResourceAsStream(\n    //                    \"/edu/wpi/furious_furrets/TowerLocations.csv\"),\n    //                StandardCharsets.UTF_8));\n\n    LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());\n    ArrayList<Location> nLocations = null;\n    try {\n      nLocations = DatabaseManager.getLdao().getAllLocations();\n    } catch (SQLException e) {\n      e.printStackTrace();\n    }\n    ObservableList<Location> locationList = FXCollections.observableList(nLocations);\n    table.setItems(locationList);\n  }\n\n  public void changeToF1() {\n    mapHolder.setImage(F1);\n  }\n\n  public void changeToF2() {\n    mapHolder.setImage(F2);\n  }\n\n  public void changeToF3() {\n    mapHolder.setImage(F3);\n  }\n\n  public void changeToL1() {\n    mapHolder.setImage(L1);\n  }\n\n  public void changeToL2() {\n    mapHolder.setImage(L2);\n  }\n\n  public void popUpAdd() throws IOException {\n    Parent root = FXMLLoader.load(getClass().getResource(\"mapAddPage.fxml\"));\n    Stage popupwindow = new Stage();\n    popupwindow.initModality(Modality.APPLICATION_MODAL);\n    Scene scene1 = new Scene(root);\n    popupwindow.setScene(scene1);\n    popupwindow.showAndWait();\n    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());\n    ArrayList<Location> nLocations = null;\n    try {\n      nLocations = DatabaseManager.getLdao().getAllLocations();\n    } catch (SQLException e) {\n      e.printStackTrace();\n    }\n    ObservableList<Location> locationList = FXCollections.observableList(nLocations);\n    table.setItems(locationList);\n  }\n\n  public void popUpDelete() throws IOException {\n    Parent root = FXMLLoader.load(getClass().getResource(\"mapDeletePage.fxml\"));\n    Stage popupwindow = new Stage();\n    popupwindow.initModality(Modality.APPLICATION_MODAL);\n    Scene scene1 = new Scene(root);\n    popupwindow.setScene(scene1);\n    popupwindow.showAndWait();\n    ArrayList<Location> nLocations = null;\n    try {\n      nLocations = DatabaseManager.getLdao().getAllLocations();\n    } catch (SQLException e) {\n      e.printStackTrace();\n    }\n    ObservableList<Location> locationList = FXCollections.observableList(nLocations);\n    table.setItems(locationList);\n  }\n\n  public void popUpSave() throws IOException {\n    Parent root = FXMLLoader.load(getClass().getResource(\"mapBackUpPage.fxml\"));\n    Stage popupwindow = new Stage();\n    popupwindow.initModality(Modality.APPLICATION_MODAL);\n    Scene scene1 = new Scene(root);\n    popupwindow.setScene(scene1);\n    popupwindow.showAndWait();\n  }\n\n  public void popUpReset() throws IOException {\n    Parent root = FXMLLoader.load(getClass().getResource(\"mapResetPage.fxml\"));\n    Stage popupwindow = new Stage();\n    popupwindow.initModality(Modality.APPLICATION_MODAL);\n    Scene scene1 = new Scene(root);\n    popupwindow.setScene(scene1);\n    popupwindow.showAndWait();\n    // update table view\n    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());\n    ArrayList<Location> nLocations = null;\n    try {\n      nLocations = DatabaseManager.getLdao().getAllLocations();\n    } catch (SQLException e) {\n      e.printStackTrace();\n    }\n    ObservableList<Location> locationList = FXCollections.observableList(nLocations);\n    table.setItems(locationList);\n  }\n\n  public String generateNodeID(String nodeType, String floor, int x, int y)\n      throws SQLException, IOException {\n    String nNodeType = nodeType;\n    String nFloor = floor;\n    int roomNum = 0;\n    String rNum;\n    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n\n    Statement stm = DatabaseManager.initalizeDatabaseManager().getConn().createStatement();\n    String cmd =\n        \"SELECT * FROM Locations WHERE nodeType = '\" + nNodeType + \"' AND floor = '\" + nFloor + \"'\";\n    ResultSet rset = stm.executeQuery(cmd);\n    while (rset.next()) {\n      roomNum++;\n    }\n\n    if ((roomNum / 10.0) >= 10) {\n      rNum = \"\" + roomNum;\n    } else if ((roomNum / 10.0) >= 1) {\n      rNum = \"0\" + roomNum;\n    } else {\n      rNum = \"00\" + roomNum;\n    }\n\n    switch (nFloor) {\n      case \"3\":\n        nFloor = \"03\";\n        break;\n      case \"2\":\n        nFloor = \"02\";\n        break;\n      case \"1\":\n        nFloor = \"01\";\n        break;\n      case \"L1\":\n        nFloor = \"L1\";\n        break;\n      case \"L2\":\n        nFloor = \"L2\";\n        break;\n      default:\n        break;\n    }\n\n    String nID;\n    nID = \"f\" + nNodeType + rNum + nFloor;\n    return nID;\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java
+--- a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java	(revision 81af45c57eefafe310c498333f0b3f89decdfc92)
++++ b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java	(date 1649112825085)
+@@ -59,14 +59,7 @@
+     nodeType.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeType"));
+     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
+     shortName.setCellValueFactory(new PropertyValueFactory<Location, String>("shortName"));
+-    //    BufferedReader lineReader =
+-    //        new BufferedReader(
+-    //            new InputStreamReader(
+-    //                LocationsDAOImpl.class.getResourceAsStream(
+-    //                    "/edu/wpi/furious_furrets/TowerLocations.csv"),
+-    //                StandardCharsets.UTF_8));
+ 
+-    LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+     ArrayList<Location> nLocations = null;
+     try {
+       nLocations = DatabaseManager.getLdao().getAllLocations();
+@@ -103,6 +96,7 @@
+     popupwindow.initModality(Modality.APPLICATION_MODAL);
+     Scene scene1 = new Scene(root);
+     popupwindow.setScene(scene1);
++    popupwindow.initModality(Modality.APPLICATION_MODAL);
+     popupwindow.showAndWait();
+     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+     ArrayList<Location> nLocations = null;
+Index: ProtoypeF/src/main/java/edu/wpi/furious_furrets/fullLocationController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/fullLocationController.java b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/fullLocationController.java
+new file mode 100644
+--- /dev/null	(date 1649113420583)
++++ b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/fullLocationController.java	(date 1649113420583)
+@@ -0,0 +1,64 @@
++package edu.wpi.furious_furrets;
++
++import com.jfoenix.controls.JFXButton;
++import edu.wpi.furious_furrets.controllers.entities.DatabaseManager;
++import edu.wpi.furious_furrets.database.Location;
++import javafx.collections.FXCollections;
++import javafx.collections.ObservableList;
++import javafx.embed.swing.JFXPanel;
++import javafx.fxml.FXML;
++import javafx.fxml.Initializable;
++import javafx.scene.control.TableColumn;
++import javafx.scene.control.TableView;
++import javafx.scene.control.cell.PropertyValueFactory;
++import javafx.stage.Stage;
++
++import java.net.URL;
++import java.sql.SQLException;
++import java.util.ArrayList;
++import java.util.ResourceBundle;
++
++public class fullLocationController implements Initializable {
++
++    @FXML
++    TableView<Location> table;
++
++    @FXML
++    TableColumn<Location, String> nodeID;
++    @FXML TableColumn<Location, Integer> xcoord;
++    @FXML TableColumn<Location, Integer> ycoord;
++    @FXML TableColumn<Location, String> Floor;
++    @FXML TableColumn<Location, String> Building;
++    @FXML TableColumn<Location, String> nodeType;
++    @FXML TableColumn<Location, String> longName;
++    @FXML TableColumn<Location, String> shortName;
++
++    @FXML JFXButton cancel;
++
++    @Override
++    public void initialize(URL location, ResourceBundle resources) {
++        nodeID.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeID"));
++        xcoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>("xcoord"));
++        ycoord.setCellValueFactory(new PropertyValueFactory<Location, Integer>("ycoord"));
++        Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
++        Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
++        nodeType.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeType"));
++        longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
++        shortName.setCellValueFactory(new PropertyValueFactory<Location, String>("shortName"));
++
++        ArrayList<Location> nLocations = null;
++        try {
++            nLocations = DatabaseManager.getLdao().getAllLocations();
++        } catch (SQLException e) {
++            e.printStackTrace();
++        }
++        ObservableList<Location> locationList = FXCollections.observableList(nLocations);
++        table.setItems(locationList);
++    }
++
++    public void cancel(){
++        Stage stage = (Stage) cancel.getScene().getWindow();
++            stage.close();
++
++    }
++}
+Index: ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.wpi.furious_furrets;\n\nimport com.jfoenix.controls.JFXCheckBox;\nimport edu.wpi.furious_furrets.controllers.entities.DatabaseManager;\nimport edu.wpi.furious_furrets.database.DatabaseInitializer;\nimport edu.wpi.furious_furrets.database.Location;\nimport edu.wpi.furious_furrets.database.LocationsDAOImpl;\nimport java.io.IOException;\nimport java.net.URL;\nimport java.sql.Connection;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport java.sql.Statement;\nimport java.util.ArrayList;\nimport java.util.ResourceBundle;\nimport javafx.event.ActionEvent;\nimport javafx.fxml.FXML;\nimport javafx.fxml.Initializable;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.ChoiceBox;\nimport javafx.scene.control.TextField;\nimport javafx.stage.Stage;\n\npublic class mapAddController implements Initializable {\n\n  @FXML ChoiceBox<String> nodeBox;\n\n  @FXML private TextField floorField;\n  @FXML private TextField xField;\n  @FXML private TextField yField;\n  @FXML private TextField longField;\n  @FXML private TextField shortField;\n\n  @FXML private Button cancel;\n\n  @FXML private JFXCheckBox isModify;\n\n  private Connection connection = DatabaseInitializer.getConnection().getDbConnection();\n\n  @Override\n  public void initialize(URL location, ResourceBundle resources) {\n    ArrayList<String> temp = new ArrayList<>();\n    temp.add(\"PATI - Patient Room\");\n    temp.add(\"STOR - Equipment Storage Room\");\n    temp.add(\"DIRT - Dirty Equipment Pickup Locations\");\n    temp.add(\"HALL - Hallway\");\n    temp.add(\"ELEV - Elevator\");\n    temp.add(\"REST - Restroom\");\n    temp.add(\"STAI - Staircase\");\n    temp.add(\"DEPT - Medical Departments, Clinics, and Waiting Room Areas\");\n    temp.add(\"LABS - Labs, Imaging Centers, and Medical Testing Areas\");\n    temp.add(\"INFO - Information Desks, Security Desks, Lost and Dound\");\n    temp.add(\"CONF - Conference Room\");\n    temp.add(\"EXIT - Exit/Entrance\");\n    temp.add(\n        \"RETL - Shops, Food, Pay Phone, Areas That Provide Non-medical\\n\"\n            + \"Services For Immediate Payment\");\n    temp.add(\n        \"SERV - Hospital Non-medical Services, Interpreters, Shuttles, Spiritual Library,\\n\"\n            + \"Patient Financial, etc.\");\n    nodeBox.getItems().addAll(temp);\n    nodeBox.setValue(\"Patient Room -PATI\");\n  }\n\n  public void cancel() {\n    Stage stage = (Stage) cancel.getScene().getWindow();\n    stage.close();\n  }\n\n  public void reset() {\n    nodeBox.setValue(\"Patient Room -PATI\");\n    floorField.clear();\n    xField.clear();\n    yField.clear();\n    longField.clear();\n    shortField.clear();\n  }\n\n  public void submit(ActionEvent event) throws SQLException, IOException {\n\n    if (nodeBox.getValue() != null\n        && floorField.getText() != null\n        && xField.getText() != null\n        && yField.getText() != null\n        && longField.getText() != null\n        && shortField.getText() != null) {\n      try {\n        String nID =\n            generateNodeID(\n                nodeBox.getValue(),\n                floorField.getText(),\n                Integer.parseInt(xField.getText()),\n                Integer.parseInt(yField.getText()));\n        System.out.println(nID);\n        Location l =\n            new Location(\n                nID,\n                Integer.parseInt(xField.getText()),\n                Integer.parseInt(yField.getText()),\n                floorField.getText(),\n                \"Tower\",\n                nodeBox.getValue().substring(0, 4),\n                longField.getText(),\n                shortField.getText());\n        DatabaseManager.getLdao().addLocation(l);\n        Stage stage = (Stage) cancel.getScene().getWindow();\n        stage.close();\n      } catch (Exception e) {\n        e.printStackTrace();\n      }\n    }\n  }\n\n  public String generateNodeID(String nodeType, String floor, int x, int y)\n      throws SQLException, IOException {\n    String nNodeType = nodeType.substring(0, 4);\n    String nFloor = floor;\n    int roomNum = 1;\n    String rNum;\n    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n\n    Statement stm = DatabaseInitializer.getConnection().dbConnection.createStatement();\n    String cmd =\n        \"SELECT * FROM Locations WHERE nodeType = '\" + nNodeType + \"' AND floor = '\" + nFloor + \"'\";\n    ResultSet rset = stm.executeQuery(cmd);\n    while (rset.next()) {\n      roomNum++;\n    }\n\n    if ((roomNum / 10.0) >= 10) {\n      rNum = \"\" + roomNum;\n    } else if ((roomNum / 10.0) >= 1) {\n      rNum = \"0\" + roomNum;\n    } else {\n      rNum = \"00\" + roomNum;\n    }\n\n    switch (nFloor) {\n      case \"3\":\n        nFloor = \"03\";\n        break;\n      case \"2\":\n        nFloor = \"02\";\n        break;\n      case \"1\":\n        nFloor = \"01\";\n        break;\n      case \"L1\":\n        nFloor = \"L1\";\n        break;\n      case \"L2\":\n        nFloor = \"L2\";\n        break;\n      default:\n        break;\n    }\n\n    String nID;\n    nID = \"f\" + nNodeType + rNum + nFloor;\n    return nID;\n  }\n\n  //  public void addLocation(\n  //      String nodeType, String floor, int x, int y, String longN, String shortN, boolean\n  // isModify)\n  //      throws SQLException, IOException {\n  //\n  //    String nID = generateNodeID(nodeType, floor, x, y);\n  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n  //    Statement stm = DatabaseManager.getConn().createStatement();\n  //\n  //    Location l = new Location(nID, x, y, floor, \"Tower\", nodeType, longN, shortN);\n  //    ArrayList<Location> nLocations = LDAOImpl.getAllLocations();\n  //    ArrayList<String> nLocationID = LDAOImpl.getCsvIDS();\n  //    nLocations.add(l);\n  //    nLocationID.add(l.getNodeID());\n  //    LDAOImpl.setUpdatedLocations(nLocations);\n  //    LDAOImpl.setCsvIDS(nLocationID);\n  //\n  //    String nNodeType = nodeType.substring(0, 4);\n  //\n  //    String cmd =\n  //        \"INSERT INTO Locations (nodeID, XCOORD, YCOORD, floor, building, nodeType, longName,\n  // shortName) \"\n  //            + \"VALUES ( '\"\n  //            + nID\n  //            + \"', \"\n  //            + x\n  //            + \", \"\n  //            + y\n  //            + \", '\"\n  //            + floor\n  //            + \"', \"\n  //            + \"'Tower'\"\n  //            + \", '\"\n  //            + nNodeType\n  //            + \"', '\"\n  //            + longN\n  //            + \"', '\"\n  //            + shortN\n  //            + \"')\";\n  //    System.out.println(cmd);\n  //    stm.execute(cmd);\n  //    stm.close();\n  //  }\n  //\n  //  public void deleteLocation(String oldID) throws SQLException, IOException {\n  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n  //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();\n  //    ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();\n  //    csvIDS.remove(oldID);\n  //    Statement stm = DatabaseInitializer.getConnection().dbConnection.createStatement();\n  //    String cmd = \"Delete from Locations where nodeID = '\" + oldID + \"'\";\n  //    stm.execute(cmd);\n  //    csvIDS.remove(oldID);\n  //    nLocation.remove(oldID);\n  //    LDAOImpl.setCsvIDS(csvIDS);\n  //    LDAOImpl.setUpdatedLocations(nLocation);\n  //    stm.close();\n  //  }\n  //\n  //  public void updateLocation(\n  //      String nodeID,\n  //      String nodeType,\n  //      String floor,\n  //      int x,\n  //      int y,\n  //      String longN,\n  //      String shortN,\n  //      boolean isModify)\n  //      throws SQLException, IOException {\n  //    deleteLocation(nodeID);\n  //    addLocation(nodeType, floor, x, y, longN, shortN, isModify);\n  //  }\n  //\n  //  public void locationsFromRSET(ResultSet rset) throws SQLException {\n  //    while (rset.next()) {\n  //      String nodeID = rset.getString(\"nodeID\");\n  //      String longName = rset.getString(\"LongName\");\n  //      String shortName = rset.getString(\"ShortName\");\n  //      int xCoord = rset.getInt(\"xcoord\");\n  //      int yCoord = rset.getInt(\"ycoord\");\n  //      String floor = rset.getString(\"floor\");\n  //      String building = rset.getString(\"building\");\n  //      String nodeType = rset.getString(\"nodeType\");\n  //      Location newL =\n  //          new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);\n  //      LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n  //      ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();\n  //      nLocation.add(newL);\n  //      LDAOImpl.setUpdatedLocations(nLocation);\n  //    }\n  //  }\n  //\n  //  public void saveLocationToCSV() {\n  //\n  //    String csvName = \"src/main/resources/edu/wpi/furious_furrets/TowerLocationsNew.csv\";\n  //\n  //    Statement stm = null;\n  //    try {\n  //      stm = connection.createStatement();\n  //    } catch (SQLException e) {\n  //      e.printStackTrace();\n  //    }\n  //\n  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();\n  //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();\n  //    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();\n  //\n  //    try {\n  //      for (String id : csvIDS) {\n  //        ResultSet rset;\n  //        rset = stm.executeQuery(\"SELECT * FROM Locations WHERE nodeID = '\" + id + \"'\");\n  //\n  //        locationsFromRSET(rset);\n  //\n  //        rset.close();\n  //        File newCSV = new File(csvName);\n  //        FileWriter fw = new FileWriter(csvName);\n  //        fw.write(\"nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\\n\");\n  //        for (Location l : updatedLocations) {\n  //          fw.write(\n  //              l.getNodeID()\n  //                  + \",\"\n  //                  + l.getXcoord()\n  //                  + \",\"\n  //                  + l.getYcoord()\n  //                  + \",\"\n  //                  + l.getFloor()\n  //                  + \",\"\n  //                  + l.getBuilding()\n  //                  + \",\"\n  //                  + l.getNodeType()\n  //                  + \",\"\n  //                  + l.getLongName()\n  //                  + \",\"\n  //                  + l.getShortName()\n  //                  + \"\\n\");\n  //        }\n  //        fw.close();\n  //      }\n  //    } catch (SQLException e) {\n  //      e.printStackTrace();\n  //    } catch (IOException e) {\n  //      e.printStackTrace();\n  //    }\n  //  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java
+--- a/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java	(revision 81af45c57eefafe310c498333f0b3f89decdfc92)
++++ b/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java	(date 1649108668132)
+@@ -15,10 +15,14 @@
+ import java.util.ResourceBundle;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
+ import javafx.fxml.Initializable;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
+ import javafx.scene.control.Button;
+ import javafx.scene.control.ChoiceBox;
+ import javafx.scene.control.TextField;
++import javafx.stage.Modality;
+ import javafx.stage.Stage;
+ 
+ public class mapAddController implements Initializable {
+@@ -160,6 +164,19 @@
+     return nID;
+   }
+ 
++  public void popUpTracker() throws IOException {
++    Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
++    Stage popupwindow = new Stage();
++    popupwindow.initModality(Modality.APPLICATION_MODAL);
++    Scene scene1 = new Scene(root);
++    popupwindow.setScene(scene1);
++    popupwindow.initModality(Modality.APPLICATION_MODAL);
++    popupwindow.showAndWait();
++    xField.setText(coordTempHolder.getxValue());
++    yField.setText(coordTempHolder.getyValue());
++    floorField.setText(coordTempHolder.getFloorValue());
++  }
++
+   //  public void addLocation(
+   //      String nodeType, String floor, int x, int y, String longN, String shortN, boolean
+   // isModify)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"26af7afb-bd1c-4c1f-9061-6249aaad0143\" name=\"Changes\" comment=\"Reset map from csv functionality\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$/ProtoypeF\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$/Fapp\">\n          <activation />\n        </task>\n        <task path=\"$PROJECT_DIR$/ProtoypeF\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"ProtoypeF\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"ProtoypeF\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"ProtoypeF\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"ProtoypeF\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"ProtoypeF\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Run Configurations\" type=\"7b0102dc:RunConfigurationsNode\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"add-location-refactor\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"27F4rhBPSgmbzg50QYJvc0kAZdh\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"DatabaseDriversLRU\" value=\"derby\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.45632184\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.pluginManager\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\radcl\\IdeaProjects\\ferocious-furrets\\ProtoypeF\\src\\main\\resources\\edu\\wpi\\furious_furrets\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"edu.wpi.furious_furrets\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Gradle.ProtoypeF [run]\">\n    <configuration name=\"ProtoypeF [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/ProtoypeF\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"ProtoypeF [clean]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/ProtoypeF\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"clean\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"ProtoypeF [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/ProtoypeF\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" value=\"\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"run\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"/Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/Fapp\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"/Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/Fapp\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" value=\"\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"run\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]\" />\n      <item itemvalue=\"Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]\" />\n      <item itemvalue=\"Gradle.ProtoypeF [run]\" />\n      <item itemvalue=\"Gradle.ProtoypeF [clean]\" />\n      <item itemvalue=\"Gradle.ProtoypeF [build]\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Gradle.ProtoypeF [run]\" />\n        <item itemvalue=\"Gradle.ProtoypeF [clean]\" />\n        <item itemvalue=\"Gradle.ProtoypeF [build]\" />\n        <item itemvalue=\"Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"26af7afb-bd1c-4c1f-9061-6249aaad0143\" name=\"Changes\" comment=\"\" />\n      <created>1648902715033</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1648902715033</updated>\n      <workItem from=\"1648902721463\" duration=\"1220000\" />\n      <workItem from=\"1649004669795\" duration=\"943000\" />\n      <workItem from=\"1649032484630\" duration=\"133000\" />\n      <workItem from=\"1649032688247\" duration=\"22000\" />\n      <workItem from=\"1649032756025\" duration=\"11000\" />\n      <workItem from=\"1649032831496\" duration=\"682000\" />\n      <workItem from=\"1649041080141\" duration=\"2093000\" />\n      <workItem from=\"1649091344339\" duration=\"2290000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Merged csv-save branch into master\">\n      <created>1649080027261</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649080027261</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset.\">\n      <created>1649083847218</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649083847218</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Reset map from csv functionality\">\n      <created>1649087543939</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649087543939</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Added UI for backing Locations up to a csv\" />\n    <MESSAGE value=\"Merged csv-save branch into master\" />\n    <MESSAGE value=\"Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset.\" />\n    <MESSAGE value=\"Reset map from csv functionality\" />\n    <MESSAGE value=\"Updated add and delete Location functionality to make use of DAO pattern\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Updated add and delete Location functionality to make use of DAO pattern\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 81af45c57eefafe310c498333f0b3f89decdfc92)
++++ b/.idea/workspace.xml	(date 1649116110154)
+@@ -4,7 +4,16 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Reset map from csv functionality" />
++    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Reset map from csv functionality">
++      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/coordTempHolder.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/fullLocationController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/fullLocationPage.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapAddController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/mapPageController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapAddPage.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/mapPage.fxml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -34,23 +43,6 @@
+               <path>
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                 <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="application" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="build" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+               </path>
+             </expand>
+@@ -63,6 +55,7 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="FxmlFile" />
+         <option value="Class" />
+       </list>
+     </option>
+@@ -93,7 +86,7 @@
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+-    <property name="project.structure.last.edited" value="Libraries" />
++    <property name="project.structure.last.edited" value="Modules" />
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.45632184" />
+     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+@@ -102,6 +95,9 @@
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
+     </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
++    </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
+       <recent name="edu.wpi.furious_furrets" />
+     </key>
+@@ -255,6 +251,7 @@
+       <workItem from="1649032831496" duration="682000" />
+       <workItem from="1649041080141" duration="2093000" />
+       <workItem from="1649091344339" duration="2290000" />
++      <workItem from="1649103500273" duration="7443000" />
+     </task>
+     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
+       <created>1649080027261</created>
