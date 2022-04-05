@@ -1,11 +1,11 @@
-package edu.wpi.furious_furrets;
+package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
-import edu.wpi.furious_furrets.controllers.fxml.SceneManager;
-import edu.wpi.furious_furrets.entities.request.deliveryRequest.giftDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest.giftDeliveryRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -156,14 +156,13 @@ public class giftController extends returnHomePage implements Initializable {
   public giftDeliveryRequest submitButton() {
     giftDeliveryRequest giftRequest =
         new giftDeliveryRequest(
+            generateReqID(itemList.size()),
             assigned.getText(),
-            Integer.parseInt(employeeID.getText()),
+            employeeID.getText(),
             nodeID.getText(),
             statusChoice.getValue().toString(),
             reqType,
-            "",
-            "",
-            "");
+            "GIFT");
     submitButton.disableProperty().setValue(true);
     previewButton.disableProperty().setValue(false);
     itemField.setText("Empty");
@@ -199,7 +198,6 @@ public class giftController extends returnHomePage implements Initializable {
     employeeField.setText("Empty");
     nodeField.setText("Empty");
     roseB = !roseB;
-    System.out.println("changed");
   }
 
   public void boxChangeTeddy() {
@@ -209,7 +207,6 @@ public class giftController extends returnHomePage implements Initializable {
     employeeField.setText("Empty");
     nodeField.setText("Empty");
     teddyB = !teddyB;
-    System.out.println("changed");
   }
 
   public void boxChangeGift() {
@@ -250,5 +247,26 @@ public class giftController extends returnHomePage implements Initializable {
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+  }
+
+  public String generateReqID(int requestListLength) {
+    String reqAbb = "GR";
+    String giftID = "";
+    if ((rose != null) && roseB) {
+      giftID = giftID + "R01";
+    }
+    if ((teddyBear != null) && teddyB) {
+      giftID = giftID + "TB01";
+    }
+    if ((giftCard != null) && giftB) {
+      giftID = giftID + "GC01";
+    }
+    if ((jasmine != null) && jasmineB) {
+      giftID = giftID + "J01";
+    }
+    if ((chrys != null) && chrysB) {
+      giftID = giftID + "C01";
+    }
+    return reqAbb + giftID + (requestListLength + 1);
   }
 }

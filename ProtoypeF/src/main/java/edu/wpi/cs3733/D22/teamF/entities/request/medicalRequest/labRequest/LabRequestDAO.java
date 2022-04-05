@@ -1,5 +1,6 @@
 /**
- * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and updateRequest function
+ * Interface for the MedEquipServReqDAO class with the necessary addRequest, deleteRequest, and
+ * updateRequest function
  *
  * @version 1.0
  */
@@ -18,7 +19,6 @@ public interface LabRequestDAO {
   ArrayList<labRequest> getAllRequests() throws SQLException;
 
   /**
-   *
    * @param reqID request ID
    * @param nodeID id of location node
    * @param assignedEmpID employee name
@@ -30,25 +30,25 @@ public interface LabRequestDAO {
    * @throws SQLException
    */
   void addRequest(
-          String reqID,
-          String nodeID,
-          String assignedEmpID,
-          String requesterEmpID,
-          String status,
-          String reqType,
-          String medicalType,
-          String sampleType)
-          throws SQLException;
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String reqType,
+      String medicalType,
+      String sampleType)
+      throws SQLException;
 
   /**
    * deletes a request object
+   *
    * @param deletedObject labRequest
    * @throws SQLException
    */
   void deleteRequest(labRequest deletedObject) throws SQLException;
 
   /**
-   *
    * @param updatingRequest labRequest to update
    * @param reqID new reqID
    * @param nodeID new nodeID
@@ -61,14 +61,14 @@ public interface LabRequestDAO {
    * @throws SQLException
    */
   void updateRequest(
-          labRequest updatingRequest,
-          String reqID,
-          String nodeID,
-          String assignedEmpID,
-          String requesterEmpID,
-          String status,
-          String reqType,
-          String medicalType,
-          String sampleType)
-          throws SQLException;
+      labRequest updatingRequest,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String reqType,
+      String medicalType,
+      String sampleType)
+      throws SQLException;
 }
