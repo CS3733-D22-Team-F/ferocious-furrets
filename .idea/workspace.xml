@@ -87,6 +87,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+    <configuration name="ProtoypeF [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProtoypeF [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -165,10 +186,12 @@
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
+      <item itemvalue="Gradle.ProtoypeF [clean]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
+        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [build]" />
       </list>
     </recent_temporary>
