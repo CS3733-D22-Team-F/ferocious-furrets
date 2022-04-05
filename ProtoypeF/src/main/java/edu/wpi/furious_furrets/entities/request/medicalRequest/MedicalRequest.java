@@ -4,8 +4,8 @@ import edu.wpi.furious_furrets.entities.Request;
 
 public abstract class MedicalRequest extends Request {
 
-  private String equipID;
-  private String equipType;
+  private final String equipID;
+  private final String equipType;
 
   public MedicalRequest(
       String assign,
@@ -14,8 +14,9 @@ public abstract class MedicalRequest extends Request {
       String sts,
       String reqType,
       String equipID,
-      String equipType) {
-    super(assign, empID, nID, sts, reqType);
+      String equipType,
+      String reqID) {
+    super(assign, empID, nID, sts, reqType, reqID);
     this.equipID = equipID;
     this.equipType = equipType;
   }
