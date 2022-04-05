@@ -168,7 +168,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     String rNum;
     LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
 
-    Statement stm = DatabaseManager.initalizeDatabaseManager().getConn().createStatement();
+    Statement stm = DatabaseManager.getConn().createStatement();
     String cmd =
         "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
     ResultSet rset = stm.executeQuery(cmd);
@@ -206,6 +206,7 @@ public class mapPageController extends returnHomePage implements Initializable {
 
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
+    stm.close();
     return nID;
   }
 }

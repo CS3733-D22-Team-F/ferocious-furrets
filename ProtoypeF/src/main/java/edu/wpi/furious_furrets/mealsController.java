@@ -7,17 +7,14 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class mealsController extends returnHomePage implements Initializable {
-  ArrayList<Object> returnList = new ArrayList<>();
-  ArrayList<Object> requestList = new ArrayList<>();
-  @FXML private ChoiceBox<Object> status;
+
+  @FXML private ComboBox<Object> status;
+
   // submit button sendind delivery
-  @FXML private Button submitButton;
+  // @FXML private Button submitButton;
   @FXML private TextField employeeName;
   @FXML private TextField employeeID;
   @FXML private TextField nodeID;

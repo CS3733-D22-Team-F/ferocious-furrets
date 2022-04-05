@@ -59,16 +59,18 @@ public class mapAddController implements Initializable {
         "SERV - Hospital Non-medical Services, Interpreters, Shuttles, Spiritual Library,\n"
             + "Patient Financial, etc.");
     nodeBox.getItems().addAll(temp);
-    nodeBox.setValue("Patient Room -PATI");
+    nodeBox.setValue("PATI - Patient Room");
   }
 
+  /** Cancel add, close window */
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }
 
+  /** reset fields in add window */
   public void reset() {
-    nodeBox.setValue("Patient Room -PATI");
+    nodeBox.setValue("PATI - Patient Room");
     floorField.clear();
     xField.clear();
     yField.clear();
@@ -76,6 +78,13 @@ public class mapAddController implements Initializable {
     shortField.clear();
   }
 
+  /**
+   * @param event is the click of the submit button
+   * @throws SQLException
+   * @throws IOException
+   *     <p>Submit turns the fields of the Add Location window into a new Location object then
+   *     passes that object to the LocationDAOImpl class to add to the database
+   */
   public void submit(ActionEvent event) throws SQLException, IOException {
 
     if (nodeBox.getValue() != null
@@ -111,6 +120,17 @@ public class mapAddController implements Initializable {
     }
   }
 
+  /**
+   * @param nodeType
+   * @param floor
+   * @param x
+   * @param y
+   * @return
+   * @throws SQLException
+   * @throws IOException
+   *     <p>Algorithm to create primary key nodeID for Location object following naming standards
+   *     specified
+   */
   public String generateNodeID(String nodeType, String floor, int x, int y)
       throws SQLException, IOException {
     String nNodeType = nodeType.substring(0, 4);
@@ -157,6 +177,7 @@ public class mapAddController implements Initializable {
 
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
+    stm.close();
     return nID;
   }
 

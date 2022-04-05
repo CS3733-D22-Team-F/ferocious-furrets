@@ -31,6 +31,13 @@ public class mapDeleteController implements Initializable {
     idField.clear();
   }
 
+  /**
+   * Call deleteLocation upon clicking of delete button
+   *
+   * @param event
+   * @throws SQLException
+   * @throws IOException
+   */
   public void delete(ActionEvent event) throws SQLException, IOException {
 
     if (idField.getText() != null) {
@@ -44,6 +51,13 @@ public class mapDeleteController implements Initializable {
     }
   }
 
+  /**
+   * Calls LocationDAOImpl to delete location
+   *
+   * @param oldID is the nodeID of the node to be deleted
+   * @throws SQLException
+   * @throws IOException
+   */
   public void deleteLocation(String oldID) throws SQLException, IOException {
     DatabaseManager.getLdao().deleteLocation(oldID);
   }
