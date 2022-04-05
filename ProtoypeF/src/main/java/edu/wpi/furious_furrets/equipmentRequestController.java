@@ -25,8 +25,8 @@ public class equipmentRequestController extends returnHomePage implements Initia
   @FXML private TextField nodeField;
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
-  @FXML private ChoiceBox typeChoice;
-  @FXML private ChoiceBox statusChoice;
+  @FXML private ComboBox typeChoice;
+  @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
 
