@@ -51,7 +51,7 @@ public class labRequestController extends returnHomePage implements Initializabl
     temp1.add("blood");
     temp1.add("urine");
     typeChoice.getItems().addAll(temp1);
-    typeChoice.setValue("blood");
+    typeChoice.setValue("");
   }
 
   // Use Try/Catch when call this function

@@ -41,7 +41,7 @@
                         <Font size="37.0" />
                      </font>
                   </Label>
-                  <JFXComboBox fx:id="statueChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="279.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
+                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="279.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
                </children>
             </HBox>
             <HBox layoutX="108.0" layoutY="461.0" prefHeight="62.0" prefWidth="515.0" spacing="20.0">

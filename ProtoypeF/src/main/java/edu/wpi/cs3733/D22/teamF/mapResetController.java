@@ -79,7 +79,7 @@ public class mapResetController implements Initializable {
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
     DatabaseManager.getLocationDAO()
-        .resetMapFromCSV("/edu/wpi/furious_furrets/" + filename + ".csv");
+        .resetMapFromCSV("/edu/wpi/cs3733/D22/teamF/csv/" + filename + ".csv");
   }
 
   public void resetFromCSVFile(File file) throws SQLException, IOException {

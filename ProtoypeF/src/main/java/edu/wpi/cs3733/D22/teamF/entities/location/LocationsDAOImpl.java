@@ -407,7 +407,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void saveLocationToCSV() throws SQLException {
 
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/csv/TowerLocations.csv";
+    String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv";
 
     Statement stm = null;
     try {
