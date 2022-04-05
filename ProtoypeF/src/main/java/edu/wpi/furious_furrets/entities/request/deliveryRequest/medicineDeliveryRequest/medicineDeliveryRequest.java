@@ -1,17 +1,16 @@
 package edu.wpi.furious_furrets.entities.request.deliveryRequest.medicineDeliveryRequest;
 
-import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
+import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
 
-public class medicineDeliveryRequest extends MedicalRequest {
+public class medicineDeliveryRequest extends DeliveryRequest {
   public medicineDeliveryRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String equipID,
-      String equipType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType, reqID);
+      String deliveryType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, deliveryType);
   }
 }

@@ -3,56 +3,62 @@ package edu.wpi.furious_furrets.entities.request;
 public abstract class Request {
 
   private String reqID; // id of request
-  private String assign; // Employee that is assigned the task (First name, Last name)
-  private int empID; // ID of the employee that requested the task (5 Digit int)
+  private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
+  private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
   private String
-      nID; // nodeID is the key for the location in which the request is directed to (Check
+      nodeID; // nodeID is the key for the location in which the request is directed to (Check
   // Locations.csv for examples)
-  private String sts; // Status of the request (In Progress or Done)
+  private String status; // Status of the request (In Progress or Done)
   // TODO enum
   private String
       reqType; // Type of request made, Patient Bed (PTBD), Recliner (RECL), X-Ray Machine (XRAY),
   // Infusion Pump (IPMP)
 
-  public Request(String assign, int empID, String nID, String sts, String reqType, String reqID) {
+  public Request(
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String reqType) {
     this.reqID = reqID;
-    this.assign = assign;
-    this.empID = empID;
-    this.nID = nID;
-    this.sts = sts;
+    this.nodeID = nodeID;
+    this.assignedEmpID = assignedEmpID;
+    this.requesterEmpID = requesterEmpID;
+    this.status = status;
     this.reqType = reqType;
   }
 
-  public String getAssign() {
-    return assign;
+  public String getAssignedEmpID() {
+    return assignedEmpID;
   }
 
-  public void setAssign(String assign) {
-    this.assign = assign;
+  public void setAssignedEmpID(String assignedEmpID) {
+    this.assignedEmpID = assignedEmpID;
   }
 
-  public int getEmpID() {
-    return empID;
+  public String getRequesterEmpID() {
+    return requesterEmpID;
   }
 
-  public void setEmpID(int empID) {
-    this.empID = empID;
+  public void setRequesterEmpID(String requesterEmpID) {
+    this.requesterEmpID = requesterEmpID;
   }
 
-  public String getnID() {
-    return nID;
+  public String getNodeID() {
+    return nodeID;
   }
 
-  public void setnID(String nID) {
-    this.nID = nID;
+  public void setNodeID(String NodeID) {
+    this.nodeID = nodeID;
   }
 
-  public String getSts() {
-    return sts;
+  public String getStatus() {
+    return status;
   }
 
-  public void setSts(String sts) {
-    this.sts = sts;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   public String getReqType() {

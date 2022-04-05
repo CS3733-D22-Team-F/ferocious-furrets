@@ -5,14 +5,13 @@ import edu.wpi.furious_furrets.entities.request.medicalRequest.MedicalRequest;
 public class catscanRequest extends MedicalRequest {
 
   public catscanRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String equipID,
-      String equipType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType, reqID);
+      String medicalType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);
   }
 }

@@ -6,27 +6,16 @@ public abstract class labRequest extends MedicalRequest {
 
   protected String sampleType;
 
-  /**
-   * @param assign employee string
-   * @param empID employee id
-   * @param nID location node id
-   * @param sts status
-   * @param reqType request type
-   * @param equipID id of equipment
-   * @param equipType type of equipment , MRI, CAT, etc
-   * @param sampleType type of sample, blood, etc
-   */
   public labRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String equipID,
-      String equipType,
-      String sampleType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType, reqID);
+      String medicalType,
+      String sampleType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType);
     this.sampleType = sampleType;
   }
 }

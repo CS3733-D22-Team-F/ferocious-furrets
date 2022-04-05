@@ -5,15 +5,14 @@ import edu.wpi.furious_furrets.entities.request.medicalRequest.labRequest.labReq
 public class urineLabRequest extends labRequest {
 
   public urineLabRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String equipID,
-      String equipType,
-      String sampleType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, equipID, equipType, sampleType, reqID);
+      String medicalType,
+      String sampleType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType, sampleType);
   }
 }

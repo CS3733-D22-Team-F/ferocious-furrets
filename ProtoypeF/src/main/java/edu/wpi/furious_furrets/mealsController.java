@@ -201,14 +201,13 @@ public class mealsController extends returnHomePage implements Initializable {
     } else {
       mealDeliveryRequest sendMealRequest =
           new mealDeliveryRequest(
-              employeeName.getText(),
-              Integer.parseInt(employeeID.getText()),
+              null,
               nodeID.getText(),
-              (String) status.getValue(),
-              requestType.getText(),
-              null,
-              null,
-              null); // TODO
+              employeeID.getText(),
+              null, // TODO ADD REQUESTER ID FIELD
+              requestType.getText().toString(),
+              "Delivery",
+              "Meal");
       System.out.println("Meal Sent");
 
       employeeName.setText("");

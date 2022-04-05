@@ -56,14 +56,14 @@ public class medicineController extends returnHomePage implements Initializable 
       serviceRequestStorage.addToArrayList(requestList);
       medicineDeliveryRequest medicineDeliveryRequest =
           new medicineDeliveryRequest(
-              userField.getText(),
-              Integer.parseInt(employeeIDField.getText()),
+              null,
               nodeField.getText(),
+              employeeIDField.getText(),
+              userField.getText(),
               statusChoice.getValue().toString(),
-              typeOfMed.getText(),
-              null,
-              null,
-              null); // TODO
+              "Delivery",
+              "Medicine");
+
       nodeField.clear();
       employeeIDField.clear();
       userField.clear();

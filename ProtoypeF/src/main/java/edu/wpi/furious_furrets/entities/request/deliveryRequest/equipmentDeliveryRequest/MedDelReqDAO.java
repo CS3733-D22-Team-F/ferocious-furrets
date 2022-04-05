@@ -18,46 +18,24 @@ import java.util.ArrayList;
 public interface MedDelReqDAO {
   public ArrayList<MedDelReq> getAllRequests() throws SQLException;
 
-  /**
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @throws SQLException
-   * @see MedDelReq
-   */
-  public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, String status)
-      throws SQLException;
-
-  /**
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @throws SQLException
-   * @see MedDelReq
-   */
-  public void deleteRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, String status)
-      throws SQLException;
-
-  /**
-   * @param old_reqID
-   * @param old_nodeID
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @throws SQLException
-   * @see MedDelReq
-   */
-  public void updateRequest(
-      String old_reqID,
-      String old_nodeID,
+  public void addRequest(
       String reqID,
       String nodeID,
-      String employeeIDofAssignedTo,
+      String assignedEmpID,
+      String requesterEmpID,
       String status,
-      String longName)
+      String equipmentID)
+      throws SQLException;
+
+  public void deleteRequest(MedDelReq deletedObject) throws SQLException;
+
+  public void updateRequest(
+      MedDelReq updatingRequest,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String requestedEquipmentID)
       throws SQLException;
 }

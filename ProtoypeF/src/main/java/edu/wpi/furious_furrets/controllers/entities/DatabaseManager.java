@@ -11,7 +11,7 @@ public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().dbConnection;
   private static final LocationsDAOImpl ldao = new LocationsDAOImpl(conn);
-  private static final MedDelReqDAOImpl mdao = new MedDelReqDAOImpl(conn);
+  private static final MedDelReqDAOImpl mdao = new MedDelReqDAOImpl();
   //  private static final labReqDAOImpl lrdao = new labReqDAOImpl(conn);
 
   private static DatabaseManager DatabaseManager;

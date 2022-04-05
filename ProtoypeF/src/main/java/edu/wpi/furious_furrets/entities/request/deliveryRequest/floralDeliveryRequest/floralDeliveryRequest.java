@@ -5,14 +5,13 @@ import edu.wpi.furious_furrets.entities.request.deliveryRequest.DeliveryRequest;
 public class floralDeliveryRequest extends DeliveryRequest {
 
   public floralDeliveryRequest(
-      String assign,
-      int empID,
-      String nID,
-      String sts,
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
       String reqType,
-      String deliveryID,
-      String deliveryType,
-      String reqID) {
-    super(assign, empID, nID, sts, reqType, deliveryID, deliveryType, reqID);
+      String deliveryType) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, deliveryType);
   }
 }

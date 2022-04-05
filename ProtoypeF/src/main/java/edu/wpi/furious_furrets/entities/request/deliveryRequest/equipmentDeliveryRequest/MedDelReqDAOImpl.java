@@ -20,19 +20,13 @@ import java.util.ArrayList;
  */
 public class MedDelReqDAOImpl implements MedDelReqDAO {
 
-  private final Connection connection;
+  Connection conn = DatabaseManager.getConn();
   private final ArrayList<MedDelReq> requests = new ArrayList<>();
   private final ArrayList<MedDelReq> updatedRequests = new ArrayList<MedDelReq>();
   private final ArrayList<String> reqIDs = new ArrayList<String>();
 
-  /**
-   * Constructor that takes in a Connection object to the DB
-   *
-   * @param dbConnection
-   */
-  public MedDelReqDAOImpl(Connection dbConnection) {
-    this.connection = dbConnection;
-  }
+  /** Constructor */
+  public MedDelReqDAOImpl() {}
 
   /**
    * An ArrayList of all the service requests in the embedded CSV file. Provided as a data structure
@@ -57,74 +51,80 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     while ((lineText = lineReader.readLine()) != null) {
       String[] data = lineText.split(",");
       String reqID = data[0];
-      String nodeID = data[1];
-      String employeeID = data[2];
-      //      int status = Integer.parseInt(data[3]);
+      String equipmentID = data[1];
+      String nodeID = data[2];
+      String assignedEmployeeID = data[3];
+      String requesterEmployeeID = data[4];
+      String status = data[5];
       // String longName = data[4];
-      MedDelReq l = new MedDelReq(reqID, nodeID, employeeID, data[3]);
+      MedDelReq l =
+          new MedDelReq(
+              reqID,
+              nodeID,
+              assignedEmployeeID,
+              requesterEmployeeID,
+              status,
+              "Delivery",
+              "Equipment",
+              equipmentID);
       requests.add(l);
       reqIDs.add(l.getReqID());
     }
-    Statement stm = connection.createStatement();
-    DatabaseMetaData databaseMetadata = connection.getMetaData();
+    Statement stm = conn.createStatement();
+    DatabaseMetaData databaseMetadata = conn.getMetaData();
     ResultSet resultSet =
         databaseMetadata.getTables(
-            null, null, "MEDSERVREQ", null); // CARTERS IF STATEMENT IF TABLE EXIST
+            null, null, "MEDEQUIPREQ", null); // CARTERS IF STATEMENT IF TABLE EXIST
     if (resultSet.next()) {
-      stm.execute("DROP TABLE MEDSERVREQ");
+      stm.execute("DROP TABLE MEDEQUIPREQ");
     }
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
-        "CREATE TABLE medServReq (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), employeeID varChar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
+        "CREATE TABLE medEquipReq (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedDelReq currentReq : requests) {
       stm.execute(currentReq.generateInsertStatement());
     }
   }
 
-  /**
-   * @return
-   * @throws SQLException
-   * @deprecated
-   */
   public ArrayList<MedDelReq> getAllRequests() throws SQLException {
     updateDatabase();
     return requests;
-    //    Statement stm = connection.createStatement();
-    //    String q = "SELECT * FROM Locations";
-    //    ResultSet rset = stm.executeQuery(q);
-    //    while (rset.next()) {
-    //      requests.add(new MedEquipServReq(rset.getString("reqID"), rset.getString("nodeID"),
-    // rset.getString("employeeID"), rset.getInt("status"), rset.))
-    //    }
-    //      return null;
   }
 
-  // todo test
-
-  /**
-   * takes user input adds a request
-   *
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @throws SQLException
-   * @see MedDelReq
-   */
-  public void addRequest(String reqID, String nodeID, String employeeIDofAssignedTo, String status)
+  public void addRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String equipmentID)
       throws SQLException {
     Statement stm = DatabaseManager.getConn().createStatement();
-    requests.add(new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status));
+    requests.add(
+        new MedDelReq(
+            reqID,
+            nodeID,
+            assignedEmpID,
+            requesterEmpID,
+            status,
+            "Delivery",
+            "Equipment",
+            equipmentID));
     reqIDs.add(reqID);
     String add =
-        "INSERT INTO MEDSERVREQ values ('"
+        "INSERT INTO MEDSERVREQ values ("
+            + "'"
             + reqID
+            + "', '"
+            + equipmentID
             + "', '"
             + nodeID
             + "', '"
-            + employeeIDofAssignedTo
-            + "' , '"
+            + assignedEmpID
+            + "', '"
+            + requesterEmpID
+            + "', '"
             + status
             + "')";
     System.out.println(add);
@@ -132,24 +132,9 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     // updateDatabase();
   }
 
-  // TODO test
-
-  /**
-   * takes user input deletes a request
-   *
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @throws SQLException
-   * @see MedDelReq
-   */
-  public void deleteRequest(
-      String reqID, String nodeID, String employeeIDofAssignedTo, String status)
-      throws SQLException {
-    MedDelReq theReq = new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status);
+  public void deleteRequest(MedDelReq deletedObject) throws SQLException {
     for (MedDelReq currentReq : requests) {
-      if (theReq.equals(currentReq)) {
+      if (deletedObject.equals(currentReq)) {
         requests.remove(currentReq);
         System.out.println("found and removed :)");
         break;
@@ -158,33 +143,27 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     updateDatabase();
   }
 
-  // TODO test
-
-  /**
-   * Takes user input and updates a request
-   *
-   * @param old_reqID
-   * @param old_nodeID
-   * @param reqID
-   * @param nodeID
-   * @param employeeIDofAssignedTo
-   * @param status
-   * @param longName
-   * @throws SQLException
-   * @see MedDelReq
-   */
   public void updateRequest(
-      String old_reqID,
-      String old_nodeID,
+      MedDelReq updatingRequest,
       String reqID,
       String nodeID,
-      String employeeIDofAssignedTo,
+      String assignedEmpID,
+      String requesterEmpID,
       String status,
-      String longName)
+      String requestedEquipmentID)
       throws SQLException {
-    MedDelReq newReq = new MedDelReq(reqID, nodeID, employeeIDofAssignedTo, status);
+    MedDelReq newReq =
+        new MedDelReq(
+            reqID,
+            nodeID,
+            assignedEmpID,
+            requesterEmpID,
+            status,
+            "Delivery",
+            "Equipment",
+            requestedEquipmentID);
     for (MedDelReq currentReq : requests) {
-      if (old_reqID.equals(currentReq.getReqID())) {
+      if (updatingRequest.getReqID().equals(currentReq.getReqID())) {
         requests.remove(currentReq);
         requests.add(newReq);
         System.out.println("found and replaced :)");
@@ -203,7 +182,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
    */
   private void updateDatabase() throws SQLException {
 
-    Statement stm = connection.createStatement();
+    Statement stm = conn.createStatement();
     String q = "SELECT * FROM Locations";
     ResultSet rset = stm.executeQuery(q);
     while (rset.next()) {
@@ -216,11 +195,22 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
   public void requestsFromRSET(ResultSet rset) throws SQLException {
     while (rset.next()) {
       String reqID = rset.getString("reqID");
+      String equipmentID = rset.getString("equipmentID");
       String nodeID = rset.getString("nodeID");
-      String employee = rset.getString("employeeID");
+      String assignedEmpID = rset.getString("assignedEmployeeID");
+      String requesterEmpID = rset.getString("requesterEmployeeID");
       String status = rset.getString("status");
       // String longName = rset.getString("longName");
-      MedDelReq newR = new MedDelReq(reqID, nodeID, employee, status);
+      MedDelReq newR =
+          new MedDelReq(
+              reqID,
+              nodeID,
+              assignedEmpID,
+              requesterEmpID,
+              status,
+              "Delivery",
+              "Equipment",
+              equipmentID);
       updatedRequests.add(newR);
     }
   }
@@ -231,7 +221,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
 
     Statement stm = null;
     try {
-      stm = connection.createStatement();
+      stm = conn.createStatement();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -251,9 +241,13 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
           fw.write(
               l.getReqID()
                   + ","
+                  + l.getRequestedEquipmentID()
+                  + ","
                   + l.getNodeID()
                   + ","
-                  + l.getEmployeeIDofAssignedTo()
+                  + l.getAssignedEmpID()
+                  + ","
+                  + l.getRequesterEmpID()
                   + ","
                   + l.getStatus()
                   + "\n");
