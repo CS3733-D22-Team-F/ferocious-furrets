@@ -39,7 +39,7 @@ public class mapAddController implements Initializable {
 
   @FXML private JFXCheckBox isModify;
 
-  private Connection connection = DatabaseInitializer.getConnection().getDbConnection();
+  private final Connection connection = DatabaseInitializer.getConnection().getDbConnection();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

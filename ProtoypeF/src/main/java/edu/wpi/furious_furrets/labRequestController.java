@@ -117,6 +117,15 @@ public class labRequestController extends returnHomePage implements Initializabl
     }
   }
 
+  @FXML
+  public void reset() {
+    nodeField.clear();
+    employeeIDField.clear();
+    userField.clear();
+    typeChoice.valueProperty().setValue(null);
+    statueChoice.valueProperty().setValue(null);
+  }
+
   /**
    * shows the queue scene for lab requests
    *
