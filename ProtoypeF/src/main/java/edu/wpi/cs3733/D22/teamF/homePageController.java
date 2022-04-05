@@ -245,6 +245,7 @@ public class homePageController {
   public void exitProgram() throws SQLException {
     DatabaseManager.getLocationDAO().saveLocationToCSV();
     DatabaseManager.getMedEquipDAO().saveMedEquipToCSV();
+    DatabaseManager.getMedEquipDelReqDAO().saveRequestToCSV();
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.exit(0);

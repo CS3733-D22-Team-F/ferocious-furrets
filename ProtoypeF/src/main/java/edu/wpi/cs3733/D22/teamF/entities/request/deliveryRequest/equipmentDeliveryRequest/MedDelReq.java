@@ -31,7 +31,7 @@ public class MedDelReq extends DeliveryRequest {
    * @return String statement
    */
   public String generateInsertStatement() {
-    return "INSERT INTO MedServReq VALUES ('"
+    return "INSERT INTO MEDICALEQUIPMENTDELIVERYREQUEST VALUES ('"
         + this.getReqID()
         + "', '"
         + this.getRequestedEquipmentID()
@@ -40,7 +40,7 @@ public class MedDelReq extends DeliveryRequest {
         + "' , '"
         + this.getAssignedEmpID()
         + "' , '"
-        + this.getRequestedEquipmentID()
+        + this.getRequesterEmpID()
         + "' , '"
         + this.getStatus()
         + "' )";

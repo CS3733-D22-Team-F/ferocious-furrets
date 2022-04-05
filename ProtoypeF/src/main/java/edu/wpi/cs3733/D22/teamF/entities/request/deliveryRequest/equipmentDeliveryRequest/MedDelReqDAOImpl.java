@@ -86,6 +86,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
         // TODO update status constraint when status is decided
         "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
     for (MedDelReq currentReq : requests) {
+      //System.out.println(currentReq.generateInsertStatement());
       stm.execute(currentReq.generateInsertStatement());
     }
   }
@@ -195,7 +196,8 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     }
   }
 
-  public void requestsFromRSET(ResultSet rset) throws SQLException {
+  public ArrayList<MedDelReq> requestsFromRSET(ResultSet rset) throws SQLException {
+    ArrayList<MedDelReq> reqs = new ArrayList<MedDelReq>();
     while (rset.next()) {
       String reqID = rset.getString("reqID");
       String equipmentID = rset.getString("equipmentID");
@@ -214,59 +216,53 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
               "Delivery",
               "Equipment",
               equipmentID);
-      updatedRequests.add(newR);
+      reqs.add(newR);
     }
+    return reqs;
   }
 
-  /*
-    public void saveRequestToCSV() {
+  public void saveRequestToCSV() {
 
-  //    String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv";
-      //TODO JavaFX thingy
+    String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv";
+    // TODO JavaFX thingy
 
-      Statement stm = null;
-      try {
-        stm = conn.createStatement();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-
-      try {
-        for (String id : reqIDs) {
-          ResultSet rset;
-          rset =
-              stm.executeQuery(
-                  "SELECT * FROM medicalEquipmentDeliveryRequest WHERE REQID = '" + id + "'");
-
-          requestsFromRSET(rset);
-
-          rset.close();
-          File newCSV = new File(csvName);
-          FileWriter fw = new FileWriter(csvName);
-          fw.write("reqID, nodeID, employee, status\n");
-          for (MedDelReq l : updatedRequests) {
-            fw.write(
-                l.getReqID()
-                    + ","
-                    + l.getRequestedEquipmentID()
-                    + ","
-                    + l.getNodeID()
-                    + ","
-                    + l.getAssignedEmpID()
-                    + ","
-                    + l.getRequesterEmpID()
-                    + ","
-                    + l.getStatus()
-                    + "\n");
-          }
-          fw.close();
-        }
-      } catch (SQLException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+    Statement stm = null;
+    try {
+      stm = conn.createStatement();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
-     */
+    try {
+      ResultSet rset;
+      rset = stm.executeQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
+
+      ArrayList<MedDelReq> allReqs = requestsFromRSET(rset);
+
+      rset.close();
+      File newCSV = new File(csvName);
+      FileWriter fw = new FileWriter(csvName);
+      fw.write("reqID, equipID, nodeID, assEmpID, reqEmpID, status\n");
+      for (MedDelReq l : allReqs) {
+        fw.write(
+            l.getReqID()
+                + ","
+                + l.getRequestedEquipmentID()
+                + ","
+                + l.getNodeID()
+                + ","
+                + l.getAssignedEmpID()
+                + ","
+                + l.getRequesterEmpID()
+                + ","
+                + l.getStatus()
+                + "\n");
+      }
+      fw.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }
