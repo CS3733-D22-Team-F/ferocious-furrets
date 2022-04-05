@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapBackUpController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.furious_furrets.mapBackUpController">
    <children>
       <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
       <JFXButton layoutX="233.0" layoutY="334.0" onAction="#backUp" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Back Up To File" />
@@ -20,5 +21,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <JFXButton fx:id="select" layoutX="481.0" layoutY="146.0" onAction="#selectFile" text="Choose CSV File..." />
    </children>
 </AnchorPane>
