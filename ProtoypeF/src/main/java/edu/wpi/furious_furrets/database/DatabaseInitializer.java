@@ -60,12 +60,17 @@ public class DatabaseInitializer {
     }
 
     /**
-     * @return
+     * gets the bdConnection in the form of a Connection object
+     *
+     * @return Connection object
      */
     public Connection getDbConnection() {
         return dbConnection;
     }
 
+    /**
+     * makes a new DatabaseInitializer
+     */
     private static class Helper {
         private static final DatabaseInitializer db = new DatabaseInitializer();
     }
