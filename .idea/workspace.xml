@@ -4,35 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Added File Explorer window to load/reset CSV functionality for UX">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_22__7_52_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_22__7_52_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_22__8_46_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_22__8_46_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="login button now sends user to homepage after successful authentication +&#10;aligned login error popup label">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/labRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/labRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/logInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/furious_furrets/logInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/labRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/labRequestPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets/logInPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/db.lck" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/db.lck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/log/log.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/log/log.ctrl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/log/log1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/log/log1.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/log/logmirror.ctrl" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/log/logmirror.ctrl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c101.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c101.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c111.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c111.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c121.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c121.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c130.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c130.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c141.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c141.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c20.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c20.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c31.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c31.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c41.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c41.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c51.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c51.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c60.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c60.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c71.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c71.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c81.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c81.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/c90.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/c90.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/ca1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/ca1.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/cb1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/cb1.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDB/seg0/cf0.dat" beforeDir="false" afterPath="$PROJECT_DIR$/myDB/seg0/cf0.dat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +279,7 @@
       <workItem from="1649091344339" duration="2290000" />
       <workItem from="1649103500273" duration="10705000" />
       <workItem from="1649121180519" duration="223000" />
-      <workItem from="1649129126132" duration="1644000" />
+      <workItem from="1649129126132" duration="1770000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -357,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649127861131</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="login button now sends user to homepage after successful authentication +&#10;aligned login error popup label">
+      <created>1649130842942</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649130842942</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +375,8 @@
     <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
     <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
     <MESSAGE value="Added File Explorer window to load/reset CSV functionality for UX" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added File Explorer window to load/reset CSV functionality for UX" />
+    <MESSAGE value="login button now sends user to homepage after successful authentication +&#10;aligned login error popup label" />
+    <option name="LAST_COMMIT_MESSAGE" value="login button now sends user to homepage after successful authentication +&#10;aligned login error popup label" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
