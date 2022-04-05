@@ -67,7 +67,8 @@ public class equipmentRequestController extends returnHomePage implements Initia
       //              Integer.toString(reqID),
       //              null,
       //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
-
+      String equipID =
+          DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());
       MedDelReq addedDeliveryRequest =
           new MedDelReq(
               String.valueOf(reqID),
@@ -77,7 +78,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
               statusChoice.getValue().toString(),
               "Delivery",
               "Equipment",
-              null // TODO ADD EQUIPMENT ID TO UI
+              equipID // TODO ADD EQUIPMENT ID TO UI
               );
       nodeField.clear();
       employeeIDField.clear();
@@ -108,11 +109,10 @@ public class equipmentRequestController extends returnHomePage implements Initia
     statusDrop.add("done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
-    equipmentType.add("Respirator");
-    equipmentType.add("Defibrillator");
-    equipmentType.add("Ventilator");
-    equipmentType.add("IV");
-    equipmentType.add("EKG");
+    equipmentType.add("Bed");
+    equipmentType.add("X-Ray");
+    equipmentType.add("Infusion Pump");
+    equipmentType.add("Recliner");
     typeChoice.getItems().addAll(equipmentType);
   }
 }

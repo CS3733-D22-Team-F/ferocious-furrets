@@ -36,7 +36,8 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       String meID = data[0];
       String meType = data[1];
       String meNodeID = data[2];
-      MedEquip m = new MedEquip(meID, meType, meNodeID);
+      String stat = data[3];
+      MedEquip m = new MedEquip(meID, meType, meNodeID, stat);
       csvMedEquip.add(m);
       csvIDS.add(m.getNodeID());
     }
@@ -49,13 +50,28 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       stm.execute("DROP TABLE MedicalEquipment");
     }
     stm.execute(
-        "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16))");
+        "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16), status varchar(16))");
 
     for (MedEquip currentMedEquip : csvMedEquip) {
       stm.execute(currentMedEquip.generateInsertStatement());
     }
 
     stm.close();
+  }
+
+  public String getAvailEquipment(String type) throws SQLException {
+    String eID = "";
+    Statement stm = DatabaseManager.getConn().createStatement();
+    ResultSet allAvailableEquipment =
+        stm.executeQuery(
+            "Select equipID from MEDICALEQUIPMENT WHERE equipType = '"
+                + type
+                + "' AND status = 'available'");
+    if (allAvailableEquipment.next()) {
+      eID = allAvailableEquipment.getString("equipID");
+    }
+    stm.execute("UPDATE MEDICALEQUIPMENT SET status = 'unavailable' WHERE EQUIPID = '" + eID + "'");
+    return eID;
   }
 
   /**
@@ -122,7 +138,8 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       String meID = data[0];
       String meType = data[1];
       String meNodeID = data[2];
-      MedEquip m = new MedEquip(meID, meType, meNodeID);
+      String stat = data[3];
+      MedEquip m = new MedEquip(meID, meType, meNodeID, stat);
       csvMedEquip.add(m);
       csvIDS.add(m.getNodeID());
     }
@@ -156,7 +173,8 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       String equipID = rset.getString("equipID");
       String equipType = rset.getString("equipType");
       String nodeID = rset.getString("nodeID");
-      MedEquip newME = new MedEquip(equipID, equipType, nodeID);
+      String stat = rset.getString("status");
+      MedEquip newME = new MedEquip(equipID, equipType, nodeID, stat);
       allMedEquip.add(newME);
     }
     return allMedEquip;
@@ -229,7 +247,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
 
   /** Saves the MedEquip objects to the embedded MedEquip.csv */
   public void saveMedEquipToCSV() {
-    String csvName = "src/main/resources/edu/wpi/furious_furrets/MedEquip.csv";
+    String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv";
 
     Statement stm = null;
     try {
@@ -243,14 +261,22 @@ public class MedEquipDAOImpl implements MedEquipDAO {
       ResultSet rset;
       rset = stm.executeQuery("SELECT * FROM MedicalEquipment");
 
-      ArrayList<MedEquip> allMedEquip = medEquipFromRSET(rset);
+      ArrayList<MedEquip> allMedEquip = this.getAllEquipment();
 
       rset.close();
       File newCSV = new File(csvName);
       FileWriter fw = new FileWriter(csvName);
-      fw.write("equipID,equipType,nodeID\n");
+      fw.write("equipID,equipType,nodeID,status\n");
       for (MedEquip m : allMedEquip) {
-        fw.write(m.getEquipID() + "," + m.getEquipType() + "," + m.getNodeID() + "\n");
+        fw.write(
+            m.getEquipID()
+                + ","
+                + m.getEquipType()
+                + ","
+                + m.getNodeID()
+                + ","
+                + m.getStatus()
+                + "\n");
       }
       fw.close();
     } catch (SQLException e) {

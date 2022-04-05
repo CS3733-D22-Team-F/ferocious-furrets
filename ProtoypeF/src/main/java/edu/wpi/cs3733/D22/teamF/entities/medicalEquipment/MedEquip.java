@@ -6,6 +6,7 @@ public class MedEquip {
   private String equipID;
   private String equipType;
   private String nodeID;
+  private String status;
 
   private enum equipType {};
 
@@ -16,10 +17,11 @@ public class MedEquip {
    * @param nodeID
    * @param equipID
    */
-  public MedEquip(String equipID, String equipType, String nodeID) {
+  public MedEquip(String equipID, String equipType, String nodeID, String status) {
     this.equipID = equipID;
     this.equipType = equipType;
     this.nodeID = nodeID;
+    this.status = status;
   }
 
   /**
@@ -49,6 +51,10 @@ public class MedEquip {
     return nodeID;
   }
 
+  public String getStatus() {
+    return this.status;
+  };
+
   /**
    * Generates SQL insert statement to insert an equipment object into the table
    *
@@ -61,6 +67,8 @@ public class MedEquip {
         + this.equipType
         + "', '"
         + this.nodeID
+        + "', '"
+        + this.status
         + "' )";
   }
 }
