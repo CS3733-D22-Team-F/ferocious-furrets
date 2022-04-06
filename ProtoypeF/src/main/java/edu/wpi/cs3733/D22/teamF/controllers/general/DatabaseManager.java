@@ -67,6 +67,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    stm.close();
   }
   /**
    * Executes query to the apache derby database
@@ -82,6 +83,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    stm.close();
     return null;
   }
 
