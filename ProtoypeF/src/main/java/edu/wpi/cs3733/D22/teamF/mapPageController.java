@@ -18,9 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -90,6 +88,8 @@ public class mapPageController extends returnHomePage implements Initializable {
       try {
         addIcon(lo);
       } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      } catch (SQLException e) {
         e.printStackTrace();
       }
     }
@@ -199,17 +199,31 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    wipeMap(oldLocs);
+    displayMap();
+  }
+
+  public void wipeMap(ArrayList<Location> oldLocs) throws SQLException {
     for (Location loc : oldLocs) {
       deleteIcon(loc.getNodeID());
     }
+  }
+
+  public void displayMap() throws SQLException {
+    ArrayList<MedEquip> eList = null;
+    eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+
     ArrayList<Location> nLocations = null;
+    ArrayList<Location> eLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
+      eLocations = equipToLocation(eList);
     } catch (SQLException e) {
       e.printStackTrace();
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+    nLocations.addAll(eLocations);
     for (Location lo : nLocations) {
       try {
         addIcon(lo);
@@ -235,26 +249,9 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
 
-    for (Location loc : oldLocs) {
-      deleteIcon(loc.getNodeID());
-    }
+    wipeMap(oldLocs);
 
-    ArrayList<Location> nLocations = null;
-    try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
-    table.setItems(locationList);
-
-    for (Location lo : nLocations) {
-      try {
-        addIcon(lo);
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
+    displayMap();
   }
 
   /**
@@ -290,35 +287,8 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
     // update table view
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
-    for (Location loc : oldLocs) {
-      deleteIcon(loc.getNodeID());
-    }
-    ArrayList<Location> nLocations = null;
-
-    ArrayList<Location> eLocations = null;
-    try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-
-      eLocations = equipToLocation(eList);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    ObservableList<Location> locationList = FXCollections.observableList(nLocations);
-    table.setItems(locationList);
-    nLocations.addAll(eLocations);
-
-    for (Location lo : nLocations) {
-      try {
-        addIcon(lo);
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
+    wipeMap(oldLocs);
+    displayMap();
   }
 
   public String generateNodeID(String nodeType, String floor, int x, int y)
@@ -377,11 +347,33 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @param location
    * @throws FileNotFoundException
    */
-  public void addIcon(Location location) throws FileNotFoundException {
+  public void addIcon(Location location) throws FileNotFoundException, SQLException {
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
     newButton.setPrefSize(25, 25);
     newButton.setMinSize(25, 25);
     newButton.setMaxSize(25, 25);
+    MenuItem dItem = new MenuItem("Delete");
+    MenuItem mItem = new MenuItem("Modify");
+    ContextMenu options = new ContextMenu();
+    options.getItems().add(dItem);
+    options.getItems().add(mItem);
+    newButton.setContextMenu(options);
+    newButton.setOnAction(
+        e -> {
+          newButton.getContextMenu();
+        });
+    dItem.setOnAction(
+        e -> {
+          deleteIcon(location.getNodeID());
+          try {
+            DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
+            this.wipeMap(oldLocs);
+            this.displayMap();
+          } catch (SQLException ex) {
+            ex.printStackTrace();
+          }
+        });
     double x =
         (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
     double y = (location.getYcoord() / 856.0) * 630;
