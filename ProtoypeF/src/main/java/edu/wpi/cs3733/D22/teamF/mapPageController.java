@@ -168,7 +168,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   public void popUpAdd() throws IOException, SQLException {
-    // ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapAddPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -177,9 +177,9 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
-    //    for (Location loc : oldLocs) {
-    //      deleteIcon(loc.getNodeID());
-    //    }
+    for (Location loc : oldLocs) {
+      deleteIcon(loc.getNodeID());
+    }
     ArrayList<Location> nLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -188,17 +188,17 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
-    //    for (Location lo : nLocations) {
-    //      try {
-    //        addIcon(lo);
-    //      } catch (FileNotFoundException e) {
-    //        e.printStackTrace();
-    //      }
-    //    }
+    for (Location lo : nLocations) {
+      try {
+        addIcon(lo);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   public void popUpDelete() throws IOException, SQLException {
-    // ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapDeletePage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -206,9 +206,9 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
 
-    //    for (Location loc : oldLocs) {
-    //      deleteIcon(loc.getNodeID());
-    //    }
+    for (Location loc : oldLocs) {
+      deleteIcon(loc.getNodeID());
+    }
 
     ArrayList<Location> nLocations = null;
     try {
@@ -219,13 +219,13 @@ public class mapPageController extends returnHomePage implements Initializable {
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
 
-    //    for (Location lo : nLocations) {
-    //      try {
-    //        addIcon(lo);
-    //      } catch (FileNotFoundException e) {
-    //        e.printStackTrace();
-    //      }
-    //    }
+    for (Location lo : nLocations) {
+      try {
+        addIcon(lo);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   public void popUpSave() throws IOException {
