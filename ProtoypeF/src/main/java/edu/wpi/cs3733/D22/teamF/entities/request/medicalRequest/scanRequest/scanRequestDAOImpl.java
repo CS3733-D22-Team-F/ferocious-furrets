@@ -46,7 +46,7 @@ public class scanRequestDAOImpl implements scanRequestDAO {
     scanRequest addedScanRequest =
         new scanRequest(reqID, nodeID, assignedEmpID, requesterEmpID, status, scanType);
     try {
-//      System.out.println(addedScanRequest.generateInsertStatement());
+      //      System.out.println(addedScanRequest.generateInsertStatement());
       DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
       currentScanRequests.add(addedScanRequest);
     } catch (SQLException e) {

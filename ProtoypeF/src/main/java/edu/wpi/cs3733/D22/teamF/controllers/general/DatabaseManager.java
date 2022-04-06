@@ -90,9 +90,9 @@ public class DatabaseManager {
   public static void dropTableIfExist(String droppingTable) throws SQLException {
     if (conn.getMetaData().getTables(null, null, droppingTable.toUpperCase(), null).next()) {
       runStatement("DROP TABLE " + droppingTable);
-//      System.out.println("Dropping " + droppingTable + " table!");
+      //      System.out.println("Dropping " + droppingTable + " table!");
     } else {
-//      System.out.println(droppingTable + " table does not Exist!");
+      //      System.out.println(droppingTable + " table does not Exist!");
     }
   }
 
