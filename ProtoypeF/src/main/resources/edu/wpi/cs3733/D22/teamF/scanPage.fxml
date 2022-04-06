@@ -9,7 +9,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.scanController">
@@ -19,12 +21,32 @@
             <Image url="@Images/CTScan image.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="612.0" layoutY="14.0" text="Scans" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Times New Roman" size="48.0" />
-         </font>
-      </Label>
-      <VBox alignment="TOP_RIGHT" layoutX="66.0" layoutY="103.0" prefHeight="397.0" prefWidth="258.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="730.0" stroke="BLACK" strokeType="INSIDE" width="716.0" />
+      <Pane layoutX="-11.0" layoutY="-4.0" prefHeight="115.0" prefWidth="729.0" style="-fx-background-color: #27aad0;">
+         <children>
+            <HBox layoutX="136.0" layoutY="24.0" prefHeight="70.0" prefWidth="461.0">
+               <children>
+                  <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="411.0" text="Scan Requests" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="55.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="126.0" fitWidth="96.0" layoutX="616.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@bwhlogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <VBox alignment="TOP_RIGHT" layoutX="59.0" layoutY="126.0" prefHeight="397.0" prefWidth="258.0">
          <children>
             <Label text="Node ID:" textFill="WHITE">
                <font>
@@ -65,26 +87,26 @@
             </Label>
          </children>
       </VBox>
-      <HBox layoutX="295.0" layoutY="505.0" prefHeight="53.0" prefWidth="353.0">
+      <HBox layoutX="138.0" layoutY="545.0" prefHeight="53.0" prefWidth="504.0">
          <children>
-            <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="53.0" prefWidth="138.0" ripplerFill="#f2ba49" text="Submit" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f2ba49" text="Submit" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="reset" buttonType="RAISED" onAction="#reset" prefHeight="46.0" prefWidth="119.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="reset" buttonType="RAISED" onAction="#reset" prefHeight="53.0" prefWidth="161.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="46.0" prefWidth="119.0" ripplerFill="#f3ba48" text="Home" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="53.0" prefWidth="159.0" ripplerFill="#f3ba48" text="Home" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </JFXButton>
          </children>
       </HBox>
-      <VBox layoutX="335.0" layoutY="103.0" prefHeight="397.0" prefWidth="277.0">
+      <VBox layoutX="329.0" layoutY="126.0" prefHeight="397.0" prefWidth="277.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
                <font>
@@ -96,7 +118,7 @@
                   <Font size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </TextField>
             <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0">
@@ -104,12 +126,12 @@
                   <Font size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </TextField>
             <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="277.0" unFocusColor="WHITE">
                <VBox.margin>
-                  <Insets top="100.0" />
+                  <Insets top="95.0" />
                </VBox.margin>
             </JFXComboBox>
             <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="279.0" unFocusColor="WHITE">
