@@ -55,7 +55,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     for (MedEquip currentMedEquip : csvMedEquip) {
       stm.execute(currentMedEquip.generateInsertStatement());
     }
-
+    resultSet.close();
     stm.close();
   }
 
@@ -70,6 +70,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     if (allAvailableEquipment.next()) {
       eID = allAvailableEquipment.getString("equipID");
     }
+    allAvailableEquipment.close();
     stm.execute("UPDATE MEDICALEQUIPMENT SET status = 'unavailable' WHERE EQUIPID = '" + eID + "'");
     return eID;
   }
@@ -157,7 +158,7 @@ public class MedEquipDAOImpl implements MedEquipDAO {
     for (MedEquip currentMedEquip : csvMedEquip) {
       stm.execute(currentMedEquip.generateInsertStatement());
     }
-
+    resultSet.close();
     stm.close();
   }
 

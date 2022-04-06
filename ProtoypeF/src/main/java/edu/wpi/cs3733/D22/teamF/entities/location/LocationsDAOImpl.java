@@ -91,7 +91,7 @@ public class LocationsDAOImpl implements LocationDAO {
     for (Location currentLocation : csvLocations) {
       stm.execute(currentLocation.generateInsertStatement());
     }
-
+    resultSet.close();
     stm.close();
   }
 
@@ -142,7 +142,7 @@ public class LocationsDAOImpl implements LocationDAO {
     for (Location currentLocation : csvLocations) {
       stm.execute(currentLocation.generateInsertStatement());
     }
-
+    resultSet.close();
     stm.close();
   }
 
@@ -182,7 +182,7 @@ public class LocationsDAOImpl implements LocationDAO {
     for (Location currentLocation : csvLocations) {
       stm.execute(currentLocation.generateInsertStatement());
     }
-
+    resultSet.close();
     stm.close();
   }
 

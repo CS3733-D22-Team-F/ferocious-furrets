@@ -44,7 +44,7 @@ public class labRequestDAOImpl implements labRequestDAO {
         new BufferedReader(
             new InputStreamReader(
                 labRequestDAOImpl.class.getResourceAsStream(
-                    "/edu/wpi/cs3733/D22/teamF/csv/labRequest.csv"),
+                    "/edu/wpi/cs3733/D22/teamF/csv/LabRequest.csv"),
                 StandardCharsets.UTF_8));
     String lineText = null;
     lineReader.readLine(); // skip header line
@@ -82,7 +82,7 @@ public class labRequestDAOImpl implements labRequestDAO {
     if (resultSet.next()) {
       stm.execute("DROP TABLE labRequest");
     }
-
+    resultSet.close();
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
@@ -221,6 +221,7 @@ public class labRequestDAOImpl implements labRequestDAO {
         // some sort of checker.....
       }
     }
+    rset.close();
   }
 
   public ArrayList<MedDelReq> requestsFromRSET(ResultSet rset) throws SQLException {

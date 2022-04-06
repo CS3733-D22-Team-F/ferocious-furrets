@@ -81,6 +81,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
     if (resultSet.next()) {
       stm.execute("DROP TABLE medicalEquipmentDeliveryRequest");
     }
+    resultSet.close();
     stm.execute(
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
@@ -194,6 +195,7 @@ public class MedDelReqDAOImpl implements MedDelReqDAO {
         // some sort of checker.....
       }
     }
+    rset.close();
   }
 
   public ArrayList<MedDelReq> requestsFromRSET(ResultSet rset) throws SQLException {

@@ -84,6 +84,7 @@ public class fullLocationController implements Initializable {
         y = rset.getInt(3);
         floor = rset.getString(4);
       }
+      rset.close();
       Location tempLocation =
           new Location(med.getNodeID(), x, y, floor, "N/A", med.getEquipType(), "Equipment", "N/A");
       returnList.add(tempLocation);

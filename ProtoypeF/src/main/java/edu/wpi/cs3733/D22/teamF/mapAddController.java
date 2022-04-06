@@ -157,7 +157,7 @@ public class mapAddController implements Initializable {
     while (rset.next()) {
       roomNum++;
     }
-
+    rset.close();
     if ((roomNum / 10.0) >= 10) {
       rNum = "" + roomNum;
     } else if ((roomNum / 10.0) >= 1) {

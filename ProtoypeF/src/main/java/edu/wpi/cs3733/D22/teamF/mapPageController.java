@@ -71,10 +71,11 @@ public class mapPageController extends returnHomePage implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    nLocations.addAll(eLocations);
+
     ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
     table.setItems(nlocationList);
 
+    nLocations.addAll(eLocations);
     changeToF1();
 
     for (Location lo : nLocations) {
@@ -238,6 +239,8 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   public void popUpReset() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    ArrayList<MedEquip> eList = null;
+    eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     Parent root = FXMLLoader.load(getClass().getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -250,6 +253,15 @@ public class mapPageController extends returnHomePage implements Initializable {
       deleteIcon(loc.getNodeID());
     }
     ArrayList<Location> nLocations = null;
+
+    ArrayList<Location> eLocations = null;
+    try {
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
+
+      eLocations = equipToLocation(eList);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
     } catch (SQLException e) {
@@ -257,6 +269,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+    nLocations.addAll(eLocations);
 
     for (Location lo : nLocations) {
       try {
@@ -282,7 +295,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     while (rset.next()) {
       roomNum++;
     }
-
+    rset.close();
     if ((roomNum / 10.0) >= 10) {
       rNum = "" + roomNum;
     } else if ((roomNum / 10.0) >= 1) {
@@ -519,6 +532,7 @@ public class mapPageController extends returnHomePage implements Initializable {
         y = rset.getInt(3);
         floor = rset.getString(4);
       }
+      rset.close();
       Location tempLocation =
           new Location(med.getNodeID(), x, y, floor, "N/A", med.getEquipType(), "Equipment", "N/A");
       returnList.add(tempLocation);
