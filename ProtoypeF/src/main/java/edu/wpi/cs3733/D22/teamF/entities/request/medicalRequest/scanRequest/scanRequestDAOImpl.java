@@ -10,10 +10,9 @@ public class scanRequestDAOImpl implements scanRequestDAO {
 
   public void initScanRequestTable() throws SQLException {
     // TODO implement read from CSV if needed
-    if (DatabaseManager.dropTableIfExist("scanRequest")) {
-      DatabaseManager.runStatement(
-          "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), reqType varChar(16), medicalType varChar(16), scanType varChar(16))");
-    }
+    DatabaseManager.dropTableIfExist("scanRequest");
+    DatabaseManager.runStatement(
+        "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), reqType varChar(16), medicalType varChar(16), scanType varChar(16))");
   }
 
   /**
@@ -46,13 +45,13 @@ public class scanRequestDAOImpl implements scanRequestDAO {
       throws SQLException {
     scanRequest addedScanRequest =
         new scanRequest(reqID, nodeID, assignedEmpID, requesterEmpID, status, scanType);
-    //    try {
-    //      System.out.println(addedScanRequest.generateInsertStatement());
-    //      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
-    //      currentScanRequests.add(addedScanRequest);
-    //    } catch (SQLException e) {
-    //      e.printStackTrace();
-    //    }
+    try {
+//      System.out.println(addedScanRequest.generateInsertStatement());
+      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
+      currentScanRequests.add(addedScanRequest);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   /**

@@ -41,7 +41,7 @@ public class DatabaseManager {
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
     labRequestDAO.initTable();
-    // scanRequestDAO.initScanRequestTable();
+    scanRequestDAO.initScanRequestTable();
     return Helper.dbMan;
   }
 
@@ -63,7 +63,7 @@ public class DatabaseManager {
     Statement stm = conn.createStatement();
     try {
       stm.execute(statement);
-      System.out.println(statement);
+      System.out.println("SQL: " + statement);
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -87,14 +87,12 @@ public class DatabaseManager {
     return null;
   }
 
-  public static boolean dropTableIfExist(String droppingTable) throws SQLException {
-    if (conn.getMetaData().getTables(null, null, droppingTable, null).next()) {
+  public static void dropTableIfExist(String droppingTable) throws SQLException {
+    if (conn.getMetaData().getTables(null, null, droppingTable.toUpperCase(), null).next()) {
       runStatement("DROP TABLE " + droppingTable);
-      System.out.println("Dropping " + droppingTable + " Table!");
-      return true;
+//      System.out.println("Dropping " + droppingTable + " table!");
     } else {
-      System.out.println(droppingTable + " Table already Exist!");
-      return false;
+//      System.out.println(droppingTable + " table does not Exist!");
     }
   }
 
