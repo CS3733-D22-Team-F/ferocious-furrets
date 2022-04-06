@@ -1,12 +1,12 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.catScanRequest.catscanRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.mriScanRequest.mriScanRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.xrayScanRequest.xrayScanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.scanRequest;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -70,8 +70,14 @@ public class scanController extends returnHomePage implements Initializable {
    *
    * @return MedicalRequest object
    */
-  public MedicalRequest submit() {
+  public MedicalRequest submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
+    String reqID =
+        generateReqID(
+            DatabaseManager.getScanRequestDAO().getAllRequests().size(),
+            typeChoice.getValue().toString(),
+            nodeField.getText());
+    String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -81,55 +87,28 @@ public class scanController extends returnHomePage implements Initializable {
       System.out.println("There are still blank fields");
       return null;
     } else {
-      if (typeChoice.getValue().equals("CAT")) {
-        catscanRequest newRequest =
-            new catscanRequest(
-                null,
-                nodeField.getText(),
-                employeeIDField.getText(),
-                userField.getText(),
-                statusChoice.getValue().toString(),
-                "Medical",
-                "catScan"); // TODO
-        requestList.clear();
-        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
-        requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statusChoice.getValue().toString());
-        serviceRequestStorage.addToArrayList(requestList);
-        return newRequest;
-      } else if (typeChoice.getValue().equals("xray")) {
-        xrayScanRequest newRequest =
-            new xrayScanRequest(
-                null,
-                nodeField.getText(),
-                employeeIDField.getText(),
-                userField.getText(),
-                statusChoice.getValue().toString(),
-                "Medical",
-                "xrayScan"); // TODO
-        requestList.clear();
-        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
-        requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statusChoice.getValue().toString());
-        serviceRequestStorage.addToArrayList(requestList);
-        return newRequest;
-      } else {
-        mriScanRequest newRequest =
-            new mriScanRequest(
-                null,
-                nodeField.getText(),
-                employeeIDField.getText(),
-                userField.getText(),
-                statusChoice.getValue().toString(),
-                "Medical",
-                "mriScan"); // TODO
-        requestList.clear();
-        requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
-        requestList.add("Assigned Doctor: " + userField.getText());
-        requestList.add("Status: " + statusChoice.getValue().toString());
-        serviceRequestStorage.addToArrayList(requestList);
-        return newRequest;
-      }
+      scanRequest newRequest =
+          new scanRequest(
+              reqID,
+              nodeField.getText(),
+              employeeIDField.getText(),
+              userField.getText(),
+              statusChoice.getValue().toString(),
+              scanType); // TODO
+      requestList.clear();
+      requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
+      requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("Status: " + statusChoice.getValue().toString());
+      serviceRequestStorage.addToArrayList(requestList);
+      DatabaseManager.getScanRequestDAO()
+          .addRequest(
+              newRequest.getReqID(),
+              newRequest.getNodeID(),
+              newRequest.getRequesterEmpID(),
+              newRequest.getAssignedEmpID(),
+              newRequest.getStatus(),
+              newRequest.getScanType());
+      return newRequest;
     }
   }
 
@@ -144,5 +123,18 @@ public class scanController extends returnHomePage implements Initializable {
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+  }
+
+  public String generateReqID(int requestListLength, String scanType, String nodeID) {
+    String reqAbb = "SR";
+    String sAb = "";
+    if (scanType.equals("CAT")) {
+      sAb = "C";
+    } else if (scanType.equals("xray")) {
+      sAb = "X";
+    } else if (scanType.equals("MRI")) {
+      sAb = "M";
+    }
+    return reqAbb + sAb + (requestListLength + 1) + nodeID;
   }
 }

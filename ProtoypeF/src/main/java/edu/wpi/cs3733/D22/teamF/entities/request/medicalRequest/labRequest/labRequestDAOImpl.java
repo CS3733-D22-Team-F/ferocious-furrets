@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Implementation of the labRequestDAO Interface
  *
  * @see labRequest
- * @see LabRequestDAO
+ * @see labRequestDAO
  */
-public class LabRequestDAOImpl implements LabRequestDAO {
+public class labRequestDAOImpl implements labRequestDAO {
 
   private final ArrayList<labRequest> requests = new ArrayList<>();
   private final ArrayList<labRequest> updatedRequests = new ArrayList<labRequest>();
@@ -27,7 +27,7 @@ public class LabRequestDAOImpl implements LabRequestDAO {
   Connection conn = DatabaseManager.getConn();
 
   /** Constructor */
-  public LabRequestDAOImpl() {}
+  public labRequestDAOImpl() {}
 
   /**
    * An ArrayList of all the service requests in the embedded CSV file. Provided as a data structure
@@ -43,8 +43,8 @@ public class LabRequestDAOImpl implements LabRequestDAO {
     BufferedReader lineReader =
         new BufferedReader(
             new InputStreamReader(
-                LabRequestDAOImpl.class.getResourceAsStream(
-                    "/edu/wpi/cs3733/D22/teamF/csv/LabRequest.csv"),
+                labRequestDAOImpl.class.getResourceAsStream(
+                    "/edu/wpi/cs3733/D22/teamF/csv/labRequest.csv"),
                 StandardCharsets.UTF_8));
     String lineText = null;
     lineReader.readLine(); // skip header line
