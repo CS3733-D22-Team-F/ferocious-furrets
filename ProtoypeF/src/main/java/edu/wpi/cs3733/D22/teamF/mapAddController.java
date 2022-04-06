@@ -102,14 +102,14 @@ public class mapAddController implements Initializable {
             generateNodeID(
                 nodeBox.getValue(),
                 floorField.getText(),
-                Integer.parseInt(xField.getText()),
-                Integer.parseInt(yField.getText()));
+                (int) Double.parseDouble(xField.getText()),
+                (int) Double.parseDouble(yField.getText()));
         System.out.println(nID);
         Location l =
             new Location(
                 nID,
-                Integer.parseInt(xField.getText()),
-                Integer.parseInt(yField.getText()),
+                (int) Double.parseDouble(xField.getText()),
+                (int) Double.parseDouble(yField.getText()),
                 floorField.getText(),
                 "Tower",
                 nodeBox.getValue().substring(0, 4),

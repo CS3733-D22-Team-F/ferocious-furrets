@@ -129,12 +129,12 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="277.0" unFocusColor="WHITE">
+            <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="277.0" promptText="Select Status" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="95.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="279.0" unFocusColor="WHITE">
+            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="279.0" promptText="Select Type" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
