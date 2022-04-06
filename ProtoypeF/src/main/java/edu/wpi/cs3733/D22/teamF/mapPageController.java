@@ -334,96 +334,96 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws FileNotFoundException
    */
   public ImageView getIcon(String type) {
-    Image image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI.png"));
+    Image image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
     switch (type) {
       case "PATI":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
           break;
         }
       case "STOR":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STOR.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STOR Icon.png"));
           break;
         }
       case "DIRT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DIRT.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DIRT Icon.png"));
           break;
         }
       case "HALL":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/HALL.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/HALL Icon.png"));
           break;
         }
       case "ELEV":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/ELEV.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/ELEV Icon.png"));
           break;
         }
       case "REST":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/REST.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/REST Icon.png"));
           break;
         }
       case "STAI":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STAI.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STAI Icon.png"));
           break;
         }
       case "DEPT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DEPT.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DEPT Icon.png"));
           break;
         }
       case "LABS":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/LABS.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/LABS Icon.png"));
           break;
         }
       case "INFO":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/INFO.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/INFO Icon.png"));
           break;
         }
       case "CONF":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/CONF.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/CONF Icon.png"));
           break;
         }
       case "EXIT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/EXIT.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/EXIT Icon.png"));
           break;
         }
       case "RETL":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/RETL.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/RETL Icon.png"));
           break;
         }
       case "SERV":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/SERV.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/SERV Icon.png"));
           break;
         }
       case "Infusion Pump":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/IPMP.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/IPMP Icon.png"));
           break;
         }
       case "Bed":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/PTBD.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/PTBD Icon.png"));
           break;
         }
       case "Recliner":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/RECL.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/RECL Icon.png"));
           break;
         }
       case "Xray":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/XRAY.png"));
+          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/XRAY Icon.png"));
           break;
         }
     }
