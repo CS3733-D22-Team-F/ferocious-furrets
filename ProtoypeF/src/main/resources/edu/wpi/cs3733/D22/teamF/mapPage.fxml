@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapPageController">
    <children>
       <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
@@ -80,96 +83,265 @@
             </JFXButton>
          </children>
       </HBox>
-       <TitledPane fx:id="legend" animated="false" layoutX="146.0" layoutY="18.0" prefHeight="247.0" prefWidth="207.0" text="Legend">
+       <TitledPane fx:id="legend" animated="false" layoutX="146.0" layoutY="18.0" prefHeight="299.0" prefWidth="360.0" text="Legend">
            <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="200.0">
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="281.0" prefWidth="358.0">
                    <children>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/PATI.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/STOR.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/DIRT.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/HALL.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/ELEV.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/REST.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/STAI.png" />
-                           </image>
-                       </ImageView>
-                       <Label layoutX="49.0" layoutY="2.0" text="Patient" />
-                       <Label layoutX="52.0" layoutY="16.0" text="Room" />
-                       <Label layoutX="47.0" layoutY="39.0" text="Storage" />
-                       <Label layoutX="55.0" layoutY="62.0" text="Dirty" />
-                       <Label layoutX="39.0" layoutY="77.0" text="Equipment" />
-                       <Label layoutX="46.0" layoutY="99.0" text="Hallway" />
-                       <Label layoutX="46.0" layoutY="129.0" text="Elevator" />
-                       <Label layoutX="42.0" layoutY="159.0" text="Restroom" />
-                       <Label layoutX="43.0" layoutY="189.0" text="Staircase" />
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/DEPT.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/LABS.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/INFO.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/CONF.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/EXIT.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/RETL.png" />
-                           </image>
-                       </ImageView>
-                       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="105.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@Icons/MapIcons/SERV.png" />
-                           </image>
-                       </ImageView>
-                       <Label layoutX="135.0" layoutY="8.0" text="Department" />
-                       <Label layoutX="155.0" layoutY="39.0" text="Labs" />
-                       <Label layoutX="136.0" layoutY="68.0" text="Information" />
-                       <Label layoutX="136.0" layoutY="99.0" text="Conference" />
-                       <Label layoutX="133.0" layoutY="129.0" text="Exit/Entrance" />
-                       <Label layoutX="141.0" layoutY="159.0" text="Retail" />
-                       <Label layoutX="139.0" layoutY="190.0" text="Services" />
+                  <HBox prefHeight="267.0" prefWidth="360.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/INFO.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                   </ImageView>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/CONF.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                   </ImageView>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/DEPT.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                   </ImageView>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/DIRT.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                   </ImageView>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/ELEV.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                   </ImageView>
+                                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@Icons/MapIcons/LABS.png" />
+                                       </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                   </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/PATI.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/RETL.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/SERV.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Information">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Conference">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Department">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Dirty Equipment">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Elevator">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Labs">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Patient Room">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Retail">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Service">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Line endX="100.0" startX="100.0" startY="280.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/REST.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/STOR.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/STAI.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/EXIT.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/MapIcons/HALL.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/EquipmentIcons/IPMP.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/EquipmentIcons/PTBD.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/EquipmentIcons/RECL.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/EquipmentIcons/XRAY.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Restroom">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Storage">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Staircase">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Exit">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Hallway">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Infusion Pump">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Patient Bed">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Recliner">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Xray">
+                                 <VBox.margin>
+                                    <Insets top="13.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                    </children>
                </AnchorPane>
            </content>
