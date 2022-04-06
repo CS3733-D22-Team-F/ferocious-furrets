@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.mri
 
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
 
+/** @deprecated */
 public class mriScanRequest extends MedicalRequest {
 
   public mriScanRequest(

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @see labRequest
  */
-public interface LabRequestDAO {
+public interface labRequestDAO {
   ArrayList<labRequest> getAllRequests() throws SQLException;
 
   /**

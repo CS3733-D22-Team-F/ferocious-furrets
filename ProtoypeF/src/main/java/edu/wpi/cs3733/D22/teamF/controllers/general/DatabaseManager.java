@@ -4,11 +4,10 @@ import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.LabRequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.scanRequestDAOImpl;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
@@ -23,7 +22,8 @@ public class DatabaseManager {
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
-  private static final LabRequestDAOImpl labRequestDAO = new LabRequestDAOImpl();
+  private static final labRequestDAOImpl labRequestDAO = new labRequestDAOImpl();
+  private static final scanRequestDAOImpl scanRequestDAO = new scanRequestDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -41,6 +41,7 @@ public class DatabaseManager {
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
     labRequestDAO.initTable();
+    scanRequestDAO.initScanRequestTable();
     return Helper.dbMan;
   }
 
@@ -52,7 +53,6 @@ public class DatabaseManager {
   public static Connection getConn() {
     return conn;
   }
-
   /**
    * Runs SQL statement
    *
@@ -63,8 +63,36 @@ public class DatabaseManager {
     Statement stm = conn.createStatement();
     try {
       stm.execute(statement);
+      System.out.println(statement);
     } catch (SQLException e) {
       e.printStackTrace();
+    }
+  }
+  /**
+   * Executes query to the apache derby database
+   *
+   * @param query String to be executed
+   * @return return the rset containing the query
+   * @throws SQLException when there is a sql problem
+   */
+  public static ResultSet runQuery(String query) throws SQLException {
+    Statement stm = conn.createStatement();
+    try {
+      return stm.executeQuery(query);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  public static boolean dropTableIfExist(String droppingTable) throws SQLException {
+    if (conn.getMetaData().getTables(null, null, droppingTable, null).next()) {
+      runStatement("DROP TABLE " + droppingTable);
+      System.out.println("Dropping " + droppingTable + " Table");
+      return true;
+    } else {
+      System.out.println("Table already Exist!");
+      return false;
     }
   }
 
@@ -76,7 +104,6 @@ public class DatabaseManager {
   public static LocationsDAOImpl getLocationDAO() {
     return locationsDAO;
   }
-
   /**
    * gets the MedDelReqDAOImpl object Use to use the addLocation, update, delete, etc
    *
@@ -85,30 +112,28 @@ public class DatabaseManager {
   public static MedDelReqDAOImpl getMedEquipDelReqDAO() {
     return medicalEquipmentDeliveryRequestDAO;
   }
-
+  /**
+   * Return med equipment DAO object to ad
+   *
+   * @return medEquipImpl DAO object
+   */
   public static MedEquipDAOImpl getMedEquipDAO() {
     return medicalEquipmentDAO;
   }
-
   /** gets the LabRequestDAO */
-  public static LabRequestDAOImpl getLabRequestDAO() {
+  public static labRequestDAOImpl getLabRequestDAO() {
     return labRequestDAO;
   }
 
-  /**
-   * gets the labReqDAOImpl object Use to use the a ddLocation, update, delete, etc
-   *
-   * @return labReqDAOImpl
-   */
-  //  public static labReqDAOImpl getlrdao() {
-  //    return lrdao;
-  //  }
+  /** gets the scanRequestDAO */
+  public static scanRequestDAOImpl getScanRequestDAO() {
+    return scanRequestDAO;
+  }
 
   /** helper */
   private static class Helper {
     private static final DatabaseManager dbMan = new DatabaseManager();
   }
-
   /** helper but singleton */
   private static class SingletonHelper {
     private static final DatabaseManager DatabaseManager = new DatabaseManager();
