@@ -88,10 +88,10 @@ public class DatabaseManager {
   public static boolean dropTableIfExist(String droppingTable) throws SQLException {
     if (conn.getMetaData().getTables(null, null, droppingTable, null).next()) {
       runStatement("DROP TABLE " + droppingTable);
-      System.out.println("Dropping " + droppingTable + " Table");
+      System.out.println("Dropping " + droppingTable + " Table!");
       return true;
     } else {
-      System.out.println("Table already Exist!");
+      System.out.println(droppingTable + " Table already Exist!");
       return false;
     }
   }
