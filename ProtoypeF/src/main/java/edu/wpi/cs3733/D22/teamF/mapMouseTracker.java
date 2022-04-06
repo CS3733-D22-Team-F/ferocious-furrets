@@ -17,7 +17,7 @@ public class mapMouseTracker {
   @FXML Label floorValue;
   @FXML Button cancel;
   @FXML ImageView mapHolder;
-  private String floor = "3";
+  private String floor = "1";
 
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));

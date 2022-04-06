@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Map icons appear and disappear on add/delete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapMouseTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapMouseTracker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="map-gui-modify" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -426,7 +426,8 @@
     <MESSAGE value="Icons update on reset from CSV" />
     <MESSAGE value="Fixed open ResultSet bug" />
     <MESSAGE value="Icons appear at correct location on click to add" />
-    <option name="LAST_COMMIT_MESSAGE" value="Icons appear at correct location on click to add" />
+    <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify location, still need to autofill fields in window with previous values." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
