@@ -192,6 +192,11 @@ public class mapAddController implements Initializable {
     return nID;
   }
 
+  /**
+   * popup window to click a location on map and automatically load x-y coords to window
+   *
+   * @throws IOException
+   */
   public void popUpTracker() throws IOException {
     Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
     Stage popupwindow = new Stage();

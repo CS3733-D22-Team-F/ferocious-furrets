@@ -35,10 +35,11 @@ public class mapMouseTracker {
   public void submit() {
     if (!xValue.getText().isEmpty() && !yValue.getText().isEmpty()) {
       coordTempHolder.setFloorValue(floorValue.getText());
-      //      coordTempHolder.setxValue(((Double.parseDouble(xValue.getText()) / 790) * 1070) + "");
-      //      coordTempHolder.setyValue(((Double.parseDouble(xValue.getText()) / 630) * 856) + "");
-      coordTempHolder.setxValue(xValue.getText());
-      coordTempHolder.setyValue(yValue.getText());
+      coordTempHolder.setxValue(((Double.parseDouble(xValue.getText()) / 790) * 1070) + "");
+      coordTempHolder.setyValue(((Double.parseDouble(yValue.getText()) / 630) * 856) + "");
+      //      (x/790)*1070
+      //      coordTempHolder.setxValue(xValue.getText());
+      //      coordTempHolder.setyValue(yValue.getText());
       Stage stage = (Stage) cancel.getScene().getWindow();
       stage.close();
     } else {

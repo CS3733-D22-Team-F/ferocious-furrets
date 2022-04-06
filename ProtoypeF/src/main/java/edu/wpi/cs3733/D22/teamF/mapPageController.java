@@ -54,6 +54,14 @@ public class mapPageController extends returnHomePage implements Initializable {
   Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
   Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
 
+  /**
+   * Initialize the map page, get all the equipment and locations from the database, get the x-y
+   * coordinates of the equipment to plot on the map Initialize the table of all the locations to
+   * display on the page Add the icons to the map to graphically display the locations and equipment
+   *
+   * @param location
+   * @param resources
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
@@ -87,6 +95,12 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
   }
 
+  /**
+   * open a fullscreen view of the locations table on the right side of the page
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   void openFullTable(ActionEvent event) throws IOException {
     Parent root = FXMLLoader.load(getClass().getResource("fullLocationPage.fxml"));
@@ -97,6 +111,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  /** change map to floor 1, same for f2, f3, l1, l2 */
   public void changeToF1() {
     mapHolder.setImage(F1);
     iconPane1.setVisible(true);
@@ -167,6 +182,13 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL2.setDisable(false);
   }
 
+  /**
+   * Pop up window to add a location to the map After adding a location the table, wipe all icons
+   * off the map and redisplay to update with new location
+   *
+   * @throws IOException
+   * @throws SQLException
+   */
   public void popUpAdd() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapAddPage.fxml"));
@@ -197,6 +219,13 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
   }
 
+  /**
+   * pop up window to delete a location node After deletion from Locations table, wipe all icons and
+   * redisplay to update
+   *
+   * @throws IOException
+   * @throws SQLException
+   */
   public void popUpDelete() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapDeletePage.fxml"));
@@ -228,6 +257,11 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
   }
 
+  /**
+   * popup window to save location table to external csv file
+   *
+   * @throws IOException
+   */
   public void popUpSave() throws IOException {
     Parent root = FXMLLoader.load(getClass().getResource("mapBackUpPage.fxml"));
     Stage popupwindow = new Stage();
@@ -237,6 +271,13 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  /**
+   * popup window to reset the map from an external csv, after upating table, wipe all icons off map
+   * and redisplay to update view
+   *
+   * @throws IOException
+   * @throws SQLException
+   */
   public void popUpReset() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     ArrayList<MedEquip> eList = null;
@@ -331,6 +372,8 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   /**
+   * Add an icon to the map at a location node to provide a graphical representation of the location
+   *
    * @param location
    * @throws FileNotFoundException
    */
@@ -367,39 +410,11 @@ public class mapPageController extends returnHomePage implements Initializable {
     locationIconList.add(temp);
   }
 
-  public void addnewIcon(Location location) throws FileNotFoundException {
-    JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
-    newButton.setPrefSize(25, 25);
-    newButton.setMinSize(25, 25);
-    newButton.setMaxSize(25, 25);
-    double x =
-        (location.getXcoord() / 790) * 1070; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 630) * 856;
-    newButton.setLayoutX(x);
-    newButton.setLayoutY(y);
-    switch (location.getFloor()) {
-      case "1":
-        iconPane1.getChildren().add(newButton);
-        break;
-      case "2":
-        iconPane2.getChildren().add(newButton);
-        break;
-      case "3":
-        iconPane3.getChildren().add(newButton);
-        break;
-      case "L1":
-        iconPaneL1.getChildren().add(newButton);
-        break;
-      case "L2":
-        iconPaneL2.getChildren().add(newButton);
-        break;
-    }
-    ArrayList<Object> temp = new ArrayList<Object>();
-    temp.add(location.getNodeID());
-    temp.add(newButton);
-    locationIconList.add(temp);
-  }
-
+  /**
+   * delete a location icon from the map
+   *
+   * @param nodeID
+   */
   public void deleteIcon(String nodeID) {
     for (int i = 0; i < locationIconList.size(); i++) {
       if (locationIconList.get(i).get(0).equals(nodeID)) {
@@ -412,6 +427,8 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   /**
+   * Gets the correct type of icon depending on the nodeType of the location
+   *
    * @param type
    * @return
    * @throws FileNotFoundException
@@ -516,6 +533,14 @@ public class mapPageController extends returnHomePage implements Initializable {
     return imageView;
   }
 
+  /**
+   * converts an equipment object to a temporary location to get the x-y coords to display icon on
+   * map
+   *
+   * @param medList
+   * @return
+   * @throws SQLException
+   */
   public ArrayList<Location> equipToLocation(ArrayList<MedEquip> medList) throws SQLException {
     ArrayList<Location> returnList = new ArrayList<>();
     int x = -1;
