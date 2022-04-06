@@ -46,13 +46,13 @@ public class scanRequestDAOImpl implements scanRequestDAO {
       throws SQLException {
     scanRequest addedScanRequest =
         new scanRequest(reqID, nodeID, assignedEmpID, requesterEmpID, status, scanType);
-    try {
-      System.out.println(addedScanRequest.generateInsertStatement());
-      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
-      currentScanRequests.add(addedScanRequest);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    //    try {
+    //      System.out.println(addedScanRequest.generateInsertStatement());
+    //      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
+    //      currentScanRequests.add(addedScanRequest);
+    //    } catch (SQLException e) {
+    //      e.printStackTrace();
+    //    }
   }
 
   /**
