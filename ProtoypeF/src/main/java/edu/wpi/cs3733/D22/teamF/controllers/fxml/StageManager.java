@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /** Stage manager class, singleton so there can be one instance */
@@ -22,6 +23,12 @@ public class StageManager {
       m_stage = new Stage(); //
       m_stage.setTitle("Team F App");
       m_StageManager = new StageManager();
+      m_stage
+          .getIcons()
+          .add(
+              new Image(
+                  StageManager.class.getResourceAsStream(
+                      "/edu/wpi/cs3733/D22/teamF/BWHlogo-new.png")));
     }
     return m_StageManager;
   }
