@@ -19,7 +19,7 @@
             <Image url="@Images/patientBed.jpeg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_RIGHT" layoutX="42.0" layoutY="90.0" prefHeight="444.0" prefWidth="273.0">
+      <VBox alignment="TOP_RIGHT" layoutX="5.0" layoutY="90.0" prefHeight="444.0" prefWidth="310.0">
          <children>
             <Label text="Node ID:" textFill="#123090">
                <font>
@@ -29,7 +29,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Label text="Employee ID: " textFill="#123090">
+            <Label text="Employee ID:" textFill="#123090">
                <font>
                   <Font size="37.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Label text="Equipment Type:" textFill="#123090">
+            <Label prefHeight="54.0" prefWidth="278.0" text="Equipment Type:" textFill="#123090">
                <font>
                   <Font size="37.0" />
                </font>
@@ -68,7 +68,7 @@
             <Font name="Times New Roman" size="48.0" />
          </font>
       </Label>
-      <VBox layoutX="322.0" layoutY="101.0" prefHeight="396.0" prefWidth="299.0">
+      <VBox layoutX="322.0" layoutY="101.0" prefHeight="404.0" prefWidth="299.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
                <font>
@@ -91,12 +91,12 @@
                   <Insets top="16.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="typeChoice" prefHeight="39.0" prefWidth="299.0">
+            <JFXComboBox fx:id="typeChoice" prefHeight="50.0" prefWidth="299.0">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="statusChoice" prefHeight="43.0" prefWidth="299.0">
+            <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="299.0">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
