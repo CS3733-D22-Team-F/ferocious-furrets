@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,6 +36,15 @@ public class logInController extends returnHomePage {
     stage.show();
   }
 
+  @FXML
+  private void helpQuit() throws SQLException {
+    DatabaseManager.getLocationDAO().saveLocationToCSV();
+    DatabaseManager.getMedEquipDAO().saveMedEquipToCSV();
+    DatabaseManager.getMedEquipDelReqDAO().saveRequestToCSV();
+    System.out.println("Locations table updated to csv :)");
+    System.out.println("MedEquip table updated to csv :)");
+    System.exit(0);
+  }
   /** logs in, or states message the username or password are wrong */
   @FXML
   private void logIn() {
