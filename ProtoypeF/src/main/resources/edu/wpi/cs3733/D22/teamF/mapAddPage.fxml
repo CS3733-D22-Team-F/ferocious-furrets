@@ -71,7 +71,7 @@
                         <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>
                   </ChoiceBox>
-                  <TextField fx:id="floorField" promptText="Please Type In Floor">
+                  <TextField fx:id="floorField">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -79,7 +79,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Please Type In X Value" fx:id="xField">
+                  <TextField fx:id="xField">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="yField" promptText="Please Type In Y Value">
+                  <TextField fx:id="yField">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="longField" prefHeight="35.0" prefWidth="209.0" promptText="Please Type In Long Name">
+                  <TextField fx:id="longField" prefHeight="35.0" prefWidth="209.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -103,7 +103,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="shortField" promptText="Please Type In Short Name">
+                  <TextField fx:id="shortField">
                      <font>
                         <Font size="18.0" />
                      </font>

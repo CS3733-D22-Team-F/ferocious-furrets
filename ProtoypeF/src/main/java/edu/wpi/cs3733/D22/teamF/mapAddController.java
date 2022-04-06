@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -90,12 +91,12 @@ public class mapAddController implements Initializable {
    */
   public void submit(ActionEvent event) throws SQLException, IOException {
 
-    if (nodeBox.getValue() != null
-        && floorField.getText() != null
-        && xField.getText() != null
-        && yField.getText() != null
-        && longField.getText() != null
-        && shortField.getText() != null) {
+    if (!nodeBox.getValue().equals("")
+        && !floorField.getText().equals("")
+        && !xField.getText().equals("")
+        && !yField.getText().equals("")
+        && !longField.getText().equals("")
+        && !shortField.getText().equals("")) {
       try {
         String nID =
             generateNodeID(
@@ -120,6 +121,13 @@ public class mapAddController implements Initializable {
       } catch (Exception e) {
         e.printStackTrace();
       }
+    } else {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Alert");
+      alert.setHeaderText("Blank Field");
+      String s = "At least one required field is missing!";
+      alert.setContentText(s);
+      alert.show();
     }
   }
 
@@ -196,150 +204,4 @@ public class mapAddController implements Initializable {
     yField.setText(coordTempHolder.getyValue());
     floorField.setText(coordTempHolder.getFloorValue());
   }
-
-  //  public void addLocation(
-  //      String nodeType, String floor, int x, int y, String longN, String shortN, boolean
-  // isModify)
-  //      throws SQLException, IOException {
-  //
-  //    String nID = generateNodeID(nodeType, floor, x, y);
-  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-  //    Statement stm = DatabaseManager.getConn().createStatement();
-  //
-  //    Location l = new Location(nID, x, y, floor, "Tower", nodeType, longN, shortN);
-  //    ArrayList<Location> nLocations = LDAOImpl.getAllLocations();
-  //    ArrayList<String> nLocationID = LDAOImpl.getCsvIDS();
-  //    nLocations.add(l);
-  //    nLocationID.add(l.getNodeID());
-  //    LDAOImpl.setUpdatedLocations(nLocations);
-  //    LDAOImpl.setCsvIDS(nLocationID);
-  //
-  //    String nNodeType = nodeType.substring(0, 4);
-  //
-  //    String cmd =
-  //        "INSERT INTO Locations (nodeID, XCOORD, YCOORD, floor, building, nodeType, longName,
-  // shortName) "
-  //            + "VALUES ( '"
-  //            + nID
-  //            + "', "
-  //            + x
-  //            + ", "
-  //            + y
-  //            + ", '"
-  //            + floor
-  //            + "', "
-  //            + "'Tower'"
-  //            + ", '"
-  //            + nNodeType
-  //            + "', '"
-  //            + longN
-  //            + "', '"
-  //            + shortN
-  //            + "')";
-  //    System.out.println(cmd);
-  //    stm.execute(cmd);
-  //    stm.close();
-  //  }
-  //
-  //  public void deleteLocation(String oldID) throws SQLException, IOException {
-  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-  //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-  //    ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();
-  //    csvIDS.remove(oldID);
-  //    Statement stm = DatabaseInitializer.getConnection().dbConnection.createStatement();
-  //    String cmd = "Delete from Locations where nodeID = '" + oldID + "'";
-  //    stm.execute(cmd);
-  //    csvIDS.remove(oldID);
-  //    nLocation.remove(oldID);
-  //    LDAOImpl.setCsvIDS(csvIDS);
-  //    LDAOImpl.setUpdatedLocations(nLocation);
-  //    stm.close();
-  //  }
-  //
-  //  public void updateLocation(
-  //      String nodeID,
-  //      String nodeType,
-  //      String floor,
-  //      int x,
-  //      int y,
-  //      String longN,
-  //      String shortN,
-  //      boolean isModify)
-  //      throws SQLException, IOException {
-  //    deleteLocation(nodeID);
-  //    addLocation(nodeType, floor, x, y, longN, shortN, isModify);
-  //  }
-  //
-  //  public void locationsFromRSET(ResultSet rset) throws SQLException {
-  //    while (rset.next()) {
-  //      String nodeID = rset.getString("nodeID");
-  //      String longName = rset.getString("LongName");
-  //      String shortName = rset.getString("ShortName");
-  //      int xCoord = rset.getInt("xcoord");
-  //      int yCoord = rset.getInt("ycoord");
-  //      String floor = rset.getString("floor");
-  //      String building = rset.getString("building");
-  //      String nodeType = rset.getString("nodeType");
-  //      Location newL =
-  //          new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
-  //      LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-  //      ArrayList<Location> nLocation = LDAOImpl.getUpdatedLocations();
-  //      nLocation.add(newL);
-  //      LDAOImpl.setUpdatedLocations(nLocation);
-  //    }
-  //  }
-  //
-  //  public void saveLocationToCSV() {
-  //
-  //    String csvName = "src/main/resources/edu/wpi/furious_furrets/TowerLocationsNew.csv";
-  //
-  //    Statement stm = null;
-  //    try {
-  //      stm = connection.createStatement();
-  //    } catch (SQLException e) {
-  //      e.printStackTrace();
-  //    }
-  //
-  //    LocationsDAOImpl LDAOImpl = DatabaseManager.getLdao();
-  //    ArrayList<String> csvIDS = LDAOImpl.getCsvIDS();
-  //    ArrayList<Location> updatedLocations = LDAOImpl.getUpdatedLocations();
-  //
-  //    try {
-  //      for (String id : csvIDS) {
-  //        ResultSet rset;
-  //        rset = stm.executeQuery("SELECT * FROM Locations WHERE nodeID = '" + id + "'");
-  //
-  //        locationsFromRSET(rset);
-  //
-  //        rset.close();
-  //        File newCSV = new File(csvName);
-  //        FileWriter fw = new FileWriter(csvName);
-  //        fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-  //        for (Location l : updatedLocations) {
-  //          fw.write(
-  //              l.getNodeID()
-  //                  + ","
-  //                  + l.getXcoord()
-  //                  + ","
-  //                  + l.getYcoord()
-  //                  + ","
-  //                  + l.getFloor()
-  //                  + ","
-  //                  + l.getBuilding()
-  //                  + ","
-  //                  + l.getNodeType()
-  //                  + ","
-  //                  + l.getLongName()
-  //                  + ","
-  //                  + l.getShortName()
-  //                  + "\n");
-  //        }
-  //        fw.close();
-  //      }
-  //    } catch (SQLException e) {
-  //      e.printStackTrace();
-  //    } catch (IOException e) {
-  //      e.printStackTrace();
-  //    }
-  //  }
 }
