@@ -8,18 +8,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapMouseTracker">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapMouseTracker">
    <children>
-      <ImageView fx:id="mapHolder" fitHeight="400.0" fitWidth="600.0" onMouseClicked="#track" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="814.0" onMouseClicked="#track" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@FloorMap/Floor1.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="510.0" layoutY="70.0" prefHeight="33.0" prefWidth="17.0" text="X: " />
-      <Label layoutX="535.0" layoutY="70.0" prefHeight="33.0" prefWidth="61.0" fx:id="xValue" />
-      <Label layoutX="510.0" layoutY="100.0" prefHeight="33.0" prefWidth="17.0" text="Y: " />
-      <Label fx:id="yValue" layoutX="535.0" layoutY="100.0" prefHeight="33.0" prefWidth="61.0" />
+      <VBox layoutX="815.0" layoutY="15.0" prefHeight="632.0" prefWidth="197.0">
+         <children>
+            <Label prefHeight="33.0" prefWidth="17.0" text="X: " />
+            <Label prefHeight="33.0" prefWidth="61.0" fx:id="xValue" />
+            <Label prefHeight="33.0" prefWidth="17.0" text="Y: " />
+            <Label fx:id="yValue" prefHeight="33.0" prefWidth="61.0" />
+            <Label prefHeight="33.0" prefWidth="36.0" text="Floor: " />
+            <Label fx:id="floorValue" prefHeight="33.0" prefWidth="36.0" />
+            <JFXButton onAction="#submit" text="Confirm" />
+            <JFXButton fx:id="cancel" onAction="#cancel" ripplerFill="RED" text="Cancel" textFill="#d73d3d" />
+         </children>
+      </VBox>
       <MenuBar layoutX="14.0" layoutY="14.0">
          <menus>
             <Menu mnemonicParsing="false" text="Change Map">
@@ -33,9 +42,5 @@
             </Menu>
          </menus>
       </MenuBar>
-      <JFXButton layoutX="508.0" layoutY="254.0" onAction="#submit" text="Confirm" />
-      <Label layoutX="510.0" layoutY="130.0" prefHeight="33.0" prefWidth="36.0" text="Floor: " />
-      <Label fx:id="floorValue" layoutX="546.0" layoutY="130.0" prefHeight="33.0" prefWidth="36.0" />
-      <JFXButton fx:id="cancel" layoutX="508.0" layoutY="280.0" onAction="#cancel" ripplerFill="RED" text="Cancel" textFill="#d73d3d" />
    </children>
 </AnchorPane>

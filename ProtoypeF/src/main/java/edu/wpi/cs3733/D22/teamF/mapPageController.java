@@ -166,7 +166,8 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL2.setDisable(false);
   }
 
-  public void popUpAdd() throws IOException {
+  public void popUpAdd() throws IOException, SQLException {
+    // ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapAddPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -175,6 +176,9 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    //    for (Location loc : oldLocs) {
+    //      deleteIcon(loc.getNodeID());
+    //    }
     ArrayList<Location> nLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -183,15 +187,28 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+    //    for (Location lo : nLocations) {
+    //      try {
+    //        addIcon(lo);
+    //      } catch (FileNotFoundException e) {
+    //        e.printStackTrace();
+    //      }
+    //    }
   }
 
-  public void popUpDelete() throws IOException {
+  public void popUpDelete() throws IOException, SQLException {
+    // ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapDeletePage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+
+    //    for (Location loc : oldLocs) {
+    //      deleteIcon(loc.getNodeID());
+    //    }
+
     ArrayList<Location> nLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -200,6 +217,14 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+
+    //    for (Location lo : nLocations) {
+    //      try {
+    //        addIcon(lo);
+    //      } catch (FileNotFoundException e) {
+    //        e.printStackTrace();
+    //      }
+    //    }
   }
 
   public void popUpSave() throws IOException {
@@ -304,6 +329,39 @@ public class mapPageController extends returnHomePage implements Initializable {
     double x =
         (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
     double y = (location.getYcoord() / 856.0) * 630;
+    newButton.setLayoutX(x);
+    newButton.setLayoutY(y);
+    switch (location.getFloor()) {
+      case "1":
+        iconPane1.getChildren().add(newButton);
+        break;
+      case "2":
+        iconPane2.getChildren().add(newButton);
+        break;
+      case "3":
+        iconPane3.getChildren().add(newButton);
+        break;
+      case "L1":
+        iconPaneL1.getChildren().add(newButton);
+        break;
+      case "L2":
+        iconPaneL2.getChildren().add(newButton);
+        break;
+    }
+    ArrayList<Object> temp = new ArrayList<Object>();
+    temp.add(location.getNodeID());
+    temp.add(newButton);
+    locationIconList.add(temp);
+  }
+
+  public void addnewIcon(Location location) throws FileNotFoundException {
+    JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
+    newButton.setPrefSize(25, 25);
+    newButton.setMinSize(25, 25);
+    newButton.setMaxSize(25, 25);
+    double x =
+        (location.getXcoord() / 790) * 1070; // change the image resolution to pane resolution
+    double y = (location.getYcoord() / 630) * 856;
     newButton.setLayoutX(x);
     newButton.setLayoutY(y);
     switch (location.getFloor()) {

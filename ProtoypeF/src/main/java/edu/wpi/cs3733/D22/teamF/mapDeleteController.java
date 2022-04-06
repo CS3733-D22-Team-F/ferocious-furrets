@@ -59,6 +59,8 @@ public class mapDeleteController implements Initializable {
    * @throws IOException
    */
   public void deleteLocation(String oldID) throws SQLException, IOException {
+    mapPageController mpc = new mapPageController();
+    mpc.deleteIcon(oldID);
     DatabaseManager.getLocationDAO().deleteLocation(oldID);
   }
 }

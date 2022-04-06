@@ -17,7 +17,7 @@ public class mapMouseTracker {
   @FXML Label floorValue;
   @FXML Button cancel;
   @FXML ImageView mapHolder;
-  private String floor = "1";
+  private String floor = "3";
 
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
@@ -35,6 +35,8 @@ public class mapMouseTracker {
   public void submit() {
     if (!xValue.getText().isEmpty() && !yValue.getText().isEmpty()) {
       coordTempHolder.setFloorValue(floorValue.getText());
+      //      coordTempHolder.setxValue(((Double.parseDouble(xValue.getText()) / 790) * 1070) + "");
+      //      coordTempHolder.setyValue(((Double.parseDouble(xValue.getText()) / 630) * 856) + "");
       coordTempHolder.setxValue(xValue.getText());
       coordTempHolder.setyValue(yValue.getText());
       Stage stage = (Stage) cancel.getScene().getWindow();
