@@ -74,11 +74,11 @@ public class mapMouseTracker {
 
   public void changeToL1() {
     mapHolder.setImage(L1);
-    floor = "-1";
+    floor = "L1";
   }
 
   public void changeToL2() {
     mapHolder.setImage(L2);
-    floor = "-2";
+    floor = "L2";
   }
 }
