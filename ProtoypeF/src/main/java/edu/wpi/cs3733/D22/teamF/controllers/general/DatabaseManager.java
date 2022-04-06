@@ -41,7 +41,7 @@ public class DatabaseManager {
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
     labRequestDAO.initTable();
-    scanRequestDAO.initScanRequestTable();
+    // scanRequestDAO.initScanRequestTable();
     return Helper.dbMan;
   }
 
