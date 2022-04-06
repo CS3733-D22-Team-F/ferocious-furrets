@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -21,7 +20,6 @@ public class homePageController {
   private Scene scene;
   private Parent root;
 
-  @FXML private Button signInButton;
   @FXML private AnchorPane reportAnchorPane;
   // Theme Color: #154487
   // Button Color: #062558
@@ -107,20 +105,6 @@ public class homePageController {
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("mealPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  /**
-   * switch to login scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  @FXML
-  public void switchToLogin(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("logInPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();

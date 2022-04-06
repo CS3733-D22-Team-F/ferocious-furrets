@@ -1,0 +1,16 @@
+.button{
+    -fx-background-color: #338DFF;
+    -fx-text-fill: white;
+}
+
+.button:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #338DFF;
+}
+
+.text-field{
+   -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+

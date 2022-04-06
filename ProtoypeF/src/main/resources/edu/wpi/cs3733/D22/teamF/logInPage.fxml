@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.logInController">
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.logInController">
    <children>
       <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
          <image>
@@ -18,19 +27,22 @@
          <children>
             <VBox layoutX="47.0" layoutY="19.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="528.0" prefWidth="455.0" spacing="45.0">
+                  <VBox alignment="CENTER" prefHeight="528.0" prefWidth="455.0" spacing="40.0">
                      <children>
                         <ImageView fitHeight="225.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@loginpfp.png" />
                            </image>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </ImageView>
-                        <Label text="Sign In" textFill="#a8a8a8">
+                        <Label text="Sign In" textFill="WHITE">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="-fx-text-fill: white;" unFocusColor="white">
+                        <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="" unFocusColor="white">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -41,7 +53,7 @@
                               <Font size="24.0" />
                            </font>
                         </JFXTextField>
-                        <JFXPasswordField fx:id="passwordField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="-fx-text-fill: white;" unFocusColor="white">
+                        <JFXPasswordField fx:id="passwordField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="" unFocusColor="white">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -64,7 +76,7 @@
                   </Label>
                   <VBox prefHeight="204.0" prefWidth="455.0" spacing="40.0">
                      <children>
-                        <JFXButton onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Login" textFill="WHITE">
+                        <JFXButton fx:id="loginButton" onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="" text="Login" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -72,7 +84,7 @@
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Sign Up" textFill="WHITE">
+                        <JFXButton fx:id="signInButton" prefHeight="62.0" prefWidth="430.0" style="" text="Sign Up" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -82,7 +94,6 @@
                         </JFXButton>
                      </children>
                   </VBox>
-                  <Label text="Label" />
                </children>
             </VBox>
          </children>
@@ -92,5 +103,14 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <MenuBar prefHeight="28.0" prefWidth="1302.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#helpQuit" text="Quit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

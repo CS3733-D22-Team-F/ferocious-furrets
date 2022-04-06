@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.homePageController">
+<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.homePageController">
    <children>
       <ImageView fitHeight="947.0" fitWidth="1396.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-204.19146728515625" AnchorPane.leftAnchor="-92.0" AnchorPane.rightAnchor="-24.0" AnchorPane.topAnchor="-4.80853271484375">
          <image>
@@ -19,55 +19,51 @@
       </ImageView>
       <VBox layoutX="-1.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="389.0" spacing="5.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.topAnchor="28.0">
          <children>
-            <JFXButton fx:id="signInButton" buttonType="RAISED" onAction="#switchToLogin" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #001540 #001540 #001540 #001540;" text="Please Login" textFill="WHITE">
+            <JFXButton fx:id="mapButton" buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MAP">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="MAP" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MEDICAL REQUEST">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="MEDICAL REQUEST" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToEquipment" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="EQUIPMENT">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToEquipment" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="EQUIPMENT" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#returnToMedicine" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MEDICINE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#returnToMedicine" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="MEDICINE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToMeals" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MEALS">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToMeals" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="MEALS" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToGift" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="GIFTS">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToGift" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="GIFTS" textFill="WHITE">
-               <font>
-                  <Font name="Palatino" size="24.0" />
-               </font>
-            </JFXButton>
-         </children></VBox>
+         </children>
+      </VBox>
       <VBox alignment="BOTTOM_CENTER" layoutX="1030.0" layoutY="329.0" prefHeight="390.0" prefWidth="250.0" spacing="10.0">
          <children>
-            <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="SERVICE REQUESTS" textFill="#ffaa00">
+            <JFXButton fx:id="servButton" buttonType="RAISED" onAction="#switchToRequests" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="" text="SERVICE REQUESTS">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="-fx-background-color: #123090 #123090;" text="CALL SERVICE" textFill="#ffaa00">
+            <JFXButton fx:id="callServ" buttonType="RAISED" onAction="#switchToRequests" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="" styleClass="" text="CALL SERVICE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#exitProgram" prefHeight="80.0" prefWidth="250.0" ripplerFill="#9e1010" style="-fx-background-color: #123090 #123090;" text="EXIT" textFill="#ffaa00">
+            <JFXButton fx:id="exitButton" buttonType="RAISED" onAction="#exitProgram" prefHeight="80.0" prefWidth="250.0" ripplerFill="#9e1010" style="" styleClass="" text="EXIT">
                <font>
                   <Font size="24.0" />
                </font>
