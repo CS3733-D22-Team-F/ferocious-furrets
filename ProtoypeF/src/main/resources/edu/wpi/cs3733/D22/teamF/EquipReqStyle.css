@@ -5,6 +5,7 @@
 
 .combo-box{
     -fx-text-fill: white ;
+    -fx-background-color: white;
 }
 
 .button:hover{
@@ -14,5 +15,5 @@
 
 .text-field{
     -fx-prompt-text-fill: white;
-    -fx-text-fill: white;
+    -fx-text-fill: #123090;
 }

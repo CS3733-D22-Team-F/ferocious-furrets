@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.labRequestController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.labRequestController">
    <children>
       <ImageView fitHeight="752.0" fitWidth="1076.0" layoutX="207.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@labimage.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;">
+      <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;" stylesheets="@labRequest.css">
          <children>
             <Pane prefHeight="113.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
                <children>
@@ -34,14 +40,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <HBox layoutX="151.0" layoutY="544.0" prefHeight="52.0" prefWidth="413.0" spacing="20.0">
+            <HBox layoutX="151.0" layoutY="544.0" prefHeight="52.0" prefWidth="455.0" spacing="20.0">
                <children>
                   <Label text="Status:" textFill="WHITE">
                      <font>
                         <Font size="37.0" />
                      </font>
                   </Label>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="279.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
+                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="325.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
                </children>
             </HBox>
             <HBox layoutX="108.0" layoutY="461.0" prefHeight="62.0" prefWidth="515.0" spacing="20.0">
@@ -51,7 +57,7 @@
                         <Font size="37.0" />
                      </font>
                   </Label>
-                  <JFXComboBox fx:id="typeChoice" focusColor="#2aa7d0" prefHeight="43.0" prefWidth="277.0" promptText="Select a lab" style="-fx-background-color: white;" unFocusColor="WHITE" />
+                  <JFXComboBox fx:id="typeChoice" focusColor="#2aa7d0" prefHeight="43.0" prefWidth="320.0" promptText="Select a lab" style="-fx-background-color: white;" unFocusColor="WHITE" />
                </children>
             </HBox>
             <HBox layoutX="150.0" layoutY="656.0" prefHeight="51.0" prefWidth="504.0" spacing="30.0">
