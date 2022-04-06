@@ -315,6 +315,7 @@ public class LocationsDAOImpl implements LocationDAO {
           new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
       allLocations.add(newL);
     }
+    rset.close();
     return allLocations;
   }
 

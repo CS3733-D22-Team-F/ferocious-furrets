@@ -211,7 +211,8 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
-  public void popUpReset() throws IOException {
+  public void popUpReset() throws IOException, SQLException {
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -220,6 +221,9 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
     // update table view
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    for (Location loc : oldLocs) {
+      deleteIcon(loc.getNodeID());
+    }
     ArrayList<Location> nLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -228,6 +232,14 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
+
+    for (Location lo : nLocations) {
+      try {
+        addIcon(lo);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   public String generateNodeID(String nodeType, String floor, int x, int y)
