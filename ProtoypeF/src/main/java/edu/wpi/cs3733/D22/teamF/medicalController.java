@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.swing.*;
 
 /**
  * controller for medical equipment/lab request scene
@@ -21,6 +24,9 @@ public class medicalController extends returnHomePage implements Initializable {
 
   private Stage stage;
   private Scene scene;
+
+  @FXML JFXButton lab = new JFXButton();
+  @FXML JFXButton scan = new JFXButton();
 
   // @FXML private JFXButton scanButton;
 
