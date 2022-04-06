@@ -9,19 +9,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.equipmentRequestController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@EquipReqStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.equipmentRequestController">
    <children>
       <ImageView fitHeight="863.0" fitWidth="1352.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/patientBed.jpeg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_RIGHT" layoutX="5.0" layoutY="90.0" prefHeight="444.0" prefWidth="310.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="821.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
+      <VBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="140.0" prefHeight="444.0" prefWidth="310.0">
          <children>
-            <Label text="Node ID:" textFill="#123090">
+            <Label text="Node ID:" textFill="WHITE">
                <font>
                   <Font size="37.0" />
                </font>
@@ -29,7 +32,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Label text="Employee ID:" textFill="#123090">
+            <Label text="Employee ID:" textFill="WHITE">
                <font>
                   <Font size="37.0" />
                </font>
@@ -37,7 +40,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Label text="Assigned User:" textFill="#123090">
+            <Label text="Assigned User:" textFill="WHITE">
                <font>
                   <Font size="37.0" />
                </font>
@@ -45,7 +48,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="54.0" prefWidth="278.0" text="Equipment Type:" textFill="#123090">
+            <Label prefHeight="54.0" prefWidth="278.0" text="Equipment Type:" textFill="WHITE">
                <font>
                   <Font size="37.0" />
                </font>
@@ -53,7 +56,7 @@
                   <Insets top="100.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="TOP_RIGHT" text="Status:" textFill="#123090">
+            <Label alignment="TOP_RIGHT" text="Status:" textFill="WHITE">
                <font>
                   <Font size="37.0" />
                </font>
@@ -63,12 +66,7 @@
             </Label>
          </children>
       </VBox>
-      <Label layoutX="441.0" layoutY="13.0" text="Medical Equipment Request" textFill="#123090">
-         <font>
-            <Font name="Times New Roman" size="48.0" />
-         </font>
-      </Label>
-      <VBox layoutX="322.0" layoutY="101.0" prefHeight="404.0" prefWidth="299.0">
+      <VBox layoutX="333.0" layoutY="151.0" prefHeight="404.0" prefWidth="299.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
                <font>
@@ -91,21 +89,21 @@
                   <Insets top="16.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="typeChoice" prefHeight="50.0" prefWidth="299.0">
+            <JFXComboBox fx:id="typeChoice" prefHeight="50.0" prefWidth="299.0" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="299.0">
+            <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="299.0" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </JFXComboBox>
          </children>
       </VBox>
-      <HBox layoutX="290.0" layoutY="513.0" prefHeight="56.0" prefWidth="335.0" style="-fx-background-color: #123090;">
+      <HBox layoutX="267.0" layoutY="601.0" prefHeight="56.0" prefWidth="335.0" style="-fx-background-color: #123090;">
          <children>
-            <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
+            <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" stylesheets="@EquipReqStyle.css" text="Submit" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -122,5 +120,23 @@
             </JFXButton>
          </children>
       </HBox>
+      <Pane layoutX="-17.0" layoutY="-6.0" prefHeight="118.0" prefWidth="699.0" style="-fx-background-color: #27aad0;">
+         <children>
+            <HBox layoutX="136.0" layoutY="24.0" prefHeight="70.0" prefWidth="461.0">
+               <children>
+                  <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="455.0" text="Equipment Request" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="55.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@bwhlogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

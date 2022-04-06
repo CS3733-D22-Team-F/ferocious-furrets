@@ -1,0 +1,18 @@
+.button{
+    -fx-background-color: #123090;
+    -fx-text-fill: white;
+}
+
+.combo-box{
+    -fx-text-fill: white ;
+}
+
+.button:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #338DFF;
+}
+
+.text-field{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
