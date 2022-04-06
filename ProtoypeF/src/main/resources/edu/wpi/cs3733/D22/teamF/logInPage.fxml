@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.logInController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.logInController" stylesheets="@styles.css">
    <children>
       <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
          <image>
@@ -30,7 +30,7 @@
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="-fx-text-fill: white;" unFocusColor="white">
+                        <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="" unFocusColor="white">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -41,12 +41,12 @@
                               <Font size="24.0" />
                            </font>
                         </JFXTextField>
-                        <JFXPasswordField fx:id="passwordField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="-fx-text-fill: white;" unFocusColor="white">
+                        <JFXPasswordField fx:id="passwordField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="" unFocusColor="white">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
                            <font>
-                              <Font size="20.0" />
+                              <Font size="24.0" />
                            </font>
                         </JFXPasswordField>
                      </children>
@@ -64,7 +64,7 @@
                   </Label>
                   <VBox prefHeight="204.0" prefWidth="455.0" spacing="40.0">
                      <children>
-                        <JFXButton onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Login" textFill="WHITE">
+                        <JFXButton onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="" text="Login" textFill="WHITE" fx:id="loginButton">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -72,7 +72,7 @@
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton prefHeight="62.0" prefWidth="430.0" style="-fx-background-color: #338DFF;" text="Sign Up" textFill="WHITE">
+                        <JFXButton prefHeight="62.0" prefWidth="430.0" style="" text="Sign Up" textFill="WHITE" fx:id="signInButton">
                            <font>
                               <Font size="24.0" />
                            </font>
