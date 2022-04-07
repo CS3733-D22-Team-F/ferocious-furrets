@@ -61,9 +61,9 @@ public class DatabaseManager {
    */
   public static void runStatement(String statement) throws SQLException {
     Statement stm = conn.createStatement();
+    System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
-      System.out.println("SQL: " + statement);
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -78,6 +78,7 @@ public class DatabaseManager {
    */
   public static ResultSet runQuery(String query) throws SQLException {
     Statement stm = conn.createStatement();
+    System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
     } catch (SQLException e) {
@@ -94,6 +95,21 @@ public class DatabaseManager {
     } else {
       //      System.out.println(droppingTable + " table does not Exist!");
     }
+  }
+
+  /**
+   * Functions to run before exiting the program
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
+  public static void backUpDatabaseToCSV() throws SQLException, IOException {
+    locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
+    medicalEquipmentDAO.saveMedEquipToCSV();
+    medicalEquipmentDeliveryRequestDAO.saveRequestToCSV();
+    System.out.println("Locations table updated to csv :)");
+    System.out.println("MedEquip table updated to csv :)");
+    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
   }
 
   /**

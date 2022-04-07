@@ -233,22 +233,8 @@ public class Location extends RecursiveTreeObject<Location> {
    * @return String
    */
   public String generateInsertStatement() {
-    return "INSERT INTO Locations VALUES ('"
-        + this.nodeID
-        + "',"
-        + this.xcoord
-        + ","
-        + this.ycoord
-        + ", '"
-        + this.floor
-        + "', '"
-        + this.building
-        + "', '"
-        + this.nodeType
-        + "', '"
-        + this.longName
-        + "', '"
-        + this.shortName
-        + "')";
+    return String.format(
+        "INSERT INTO Locations VALUES ('%s',%s,%s,'%s','%s','%s','%s','%s')",
+        nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName);
   }
 }

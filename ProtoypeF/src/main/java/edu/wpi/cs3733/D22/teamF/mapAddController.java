@@ -9,7 +9,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -150,10 +149,18 @@ public class mapAddController implements Initializable {
     String rNum;
     LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
 
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd =
-        "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
-    ResultSet rset = stm.executeQuery(cmd);
+    //    Statement stm = DatabaseManager.getConn().createStatement();
+    //    String cmd =
+    //            "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" +
+    // nFloor + "'";
+    //    ResultSet rset = stm.executeQuery(cmd);
+    ResultSet rset =
+        DatabaseManager.runQuery(
+            "SELECT * FROM Locations WHERE nodeType = '"
+                + nNodeType
+                + "' AND floor = '"
+                + nFloor
+                + "'");
     while (rset.next()) {
       roomNum++;
     }
@@ -188,7 +195,7 @@ public class mapAddController implements Initializable {
 
     String nID;
     nID = "f" + nNodeType + rNum + nFloor;
-    stm.close();
+    //    stm.close();
     return nID;
   }
 

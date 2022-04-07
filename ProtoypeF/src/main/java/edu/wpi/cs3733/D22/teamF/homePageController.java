@@ -226,12 +226,8 @@ public class homePageController {
 
   /** exits */
   @FXML
-  public void exitProgram() throws SQLException {
-    DatabaseManager.getLocationDAO().saveLocationToCSV();
-    DatabaseManager.getMedEquipDAO().saveMedEquipToCSV();
-    DatabaseManager.getMedEquipDelReqDAO().saveRequestToCSV();
-    System.out.println("Locations table updated to csv :)");
-    System.out.println("MedEquip table updated to csv :)");
+  public void exitProgram() throws SQLException, IOException {
+    DatabaseManager.backUpDatabaseToCSV();
     System.exit(0);
   }
 }

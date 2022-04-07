@@ -18,10 +18,7 @@ import javafx.scene.control.TextField;
  */
 public class LocationsDAOImpl implements LocationDAO {
 
-  private Connection connection = DatabaseManager.getConn();
-  private ArrayList<Location> Locations = new ArrayList<Location>();
-  private ArrayList<Location> updatedLocations = new ArrayList<Location>();
-  private ArrayList<String> csvIDS = new ArrayList<String>();
+  private ArrayList<Location> Locations = new ArrayList<Location>(); // LIST OF LOCATIONS RIGHT NOW
 
   @FXML private TextField newCSVName;
   @FXML private TextField newLocNodeID;
@@ -45,9 +42,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws IOException
    */
   public void initTable(String Filepath) throws SQLException, IOException {
-    csvIDS.clear();
     Locations.clear();
-    updatedLocations.clear();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -57,7 +52,6 @@ public class LocationsDAOImpl implements LocationDAO {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
       Locations.add(addedLocation);
-      csvIDS.add(addedLocation.getNodeID());
     }
 
     for (Location currentLocation : Locations) {
@@ -72,9 +66,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws IOException
    */
   public void initTable(File file) throws SQLException, IOException {
-    csvIDS.clear();
     Locations.clear();
-    updatedLocations.clear();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -84,7 +76,6 @@ public class LocationsDAOImpl implements LocationDAO {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
       Locations.add(addedLocation);
-      csvIDS.add(addedLocation.getNodeID());
     }
 
     for (Location currentLocation : Locations) {
@@ -93,22 +84,13 @@ public class LocationsDAOImpl implements LocationDAO {
   }
 
   /**
-   * Updates arrayList in class from rset (EXPENSIVE FUNCTION)
-   *
-   * @throws SQLException
-   */
-  public void updateLocationsListFromDatabase() throws SQLException {
-    Locations = locationsFromRSET(DatabaseManager.runQuery("SELECT * FROM Locations"));
-  }
-
-  /**
    * Saves the Locations table to a csv file
    *
-   * @param filename is the name of the file the map will be backed up to
+   * @param fileDir is the name of the file the map will be backed up to
    * @throws SQLException
    * @throws IOException
    */
-  public void backUpToCSV(String filename) throws SQLException, IOException {
+  public void backUpToCSV(String fileDir) throws SQLException, IOException {
 
     ArrayList<String> toAdd = new ArrayList<>();
     for (Location l : Locations) {
@@ -125,7 +107,7 @@ public class LocationsDAOImpl implements LocationDAO {
               l.getShortName()));
     }
 
-    CSVWriter.writeAllToDir(filename, toAdd);
+    CSVWriter.writeAllToDir(fileDir, toAdd);
   }
 
   public void backUpToCSV(File filename) throws SQLException, IOException {
@@ -173,8 +155,6 @@ public class LocationsDAOImpl implements LocationDAO {
     return allLocations;
   }
 
-
-  // END OFF HERE
   /**
    * Displays the list of location nodes along with their attributes.
    *
@@ -183,47 +163,8 @@ public class LocationsDAOImpl implements LocationDAO {
    * @see Location
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
-
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String q = "SELECT * FROM Locations";
-    ResultSet rset = stm.executeQuery(q);
-    ArrayList<Location> allLocations = locationsFromRSET(rset);
-    rset.close();
-    stm.close();
-    return allLocations; // fix
-  }
-
-  /**
-   * Taking user input for the ID of the location node and the new values of the floor and location
-   * type. The Location is then updated in the Locations DB
-   *
-   * @throws SQLException
-   */
-  public void updateLocation() throws SQLException {
-
-    String oldLocNodeID = nodeToUpdate.getText();
-    String nFloor = newFloor.getText();
-    String newType = newLocType.getText();
-    int newX = Integer.parseInt(newXcoord.getText());
-    int newY = Integer.parseInt(newYcoord.getText());
-    String newLName = newLongName.getText();
-    String newSName = newShortName.getText();
-
-    String updatedID = "";
-
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd =
-        "UPDATE Locations SET floor = '"
-            + newFloor
-            + "', nodeType = '"
-            + newLocType
-            + "', nodeID = '"
-            + updatedID
-            + "' WHERE nodeID = '"
-            + oldLocNodeID
-            + "'";
-    stm.execute(cmd);
-    stm.close();
+    //    updateLocationsListFromDatabase();
+    return Locations;
   }
 
   /**
@@ -234,11 +175,8 @@ public class LocationsDAOImpl implements LocationDAO {
    * @param newLocation
    */
   public void addLocation(Location newLocation) throws SQLException {
-
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd = newLocation.generateInsertStatement();
-    stm.execute(cmd);
-    stm.close();
+    Locations.add(newLocation);
+    DatabaseManager.runStatement(newLocation.generateInsertStatement());
   }
 
   /**
@@ -249,19 +187,60 @@ public class LocationsDAOImpl implements LocationDAO {
    * @param nID
    */
   public void deleteLocation(String nID) throws SQLException {
-
-    // csvIDS.remove(nID);
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String q = "Delete from Locations where nodeID = '" + nID + "'";
-    stm.execute(q);
-    stm.close();
+    for (Location l : Locations) {
+      if (nID.equals(l.getNodeID())) {
+        Locations.remove(l);
+        break;
+      }
+    }
+    DatabaseManager.runStatement(String.format("DELETE FROM Locations WHERE nodeID = '%s'", nID));
   }
 
+  /**
+   * Taking user input for the ID of the location node and the new values of the floor and location
+   * type. The Location is then updated in the Locations DB
+   *
+   * @throws SQLException
+   */
+  public void updateLocation(String oldNodeID, Location updatedLocation) throws SQLException {
+    deleteLocation(oldNodeID);
+    addLocation(updatedLocation);
+  }
+
+  /**
+   * Updates arrayList in class from rset (EXPENSIVE FUNCTION)
+   *
+   * @throws SQLException
+   */
+  public void updateLocationsListFromDatabase() throws SQLException {
+    Locations = locationsFromRSET(DatabaseManager.runQuery("SELECT * FROM Locations"));
+  }
+
+  /**
+   * Make an location object from String (with commas) (Helper function)
+   *
+   * @param currentLine Line in CSV to take in as parameters for an object
+   * @return return a Location object
+   */
+  public Location makeObjectFromString(String currentLine) {
+    String[] currentLineSplit = currentLine.split(",");
+    String nID = currentLineSplit[0];
+    int x = Integer.parseInt(currentLineSplit[1]);
+    int y = Integer.parseInt(currentLineSplit[2]);
+    String floor = currentLineSplit[3];
+    String building = currentLineSplit[4];
+    String nodeType = currentLineSplit[5];
+    String longName = currentLineSplit[6];
+    String shortName = currentLineSplit[7];
+    return new Location(nID, x, y, floor, building, nodeType, longName, shortName);
+  }
+
+  /*
   /**
    * Taking User input for the name of a CSV file. The program first loads all of the contents of
    * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
    * objects.
-   */
+   * @deprecated
   public void saveLocationToCSV() throws SQLException {
 
     String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv";
@@ -286,22 +265,22 @@ public class LocationsDAOImpl implements LocationDAO {
       fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
       for (Location l : allLocations) {
         fw.write(
-            l.getNodeID()
-                + ","
-                + l.getXcoord()
-                + ","
-                + l.getYcoord()
-                + ","
-                + l.getFloor()
-                + ","
-                + l.getBuilding()
-                + ","
-                + l.getNodeType()
-                + ","
-                + l.getLongName()
-                + ","
-                + l.getShortName()
-                + "\n");
+                l.getNodeID()
+                        + ","
+                        + l.getXcoord()
+                        + ","
+                        + l.getYcoord()
+                        + ","
+                        + l.getFloor()
+                        + ","
+                        + l.getBuilding()
+                        + ","
+                        + l.getNodeType()
+                        + ","
+                        + l.getLongName()
+                        + ","
+                        + l.getShortName()
+                        + "\n");
       }
       fw.close();
     } catch (SQLException e) {
@@ -311,138 +290,113 @@ public class LocationsDAOImpl implements LocationDAO {
     }
     stm.close();
   }
+  */
+  /*
+   public ArrayList<Location> getLocations() {
+     return Locations;
+   }
 
-  /**
-   * Make an location object from String (with commas) (Helper function)
-   *
-   * @param currentLine Line in CSV to take in as parameters for an object
-   * @return return a Location object
-   */
-  public Location makeObjectFromString(String currentLine) {
-    String[] currentLineSplit = currentLine.split(",");
-    String nID = currentLineSplit[0];
-    int x = Integer.parseInt(currentLineSplit[1]);
-    int y = Integer.parseInt(currentLineSplit[2]);
-    String floor = currentLineSplit[3];
-    String building = currentLineSplit[4];
-    String nodeType = currentLineSplit[5];
-    String longName = currentLineSplit[6];
-    String shortName = currentLineSplit[7];
-    return new Location(nID, x, y, floor, building, nodeType, longName, shortName);
-  }
+   public void setLocations(ArrayList<Location> locations) {
+     this.Locations = locations;
+   }
 
-  public Connection getConnection() {
-    return connection;
-  }
+   public ArrayList<Location> getUpdatedLocations() {
+     return updatedLocations;
+   }
 
-  public void setConnection(Connection connection) {
-    this.connection = connection;
-  }
+   public void setUpdatedLocations(ArrayList<Location> updatedLocations) {
+     this.updatedLocations = updatedLocations;
+   }
 
-  public ArrayList<Location> getLocations() {
-    return Locations;
-  }
+   public ArrayList<String> getCsvIDS() {
+     return csvIDS;
+   }
 
-  public void setLocations(ArrayList<Location> locations) {
-    this.Locations = locations;
-  }
+   public void setCsvIDS(ArrayList<String> csvIDS) {
+     this.csvIDS = csvIDS;
+   }
 
-  public ArrayList<Location> getUpdatedLocations() {
-    return updatedLocations;
-  }
+   public TextField getNewCSVName() {
+     return newCSVName;
+   }
 
-  public void setUpdatedLocations(ArrayList<Location> updatedLocations) {
-    this.updatedLocations = updatedLocations;
-  }
+   public void setNewCSVName(TextField newCSVName) {
+     this.newCSVName = newCSVName;
+   }
 
-  public ArrayList<String> getCsvIDS() {
-    return csvIDS;
-  }
+   public TextField getNewLocNodeID() {
+     return newLocNodeID;
+   }
 
-  public void setCsvIDS(ArrayList<String> csvIDS) {
-    this.csvIDS = csvIDS;
-  }
+   public void setNewLocNodeID(TextField newLocNodeID) {
+     this.newLocNodeID = newLocNodeID;
+   }
 
-  public TextField getNewCSVName() {
-    return newCSVName;
-  }
+   public TextField getOldLocNodeID() {
+     return oldLocNodeID;
+   }
 
-  public void setNewCSVName(TextField newCSVName) {
-    this.newCSVName = newCSVName;
-  }
+   public void setOldLocNodeID(TextField oldLocNodeID) {
+     this.oldLocNodeID = oldLocNodeID;
+   }
 
-  public TextField getNewLocNodeID() {
-    return newLocNodeID;
-  }
+   public TextField getNodeToUpdate() {
+     return nodeToUpdate;
+   }
 
-  public void setNewLocNodeID(TextField newLocNodeID) {
-    this.newLocNodeID = newLocNodeID;
-  }
+   public void setNodeToUpdate(TextField nodeToUpdate) {
+     this.nodeToUpdate = nodeToUpdate;
+   }
 
-  public TextField getOldLocNodeID() {
-    return oldLocNodeID;
-  }
+   public TextField getNewFloor() {
+     return newFloor;
+   }
 
-  public void setOldLocNodeID(TextField oldLocNodeID) {
-    this.oldLocNodeID = oldLocNodeID;
-  }
+   public void setNewFloor(TextField newFloor) {
+     this.newFloor = newFloor;
+   }
 
-  public TextField getNodeToUpdate() {
-    return nodeToUpdate;
-  }
+   public TextField getNewLocType() {
+     return newLocType;
+   }
 
-  public void setNodeToUpdate(TextField nodeToUpdate) {
-    this.nodeToUpdate = nodeToUpdate;
-  }
+   public void setNewLocType(TextField newLocType) {
+     this.newLocType = newLocType;
+   }
 
-  public TextField getNewFloor() {
-    return newFloor;
-  }
+   public TextField getNewXcoord() {
+     return newXcoord;
+   }
 
-  public void setNewFloor(TextField newFloor) {
-    this.newFloor = newFloor;
-  }
+   public void setNewXcoord(TextField newXcoord) {
+     this.newXcoord = newXcoord;
+   }
 
-  public TextField getNewLocType() {
-    return newLocType;
-  }
+   public TextField getNewYcoord() {
+     return newYcoord;
+   }
 
-  public void setNewLocType(TextField newLocType) {
-    this.newLocType = newLocType;
-  }
+   public void setNewYcoord(TextField newYcoord) {
+     this.newYcoord = newYcoord;
+   }
 
-  public TextField getNewXcoord() {
-    return newXcoord;
-  }
+   public TextField getNewLongName() {
+     return newLongName;
+   }
 
-  public void setNewXcoord(TextField newXcoord) {
-    this.newXcoord = newXcoord;
-  }
+   public void setNewLongName(TextField newLongName) {
+     this.newLongName = newLongName;
+   }
 
-  public TextField getNewYcoord() {
-    return newYcoord;
-  }
+   public TextField getNewShortName() {
+     return newShortName;
+   }
 
-  public void setNewYcoord(TextField newYcoord) {
-    this.newYcoord = newYcoord;
-  }
+   public void setNewShortName(TextField newShortName) {
+     this.newShortName = newShortName;
+   }
 
-  public TextField getNewLongName() {
-    return newLongName;
-  }
-
-  public void setNewLongName(TextField newLongName) {
-    this.newLongName = newLongName;
-  }
-
-  public TextField getNewShortName() {
-    return newShortName;
-  }
-
-  public void setNewShortName(TextField newShortName) {
-    this.newShortName = newShortName;
-  }
-
+  */
   /* JACKS OLD CODE
   /**
    * Replicates the initTable method but with a user specified filename, drops old Locations table
@@ -494,9 +448,7 @@ public class LocationsDAOImpl implements LocationDAO {
     resultSet.close();
     stm.close();
   }
-  */
 
-  /*
   public void initTable(File file) throws IOException, SQLException {
     csvLocations.clear();
     csvIDS.clear();
@@ -537,6 +489,39 @@ public class LocationsDAOImpl implements LocationDAO {
     stm.close();
   }
 
+   */
+  /*
+    /**
+   * Taking user input for the ID of the location node and the new values of the floor and location
+   * type. The Location is then updated in the Locations DB
+   *
+   * @throws SQLException
+  public void updateLocation() throws SQLException {
+
+    String oldLocNodeID = nodeToUpdate.getText();
+    String nFloor = newFloor.getText();
+    String newType = newLocType.getText();
+    int newX = Integer.parseInt(newXcoord.getText());
+    int newY = Integer.parseInt(newYcoord.getText());
+    String newLName = newLongName.getText();
+    String newSName = newShortName.getText();
+
+    String updatedID = "";
+
+    Statement stm = DatabaseManager.getConn().createStatement();
+    String cmd =
+            "UPDATE Locations SET floor = '"
+                    + newFloor
+                    + "', nodeType = '"
+                    + newLocType
+                    + "', nodeID = '"
+                    + updatedID
+                    + "' WHERE nodeID = '"
+                    + oldLocNodeID
+                    + "'";
+    stm.execute(cmd);
+    stm.close();
+  }
    */
 
 }
