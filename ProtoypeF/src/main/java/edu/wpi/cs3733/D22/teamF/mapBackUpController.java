@@ -105,6 +105,6 @@ public class mapBackUpController implements Initializable {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
-    DatabaseManager.getLocationDAO().backUpToCSVFileChosen(file);
+    DatabaseManager.getLocationDAO().backUpToCSV(file);
   }
 }

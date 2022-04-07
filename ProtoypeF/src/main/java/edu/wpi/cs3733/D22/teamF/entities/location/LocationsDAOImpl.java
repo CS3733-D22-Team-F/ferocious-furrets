@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.entities.location;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
+import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.*;
 import java.sql.*;
@@ -18,9 +19,10 @@ import javafx.scene.control.TextField;
 public class LocationsDAOImpl implements LocationDAO {
 
   private Connection connection = DatabaseManager.getConn();
-  private ArrayList<Location> csvLocations = new ArrayList<Location>();
+  private ArrayList<Location> Locations = new ArrayList<Location>();
   private ArrayList<Location> updatedLocations = new ArrayList<Location>();
   private ArrayList<String> csvIDS = new ArrayList<String>();
+
   @FXML private TextField newCSVName;
   @FXML private TextField newLocNodeID;
   @FXML private TextField oldLocNodeID;
@@ -44,7 +46,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void initTable(String Filepath) throws SQLException, IOException {
     csvIDS.clear();
-    csvLocations.clear();
+    Locations.clear();
     updatedLocations.clear();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
@@ -54,11 +56,11 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      csvLocations.add(addedLocation);
+      Locations.add(addedLocation);
       csvIDS.add(addedLocation.getNodeID());
     }
 
-    for (Location currentLocation : csvLocations) {
+    for (Location currentLocation : Locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }
@@ -71,7 +73,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void initTable(File file) throws SQLException, IOException {
     csvIDS.clear();
-    csvLocations.clear();
+    Locations.clear();
     updatedLocations.clear();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
@@ -81,13 +83,22 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      csvLocations.add(addedLocation);
+      Locations.add(addedLocation);
       csvIDS.add(addedLocation.getNodeID());
     }
 
-    for (Location currentLocation : csvLocations) {
+    for (Location currentLocation : Locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
+  }
+
+  /**
+   * Updates arrayList in class from rset (EXPENSIVE FUNCTION)
+   *
+   * @throws SQLException
+   */
+  public void updateLocationsListFromDatabase() throws SQLException {
+    Locations = locationsFromRSET(DatabaseManager.runQuery("SELECT * FROM Locations"));
   }
 
   /**
@@ -99,107 +110,46 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void backUpToCSV(String filename) throws SQLException, IOException {
 
-    // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
-    // TODO: Incorporate JavaFX FileChooser
-
-    Statement stm = null;
-    try {
-      stm = DatabaseManager.getConn().createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
+    ArrayList<String> toAdd = new ArrayList<>();
+    for (Location l : Locations) {
+      toAdd.add(
+          String.format(
+              "%s,%s,%s,%s,%s,%s,%s,%s",
+              l.getNodeID(),
+              l.getXcoord(),
+              l.getYcoord(),
+              l.getFloor(),
+              l.getBuilding(),
+              l.getNodeType(),
+              l.getLongName(),
+              l.getShortName()));
     }
 
-    try {
-      ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM Locations");
-
-      ArrayList<Location> allLocations = locationsFromRSET(rset);
-
-      rset.close();
-      File newCSV = new File(filename);
-      FileWriter fw = new FileWriter(filename);
-      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-      for (Location l : allLocations) {
-        fw.write(
-            l.getNodeID()
-                + ","
-                + l.getXcoord()
-                + ","
-                + l.getYcoord()
-                + ","
-                + l.getFloor()
-                + ","
-                + l.getBuilding()
-                + ","
-                + l.getNodeType()
-                + ","
-                + l.getLongName()
-                + ","
-                + l.getShortName()
-                + "\n");
-      }
-      fw.close();
-      // }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    stm.close();
+    CSVWriter.writeAllToDir(filename, toAdd);
   }
 
-  public void backUpToCSVFileChosen(File filename) throws SQLException, IOException {
+  public void backUpToCSV(File filename) throws SQLException, IOException {
 
-    // String csvName = "/edu/wpi/cs3733/D22/teamF/TowerLocationsBackedUp.csv";
-    // TODO: Incorporate JavaFX FileChooser
-
-    Statement stm = null;
-    try {
-      stm = DatabaseManager.getConn().createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
+    ArrayList<String> toAdd = new ArrayList<>();
+    for (Location l : Locations) {
+      toAdd.add(
+          String.format(
+              "%s,%s,%s,%s,%s,%s,%s,%s",
+              l.getNodeID(),
+              l.getXcoord(),
+              l.getYcoord(),
+              l.getFloor(),
+              l.getBuilding(),
+              l.getNodeType(),
+              l.getLongName(),
+              l.getShortName()));
     }
 
-    try {
-      ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM Locations");
-
-      ArrayList<Location> allLocations = locationsFromRSET(rset);
-
-      rset.close();
-      FileWriter fw = new FileWriter(filename);
-      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-      for (Location l : allLocations) {
-        fw.write(
-            l.getNodeID()
-                + ","
-                + l.getXcoord()
-                + ","
-                + l.getYcoord()
-                + ","
-                + l.getFloor()
-                + ","
-                + l.getBuilding()
-                + ","
-                + l.getNodeType()
-                + ","
-                + l.getLongName()
-                + ","
-                + l.getShortName()
-                + "\n");
-      }
-      fw.close();
-      // }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    stm.close();
+    CSVWriter.writeAll(filename, toAdd);
   }
 
   /**
-   * Taking in a ResultSet object take the locations in the form of new Location objects
+   * Taking in a ResultSet object take the locations in the form of new Location object
    *
    * @param rset ResultSet object to get locations from
    * @throws SQLException
@@ -223,6 +173,8 @@ public class LocationsDAOImpl implements LocationDAO {
     return allLocations;
   }
 
+
+  // END OFF HERE
   /**
    * Displays the list of location nodes along with their attributes.
    *
@@ -387,12 +339,12 @@ public class LocationsDAOImpl implements LocationDAO {
     this.connection = connection;
   }
 
-  public ArrayList<Location> getCsvLocations() {
-    return csvLocations;
+  public ArrayList<Location> getLocations() {
+    return Locations;
   }
 
-  public void setCsvLocations(ArrayList<Location> csvLocations) {
-    this.csvLocations = csvLocations;
+  public void setLocations(ArrayList<Location> locations) {
+    this.Locations = locations;
   }
 
   public ArrayList<Location> getUpdatedLocations() {
