@@ -446,7 +446,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   /**
-   * Gets the correct type of icon depending on the nodeType of the location
+   * Gets the correct type of icon depending on the nodeType of the location s
    *
    * @param type
    * @return
