@@ -26,19 +26,6 @@
       <AnchorPane fx:id="iconPane3" prefHeight="650.0" prefWidth="814.0" />
       <AnchorPane fx:id="iconPaneL1" prefHeight="650.0" prefWidth="814.0" />
       <AnchorPane fx:id="iconPaneL2" prefHeight="650.0" prefWidth="814.0" />
-      <MenuBar layoutX="20.0" layoutY="18.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Change Map">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeToL1" text="Lower 1" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeToL2" text="Lower 2" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <TableView fx:id="table" layoutX="813.0" prefHeight="720.0" prefWidth="467.0">
         <columns>
             <TableColumn fx:id="Building" prefWidth="104.2301025390625" text="Building" />
@@ -141,13 +128,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TableView fx:id="table" layoutX="813.0" prefHeight="720.0" prefWidth="467.0">
-        <columns>
-            <TableColumn fx:id="Building" prefWidth="104.2301025390625" text="Building" />
-            <TableColumn fx:id="Floor" prefWidth="77.2698974609375" text="Floor" />
-            <TableColumn fx:id="longName" prefWidth="285.03564453125" text="longName" />
-        </columns>
-      </TableView>
       <HBox layoutY="650.0" prefHeight="70.0" prefWidth="814.0">
          <children>
             <JFXButton buttonType="RAISED" onAction="#popUpAdd" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ADD" textFill="WHITE">
@@ -182,5 +162,23 @@
             </JFXButton>
          </children>
       </HBox>
+      <MenuBar layoutX="20.0" layoutY="18.0" style="-fx-border-color: #062558;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Change Map">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL1" text="Lower 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL2" text="Lower 2" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <JFXButton buttonType="RAISED" layoutX="474.0" layoutY="18.0" onAction="#showAll" prefHeight="23.0" prefWidth="113.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ALL ICON" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

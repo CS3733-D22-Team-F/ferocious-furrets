@@ -651,7 +651,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   public void showBad() {
-    showOneIcon("Bad");
+    showOneIcon("Bed");
   }
 
   public void showXray() {
@@ -664,6 +664,12 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   public void showRecliner() {
     showOneIcon("Recliner");
+  }
+
+  public void showAll() {
+    for (ArrayList<Object> objects : locationIconList) {
+      ((JFXButton) objects.get(1)).setVisible(true);
+    }
   }
 
   public void loadAllLegend() {
