@@ -113,8 +113,8 @@ public class mapPageController extends returnHomePage implements Initializable {
       } catch (SQLException e) {
         e.printStackTrace();
       }
-      loadAllLegend();
     }
+    loadAllLegend();
   }
 
   /**
@@ -426,6 +426,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     ArrayList<Object> temp = new ArrayList<Object>();
     temp.add(location);
     temp.add(newButton);
+    temp.add(location.getNodeID());
     locationIconList.add(temp);
   }
 
@@ -436,7 +437,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   public void deleteIcon(String nodeID) {
     for (int i = 0; i < locationIconList.size(); i++) {
-      if (locationIconList.get(i).get(0).equals(nodeID)) {
+      if (locationIconList.get(i).get(2).equals(nodeID)) {
         ((AnchorPane) ((JFXButton) locationIconList.get(i).get(1)).getParent())
             .getChildren()
             .remove((JFXButton) locationIconList.get(i).get(1));
