@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 
 public class mapPageController extends returnHomePage implements Initializable {
 
+  String currentFloor;
+
   @FXML ImageView mapHolder;
 
   @FXML TableView<Location> table;
@@ -43,6 +45,25 @@ public class mapPageController extends returnHomePage implements Initializable {
   @FXML AnchorPane iconPane3;
   @FXML AnchorPane iconPaneL1;
   @FXML AnchorPane iconPaneL2;
+
+  @FXML JFXButton patientRoomButton;
+  @FXML JFXButton storageButton;
+  @FXML JFXButton dirtyButton;
+  @FXML JFXButton hallwayButton;
+  @FXML JFXButton elevButton;
+  @FXML JFXButton restroomButton;
+  @FXML JFXButton stairButton;
+  @FXML JFXButton departmentButton;
+  @FXML JFXButton labButton;
+  @FXML JFXButton informationButton;
+  @FXML JFXButton conferenceButton;
+  @FXML JFXButton exitButton;
+  @FXML JFXButton retailButton;
+  @FXML JFXButton serviceButton;
+  @FXML JFXButton bedButton;
+  @FXML JFXButton xrayButton;
+  @FXML JFXButton pumpButton;
+  @FXML JFXButton reclinerButton;
 
   @FXML ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
 
@@ -92,6 +113,7 @@ public class mapPageController extends returnHomePage implements Initializable {
       } catch (SQLException e) {
         e.printStackTrace();
       }
+      loadAllLegend();
     }
   }
 
@@ -124,6 +146,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL1.setDisable(true);
     iconPaneL2.setVisible(false);
     iconPaneL2.setDisable(true);
+    currentFloor = "1";
   }
 
   public void changeToF2() {
@@ -138,6 +161,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL1.setDisable(true);
     iconPaneL2.setVisible(false);
     iconPaneL2.setDisable(true);
+    currentFloor = "2";
   }
 
   public void changeToF3() {
@@ -152,6 +176,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL1.setDisable(true);
     iconPaneL2.setVisible(false);
     iconPaneL2.setDisable(true);
+    currentFloor = "2";
   }
 
   public void changeToL1() {
@@ -166,6 +191,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL1.setDisable(false);
     iconPaneL2.setVisible(false);
     iconPaneL2.setDisable(true);
+    currentFloor = "L1";
   }
 
   public void changeToL2() {
@@ -180,6 +206,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     iconPaneL1.setDisable(true);
     iconPaneL2.setVisible(true);
     iconPaneL2.setDisable(false);
+    currentFloor = "L2";
   }
 
   /**
@@ -397,7 +424,7 @@ public class mapPageController extends returnHomePage implements Initializable {
         break;
     }
     ArrayList<Object> temp = new ArrayList<Object>();
-    temp.add(location.getNodeID());
+    temp.add(location);
     temp.add(newButton);
     locationIconList.add(temp);
   }
@@ -555,5 +582,108 @@ public class mapPageController extends returnHomePage implements Initializable {
       returnList.add(tempLocation);
     }
     return returnList;
+  }
+
+  public void showOneIcon(String type) {
+    for (ArrayList<Object> objects : locationIconList) {
+      if (!((Location) objects.get(0)).getNodeType().equals(type)) {
+        ((JFXButton) objects.get(1)).setVisible(false);
+      } else {
+        ((JFXButton) objects.get(1)).setVisible(true);
+      }
+    }
+  }
+
+  public void showPatient() {
+    showOneIcon("PATI");
+  }
+
+  public void showStorage() {
+    showOneIcon("STOR");
+  }
+
+  public void showDirty() {
+    showOneIcon("DIRT");
+  }
+
+  public void showHallway() {
+    showOneIcon("HALL");
+  }
+
+  public void showElev() {
+    showOneIcon("ELEV");
+  }
+
+  public void showRestroom() {
+    showOneIcon("REST");
+  }
+
+  public void showStair() {
+    showOneIcon("STAI");
+  }
+
+  public void showDepartment() {
+    showOneIcon("DEPT");
+  }
+
+  public void showLab() {
+    showOneIcon("LABS");
+  }
+
+  public void showInformation() {
+    showOneIcon("INFO");
+  }
+
+  public void showConference() {
+    showOneIcon("CONF");
+  }
+
+  public void showExit() {
+    showOneIcon("EXIT");
+  }
+
+  public void showRetail() {
+    showOneIcon("RETL");
+  }
+
+  public void showService() {
+    showOneIcon("SERV");
+  }
+
+  public void showBad() {
+    showOneIcon("Bad");
+  }
+
+  public void showXray() {
+    showOneIcon("Xray");
+  }
+
+  public void showPump() {
+    showOneIcon("Infusion Pump");
+  }
+
+  public void showRecliner() {
+    showOneIcon("Recliner");
+  }
+
+  public void loadAllLegend() {
+    patientRoomButton.setGraphic(getIcon("PATI"));
+    storageButton.setGraphic(getIcon("STOR"));
+    @FXML JFXButton dirtyButton;
+    @FXML JFXButton hallwayButton;
+    @FXML JFXButton elevButton;
+    @FXML JFXButton restroomButton;
+    @FXML JFXButton stairButton;
+    @FXML JFXButton departmentButton;
+    @FXML JFXButton labButton;
+    @FXML JFXButton informationButton;
+    @FXML JFXButton conferenceButton;
+    @FXML JFXButton exitButton;
+    @FXML JFXButton retailButton;
+    @FXML JFXButton serviceButton;
+    @FXML JFXButton bedButton;
+    @FXML JFXButton xrayButton;
+    @FXML JFXButton pumpButton;
+    @FXML JFXButton reclinerButton;
   }
 }
