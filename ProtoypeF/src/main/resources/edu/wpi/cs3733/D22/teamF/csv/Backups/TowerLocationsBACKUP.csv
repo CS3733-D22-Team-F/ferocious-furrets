@@ -1,3 +1,5 @@
+nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName
+FDEPT00101,430,330,1,Tower,DEPT,Center for International Medicine,CIM
 FDEPT00201,345,580,1,Tower,DEPT,Bretholtz Center for Patients and Families,Bretholtz WR
 FDEPT00301,540,400,1,Tower,DEPT,Multifaith Chapel,Chapel
 FDEPT00401,670,650,1,Tower,DEPT,Sharf Admitting Center,Sharf Center
@@ -145,60 +147,3 @@ fPATI01703,375,665,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01803,430,660,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01903,450,650,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI02003,475,595,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI00103,475,255,3,N/A,Bed,Equipment,N/A
-fPATI00203,460,210,3,N/A,Bed,Equipment,N/A
-fPATI00303,430,190,3,N/A,Bed,Equipment,N/A
-fPATI00403,370,180,3,N/A,Bed,Equipment,N/A
-fPATI00503,350,190,3,N/A,Bed,Equipment,N/A
-fPATI00603,300,230,3,N/A,Bed,Equipment,N/A
-fPATI00703,300,250,3,N/A,Bed,Equipment,N/A
-fPATI00803,300,315,3,N/A,Bed,Equipment,N/A
-fPATI00903,315,340,3,N/A,Bed,Equipment,N/A
-fPATI01003,375,375,3,N/A,Bed,Equipment,N/A
-fPATI01103,370,480,3,N/A,Bed,Equipment,N/A
-fPATI01203,315,510,3,N/A,Bed,Equipment,N/A
-fPATI01303,310,530,3,N/A,Bed,Equipment,N/A
-fPATI01403,300,590,3,N/A,Bed,Equipment,N/A
-fPATI01503,300,620,3,N/A,Bed,Equipment,N/A
-fPATI01603,345,665,3,N/A,Bed,Equipment,N/A
-fPATI01703,375,665,3,N/A,Bed,Equipment,N/A
-fPATI01803,430,660,3,N/A,Bed,Equipment,N/A
-fPATI01903,450,650,3,N/A,Bed,Equipment,N/A
-fPATI02003,475,595,3,N/A,Bed,Equipment,N/A
-fSTOR00103,380,270,3,N/A,Xray,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00203,380,590,3,N/A,Infusion Pump,Equipment,N/A
-fSTOR00303,530,530,3,N/A,Recliner,Equipment,N/A
-fSTOR00303,530,530,3,N/A,Recliner,Equipment,N/A
-fSTOR00303,530,530,3,N/A,Recliner,Equipment,N/A
-fSTOR00403,530,320,3,N/A,Recliner,Equipment,N/A
-fSTOR00403,530,320,3,N/A,Recliner,Equipment,N/A
-fSTOR00403,530,320,3,N/A,Recliner,Equipment,N/A
