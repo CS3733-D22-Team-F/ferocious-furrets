@@ -224,6 +224,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
     nLocations.addAll(eLocations);
+    locationIconList.clear();
     for (Location lo : nLocations) {
       try {
         addIcon(lo);
