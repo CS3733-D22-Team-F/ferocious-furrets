@@ -106,24 +106,24 @@
                   <Label layoutX="246.0" layoutY="120.0" text="Infusion" />
                   <Label layoutX="251.0" layoutY="137.0" text="Pump" />
                   <Label layoutX="246.0" layoutY="159.0" text="Recliner" />
-                  <JFXButton fx:id="patientRoomButton" layoutX="5.0" layoutY="5.0" onAction="#showPatient" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="storageButton" layoutX="5.0" layoutY="35.0" onAction="#showStorage" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="dirtyButton" layoutX="5.0" layoutY="65.0" onAction="#showDirty" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="hallwayButton" layoutX="5.0" layoutY="95.0" onAction="#showHallway" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="elevButton" layoutX="5.0" layoutY="125.0" onAction="#showElev" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="restroomButton" layoutX="5.0" layoutY="155.0" onAction="#showRestroom" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="stairButton" layoutX="103.0" layoutY="5.0" onAction="#showStair" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="departmentButton" layoutX="103.0" layoutY="35.0" onAction="#showDepartment" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="labButton" layoutX="103.0" layoutY="65.0" onAction="#showLab" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="informationButton" layoutX="103.0" layoutY="95.0" onAction="#showInformation" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="conferenceButton" layoutX="103.0" layoutY="125.0" onAction="#showConference" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="exitButton" layoutX="103.0" layoutY="155.0" onAction="#showExit" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="retailButton" layoutX="216.0" layoutY="5.0" onAction="#showRetail" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="serviceButton" layoutX="216.0" layoutY="35.0" onAction="#showService" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="bedButton" layoutX="216.0" layoutY="65.0" onAction="#showPatient" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton layoutX="216.0" layoutY="95.0" onAction="#showXray" prefHeight="25.0" prefWidth="25.0" text=" " fx:id="xrayButton" />
-                  <JFXButton fx:id="pumpButton" layoutX="216.0" layoutY="125.0" onAction="#showPump" prefHeight="25.0" prefWidth="25.0" text=" " />
-                  <JFXButton fx:id="reclinerButton" layoutX="216.0" layoutY="155.0" onAction="#showRecliner" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="storageButton" layoutX="5.0" layoutY="33.0" onAction="#showStorage" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="dirtyButton" layoutX="5.0" layoutY="63.0" onAction="#showDirty" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="patientRoomButton" layoutX="5.0" layoutY="3.0" onAction="#showPatient" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="hallwayButton" layoutX="5.0" layoutY="93.0" onAction="#showHallway" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="elevButton" layoutX="5.0" layoutY="123.0" onAction="#showElev" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="restroomButton" layoutX="5.0" layoutY="153.0" onAction="#showRestroom" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="stairButton" layoutX="103.0" layoutY="3.0" onAction="#showStair" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="departmentButton" layoutX="103.0" layoutY="33.0" onAction="#showDepartment" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="labButton" layoutX="103.0" layoutY="63.0" onAction="#showLab" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="informationButton" layoutX="103.0" layoutY="93.0" onAction="#showInformation" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="conferenceButton" layoutX="103.0" layoutY="123.0" onAction="#showConference" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="exitButton" layoutX="103.0" layoutY="153.0" onAction="#showExit" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="retailButton" layoutX="216.0" layoutY="3.0" onAction="#showRetail" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="serviceButton" layoutX="216.0" layoutY="33.0" onAction="#showService" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="bedButton" layoutX="216.0" layoutY="63.0" onAction="#showBad" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton layoutX="216.0" layoutY="93.0" onAction="#showXray" prefHeight="25.0" prefWidth="25.0" text=" " fx:id="xrayButton" />
+                  <JFXButton fx:id="pumpButton" layoutX="216.0" layoutY="123.0" onAction="#showPump" prefHeight="25.0" prefWidth="25.0" text=" " />
+                  <JFXButton fx:id="reclinerButton" layoutX="216.0" layoutY="153.0" onAction="#showRecliner" prefHeight="25.0" prefWidth="25.0" text=" " />
                    </children>
                </AnchorPane>
            </content>

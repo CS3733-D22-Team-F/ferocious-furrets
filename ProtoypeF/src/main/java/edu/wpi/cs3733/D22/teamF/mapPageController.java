@@ -669,21 +669,21 @@ public class mapPageController extends returnHomePage implements Initializable {
   public void loadAllLegend() {
     patientRoomButton.setGraphic(getIcon("PATI"));
     storageButton.setGraphic(getIcon("STOR"));
-    @FXML JFXButton dirtyButton;
-    @FXML JFXButton hallwayButton;
-    @FXML JFXButton elevButton;
-    @FXML JFXButton restroomButton;
-    @FXML JFXButton stairButton;
-    @FXML JFXButton departmentButton;
-    @FXML JFXButton labButton;
-    @FXML JFXButton informationButton;
-    @FXML JFXButton conferenceButton;
-    @FXML JFXButton exitButton;
-    @FXML JFXButton retailButton;
-    @FXML JFXButton serviceButton;
-    @FXML JFXButton bedButton;
-    @FXML JFXButton xrayButton;
-    @FXML JFXButton pumpButton;
-    @FXML JFXButton reclinerButton;
+    dirtyButton.setGraphic(getIcon("DIRT"));
+    hallwayButton.setGraphic(getIcon("HALL"));
+    elevButton.setGraphic(getIcon("ELEV"));
+    restroomButton.setGraphic(getIcon("REST"));
+    stairButton.setGraphic(getIcon("STAI"));
+    departmentButton.setGraphic(getIcon("DEPT"));
+    labButton.setGraphic(getIcon("LABS"));
+    informationButton.setGraphic(getIcon("INFO"));
+    conferenceButton.setGraphic(getIcon("CONF"));
+    exitButton.setGraphic(getIcon("EXIT"));
+    retailButton.setGraphic(getIcon("RETL"));
+    serviceButton.setGraphic(getIcon("SERV"));
+    bedButton.setGraphic(getIcon("Bed"));
+    xrayButton.setGraphic(getIcon("Xray"));
+    pumpButton.setGraphic(getIcon("Infusion Pump"));
+    reclinerButton.setGraphic(getIcon("Recliner"));
   }
 }
