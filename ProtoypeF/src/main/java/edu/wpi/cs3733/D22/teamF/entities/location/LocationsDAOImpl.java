@@ -36,18 +36,9 @@ public class LocationsDAOImpl implements LocationDAO {
   public LocationsDAOImpl() {}
 
   /**
-   * Method: initTable()
+   * Method that initalizes all the tables for SQL and makes objects and adds them to the arrayList
    *
-   * <p>An ArrayList of all the locations in the embedded CSV file. Provided as a data structure for
-   * the Java objects made from the embedded CSV file. The ArrayList is used to create a SQL table
-   * by generating INSERT INTO statements, which is done in the Location class. @Design The method
-   * creates a SQL statement, and checks to see if the Location table has been created already. If
-   * it has, DROP the table and create a new one, just create a new one if it doesn't exist
-   * already. @SQLTable nodeID- Primary Key, node identifier Xcoord- x coordinate of Location node
-   * Ycoord- y coordinate of Location node Floor- floor Location is on Building- the building in
-   * which the Location is NodeType- denotes the subtype of Location node LongName- name of
-   * Location, 255 char limit ShortName- abbreviated name of Location, 128 char limit
-   *
+   * @param Filepath String filepath of csv file from resources
    * @throws SQLException
    * @throws IOException
    */
@@ -71,7 +62,13 @@ public class LocationsDAOImpl implements LocationDAO {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }
-
+  /**
+   * Method that initalizes all the tables for SQL and makes objects and adds them to the arrayList
+   *
+   * @param file file of chosen file
+   * @throws SQLException
+   * @throws IOException
+   */
   public void initTable(File file) throws SQLException, IOException {
     csvIDS.clear();
     csvLocations.clear();
