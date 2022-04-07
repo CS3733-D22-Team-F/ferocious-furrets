@@ -2,6 +2,11 @@ package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
 
+/**
+ * scamRequest object which extends MedicalRequest
+ *
+ * @author Will Huang
+ */
 public class scanRequest extends MedicalRequest {
 
   String scanType;
@@ -38,7 +43,6 @@ public class scanRequest extends MedicalRequest {
   public String getScanType() {
     return scanType;
   }
-
   /**
    * Sets the current scan type of the object the param
    *

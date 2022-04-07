@@ -38,7 +38,8 @@ public class mapResetController implements Initializable {
     fChoose.setTitle("Open CSV File");
     Stage stage = (Stage) select.getScene().getWindow();
     File file = fChoose.showOpenDialog(stage);
-    resetFromCSVFile(file);
+    //    resetFromCSVFile(file);
+    DatabaseManager.getLocationDAO().initTable(file);
     //    String path = file.getPath();
     stage.close();
   }
@@ -79,11 +80,12 @@ public class mapResetController implements Initializable {
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";
     // TODO: Incorporate JavaFX FileChooser
     DatabaseManager.getLocationDAO()
-        .resetMapFromCSV("/edu/wpi/cs3733/D22/teamF/csv/" + filename + ".csv");
+        .initTable("/edu/wpi/cs3733/D22/teamF/csv/" + filename + ".csv");
   }
 
-  public void resetFromCSVFile(File file) throws SQLException, IOException {
-    // System.out.println(file.getPath());
-    DatabaseManager.getLocationDAO().resetMapFromCSVFileChosen(file);
-  }
+  /** @deprecated */
+  //  public void resetFromCSVFile(File file) throws SQLException, IOException {
+  //    // System.out.println(file.getPath());
+  //    DatabaseManager.getLocationDAO().initTable(file);
+  //  }
 }

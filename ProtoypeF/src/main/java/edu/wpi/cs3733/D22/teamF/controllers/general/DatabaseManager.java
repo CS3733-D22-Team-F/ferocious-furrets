@@ -37,7 +37,7 @@ public class DatabaseManager {
    * @throws IOException
    */
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
-    locationsDAO.initTable();
+    locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
     labRequestDAO.initTable();
@@ -124,7 +124,6 @@ public class DatabaseManager {
   public static labRequestDAOImpl getLabRequestDAO() {
     return labRequestDAO;
   }
-
   /** gets the scanRequestDAO */
   public static scanRequestDAOImpl getScanRequestDAO() {
     return scanRequestDAO;
