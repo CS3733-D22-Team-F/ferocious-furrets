@@ -165,8 +165,13 @@ public class LocationsDAOImpl implements LocationDAO {
    * @see Location
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
-    updateLocationsListFromDatabase();
-    return Locations;
+    Statement stm = DatabaseManager.getConn().createStatement();
+    String q = "SELECT * FROM LOCATIONS";
+    ResultSet rset = stm.executeQuery(q);
+    ArrayList<Location> allLocations = locationsFromRSET(rset);
+    rset.close();
+    stm.close();
+    return allLocations;
   }
 
   /**
