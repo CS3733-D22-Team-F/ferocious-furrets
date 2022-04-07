@@ -93,6 +93,7 @@ public class LocationsDAOImpl implements LocationDAO {
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
 
     ArrayList<String> toAdd = new ArrayList<>();
+    toAdd.add("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName");
     for (Location l : Locations) {
       toAdd.add(
           String.format(
@@ -113,6 +114,7 @@ public class LocationsDAOImpl implements LocationDAO {
   public void backUpToCSV(File filename) throws SQLException, IOException {
 
     ArrayList<String> toAdd = new ArrayList<>();
+    toAdd.add("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName");
     for (Location l : Locations) {
       toAdd.add(
           String.format(
@@ -163,7 +165,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @see Location
    */
   public ArrayList<Location> getAllLocations() throws SQLException {
-    //    updateLocationsListFromDatabase();
+    updateLocationsListFromDatabase();
     return Locations;
   }
 
