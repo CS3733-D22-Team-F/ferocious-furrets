@@ -22,7 +22,7 @@ public class DAOTester {
   @Test
   public void testGetData() throws SQLException, IOException {
     LocationsDAOImpl dao = new LocationsDAOImpl();
-    dao.initTable();
+    dao.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocationsTest.csv");
     assertNotNull(dao.getAllLocations());
     System.out.println(dao.getAllLocations().get(2).getLongName());
   }

@@ -3,6 +3,11 @@ package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Interface for methods of the scanRequestDAOImpl
+ *
+ * @author Will Huang
+ */
 public interface scanRequestDAO {
 
   /**

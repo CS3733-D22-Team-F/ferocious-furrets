@@ -4,6 +4,11 @@ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Implentation of scanRequestDAO interface
+ *
+ * @author Will Huang
+ */
 public class scanRequestDAOImpl implements scanRequestDAO {
 
   ArrayList<scanRequest> currentScanRequests = new ArrayList<>();
@@ -97,21 +102,14 @@ public class scanRequestDAOImpl implements scanRequestDAO {
     for (scanRequest currentScanRequest : currentScanRequests) {
       if (currentScanRequest.getReqID().equals(updatingScanRequest.getReqID())) {
         DatabaseManager.runStatement(
-            "UPDATE scanRequest SET "
-                + "reqID = "
-                + reqID
-                + ", nodeID = "
-                + nodeID
-                + ", assignedEmployeeID = "
-                + assignedEmpID
-                + ", requesterEmployeeID = "
-                + requesterEmpID
-                + ", status = "
-                + status
-                + ", scanType = "
-                + scanType
-                + " WHERE reqID = "
-                + currentScanRequest.getReqID());
+            String.format(
+                "UPDATE scanRequest SET reqID = %s, nodeID = %s, assignedEmployeeID = %s, requesterEmployeeID = %s, status = %s, scanType = %s",
+                currentScanRequest.getReqID(),
+                currentScanRequest.getNodeID(),
+                currentScanRequest.getAssignedEmpID(),
+                currentScanRequest.getRequesterEmpID(),
+                currentScanRequest.getStatus(),
+                currentScanRequest.getScanType()));
       }
     }
   }
