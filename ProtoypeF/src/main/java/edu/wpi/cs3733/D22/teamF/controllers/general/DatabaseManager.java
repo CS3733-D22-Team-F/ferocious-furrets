@@ -12,6 +12,7 @@ import java.sql.*;
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
  * access a DAO call DatabaseManager.getWantedDAO()
+ * Uses Singleton Design pattern to ensure only one connection is made to the database
  *
  * @see LocationsDAOImpl
  * @see edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer

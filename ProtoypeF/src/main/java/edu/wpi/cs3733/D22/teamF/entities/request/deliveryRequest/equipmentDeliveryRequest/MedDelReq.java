@@ -22,7 +22,7 @@ public class MedDelReq extends DeliveryRequest {
       String reqType,
       String deliveryType,
       String requestedEquipmentID) {
-    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType, deliveryType);
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
     this.requestedEquipmentID = requestedEquipmentID;
   }
   /**
@@ -65,5 +65,25 @@ public class MedDelReq extends DeliveryRequest {
 
   public void setRequestedEquipmentID(String requestedEquipmentID) {
     this.requestedEquipmentID = requestedEquipmentID;
+  }
+
+  @Override
+  public void place(String assignedID, String requestedID, String nodeID, String status) {
+
+  }
+
+  @Override
+  public void resolve(String reqID) {
+
+  }
+
+  @Override
+  public void modify(String reqID, String assignedID, String requestedID, String nodeID, String status) {
+
+  }
+
+  @Override
+  public void cancel(String reqID) {
+
   }
 }

@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 
+import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
+
+import edu.wpi.cs3733.D22.teamF.entities.database.scanDAOImpl;
 
 /**
  * scamRequest object which extends MedicalRequest
@@ -11,15 +14,28 @@ public class scanRequest extends MedicalRequest {
 
   String scanType;
 
-  public scanRequest(
-      String reqID,
-      String nodeID,
-      String assignedEmpID,
-      String requesterEmpID,
-      String status,
-      String scanType) {
-    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, "Medical", "Scan");
-    this.scanType = scanType;
+  public scanRequest() {
+    db = new Repository("Scan");
+  }
+
+  @Override
+  public void place(String assignedID, String requestedID, String nodeID, String status) {
+
+  }
+
+  @Override
+  public void resolve(String reqID) {
+
+  }
+
+  @Override
+  public void modify(String reqID, String assignedID, String requestedID, String nodeID, String status) {
+
+  }
+
+  @Override
+  public void cancel(String reqID) {
+
   }
 
   public String generateInsertStatement() {
@@ -51,4 +67,6 @@ public class scanRequest extends MedicalRequest {
   public void setScanType(String newScanType) {
     this.scanType = newScanType;
   }
+
+
 }

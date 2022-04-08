@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.entities.request;
 
-public abstract class Request {
+
+import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
+
+public abstract class Request implements IRequest{
 
   private String reqID; // id of request
   private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
@@ -11,6 +14,7 @@ public abstract class Request {
   private String status; // Status of the request (In Progress or Done)
   // TODO enum
   private String reqType; // Type of request made
+  protected Repository db;
 
   /**
    * @param reqID reqID
@@ -34,6 +38,8 @@ public abstract class Request {
     this.status = status;
     this.reqType = reqType;
   }
+
+  public Request(){}
 
   public String getAssignedEmpID() {
     return assignedEmpID;

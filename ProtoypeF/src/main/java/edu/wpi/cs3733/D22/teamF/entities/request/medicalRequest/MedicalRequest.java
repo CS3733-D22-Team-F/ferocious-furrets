@@ -1,8 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest;
 
+import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 
-public abstract class MedicalRequest extends Request {
+public abstract class MedicalRequest extends Request implements IRequest {
 
   public String medicalType;
 
@@ -12,11 +13,11 @@ public abstract class MedicalRequest extends Request {
       String assignedEmpID,
       String requesterEmpID,
       String status,
-      String reqType,
-      String medicalType) {
+      String reqType) {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
-    this.medicalType = medicalType;
   }
+
+  public MedicalRequest(){}
 
   public String getMedicalType() {
     return medicalType;

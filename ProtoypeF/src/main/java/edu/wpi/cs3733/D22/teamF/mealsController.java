@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.DeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest.mealDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.medicineDeliveryRequest.medicineDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.medicineDeliveryRequest;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

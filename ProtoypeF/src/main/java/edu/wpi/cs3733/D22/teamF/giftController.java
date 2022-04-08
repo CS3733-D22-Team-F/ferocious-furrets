@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest.giftDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
