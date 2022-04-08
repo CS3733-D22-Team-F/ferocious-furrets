@@ -10,14 +10,20 @@ public class giftDAOImpl implements IRequestDAO {
   public void initTable() throws SQLException {
     DatabaseManager.dropTableIfExist("giftRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE giftsRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE giftRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
   @Override
-  public void add(String assignedID, String requestedID, String nodeID, String status) {}
+  public void add(String assignedID, String requestedID, String nodeID, String status)
+      throws SQLException {
+    DatabaseManager.runStatement(generateInsertStatement(assignedID, requestedID, nodeID, status));
+  }
 
   @Override
-  public void delete(String reqID) {}
+  public void delete(String reqID) throws SQLException {
+    String cmd = "DELETE FROM giftRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd);
+  }
 
   @Override
   public void update(
@@ -31,5 +37,13 @@ public class giftDAOImpl implements IRequestDAO {
   @Override
   public ArrayList<IRequest> get() {
     return null;
+  }
+
+  @Override
+  public String generateInsertStatement(
+      String assignedID, String requestedID, String nodeID, String status) {
+    return String.format(
+        "INSERT INTO giftRequest VALUES ('%s', '%s', '%s', '%s')",
+        assignedID, requestedID, nodeID, status);
   }
 }

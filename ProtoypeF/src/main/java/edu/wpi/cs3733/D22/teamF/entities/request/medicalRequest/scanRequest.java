@@ -28,17 +28,11 @@ public class scanRequest extends MedicalRequest {
   @Override
   public void cancel(String reqID) {}
 
-  public String generateInsertStatement() {
+  public String generateInsertStatement(
+      String reqID, String assignedID, String requestedID, String nodeID, String status) {
     return String.format(
         "INSERT INTO scanRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-        getReqID(),
-        getNodeID(),
-        getAssignedEmpID(),
-        getRequesterEmpID(),
-        getStatus(),
-        "Medical",
-        "Scan",
-        scanType);
+        reqID, assignedID, requestedID, nodeID, status);
   }
 
   /**

@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -40,11 +41,12 @@ public class Repository {
     }
   }
 
-  public void addRequest(String assignedID, String requestedID, String nodeID, String status) {
+  public void addRequest(String assignedID, String requestedID, String nodeID, String status)
+      throws SQLException {
     db.add(assignedID, requestedID, nodeID, status);
   }
 
-  public void deleteRequest(String reqID) {
+  public void deleteRequest(String reqID) throws SQLException {
     db.delete(reqID);
   }
 

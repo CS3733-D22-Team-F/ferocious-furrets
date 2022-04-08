@@ -15,10 +15,16 @@ public class labDAOImpl implements IRequestDAO {
   }
 
   @Override
-  public void add(String assignedID, String requestedID, String nodeID, String status) {}
+  public void add(String assignedID, String requestedID, String nodeID, String status)
+      throws SQLException {
+    DatabaseManager.runStatement(generateInsertStatement(assignedID, requestedID, nodeID, status));
+  }
 
   @Override
-  public void delete(String reqID) {}
+  public void delete(String reqID) throws SQLException {
+    String cmd = "DELETE FROM labRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd);
+  }
 
   @Override
   public void update(
@@ -32,5 +38,13 @@ public class labDAOImpl implements IRequestDAO {
   @Override
   public ArrayList<IRequest> get() {
     return null;
+  }
+
+  @Override
+  public String generateInsertStatement(
+      String assignedID, String requestedID, String nodeID, String status) {
+    return String.format(
+        "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s')",
+        assignedID, requestedID, nodeID, status);
   }
 }
