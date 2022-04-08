@@ -1,6 +1,8 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.medicineDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -13,7 +15,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class medicineController extends returnHomePage implements Initializable {
+public class medicineController extends returnHomePage
+    implements Initializable, IRequestController {
   private Stage stage;
   private Scene scene;
   private Parent root;
@@ -28,7 +31,7 @@ public class medicineController extends returnHomePage implements Initializable 
   @FXML private ComboBox typeChoice;
 
   @FXML
-  void resetFunction() {
+  public void reset() {
     nodeField.clear();
     employeeIDField.clear();
     userField.clear();
@@ -39,7 +42,7 @@ public class medicineController extends returnHomePage implements Initializable 
   }
 
   @FXML
-  public medicineDeliveryRequest submit() {
+  public void submit() {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -47,22 +50,18 @@ public class medicineController extends returnHomePage implements Initializable 
         || typeOfMed.getText().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank field");
-      return null;
     } else {
       requestList.clear();
       requestList.add("Medicine Request for: " + typeChoice.getValue());
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
-      medicineDeliveryRequest medicineDeliveryRequest =
-          new medicineDeliveryRequest(
-              null,
-              nodeField.getText(),
-              employeeIDField.getText(),
-              userField.getText(),
-              statusChoice.getValue().toString(),
-              "Delivery",
-              "Medicine");
+      RequestSystem req = new RequestSystem("Medicine");
+      req.placeRequest(
+          employeeIDField.getText(),
+          userField.getText(),
+          nodeField.getText(),
+          statusChoice.getValue().toString());
 
       nodeField.clear();
       employeeIDField.clear();
@@ -71,8 +70,6 @@ public class medicineController extends returnHomePage implements Initializable 
       statusChoice.valueProperty().setValue(null);
       typeChoice.valueProperty().setValue(null);
       userField.clear();
-
-      return medicineDeliveryRequest;
     }
   }
 

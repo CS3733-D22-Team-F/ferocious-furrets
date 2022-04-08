@@ -1,58 +1,64 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
-
-
 import java.util.ArrayList;
 
 /**
- * Facade design pattern for backend database design
- * Repository is called by a Request object and allows for database abstraction from the front-end
+ * Facade design pattern for backend database design Repository is called by a Request object and
+ * allows for database abstraction from the front-end
  */
 public class Repository {
 
-    private IRequestDAO db;
+  private IRequestDAO db;
 
-    public Repository(String reqType){
-        switch(reqType){
-            case "Meal":
-                db = new mealDAOImpl();
-                break;
-            case "Gift":
-                db = new giftDAOImpl();
-                break;
-            case "Floral":
-                db = new floralDAOImpl();
-                break;
-            case "Medicine":
-                db = new medicineDAOImpl();
-                break;
-            case "Patient":
-                db = new patientDAOImpl();
-                break;
-            case "Lab":
-                db = new labDAOImpl();
-                break;
-            case "Scan":
-                db = new scanDAOImpl();
-                break;
-            default: break;
-        }
+  public Repository(String reqType) {
+    switch (reqType) {
+      case "Meal":
+        db = DatabaseManager.getMealDAO();
+        break;
+      case "Gift":
+        db = DatabaseManager.getGiftDAO();
+        break;
+      case "Floral":
+        db = DatabaseManager.getFloralDAO();
+        break;
+      case "Medicine":
+        db = DatabaseManager.getMedicineDAO();
+        break;
+      case "Patient":
+        db = DatabaseManager.getPatientDAO();
+        break;
+      case "Lab":
+        db = DatabaseManager.getLabRequestDAO();
+        break;
+      case "Scan":
+        db = DatabaseManager.getScanRequestDAO();
+        break;
+      default:
+        break;
     }
+  }
 
-    public void addRequest(String assignedID, String requestedID, String nodeID, String status){
-        db.add(assignedID, requestedID, nodeID, status);
-    }
+  public void addRequest(String assignedID, String requestedID, String nodeID, String status) {
+    db.add(assignedID, requestedID, nodeID, status);
+  }
 
-    public void deleteRequest(IRequest req){
-        db.delete(req);
-    }
+  public void deleteRequest(String reqID) {
+    db.delete(reqID);
+  }
 
-    public void updateRequest(IRequest req, String reqID, String assignedID, String requestedID, String nodeID, String status){
-        db.update(req, reqID, assignedID, requestedID, nodeID, status);
-    }
+  public void updateRequest(
+      IRequest req,
+      String reqID,
+      String assignedID,
+      String requestedID,
+      String nodeID,
+      String status) {
+    db.update(req, reqID, assignedID, requestedID, nodeID, status);
+  }
 
-    public ArrayList<IRequest> getAll(){
-        return db.get();
-    }
+  public ArrayList<IRequest> getAll() {
+    return db.get();
+  }
 }

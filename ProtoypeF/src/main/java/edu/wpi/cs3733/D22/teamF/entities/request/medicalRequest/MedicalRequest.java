@@ -17,7 +17,7 @@ public abstract class MedicalRequest extends Request implements IRequest {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
   }
 
-  public MedicalRequest(){}
+  public MedicalRequest() {}
 
   public String getMedicalType() {
     return medicalType;

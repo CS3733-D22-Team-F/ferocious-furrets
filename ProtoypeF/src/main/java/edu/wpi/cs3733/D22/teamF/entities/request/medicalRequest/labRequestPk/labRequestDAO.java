@@ -4,8 +4,9 @@
  *
  * @version 1.0
  */
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequestPk;
 
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Interface for the LabRequestDAO class to handle the labRequest DB necessary function
  *
  * @version 1.0
- * @see labRequest
+ * @see labRequestPk
  */
 public interface labRequestDAO {
   ArrayList<labRequest> getAllRequests() throws SQLException;

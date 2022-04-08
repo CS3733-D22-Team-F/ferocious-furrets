@@ -1,7 +1,9 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.DeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -11,7 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class mealsController extends returnHomePage implements Initializable {
+public class mealsController extends returnHomePage implements Initializable, IRequestController {
 
   ArrayList<Object> returnList = new ArrayList<>();
   ArrayList<Object> requestList = new ArrayList<>();
@@ -21,6 +23,7 @@ public class mealsController extends returnHomePage implements Initializable {
   // @FXML private Button submitButton;
   @FXML private TextField employeeName;
   @FXML private TextField employeeID;
+  @FXML private TextField reqEmployeeID;
   @FXML private TextField nodeID;
   @FXML private TextField requestType;
   @FXML private TextField deliveryType;
@@ -81,8 +84,10 @@ public class mealsController extends returnHomePage implements Initializable {
     status.setValue("");
   }
 
+  public void reset() {}
+
   // on press returns fields into delivery object only if required fields aren't empty
-  public DeliveryRequest submit() {
+  public void submit() {
 
     ArrayList<String> foodList = new ArrayList<>();
     if (pancakes.isSelected()) {
@@ -197,20 +202,15 @@ public class mealsController extends returnHomePage implements Initializable {
         || requestType.getText().equals("")) {
       mealDeliveryRequest sendMealRequest = null;
       System.out.println("Meal Not Sent");
-      return sendMealRequest;
     } else {
 
       // String reqID = generateReqID()//TODO
-
-      mealDeliveryRequest sendMealRequest =
-          new mealDeliveryRequest(
-              null,
-              nodeID.getText(),
-              employeeID.getText(),
-              null, // TODO ADD REQUESTER ID FIELD
-              requestType.getText(),
-              "Delivery",
-              "Meal");
+      RequestSystem req = new RequestSystem("Meal");
+      req.placeRequest(
+          employeeID.getText(),
+          reqEmployeeID.getText(),
+          nodeID.getText(),
+          status.getValue().toString());
       System.out.println("Meal Sent");
 
       employeeName.setText("");
@@ -220,7 +220,6 @@ public class mealsController extends returnHomePage implements Initializable {
       requestType.setText("");
       deliveryID.setText("");
       deliveryType.setText("");
-      return sendMealRequest;
     }
   }
 

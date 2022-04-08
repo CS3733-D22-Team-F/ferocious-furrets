@@ -1,11 +1,11 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,7 +23,8 @@ import javafx.stage.Stage;
  * @see returnHomePage
  * @see Initializable
  */
-public class labRequestController extends returnHomePage implements Initializable {
+public class labRequestController extends returnHomePage
+    implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
@@ -61,7 +62,7 @@ public class labRequestController extends returnHomePage implements Initializabl
    *
    * @return labRequest object
    */
-  public labRequest submit() throws SQLException {
+  public void submit() {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
@@ -73,7 +74,6 @@ public class labRequestController extends returnHomePage implements Initializabl
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
-      return null;
     } else {
 
       if (typeChoice.getValue().equals("blood")) {
@@ -81,34 +81,19 @@ public class labRequestController extends returnHomePage implements Initializabl
       } else {
         sampleType = "Urine";
       }
-      int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
-      String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
-      labRequest newRequest =
-          new labRequest(
-              reqID,
-              nodeField.getText(),
-              employeeIDField.getText(),
-              userField.getText(),
-              statusChoice.getValue().toString(),
-              "Medical",
-              "Lab",
-              sampleType);
+      // int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
+      // String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
+      RequestSystem req = new RequestSystem("Lab");
+      req.placeRequest(
+          employeeIDField.getText(),
+          userField.getText(),
+          nodeField.getText(),
+          statusChoice.getValue().toString());
       requestList.clear();
       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
-      DatabaseManager.getLabRequestDAO()
-          .addRequest(
-              newRequest.getReqID(),
-              newRequest.getNodeID(),
-              newRequest.getAssignedEmpID(),
-              newRequest.getRequesterEmpID(),
-              newRequest.getStatus(),
-              newRequest.getReqType(),
-              newRequest.getMedicalType(),
-              newRequest.getSampleType());
-      return newRequest;
     }
   }
 

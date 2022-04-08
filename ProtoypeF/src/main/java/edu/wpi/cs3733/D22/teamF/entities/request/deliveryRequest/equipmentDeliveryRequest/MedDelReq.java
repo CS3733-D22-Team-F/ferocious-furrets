@@ -68,22 +68,15 @@ public class MedDelReq extends DeliveryRequest {
   }
 
   @Override
-  public void place(String assignedID, String requestedID, String nodeID, String status) {
-
-  }
+  public void place(String assignedID, String requestedID, String nodeID, String status) {}
 
   @Override
-  public void resolve(String reqID) {
-
-  }
+  public void resolve(String reqID) {}
 
   @Override
-  public void modify(String reqID, String assignedID, String requestedID, String nodeID, String status) {
-
-  }
+  public void modify(
+      String reqID, String assignedID, String requestedID, String nodeID, String status) {}
 
   @Override
-  public void cancel(String reqID) {
-
-  }
+  public void cancel(String reqID) {}
 }

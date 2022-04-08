@@ -1,12 +1,11 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.scanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
  * @see returnHomePage
  * @see Initializable
  */
-public class scanController extends returnHomePage implements Initializable {
+public class scanController extends returnHomePage implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
@@ -70,13 +69,13 @@ public class scanController extends returnHomePage implements Initializable {
    *
    * @return MedicalRequest object
    */
-  public MedicalRequest submit() throws SQLException {
+  public void submit() {
     ArrayList<Object> requestList = new ArrayList<>();
-    String reqID =
-        generateReqID(
-            DatabaseManager.getScanRequestDAO().getAllRequests().size(),
-            typeChoice.getValue().toString(),
-            nodeField.getText());
+    //    String reqID =
+    //        generateReqID(
+    //            DatabaseManager.getScanRequestDAO().getAllRequests().size(),
+    //            typeChoice.getValue().toString(),
+    //            nodeField.getText());
     String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
@@ -85,30 +84,19 @@ public class scanController extends returnHomePage implements Initializable {
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
-      return null;
     } else {
-      scanRequest newRequest =
-          new scanRequest(
-              reqID,
-              nodeField.getText(),
-              employeeIDField.getText(),
-              userField.getText(),
-              statusChoice.getValue().toString(),
-              scanType); // TODO
+      RequestSystem req = new RequestSystem("Scan");
+      req.placeRequest(
+          employeeIDField.getText(),
+          userField.getText(),
+          nodeField.getText(),
+          statusChoice.getValue().toString());
+
       requestList.clear();
       requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue().toString());
       serviceRequestStorage.addToArrayList(requestList);
-      DatabaseManager.getScanRequestDAO()
-          .addRequest(
-              newRequest.getReqID(),
-              newRequest.getNodeID(),
-              newRequest.getRequesterEmpID(),
-              newRequest.getAssignedEmpID(),
-              newRequest.getStatus(),
-              newRequest.getScanType());
-      return newRequest;
     }
   }
 

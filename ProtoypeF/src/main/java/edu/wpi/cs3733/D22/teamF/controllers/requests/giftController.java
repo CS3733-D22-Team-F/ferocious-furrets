@@ -1,11 +1,13 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 /** Controller for gift scene */
-public class giftController extends returnHomePage implements Initializable {
+public class giftController extends returnHomePage implements Initializable, IRequestController {
 
   private ArrayList<Object> itemList = new ArrayList<>();
 
@@ -147,22 +149,22 @@ public class giftController extends returnHomePage implements Initializable {
     }
   }
 
+  public void reset() {}
+
   /**
    * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
    * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
    *
    * @return giftDeliveryRequest
    */
-  public giftDeliveryRequest submitButton() {
-    giftDeliveryRequest giftRequest =
-        new giftDeliveryRequest(
-            generateReqID(itemList.size()),
-            assigned.getText(),
-            employeeID.getText(),
-            nodeID.getText(),
-            statusChoice.getValue().toString(),
-            reqType,
-            "GIFT");
+  public void submit() {
+    RequestSystem req = new RequestSystem("Gift");
+    req.placeRequest(
+        assigned.getText(),
+        employeeID.getText(),
+        nodeID.getText(),
+        statusChoice.getValue().toString());
+
     submitButton.disableProperty().setValue(true);
     previewButton.disableProperty().setValue(false);
     itemField.setText("Empty");
@@ -188,7 +190,6 @@ public class giftController extends returnHomePage implements Initializable {
     if ((chrys != null) && chrysB) {
       chrys.fire();
     }
-    return giftRequest;
   }
 
   public void boxChangeRose() {

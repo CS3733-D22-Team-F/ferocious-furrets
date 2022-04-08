@@ -1,5 +1,6 @@
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequestPk;
 
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

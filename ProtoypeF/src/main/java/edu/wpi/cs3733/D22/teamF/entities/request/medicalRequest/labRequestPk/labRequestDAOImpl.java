@@ -4,10 +4,11 @@
  *
  * @version 1.0
  */
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequestPk;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Implementation of the labRequestDAO Interface
  *
- * @see labRequest
+ * @see labRequestPk
  * @see labRequestDAO
  */
 public class labRequestDAOImpl implements labRequestDAO {

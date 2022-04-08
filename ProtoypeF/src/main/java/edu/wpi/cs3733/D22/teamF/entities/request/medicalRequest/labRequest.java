@@ -1,38 +1,28 @@
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest;
 
 import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.MedicalRequest;
-
-import edu.wpi.cs3733.D22.teamF.entities.database.labDAOImpl;
 
 /** object for labRequest ie blood/ urine tests */
 public class labRequest extends MedicalRequest {
 
   protected String sampleType;
 
-  public labRequest(){
+  public labRequest() {
     db = new Repository("Lab");
   }
 
   @Override
-  public void place(String assignedID, String requestedID, String nodeID, String status) {
-
-  }
+  public void place(String assignedID, String requestedID, String nodeID, String status) {}
 
   @Override
-  public void resolve(String reqID) {
-
-  }
+  public void resolve(String reqID) {}
 
   @Override
-  public void modify(String reqID, String assignedID, String requestedID, String nodeID, String status) {
-
-  }
+  public void modify(
+      String reqID, String assignedID, String requestedID, String nodeID, String status) {}
 
   @Override
-  public void cancel(String reqID) {
-
-  }
+  public void cancel(String reqID) {}
 
   /**
    * @param reqID reqID
@@ -52,10 +42,7 @@ public class labRequest extends MedicalRequest {
       String status,
       String reqType,
       String medicalType,
-      String sampleType) {
-  }
-
-
+      String sampleType) {}
 
   /**
    * getter for sample type
@@ -99,6 +86,4 @@ public class labRequest extends MedicalRequest {
         + this.getSampleType()
         + "' )";
   }
-
-
 }

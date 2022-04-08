@@ -1,18 +1,16 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
+import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequestDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.scanRequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.*;
 import java.io.IOException;
 import java.sql.*;
 
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
- * access a DAO call DatabaseManager.getWantedDAO()
- * Uses Singleton Design pattern to ensure only one connection is made to the database
+ * access a DAO call DatabaseManager.getWantedDAO() Uses Singleton Design pattern to ensure only one
+ * connection is made to the database
  *
  * @see LocationsDAOImpl
  * @see edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer
@@ -23,8 +21,13 @@ public class DatabaseManager {
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
-  private static final labRequestDAOImpl labRequestDAO = new labRequestDAOImpl();
-  private static final scanRequestDAOImpl scanRequestDAO = new scanRequestDAOImpl();
+  private static final labDAOImpl labRequestDAO = new labDAOImpl();
+  private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
+  private static final floralDAOImpl floralDAO = new floralDAOImpl();
+  private static final giftDAOImpl giftDAO = new giftDAOImpl();
+  private static final mealDAOImpl mealDAO = new mealDAOImpl();
+  private static final patientDAOImpl patientDAO = new patientDAOImpl();
+  private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -42,7 +45,12 @@ public class DatabaseManager {
     medicalEquipmentDeliveryRequestDAO.initTable();
     medicalEquipmentDAO.initTable();
     labRequestDAO.initTable();
-    scanRequestDAO.initScanRequestTable();
+    scanRequestDAO.initTable();
+    floralDAO.initTable();
+    giftDAO.initTable();
+    mealDAO.initTable();
+    patientDAO.initTable();
+    medicineDAO.initTable();
     return Helper.dbMan;
   }
 
@@ -138,12 +146,32 @@ public class DatabaseManager {
     return medicalEquipmentDAO;
   }
   /** gets the LabRequestDAO */
-  public static labRequestDAOImpl getLabRequestDAO() {
+  public static labDAOImpl getLabRequestDAO() {
     return labRequestDAO;
   }
   /** gets the scanRequestDAO */
-  public static scanRequestDAOImpl getScanRequestDAO() {
+  public static scanDAOImpl getScanRequestDAO() {
     return scanRequestDAO;
+  }
+
+  public static mealDAOImpl getMealDAO() {
+    return mealDAO;
+  }
+
+  public static floralDAOImpl getFloralDAO() {
+    return floralDAO;
+  }
+
+  public static giftDAOImpl getGiftDAO() {
+    return giftDAO;
+  }
+
+  public static medicineDAOImpl getMedicineDAO() {
+    return medicineDAO;
+  }
+
+  public static patientDAOImpl getPatientDAO() {
+    return patientDAO;
   }
 
   /** helper */

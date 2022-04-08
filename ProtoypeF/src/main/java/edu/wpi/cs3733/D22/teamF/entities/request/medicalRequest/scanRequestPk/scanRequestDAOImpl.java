@@ -1,6 +1,7 @@
-package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequestPk;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -48,15 +49,15 @@ public class scanRequestDAOImpl implements scanRequestDAO {
       String status,
       String scanType)
       throws SQLException {
-    scanRequest addedScanRequest =
-        new scanRequest(reqID, nodeID, assignedEmpID, requesterEmpID, status, scanType);
-    try {
-      //      System.out.println(addedScanRequest.generateInsertStatement());
-      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
-      currentScanRequests.add(addedScanRequest);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    //    scanRequest addedScanRequest =
+    //        new scanRequest(reqID, nodeID, assignedEmpID, requesterEmpID, status, scanType);
+    //    try {
+    //            System.out.println(addedScanRequest.generateInsertStatement());
+    //      DatabaseManager.runStatement(addedScanRequest.generateInsertStatement());
+    //      currentScanRequests.add(addedScanRequest);
+    //    } catch (SQLException e) {
+    //      e.printStackTrace();
+    //    }
   }
 
   /**
