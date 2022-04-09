@@ -7,7 +7,7 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequestPk;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -225,8 +225,8 @@ public class labRequestDAOImpl implements labRequestDAO {
     rset.close();
   }
 
-  public ArrayList<MedDelReq> requestsFromRSET(ResultSet rset) throws SQLException {
-    ArrayList<MedDelReq> reqs = new ArrayList<MedDelReq>();
+  public ArrayList<equipmentDeliveryRequest> requestsFromRSET(ResultSet rset) throws SQLException {
+    ArrayList<equipmentDeliveryRequest> reqs = new ArrayList<equipmentDeliveryRequest>();
     while (rset.next()) {
       String reqID = rset.getString("reqID");
       String equipmentID = rset.getString("equipmentID");
@@ -235,8 +235,8 @@ public class labRequestDAOImpl implements labRequestDAO {
       String requesterEmpID = rset.getString("requesterEmployeeID");
       String status = rset.getString("status");
       // String longName = rset.getString("longName");
-      MedDelReq newR =
-          new MedDelReq(
+      equipmentDeliveryRequest newR =
+          new equipmentDeliveryRequest(
               reqID,
               nodeID,
               assignedEmpID,
@@ -266,13 +266,13 @@ public class labRequestDAOImpl implements labRequestDAO {
       ResultSet rset;
       rset = stm.executeQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
 
-      ArrayList<MedDelReq> allReqs = requestsFromRSET(rset);
+      ArrayList<equipmentDeliveryRequest> allReqs = requestsFromRSET(rset);
 
       rset.close();
       File newCSV = new File(csvName);
       FileWriter fw = new FileWriter(csvName);
       fw.write("reqID, equipID, nodeID, assEmpID, reqEmpID, status\n");
-      for (MedDelReq l : allReqs) {
+      for (equipmentDeliveryRequest l : allReqs) {
         fw.write(
             l.getReqID()
                 + ","

@@ -2,6 +2,9 @@ package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest;
 
 import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  * scamRequest object which extends MedicalRequest
  *
@@ -16,14 +19,13 @@ public class scanRequest extends MedicalRequest {
   }
 
   @Override
-  public void place(String assignedID, String requestedID, String nodeID, String status) {}
+  public void place(ArrayList<String> fields) throws SQLException {}
 
   @Override
   public void resolve(String reqID) {}
 
   @Override
-  public void modify(
-      String reqID, String assignedID, String requestedID, String nodeID, String status) {}
+  public void modify(ArrayList<String> fields) {}
 
   @Override
   public void cancel(String reqID) {}

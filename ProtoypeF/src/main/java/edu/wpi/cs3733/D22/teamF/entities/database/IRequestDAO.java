@@ -1,6 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.*;
+
+import javax.xml.transform.Result;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,23 +15,20 @@ import java.util.ArrayList;
  */
 public interface IRequestDAO {
 
-  public void initTable() throws SQLException;
+  public void initTable() throws SQLException, IOException;
 
-  public void add(String assignedID, String requestedID, String nodeID, String status)
+  public void add(ArrayList<String> fields)
       throws SQLException;
 
   public void delete(String reqID) throws SQLException;
 
-  public void update(
-      IRequest req,
-      String reqID,
-      String assignedID,
-      String requestedID,
-      String nodeID,
-      String status);
+  public void update(ArrayList<String> fields);
 
   public ArrayList<IRequest> get();
 
-  public String generateInsertStatement(
-      String assignedID, String requestedID, String nodeID, String status);
+  public String generateInsertStatement(ArrayList<String> fields);
+
+  public ArrayList<IRequest> resultsFromRSET(ResultSet rset);
+
+  public void saveRequestToCSV();
 }

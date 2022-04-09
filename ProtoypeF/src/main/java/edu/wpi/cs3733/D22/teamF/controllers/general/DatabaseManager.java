@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.general;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.*;
+
 import java.io.IOException;
 import java.sql.*;
 
@@ -19,7 +19,7 @@ public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
-  private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
+  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO = new equipmentDeliveryDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
   private static final labDAOImpl labRequestDAO = new labDAOImpl();
   private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
@@ -70,7 +70,7 @@ public class DatabaseManager {
    */
   public static void runStatement(String statement) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + statement);
+    // System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
     } catch (SQLException e) {
@@ -87,7 +87,7 @@ public class DatabaseManager {
    */
   public static ResultSet runQuery(String query) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + query);
+    // System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
     } catch (SQLException e) {
@@ -134,7 +134,7 @@ public class DatabaseManager {
    *
    * @return MedDelReqDAOImpl
    */
-  public static MedDelReqDAOImpl getMedEquipDelReqDAO() {
+  public static equipmentDeliveryDAOImpl getMedEquipDelReqDAO() {
     return medicalEquipmentDeliveryRequestDAO;
   }
   /**

@@ -2,22 +2,25 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
+
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class patientDAOImpl implements IRequestDAO {
 
   @Override
-  public void initTable() throws SQLException {
+  public void initTable() throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("patientRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE patientRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
   @Override
-  public void add(String assignedID, String requestedID, String nodeID, String status)
+  public void add(ArrayList<String> fields)
       throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatement(assignedID, requestedID, nodeID, status));
+    DatabaseManager.runStatement(generateInsertStatement(fields));
   }
 
   @Override
@@ -27,13 +30,7 @@ public class patientDAOImpl implements IRequestDAO {
   }
 
   @Override
-  public void update(
-      IRequest req,
-      String reqID,
-      String assignedID,
-      String requestedID,
-      String nodeID,
-      String status) {}
+  public void update(ArrayList<String> fields) {}
 
   @Override
   public ArrayList<IRequest> get() {
@@ -41,10 +38,19 @@ public class patientDAOImpl implements IRequestDAO {
   }
 
   @Override
-  public String generateInsertStatement(
-      String assignedID, String requestedID, String nodeID, String status) {
+  public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO patientRequest VALUES ('%s', '%s', '%s', '%s')",
-        assignedID, requestedID, nodeID, status);
+            fields.get(0), fields.get(1), fields.get(2), fields.get(3));
+  }
+
+  @Override
+  public ArrayList<IRequest> resultsFromRSET(ResultSet rset) {
+    return null;
+  }
+
+  @Override
+  public void saveRequestToCSV() {
+
   }
 }

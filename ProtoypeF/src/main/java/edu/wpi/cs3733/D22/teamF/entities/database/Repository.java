@@ -36,28 +36,24 @@ public class Repository {
       case "Scan":
         db = DatabaseManager.getScanRequestDAO();
         break;
+      case "Equipment":
+        db = DatabaseManager.getMedEquipDelReqDAO();
       default:
         break;
     }
   }
 
-  public void addRequest(String assignedID, String requestedID, String nodeID, String status)
+  public void addRequest(ArrayList<String> fields)
       throws SQLException {
-    db.add(assignedID, requestedID, nodeID, status);
+    //db.add(assignedID);
   }
 
   public void deleteRequest(String reqID) throws SQLException {
     db.delete(reqID);
   }
 
-  public void updateRequest(
-      IRequest req,
-      String reqID,
-      String assignedID,
-      String requestedID,
-      String nodeID,
-      String status) {
-    db.update(req, reqID, assignedID, requestedID, nodeID, status);
+  public void updateRequest(ArrayList<String> fields) {
+    //db.update(req);
   }
 
   public ArrayList<IRequest> getAll() {

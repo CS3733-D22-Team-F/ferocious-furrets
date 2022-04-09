@@ -206,11 +206,13 @@ public class mealsController extends returnHomePage implements Initializable, IR
 
       // String reqID = generateReqID()//TODO
       RequestSystem req = new RequestSystem("Meal");
-      req.placeRequest(
-          employeeID.getText(),
-          reqEmployeeID.getText(),
-          nodeID.getText(),
-          status.getValue().toString());
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(nodeID.getText());
+      fields.add(employeeName.getText());
+      fields.add("Requested Employee");
+      fields.add(status.getValue().toString());
+
+      req.placeRequest(fields);
       System.out.println("Meal Sent");
 
       employeeName.setText("");

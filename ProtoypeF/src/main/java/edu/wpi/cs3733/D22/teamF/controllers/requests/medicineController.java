@@ -57,11 +57,12 @@ public class medicineController extends returnHomePage
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
       RequestSystem req = new RequestSystem("Medicine");
-      req.placeRequest(
-          employeeIDField.getText(),
-          userField.getText(),
-          nodeField.getText(),
-          statusChoice.getValue().toString());
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(nodeField.getText());
+      fields.add(employeeIDField.getText());
+      fields.add(userField.getText());
+      fields.add(statusChoice.getValue().toString());
+      req.placeRequest(fields);
 
       nodeField.clear();
       employeeIDField.clear();

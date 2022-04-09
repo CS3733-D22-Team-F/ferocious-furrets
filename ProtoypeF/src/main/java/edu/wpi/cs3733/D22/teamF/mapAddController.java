@@ -115,6 +115,12 @@ public class mapAddController implements Initializable {
                 longField.getText(),
                 shortField.getText());
         DatabaseManager.getLocationDAO().addLocation(l);
+        floorField.clear();
+        nodeBox.setValue("PATI - Patient Room");
+        xField.clear();
+        yField.clear();
+        longField.clear();
+        shortField.clear();
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {

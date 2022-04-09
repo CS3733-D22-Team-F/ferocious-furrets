@@ -86,11 +86,12 @@ public class scanController extends returnHomePage implements Initializable, IRe
       System.out.println("There are still blank fields");
     } else {
       RequestSystem req = new RequestSystem("Scan");
-      req.placeRequest(
-          employeeIDField.getText(),
-          userField.getText(),
-          nodeField.getText(),
-          statusChoice.getValue().toString());
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(nodeField.getText());
+      fields.add(employeeIDField.getText());
+      fields.add(userField.getText());
+      fields.add(statusChoice.getValue().toString());
+      req.placeRequest(fields);
 
       requestList.clear();
       requestList.add("Scan Request of type: " + typeChoice.getValue().toString());
