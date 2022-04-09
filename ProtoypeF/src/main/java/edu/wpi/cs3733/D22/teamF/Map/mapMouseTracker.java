@@ -1,7 +1,7 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

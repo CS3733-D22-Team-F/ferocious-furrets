@@ -1,6 +1,9 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXCheckBox;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;

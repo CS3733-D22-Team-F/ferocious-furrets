@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 

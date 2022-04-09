@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapModifyController">
+<AnchorPane prefHeight="549.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapModifyController">
    <children>
       <AnchorPane fx:id="iconPane" prefHeight="500.0" prefWidth="700.0">
          <children>
@@ -66,6 +66,7 @@
             </TextField>
             <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
             <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
+            <JFXButton onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" />
             <JFXButton onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
          </children>
       </VBox>

@@ -6,20 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapDeleteController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapResetController">
    <children>
       <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
-      <JFXButton layoutX="233.0" layoutY="334.0" onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Confirm Delete" />
+      <JFXButton layoutX="233.0" layoutY="334.0" onAction="#resetFile" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reload Map" />
       <JFXButton layoutX="358.0" layoutY="334.0" onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
-      <TextField fx:id="idField" layoutX="233.0" layoutY="138.0" promptText="Please Type In Node ID">
+      <TextField fx:id="idField" layoutX="233.0" layoutY="138.0" promptText="Name of CSV File">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="126.0" layoutY="138.0" prefHeight="35.0" prefWidth="78.0" text="nodeID: ">
+      <Label layoutX="82.0" layoutY="138.0" prefHeight="35.0" prefWidth="122.0" text="CSV Filename:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <JFXButton fx:id="select" layoutX="480.0" layoutY="145.0" onAction="#selectFile" text="Choose File..." />
    </children>
 </AnchorPane>

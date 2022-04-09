@@ -1,6 +1,9 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -11,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -142,6 +146,38 @@ public class mapModifyController implements Initializable {
     }
   }
 
+  public void delete(ActionEvent event) throws SQLException, IOException {
+
+    try {
+      deleteLocation(nodeTempHolder.getLocation().getNodeID());
+      Stage stage = (Stage) cancel.getScene().getWindow();
+      stage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void deleteLocation(String oldID) throws SQLException, IOException {
+    ArrayList<Location> list = DatabaseManager.getLocationDAO().getAllLocations();
+    for (Location l : list) {
+      if (l.getNodeID().equals(oldID)) {
+        Location location =
+            new Location(
+                l.getNodeID(),
+                l.getXcoord(),
+                l.getYcoord(),
+                l.getFloor(),
+                l.getBuilding(),
+                l.getNodeType(),
+                l.getLongName(),
+                l.getShortName());
+        mapUserHistory.userHistory.add(new MapOperation("delete", location));
+      }
+    }
+    mapPageController mpc = new mapPageController();
+    mpc.deleteIcon(oldID);
+    DatabaseManager.getLocationDAO().deleteLocation(oldID);
+  }
   /**
    * @param nodeType
    * @param floor

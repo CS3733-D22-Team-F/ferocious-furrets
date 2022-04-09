@@ -1,6 +1,8 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
@@ -42,26 +44,17 @@ public class mapHistoryController implements Initializable {
       mapUserHistory.userHistory.remove(operation);
     } else {
       add(operation.getLocation());
+
       mapUserHistory.userHistory.remove(operation);
     }
     loadList();
   }
 
   public void add(Location l) throws SQLException {
-    Location location =
-        new Location(
-            l.getNodeID(),
-            l.getXcoord(),
-            l.getYcoord(),
-            l.getFloor(),
-            l.getBuilding(),
-            l.getNodeType(),
-            l.getLongName(),
-            l.getShortName());
-    DatabaseManager.getLocationDAO().addLocation(location);
+    DatabaseManager.getLocationDAO().addLocation(l);
   }
 
-  public void delete(Location location) throws SQLException, IOException {
+  public void delete(Location location) throws SQLException {
     mapPageController mpc = new mapPageController();
     mpc.deleteIcon(location.getNodeID());
     DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());

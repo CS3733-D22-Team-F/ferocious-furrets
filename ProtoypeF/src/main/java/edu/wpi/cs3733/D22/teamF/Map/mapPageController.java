@@ -1,6 +1,7 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -32,7 +33,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class mapPageController extends returnHomePage implements Initializable {
+public class mapPageController implements Initializable {
 
   String currentFloor;
   String currentIcon = "";
@@ -74,7 +75,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   @FXML JFXButton pumpButton;
   @FXML JFXButton reclinerButton;
 
-  @FXML ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
+  static ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
 
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
@@ -145,7 +146,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   @FXML
-  void openHistory(ActionEvent event) throws IOException, SQLException {
+  void openHistory() throws IOException, SQLException {
     Parent root = FXMLLoader.load(getClass().getResource("mapHistoryPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -153,6 +154,13 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+
+    for (Location lo : oldLocs) {
+      if (lo.getNodeID().equals("FDEPT00101")) {
+        System.out.println("fuck");
+      }
+    }
+    loadTable(oldLocs);
     wipeMap(oldLocs);
     displayMap();
   }
@@ -259,16 +267,14 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws SQLException
    */
   public void popUpDelete() throws IOException, SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapDeletePage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
-
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     wipeMap(oldLocs);
-
     displayMap();
   }
 
@@ -770,7 +776,6 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   public void popUpModify(Location location) throws IOException, SQLException {
     nodeTempHolder.setLocation(location);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapModifyPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -778,7 +783,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
-    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     wipeMap(oldLocs);
     displayMap();
   }
@@ -786,5 +791,14 @@ public class mapPageController extends returnHomePage implements Initializable {
   public void loadTable(ArrayList<Location> nLocations) {
     ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
     table.setItems(nlocationList);
+  }
+
+  @FXML
+  private void backToHomePage(ActionEvent event) throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
   }
 }
