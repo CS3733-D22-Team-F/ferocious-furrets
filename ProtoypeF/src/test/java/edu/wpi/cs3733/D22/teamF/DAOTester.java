@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
+import MedDelReqDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;

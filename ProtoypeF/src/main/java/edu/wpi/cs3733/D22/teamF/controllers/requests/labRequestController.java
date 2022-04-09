@@ -84,11 +84,12 @@ public class labRequestController extends returnHomePage
       // int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
       // String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
       RequestSystem req = new RequestSystem("Lab");
-      req.placeRequest(
-          employeeIDField.getText(),
-          userField.getText(),
-          nodeField.getText(),
-          statusChoice.getValue().toString());
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(nodeField.getText());
+      fields.add(employeeIDField.getText());
+      fields.add(userField.getText());
+      fields.add(statusChoice.getValue().toString());
+      req.placeRequest(fields);
       requestList.clear();
       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
       requestList.add("Assigned Doctor: " + userField.getText());

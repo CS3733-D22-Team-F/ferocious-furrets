@@ -13,21 +13,14 @@ public interface IRequestDAO {
 
   public void initTable() throws SQLException;
 
-  public void add(String assignedID, String requestedID, String nodeID, String status)
+  public void add(ArrayList<String> fields)
       throws SQLException;
 
   public void delete(String reqID) throws SQLException;
 
-  public void update(
-      IRequest req,
-      String reqID,
-      String assignedID,
-      String requestedID,
-      String nodeID,
-      String status);
+  public void update(ArrayList<String> fields);
 
   public ArrayList<IRequest> get();
 
-  public String generateInsertStatement(
-      String assignedID, String requestedID, String nodeID, String status);
+  public String generateInsertStatement(ArrayList<String> fields);
 }

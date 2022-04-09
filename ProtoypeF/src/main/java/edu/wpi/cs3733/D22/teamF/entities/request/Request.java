@@ -28,14 +28,12 @@ public abstract class Request implements IRequest {
       String nodeID,
       String assignedEmpID,
       String requesterEmpID,
-      String status,
-      String reqType) {
+      String status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.assignedEmpID = assignedEmpID;
     this.requesterEmpID = requesterEmpID;
     this.status = status;
-    this.reqType = reqType;
   }
 
   public Request() {}

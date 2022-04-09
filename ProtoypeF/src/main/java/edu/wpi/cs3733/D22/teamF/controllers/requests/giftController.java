@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
@@ -15,10 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 /** Controller for gift scene */
 public class giftController extends returnHomePage implements Initializable, IRequestController {
@@ -159,11 +156,9 @@ public class giftController extends returnHomePage implements Initializable, IRe
    */
   public void submit() {
     RequestSystem req = new RequestSystem("Gift");
-    req.placeRequest(
-        assigned.getText(),
-        employeeID.getText(),
-        nodeID.getText(),
-        statusChoice.getValue().toString());
+    ArrayList<String> fields = new ArrayList<String>();
+
+    req.placeRequest(fields);
 
     submitButton.disableProperty().setValue(true);
     previewButton.disableProperty().setValue(false);
@@ -244,10 +239,7 @@ public class giftController extends returnHomePage implements Initializable, IRe
    * @throws IOException
    */
   public void showQueueScene(ActionEvent event) throws IOException {
-    Scene scene = SceneManager.getInstance().setScene("giftRequestQueue.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
   }
 
   public String generateReqID(int requestListLength) {

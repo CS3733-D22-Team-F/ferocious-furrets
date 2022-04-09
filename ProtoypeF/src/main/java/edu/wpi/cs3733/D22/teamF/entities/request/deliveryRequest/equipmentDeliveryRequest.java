@@ -3,27 +3,38 @@
  *
  * @version 1.0
  */
-package edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
+package edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.DeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /** Medical Delivery request object */
-public class MedDelReq extends DeliveryRequest {
+public class equipmentDeliveryRequest extends DeliveryRequest {
 
   String requestedEquipmentID;
+  Repository db;
 
   /** Construction for Med equip service */
-  public MedDelReq(
+  public equipmentDeliveryRequest(
       String reqID,
       String nodeID,
       String assignedEmpID,
       String requesterEmpID,
       String status,
-      String reqType,
-      String deliveryType,
       String requestedEquipmentID) {
-    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status);
     this.requestedEquipmentID = requestedEquipmentID;
+  }
+
+  public equipmentDeliveryRequest(){
+    db = new Repository("Equipment");
+  }
+
+  public equipmentDeliveryRequest(String equipID){
+    this.requestedEquipmentID = equipID;
+    this.db = new Repository("Equipment");
   }
   /**
    * SQL insert statement
@@ -68,14 +79,13 @@ public class MedDelReq extends DeliveryRequest {
   }
 
   @Override
-  public void place(String assignedID, String requestedID, String nodeID, String status) {}
+  public void place(ArrayList<String> fields) throws SQLException {}
 
   @Override
   public void resolve(String reqID) {}
 
   @Override
-  public void modify(
-      String reqID, String assignedID, String requestedID, String nodeID, String status) {}
+  public void modify(ArrayList<String> fields) {}
 
   @Override
   public void cancel(String reqID) {}

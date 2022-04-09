@@ -12,9 +12,8 @@ public abstract class DeliveryRequest extends Request implements IRequest {
       String nodeID,
       String assignedEmpID,
       String requesterEmpID,
-      String status,
-      String reqType) {
-    super(reqID, nodeID, assignedEmpID, requesterEmpID, status, reqType);
+      String status) {
+    super(reqID, nodeID, assignedEmpID, requesterEmpID, status);
   }
 
   public DeliveryRequest() {}

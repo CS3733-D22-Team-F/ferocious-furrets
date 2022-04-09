@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.entities.request;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+
+import java.util.ArrayList;
 
 /**
  * Facade design pattern for service requests, called by Controller classes and creates new Request
@@ -35,22 +38,27 @@ public class RequestSystem {
       case "Scan":
         request = new scanRequest();
         break;
+      case "Equipment":
+        request = new equipmentDeliveryRequest();
       default:
         break;
     }
   }
 
-  public void placeRequest(String assignedID, String requestedID, String nodeID, String status) {
-    request.place(assignedID, requestedID, nodeID, status);
+  public void placeRequest(ArrayList<String> fields) {
+    try {
+      request.place(fields);
+    } catch (java.sql.SQLException throwables) {
+      throwables.printStackTrace();
+    }
   }
 
   public void resolveRequest(String nodeID) {
     request.resolve(nodeID);
   }
 
-  public void modifyRequest(
-      String reqID, String assignedID, String requestedID, String nodeID, String status) {
-    request.modify(reqID, assignedID, requestedID, nodeID, status);
+  public void modifyRequest(ArrayList<String> fields) {
+    request.modify(fields);
   }
 
   public void cancelRequest(String nodeID) {

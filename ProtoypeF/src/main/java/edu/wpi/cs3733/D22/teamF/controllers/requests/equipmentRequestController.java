@@ -1,11 +1,14 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReq;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import edu.wpi.cs3733.D22.teamF.returnHomePage;
+import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,7 +18,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class equipmentRequestController extends returnHomePage implements Initializable {
+public class equipmentRequestController extends returnHomePage implements Initializable, IRequestController {
 
   // TODO remove
   private Stage stage;
@@ -41,7 +44,7 @@ public class equipmentRequestController extends returnHomePage implements Initia
   }
 
   @FXML
-  public MedDelReq submit() throws SQLException {
+  public void submit() {
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
@@ -50,7 +53,6 @@ public class equipmentRequestController extends returnHomePage implements Initia
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank field");
-      return null;
     } else {
       requestList.clear();
       requestList.add("Equipment Request of type: " + typeChoice.getValue().toString());
@@ -73,8 +75,8 @@ public class equipmentRequestController extends returnHomePage implements Initia
       int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();
       String reqID = generateReqID(requestListSize, equipID, nodeField.getText());
 
-      MedDelReq addedDeliveryRequest =
-          new MedDelReq(
+      equipmentDeliveryRequest addedDeliveryRequest =
+          new equipmentDeliveryRequest(
               reqID,
               nodeField.getText(),
               employeeIDField.getText(),
