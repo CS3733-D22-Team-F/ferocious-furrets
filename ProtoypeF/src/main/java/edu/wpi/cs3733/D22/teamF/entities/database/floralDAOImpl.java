@@ -2,6 +2,10 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.floralDeliveryRequest;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +13,17 @@ import java.util.ArrayList;
 
 public class floralDAOImpl implements IRequestDAO {
   @Override
-  public void initTable() throws SQLException, IOException {
+  public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("floralRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE floralRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+  }
+
+  @Override
+  public void initTable(String file) throws SQLException, IOException {
+    DatabaseManager.dropTableIfExist("floralRequest");
+    DatabaseManager.runStatement(
+            "CREATE TABLE floralRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
   @Override
@@ -29,8 +40,7 @@ public class floralDAOImpl implements IRequestDAO {
   @Override
   public void update(ArrayList<String> fields) {}
 
-  @Override
-  public ArrayList<IRequest> get() {
+  public ArrayList<floralDeliveryRequest> get() {
     return null;
   }
 
@@ -41,11 +51,11 @@ public class floralDAOImpl implements IRequestDAO {
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
-  @Override
-  public ArrayList<IRequest> resultsFromRSET(ResultSet rset) {
+
+  public ArrayList<floralDeliveryRequest> resultsFromRSET(ResultSet rset) {
     return null;
   }
 
   @Override
-  public void saveRequestToCSV() {}
+  public void saveRequestToCSV(String filename) {}
 }

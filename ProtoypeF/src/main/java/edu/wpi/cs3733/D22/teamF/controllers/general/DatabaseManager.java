@@ -42,15 +42,15 @@ public class DatabaseManager {
    */
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDeliveryRequestDAO.initTable();
+    medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     medicalEquipmentDAO.initTable();
-    labRequestDAO.initTable();
-    scanRequestDAO.initTable();
-    floralDAO.initTable();
-    giftDAO.initTable();
-    mealDAO.initTable();
-    patientDAO.initTable();
-    medicineDAO.initTable();
+    labRequestDAO.initTable("");
+    scanRequestDAO.initTable("");
+    floralDAO.initTable("");
+    giftDAO.initTable("");
+    mealDAO.initTable("");
+    patientDAO.initTable("");
+    medicineDAO.initTable("");
     return Helper.dbMan;
   }
 
@@ -115,7 +115,7 @@ public class DatabaseManager {
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     medicalEquipmentDAO.saveMedEquipToCSV();
-    medicalEquipmentDeliveryRequestDAO.saveRequestToCSV();
+    medicalEquipmentDeliveryRequestDAO.saveRequestToCSV("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
