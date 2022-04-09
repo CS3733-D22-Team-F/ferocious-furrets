@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
+import java.io.IOException;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /** Stage manager class, singleton so there can be one instance */
@@ -35,8 +37,16 @@ public class StageManager {
 
   /** take a string file name then set scene and display scene for StageManager */
   public void setDisplay(String filename) {
-    m_stage.setScene(SceneManager.getInstance().setScene(filename));
+    m_stage.setScene(SceneManager.getInstance().setScene("views/" + filename));
     m_stage.show();
+  }
+
+  public void setDisplayAndWait(String filename) throws IOException {
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = SceneManager.getInstance().setScene("views/" + filename);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
   }
 
   /**
@@ -45,13 +55,13 @@ public class StageManager {
    * @param filename
    */
   public void setDisplay(Scene filename) {
-    m_stage.setScene(filename);
+    m_stage.setScene(SceneManager.getInstance().setScene("views/" + filename));
     m_stage.show();
   }
 
   /** makes current screen the home */
   public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("views/homePage.fxml"));
     m_stage.show();
   }
 }

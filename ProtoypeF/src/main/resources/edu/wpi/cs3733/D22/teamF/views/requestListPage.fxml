@@ -56,12 +56,12 @@
       </JFXButton>
       <ImageView fitHeight="236.0" fitWidth="201.0" layoutX="896.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/Tasks.png" />
+            <Image url="@../Images/Tasks.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="201.0" fitWidth="223.0" layoutX="896.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/TasksPeople.png" />
+            <Image url="@../Images/TasksPeople.png" />
          </image>
       </ImageView>
    </children>

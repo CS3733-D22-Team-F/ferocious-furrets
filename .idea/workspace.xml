@@ -4,19 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Updated DAOImpl classes for service requests to intialize a SQL table upon starting the application">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Updated controller classes to load new fxml filepaths for regular wndows and popup windows. Added setDisplayAndWait() method in StageManager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/IRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/IRequestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/floralDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/floralDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/giftDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/giftDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/labDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/labDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/mealDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/mealDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/medicineDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/medicineDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/patientDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/patientDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/scanDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/scanDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/scanRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/scanRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/homePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/homePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/medicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/medicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/returnHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/returnHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/equipmentPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/equipmentPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/fullLocationPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/fullLocationPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/giftPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/giftRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftRequestQueue.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/homePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/labRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/labRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestQueue.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/logInPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/logInPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapAddPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapAddPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapBackUpPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapBackUpPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapDeletePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapDeletePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapResetPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapResetPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mapTrackerPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapTrackerPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/mealPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/medicalPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicalPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/medicinePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicinePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/requestListPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/requestListPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/scanPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/scanPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +141,7 @@
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
@@ -419,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649430680423</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated DAOImpl classes to add/delete from table, need to fix error with multiple instances of myDB being created, not pushing.">
+      <created>1649432132430</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649432132430</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +494,9 @@
     <MESSAGE value="Fixed bug that would crash program if map reset with different locations" />
     <MESSAGE value="Overhauled service request design architecture to use Facade design pattern. Refactored backend databse design for service requests to use a Facade repository class. Next steps are integrating with controllers and implementing DAO code to interface with Apache Derby database." />
     <MESSAGE value="Updated DAOImpl classes for service requests to intialize a SQL table upon starting the application" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DAOImpl classes for service requests to intialize a SQL table upon starting the application" />
+    <MESSAGE value="Updated DAOImpl classes to add/delete from table, need to fix error with multiple instances of myDB being created, not pushing." />
+    <MESSAGE value="Updated controller classes to load new fxml filepaths for regular wndows and popup windows. Added setDisplayAndWait() method in StageManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated controller classes to load new fxml filepaths for regular wndows and popup windows. Added setDisplayAndWait() method in StageManager" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

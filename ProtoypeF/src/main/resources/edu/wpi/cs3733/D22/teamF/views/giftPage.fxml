@@ -17,12 +17,12 @@
    <children>
       <ImageView fitHeight="724.0" fitWidth="1280.0" opacity="0.18" pickOnBounds="true">
          <image>
-            <Image url="@Images/Gift-Background.png" />
+            <Image url="@../Images/Gift-Background.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="279.0" fitWidth="294.0" layoutX="964.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/small-basket.png" />
+            <Image url="@../Images/small-basket.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="215.0" layoutX="436.0" layoutY="261.0" stroke="#123090" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1000.0" strokeType="OUTSIDE" strokeWidth="3.0" width="459.0" />

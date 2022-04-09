@@ -17,10 +17,10 @@
    <children>
       <ImageView fitHeight="752.0" fitWidth="1076.0" layoutX="207.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@labimage.jpg" />
+            <Image url="@../labimage.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;" stylesheets="@labRequest.css">
+      <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;" stylesheets="@../labRequest.css">
          <children>
             <Pane prefHeight="113.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
                <children>
@@ -35,7 +35,7 @@
                   </HBox>
                   <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="673.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@bwhlogo.png" />
+                        <Image url="@../bwhlogo.png" />
                      </image>
                   </ImageView>
                </children>

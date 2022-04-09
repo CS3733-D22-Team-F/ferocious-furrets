@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -14,17 +15,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class mapPageController extends returnHomePage implements Initializable {
 
@@ -125,12 +121,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   @FXML
   void openFullTable(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("fullLocationPage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("fullLocationPage.fxml");
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */
@@ -218,13 +209,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   public void popUpAdd() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    Parent root = FXMLLoader.load(getClass().getResource("mapAddPage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("mapAddPage.fxml");
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     wipeMap(oldLocs);
     displayMap();
@@ -270,12 +255,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   public void popUpDelete() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    Parent root = FXMLLoader.load(getClass().getResource("mapDeletePage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("mapDeletePage.fxml");
 
     wipeMap(oldLocs);
 
@@ -288,12 +268,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws IOException
    */
   public void popUpSave() throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("mapBackUpPage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("mapBackUpPage.fxml");
   }
 
   /**
@@ -307,12 +282,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     ArrayList<MedEquip> eList = null;
     eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    Parent root = FXMLLoader.load(getClass().getResource("mapResetPage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("mapResetPage.fxml");
     // update table view
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     wipeMap(oldLocs);

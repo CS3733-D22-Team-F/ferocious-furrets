@@ -14,7 +14,7 @@
    <children>
       <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="814.0" onMouseClicked="#track" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@FloorMap/Floor1.jpg" />
+            <Image url="@../FloorMap/Floor1.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="815.0" layoutY="15.0" prefHeight="632.0" prefWidth="197.0">

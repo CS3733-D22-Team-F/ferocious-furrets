@@ -126,7 +126,7 @@
                         </JFXCheckBox>
                         <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="558.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Images/Breakfast.png" />
+                              <Image url="@../Images/Breakfast.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -242,7 +242,7 @@
                         </VBox>
                         <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="548.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Images/Lunch.png" />
+                              <Image url="@../Images/Lunch.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -358,7 +358,7 @@
                         </VBox>
                         <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="558.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Images/Dinner.png" />
+                              <Image url="@../Images/Dinner.png" />
                            </image>
                         </ImageView>
                      </children>

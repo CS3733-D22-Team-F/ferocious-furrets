@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.*;
@@ -38,10 +37,7 @@ public class medicalController extends returnHomePage implements Initializable {
    */
   @FXML
   void switchToLab(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("labRequestPage.fxml");
   }
 
   /**
@@ -52,10 +48,7 @@ public class medicalController extends returnHomePage implements Initializable {
    */
   @FXML
   void switchToScan(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("scanPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("scanPage.fxml");
   }
 
   /**

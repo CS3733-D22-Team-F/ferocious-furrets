@@ -16,7 +16,7 @@
          <graphic>
             <ImageView fitHeight="394.0" fitWidth="600.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@labimage.jpg" />
+                  <Image url="@../labimage.jpg" />
                </image>
             </ImageView>
          </graphic></JFXButton>
@@ -27,7 +27,7 @@
          <graphic>
             <ImageView fitHeight="384.0" fitWidth="604.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/ScanImage.jpeg" />
+                  <Image url="@../Images/ScanImage.jpeg" />
                </image>
             </ImageView>
          </graphic>

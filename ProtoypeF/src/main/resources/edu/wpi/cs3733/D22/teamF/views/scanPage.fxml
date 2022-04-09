@@ -14,11 +14,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@ScanPage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.scanController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../ScanPage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.scanController">
    <children>
       <ImageView fitHeight="732.0" fitWidth="1295.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/CTScan image.jpeg" />
+            <Image url="@../Images/CTScan image.jpeg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="730.0" stroke="BLACK" strokeType="INSIDE" width="716.0" />
@@ -41,7 +41,7 @@
             </HBox>
             <ImageView fitHeight="126.0" fitWidth="96.0" layoutX="616.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@bwhlogo.png" />
+                  <Image url="@../bwhlogo.png" />
                </image>
             </ImageView>
          </children>

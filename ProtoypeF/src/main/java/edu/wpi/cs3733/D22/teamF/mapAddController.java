@@ -205,7 +205,7 @@ public class mapAddController implements Initializable {
    * @throws IOException
    */
   public void popUpTracker() throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("views/mapTrackerPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
