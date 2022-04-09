@@ -21,7 +21,6 @@ public abstract class Request implements IRequest {
    * @param assignedEmpID requester name
    * @param requesterEmpID requester id
    * @param status request status processing/done
-
    */
   public Request(
       String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
