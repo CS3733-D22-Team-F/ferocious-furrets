@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +17,7 @@ public class patientDAOImpl implements IRequestDAO {
   }
 
   @Override
-  public void add(ArrayList<String> fields)
-      throws SQLException {
+  public void add(ArrayList<String> fields) throws SQLException {
     DatabaseManager.runStatement(generateInsertStatement(fields));
   }
 
@@ -41,7 +39,7 @@ public class patientDAOImpl implements IRequestDAO {
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO patientRequest VALUES ('%s', '%s', '%s', '%s')",
-            fields.get(0), fields.get(1), fields.get(2), fields.get(3));
+        fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
   @Override
@@ -50,7 +48,5 @@ public class patientDAOImpl implements IRequestDAO {
   }
 
   @Override
-  public void saveRequestToCSV() {
-
-  }
+  public void saveRequestToCSV() {}
 }

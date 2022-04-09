@@ -5,8 +5,8 @@
  */
 package edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest;
 
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -28,11 +28,11 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
     this.requestedEquipmentID = requestedEquipmentID;
   }
 
-  public equipmentDeliveryRequest(){
+  public equipmentDeliveryRequest() {
     db = new Repository("Equipment");
   }
 
-  public equipmentDeliveryRequest(String equipID){
+  public equipmentDeliveryRequest(String equipID) {
     this.requestedEquipmentID = equipID;
     this.db = new Repository("Equipment");
   }
@@ -79,7 +79,9 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
   }
 
   @Override
-  public void place(ArrayList<String> fields) throws SQLException {}
+  public void place(ArrayList<String> fields) throws SQLException {
+    String equipID = DatabaseManager.getMedEquipDAO().getAvailEquipment(fields.get(4));
+  }
 
   @Override
   public void resolve(String reqID) {}

@@ -1,16 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,7 +15,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class equipmentRequestController extends returnHomePage implements Initializable, IRequestController {
+public class equipmentRequestController extends returnHomePage
+    implements Initializable, IRequestController {
 
   // TODO remove
   private Stage stage;
@@ -62,33 +58,14 @@ public class equipmentRequestController extends returnHomePage implements Initia
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
 
-      //      equipmentDeliveryRequest equipServiceRequest =
-      //          new equipmentDeliveryRequest(
-      //              userField.getText(),
-      //              Integer.parseInt(employeeIDField.getText()),
-      //              nodeField.getText(),
-      //              statusChoice.getValue().toString(),
-      //              typeChoice.getValue().toString(),
-      //              Integer.toString(reqID),
-      //              null,
-      //              Integer.toString(reqID)); // TODO deleveryID vs reqID ?
-      String equipID =
-          DatabaseManager.getMedEquipDAO().getAvailEquipment(typeChoice.getValue().toString());
-      int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();
-      String reqID = generateReqID(requestListSize, equipID, nodeField.getText());
-
       RequestSystem req = new RequestSystem("Equipment");
       ArrayList<String> fields = new ArrayList<String>();
-      fields.add();
-      req.placeRequest();
-      equipmentDeliveryRequest addedDeliveryRequest =
-          new equipmentDeliveryRequest(
-              reqID,
-              nodeField.getText(),
-              employeeIDField.getText(),
-              userField.getText(),
-              statusChoice.getValue().toString()
-              );
+      fields.add(nodeField.getText());
+      fields.add(employeeIDField.getText());
+      fields.add(userField.getText());
+      fields.add(statusChoice.getValue().toString());
+      fields.add(typeChoice.getValue().toString());
+      req.placeRequest(fields);
 
       nodeField.clear();
       employeeIDField.clear();
@@ -96,19 +73,11 @@ public class equipmentRequestController extends returnHomePage implements Initia
       typeChoice.valueProperty().setValue(null);
       statusChoice.valueProperty().setValue(null);
       userField.clear();
-
-      DatabaseManager.getMedEquipDelReqDAO()
-          .addRequest(
-              addedDeliveryRequest.getReqID(),
-              addedDeliveryRequest.getNodeID(),
-              addedDeliveryRequest.getAssignedEmpID(),
-              addedDeliveryRequest.getRequesterEmpID(),
-              addedDeliveryRequest.getStatus(),
-              addedDeliveryRequest.getRequestedEquipmentID());
-
-      return addedDeliveryRequest;
     }
   }
+
+  @Override
+  public void reset() {}
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

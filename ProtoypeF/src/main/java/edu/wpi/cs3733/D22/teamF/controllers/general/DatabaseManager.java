@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamF.controllers.general;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
-
 import java.io.IOException;
 import java.sql.*;
 
@@ -19,7 +18,8 @@ public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
-  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO = new equipmentDeliveryDAOImpl();
+  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
+      new equipmentDeliveryDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
   private static final labDAOImpl labRequestDAO = new labDAOImpl();
   private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();

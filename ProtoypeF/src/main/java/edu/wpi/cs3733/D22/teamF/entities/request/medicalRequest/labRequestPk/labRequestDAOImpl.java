@@ -17,7 +17,6 @@ import java.util.ArrayList;
 /**
  * Implementation of the labRequestDAO Interface
  *
- * @see labRequestPk
  * @see labRequestDAO
  */
 public class labRequestDAOImpl implements labRequestDAO {
@@ -235,17 +234,17 @@ public class labRequestDAOImpl implements labRequestDAO {
       String requesterEmpID = rset.getString("requesterEmployeeID");
       String status = rset.getString("status");
       // String longName = rset.getString("longName");
-      equipmentDeliveryRequest newR =
-          new equipmentDeliveryRequest(
-              reqID,
-              nodeID,
-              assignedEmpID,
-              requesterEmpID,
-              status,
-              "Delivery",
-              "Equipment",
-              equipmentID);
-      reqs.add(newR);
+      //      equipmentDeliveryRequest newR =
+      //          new equipmentDeliveryRequest(
+      //              reqID,
+      //              nodeID,
+      //              assignedEmpID,
+      //              requesterEmpID,
+      //              status,
+      //              "Delivery",
+      //              "Equipment",
+      //              equipmentID);
+      //      reqs.add(newR);
     }
     return reqs;
   }
@@ -263,12 +262,12 @@ public class labRequestDAOImpl implements labRequestDAO {
     }
 
     try {
-      ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
+      ResultSet r;
+      r = stm.executeQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
 
-      ArrayList<equipmentDeliveryRequest> allReqs = requestsFromRSET(rset);
+      ArrayList<equipmentDeliveryRequest> allReqs = requestsFromRSET(r);
 
-      rset.close();
+      r.close();
       File newCSV = new File(csvName);
       FileWriter fw = new FileWriter(csvName);
       fw.write("reqID, equipID, nodeID, assEmpID, reqEmpID, status\n");

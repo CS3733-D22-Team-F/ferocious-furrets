@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.*;
-
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +15,7 @@ public interface IRequestDAO {
 
   public void initTable() throws SQLException, IOException;
 
-  public void add(ArrayList<String> fields)
-      throws SQLException;
+  public void add(ArrayList<String> fields) throws SQLException;
 
   public void delete(String reqID) throws SQLException;
 

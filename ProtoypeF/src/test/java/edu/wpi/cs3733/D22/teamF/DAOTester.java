@@ -3,8 +3,8 @@ package edu.wpi.cs3733.D22.teamF;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.database.equipmentDeliveryDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import MedDelReqDAOImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,9 +35,9 @@ public class DAOTester {
    */
   @Test
   public void testGetDataMedical() throws SQLException, IOException {
-    MedDelReqDAOImpl dao = new MedDelReqDAOImpl();
+    equipmentDeliveryDAOImpl dao = new equipmentDeliveryDAOImpl();
     dao.initTable();
-    assertNotNull(dao.getAllRequests());
+    assertNotNull(dao.get());
     //    System.out.println(dao.getAllRequests().get(2).getLongName());
   }
 }

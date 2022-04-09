@@ -43,9 +43,8 @@ public class Repository {
     }
   }
 
-  public void addRequest(ArrayList<String> fields)
-      throws SQLException {
-    //db.add(assignedID);
+  public void addRequest(ArrayList<String> fields) throws SQLException {
+    // db.add(assignedID);
   }
 
   public void deleteRequest(String reqID) throws SQLException {
@@ -53,7 +52,7 @@ public class Repository {
   }
 
   public void updateRequest(ArrayList<String> fields) {
-    //db.update(req);
+    // db.update(req);
   }
 
   public ArrayList<IRequest> getAll() {

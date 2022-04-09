@@ -21,14 +21,10 @@ public abstract class Request implements IRequest {
    * @param assignedEmpID requester name
    * @param requesterEmpID requester id
    * @param status request status processing/done
-   * @param reqType request tpye Medical/Delivery
+
    */
   public Request(
-      String reqID,
-      String nodeID,
-      String assignedEmpID,
-      String requesterEmpID,
-      String status) {
+      String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.assignedEmpID = assignedEmpID;

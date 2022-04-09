@@ -8,11 +8,7 @@ public abstract class DeliveryRequest extends Request implements IRequest {
   private String deliveryType;
 
   public DeliveryRequest(
-      String reqID,
-      String nodeID,
-      String assignedEmpID,
-      String requesterEmpID,
-      String status) {
+      String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status);
   }
 
