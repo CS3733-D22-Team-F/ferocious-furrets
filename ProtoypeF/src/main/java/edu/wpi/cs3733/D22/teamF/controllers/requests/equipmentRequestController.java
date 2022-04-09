@@ -67,7 +67,8 @@ public class equipmentRequestController extends returnHomePage
       fields.add(typeChoice.getValue().toString());
       req.placeRequest(fields);
 
-      nodeField.clear();
+      //      req.nodeField.clear();
+
       employeeIDField.clear();
       userField.clear();
       typeChoice.valueProperty().setValue(null);

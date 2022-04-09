@@ -73,12 +73,18 @@ public class labDAOImpl implements IRequestDAO {
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
+  public void backUpToCSV(String fileDir) throws SQLException, IOException {
+    // TODO IMPLEMENT
+  }
+
+  public void backUpToCSV(File file) throws SQLException, IOException {
+    // TODO IMPLEMENT
+
+  }
+
   public ArrayList<labRequest> resultsFromRSET(ResultSet rset) {
     return null;
   }
-
-  @Override
-  public void saveRequestToCSV(String filename) {}
 
   private labRequest makeObjectFromString(String currentLine) {
     String[] currentLineSplit = currentLine.split(",");

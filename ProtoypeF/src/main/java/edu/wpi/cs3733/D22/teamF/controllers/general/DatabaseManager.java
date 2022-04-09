@@ -2,7 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.general;
 
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -20,7 +20,7 @@ public class DatabaseManager {
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
       new equipmentDeliveryDAOImpl();
-  private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
+  private static final equipmentDAOImpl medicalEquipmentDAO = new equipmentDAOImpl();
   private static final labDAOImpl labRequestDAO = new labDAOImpl();
   private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
   private static final floralDAOImpl floralDAO = new floralDAOImpl();
@@ -43,9 +43,14 @@ public class DatabaseManager {
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    medicalEquipmentDAO.initTable();
+    medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    //    floralDAO.initTable("");
+    //    giftDAO.initTable("");
+    //    mealDAO.initTable("");
+    //    patientDAO.initTable("");
+    //    medicineDAO.initTable("");
     //    floralDAO.initTable("");
     //    giftDAO.initTable("");
     //    mealDAO.initTable("");
@@ -70,7 +75,7 @@ public class DatabaseManager {
    */
   public static void runStatement(String statement) throws SQLException {
     Statement stm = conn.createStatement();
-    // System.out.println("SQL: " + statement);
+    System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
     } catch (SQLException e) {
@@ -87,7 +92,7 @@ public class DatabaseManager {
    */
   public static ResultSet runQuery(String query) throws SQLException {
     Statement stm = conn.createStatement();
-    // System.out.println("SQL: " + query);
+    System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
     } catch (SQLException e) {
@@ -114,9 +119,8 @@ public class DatabaseManager {
    */
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.saveMedEquipToCSV();
-    medicalEquipmentDeliveryRequestDAO.saveRequestToCSV(
-        "/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    medicalEquipmentDAO.backUpToCSV("/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
+    medicalEquipmentDeliveryRequestDAO.backUpToCSV("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
@@ -143,7 +147,7 @@ public class DatabaseManager {
    *
    * @return medEquipImpl DAO object
    */
-  public static MedEquipDAOImpl getMedEquipDAO() {
+  public static equipmentDAOImpl getMedEquipDAO() {
     return medicalEquipmentDAO;
   }
   /** gets the LabRequestDAO */

@@ -43,7 +43,7 @@ public class Repository {
   }
 
   public void addRequest(ArrayList<String> fields) throws SQLException {
-    // db.add(assignedID);
+    db.add(fields);
   }
 
   public void deleteRequest(String reqID) throws SQLException {

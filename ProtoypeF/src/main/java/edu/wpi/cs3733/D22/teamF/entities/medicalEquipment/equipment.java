@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.entities.medicalEquipment;
 
 /** Equipment object */
-public class MedEquip {
+public class equipment {
 
   private String equipID;
   private String equipType;
@@ -17,7 +17,7 @@ public class MedEquip {
    * @param nodeID
    * @param equipID
    */
-  public MedEquip(String equipID, String equipType, String nodeID, String status) {
+  public equipment(String equipID, String equipType, String nodeID, String status) {
     this.equipID = equipID;
     this.equipType = equipType;
     this.nodeID = nodeID;
@@ -61,14 +61,8 @@ public class MedEquip {
    * @return String
    */
   public String generateInsertStatement() {
-    return "INSERT INTO MEDICALEQUIPMENT VALUES ('"
-        + this.equipID
-        + "', '"
-        + this.equipType
-        + "', '"
-        + this.nodeID
-        + "', '"
-        + this.status
-        + "' )";
+    return String.format(
+        "INSERT INTO MEDICALEQUIPMENT VALUES ('%s','%s','%s','%s')",
+        equipID, equipType, nodeID, status);
   }
 }

@@ -5,7 +5,6 @@
  */
 package edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest;
 
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -57,19 +56,6 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
         + "' )";
   }
 
-  //  /**
-  //   * Equals method which checks the parameters are equal
-  //   *
-  //   * @param o MedEquipServReq Object to be compared with the calling MedEquipServReq object
-  //   * @return True or False
-  //   */
-  //  public boolean equals(MedDelReq o) {
-  //    return (this.requestedEquipmentID.equals(o.nodeID))
-  //        && (this.nodeID.equals(o.nodeID))
-  //        && (this.employeeIDofAssignedTo.equals(o.employeeIDofAssignedTo))
-  //        && (this.status == o.status);
-  //  }
-
   public String getRequestedEquipmentID() {
     return requestedEquipmentID;
   }
@@ -78,17 +64,13 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
     this.requestedEquipmentID = requestedEquipmentID;
   }
 
-  @Override
   public void place(ArrayList<String> fields) throws SQLException {
-    String equipID = DatabaseManager.getMedEquipDAO().getAvailEquipment(fields.get(4));
+//    db.addRequest(fields); //ADD FIELDS FOR REQ ID ALSO MAKE SURE FIELDS ARE CORRECT ORDER @equipmentDeliveryDaoImpl
   }
 
-  @Override
   public void resolve(String reqID) {}
 
-  @Override
   public void modify(ArrayList<String> fields) {}
 
-  @Override
   public void cancel(String reqID) {}
 }

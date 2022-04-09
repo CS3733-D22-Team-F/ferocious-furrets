@@ -5,7 +5,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquip;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
@@ -85,7 +85,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     legend.setExpanded(false);
 
     ArrayList<Location> nLocations = null;
-    ArrayList<MedEquip> eList = null;
+    ArrayList<equipment> eList = null;
     ArrayList<Location> eLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -222,7 +222,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   public void displayMap() throws SQLException {
-    ArrayList<MedEquip> eList = null;
+    ArrayList<equipment> eList = null;
     eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
 
     ArrayList<Location> nLocations = null;
@@ -280,7 +280,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   public void popUpReset() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    ArrayList<MedEquip> eList = null;
+    ArrayList<equipment> eList = null;
     eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     StageManager.getInstance().setDisplayAndWait("mapResetPage.fxml");
     // update table view
@@ -532,13 +532,13 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @return
    * @throws SQLException
    */
-  public ArrayList<Location> equipToLocation(ArrayList<MedEquip> medList) throws SQLException {
+  public ArrayList<Location> equipToLocation(ArrayList<equipment> medList) throws SQLException {
     ArrayList<Location> returnList = new ArrayList<>();
     int x = -1;
     int y = -1;
     String floor = "";
     String specificID = "";
-    for (MedEquip med : medList) {
+    for (equipment med : medList) {
       specificID = med.getNodeID();
       Statement stm = DatabaseManager.getConn().createStatement();
       String cmd = "SELECT * FROM Locations WHERE nodeID = '" + specificID + "'";

@@ -84,10 +84,11 @@ public class scanDAOImpl implements IRequestDAO {
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
+  public void backUpToCSV(String fileDir) throws SQLException, IOException {}
+
+  public void backUpToCSV(File file) throws SQLException, IOException {}
+
   public ArrayList<scanRequest> resultsFromRSET(ResultSet rset) {
     return null;
   }
-
-  @Override
-  public void saveRequestToCSV(String filename) {}
 }
