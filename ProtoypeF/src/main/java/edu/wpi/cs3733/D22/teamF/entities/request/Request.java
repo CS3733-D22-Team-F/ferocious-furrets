@@ -4,13 +4,13 @@ import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
 
 public abstract class Request implements IRequest {
 
-  private String reqID; // id of request
-  private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
-  private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
-  private String
+  protected String reqID; // id of request
+  protected String assignedEmpID; // Employee that is assigned the task (First name, Last name)
+  protected String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
+  protected String
       nodeID; // nodeID is the key for the location in which the request is directed to (Check
   // Locations.csv for examples)
-  private String status; // Status of the request (In Progress or Done)
+  protected String status; // Status of the request (In Progress or Done)
   // TODO enum
   private String reqType; // Type of request made
   protected Repository db;

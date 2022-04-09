@@ -13,6 +13,16 @@ public class labRequest extends MedicalRequest {
     db = new Repository("Lab");
   }
 
+  public labRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String reqEmpID,
+      String status,
+      String type) {
+    super(reqID, nodeID, assignedEmpID, reqEmpID, status, type);
+  }
+
   @Override
   public void place(ArrayList<String> fields) throws SQLException {}
 
@@ -69,22 +79,20 @@ public class labRequest extends MedicalRequest {
    * @return String statement
    */
   public String generateInsertStatement() {
-    return "INSERT INTO LABREQUEST VALUES ('"
-        + this.getReqID()
-        + "', '"
-        + this.getNodeID()
-        + "', '"
-        + this.getAssignedEmpID()
-        + "' , '"
-        + this.getRequesterEmpID()
-        + "' , '"
-        + this.getStatus()
-        + "' , '"
-        + this.getReqType()
-        + "' , '"
-        + this.getMedicalType()
-        + "' , '"
-        + this.getSampleType()
-        + "' )";
+    return String.format(
+        "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        reqID, nodeID, assignedEmpID, requesterEmpID, status, medicalType);
+  }
+
+  public String generateInsertStatement(
+      String reqID,
+      String assignedID,
+      String requestedID,
+      String nodeID,
+      String status,
+      String type) {
+    return String.format(
+        "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        reqID, nodeID, assignedID, requestedID, status, type);
   }
 }

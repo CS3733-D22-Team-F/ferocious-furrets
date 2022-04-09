@@ -8,8 +8,14 @@ public abstract class MedicalRequest extends Request implements IRequest {
   public String medicalType;
 
   public MedicalRequest(
-      String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String requesterEmpID,
+      String status,
+      String type) {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status);
+    medicalType = type;
   }
 
   public MedicalRequest() {}

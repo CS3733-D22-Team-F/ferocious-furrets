@@ -17,6 +17,16 @@ public class scanRequest extends MedicalRequest {
     db = new Repository("Scan");
   }
 
+  public scanRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String reqEmpID,
+      String status,
+      String type) {
+    super(reqID, nodeID, assignedEmpID, reqEmpID, status, type);
+  }
+
   @Override
   public void place(ArrayList<String> fields) throws SQLException {}
 
@@ -30,10 +40,21 @@ public class scanRequest extends MedicalRequest {
   public void cancel(String reqID) {}
 
   public String generateInsertStatement(
-      String reqID, String assignedID, String requestedID, String nodeID, String status) {
+      String reqID,
+      String assignedID,
+      String requestedID,
+      String nodeID,
+      String status,
+      String type) {
     return String.format(
-        "INSERT INTO scanRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-        reqID, assignedID, requestedID, nodeID, status);
+        "INSERT INTO scanRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        reqID, nodeID, assignedID, requestedID, status, type);
+  }
+
+  public String generateInsertStatement() {
+    return String.format(
+        "INSERT INTO scanRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        reqID, nodeID, assignedEmpID, requesterEmpID, status, medicalType);
   }
 
   /**

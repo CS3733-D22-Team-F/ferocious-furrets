@@ -9,11 +9,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquip;
-import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -57,7 +53,7 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
     DatabaseManager.runStatement(
-            "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
 
     ArrayList<equipmentDeliveryRequest> csvMedEquip = new ArrayList<equipmentDeliveryRequest>();
     List<String> lines = CSVReader.readFile(file);
@@ -72,9 +68,6 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     }
   }
 
-
-
-
   public equipmentDeliveryRequest makeObjectFromString(String currentLine) {
     String[] currentLineSplit = currentLine.split(",");
     String reqID = currentLineSplit[0];
@@ -84,7 +77,8 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     String status = currentLineSplit[4];
     String equipID = currentLineSplit[5];
 
-    return new equipmentDeliveryRequest(reqID, nodeID, assignedEmployeeID, reqEmpID, status, equipID);
+    return new equipmentDeliveryRequest(
+        reqID, nodeID, assignedEmployeeID, reqEmpID, status, equipID);
   }
 
   @Override
@@ -122,14 +116,14 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     ArrayList<equipmentDeliveryRequest> currentMedicalEquipment = get();
     for (equipmentDeliveryRequest l : currentMedicalEquipment) {
       toAdd.add(
-              String.format(
-                      "%s,%s,%s,%s,%s,%s",
-                      l.getReqID(),
-                      l.getRequestedEquipmentID(),
-                      l.getNodeID(),
-                      l.getAssignedEmpID(),
-                      l.getRequesterEmpID(),
-                      l.getStatus()));
+          String.format(
+              "%s,%s,%s,%s,%s,%s",
+              l.getReqID(),
+              l.getRequestedEquipmentID(),
+              l.getNodeID(),
+              l.getAssignedEmpID(),
+              l.getRequesterEmpID(),
+              l.getStatus()));
     }
 
     CSVWriter.writeAllToDir(filename, toAdd);

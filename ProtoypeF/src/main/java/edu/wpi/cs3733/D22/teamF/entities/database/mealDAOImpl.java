@@ -1,10 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -23,7 +20,7 @@ public class mealDAOImpl implements IRequestDAO {
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("mealRequest");
     DatabaseManager.runStatement(
-            "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
   @Override
@@ -40,7 +37,6 @@ public class mealDAOImpl implements IRequestDAO {
   @Override
   public void update(ArrayList<String> fields) {}
 
-
   public ArrayList<mealDeliveryRequest> get() {
     return null;
   }
@@ -51,7 +47,6 @@ public class mealDAOImpl implements IRequestDAO {
         "INSERT INTO mealRequest VALUES ('%s', '%s', '%s', '%s')",
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
-
 
   public ArrayList<mealDeliveryRequest> resultsFromRSET(ResultSet rset) {
     return null;
