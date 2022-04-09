@@ -19,7 +19,7 @@ public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
-  private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
+  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO = new equipmentDeliveryDAOImpl();
   private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
   private static final labDAOImpl labRequestDAO = new labDAOImpl();
   private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
@@ -134,7 +134,7 @@ public class DatabaseManager {
    *
    * @return MedDelReqDAOImpl
    */
-  public static MedDelReqDAOImpl getMedEquipDelReqDAO() {
+  public static equipmentDeliveryDAOImpl getMedEquipDelReqDAO() {
     return medicalEquipmentDeliveryRequestDAO;
   }
   /**

@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import java.net.URL;
 import java.sql.SQLException;
@@ -75,16 +77,17 @@ public class equipmentRequestController extends returnHomePage implements Initia
       int requestListSize = DatabaseManager.getMedEquipDelReqDAO().getAllRequests().size();
       String reqID = generateReqID(requestListSize, equipID, nodeField.getText());
 
+      RequestSystem req = new RequestSystem("Equipment");
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add();
+      req.placeRequest();
       equipmentDeliveryRequest addedDeliveryRequest =
           new equipmentDeliveryRequest(
               reqID,
               nodeField.getText(),
               employeeIDField.getText(),
               userField.getText(),
-              statusChoice.getValue().toString(),
-              "Delivery",
-              "Equipment",
-              equipID // TODO ADD EQUIPMENT ID TO UI
+              statusChoice.getValue().toString()
               );
 
       nodeField.clear();

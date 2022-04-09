@@ -9,7 +9,6 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.IRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequestPck.MedDelReqDAO;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -19,10 +18,8 @@ import java.util.ArrayList;
 /**
  * Implementation of the MedDelReq Interface
  *
- * @see equipmentDeliveryRequestPck
- * @see MedDelReqDAO
  */
-public class MedDelReqDAOImpl implements IRequestDAO {
+public class equipmentDeliveryDAOImpl implements IRequestDAO {
 
   Connection conn = DatabaseManager.getConn();
   private final ArrayList<equipmentDeliveryRequest> requests = new ArrayList<>();
@@ -30,7 +27,7 @@ public class MedDelReqDAOImpl implements IRequestDAO {
   private final ArrayList<String> reqIDs = new ArrayList<String>();
 
   /** Constructor */
-  public MedDelReqDAOImpl() {}
+  public equipmentDeliveryDAOImpl() {}
 
   /**
    * An ArrayList of all the service requests in the embedded CSV file. Provided as a data structure
@@ -46,7 +43,7 @@ public class MedDelReqDAOImpl implements IRequestDAO {
     BufferedReader lineReader =
         new BufferedReader(
             new InputStreamReader(
-                MedDelReqDAOImpl.class.getResourceAsStream(
+                equipmentDeliveryDAOImpl.class.getResourceAsStream(
                     "/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv"),
                 StandardCharsets.UTF_8));
     String lineText = null;
@@ -118,6 +115,11 @@ public class MedDelReqDAOImpl implements IRequestDAO {
 
   @Override
   public String generateInsertStatement(ArrayList<String> fields) {
+    return null;
+  }
+
+  @Override
+  public ArrayList<IRequest> resultsFromRSET(ResultSet rset) {
     return null;
   }
 
