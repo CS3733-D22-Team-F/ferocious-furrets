@@ -111,8 +111,7 @@ public class mapPageController extends returnHomePage implements Initializable {
       e.printStackTrace();
     }
 
-    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
-    table.setItems(nlocationList);
+    loadTable(nLocations);
 
     nLocations.addAll(eLocations);
 
@@ -782,5 +781,10 @@ public class mapPageController extends returnHomePage implements Initializable {
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
     wipeMap(oldLocs);
     displayMap();
+  }
+
+  public void loadTable(ArrayList<Location> nLocations) {
+    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
+    table.setItems(nlocationList);
   }
 }

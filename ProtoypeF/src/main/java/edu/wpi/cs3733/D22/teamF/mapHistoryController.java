@@ -47,7 +47,17 @@ public class mapHistoryController implements Initializable {
     loadList();
   }
 
-  public void add(Location location) throws SQLException {
+  public void add(Location l) throws SQLException {
+    Location location =
+        new Location(
+            l.getNodeID(),
+            l.getXcoord(),
+            l.getYcoord(),
+            l.getFloor(),
+            l.getBuilding(),
+            l.getNodeType(),
+            l.getLongName(),
+            l.getShortName());
     DatabaseManager.getLocationDAO().addLocation(location);
   }
 

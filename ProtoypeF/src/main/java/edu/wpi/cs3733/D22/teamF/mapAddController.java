@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamF;
 import com.jfoenix.controls.JFXCheckBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -148,7 +147,6 @@ public class mapAddController implements Initializable {
     String nFloor = floor;
     int roomNum = 1;
     String rNum;
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
 
     //    Statement stm = DatabaseManager.getConn().createStatement();
     //    String cmd =
