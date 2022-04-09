@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
@@ -16,23 +18,30 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapPageController">
    <children>
-      <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@FloorMap/Floor1.jpg" />
-         </image>
-      </ImageView>
-      <AnchorPane fx:id="iconPane1" prefHeight="650.0" prefWidth="814.0" />
-      <AnchorPane fx:id="iconPane2" prefHeight="650.0" prefWidth="814.0" />
-      <AnchorPane fx:id="iconPane3" prefHeight="650.0" prefWidth="814.0" />
-      <AnchorPane fx:id="iconPaneL1" prefHeight="650.0" prefWidth="814.0" />
-      <AnchorPane fx:id="iconPaneL2" prefHeight="650.0" prefWidth="814.0" />
-      <TableView fx:id="table" layoutX="813.0" prefHeight="720.0" prefWidth="467.0">
+      <TableView fx:id="table" layoutX="814.0" prefHeight="720.0" prefWidth="466.0">
         <columns>
-            <TableColumn fx:id="Building" prefWidth="104.2301025390625" text="Building" />
-            <TableColumn fx:id="Floor" prefWidth="77.2698974609375" text="Floor" />
-            <TableColumn fx:id="longName" prefWidth="285.03564453125" text="longName" />
+          <TableColumn fx:id="Building" prefWidth="113.0" text="Building" />
+          <TableColumn fx:id="Floor" prefWidth="88.0" text="Floor" />
+            <TableColumn fx:id="longName" prefWidth="264.0" text="longName" />
         </columns>
       </TableView>
+      <ScrollPane fx:id="scrollPane" prefHeight="650.0" prefWidth="814.0">
+         <content>
+            <Group fx:id="mapGroup">
+               <children>
+                  <AnchorPane fx:id="iconPane" prefHeight="650.0" prefWidth="814.0">
+                     <children>
+                        <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@FloorMap/Floor1.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Group>
+         </content>
+      </ScrollPane>
       <HBox layoutY="650.0" prefHeight="70.0" prefWidth="814.0">
          <children>
             <JFXButton buttonType="RAISED" onAction="#popUpAdd" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ADD" textFill="WHITE">
@@ -130,32 +139,37 @@
       </MenuBar>
       <HBox layoutY="650.0" prefHeight="70.0" prefWidth="814.0">
          <children>
-            <JFXButton buttonType="RAISED" onAction="#popUpAdd" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ADD" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#popUpAdd" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ADD" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#popUpDelete" prefHeight="80.0" prefWidth="200.0" ripplerFill="RED" style="-fx-background-color: #062558;" text="DELETE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#popUpDelete" prefHeight="80.0" prefWidth="200.0" ripplerFill="RED" style="-fx-background-color: #123090;" text="DELETE" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#popUpSave" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="SAVE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#popUpSave" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="SAVE" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#popUpReset" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="LOAD" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#popUpReset" prefHeight="70.0" prefWidth="190.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="LOAD" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="HOME" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#openFullTable" prefHeight="70.0" prefWidth="271.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="FULL TABLE" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#openFullTable" prefHeight="70.0" prefWidth="195.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="TABLE" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#openHistory" prefHeight="70.0" prefWidth="241.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="HISTORY" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -166,6 +180,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Change Map">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF5" text="Floor 5" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF4" text="Floor 4" />
               <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
                   <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
                   <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
@@ -175,7 +191,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <JFXButton buttonType="RAISED" layoutX="474.0" layoutY="18.0" onAction="#showAll" prefHeight="23.0" prefWidth="113.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="ALL ICON" textFill="WHITE">
+      <JFXButton fx:id="showIconButton" buttonType="RAISED" layoutX="474.0" layoutY="18.0" onAction="#showIcon" prefHeight="23.0" prefWidth="113.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

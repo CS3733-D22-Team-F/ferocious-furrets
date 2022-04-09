@@ -115,6 +115,7 @@ public class mapAddController implements Initializable {
                 longField.getText(),
                 shortField.getText());
         DatabaseManager.getLocationDAO().addLocation(l);
+        mapUserHistory.userHistory.add(new MapOperation("add", l));
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {

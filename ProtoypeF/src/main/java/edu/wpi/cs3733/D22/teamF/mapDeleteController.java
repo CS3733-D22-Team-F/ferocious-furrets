@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +61,22 @@ public class mapDeleteController implements Initializable {
    * @throws IOException
    */
   public void deleteLocation(String oldID) throws SQLException, IOException {
+    ArrayList<Location> list = DatabaseManager.getLocationDAO().getAllLocations();
+    for (Location l : list) {
+      if (l.getNodeID().equals(oldID)) {
+        Location location =
+            new Location(
+                l.getNodeID(),
+                l.getXcoord(),
+                l.getYcoord(),
+                l.getFloor(),
+                l.getBuilding(),
+                l.getNodeType(),
+                l.getLongName(),
+                l.getShortName());
+        mapUserHistory.userHistory.add(new MapOperation("delete", location));
+      }
+    }
     mapPageController mpc = new mapPageController();
     mpc.deleteIcon(oldID);
     DatabaseManager.getLocationDAO().deleteLocation(oldID);

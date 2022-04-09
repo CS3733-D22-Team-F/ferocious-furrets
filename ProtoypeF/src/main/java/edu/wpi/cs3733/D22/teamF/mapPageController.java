@@ -16,6 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,12 +28,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class mapPageController extends returnHomePage implements Initializable {
 
   String currentFloor;
+  String currentIcon = "";
+  private double scaleValue = 0.7;
+  private double zoomIntensity = 0.02;
 
   @FXML ImageView mapHolder;
 
@@ -40,11 +49,11 @@ public class mapPageController extends returnHomePage implements Initializable {
   @FXML TableColumn<Location, String> Building;
   @FXML TableColumn<Location, String> longName;
 
-  @FXML AnchorPane iconPane1;
-  @FXML AnchorPane iconPane2;
-  @FXML AnchorPane iconPane3;
-  @FXML AnchorPane iconPaneL1;
-  @FXML AnchorPane iconPaneL2;
+  @FXML ScrollPane scrollPane;
+  @FXML Group mapGroup;
+  @FXML AnchorPane iconPane;
+
+  @FXML JFXButton showIconButton;
 
   @FXML JFXButton patientRoomButton;
   @FXML JFXButton storageButton;
@@ -70,6 +79,8 @@ public class mapPageController extends returnHomePage implements Initializable {
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
   Image F3 = new Image(getClass().getResourceAsStream("FloorMap/Floor3.jpg"));
+  Image F4 = new Image(getClass().getResourceAsStream("FloorMap/Floor4.jpg"));
+  Image F5 = new Image(getClass().getResourceAsStream("FloorMap/Floor5.jpg"));
   Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
   Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
 
@@ -83,6 +94,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    initializeScroll();
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
     Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
@@ -103,7 +115,6 @@ public class mapPageController extends returnHomePage implements Initializable {
     table.setItems(nlocationList);
 
     nLocations.addAll(eLocations);
-    changeToF1();
 
     for (Location lo : nLocations) {
       try {
@@ -115,6 +126,7 @@ public class mapPageController extends returnHomePage implements Initializable {
       }
     }
     loadAllLegend();
+    changeToF1();
   }
 
   /**
@@ -133,80 +145,59 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.showAndWait();
   }
 
+  @FXML
+  void openHistory(ActionEvent event) throws IOException, SQLException {
+    Parent root = FXMLLoader.load(getClass().getResource("mapHistoryPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    wipeMap(oldLocs);
+    displayMap();
+  }
   /** change map to floor 1, same for f2, f3, l1, l2 */
   public void changeToF1() {
     mapHolder.setImage(F1);
-    iconPane1.setVisible(true);
-    iconPane1.setDisable(false);
-    iconPane2.setVisible(false);
-    iconPane2.setDisable(true);
-    iconPane3.setVisible(false);
-    iconPane3.setDisable(true);
-    iconPaneL1.setVisible(false);
-    iconPaneL1.setDisable(true);
-    iconPaneL2.setVisible(false);
-    iconPaneL2.setDisable(true);
     currentFloor = "1";
+    showFloorIcon("1");
   }
 
   public void changeToF2() {
     mapHolder.setImage(F2);
-    iconPane1.setVisible(false);
-    iconPane1.setDisable(true);
-    iconPane2.setVisible(true);
-    iconPane2.setDisable(false);
-    iconPane3.setVisible(false);
-    iconPane3.setDisable(true);
-    iconPaneL1.setVisible(false);
-    iconPaneL1.setDisable(true);
-    iconPaneL2.setVisible(false);
-    iconPaneL2.setDisable(true);
     currentFloor = "2";
+    showFloorIcon("2");
   }
 
   public void changeToF3() {
     mapHolder.setImage(F3);
-    iconPane1.setVisible(false);
-    iconPane1.setDisable(true);
-    iconPane2.setVisible(false);
-    iconPane2.setDisable(true);
-    iconPane3.setVisible(true);
-    iconPane3.setDisable(false);
-    iconPaneL1.setVisible(false);
-    iconPaneL1.setDisable(true);
-    iconPaneL2.setVisible(false);
-    iconPaneL2.setDisable(true);
-    currentFloor = "2";
+    currentFloor = "3";
+    showFloorIcon("3");
+  }
+
+  public void changeToF4() {
+    mapHolder.setImage(F4);
+    currentFloor = "4";
+    showFloorIcon("4");
+  }
+
+  public void changeToF5() {
+    mapHolder.setImage(F5);
+    currentFloor = "5";
+    showFloorIcon("5");
   }
 
   public void changeToL1() {
     mapHolder.setImage(L1);
-    iconPane1.setVisible(false);
-    iconPane1.setDisable(true);
-    iconPane2.setVisible(false);
-    iconPane2.setDisable(true);
-    iconPane3.setVisible(false);
-    iconPane3.setDisable(true);
-    iconPaneL1.setVisible(true);
-    iconPaneL1.setDisable(false);
-    iconPaneL2.setVisible(false);
-    iconPaneL2.setDisable(true);
     currentFloor = "L1";
+    showFloorIcon("L1");
   }
 
   public void changeToL2() {
     mapHolder.setImage(L2);
-    iconPane1.setVisible(false);
-    iconPane1.setDisable(true);
-    iconPane2.setVisible(false);
-    iconPane2.setDisable(true);
-    iconPane3.setVisible(false);
-    iconPane3.setDisable(true);
-    iconPaneL1.setVisible(false);
-    iconPaneL1.setDisable(true);
-    iconPaneL2.setVisible(true);
-    iconPaneL2.setDisable(false);
     currentFloor = "L2";
+    showFloorIcon("L2");
   }
 
   /**
@@ -217,7 +208,6 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws SQLException
    */
   public void popUpAdd() throws IOException, SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     Parent root = FXMLLoader.load(getClass().getResource("mapAddPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -226,6 +216,7 @@ public class mapPageController extends returnHomePage implements Initializable {
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     wipeMap(oldLocs);
     displayMap();
   }
@@ -251,7 +242,6 @@ public class mapPageController extends returnHomePage implements Initializable {
     ObservableList<Location> locationList = FXCollections.observableList(nLocations);
     table.setItems(locationList);
     nLocations.addAll(eLocations);
-    locationIconList.clear();
     for (Location lo : nLocations) {
       try {
         addIcon(lo);
@@ -259,6 +249,7 @@ public class mapPageController extends returnHomePage implements Initializable {
         e.printStackTrace();
       }
     }
+    showAllIcon();
   }
 
   /**
@@ -344,6 +335,12 @@ public class mapPageController extends returnHomePage implements Initializable {
     }
 
     switch (nFloor) {
+      case "5":
+        nFloor = "05";
+        break;
+      case "4":
+        nFloor = "05";
+        break;
       case "3":
         nFloor = "03";
         break;
@@ -383,23 +380,19 @@ public class mapPageController extends returnHomePage implements Initializable {
     newButton.setMaxSize(25, 25);
     MenuItem dItem = new MenuItem("Delete");
     MenuItem mItem = new MenuItem("Modify");
-    ContextMenu options = new ContextMenu();
-    options.getItems().add(dItem);
-    options.getItems().add(mItem);
-    newButton.setContextMenu(options);
     newButton.setOnAction(
         e -> {
-          newButton.getContextMenu();
-        });
-    dItem.setOnAction(
-        e -> {
-          deleteIcon(location.getNodeID());
-          try {
-            DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
-            this.wipeMap(oldLocs);
-            this.displayMap();
-          } catch (SQLException ex) {
-            ex.printStackTrace();
+          for (int i = 0; i < locationIconList.size(); i++) {
+            if (locationIconList.get(i).get(1).equals(newButton)) {
+              Location tempLocation = (Location) locationIconList.get(i).get(0);
+              try {
+                popUpModify(tempLocation);
+              } catch (IOException ex) {
+                ex.printStackTrace();
+              } catch (SQLException ex) {
+                ex.printStackTrace();
+              }
+            }
           }
         });
     double x =
@@ -407,27 +400,10 @@ public class mapPageController extends returnHomePage implements Initializable {
     double y = (location.getYcoord() / 856.0) * 630;
     newButton.setLayoutX(x);
     newButton.setLayoutY(y);
-    switch (location.getFloor()) {
-      case "1":
-        iconPane1.getChildren().add(newButton);
-        break;
-      case "2":
-        iconPane2.getChildren().add(newButton);
-        break;
-      case "3":
-        iconPane3.getChildren().add(newButton);
-        break;
-      case "L1":
-        iconPaneL1.getChildren().add(newButton);
-        break;
-      case "L2":
-        iconPaneL2.getChildren().add(newButton);
-        break;
-    }
+    iconPane.getChildren().add(newButton);
     ArrayList<Object> temp = new ArrayList<Object>();
     temp.add(location);
     temp.add(newButton);
-    temp.add(location.getNodeID());
     locationIconList.add(temp);
   }
 
@@ -438,7 +414,7 @@ public class mapPageController extends returnHomePage implements Initializable {
    */
   public void deleteIcon(String nodeID) {
     for (int i = 0; i < locationIconList.size(); i++) {
-      if (locationIconList.get(i).get(2).equals(nodeID)) {
+      if (locationIconList.get(i).get(0).equals(nodeID)) {
         ((AnchorPane) ((JFXButton) locationIconList.get(i).get(1)).getParent())
             .getChildren()
             .remove((JFXButton) locationIconList.get(i).get(1));
@@ -448,7 +424,7 @@ public class mapPageController extends returnHomePage implements Initializable {
   }
 
   /**
-   * Gets the correct type of icon depending on the nodeType of the location s
+   * Gets the correct type of icon depending on the nodeType of the location
    *
    * @param type
    * @return
@@ -578,7 +554,6 @@ public class mapPageController extends returnHomePage implements Initializable {
         y = rset.getInt(3);
         floor = rset.getString(4);
       }
-      stm.close();
       rset.close();
       Location tempLocation =
           new Location(med.getNodeID(), x, y, floor, "N/A", med.getEquipType(), "Equipment", "N/A");
@@ -589,90 +564,117 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   public void showOneIcon(String type) {
     for (ArrayList<Object> objects : locationIconList) {
-      if (!((Location) objects.get(0)).getNodeType().equals(type)) {
-        ((JFXButton) objects.get(1)).setVisible(false);
-      } else {
-        ((JFXButton) objects.get(1)).setVisible(true);
-      }
+      ((JFXButton) objects.get(1))
+          .setVisible(
+              ((Location) objects.get(0)).getNodeType().equals(type)
+                  && ((Location) objects.get(0)).getFloor().equals(currentFloor));
     }
+  }
+
+  public void showIcon() {
+    if (showIconButton.getText().equals("ALL ICON")) {
+      showFloorIcon(currentFloor);
+      showIconButton.setText("HIDE ICON");
+      showIconButton.setStyle("-fx-background-color: red");
+    } else if (showIconButton.getText().equals("HIDE ICON")) {
+      showFloorIcon("99");
+      showIconButton.setText("ALL ICON");
+      showIconButton.setStyle("-fx-background-color: #062558");
+    }
+  }
+
+  public void showAllIcon() {
+    showFloorIcon(currentFloor);
   }
 
   public void showPatient() {
     showOneIcon("PATI");
+    currentIcon = "PATI";
   }
 
   public void showStorage() {
     showOneIcon("STOR");
+    currentIcon = "STOR";
   }
 
   public void showDirty() {
     showOneIcon("DIRT");
+    currentIcon = "DIRT";
   }
 
   public void showHallway() {
     showOneIcon("HALL");
+    currentIcon = "HALL";
   }
 
   public void showElev() {
     showOneIcon("ELEV");
+    currentIcon = "ELEV";
   }
 
   public void showRestroom() {
     showOneIcon("REST");
+    currentIcon = "REST";
   }
 
   public void showStair() {
     showOneIcon("STAI");
+    currentIcon = "STAI";
   }
 
   public void showDepartment() {
     showOneIcon("DEPT");
+    currentIcon = "DEPT";
   }
 
   public void showLab() {
     showOneIcon("LABS");
+    currentIcon = "LABS";
   }
 
   public void showInformation() {
     showOneIcon("INFO");
+    currentIcon = "INFO";
   }
 
   public void showConference() {
     showOneIcon("CONF");
+    currentIcon = "CONF";
   }
 
   public void showExit() {
     showOneIcon("EXIT");
+    currentIcon = "EXIT";
   }
 
   public void showRetail() {
     showOneIcon("RETL");
+    currentIcon = "RETL";
   }
 
   public void showService() {
     showOneIcon("SERV");
+    currentIcon = "SERV";
   }
 
   public void showBad() {
     showOneIcon("Bed");
+    currentIcon = "Bed";
   }
 
   public void showXray() {
     showOneIcon("Xray");
+    currentIcon = "Xray";
   }
 
   public void showPump() {
     showOneIcon("Infusion Pump");
+    currentIcon = "Infusion Pump";
   }
 
   public void showRecliner() {
     showOneIcon("Recliner");
-  }
-
-  public void showAll() {
-    for (ArrayList<Object> objects : locationIconList) {
-      ((JFXButton) objects.get(1)).setVisible(true);
-    }
+    currentIcon = "Recliner";
   }
 
   public void loadAllLegend() {
@@ -694,5 +696,91 @@ public class mapPageController extends returnHomePage implements Initializable {
     xrayButton.setGraphic(getIcon("Xray"));
     pumpButton.setGraphic(getIcon("Infusion Pump"));
     reclinerButton.setGraphic(getIcon("Recliner"));
+  }
+
+  public void showFloorIcon(String floor) {
+    for (ArrayList<Object> objects : locationIconList) {
+      ((JFXButton) objects.get(1)).setVisible(((Location) objects.get(0)).getFloor().equals(floor));
+    }
+  }
+
+  private Node outerNode(Node node) {
+    Node outerNode = centeredNode(node);
+    outerNode.setOnScroll(
+        e -> {
+          e.consume();
+          onScroll(e.getTextDeltaY(), new Point2D(e.getX(), e.getY()));
+        });
+    return outerNode;
+  }
+
+  private Node centeredNode(Node node) {
+    VBox vBox = new VBox(node);
+    vBox.setAlignment(Pos.CENTER);
+    return vBox;
+  }
+
+  private void updateScale() {
+    iconPane.setScaleX(scaleValue);
+    iconPane.setScaleY(scaleValue);
+  }
+
+  private void onScroll(double wheelDelta, Point2D mousePoint) {
+    double zoomFactor = Math.exp(wheelDelta * zoomIntensity);
+
+    Bounds innerBounds = mapGroup.getLayoutBounds();
+    Bounds viewportBounds = scrollPane.getViewportBounds();
+
+    // calculate pixel offsets from [0, 1] range
+    double valX = scrollPane.getHvalue() * (innerBounds.getWidth() - viewportBounds.getWidth());
+    double valY = scrollPane.getVvalue() * (innerBounds.getHeight() - viewportBounds.getHeight());
+
+    scaleValue = scaleValue * zoomFactor;
+    updateScale();
+    scrollPane.layout(); // refresh ScrollPane scroll positions & target bounds
+
+    // convert target coordinates to zoomTarget coordinates
+    Point2D posInZoomTarget = iconPane.parentToLocal(mapGroup.parentToLocal(mousePoint));
+
+    // calculate adjustment of scroll position (pixels)
+    Point2D adjustment =
+        iconPane
+            .getLocalToParentTransform()
+            .deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
+
+    // convert back to [0, 1] range
+    // (too large/small values are automatically corrected by ScrollPane)
+    Bounds updatedInnerBounds = mapGroup.getBoundsInLocal();
+    scrollPane.setHvalue(
+        (valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
+    scrollPane.setVvalue(
+        (valY + adjustment.getY()) / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+  }
+
+  public void initializeScroll() {
+    scrollPane.setContent(outerNode(mapGroup));
+
+    scrollPane.setPannable(true);
+    scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+    scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+    scrollPane.setFitToHeight(true); // center
+    scrollPane.setFitToWidth(true); // center
+
+    updateScale();
+  }
+
+  public void popUpModify(Location location) throws IOException, SQLException {
+    nodeTempHolder.setLocation(location);
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    Parent root = FXMLLoader.load(getClass().getResource("mapModifyPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+    // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
+    wipeMap(oldLocs);
+    displayMap();
   }
 }

@@ -48,10 +48,13 @@ public class homePageController {
    */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("mapPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("mapPage.fxml"));
+    Parent ReportManager = loader.load();
+    Scene ReportManagerScene = new Scene(ReportManager);
+    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    window.setScene(ReportManagerScene);
+    window.show();
   }
 
   /**

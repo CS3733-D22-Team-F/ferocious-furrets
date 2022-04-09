@@ -33,6 +33,8 @@
          <menus>
             <Menu mnemonicParsing="false" text="Change Map">
                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF5" text="Floor 5" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF4" text="Floor 4" />
                   <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
                   <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
                   <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
