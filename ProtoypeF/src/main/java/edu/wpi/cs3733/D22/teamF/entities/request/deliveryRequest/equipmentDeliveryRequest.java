@@ -41,19 +41,9 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
    * @return String statement
    */
   public String generateInsertStatement() {
-    return "INSERT INTO MEDICALEQUIPMENTDELIVERYREQUEST VALUES ('"
-        + this.getReqID()
-        + "', '"
-        + this.getRequestedEquipmentID()
-        + "', '"
-        + this.getNodeID()
-        + "' , '"
-        + this.getAssignedEmpID()
-        + "' , '"
-        + this.getRequesterEmpID()
-        + "' , '"
-        + this.getStatus()
-        + "' )";
+    return String.format(
+        "INSERT INTO MEDICALEQUIPMENTDELIVERYREQUEST VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        reqID, requestedEquipmentID, nodeID, assignedEmpID, requesterEmpID, status);
   }
 
   public String getRequestedEquipmentID() {
@@ -65,7 +55,8 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
   }
 
   public void place(ArrayList<String> fields) throws SQLException {
-//    db.addRequest(fields); //ADD FIELDS FOR REQ ID ALSO MAKE SURE FIELDS ARE CORRECT ORDER @equipmentDeliveryDaoImpl
+    //    db.addRequest(fields); //ADD FIELDS FOR REQ ID ALSO MAKE SURE FIELDS ARE CORRECT ORDER
+    // @equipmentDeliveryDaoImpl
   }
 
   public void resolve(String reqID) {}

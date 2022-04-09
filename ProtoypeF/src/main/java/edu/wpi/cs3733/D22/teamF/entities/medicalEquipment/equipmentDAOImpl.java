@@ -77,7 +77,7 @@ public class equipmentDAOImpl implements equipmentDAO {
     for (equipment l : equipment) {
       toAdd.add(
           String.format(
-              "%s,%s,%s,%s", l.getNodeID(), l.getEquipType(), l.getNodeID(), l.getStatus()));
+              "%s,%s,%s,%s", l.getEquipID(), l.getEquipType(), l.getNodeID(), l.getStatus()));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);

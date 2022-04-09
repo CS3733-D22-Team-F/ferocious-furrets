@@ -119,8 +119,9 @@ public class DatabaseManager {
    */
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.backUpToCSV("/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
-    medicalEquipmentDeliveryRequestDAO.backUpToCSV("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    medicalEquipmentDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
+    medicalEquipmentDeliveryRequestDAO.backUpToCSV(
+        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");

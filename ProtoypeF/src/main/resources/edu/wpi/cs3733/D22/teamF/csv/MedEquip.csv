@@ -1,14 +1,14 @@
 equipID,equipType,nodeID,status
 1,Bed,fPATI00103,unavailable
-2,Bed,fPATI00203,unavailable
-3,Bed,fPATI00303,unavailable
-4,Bed,fPATI00403,unavailable
-5,Bed,fPATI00503,unavailable
-6,Bed,fPATI00603,unavailable
-7,Bed,fPATI00703,unavailable
-8,Bed,fPATI00803,unavailable
-9,Bed,fPATI00903,unavailable
-10,Bed,fPATI01003,unavailable
+2,Bed,fPATI00203,available
+3,Bed,fPATI00303,available
+4,Bed,fPATI00403,available
+5,Bed,fPATI00503,available
+6,Bed,fPATI00603,available
+7,Bed,fPATI00703,available
+8,Bed,fPATI00803,available
+9,Bed,fPATI00903,available
+10,Bed,fPATI01003,available
 11,Bed,fPATI01103,available
 12,Bed,fPATI01203,available
 13,Bed,fPATI01303,available
@@ -21,38 +21,5 @@ equipID,equipType,nodeID,status
 20,Bed,fPATI02003,available
 21,Xray,fSTOR00103,available
 22,Infusion Pump,fSTOR00203,available
-23,Infusion Pump,fSTOR00203,available
-24,Infusion Pump,fSTOR00203,available
-25,Infusion Pump,fSTOR00203,available
-26,Infusion Pump,fSTOR00203,available
-27,Infusion Pump,fSTOR00203,available
-28,Infusion Pump,fSTOR00203,available
-29,Infusion Pump,fSTOR00203,available
-30,Infusion Pump,fSTOR00203,available
-31,Infusion Pump,fSTOR00203,available
-32,Infusion Pump,fSTOR00203,available
-33,Infusion Pump,fSTOR00203,available
-34,Infusion Pump,fSTOR00203,available
-35,Infusion Pump,fSTOR00203,available
-36,Infusion Pump,fSTOR00203,available
-37,Infusion Pump,fSTOR00203,available
-38,Infusion Pump,fSTOR00203,available
-39,Infusion Pump,fSTOR00203,available
-40,Infusion Pump,fSTOR00203,available
-41,Infusion Pump,fSTOR00203,available
-42,Infusion Pump,fSTOR00203,available
-43,Infusion Pump,fSTOR00203,available
-44,Infusion Pump,fSTOR00203,available
-45,Infusion Pump,fSTOR00203,available
-46,Infusion Pump,fSTOR00203,available
-47,Infusion Pump,fSTOR00203,available
-48,Infusion Pump,fSTOR00203,available
-49,Infusion Pump,fSTOR00203,available
-50,Infusion Pump,fSTOR00203,available
-51,Infusion Pump,fSTOR00203,available
-52,Recliner,fSTOR00303,available
-53,Recliner,fSTOR00303,available
-54,Recliner,fSTOR00303,available
-55,Recliner,fSTOR00403,available
-56,Recliner,fSTOR00403,available
-57,Recliner,fSTOR00403,available
+23,Recliner,fSTOR00303,available
+24,Recliner,fSTOR00403,available

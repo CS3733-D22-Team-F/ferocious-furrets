@@ -105,10 +105,10 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
     while (rset.next()) {
       String reqID = rset.getString("reqID");
-      String equipID = rset.getString("equipID");
+      String equipID = rset.getString("equipmentID");
       String nodeID = rset.getString("nodeID");
-      String assEmpID = rset.getString("assEmpID");
-      String reqEmpID = rset.getString("reqEmpID");
+      String assEmpID = rset.getString("assignedEmployeeID");
+      String reqEmpID = rset.getString("requesterEmployeeID");
       String status = rset.getString("status");
 
       equipmentDeliveryRequest newESR =
