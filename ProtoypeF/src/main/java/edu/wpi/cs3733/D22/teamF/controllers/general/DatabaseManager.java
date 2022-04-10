@@ -54,16 +54,6 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
-    //    floralDAO.initTable("");
-    //    giftDAO.initTable("");
-    //    mealDAO.initTable("");
-    //    patientDAO.initTable("");
-    //    medicineDAO.initTable("");
-    //    floralDAO.initTable("");
-    //    giftDAO.initTable("");
-    //    mealDAO.initTable("");
-    //    patientDAO.initTable("");
-    //    medicineDAO.initTable("");
     return Helper.dbMan;
   }
 
