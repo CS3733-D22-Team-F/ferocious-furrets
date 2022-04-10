@@ -6,7 +6,6 @@ import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -35,11 +34,11 @@ public class mapHistoryController implements Initializable {
     loadList();
   }
 
-  public void recoverLocation() throws SQLException, IOException {
+  public void recoverLocation() throws SQLException {
     recover(table.getSelectionModel().getSelectedItem());
   }
 
-  public void recover(MapOperation operation) throws SQLException, IOException {
+  public void recover(MapOperation operation) throws SQLException {
     if (operation.getType().equals("add")) {
       delete(operation.getLocation());
       mapUserHistory.userHistory.remove(operation);
@@ -56,7 +55,7 @@ public class mapHistoryController implements Initializable {
   }
 
   public void delete(Location location) throws SQLException {
-    MapIconModifier.deleteIcon(location.getNodeID());
+    MapIconModifier.deleteIcon(location);
     DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
   }
   /** Cancel add, close window */

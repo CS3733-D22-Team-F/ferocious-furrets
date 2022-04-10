@@ -1,12 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
-import com.jfoenix.controls.JFXCheckBox;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -34,10 +31,6 @@ public class mapAddController implements Initializable {
   @FXML private TextField shortField;
 
   @FXML private Button cancel;
-
-  @FXML private JFXCheckBox isModify;
-
-  private final Connection connection = DatabaseManager.getConn();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

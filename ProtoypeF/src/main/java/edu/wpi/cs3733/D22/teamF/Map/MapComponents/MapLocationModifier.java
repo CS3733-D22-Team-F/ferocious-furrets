@@ -39,7 +39,7 @@ public class MapLocationModifier {
 
   public static void deleteLocation(Location location) throws SQLException {
     mapUserHistory.userHistory.add(new MapOperation("delete", location));
-    MapIconModifier.deleteIcon(location.getNodeID());
+    MapIconModifier.deleteIcon(location);
     DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
   }
 

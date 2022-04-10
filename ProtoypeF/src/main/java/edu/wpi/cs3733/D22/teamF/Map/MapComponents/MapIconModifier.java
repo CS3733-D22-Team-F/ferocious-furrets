@@ -4,7 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -12,21 +13,19 @@ import javafx.scene.layout.AnchorPane;
 public class MapIconModifier {
   static String currentIcon = "";
 
-  public static ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
+  public static HashMap<Location, JFXButton> locationIconList = new HashMap<>();
 
   /**
    * delete a location icon from the map
    *
-   * @param nodeID
+   * @param location
    */
-  public static void deleteIcon(String nodeID) {
-    for (int i = 0; i < locationIconList.size(); i++) {
-      if (((Location) locationIconList.get(i).get(0)).getNodeID().equals(nodeID)) {
-        ((AnchorPane) ((JFXButton) locationIconList.get(i).get(1)).getParent())
-            .getChildren()
-            .remove((JFXButton) locationIconList.get(i).get(1));
-        locationIconList.remove(i);
-      }
+  public static void deleteIcon(Location location) {
+    if (locationIconList.containsKey(location)) {
+      ((AnchorPane) (locationIconList.get(location).getParent()))
+          .getChildren()
+          .remove(locationIconList.get(location));
+      locationIconList.remove(location);
     }
   }
 
@@ -173,19 +172,22 @@ public class MapIconModifier {
         }
     }
     ImageView imageView = new ImageView(image);
-    imageView.setFitHeight(25);
-    imageView.setFitWidth(25);
+    imageView.setFitHeight(20);
+    imageView.setFitWidth(20);
     return imageView;
   }
 
   public static void showOneIcon(String type) {
-    for (ArrayList<Object> objects : locationIconList) {
-      ((JFXButton) objects.get(1))
+    Collection<JFXButton> iconList = locationIconList.values();
+    ArrayList<JFXButton> iconArrayList = new ArrayList<>(iconList);
+    Collection<Location> locationList = locationIconList.keySet();
+    ArrayList<Location> locationArrayList = new ArrayList<>(locationList);
+    for (int i = 0; i < iconList.size(); i++) {
+      iconArrayList
+          .get(i)
           .setVisible(
-              ((Location) objects.get(0)).getNodeType().equals(type)
-                  && ((Location) objects.get(0))
-                      .getFloor()
-                      .equals(MapLocationModifier.currentFloor));
+              locationArrayList.get(i).getNodeType().equals(type)
+                  && locationArrayList.get(i).getFloor().equals(MapLocationModifier.currentFloor));
     }
   }
 
@@ -296,8 +298,20 @@ public class MapIconModifier {
   }
 
   public static void showFloorIcon(String floor) {
-    for (ArrayList<Object> objects : locationIconList) {
-      ((JFXButton) objects.get(1)).setVisible(((Location) objects.get(0)).getFloor().equals(floor));
+    Collection<JFXButton> iconList = locationIconList.values();
+    ArrayList<JFXButton> iconArrayList = new ArrayList<>(iconList);
+    Collection<Location> locationList = locationIconList.keySet();
+    ArrayList<Location> locationArrayList = new ArrayList<>(locationList);
+    for (int i = 0; i < iconList.size(); i++) {
+      iconArrayList.get(i).setVisible(locationArrayList.get(i).getFloor().equals(floor));
     }
+  }
+
+  public static <Location, JFXButton> Set<Location> getKeysByValue(
+      HashMap<Location, JFXButton> map, JFXButton value) {
+    return map.entrySet().stream()
+        .filter(entry -> Objects.equals(entry.getValue(), value))
+        .map(Map.Entry::getKey)
+        .collect(Collectors.toSet());
   }
 }

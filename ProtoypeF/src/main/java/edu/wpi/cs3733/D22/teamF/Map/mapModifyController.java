@@ -8,7 +8,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -123,7 +122,7 @@ public class mapModifyController implements Initializable {
     }
   }
 
-  public void delete(ActionEvent event) throws SQLException, IOException {
+  public void delete() throws SQLException, IOException {
     MapLocationModifier.deleteLocation(nodeTempHolder.getLocation());
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();

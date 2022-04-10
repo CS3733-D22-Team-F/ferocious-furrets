@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -124,6 +123,5 @@
       <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
       <JFXButton layoutX="233.0" layoutY="334.0" onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
       <JFXButton layoutX="358.0" layoutY="334.0" onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
-      <JFXCheckBox fx:id="isModify" checkedColor="#10429c" layoutX="274.0" layoutY="12.0" prefHeight="26.0" prefWidth="68.0" text="Modify" unCheckedColor="#00000065" />
    </children>
 </AnchorPane>
