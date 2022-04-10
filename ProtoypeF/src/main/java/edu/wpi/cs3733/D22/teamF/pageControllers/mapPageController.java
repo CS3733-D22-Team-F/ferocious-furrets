@@ -260,7 +260,8 @@ public class mapPageController implements Initializable {
    */
   public void popUpDelete() throws IOException, SQLException {
     if (UserType.userType != "admin") {
-      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+      //      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+      StageManager.getInstance().setHomeScreen();
     }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     StageManager.getInstance().setDisplayAndWait("mapDeletePage.fxml");
@@ -357,9 +358,9 @@ public class mapPageController implements Initializable {
    * @throws FileNotFoundException
    */
   public void addIcon(Location location) throws FileNotFoundException, SQLException {
-    /*if (UserType.userType != "admin") {
-      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
-    }*/
+    if (UserType.userType != "admin") {
+      //      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
     newButton.setPrefSize(25, 25);
@@ -421,9 +422,9 @@ public class mapPageController implements Initializable {
    * @param nodeID
    */
   public void deleteIcon(String nodeID) {
-    /*if (UserType.userType != "admin") {
-      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
-    }*/
+    if (UserType.userType != "admin") {
+      //      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     for (int i = 0; i < locationIconList.size(); i++) {
       if (locationIconList.get(i).get(2).equals(nodeID)) {
         ((AnchorPane) ((JFXButton) locationIconList.get(i).get(1)).getParent())
