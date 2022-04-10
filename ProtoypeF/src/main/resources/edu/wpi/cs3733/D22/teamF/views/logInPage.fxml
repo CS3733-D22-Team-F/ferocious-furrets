@@ -14,7 +14,7 @@
 
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXPasswordField?>
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.logInController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.logInController">
    <children>
       <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
          <image>
@@ -96,7 +96,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="793.0" onAction="#backToHomePage" prefHeight="42.0" prefWidth="96.0" style="-fx-background-color: #123090;" text="Home" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="793.0" onAction="#loginSuccess" prefHeight="42.0" prefWidth="96.0" style="-fx-background-color: #123090;" text="Home" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

@@ -1,23 +1,20 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
 /**
- * Lab queue controll
+ * control for the queue for gifts
  *
  * @see Initializable
  */
-public class labQueueController implements Initializable {
+public class giftQueueController implements Initializable {
 
   @FXML private ListView queue;
   ArrayList<String> list1 = new ArrayList();
@@ -27,16 +24,13 @@ public class labQueueController implements Initializable {
   ArrayList<String> list5 = new ArrayList();
 
   /**
-   * Switch to lab scene
+   * Switch to the gift scene
    *
-   * @param event
+   * @param event ActionEvent
    */
   @FXML
-  void switchToLab(ActionEvent event) {
-    Scene scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+  void switchToGift(ActionEvent event) {
+    StageManager.getInstance().setDisplay("giftPage.fxml");
   }
 
   /**
@@ -47,38 +41,38 @@ public class labQueueController implements Initializable {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    list1.add("blood");
-    list1.add("urine");
-    list1.add("MRI");
+    list1.add("Jasmine");
+    list1.add("Rose");
+    list1.add("Teddy Bear");
     list1.add("Patient1");
     list1.add("101");
     list1.add("black");
     list1.add("doctor1");
     queue.getItems().add(list1.toString());
-    list2.add("blood");
+    list2.add("Gift Card");
     list2.add("Patient2");
     list2.add("102");
     list2.add("processing");
     list2.add("doctor2");
     queue.getItems().add(list2.toString());
-    list3.add("MRI");
-    list3.add("CAT");
+    list3.add("Rose");
+    list3.add("Jasmine");
     list3.add("Patient3");
     list3.add("103");
     list3.add("done");
     list3.add("doctor3");
     queue.getItems().add(list3.toString());
-    list4.add("blood");
-    list4.add("urine");
-    list4.add("CAT");
-    list4.add("xray");
+    list4.add("Chrysanthemum");
+    list4.add("Jasmine");
+    list4.add("Gift Card");
+    list4.add("Teddy Bear");
     list4.add("Patient4");
     list4.add("104");
     list4.add("black");
     list4.add("doctor4");
     queue.getItems().add(list4.toString());
-    list5.add("xray");
-    list5.add("MRI");
+    list5.add("Chrysanthemum");
+    list5.add("Rose");
     list5.add("Patient5");
     list5.add("105");
     list5.add("done");

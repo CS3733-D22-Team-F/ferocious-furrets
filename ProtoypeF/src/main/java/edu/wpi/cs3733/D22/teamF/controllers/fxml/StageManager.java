@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -12,6 +14,7 @@ public class StageManager {
   // atributes
   private static StageManager m_StageManager = null;
   private static Stage m_stage; // the only stage utilized through the app m for manage stage
+  @FXML JFXButton cancel;
 
   private StageManager() {} // private constructor for singleton
 
@@ -49,19 +52,14 @@ public class StageManager {
     popupwindow.showAndWait();
   }
 
-  /**
-   * takes a scene and displays it
-   *
-   * @param filename
-   */
-  public void setDisplay(Scene filename) {
-    m_stage.setScene(SceneManager.getInstance().setScene("views/" + filename));
+  /** makes current screen the home */
+  public void setHomeScreen() {
+    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
     m_stage.show();
   }
 
-  /** makes current screen the home */
-  public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("views/homePage.fxml"));
-    m_stage.show();
+  public void cancel() {
+    Stage stage = (Stage) cancel.getScene().getWindow();
+    stage.close();
   }
 }

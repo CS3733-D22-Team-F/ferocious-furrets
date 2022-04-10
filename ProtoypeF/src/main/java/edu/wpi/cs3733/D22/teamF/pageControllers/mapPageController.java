@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
+import edu.wpi.cs3733.D22.teamF.homePageController;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
@@ -22,7 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class mapPageController extends returnHomePage implements Initializable {
+public class mapPageController implements Initializable {
 
   String currentFloor;
 
@@ -63,11 +64,11 @@ public class mapPageController extends returnHomePage implements Initializable {
 
   @FXML ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
 
-  Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
-  Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
-  Image F3 = new Image(getClass().getResourceAsStream("FloorMap/Floor3.jpg"));
-  Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
-  Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
+  Image F1 = new Image(homePageController.class.getResourceAsStream("FloorMap/Floor1.jpg"));
+  Image F2 = new Image(homePageController.class.getResourceAsStream("FloorMap/Floor2.jpg"));
+  Image F3 = new Image(homePageController.class.getResourceAsStream("FloorMap/Floor3.jpg"));
+  Image L1 = new Image(homePageController.class.getResourceAsStream("FloorMap/Lower1.jpg"));
+  Image L2 = new Image(homePageController.class.getResourceAsStream("FloorMap/Lower2.jpg"));
 
   /**
    * Initialize the map page, get all the equipment and locations from the database, get the x-y
@@ -425,96 +426,137 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws FileNotFoundException
    */
   public ImageView getIcon(String type) {
-    Image image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
+    Image image =
+        new Image(homePageController.class.getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
     switch (type) {
       case "PATI":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
           break;
         }
       case "STOR":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STOR Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/STOR Icon.png"));
           break;
         }
       case "DIRT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DIRT Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/DIRT Icon.png"));
           break;
         }
       case "HALL":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/HALL Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/HALL Icon.png"));
           break;
         }
       case "ELEV":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/ELEV Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/ELEV Icon.png"));
           break;
         }
       case "REST":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/REST Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/REST Icon.png"));
           break;
         }
       case "STAI":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/STAI Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/STAI Icon.png"));
           break;
         }
       case "DEPT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/DEPT Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/DEPT Icon.png"));
           break;
         }
       case "LABS":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/LABS Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/LABS Icon.png"));
           break;
         }
       case "INFO":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/INFO Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/INFO Icon.png"));
           break;
         }
       case "CONF":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/CONF Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/CONF Icon.png"));
           break;
         }
       case "EXIT":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/EXIT Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/EXIT Icon.png"));
           break;
         }
       case "RETL":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/RETL Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/RETL Icon.png"));
           break;
         }
       case "SERV":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/MapIcons/SERV Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream("Icons/MapIcons/SERV Icon.png"));
           break;
         }
       case "Infusion Pump":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/IPMP Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream(
+                      "Icons/EquipmentIcons/IPMP Icon.png"));
           break;
         }
       case "Bed":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/PTBD Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream(
+                      "Icons/EquipmentIcons/PTBD Icon.png"));
           break;
         }
       case "Recliner":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/RECL Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream(
+                      "Icons/EquipmentIcons/RECL Icon.png"));
           break;
         }
       case "Xray":
         {
-          image = new Image(getClass().getResourceAsStream("Icons/EquipmentIcons/XRAY Icon.png"));
+          image =
+              new Image(
+                  homePageController.class.getResourceAsStream(
+                      "Icons/EquipmentIcons/XRAY Icon.png"));
           break;
         }
     }
@@ -664,5 +706,10 @@ public class mapPageController extends returnHomePage implements Initializable {
     xrayButton.setGraphic(getIcon("Xray"));
     pumpButton.setGraphic(getIcon("Infusion Pump"));
     reclinerButton.setGraphic(getIcon("Recliner"));
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setHomeScreen();
   }
 }

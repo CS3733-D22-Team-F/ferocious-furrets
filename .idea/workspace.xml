@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Minor changes to equipmentDeliveryDAO objects">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/scanDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/scanDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/RequestDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/RequestDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/scanRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/scanRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/giftRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftRequestQueue.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
-    </list>
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +105,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45632184" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -123,9 +116,14 @@
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jackh\OneDrive - Worcester Polytechnic Institute (wpi.edu)\Documents\GitHub\furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF" />
+      <recent name="C:\Users\jackh\OneDrive - Worcester Polytechnic Institute (wpi.edu)\Documents\GitHub\furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\FloorMap" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="edu.wpi.cs3733.D22.teamF" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="edu.wpi.furious_furrets" />
@@ -282,7 +280,8 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
-      <workItem from="1649549038300" duration="3200000" />
+      <workItem from="1649549372161" duration="2416000" />
+      <workItem from="1649552508610" duration="4774000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -473,12 +472,12 @@
       <option name="project" value="LOCAL" />
       <updated>1649477326216</updated>
     </task>
-    <task id="LOCAL-00028" summary="Minor changes to equipmentDeliveryDAO objects">
-      <created>1649505562363</created>
+    <task id="LOCAL-00028" summary="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have">
+      <created>1649557267468</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1649505562363</updated>
+      <updated>1649557267468</updated>
     </task>
     <option name="localTasksCounter" value="29" />
     <servers />
@@ -510,8 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
-    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
     <MESSAGE value="added login menu bar to exit application" />
     <MESSAGE value="Fixed Scan page bug" />
     <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
@@ -534,8 +531,10 @@
     <MESSAGE value="Merged with Evans' IController and PageController abstraction refactoring" />
     <MESSAGE value="Updated DAOImpl classes to include proper methods and return types" />
     <MESSAGE value="Implemented initTable for scan and labs" />
-    <MESSAGE value="Minor changes to equipmentDeliveryDAO objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes to equipmentDeliveryDAO objects" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have done" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have &#10;also jack has a small penis" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
+    <option name="LAST_COMMIT_MESSAGE" value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

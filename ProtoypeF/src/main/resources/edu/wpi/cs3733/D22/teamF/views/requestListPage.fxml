@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onMouseEntered="#populateList" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.requestListController">
+<AnchorPane onMouseEntered="#populateList" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.requestListController">
    <children>
       <VBox layoutX="74.0" layoutY="66.0" prefHeight="567.0" prefWidth="664.0">
          <children>
@@ -49,7 +49,7 @@
          </children>
       </VBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="896.0" layoutY="478.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
-      <JFXButton fx:id="myBackButton" buttonType="RAISED" layoutX="898.0" layoutY="477.0" onAction="#backToHomePage" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" text="Home" textFill="#123090">
+      <JFXButton fx:id="myBackButton" buttonType="RAISED" layoutX="898.0" layoutY="477.0" onAction="#switchToHome" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" text="Home" textFill="#123090">
          <font>
             <Font size="28.0" />
          </font>
