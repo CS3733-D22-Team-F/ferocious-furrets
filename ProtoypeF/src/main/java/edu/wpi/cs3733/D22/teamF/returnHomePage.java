@@ -23,7 +23,7 @@ public class returnHomePage {
    */
   @FXML
   private void backToHomePage(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
+    root = FXMLLoader.load(getClass().getResource("landingPage.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

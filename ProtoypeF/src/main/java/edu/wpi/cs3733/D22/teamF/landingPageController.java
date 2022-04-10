@@ -21,6 +21,7 @@ public class landingPageController implements Initializable {
   private Stage stage;
   private Scene scene;
   private Parent root;
+  boolean toggleOff = false;
 
   @FXML private Label azuLabel;
   @FXML private Label nikolaLabel;
@@ -229,10 +230,15 @@ public class landingPageController implements Initializable {
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-    //    SceneManager.getInstance().setScene("landingPage.fxml");
   }
 
-  boolean toggleOff = false;
+  @FXML
+  public void switchToLogin(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("logInPage.fxml");
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
 
   @FXML
   public void toggleCredits(ActionEvent event) throws IOException {

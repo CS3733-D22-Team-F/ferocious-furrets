@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added functionality to 'page credits button' and rest of the features in landing page">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="set credit labels not visible on start up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/logInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/logInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/returnHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/returnHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +284,7 @@
       <workItem from="1649348213430" duration="299000" />
       <workItem from="1649557385877" duration="4419000" />
       <workItem from="1649563935910" duration="823000" />
-      <workItem from="1649565768012" duration="3026000" />
+      <workItem from="1649565768012" duration="3987000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -499,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649568888691</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="set credit labels not visible on start up">
+      <created>1649568971761</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1649568971761</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Scan page bug" />
     <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
     <MESSAGE value="Fixed add Location bug with double/integer formatting" />
     <MESSAGE value="Fixed icon update on map when reset from csv file" />
@@ -554,7 +564,8 @@
     <MESSAGE value="added icons to landing page buttons" />
     <MESSAGE value="added toggle on off labels to landing page and resizing to page" />
     <MESSAGE value="added functionality to 'page credits button' and rest of the features in landing page" />
-    <option name="LAST_COMMIT_MESSAGE" value="added functionality to 'page credits button' and rest of the features in landing page" />
+    <MESSAGE value="set credit labels not visible on start up" />
+    <option name="LAST_COMMIT_MESSAGE" value="set credit labels not visible on start up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

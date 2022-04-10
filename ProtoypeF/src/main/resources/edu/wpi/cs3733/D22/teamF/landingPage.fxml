@@ -216,9 +216,24 @@
    <bottom>
       <AnchorPane prefHeight="71.0" prefWidth="1435.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
          <children>
-            <HBox layoutY="6.0" prefHeight="94.0" prefWidth="1435.0" spacing="35.0">
+            <HBox layoutY="6.0" prefHeight="94.0" prefWidth="1435.0" spacing="30.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="532.0" ripplerFill="#801818" style="-fx-background-color: #123090;" text="  SERVICE REQUESTS" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="74.0" prefWidth="228.0" ripplerFill="#801818" style="-fx-background-color: #123090;" text="  Logout" textFill="WHITE">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/HomeIcons/logOutIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#801818" style="-fx-background-color: #123090;" text="  SERVICE REQUESTS" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
@@ -230,7 +245,7 @@
                         </ImageView>
                      </graphic>
                      <HBox.margin>
-                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                        <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
                   <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="445.0" ripplerFill="#801818" style="-fx-background-color: #123090;" text="  CALL SERVICE" textFill="WHITE">
