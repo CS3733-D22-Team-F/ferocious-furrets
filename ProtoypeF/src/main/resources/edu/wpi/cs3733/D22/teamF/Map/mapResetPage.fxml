@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.mapResetController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapResetController">
    <children>
       <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
       <JFXButton layoutX="233.0" layoutY="334.0" onAction="#resetFile" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reload Map" />

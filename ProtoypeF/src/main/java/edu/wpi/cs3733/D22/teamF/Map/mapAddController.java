@@ -1,15 +1,12 @@
-package edu.wpi.cs3733.D22.teamF.pageControllers;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXCheckBox;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.coordTempHolder;
-import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.homePageController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -99,30 +96,13 @@ public class mapAddController implements Initializable {
         && !longField.getText().equals("")
         && !shortField.getText().equals("")) {
       try {
-        String nID =
-            generateNodeID(
-                nodeBox.getValue(),
-                floorField.getText(),
-                (int) Double.parseDouble(xField.getText()),
-                (int) Double.parseDouble(yField.getText()));
-        System.out.println(nID);
-        Location l =
-            new Location(
-                nID,
-                (int) Double.parseDouble(xField.getText()),
-                (int) Double.parseDouble(yField.getText()),
-                floorField.getText(),
-                "Tower",
-                nodeBox.getValue().substring(0, 4),
-                longField.getText(),
-                shortField.getText());
-        DatabaseManager.getLocationDAO().addLocation(l);
-        floorField.clear();
-        nodeBox.setValue("PATI - Patient Room");
-        xField.clear();
-        yField.clear();
-        longField.clear();
-        shortField.clear();
+        MapLocationModifier.addLocation(
+            nodeBox.getValue(),
+            xField.getText(),
+            yField.getText(),
+            floorField.getText(),
+            longField.getText(),
+            shortField.getText());
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
@@ -139,82 +119,12 @@ public class mapAddController implements Initializable {
   }
 
   /**
-   * @param nodeType
-   * @param floor
-   * @param x
-   * @param y
-   * @return
-   * @throws SQLException
-   * @throws IOException
-   *     <p>Algorithm to create primary key nodeID for Location object following naming standards
-   *     specified
-   */
-  public String generateNodeID(String nodeType, String floor, int x, int y)
-      throws SQLException, IOException {
-    String nNodeType = nodeType.substring(0, 4);
-    String nFloor = floor;
-    int roomNum = 1;
-    String rNum;
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
-
-    //    Statement stm = DatabaseManager.getConn().createStatement();
-    //    String cmd =
-    //            "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" +
-    // nFloor + "'";
-    //    ResultSet rset = stm.executeQuery(cmd);
-    ResultSet rset =
-        DatabaseManager.runQuery(
-            "SELECT * FROM Locations WHERE nodeType = '"
-                + nNodeType
-                + "' AND floor = '"
-                + nFloor
-                + "'");
-    while (rset.next()) {
-      roomNum++;
-    }
-    rset.close();
-    if ((roomNum / 10.0) >= 10) {
-      rNum = "" + roomNum;
-    } else if ((roomNum / 10.0) >= 1) {
-      rNum = "0" + roomNum;
-    } else {
-      rNum = "00" + roomNum;
-    }
-
-    switch (nFloor) {
-      case "3":
-        nFloor = "03";
-        break;
-      case "2":
-        nFloor = "02";
-        break;
-      case "1":
-        nFloor = "01";
-        break;
-      case "L1":
-        nFloor = "L1";
-        break;
-      case "L2":
-        nFloor = "L2";
-        break;
-      default:
-        break;
-    }
-
-    String nID;
-    nID = "f" + nNodeType + rNum + nFloor;
-    //    stm.close();
-    return nID;
-  }
-
-  /**
    * popup window to click a location on map and automatically load x-y coords to window
    *
    * @throws IOException
    */
   public void popUpTracker() throws IOException {
-    Parent root =
-        FXMLLoader.load(homePageController.class.getResource("views/mapTrackerPage.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);

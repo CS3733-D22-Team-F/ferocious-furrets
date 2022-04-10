@@ -1,7 +1,7 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.Map;
 
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +22,8 @@ public class mapMouseTracker {
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
   Image F3 = new Image(getClass().getResourceAsStream("FloorMap/Floor3.jpg"));
+  Image F4 = new Image(getClass().getResourceAsStream("FloorMap/Floor4.jpg"));
+  Image F5 = new Image(getClass().getResourceAsStream("FloorMap/Floor5.jpg"));
   Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
   Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
 
@@ -70,6 +72,16 @@ public class mapMouseTracker {
   public void changeToF3() {
     mapHolder.setImage(F3);
     floor = "3";
+  }
+
+  public void changeToF4() {
+    mapHolder.setImage(F4);
+    floor = "4";
+  }
+
+  public void changeToF5() {
+    mapHolder.setImage(F5);
+    floor = "5";
   }
 
   public void changeToL1() {

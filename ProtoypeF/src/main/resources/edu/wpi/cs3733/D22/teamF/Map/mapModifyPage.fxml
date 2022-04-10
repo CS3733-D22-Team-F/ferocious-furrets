@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="549.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapModifyController">
+   <children>
+      <AnchorPane fx:id="iconPane" prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <ImageView fx:id="mapHolder" fitHeight="500.0" fitWidth="700.0" onMouseClicked="#track" pickOnBounds="true" preserveRatio="true" />
+            <MenuBar layoutX="16.0" layoutY="8.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Change Map">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#changeToF5" text="Floor 5" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToF4" text="Floor 4" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToL1" text="Lower 1" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToL2" text="Lower 2" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="725.0" layoutY="19.0" prefHeight="508.0" prefWidth="260.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="156.0" text="Current: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="nodeBox" prefHeight="26.0" prefWidth="416.0" />
+            <Label prefHeight="35.0" prefWidth="156.0" text="Name:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="longField" prefHeight="0.0" prefWidth="238.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
+            <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
+            <JFXButton onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" />
+            <JFXButton onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
