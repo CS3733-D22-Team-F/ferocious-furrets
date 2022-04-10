@@ -80,7 +80,14 @@ public class RequestDAOImpl implements IRequestDAO {
                 fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4));
     }
 
-    public ArrayList<String> makeArrayListFromString(String currentLine) {
+
+    public static String generateInsertStatementForService(ArrayList<String> fields){
+        return String.format(
+                "INSERT INTO ServiceRequest VALUES ('%s', '%s', '%s', '%s','%s')",
+                fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4));
+    }
+
+    public static ArrayList<String> makeArrayListFromString(String currentLine) {
         ArrayList<String> fields = new ArrayList<>();
         String[] currentLineSplit = currentLine.split(",");
         String reqID = currentLineSplit[0];

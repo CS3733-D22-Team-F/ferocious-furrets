@@ -28,7 +28,9 @@ public class scanRequest extends MedicalRequest {
   }
 
   @Override
-  public void place(ArrayList<String> fields) throws SQLException {}
+  public void place(ArrayList<String> fields) throws SQLException {
+    db.addRequest(fields);
+  }
 
   @Override
   public void resolve(String reqID) {}
@@ -53,7 +55,7 @@ public class scanRequest extends MedicalRequest {
 
   public String generateInsertStatement() {
     return String.format(
-        "INSERT INTO scanRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        "INSERT INTO scanRequest VALUES ('%s', '%s')",
         reqID, nodeID, assignedEmpID, requesterEmpID, status, medicalType);
   }
 
