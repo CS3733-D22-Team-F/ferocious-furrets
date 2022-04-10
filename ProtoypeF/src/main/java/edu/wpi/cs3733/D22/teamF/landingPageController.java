@@ -264,11 +264,11 @@ public class landingPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //    azuLabel.setVisible(false);
-    //    nikolaLabel.setVisible(false);
-    //    johnLabel.setVisible(false);
-    //    johnnikolaLabel.setVisible(false);
-    //    evansLabel.setVisible(false);
-    //    carterLabel.setVisible(false);
+    azuLabel.setVisible(false);
+    nikolaLabel.setVisible(false);
+    johnLabel.setVisible(false);
+    johnnikolaLabel.setVisible(false);
+    evansLabel.setVisible(false);
+    carterLabel.setVisible(false);
   }
 }
