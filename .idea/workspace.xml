@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Revert &quot;Fixed deleteIcon bug and filter map bug&quot;&#10;&#10;This reverts commit 7835d21f">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added singleton SceneManager to the returnHomePage class, home button now works for all fxmls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -80,7 +82,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="controller_fxml_refactor" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -101,7 +103,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -126,7 +128,33 @@
       <recent name="edu.wpi.furious_furrets" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Fapp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Fapp" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Main" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProtoypeF [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -160,27 +188,6 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ProtoypeF [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="runShadow" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -232,25 +239,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TeamF_Iteration1.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/ProtoypeF/build/libs/TeamF_Iteration1.jar" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
-      <item itemvalue="Gradle.ProtoypeF [runShadow]" />
       <item itemvalue="Gradle.ProtoypeF [build]" />
-      <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
+      <item itemvalue="Application.Fapp" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Fapp" />
         <item itemvalue="Gradle.ProtoypeF [run]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
-        <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
-        <item itemvalue="Gradle.ProtoypeF [runShadow]" />
       </list>
     </recent_temporary>
   </component>
@@ -277,6 +280,10 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
+      <workItem from="1649557385877" duration="4419000" />
+      <workItem from="1649563935910" duration="823000" />
+      <workItem from="1649565768012" duration="4712000" />
+      <workItem from="1649633550109" duration="981000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -467,7 +474,56 @@
       <option name="project" value="LOCAL" />
       <updated>1649477326216</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added landingPageButton to homepage and created border outline for land page">
+      <created>1649559082037</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1649559082038</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added icons to landing page buttons">
+      <created>1649562524177</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649562524177</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added toggle on off labels to landing page and resizing to page">
+      <created>1649566088352</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1649566088352</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added functionality to 'page credits button' and rest of the features in landing page">
+      <created>1649568888691</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1649568888691</updated>
+    </task>
+    <task id="LOCAL-00032" summary="set credit labels not visible on start up">
+      <created>1649568971761</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1649568971761</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added logout button with functionality and refactored scene manager">
+      <created>1649569932680</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1649569932680</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fixed menu bar bug">
+      <created>1649570539907</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1649570539907</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,13 +553,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
-    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
-    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
-    <MESSAGE value="added login menu bar to exit application" />
-    <MESSAGE value="Fixed Scan page bug" />
-    <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
-    <MESSAGE value="Fixed add Location bug with double/integer formatting" />
     <MESSAGE value="Fixed icon update on map when reset from csv file" />
     <MESSAGE value="Icons update on add/delete" />
     <MESSAGE value="Icons update on reset from CSV" />
@@ -522,7 +571,14 @@
     <MESSAGE value="Merged with Evans' IController and PageController abstraction refactoring" />
     <MESSAGE value="Updated DAOImpl classes to include proper methods and return types" />
     <MESSAGE value="Implemented initTable for scan and labs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented initTable for scan and labs" />
+    <MESSAGE value="added landingPageButton to homepage and created border outline for land page" />
+    <MESSAGE value="added icons to landing page buttons" />
+    <MESSAGE value="added toggle on off labels to landing page and resizing to page" />
+    <MESSAGE value="added functionality to 'page credits button' and rest of the features in landing page" />
+    <MESSAGE value="set credit labels not visible on start up" />
+    <MESSAGE value="added logout button with functionality and refactored scene manager" />
+    <MESSAGE value="fixed menu bar bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed menu bar bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

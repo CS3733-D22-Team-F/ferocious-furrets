@@ -3,33 +3,35 @@ package edu.wpi.cs3733.D22.teamF;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/** control for the home page */
-public class homePageController {
+public class landingPageController implements Initializable {
 
   private Stage stage;
   private Scene scene;
   private Parent root;
+  boolean toggleOff = false;
 
-  @FXML private AnchorPane reportAnchorPane;
-  // Theme Color: #154487
-  // Button Color: #062558
+  @FXML private BorderPane reportBorderPane;
+  @FXML private Label azuLabel;
+  @FXML private Label nikolaLabel;
+  @FXML private Label johnLabel;
+  @FXML private Label johnnikolaLabel;
+  @FXML private Label evansLabel;
+  @FXML private Label carterLabel;
 
-  /**
-   * switch to medical scene
-   *
-   * @param event ActionEvent
-   * @throws IOException
-   */
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
@@ -122,7 +124,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("mapPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -139,7 +141,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("equipmentPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -156,7 +158,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("medicalPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -173,7 +175,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("medicinePage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -190,7 +192,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("mealPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -207,7 +209,7 @@ public class homePageController {
     loader.setLocation(getClass().getResource("giftPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) reportAnchorPane.getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -225,12 +227,32 @@ public class homePageController {
   }
 
   @FXML
-  public void switchToLanding(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("landingPage.fxml");
+  public void switchToLogin(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("logInPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-    //    SceneManager.getInstance().setScene("landingPage.fxml");
+  }
+
+  @FXML
+  public void toggleCredits(ActionEvent event) throws IOException {
+    if (!toggleOff) {
+      azuLabel.setVisible(false);
+      nikolaLabel.setVisible(false);
+      johnLabel.setVisible(false);
+      johnnikolaLabel.setVisible(false);
+      evansLabel.setVisible(false);
+      carterLabel.setVisible(false);
+      toggleOff = true;
+    } else if (toggleOff) {
+      azuLabel.setVisible(true);
+      nikolaLabel.setVisible(true);
+      johnLabel.setVisible(true);
+      johnnikolaLabel.setVisible(true);
+      evansLabel.setVisible(true);
+      carterLabel.setVisible(true);
+      toggleOff = false;
+    }
   }
 
   /** exits */
@@ -238,5 +260,15 @@ public class homePageController {
   public void exitProgram() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
     System.exit(0);
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    azuLabel.setVisible(false);
+    nikolaLabel.setVisible(false);
+    johnLabel.setVisible(false);
+    johnnikolaLabel.setVisible(false);
+    evansLabel.setVisible(false);
+    carterLabel.setVisible(false);
   }
 }

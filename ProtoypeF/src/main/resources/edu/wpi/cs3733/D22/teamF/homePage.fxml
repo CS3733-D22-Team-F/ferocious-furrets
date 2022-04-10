@@ -53,6 +53,11 @@
       </VBox>
       <VBox alignment="BOTTOM_CENTER" layoutX="1030.0" layoutY="329.0" prefHeight="390.0" prefWidth="250.0" spacing="10.0">
          <children>
+            <JFXButton fx:id="landingPageButton" buttonType="RAISED" onAction="#switchToLanding" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="" text="LANDING PAGE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
             <JFXButton fx:id="servButton" buttonType="RAISED" onAction="#switchToRequests" prefHeight="80.0" prefWidth="250.0" ripplerFill="#801818" style="" text="SERVICE REQUESTS">
                <font>
                   <Font size="24.0" />
