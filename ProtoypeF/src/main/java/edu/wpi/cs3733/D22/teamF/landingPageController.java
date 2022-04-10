@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class landingPageController implements Initializable {
@@ -23,6 +24,7 @@ public class landingPageController implements Initializable {
   private Parent root;
   boolean toggleOff = false;
 
+  @FXML private BorderPane reportBorderPane;
   @FXML private Label azuLabel;
   @FXML private Label nikolaLabel;
   @FXML private Label johnLabel;
@@ -122,7 +124,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("mapPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -139,7 +141,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("equipmentPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -156,7 +158,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("medicalPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -173,7 +175,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("medicinePage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -190,7 +192,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("mealPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -207,7 +209,7 @@ public class landingPageController implements Initializable {
     loader.setLocation(getClass().getResource("giftPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Stage window = (Stage) reportBorderPane.getScene().getWindow();
     window.setScene(ReportManagerScene);
     window.show();
   }
@@ -219,14 +221,6 @@ public class landingPageController implements Initializable {
   @FXML
   public void switchToRequests(ActionEvent event) throws IOException {
     scene = SceneManager.getInstance().setScene("requestListPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  @FXML
-  public void switchToLanding(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("landingPage.fxml");
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
