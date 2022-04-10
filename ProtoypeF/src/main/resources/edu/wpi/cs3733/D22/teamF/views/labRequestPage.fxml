@@ -62,7 +62,7 @@
             </HBox>
             <HBox layoutX="150.0" layoutY="656.0" prefHeight="51.0" prefWidth="504.0" spacing="30.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="61.0" prefWidth="121.0" ripplerFill="#f3ba48" style="-fx-background-color: #2aa7d0;" text="Home" textFill="WHITE" />
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="61.0" prefWidth="121.0" ripplerFill="#f3ba48" style="-fx-background-color: #2aa7d0;" text="Home" textFill="WHITE" />
                   <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="61.0" prefWidth="121.0" ripplerFill="#f3ba48" style="-fx-background-color: #2aa7d0;" text="Submit" textFill="WHITE" />
                   <JFXButton buttonType="RAISED" onAction="#reset" prefHeight="61.0" prefWidth="121.0" style="-fx-background-color: #2aa7d0;" text="Reset" textFill="WHITE" />
                </children>

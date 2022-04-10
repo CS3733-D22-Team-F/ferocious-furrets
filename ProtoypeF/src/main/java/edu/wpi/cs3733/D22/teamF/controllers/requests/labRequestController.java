@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -20,11 +20,9 @@ import javafx.stage.Stage;
 /**
  * lab request controller
  *
- * @see returnHomePage
  * @see Initializable
  */
-public class labRequestController extends returnHomePage
-    implements Initializable, IRequestController {
+public class labRequestController implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
@@ -130,5 +128,10 @@ public class labRequestController extends returnHomePage
       sAb = "B";
     }
     return reqAbb + sAb + (requestListLength + 1) + nodeID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }

@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 /** Controller for gift scene */
-public class giftController extends returnHomePage implements Initializable, IRequestController {
+public class giftController implements Initializable, IRequestController {
 
   private ArrayList<Object> itemList = new ArrayList<>();
 
@@ -261,5 +260,10 @@ public class giftController extends returnHomePage implements Initializable, IRe
       giftID = giftID + "C01";
     }
     return reqAbb + giftID + (requestListLength + 1);
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }

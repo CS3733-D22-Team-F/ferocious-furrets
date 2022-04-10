@@ -55,7 +55,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -150,7 +150,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

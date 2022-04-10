@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -11,20 +10,16 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  * controller for scan scene
  *
- * @see returnHomePage
  * @see Initializable
  */
-public class scanController extends returnHomePage implements Initializable, IRequestController {
+public class scanController implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
@@ -107,11 +102,8 @@ public class scanController extends returnHomePage implements Initializable, IRe
    * @param event
    * @throws IOException
    */
-  public void showQueueScene(ActionEvent event) throws IOException {
-    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+  void showSceneQueue(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("labRequestQueue.fxml");
   }
 
   public String generateReqID(int requestListLength, String scanType, String nodeID) {
@@ -125,5 +117,10 @@ public class scanController extends returnHomePage implements Initializable, IRe
       sAb = "M";
     }
     return reqAbb + sAb + (requestListLength + 1) + nodeID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }

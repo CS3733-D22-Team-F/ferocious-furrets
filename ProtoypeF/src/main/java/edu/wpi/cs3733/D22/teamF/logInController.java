@@ -5,19 +5,14 @@ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * controll for log in scene
- *
- * @see returnHomePage
- */
-public class logInController extends returnHomePage {
+/** controll for log in scene */
+public class logInController {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label popUpLabel;
@@ -30,10 +25,7 @@ public class logInController extends returnHomePage {
    * method to send user to the homepage after a successful authentication of username and password
    */
   public void loginSuccess() throws IOException {
-    root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
   @FXML
@@ -72,8 +64,7 @@ public class logInController extends returnHomePage {
       popUpLabel.setText("Wrong username or password, try again");
     }
     if (success) {
-      StageManager stMan = StageManager.getInstance();
-      stMan.setHomeScreen();
+      StageManager.getInstance().setDisplay("homePage.fxml");
     }
     ;
   }

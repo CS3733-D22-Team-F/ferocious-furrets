@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -78,5 +79,9 @@ public class giftQueueController implements Initializable {
     list5.add("done");
     list5.add("doctor5");
     queue.getItems().add(list5.toString());
+  }
+
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }

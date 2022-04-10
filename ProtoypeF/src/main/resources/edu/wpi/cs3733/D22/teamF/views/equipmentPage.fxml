@@ -113,7 +113,7 @@
                   <Font size="23.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="68.0" prefWidth="134.0" ripplerFill="#f3ba48" text="Home" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="68.0" prefWidth="134.0" ripplerFill="#f3ba48" text="Home" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>

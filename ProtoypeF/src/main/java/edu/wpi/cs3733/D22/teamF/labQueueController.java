@@ -1,16 +1,13 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
 /**
  * Lab queue controll
@@ -33,10 +30,7 @@ public class labQueueController implements Initializable {
    */
   @FXML
   void switchToLab(ActionEvent event) {
-    Scene scene = SceneManager.getInstance().setScene("labRequestPage.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("labRequestPage.fxml");
   }
 
   /**

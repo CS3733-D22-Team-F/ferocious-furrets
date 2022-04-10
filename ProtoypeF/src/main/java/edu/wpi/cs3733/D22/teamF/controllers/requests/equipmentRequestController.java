@@ -1,11 +1,13 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,8 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class equipmentRequestController extends returnHomePage
-    implements Initializable, IRequestController {
+public class equipmentRequestController implements Initializable, IRequestController {
 
   // TODO remove
   private Stage stage;
@@ -101,5 +102,10 @@ public class equipmentRequestController extends returnHomePage
     String reqAbb = "ER";
 
     return reqAbb + equipID + (requestListLength + 1) + nodeID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }

@@ -22,7 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class mapPageController extends returnHomePage implements Initializable {
+public class mapPageController implements Initializable {
 
   String currentFloor;
 
@@ -664,5 +664,10 @@ public class mapPageController extends returnHomePage implements Initializable {
     xrayButton.setGraphic(getIcon("Xray"));
     pumpButton.setGraphic(getIcon("Infusion Pump"));
     reclinerButton.setGraphic(getIcon("Recliner"));
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("homePage.fxml");
   }
 }
