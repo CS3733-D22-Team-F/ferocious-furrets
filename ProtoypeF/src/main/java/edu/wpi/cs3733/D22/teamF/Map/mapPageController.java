@@ -457,4 +457,9 @@ public class mapPageController implements Initializable {
     temp.add(newButton);
     MapIconModifier.locationIconList.add(temp);
   }
+
+  @FXML
+  public void switchToHome(ActionEvent event) throws IOException{
+    StageManager.getInstance().setHomeScreen();
+  }
 }
