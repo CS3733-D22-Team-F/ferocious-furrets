@@ -24,7 +24,7 @@ public class RequestDAOImpl implements IRequestDAO {
    * @throws IOException
    */
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("ServiceRequest");
+    DatabaseManager.dropTableIfExist("SERVICEREQUEST");
     DatabaseManager.runStatement(
         "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
 

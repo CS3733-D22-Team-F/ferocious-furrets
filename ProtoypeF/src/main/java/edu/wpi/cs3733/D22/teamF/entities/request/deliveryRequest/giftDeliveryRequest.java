@@ -12,7 +12,13 @@ public class giftDeliveryRequest extends DeliveryRequest {
     db = new Repository("Gift");
   }
 
-  public giftDeliveryRequest(String reqID, String nodeID, String assignedEmployeeID, String requesterEmployeeID, String status, String gift) {
+  public giftDeliveryRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmployeeID,
+      String requesterEmployeeID,
+      String status,
+      String gift) {
     super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
     this.gift = gift;
   }

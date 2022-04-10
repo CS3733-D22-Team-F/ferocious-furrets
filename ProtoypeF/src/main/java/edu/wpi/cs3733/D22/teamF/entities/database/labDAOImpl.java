@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
+import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -15,80 +15,99 @@ public class labDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("labRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE labRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), type varchar(16))");
-    ArrayList<labRequest> csvLab = new ArrayList<labRequest>();
+        "CREATE TABLE labRequest (reqID varchar(16) PRIMARY KEY, type varchar(16))");
+
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      labRequest addedLab = makeObjectFromString(currentLine);
-      csvLab.add(addedLab);
-    }
-
-    for (labRequest currentScan : csvLab) {
-      DatabaseManager.runStatement(currentScan.generateInsertStatement());
+      add(makeArrayListFromString(currentLine));
     }
   }
 
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("labRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE labRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), type varchar(16))");
-    ArrayList<labRequest> csvLab = new ArrayList<labRequest>();
+        "CREATE TABLE labRequest (reqID varchar(16) PRIMARY KEY, type varchar(16))");
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      labRequest addedLab = makeObjectFromString(currentLine);
-      csvLab.add(addedLab);
-    }
-
-    for (labRequest currentScan : csvLab) {
-      DatabaseManager.runStatement(currentScan.generateInsertStatement());
+      add(makeArrayListFromString(currentLine));
     }
   }
 
   public void add(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatement(fields));
+    ArrayList<String> serviceRequestFields = new ArrayList<>();
+    ArrayList<String> labRequestFields = new ArrayList<>();
+
+    labRequestFields.add(0, fields.get(0)); // request id
+    labRequestFields.add(1, fields.get(1)); // type
+
+    //    serviceRequestFields.add(0, fields.get(0)); // request ID
+    //    serviceRequestFields.add(1, fields.get(1)); // node iD
+    //    serviceRequestFields.add(2, fields.get(2)); // assigned emp id
+    //    serviceRequestFields.add(3, fields.get(3)); // requester emp id
+    //    serviceRequestFields.add(4, fields.get(4)); // status
+
+    //    DatabaseManager.runStatement(
+    //        RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(labRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM labRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
+    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd1);
   }
 
   public void update(ArrayList<String> fields) {}
 
-  public ResultSet get() {
-    return null;
+  public ResultSet get() throws SQLException {
+    return DatabaseManager.runQuery("SELECT * FROM LABREQUEST");
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s')",
-        fields.get(0), fields.get(1), fields.get(2), fields.get(3));
+        "INSERT INTO labRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
     // TODO IMPLEMENT
+    ArrayList<String> toAdd = new ArrayList<>();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,type");
+
+    while (currentRow.next()) {
+      toAdd.add(
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
+    }
+
+    CSVWriter.writeAllToDir(fileDir, toAdd);
   }
 
   public void backUpToCSV(File file) throws SQLException, IOException {
     // TODO IMPLEMENT
+    ArrayList<String> toAdd = new ArrayList<>();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,type");
 
+    while (currentRow.next()) {
+      toAdd.add(
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
+    }
+
+    CSVWriter.writeAll(file, toAdd);
   }
 
-  public ArrayList<labRequest> resultsFromRSET(ResultSet rset) {
-    return null;
-  }
-
-  private labRequest makeObjectFromString(String currentLine) {
+  private ArrayList<String> makeArrayListFromString(String currentLine) {
+    ArrayList<String> fields = new ArrayList<>();
     String[] currentLineSplit = currentLine.split(",");
     String reqID = currentLineSplit[0];
-    String nodeID = currentLineSplit[1];
-    String assignedEmployeeID = currentLineSplit[2];
-    String reqEmpID = currentLineSplit[3];
-    String status = currentLineSplit[4];
-    String type = currentLineSplit[5];
+    String type = currentLineSplit[1];
 
-    return new labRequest(reqID, nodeID, assignedEmployeeID, reqEmpID, status, type);
+    fields.add(reqID);
+    fields.add(type);
+
+    return fields;
   }
 }

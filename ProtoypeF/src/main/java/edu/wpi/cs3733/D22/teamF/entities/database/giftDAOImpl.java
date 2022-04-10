@@ -3,8 +3,6 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.giftDeliveryRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -24,13 +22,12 @@ public class giftDAOImpl implements IRequestDAO {
       //      System.out.println(currentLine);
       add(makeArrayListFromString(currentLine));
     }
-
-
   }
+
   public void initTable(String filepath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("GiftRequest");
     DatabaseManager.runStatement(
-            "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(16), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
+        "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(16), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
@@ -56,24 +53,24 @@ public class giftDAOImpl implements IRequestDAO {
     ArrayList<String> giftRequestFields = new ArrayList<>();
 
     giftRequestFields.add(0, fields.get(0)); // request id
-    giftRequestFields.add(1, fields.get(5)); // equipID
+    giftRequestFields.add(1, fields.get(1)); // equipID
 
-    ServiceRequestFields.add(0, fields.get(0)); // request ID
-    ServiceRequestFields.add(1, fields.get(1)); // node ID
-    ServiceRequestFields.add(2, fields.get(2)); // assigned emp id
-    ServiceRequestFields.add(3, fields.get(3)); // requester emp id
-    ServiceRequestFields.add(4, fields.get(4)); // status
+    //    ServiceRequestFields.add(0, fields.get(0)); // request ID
+    //    ServiceRequestFields.add(1, fields.get(1)); // node ID
+    //    ServiceRequestFields.add(2, fields.get(2)); // assigned emp id
+    //    ServiceRequestFields.add(3, fields.get(3)); // requester emp id
+    //    ServiceRequestFields.add(4, fields.get(4)); // status
 
     DatabaseManager.runStatement(generateInsertStatement(giftRequestFields));
-    DatabaseManager.runStatement(
-            RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
+    //    DatabaseManager.runStatement(
+    //        RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
-    DatabaseManager.runStatement(String.format("DELETE FROM GiftRequest WHERE reqID = '%s'",
-            reqID));
-    DatabaseManager.runStatement(String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'",
-            reqID));
+    DatabaseManager.runStatement(
+        String.format("DELETE FROM GiftRequest WHERE reqID = '%s'", reqID));
+    DatabaseManager.runStatement(
+        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
   }
 
   public void update(ArrayList<String> fields) {}
@@ -84,8 +81,7 @@ public class giftDAOImpl implements IRequestDAO {
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO giftRequest VALUES ('%s', '%s', '%s', '%s')",
-        fields.get(0), fields.get(1), fields.get(2), fields.get(3));
+        "INSERT INTO giftRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
@@ -95,7 +91,7 @@ public class giftDAOImpl implements IRequestDAO {
 
     while (currentRow.next()) {
       toAdd.add(
-              String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
@@ -108,7 +104,7 @@ public class giftDAOImpl implements IRequestDAO {
 
     while (currentRow.next()) {
       toAdd.add(
-              String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
     }
 
     CSVWriter.writeAll(file, toAdd);

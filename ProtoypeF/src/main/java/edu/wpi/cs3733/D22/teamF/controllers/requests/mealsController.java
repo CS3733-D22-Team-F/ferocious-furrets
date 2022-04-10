@@ -213,6 +213,7 @@ public class mealsController implements Initializable, IRequestController {
       fields.add(employeeName.getText());
       fields.add("Requested Employee");
       fields.add(status.getValue().toString());
+      fields.add(foodList.get(0));
 
       req.placeRequest(fields);
       System.out.println("Meal Sent");

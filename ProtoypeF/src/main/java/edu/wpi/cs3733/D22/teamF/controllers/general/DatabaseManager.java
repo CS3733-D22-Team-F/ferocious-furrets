@@ -45,12 +45,15 @@ public class DatabaseManager {
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
-    RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
+    RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
+    medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    //    labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
-    //    scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
+    labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
+    scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     //    floralDAO.initTable("");
     //    giftDAO.initTable("");
     //    mealDAO.initTable("");
@@ -110,10 +113,12 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
-    dropTableIfExist("EquipmentDeliveryRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
-
+    dropTableIfExist("GIFTREQUEST");
+    dropTableIfExist("MEALREQUEST");
+    dropTableIfExist("MEDICINEREQUEST");
+    dropTableIfExist("EquipmentDeliveryRequest");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");

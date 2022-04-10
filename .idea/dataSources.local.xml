@@ -2,9 +2,16 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-213.6777.52">
     <data-source name="myDB" uuid="4e933174-d9d8-44d4-af88-bd42a988e540">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="DERBY" exact-version="0" />
-      <secret-storage>forget</secret-storage>
-      <schema-mapping />
+      <database-info product="Apache Derby" version="10.15.2.0 - (1873585)" jdbc-version="4.2" driver-name="Apache Derby Embedded JDBC Driver" driver-version="10.15.2.0 - (1873585)" dbms="DERBY" exact-version="10.15.2.0" exact-driver-version="10.15">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

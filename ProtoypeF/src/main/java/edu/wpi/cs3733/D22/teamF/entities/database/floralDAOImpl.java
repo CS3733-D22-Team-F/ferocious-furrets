@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.floralDeliveryRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;

@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
 import java.io.File;
 import java.io.IOException;
@@ -49,26 +48,23 @@ public class scanDAOImpl implements IRequestDAO {
     return fields;
   }
 
-
   public void add(ArrayList<String> fields) throws SQLException {
     ArrayList<String> serviceRequestFields = new ArrayList<>();
     ArrayList<String> scanRequestFields = new ArrayList<>();
 
     scanRequestFields.add(0, fields.get(0)); // request id
-    scanRequestFields.add(1, fields.get(5)); // type
+    scanRequestFields.add(1, fields.get(1)); // type
 
-    serviceRequestFields.add(0, fields.get(0)); // request ID
-    serviceRequestFields.add(1, fields.get(1)); // node iD
-    serviceRequestFields.add(2, fields.get(2)); // assigned emp id
-    serviceRequestFields.add(3, fields.get(3)); // requester emp id
-    serviceRequestFields.add(4, fields.get(4)); // status
+    //    serviceRequestFields.add(0, fields.get(0)); // request ID
+    //    serviceRequestFields.add(1, fields.get(1)); // node iD
+    //    serviceRequestFields.add(2, fields.get(2)); // assigned emp id
+    //    serviceRequestFields.add(3, fields.get(3)); // requester emp id
+    //    serviceRequestFields.add(4, fields.get(4)); // status
 
-    DatabaseManager.runStatement(
-        RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
+    //    DatabaseManager.runStatement(
+    //        RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
     DatabaseManager.runStatement(generateInsertStatement(scanRequestFields));
   }
-
-
 
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM scanRequest WHERE reqID = '" + reqID + "'";
@@ -86,7 +82,7 @@ public class scanDAOImpl implements IRequestDAO {
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO scanRequest VALUES ('%s', '%s')", fields.get(0), fields.get(5));
+        "INSERT INTO scanRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   public void backUpToCSV(String fileDir) throws SQLException, IOException {

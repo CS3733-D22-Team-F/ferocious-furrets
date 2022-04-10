@@ -12,7 +12,13 @@ public class medicineDeliveryRequest extends DeliveryRequest {
     db = new Repository("Medicine");
   }
 
-  public medicineDeliveryRequest(String reqID, String nodeID, String assignedEmployeeID, String requesterEmployeeID, String status, String medicine) {
+  public medicineDeliveryRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmployeeID,
+      String requesterEmployeeID,
+      String status,
+      String medicine) {
     super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
     this.medicine = medicine;
   }

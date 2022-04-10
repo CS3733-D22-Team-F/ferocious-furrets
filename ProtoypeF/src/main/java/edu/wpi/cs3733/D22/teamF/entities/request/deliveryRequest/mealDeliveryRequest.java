@@ -6,8 +6,21 @@ import java.util.ArrayList;
 
 public class mealDeliveryRequest extends DeliveryRequest {
 
+  private String meal;
+
   public mealDeliveryRequest() {
     db = new Repository("Meal");
+  }
+
+  public mealDeliveryRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmpID,
+      String reqEmpID,
+      String status,
+      String meal) {
+    super(reqID, nodeID, assignedEmpID, reqEmpID, status);
+    this.meal = meal;
   }
 
   @Override
