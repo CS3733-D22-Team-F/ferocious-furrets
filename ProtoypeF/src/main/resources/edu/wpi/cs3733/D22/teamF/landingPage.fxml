@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.homePageController">
+   <top>
+      <VBox prefHeight="124.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+              <MenuBar prefHeight="28.0" prefWidth="1280.0">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="Navigation">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#returnToMap" text="Maps" />
+                              <MenuItem mnemonicParsing="false" onAction="#returnToMedical" text="Medical" />
+                              <MenuItem fx:id="returnToEquipment" mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
+                              <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
+                              <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />
+                              <MenuItem mnemonicParsing="false" onAction="#returnToGifts" text="Gifts" />
+                              <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Quit" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+            <AnchorPane prefHeight="85.0" prefWidth="1280.0" style="-fx-background-color: #123090;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="347.0" layoutY="2.0" prefHeight="100.0" prefWidth="678.0">
+                     <children>
+                        <Label text="Brigham and Women's Hospital" textFill="WHITE">
+                           <font>
+                              <Font name="Cascadia Code Regular" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
