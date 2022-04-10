@@ -418,7 +418,7 @@
                </font>
             </JFXButton>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="64.0" layoutX="283.0" layoutY="625.0" stroke="WHITE" strokeType="INSIDE" width="127.0" />
-            <JFXButton buttonType="RAISED" layoutX="283.0" layoutY="625.0" onAction="#backToHomePage" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" text="Home" textFill="#123090">
+            <JFXButton buttonType="RAISED" layoutX="283.0" layoutY="625.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" text="Home" textFill="#123090">
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font>

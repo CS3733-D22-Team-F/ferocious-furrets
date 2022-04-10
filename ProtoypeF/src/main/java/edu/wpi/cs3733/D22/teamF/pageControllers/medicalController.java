@@ -1,11 +1,9 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.awt.*;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,10 +14,9 @@ import javax.swing.*;
 /**
  * controller for medical equipment/lab request scene
  *
- * @see returnHomePage
  * @see Initializable
  */
-public class medicalController extends returnHomePage implements Initializable {
+public class medicalController {
 
   private Stage stage;
   private Scene scene;
@@ -51,16 +48,8 @@ public class medicalController extends returnHomePage implements Initializable {
     StageManager.getInstance().setDisplay("scanPage.fxml");
   }
 
-  /**
-   * inits TODO?
-   *
-   * @param location URL
-   * @param resources ResourceBundle
-   */
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    // BackgroundImage scanImage = new BackgroundImage(new
-    // Image(getClass().getResource("Images/Scanimage.jpeg")));
-    // scanButton.setStyle("-fx-background-image: 'Images/Scanimage.jpeg'");
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setHomeScreen();
   }
 }

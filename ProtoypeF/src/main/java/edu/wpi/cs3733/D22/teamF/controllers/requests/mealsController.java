@@ -1,19 +1,21 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class mealsController extends returnHomePage implements Initializable, IRequestController {
+public class mealsController implements Initializable, IRequestController {
 
   ArrayList<Object> returnList = new ArrayList<>();
   ArrayList<Object> requestList = new ArrayList<>();
@@ -211,6 +213,7 @@ public class mealsController extends returnHomePage implements Initializable, IR
       fields.add(employeeName.getText());
       fields.add("Requested Employee");
       fields.add(status.getValue().toString());
+      fields.add(foodList.get(0));
 
       req.placeRequest(fields);
       System.out.println("Meal Sent");
@@ -229,5 +232,10 @@ public class mealsController extends returnHomePage implements Initializable, IR
     String reqAbb = "MR";
 
     return reqAbb + nodeID + (requestListLength + 1);
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setHomeScreen();
   }
 }

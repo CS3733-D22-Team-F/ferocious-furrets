@@ -24,12 +24,23 @@ public class RequestDAOImpl implements IRequestDAO {
    * @throws IOException
    */
   public void initTable(String filepath) throws SQLException, IOException {
+    DatabaseManager.dropTableIfExist("SERVICEREQUEST");
+    DatabaseManager.runStatement(
+        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+
+    List<String> lines = CSVReader.readResourceFilepath(filepath);
+    for (String currentLine : lines) {
+      //      System.out.println(currentLine);
+      add(makeArrayListFromString(currentLine));
+    }
+  }
+
+  public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("ServiceRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
 
-    ArrayList<Request> RequestListFromCSV = new ArrayList<Request>();
-    List<String> lines = CSVReader.readResourceFilepath(filepath);
+    List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       add(makeArrayListFromString(currentLine));
@@ -40,21 +51,8 @@ public class RequestDAOImpl implements IRequestDAO {
     return DatabaseManager.runQuery("SELECT * FROM ServiceRequest");
   }
 
-  public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("ServiceRequest");
-    DatabaseManager.runStatement(
-        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
-
-    ArrayList<Request> RequestListFromCSV = new ArrayList<Request>();
-    List<String> lines = CSVReader.readFile(file);
-    for (String currentLine : lines) {
-      //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
-    }
-  }
-
   public void add(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatement(fields));
+    DatabaseManager.runStatement(generateInsertStatementForService(fields));
   }
 
   public void delete(String reqID) throws SQLException {

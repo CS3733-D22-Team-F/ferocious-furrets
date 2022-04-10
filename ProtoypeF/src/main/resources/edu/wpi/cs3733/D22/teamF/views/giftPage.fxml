@@ -26,7 +26,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="215.0" layoutX="436.0" layoutY="261.0" stroke="#123090" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1000.0" strokeType="OUTSIDE" strokeWidth="3.0" width="459.0" />
-      <Button layoutX="1144.0" layoutY="657.0" mnemonicParsing="false" onAction="#backToHomePage" text="Home Page" textFill="DEEPSKYBLUE" />
+      <Button layoutX="1144.0" layoutY="657.0" mnemonicParsing="false" onAction="#switchToHome" text="Home Page" textFill="DEEPSKYBLUE" />
 
       <JFXTextArea editable="false" focusColor="#405aa800" layoutX="415.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="167.0" prefWidth="285.0" text="Gift Shop" unFocusColor="#4d4d4d00">
          <font>

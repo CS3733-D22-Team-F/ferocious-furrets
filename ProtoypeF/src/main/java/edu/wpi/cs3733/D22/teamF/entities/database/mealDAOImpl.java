@@ -1,58 +1,110 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
+import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
+import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class mealDAOImpl implements IRequestDAO {
-  @Override
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("mealRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+
+    List<String> lines = CSVReader.readFile(file);
+    for (String currentLine : lines) {
+      //      System.out.println(currentLine);
+      add(makeArrayListFromString(currentLine));
+    }
   }
 
-  @Override
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("mealRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+    List<String> lines = CSVReader.readResourceFilepath(file);
+    for (String currentLine : lines) {
+      //      System.out.println(currentLine);
+      add(makeArrayListFromString(currentLine));
+    }
   }
 
-  @Override
   public void add(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatement(fields));
+    ArrayList<String> serviceRequestFields = new ArrayList<>();
+    ArrayList<String> mealRequestFields = new ArrayList<>();
+
+    mealRequestFields.add(0, fields.get(0)); // request id
+    mealRequestFields.add(1, fields.get(1)); // meal type
+
+    //    serviceRequestFields.add(0, fields.get(0)); // request ID
+    //    serviceRequestFields.add(1, fields.get(1)); // node iD
+    //    serviceRequestFields.add(2, fields.get(2)); // assigned emp id
+    //    serviceRequestFields.add(3, fields.get(3)); // requester emp id
+    //    serviceRequestFields.add(4, fields.get(4)); // status
+
+    //    DatabaseManager.runStatement(
+    //        RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(mealRequestFields));
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM mealRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
+    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd1);
   }
 
-  @Override
   public void update(ArrayList<String> fields) {}
 
-  public ArrayList<mealDeliveryRequest> get() {
-    return null;
+  public ResultSet get() throws SQLException {
+    return DatabaseManager.runQuery("SELECT * FROM MEALREQUEST");
   }
 
-  @Override
+  private ArrayList<String> makeArrayListFromString(String currentLine) {
+    ArrayList<String> fields = new ArrayList<>();
+    String[] currentLineSplit = currentLine.split(",");
+    String reqID = currentLineSplit[0];
+    String type = currentLineSplit[1];
+
+    fields.add(reqID);
+    fields.add(type);
+
+    return fields;
+  }
+
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO mealRequest VALUES ('%s', '%s', '%s', '%s')",
-        fields.get(0), fields.get(1), fields.get(2), fields.get(3));
+        "INSERT INTO mealRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
-  public ArrayList<mealDeliveryRequest> resultsFromRSET(ResultSet rset) {
-    return null;
+  public void backUpToCSV(String filename) throws SQLException, IOException {
+    ArrayList<String> toAdd = new ArrayList<>();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,meal");
+
+    while (currentRow.next()) {
+      toAdd.add(
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
+    }
+
+    CSVWriter.writeAllToDir(filename, toAdd);
   }
 
-  public void backUpToCSV(String filename) throws SQLException, IOException {}
+  public void backUpToCSV(File file) throws SQLException, IOException {
+    ArrayList<String> toAdd = new ArrayList<>();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,meal");
 
-  public void backUpToCSV(File file) throws SQLException, IOException {}
+    while (currentRow.next()) {
+      toAdd.add(
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
+    }
+
+    CSVWriter.writeAll(file, toAdd);
+  }
 }

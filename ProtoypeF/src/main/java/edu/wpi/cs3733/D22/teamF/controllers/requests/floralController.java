@@ -1,7 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
 public class floralController implements Initializable, IRequestController {
@@ -20,4 +23,8 @@ public class floralController implements Initializable, IRequestController {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
+
+  void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setHomeScreen();
+  }
 }

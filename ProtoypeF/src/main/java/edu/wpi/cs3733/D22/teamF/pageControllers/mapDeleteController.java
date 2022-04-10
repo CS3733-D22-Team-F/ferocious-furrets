@@ -1,7 +1,8 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -58,7 +59,7 @@ public class mapDeleteController implements Initializable {
    * @throws SQLException
    * @throws IOException
    */
-  public void deleteLocation(String oldID) throws SQLException, IOException {
+  public void deleteLocation(String oldID) throws SQLException, IOException, URISyntaxException {
     mapPageController mpc = new mapPageController();
     mpc.deleteIcon(oldID);
     DatabaseManager.getLocationDAO().deleteLocation(oldID);
