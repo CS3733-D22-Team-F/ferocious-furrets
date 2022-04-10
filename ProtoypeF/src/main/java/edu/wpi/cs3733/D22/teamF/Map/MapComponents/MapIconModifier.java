@@ -2,13 +2,9 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.*;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,46 +13,6 @@ public class MapIconModifier {
   static String currentIcon = "";
 
   public static ArrayList<ArrayList<Object>> locationIconList = new ArrayList<>();
-  /**
-   * Add an icon to the map at a location node to provide a graphical representation of the location
-   *
-   * @param location
-   * @throws FileNotFoundException
-   */
-  public static JFXButton addIcon(Location location) throws FileNotFoundException, SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
-    newButton.setPrefSize(25, 25);
-    newButton.setMinSize(25, 25);
-    newButton.setMaxSize(25, 25);
-    MenuItem dItem = new MenuItem("Delete");
-    MenuItem mItem = new MenuItem("Modify");
-    newButton.setOnAction(
-        e -> {
-          for (int i = 0; i < locationIconList.size(); i++) {
-            if (locationIconList.get(i).get(1).equals(newButton)) {
-              Location tempLocation = (Location) locationIconList.get(i).get(0);
-              try {
-                MapPopUp.popUpModify(tempLocation);
-              } catch (IOException ex) {
-                ex.printStackTrace();
-              } catch (SQLException ex) {
-                ex.printStackTrace();
-              }
-            }
-          }
-        });
-    double x =
-        (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 856.0) * 630;
-    newButton.setLayoutX(x);
-    newButton.setLayoutY(y);
-    ArrayList<Object> temp = new ArrayList<Object>();
-    temp.add(location);
-    temp.add(newButton);
-    locationIconList.add(temp);
-    return newButton;
-  }
 
   /**
    * delete a location icon from the map

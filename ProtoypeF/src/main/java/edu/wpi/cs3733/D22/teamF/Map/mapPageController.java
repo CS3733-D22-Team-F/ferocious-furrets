@@ -377,11 +377,6 @@ public class mapPageController implements Initializable {
     MapIconModifier.showIcon(showIconButton);
   }
 
-  public void addIcon(Location lo) throws SQLException, FileNotFoundException {
-    JFXButton newButton = MapIconModifier.addIcon(lo);
-    iconPane.getChildren().add(newButton);
-  }
-
   public void wipeMap() throws SQLException {
     ArrayList<MedEquip> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
@@ -407,7 +402,7 @@ public class mapPageController implements Initializable {
     nLocations.addAll(eLocations);
     for (Location lo : nLocations) {
       try {
-        iconPane.getChildren().add(MapIconModifier.addIcon(lo));
+        addIcon(lo);
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       }
@@ -429,5 +424,42 @@ public class mapPageController implements Initializable {
     loadTable();
     wipeMap();
     displayMap();
+  }
+
+  /**
+   * Add an icon to the map at a location node to provide a graphical representation of the location
+   *
+   * @param location
+   * @throws FileNotFoundException
+   */
+  public void addIcon(Location location) throws FileNotFoundException, SQLException {
+    JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
+    newButton.setPrefSize(25, 25);
+    newButton.setMinSize(25, 25);
+    newButton.setMaxSize(25, 25);
+    newButton.setOnAction(
+        e -> {
+          for (int i = 0; i < MapIconModifier.locationIconList.size(); i++) {
+            if (MapIconModifier.locationIconList.get(i).get(1).equals(newButton)) {
+              Location tempLocation = (Location) MapIconModifier.locationIconList.get(i).get(0);
+              try {
+                MapPopUp.popUpModify(tempLocation);
+                loadMap();
+              } catch (IOException | SQLException ex) {
+                ex.printStackTrace();
+              }
+            }
+          }
+        });
+    double x =
+        (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
+    double y = (location.getYcoord() / 856.0) * 630;
+    newButton.setLayoutX(x);
+    newButton.setLayoutY(y);
+    iconPane.getChildren().add(newButton);
+    ArrayList<Object> temp = new ArrayList<Object>();
+    temp.add(location);
+    temp.add(newButton);
+    MapIconModifier.locationIconList.add(temp);
   }
 }
