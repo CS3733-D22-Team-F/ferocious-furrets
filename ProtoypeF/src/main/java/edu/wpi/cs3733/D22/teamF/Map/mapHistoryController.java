@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -55,8 +56,7 @@ public class mapHistoryController implements Initializable {
   }
 
   public void delete(Location location) throws SQLException {
-    mapPageController mpc = new mapPageController();
-    mpc.deleteIcon(location.getNodeID());
+    MapIconModifier.deleteIcon(location.getNodeID());
     DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
   }
   /** Cancel add, close window */

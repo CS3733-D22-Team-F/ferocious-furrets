@@ -33,7 +33,7 @@
                      <children>
                         <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Map/FloorMap/Floor1.jpg" />
+                              <Image url="@FloorMap/Floor1.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -60,11 +60,6 @@
                </font>
             </JFXButton>
             <JFXButton buttonType="RAISED" onAction="#popUpReset" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="LOAD" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #062558;" text="HOME" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -144,11 +139,6 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#popUpDelete" prefHeight="80.0" prefWidth="200.0" ripplerFill="RED" style="-fx-background-color: #123090;" text="DELETE" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </JFXButton>
             <JFXButton buttonType="RAISED" onAction="#popUpSave" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="SAVE" textFill="WHITE">
                <font>
                   <Font size="24.0" />
@@ -159,7 +149,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#backToHomePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="HOME" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#homePage" prefHeight="80.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="HOME" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

@@ -1,17 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapOperation;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.mapUserHistory;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -108,29 +102,12 @@ public class mapModifyController implements Initializable {
         && !yValue.equals("")
         && !longField.getText().equals("")) {
       try {
-        deleteLocation(nodeTempHolder.getLocation());
-        String nID =
-            generateNodeID(
-                nodeBox.getValue(),
-                floorValue,
-                (int) Double.parseDouble(xValue),
-                (int) Double.parseDouble(yValue));
-        System.out.println(nID);
         String shortName = longField.getText();
         if (longField.getText().length() > 128) {
           shortName = longField.getText().substring(0, 127);
         }
-        Location l =
-            new Location(
-                nID,
-                (int) Double.parseDouble(xValue),
-                (int) Double.parseDouble(yValue),
-                floorValue,
-                "Tower",
-                nodeBox.getValue().substring(0, 4),
-                longField.getText(),
-                shortName);
-        DatabaseManager.getLocationDAO().addLocation(l);
+        MapLocationModifier.addLocation(
+            nodeBox.getValue(), xValue, yValue, floorValue, longField.getText(), shortName);
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
@@ -147,102 +124,9 @@ public class mapModifyController implements Initializable {
   }
 
   public void delete(ActionEvent event) throws SQLException, IOException {
-
-    try {
-      deleteLocation(nodeTempHolder.getLocation().getNodeID());
-      Stage stage = (Stage) cancel.getScene().getWindow();
-      stage.close();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void deleteLocation(String oldID) throws SQLException, IOException {
-    ArrayList<Location> list = DatabaseManager.getLocationDAO().getAllLocations();
-    for (Location l : list) {
-      if (l.getNodeID().equals(oldID)) {
-        Location location =
-            new Location(
-                l.getNodeID(),
-                l.getXcoord(),
-                l.getYcoord(),
-                l.getFloor(),
-                l.getBuilding(),
-                l.getNodeType(),
-                l.getLongName(),
-                l.getShortName());
-        mapUserHistory.userHistory.add(new MapOperation("delete", location));
-      }
-    }
-    mapPageController mpc = new mapPageController();
-    mpc.deleteIcon(oldID);
-    DatabaseManager.getLocationDAO().deleteLocation(oldID);
-  }
-  /**
-   * @param nodeType
-   * @param floor
-   * @param x
-   * @param y
-   * @return
-   * @throws SQLException
-   * @throws IOException
-   *     <p>Algorithm to create primary key nodeID for Location object following naming standards
-   *     specified
-   */
-  public String generateNodeID(String nodeType, String floor, int x, int y)
-      throws SQLException, IOException {
-    String nNodeType = nodeType.substring(0, 4);
-    String nFloor = floor;
-    int roomNum = 1;
-    String rNum;
-    LocationsDAOImpl LDAOImpl = DatabaseManager.getLocationDAO();
-
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd =
-        "SELECT * FROM Locations WHERE nodeType = '" + nNodeType + "' AND floor = '" + nFloor + "'";
-    ResultSet rset = stm.executeQuery(cmd);
-    while (rset.next()) {
-      roomNum++;
-    }
-    rset.close();
-    if ((roomNum / 10.0) >= 10) {
-      rNum = "" + roomNum;
-    } else if ((roomNum / 10.0) >= 1) {
-      rNum = "0" + roomNum;
-    } else {
-      rNum = "00" + roomNum;
-    }
-
-    switch (nFloor) {
-      case "3":
-        nFloor = "03";
-        break;
-      case "2":
-        nFloor = "02";
-        break;
-      case "1":
-        nFloor = "01";
-        break;
-      case "L1":
-        nFloor = "L1";
-        break;
-      case "L2":
-        nFloor = "L2";
-        break;
-      default:
-        break;
-    }
-
-    String nID;
-    nID = "f" + nNodeType + rNum + nFloor;
-    stm.close();
-    return nID;
-  }
-
-  public void deleteLocation(Location location) throws SQLException, IOException {
-    mapPageController mpc = new mapPageController();
-    mpc.deleteIcon(location.getNodeID());
-    DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
+    MapLocationModifier.deleteLocation(nodeTempHolder.getLocation());
+    Stage stage = (Stage) cancel.getScene().getWindow();
+    stage.close();
   }
 
   public void track(MouseEvent event) {
