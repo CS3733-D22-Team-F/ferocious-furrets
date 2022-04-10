@@ -6,14 +6,19 @@ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/** controll for log in scene */
-public class logInController {
+/**
+ * controll for log in scene
+ *
+ * @see returnHomePage
+ */
+public class logInController extends returnHomePage {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label popUpLabel;
