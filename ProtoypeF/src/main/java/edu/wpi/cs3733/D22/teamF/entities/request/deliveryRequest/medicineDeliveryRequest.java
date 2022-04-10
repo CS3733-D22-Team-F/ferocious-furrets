@@ -6,8 +6,15 @@ import java.util.ArrayList;
 
 public class medicineDeliveryRequest extends DeliveryRequest {
 
+  private String medicine;
+
   public medicineDeliveryRequest() {
     db = new Repository("Medicine");
+  }
+
+  public medicineDeliveryRequest(String reqID, String nodeID, String assignedEmployeeID, String requesterEmployeeID, String status, String medicine) {
+    super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
+    this.medicine = medicine;
   }
 
   @Override

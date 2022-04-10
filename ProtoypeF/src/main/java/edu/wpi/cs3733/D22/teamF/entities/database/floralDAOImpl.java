@@ -43,10 +43,6 @@ public class floralDAOImpl implements IRequestDAO {
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
-  public ArrayList<floralDeliveryRequest> resultsFromRSET(ResultSet rset) {
-    return null;
-  }
-
   public void backUpToCSV(String filename) {}
 
   public void backUpToCSV(File file) throws SQLException, IOException {}

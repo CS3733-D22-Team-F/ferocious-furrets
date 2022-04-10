@@ -37,6 +37,19 @@ public class scanDAOImpl implements IRequestDAO {
     }
   }
 
+  private ArrayList<String> makeArrayListFromString(String currentLine) {
+    ArrayList<String> fields = new ArrayList<>();
+    String[] currentLineSplit = currentLine.split(",");
+    String reqID = currentLineSplit[0];
+    String type = currentLineSplit[1];
+
+    fields.add(reqID);
+    fields.add(type);
+
+    return fields;
+  }
+
+
   public void add(ArrayList<String> fields) throws SQLException {
     ArrayList<String> serviceRequestFields = new ArrayList<>();
     ArrayList<String> scanRequestFields = new ArrayList<>();
@@ -55,25 +68,7 @@ public class scanDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(generateInsertStatement(scanRequestFields));
   }
 
-  private ArrayList<String> makeArrayListFromString(String currentLine) {
-    ArrayList<String> fields = new ArrayList<>();
-    String[] currentLineSplit = currentLine.split(",");
-    String reqID = currentLineSplit[0];
-    String nodeID = currentLineSplit[1];
-    String assignedEmployeeID = currentLineSplit[2];
-    String reqEmpID = currentLineSplit[3];
-    String status = currentLineSplit[4];
-    String type = currentLineSplit[5];
 
-    fields.add(reqID);
-    fields.add(nodeID);
-    fields.add(assignedEmployeeID);
-    fields.add(reqEmpID);
-    fields.add(status);
-    fields.add(type);
-
-    return fields;
-  }
 
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM scanRequest WHERE reqID = '" + reqID + "'";

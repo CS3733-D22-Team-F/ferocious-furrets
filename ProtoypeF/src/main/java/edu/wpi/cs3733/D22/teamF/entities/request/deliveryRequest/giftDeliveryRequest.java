@@ -6,19 +6,22 @@ import java.util.ArrayList;
 
 public class giftDeliveryRequest extends DeliveryRequest {
 
+  private String gift;
+
   public giftDeliveryRequest() {
     db = new Repository("Gift");
   }
 
-  @Override
+  public giftDeliveryRequest(String reqID, String nodeID, String assignedEmployeeID, String requesterEmployeeID, String status, String gift) {
+    super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
+    this.gift = gift;
+  }
+
   public void place(ArrayList<String> fields) throws SQLException {}
 
-  @Override
   public void resolve(String reqID) {}
 
-  @Override
   public void modify(ArrayList<String> fields) {}
 
-  @Override
   public void cancel(String reqID) {}
 }
