@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -11,11 +12,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
-public class mealsController implements Initializable, IRequestController {
+public class mealsController extends PageController implements Initializable, IRequestController {
 
   ArrayList<Object> returnList = new ArrayList<>();
   ArrayList<Object> requestList = new ArrayList<>();
@@ -23,61 +27,26 @@ public class mealsController implements Initializable, IRequestController {
 
   // submit button sendind delivery
   // @FXML private Button submitButton;
+  @FXML private AnchorPane masterPane;
+  @FXML private BorderPane menuPane;
   @FXML private TextField employeeName;
   @FXML private TextField employeeID;
-  @FXML private TextField reqEmployeeID;
   @FXML private TextField nodeID;
   @FXML private TextField requestType;
   @FXML private TextField deliveryType;
   @FXML private TextField deliveryID;
-  @FXML private CheckBox pancakes;
-  @FXML private CheckBox scrEggs;
-  @FXML private CheckBox friedEggs;
-  @FXML private CheckBox oats;
-  @FXML private CheckBox fParfait1;
-  @FXML private CheckBox toast;
-  @FXML private CheckBox bacon;
-  @FXML private CheckBox sausage;
-  @FXML private CheckBox hash;
-  @FXML private CheckBox cup1;
-  @FXML private CheckBox water1;
-  @FXML private CheckBox orJuice1;
-  @FXML private CheckBox coffee1;
-  @FXML private CheckBox frSmoothie1;
-  @FXML private CheckBox apJuice1;
-  //  @FXML private CheckBox turk;
-  //  @FXML private CheckBox steak;
-  //  @FXML private CheckBox tomato;
-  //  @FXML private CheckBox noodle;
-  //  @FXML private CheckBox grCheese;
-  //  @FXML private CheckBox cup2;
-  //  @FXML private CheckBox apple;
-  //  @FXML private CheckBox orange;
-  //  @FXML private CheckBox onRings;
-  //  @FXML private CheckBox frenchFries;
-  //  @FXML private CheckBox water2;
-  //  @FXML private CheckBox orJuice2;
-  //  @FXML private CheckBox coffee2;
-  //  @FXML private CheckBox frSmoothie2;
-  //  @FXML private CheckBox apJuice2;
-  //  @FXML private CheckBox chicken;
-  //  @FXML private CheckBox soup;
-  //  @FXML private CheckBox chickWrap;
-  //  @FXML private CheckBox buffWrap;
-  //  @FXML private CheckBox frParfait;
-  //  @FXML private CheckBox potatoes;
-  //  @FXML private CheckBox rice;
-  //  @FXML private CheckBox friedveg;
-  //  @FXML private CheckBox hash2;
-  //  @FXML private CheckBox cup3;
-  //  @FXML private CheckBox water3;
-  //  @FXML private CheckBox orJuice3;
-  //  @FXML private CheckBox coffee3;
-  //  @FXML private CheckBox frSmoothie3;
-  //  @FXML private CheckBox apJuice3;
+
+  public mealsController() {}
+
+  public mealsController(ContextMenu c_menu, MenuBar m_menu) {
+    super(c_menu, m_menu);
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    this.makeMenuBar(masterPane);
+
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
     temp.add("processing");
@@ -86,110 +55,31 @@ public class mealsController implements Initializable, IRequestController {
     status.setValue("");
   }
 
-  public void reset() {}
+  public void reset() {
+    employeeName.setText("");
+    employeeID.setText("");
+    nodeID.setText("");
+    status.setValue("");
+    requestType.setText("");
+    deliveryID.setText("");
+    deliveryType.setText("");
+  }
 
   // on press returns fields into delivery object only if required fields aren't empty
-  public void submit() {
 
+  public String generateReqID(int requestListLength, String nodeID) {
+    String reqAbb = "MR";
+
+    return reqAbb + nodeID + (requestListLength + 1);
+  }
+
+  public void submit() {
     ArrayList<String> foodList = new ArrayList<>();
-    if (pancakes.isSelected()) {
-      foodList.add(pancakes.getText());
-    }
-    if (scrEggs.isSelected()) {
-      foodList.add(scrEggs.getText());
-    }
-    if (oats.isSelected()) {
-      foodList.add(oats.getText());
-    }
-    if (fParfait1.isSelected()) {
-      foodList.add(fParfait1.getText());
-    }
-    if (toast.isSelected()) {
-      foodList.add(toast.getText());
-    }
-    if (bacon.isSelected()) {
-      foodList.add(bacon.getText());
-    }
-    if (sausage.isSelected()) {
-      foodList.add(sausage.getText());
-    }
-    if (hash.isSelected()) {
-      foodList.add(hash.getText());
-    }
-    if (cup1.isSelected()) {
-      foodList.add(cup1.getText());
-    }
-    if (water1.isSelected()) {
-      foodList.add(water1.getText());
-    }
-    if (orJuice1.isSelected()) {
-      foodList.add(orJuice1.getText());
-    }
-    if (coffee1.isSelected()) {
-      foodList.add(coffee1.getText());
-    }
-    if (frSmoothie1.isSelected()) {
-      foodList.add(frSmoothie1.getText());
-    }
-    if (apJuice1.isSelected()) {
-      foodList.add(apJuice1.getText());
-    }
-    if (friedEggs.isSelected()) {
-      foodList.add(friedEggs.getText());
-    }
 
     returnList.add(status.getAccessibleText());
     returnList.add(foodList);
 
     System.out.println("Meal Not Sent");
-
-    if (pancakes.isSelected()) {
-      pancakes.setSelected(false);
-    }
-    if (scrEggs.isSelected()) {
-      scrEggs.setSelected(false);
-    }
-    if (oats.isSelected()) {
-      oats.setSelected(false);
-    }
-    if (fParfait1.isSelected()) {
-      fParfait1.setSelected(false);
-    }
-    if (toast.isSelected()) {
-      toast.setSelected(false);
-    }
-    if (bacon.isSelected()) {
-      bacon.setSelected(false);
-    }
-    if (sausage.isSelected()) {
-      sausage.setSelected(false);
-    }
-    if (hash.isSelected()) {
-      hash.setSelected(false);
-    }
-    if (cup1.isSelected()) {
-      cup1.setSelected(false);
-    }
-    if (water1.isSelected()) {
-      water1.setSelected(false);
-    }
-    if (orJuice1.isSelected()) {
-      orJuice1.setSelected(false);
-    }
-    if (coffee1.isSelected()) {
-      coffee1.setSelected(false);
-    }
-    if (frSmoothie1.isSelected()) {
-      frSmoothie1.setSelected(false);
-    }
-    if (apJuice1.isSelected()) {
-      apJuice1.setSelected(false);
-    }
-    if (friedEggs.isSelected()) {
-      friedEggs.setSelected(false);
-    }
-
-    System.out.print(foodList);
 
     requestList.clear();
     requestList.add("Meal Request");
@@ -205,7 +95,6 @@ public class mealsController implements Initializable, IRequestController {
       mealDeliveryRequest sendMealRequest = null;
       System.out.println("Meal Not Sent");
     } else {
-
       // String reqID = generateReqID()//TODO
       RequestSystem req = new RequestSystem("Meal");
       ArrayList<String> fields = new ArrayList<String>();
@@ -216,26 +105,19 @@ public class mealsController implements Initializable, IRequestController {
       fields.add(foodList.get(0));
 
       req.placeRequest(fields);
+      this.reset();
       System.out.println("Meal Sent");
-
-      employeeName.setText("");
-      employeeID.setText("");
-      nodeID.setText("");
-      status.setValue("");
-      requestType.setText("");
-      deliveryID.setText("");
-      deliveryType.setText("");
     }
-  }
-
-  public String generateReqID(int requestListLength, String nodeID) {
-    String reqAbb = "MR";
-
-    return reqAbb + nodeID + (requestListLength + 1);
   }
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    ContextMenu mealsMenu = new ContextMenu();
+    return mealsMenu;
   }
 }

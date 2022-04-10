@@ -70,12 +70,12 @@
          <menus>
             <Menu mnemonicParsing="false" text="Navigation">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#returnToMap" text="Maps" />
-                  <MenuItem mnemonicParsing="false" onAction="#returnToMedical" text="Medical" />
-                  <MenuItem fx:id="returnToEquipment" mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
-                  <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
-                  <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />
-                  <MenuItem mnemonicParsing="false" onAction="#returnToGifts" text="Gifts" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToMap" text="Maps" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToMedical" text="Medical" />
+                  <MenuItem fx:id="returnToEquipment" mnemonicParsing="false" onAction="#switchToEquipment" text="Equipment Delivery" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToMedicine" text="Medicine" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToMeals" text="Meals" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGift" text="Gifts" />
                   <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Quit" />
                </items>
             </Menu>
