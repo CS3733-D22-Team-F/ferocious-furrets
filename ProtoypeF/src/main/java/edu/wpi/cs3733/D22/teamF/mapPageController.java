@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -208,6 +209,9 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws SQLException
    */
   public void popUpAdd() throws IOException, SQLException {
+    if(UserType.userType != "admin"){
+      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     StageManager.getInstance().setDisplayAndWait("mapAddPage.fxml");
     // LocationsDAOImpl LDAOImpl = new LocationsDAOImpl(DatabaseManager.getConn());
@@ -254,6 +258,9 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws SQLException
    */
   public void popUpDelete() throws IOException, SQLException {
+    if(UserType.userType != "admin"){
+      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     StageManager.getInstance().setDisplayAndWait("mapDeletePage.fxml");
 
@@ -279,6 +286,9 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws SQLException
    */
   public void popUpReset() throws IOException, SQLException {
+    if(UserType.userType != "admin"){
+      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     ArrayList<equipment> eList = null;
     eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
@@ -346,6 +356,9 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @throws FileNotFoundException
    */
   public void addIcon(Location location) throws FileNotFoundException, SQLException {
+    if(UserType.userType != "admin"){
+      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     JFXButton newButton = new JFXButton("", getIcon(location.getNodeType()));
     newButton.setPrefSize(25, 25);
@@ -407,6 +420,9 @@ public class mapPageController extends returnHomePage implements Initializable {
    * @param nodeID
    */
   public void deleteIcon(String nodeID) {
+    if(UserType.userType != "admin"){
+      StageManager.getInstance().setDisplayAndWait("notAvailable.fxml");
+    }
     for (int i = 0; i < locationIconList.size(); i++) {
       if (locationIconList.get(i).get(2).equals(nodeID)) {
         ((AnchorPane) ((JFXButton) locationIconList.get(i).get(1)).getParent())

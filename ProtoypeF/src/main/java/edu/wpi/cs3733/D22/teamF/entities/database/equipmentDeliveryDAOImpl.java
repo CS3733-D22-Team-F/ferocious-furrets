@@ -48,6 +48,7 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
       DatabaseManager.runStatement(currentMedEquip.generateInsertStatement());
     }
   }
+
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
     DatabaseManager.runStatement(
@@ -98,23 +99,10 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
    *
    * @throws SQLException
    */
-  public ArrayList<equipmentDeliveryRequest> get() throws SQLException {
-    ArrayList<equipmentDeliveryRequest> allEquipmentServiceRequest = new ArrayList<>();
+  public ResultSet get() throws SQLException {
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
-    while (rset.next()) {
-      String reqID = rset.getString("reqID");
-      String equipID = rset.getString("equipmentID");
-      String nodeID = rset.getString("nodeID");
-      String assEmpID = rset.getString("assignedEmployeeID");
-      String reqEmpID = rset.getString("requesterEmployeeID");
-      String status = rset.getString("status");
 
-      equipmentDeliveryRequest newESR =
-          new equipmentDeliveryRequest(reqID, equipID, nodeID, assEmpID, reqEmpID, status);
-      allEquipmentServiceRequest.add(newESR);
-    }
-    rset.close();
-    return allEquipmentServiceRequest;
+    return rset;
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {

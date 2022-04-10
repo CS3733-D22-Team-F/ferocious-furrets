@@ -3,11 +3,8 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
-
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -28,7 +25,6 @@ public class scanDAOImpl implements IRequestDAO {
       //      System.out.println(currentLine);
       add(makeArrayListFromString(currentLine));
     }
-
   }
 
   @Override
@@ -57,8 +53,8 @@ public class scanDAOImpl implements IRequestDAO {
     serviceRequestFields.add(3, fields.get(3)); // requester emp id
     serviceRequestFields.add(4, fields.get(4)); // status
 
-
-    DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
+    DatabaseManager.runStatement(
+        RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
     DatabaseManager.runStatement(generateInsertStatement(scanRequestFields));
   }
 
@@ -101,8 +97,7 @@ public class scanDAOImpl implements IRequestDAO {
   @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO scanRequest VALUES ('%s', '%s')",
-        fields.get(0), fields.get(5));
+        "INSERT INTO scanRequest VALUES ('%s', '%s')", fields.get(0), fields.get(5));
   }
 
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
@@ -110,13 +105,9 @@ public class scanDAOImpl implements IRequestDAO {
     ResultSet currentRow = get();
     toAdd.add("reqID,type");
 
-    while(currentRow.next()) {
+    while (currentRow.next()) {
       toAdd.add(
-              String.format(
-                      "%s,%s",
-                      currentRow.getString("reqID"),
-                      currentRow.getString("type")
-              ));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
@@ -127,13 +118,9 @@ public class scanDAOImpl implements IRequestDAO {
     ResultSet currentRow = get();
     toAdd.add("reqID,type");
 
-    while(currentRow.next()) {
+    while (currentRow.next()) {
       toAdd.add(
-              String.format(
-                      "%s,%s",
-                      currentRow.getString("reqID"),
-                      currentRow.getString("type")
-              ));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
     }
 
     CSVWriter.writeAll(file, toAdd);
