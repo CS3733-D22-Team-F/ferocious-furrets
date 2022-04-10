@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapPopUp;
@@ -34,6 +35,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class mapPageController implements Initializable {
+  private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
+  private static final String FX_BACKGROUND_BLUE = "-fx-background-color:#123090";
+  private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
+  private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
+  private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
   private double scaleValue = 1;
   private double zoomIntensity = 0.02;
 
@@ -71,6 +77,24 @@ public class mapPageController implements Initializable {
   @FXML JFXButton xrayButton;
   @FXML JFXButton pumpButton;
   @FXML JFXButton reclinerButton;
+
+  @FXML JFXNodesList floorNodeList = new JFXNodesList();
+  @FXML JFXButton openFloorMenu;
+  @FXML JFXButton changeToF5;
+  @FXML JFXButton changeToF4;
+  @FXML JFXButton changeToF3;
+  @FXML JFXButton changeToF2;
+  @FXML JFXButton changeToL1;
+  @FXML JFXButton changeToL2;
+
+  @FXML JFXNodesList menuNodeList = new JFXNodesList();
+  @FXML JFXButton openMenu;
+  @FXML JFXButton addButton;
+  @FXML JFXButton saveButton;
+  @FXML JFXButton loadButton;
+  @FXML JFXButton tableButton;
+  @FXML JFXButton historyButton;
+  @FXML JFXButton homeButton;
 
   Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
   Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
@@ -112,7 +136,6 @@ public class mapPageController implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     nLocations.addAll(eLocations);
 
     for (Location lo : nLocations) {
@@ -125,6 +148,7 @@ public class mapPageController implements Initializable {
       }
     }
     loadAllLegend();
+    setUpNode();
     changeToF1();
   }
 
@@ -133,42 +157,56 @@ public class mapPageController implements Initializable {
     mapHolder.setImage(F1);
     MapLocationModifier.currentFloor = "1";
     MapIconModifier.showFloorIcon("1");
+    openFloorMenu.setText("F1");
+    floorNodeList.animateList(false);
   }
 
   public void changeToF2() {
     mapHolder.setImage(F2);
     MapLocationModifier.currentFloor = "2";
     MapIconModifier.showFloorIcon("2");
+    openFloorMenu.setText("F2");
+    floorNodeList.animateList(false);
   }
 
   public void changeToF3() {
     mapHolder.setImage(F3);
     MapLocationModifier.currentFloor = "3";
     MapIconModifier.showFloorIcon("3");
+    openFloorMenu.setText("F3");
+    floorNodeList.animateList(false);
   }
 
   public void changeToF4() {
     mapHolder.setImage(F4);
     MapLocationModifier.currentFloor = "4";
     MapIconModifier.showFloorIcon("4");
+    openFloorMenu.setText("F4");
+    floorNodeList.animateList(false);
   }
 
   public void changeToF5() {
     mapHolder.setImage(F5);
     MapLocationModifier.currentFloor = "5";
     MapIconModifier.showFloorIcon("5");
+    openFloorMenu.setText("F5");
+    floorNodeList.animateList(false);
   }
 
   public void changeToL1() {
     mapHolder.setImage(L1);
     MapLocationModifier.currentFloor = "L1";
     MapIconModifier.showFloorIcon("L1");
+    openFloorMenu.setText("L1");
+    floorNodeList.animateList(false);
   }
 
   public void changeToL2() {
     mapHolder.setImage(L2);
     MapLocationModifier.currentFloor = "L2";
     MapIconModifier.showFloorIcon("L2");
+    openFloorMenu.setText("L2");
+    floorNodeList.animateList(false);
   }
 
   public void loadAllLegend() {
@@ -467,5 +505,61 @@ public class mapPageController implements Initializable {
     newButton.setLayoutY(y);
     iconPane.getChildren().add(newButton);
     MapIconModifier.locationIconList.put(location, newButton);
+  }
+
+  public void setUpNode() {
+    floorNodeList.setSpacing(10);
+    menuNodeList.setSpacing(10);
+    menuNodeList.setRotate(90);
+    setCircleButton(openFloorMenu, 55);
+    openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToF5, 40);
+    changeToF5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToF4, 40);
+    changeToF4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToF3, 40);
+    changeToF3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToF2, 40);
+    changeToF2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToL1, 40);
+    changeToL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(changeToL2, 40);
+    changeToL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(openMenu, 55);
+    openMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(addButton, 40);
+    addButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(saveButton, 40);
+    saveButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(loadButton, 40);
+    loadButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(tableButton, 40);
+    tableButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(historyButton, 40);
+    historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    setCircleButton(homeButton, 40);
+    homeButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+  }
+
+  public static void setCircleButton(Button button, int radius) {
+    button.setStyle(
+        "-fx-background-radius: "
+            + radius
+            + "em; "
+            + "-fx-min-width: "
+            + radius
+            + "px; "
+            + "-fx-min-height: "
+            + radius
+            + "px; "
+            + "-fx-max-width: "
+            + radius
+            + "px; "
+            + "-fx-max-height: "
+            + radius
+            + "px;"
+            + FX_TEXT_FILL_WHITE
+            + ";"
+            + FX_BACKGROUND_BLUE);
   }
 }
