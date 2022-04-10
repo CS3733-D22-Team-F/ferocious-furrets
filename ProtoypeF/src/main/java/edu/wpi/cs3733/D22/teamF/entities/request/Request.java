@@ -31,6 +31,11 @@ public abstract class Request implements IRequest {
     this.status = status;
   }
 
+  public String generateInsertStatement() {
+    return String.format("INSERT INTO ServiceRequest VALUES ('%s', '%s', '%s', '%s', '%s')",
+            reqID, nodeID, assignedEmpID, requesterEmpID, status);
+  }
+
   public Request() {}
 
   public String getAssignedEmpID() {

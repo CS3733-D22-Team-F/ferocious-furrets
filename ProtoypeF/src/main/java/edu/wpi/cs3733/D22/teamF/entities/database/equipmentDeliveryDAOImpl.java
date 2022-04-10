@@ -31,7 +31,6 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
    * @throws SQLException
    * @throws IOException
    */
-  @Override
   public void initTable(String filePath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
     DatabaseManager.runStatement(
@@ -49,7 +48,6 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
       DatabaseManager.runStatement(currentMedEquip.generateInsertStatement());
     }
   }
-
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
     DatabaseManager.runStatement(
