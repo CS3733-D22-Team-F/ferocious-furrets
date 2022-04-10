@@ -1,1 +1,1 @@
-reqID,nodeID, assignedEmpID, requesterEmpID, status, reqType, medicalType, sampleType
+reqID,sampleType

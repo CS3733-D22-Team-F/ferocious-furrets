@@ -9,9 +9,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,28 +34,27 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
   public void initTable(String filepath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("EquipmentDeliveryRequest");
     DatabaseManager.runStatement(
-            "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), " +
-                    "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
+        "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), "
+            + "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       add(makeArrayListFromString(currentLine));
     }
-
   }
+
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("EquipmentDeliveryRequest");
     DatabaseManager.runStatement(
-            "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), " +
-                    "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
+        "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), "
+            + "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       add(makeArrayListFromString(currentLine));
     }
-
   }
 
   public ResultSet get() throws SQLException, IOException {
@@ -78,7 +75,8 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     ServiceRequestFields.add(4, fields.get(4)); // status
 
     DatabaseManager.runStatement(generateInsertStatement(EquipmentDeliveryRequestFields));
-    DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
+    DatabaseManager.runStatement(
+        RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
@@ -88,14 +86,11 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(cmd1);
   }
 
-  public void update(ArrayList<String> fields) throws SQLException {
-
-  }
+  public void update(ArrayList<String> fields) throws SQLException {}
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-            "INSERT INTO ServiceRequest VALUES ('%s', '%s')",
-            fields.get(0), fields.get(1));
+        "INSERT INTO ServiceRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   private ArrayList<String> makeArrayListFromString(String currentLine) {
@@ -110,19 +105,14 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     return fields;
   }
 
-
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
     toAdd.add("reqID,equipID");
 
-    while(currentRow.next()) {
+    while (currentRow.next()) {
       toAdd.add(
-              String.format(
-                      "%s,%s",
-                      currentRow.getString("reqID"),
-                      currentRow.getString("equipID")
-              ));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("equipID")));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
@@ -133,13 +123,9 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     ResultSet currentRow = get();
     toAdd.add("reqID,equipID");
 
-    while(currentRow.next()) {
+    while (currentRow.next()) {
       toAdd.add(
-              String.format(
-                      "%s,%s",
-                      currentRow.getString("reqID"),
-                      currentRow.getString("equipID")
-              ));
+          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("equipID")));
     }
 
     CSVWriter.writeAll(file, toAdd);

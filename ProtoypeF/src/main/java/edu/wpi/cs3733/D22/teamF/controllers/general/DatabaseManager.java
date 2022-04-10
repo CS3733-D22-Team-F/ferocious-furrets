@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.general;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -17,6 +18,7 @@ import java.sql.*;
 public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
       new equipmentDeliveryDAOImpl();
@@ -41,11 +43,14 @@ public class DatabaseManager {
    * @throws IOException
    */
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
+
+    dropAllTables();
+    RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
-    labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
-    scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    //    labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
+    //    scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     //    floralDAO.initTable("");
     //    giftDAO.initTable("");
     //    mealDAO.initTable("");
@@ -100,6 +105,19 @@ public class DatabaseManager {
     }
     stm.close();
     return null;
+  }
+
+  public static void dropAllTables() throws SQLException {
+
+    // DROP ALL REQUEST
+    dropTableIfExist("EquipmentDeliveryRequest");
+    dropTableIfExist("ScanRequest");
+    dropTableIfExist("LabRequest");
+
+    // DROP BIG TABLES
+    dropTableIfExist("ServiceRequest");
+    dropTableIfExist("MedicalEquipment");
+    dropTableIfExist("Locations");
   }
 
   public static void dropTableIfExist(String droppingTable) throws SQLException {

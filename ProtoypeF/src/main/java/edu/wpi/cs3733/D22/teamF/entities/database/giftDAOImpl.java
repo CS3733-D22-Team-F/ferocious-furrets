@@ -36,7 +36,7 @@ public class giftDAOImpl implements IRequestDAO {
   @Override
   public void update(ArrayList<String> fields) {}
 
-  public ArrayList<giftDeliveryRequest> get() {
+  public ResultSet get() {
     return null;
   }
 

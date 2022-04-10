@@ -12,7 +12,6 @@ import java.util.List;
 
 public class labDAOImpl implements IRequestDAO {
 
-  @Override
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("labRequest");
     DatabaseManager.runStatement(
@@ -30,7 +29,6 @@ public class labDAOImpl implements IRequestDAO {
     }
   }
 
-  @Override
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("labRequest");
     DatabaseManager.runStatement(
@@ -48,25 +46,21 @@ public class labDAOImpl implements IRequestDAO {
     }
   }
 
-  @Override
   public void add(ArrayList<String> fields) throws SQLException {
     DatabaseManager.runStatement(generateInsertStatement(fields));
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM labRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
   }
 
-  @Override
   public void update(ArrayList<String> fields) {}
 
-  public ArrayList<labRequest> get() {
+  public ResultSet get() {
     return null;
   }
 
-  @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s')",

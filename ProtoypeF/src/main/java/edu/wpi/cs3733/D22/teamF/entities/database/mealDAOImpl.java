@@ -9,39 +9,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class mealDAOImpl implements IRequestDAO {
-  @Override
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("mealRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
-  @Override
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("mealRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
-  @Override
   public void add(ArrayList<String> fields) throws SQLException {
     DatabaseManager.runStatement(generateInsertStatement(fields));
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM mealRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
   }
 
-  @Override
   public void update(ArrayList<String> fields) {}
 
-  public ArrayList<mealDeliveryRequest> get() {
+  public ResultSet get() {
     return null;
   }
 
-  @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO mealRequest VALUES ('%s', '%s', '%s', '%s')",
