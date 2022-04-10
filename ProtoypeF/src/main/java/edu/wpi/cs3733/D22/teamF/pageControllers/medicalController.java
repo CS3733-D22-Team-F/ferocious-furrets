@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
@@ -50,6 +50,6 @@ public class medicalController {
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("homePage.fxml");
+    StageManager.getInstance().setHomeScreen();
   }
 }

@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;

@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -64,7 +64,7 @@ public class logInController {
       popUpLabel.setText("Wrong username or password, try again");
     }
     if (success) {
-      StageManager.getInstance().setDisplay("homePage.fxml");
+      StageManager.getInstance().setHomeScreen();
     }
     ;
   }

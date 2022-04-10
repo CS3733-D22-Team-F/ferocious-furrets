@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scanButton" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.medicalController">
+<AnchorPane fx:id="scanButton" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.medicalController">
    <children>
       <JFXButton fx:id="lab" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="21.0" layoutY="104.0" onAction="#switchToLab" prefHeight="459.0" prefWidth="708.0" ripplerFill="WHITE" text="Lab" textFill="WHITE">
          <font>

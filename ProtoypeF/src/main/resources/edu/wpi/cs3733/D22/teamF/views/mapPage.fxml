@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mapPageController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.mapPageController">
    <children>
       <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
          <image>

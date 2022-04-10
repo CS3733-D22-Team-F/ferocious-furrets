@@ -1,9 +1,11 @@
-package edu.wpi.cs3733.D22.teamF;
+package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXCheckBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.coordTempHolder;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
+import edu.wpi.cs3733.D22.teamF.homePageController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -211,7 +213,8 @@ public class mapAddController implements Initializable {
    * @throws IOException
    */
   public void popUpTracker() throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("views/mapTrackerPage.fxml"));
+    Parent root =
+        FXMLLoader.load(homePageController.class.getResource("views/mapTrackerPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
