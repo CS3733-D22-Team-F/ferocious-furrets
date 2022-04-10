@@ -9,39 +9,34 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class floralDAOImpl implements IRequestDAO {
-  @Override
+
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("floralRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE floralRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
-  @Override
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("floralRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE floralRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
   }
 
-  @Override
   public void add(ArrayList<String> fields) throws SQLException {
     DatabaseManager.runStatement(generateInsertStatement(fields));
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM floralRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
   }
 
-  @Override
   public void update(ArrayList<String> fields) {}
 
-  public ArrayList<floralDeliveryRequest> get() {
+  public ResultSet get() {
     return null;
   }
 
-  @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO floralRequest VALUES ('%s', '%s', '%s', '%s')",

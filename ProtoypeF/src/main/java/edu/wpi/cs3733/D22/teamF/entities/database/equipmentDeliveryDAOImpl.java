@@ -9,6 +9,8 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import java.io.*;
 import java.sql.*;
@@ -31,148 +33,115 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
    * @throws SQLException
    * @throws IOException
    */
-  public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
+  public void initTable(String filepath) throws SQLException, IOException {
+    DatabaseManager.dropTableIfExist("EquipmentDeliveryRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+            "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), " +
+                    "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
 
-    ArrayList<equipmentDeliveryRequest> csvMedEquip = new ArrayList<equipmentDeliveryRequest>();
-    List<String> lines = CSVReader.readResourceFilepath(filePath);
+    List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      equipmentDeliveryRequest addedMedEquip = makeObjectFromString(currentLine);
-      csvMedEquip.add(addedMedEquip);
+      add(makeArrayListFromString(currentLine));
     }
 
-    for (equipmentDeliveryRequest currentMedEquip : csvMedEquip) {
-      DatabaseManager.runStatement(currentMedEquip.generateInsertStatement());
-    }
   }
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("medicalEquipmentDeliveryRequest");
+    DatabaseManager.dropTableIfExist("EquipmentDeliveryRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE medicalEquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipmentID varchar(16), nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+            "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), " +
+                    "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
 
-    ArrayList<equipmentDeliveryRequest> csvMedEquip = new ArrayList<equipmentDeliveryRequest>();
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      equipmentDeliveryRequest addedMedEquip = makeObjectFromString(currentLine);
-      csvMedEquip.add(addedMedEquip);
+      add(makeArrayListFromString(currentLine));
     }
 
-    for (equipmentDeliveryRequest currentMedEquip : csvMedEquip) {
-      DatabaseManager.runStatement(currentMedEquip.generateInsertStatement());
-    }
   }
 
-  public equipmentDeliveryRequest makeObjectFromString(String currentLine) {
-    String[] currentLineSplit = currentLine.split(",");
-    String reqID = currentLineSplit[0];
-    String nodeID = currentLineSplit[1];
-    String assignedEmployeeID = currentLineSplit[2];
-    String reqEmpID = currentLineSplit[3];
-    String status = currentLineSplit[4];
-    String equipID = currentLineSplit[5];
-
-    return new equipmentDeliveryRequest(
-        reqID, nodeID, assignedEmployeeID, reqEmpID, status, equipID);
+  public ResultSet get() throws SQLException, IOException {
+    return DatabaseManager.runQuery("SELECT * FROM EquipmentDeliveryRequest");
   }
 
-  @Override
   public void add(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatement(fields));
+    ArrayList<String> ServiceRequestFields = new ArrayList<>();
+    ArrayList<String> EquipmentDeliveryRequestFields = new ArrayList<>();
+
+    EquipmentDeliveryRequestFields.add(0, fields.get(0)); // request id
+    EquipmentDeliveryRequestFields.add(1, fields.get(5)); // equipID
+
+    ServiceRequestFields.add(0, fields.get(0)); // request ID
+    ServiceRequestFields.add(1, fields.get(1)); // node ID
+    ServiceRequestFields.add(2, fields.get(2)); // assigned emp id
+    ServiceRequestFields.add(3, fields.get(3)); // requester emp id
+    ServiceRequestFields.add(4, fields.get(4)); // status
+
+    DatabaseManager.runStatement(generateInsertStatement(EquipmentDeliveryRequestFields));
+    DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM medicalEquipmentDeliveryRequest WHERE reqID = '%s'", reqID));
+    String cmd = "DELETE FROM EquipmentDeliveryRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd);
+    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd1);
   }
 
-  @Override
-  public void update(ArrayList<String> fields) {}
+  public void update(ArrayList<String> fields) throws SQLException {
 
-  /**
-   * returns list of all locations
-   *
-   * @throws SQLException
-   */
-  public ArrayList<equipmentDeliveryRequest> get() throws SQLException {
-    ArrayList<equipmentDeliveryRequest> allEquipmentServiceRequest = new ArrayList<>();
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
-    while (rset.next()) {
-      String reqID = rset.getString("reqID");
-      String equipID = rset.getString("equipmentID");
-      String nodeID = rset.getString("nodeID");
-      String assEmpID = rset.getString("assignedEmployeeID");
-      String reqEmpID = rset.getString("requesterEmployeeID");
-      String status = rset.getString("status");
-
-      equipmentDeliveryRequest newESR =
-          new equipmentDeliveryRequest(reqID, equipID, nodeID, assEmpID, reqEmpID, status);
-      allEquipmentServiceRequest.add(newESR);
-    }
-    rset.close();
-    return allEquipmentServiceRequest;
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {
-    System.out.println(fields.size());
     return String.format(
-        "INSERT INTO medicalEquipmentDeliveryRequest VALUES ('%s', '%s', '%s', '%s', '%s, '%s')",
-        fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(5));
+            "INSERT INTO ServiceRequest VALUES ('%s', '%s')",
+            fields.get(0), fields.get(1));
   }
 
-  /**
-   * Saves the Medical Equipment Request table to a csv file
-   *
-   * @param fileDir is the name of the file the map will be backed up to
-   * @throws SQLException
-   * @throws IOException
-   */
+  private ArrayList<String> makeArrayListFromString(String currentLine) {
+    ArrayList<String> fields = new ArrayList<>();
+    String[] currentLineSplit = currentLine.split(",");
+    String reqID = currentLineSplit[0];
+    String equipID = currentLineSplit[1];
+
+    fields.add(0, reqID);
+    fields.add(1, equipID);
+
+    return fields;
+  }
+
+
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
-    ArrayList<equipmentDeliveryRequest> equipmentDeliveryRequest = get();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,equipID");
 
-    toAdd.add("reqID,equipID,nodeID,assEmpID,reqEmpID,status");
-    for (equipmentDeliveryRequest e : equipmentDeliveryRequest) {
+    while(currentRow.next()) {
       toAdd.add(
-          String.format(
-              "%s,%s,%s,%s,%s,%s",
-              e.getReqID(),
-              e.getRequestedEquipmentID(),
-              e.getNodeID(),
-              e.getAssignedEmpID(),
-              e.getRequestedEquipmentID(),
-              e.getStatus()));
+              String.format(
+                      "%s,%s",
+                      currentRow.getString("reqID"),
+                      currentRow.getString("equipID")
+              ));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
-  /**
-   * Saves the Medical Equipment Request table to a csv file
-   *
-   * @param file FILE FROM JAVAFXCHOOSER
-   * @throws SQLException
-   * @throws IOException
-   */
+
   public void backUpToCSV(File file) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
-    ArrayList<equipmentDeliveryRequest> equipmentDeliveryRequest = get();
+    ResultSet currentRow = get();
+    toAdd.add("reqID,equipID");
 
-    toAdd.add("reqID,equipID,nodeID,assEmpID,reqEmpID,status");
-    for (equipmentDeliveryRequest e : equipmentDeliveryRequest) {
+    while(currentRow.next()) {
       toAdd.add(
-          String.format(
-              "%s,%s,%s,%s,%s,%s",
-              e.getReqID(),
-              e.getRequestedEquipmentID(),
-              e.getNodeID(),
-              e.getAssignedEmpID(),
-              e.getRequestedEquipmentID(),
-              e.getStatus()));
+              String.format(
+                      "%s,%s",
+                      currentRow.getString("reqID"),
+                      currentRow.getString("equipID")
+              ));
     }
+
     CSVWriter.writeAll(file, toAdd);
   }
 }

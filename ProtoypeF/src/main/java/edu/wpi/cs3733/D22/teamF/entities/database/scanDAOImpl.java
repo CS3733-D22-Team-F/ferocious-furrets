@@ -16,13 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class scanDAOImpl implements IRequestDAO {
-  @Override
+
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("scanRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE scanRequest (reqID varchar(16) FOREIGN KEY, type varchar(16))");
+            "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, type varchar(16), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
-    ArrayList<scanRequest> RequestListFromCSV = new ArrayList<scanRequest>();
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
@@ -31,12 +30,10 @@ public class scanDAOImpl implements IRequestDAO {
 
   }
 
-  @Override
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("scanRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, type varchar(16)) foreign key (reqID) references SERVICEREQUEST(reqID)");
-    ArrayList<scanRequest> RequestListFromCSV = new ArrayList<scanRequest>();
+        "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, type varchar(16), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
@@ -82,7 +79,6 @@ public class scanDAOImpl implements IRequestDAO {
     return fields;
   }
 
-  @Override
   public void delete(String reqID) throws SQLException {
     String cmd = "DELETE FROM scanRequest WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
@@ -90,7 +86,6 @@ public class scanDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(cmd1);
   }
 
-  @Override
   public void update(ArrayList<String> fields) {}
 
   public ResultSet get() throws SQLException {
@@ -98,7 +93,6 @@ public class scanDAOImpl implements IRequestDAO {
     return DatabaseManager.runQuery("SELECT * FROM SCANREQUEST");
   }
 
-  @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
         "INSERT INTO scanRequest VALUES ('%s', '%s')",
