@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,11 +17,13 @@ public interface IRequestDAO {
 
   public void initTable(String filePath) throws SQLException, IOException;
 
+  public ResultSet get() throws SQLException, IOException;
+
   public void add(ArrayList<String> fields) throws SQLException;
 
   public void delete(String reqID) throws SQLException;
 
-  public void update(ArrayList<String> fields);
+  public void update(ArrayList<String> fields) throws SQLException;
 
   public String generateInsertStatement(ArrayList<String> fields);
 
