@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added landingPageButton to homepage and created border outline for land page">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added icons to landing page buttons">
+      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/homePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/homePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,8 +77,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -278,7 +282,9 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
-      <workItem from="1649557385877" duration="3254000" />
+      <workItem from="1649557385877" duration="4419000" />
+      <workItem from="1649563935910" duration="823000" />
+      <workItem from="1649565768012" duration="265000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -476,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649559082038</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added icons to landing page buttons">
+      <created>1649562524177</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649562524177</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +519,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
     <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
     <MESSAGE value="added login menu bar to exit application" />
     <MESSAGE value="Fixed Scan page bug" />
@@ -531,7 +543,8 @@
     <MESSAGE value="Updated DAOImpl classes to include proper methods and return types" />
     <MESSAGE value="Implemented initTable for scan and labs" />
     <MESSAGE value="added landingPageButton to homepage and created border outline for land page" />
-    <option name="LAST_COMMIT_MESSAGE" value="added landingPageButton to homepage and created border outline for land page" />
+    <MESSAGE value="added icons to landing page buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="added icons to landing page buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

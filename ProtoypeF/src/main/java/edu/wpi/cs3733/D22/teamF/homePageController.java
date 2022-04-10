@@ -224,6 +224,15 @@ public class homePageController {
     stage.show();
   }
 
+  @FXML
+  public void switchToLanding(ActionEvent event) throws IOException {
+    scene = SceneManager.getInstance().setScene("landingPage.fxml");
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    //    SceneManager.getInstance().setScene("landingPage.fxml");
+  }
+
   /** exits */
   @FXML
   public void exitProgram() throws SQLException, IOException {
