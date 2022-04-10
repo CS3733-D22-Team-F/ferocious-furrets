@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
 public class UserType {
-  public static String userType;
+  private static String userType;
 
   public UserType() {
     userType = "";
