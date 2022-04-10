@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Implemented initTable for scan and labs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labQueueController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labQueueController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/logInController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/logInController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/mapPageController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/mapPageController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/medicalController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/medicalController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/requestListController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/requestListController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/labQueueController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/labQueueController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/logInController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/logInController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/mapPageController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/mapPageController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/medicalController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/medicalController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/requestListController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/requestListController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/StageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/equipmentRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/equipmentRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/floralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/floralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/giftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/giftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/labRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/labRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/mealsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/mealsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/scanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/scanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/fullLocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/fullLocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/giftQueueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/giftQueueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/labQueueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/labQueueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/logInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/logInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/mapAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapBackUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/mapBackUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapDeleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/mapDeleteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/mapPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mapResetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/mapResetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/medicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/medicalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/requestListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/requestListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/fullLocationPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/fullLocationPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftRequestQueue.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestQueue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestQueue.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/logInPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/logInPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapAddPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapAddPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapBackUpPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapBackUpPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapDeletePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapDeletePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapResetPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapResetPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicalPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicalPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/requestListPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/requestListPage.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -325,7 +281,7 @@
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
       <workItem from="1649549372161" duration="2416000" />
-      <workItem from="1649552508610" duration="4349000" />
+      <workItem from="1649552508610" duration="4774000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -516,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649477326216</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have">
+      <created>1649557267468</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1649557267468</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,9 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
-    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
-    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
     <MESSAGE value="added login menu bar to exit application" />
     <MESSAGE value="Fixed Scan page bug" />
     <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
@@ -571,7 +531,10 @@
     <MESSAGE value="Merged with Evans' IController and PageController abstraction refactoring" />
     <MESSAGE value="Updated DAOImpl classes to include proper methods and return types" />
     <MESSAGE value="Implemented initTable for scan and labs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented initTable for scan and labs" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have done" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have &#10;also jack has a small penis" />
+    <MESSAGE value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
+    <option name="LAST_COMMIT_MESSAGE" value="Even more fun stuff done for the front end&#10;Did some FXML file refactoring&#10;Put controllers into a package&#10;Put scenes into a package&#10;God I hope Azu can make the map stuff work with what I have" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
