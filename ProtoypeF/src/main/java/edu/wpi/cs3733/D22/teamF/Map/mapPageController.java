@@ -32,7 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class mapPageController implements Initializable {
-  private double scaleValue = 0.7;
+  private double scaleValue = 1;
   private double zoomIntensity = 0.02;
 
   @FXML ImageView mapHolder;
@@ -255,6 +255,14 @@ public class mapPageController implements Initializable {
     updateScale();
   }
 
+  public void zoomIn() {
+    onScroll(2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
+  }
+
+  public void zoomOut() {
+    onScroll(-2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
+  }
+
   @FXML
   void popUpReset() throws SQLException, IOException {
     MapPopUp.popUpReset();
@@ -378,7 +386,7 @@ public class mapPageController implements Initializable {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     oldLocs.addAll(eLocations);
     for (Location loc : oldLocs) {
-      MapIconModifier.deleteIcon(loc.getNodeID());
+      MapIconModifier.deleteIcon(loc);
     }
   }
 
@@ -429,20 +437,21 @@ public class mapPageController implements Initializable {
    */
   public void addIcon(Location location) throws FileNotFoundException, SQLException {
     JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
-    newButton.setPrefSize(25, 25);
-    newButton.setMinSize(25, 25);
-    newButton.setMaxSize(25, 25);
+    newButton.setPrefSize(20, 20);
+    newButton.setMinSize(20, 20);
+    newButton.setMaxSize(20, 20);
     newButton.setOnAction(
         e -> {
-          for (int i = 0; i < MapIconModifier.locationIconList.size(); i++) {
-            if (MapIconModifier.locationIconList.get(i).get(1).equals(newButton)) {
-              Location tempLocation = (Location) MapIconModifier.locationIconList.get(i).get(0);
-              try {
-                MapPopUp.popUpModify(tempLocation);
-                loadMap();
-              } catch (IOException | SQLException ex) {
-                ex.printStackTrace();
-              }
+          if (MapIconModifier.locationIconList.containsValue(newButton)) {
+            Location lo =
+                new ArrayList<>(
+                        MapIconModifier.getKeysByValue(MapIconModifier.locationIconList, newButton))
+                    .get(0);
+            try {
+              MapPopUp.popUpModify(lo);
+              loadMap();
+            } catch (IOException | SQLException ex) {
+              ex.printStackTrace();
             }
           }
         });
@@ -452,10 +461,7 @@ public class mapPageController implements Initializable {
     newButton.setLayoutX(x);
     newButton.setLayoutY(y);
     iconPane.getChildren().add(newButton);
-    ArrayList<Object> temp = new ArrayList<Object>();
-    temp.add(location);
-    temp.add(newButton);
-    MapIconModifier.locationIconList.add(temp);
+    MapIconModifier.locationIconList.put(location, newButton);
   }
 
   @FXML

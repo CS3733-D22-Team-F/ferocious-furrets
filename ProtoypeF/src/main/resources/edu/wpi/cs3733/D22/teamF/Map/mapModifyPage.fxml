@@ -42,15 +42,21 @@
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
             <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0">
                <font>
                   <Font size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </Label>
-            <ChoiceBox fx:id="nodeBox" prefHeight="26.0" prefWidth="416.0" />
+            <ChoiceBox fx:id="nodeBox" prefHeight="26.0" prefWidth="416.0">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></ChoiceBox>
             <Label prefHeight="35.0" prefWidth="156.0" text="Name:">
                <font>
                   <Font size="18.0" />
