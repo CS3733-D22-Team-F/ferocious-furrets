@@ -35,7 +35,8 @@ public class DatabaseManager {
 
   private DatabaseManager() {}
 
-  private static Connection switchConnection(boolean runEmbedded) {
+  private static Connection switchConnection(boolean runEmbedded) throws SQLException, IOException {
+    backUpDatabaseToCSV();
     DatabaseInitializer.switchConnection(runEmbedded);
     conn = DatabaseInitializer.getConnection().getDbConnection();
     return conn;
