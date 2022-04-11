@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -102,8 +104,11 @@ public class MapPopUp {
     popupwindow.showAndWait();
   }
 
-  public static void popUpModify(Location location) throws IOException, SQLException {
+  public static void popUpModify(TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
     nodeTempHolder.setLocation(location);
+    nodeTempHolder.setLocationTable(table);
+    nodeTempHolder.setPassIconPane(iconPane);
     Parent root = FXMLLoader.load(mapPageController.class.getResource("mapModifyPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class MapLocationModifier {
   public static String currentFloor;
 
-  public static void addLocation(
+  public static Location addLocation(
       String type, String x, String y, String floor, String longName, String shortName) {
     try {
       String nID =
@@ -26,15 +26,18 @@ public class MapLocationModifier {
               shortName);
       DatabaseManager.getLocationDAO().addLocation(l);
       mapUserHistory.userHistory.add(new MapOperation("add", l));
+      return l;
     } catch (Exception e) {
       e.printStackTrace();
     }
+    return null;
   }
 
-  public static void addLocation(Location location) throws SQLException {
+  public static Location addLocation(Location location) throws SQLException {
     mapUserHistory.userHistory.add(new MapOperation("add", location));
     DatabaseManager.getLocationDAO().addLocation(location);
     mapUserHistory.userHistory.add(new MapOperation("add", location));
+    return location;
   }
 
   public static void deleteLocation(Location location) throws SQLException {

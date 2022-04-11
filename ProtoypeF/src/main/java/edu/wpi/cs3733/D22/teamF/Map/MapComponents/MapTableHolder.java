@@ -3,10 +3,15 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 
 public class MapTableHolder {
   /**
@@ -40,5 +45,55 @@ public class MapTableHolder {
       returnList.add(tempLocation);
     }
     return returnList;
+  }
+
+  public static void loadMap(TableView<Location> table, AnchorPane iconPane) throws SQLException {
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    loadTable(table);
+    wipeMap();
+    displayMap(table, iconPane);
+  }
+
+  public static void loadTable(TableView<Location> table) throws SQLException {
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    oldLocs.addAll(eLocations);
+    ObservableList<Location> nlocationList = FXCollections.observableList(oldLocs);
+    table.setItems(nlocationList);
+  }
+
+  public static void wipeMap() throws SQLException {
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    oldLocs.addAll(eLocations);
+    for (Location loc : oldLocs) {
+      MapIconModifier.deleteIcon(loc);
+    }
+  }
+
+  public static void displayMap(TableView<Location> table, AnchorPane iconPane)
+      throws SQLException {
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+
+    ArrayList<Location> nLocations = null;
+    ArrayList<Location> eLocations = null;
+    try {
+      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
+      eLocations = MapTableHolder.equipToLocation(eList);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
+    nLocations.addAll(eLocations);
+    for (Location lo : nLocations) {
+      try {
+        MapIconModifier.addIcon(table, iconPane, lo);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
+    MapIconModifier.showAllIcon();
   }
 }

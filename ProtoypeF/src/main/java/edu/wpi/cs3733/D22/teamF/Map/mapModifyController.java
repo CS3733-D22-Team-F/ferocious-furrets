@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +48,9 @@ public class mapModifyController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    xValue = "";
+    yValue = "";
+    floorValue = "";
     currentNode.setText(nodeTempHolder.getLocation().getLongName());
     changeToF1();
     ArrayList<String> temp = new ArrayList<>();
@@ -106,7 +110,14 @@ public class mapModifyController implements Initializable {
           shortName = longField.getText().substring(0, 127);
         }
         MapLocationModifier.addLocation(
-            nodeBox.getValue(), xValue, yValue, floorValue, longField.getText(), shortName);
+            nodeBox.getValue(),
+            ((Double.parseDouble(xValue) / 680) * 4450) + "",
+            ((Double.parseDouble(yValue) / 505) * 3550) + "",
+            floorValue,
+            longField.getText(),
+            shortName);
+        MapLocationModifier.deleteLocation(nodeTempHolder.getLocation());
+        MapTableHolder.loadMap(nodeTempHolder.getLocationTable(), nodeTempHolder.getPassIconPane());
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {

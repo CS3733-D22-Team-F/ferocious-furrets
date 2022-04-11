@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXNodesList?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -92,8 +93,6 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="840.0" layoutY="510.0" onAction="#zoomIn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #123090;" text="+" textFill="WHITE" />
-      <JFXButton layoutX="840.0" layoutY="570.0" onAction="#zoomOut" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #123090;" text="-" textFill="WHITE" />
       <JFXNodesList fx:id="floorNodeList" layoutX="25.0" layoutY="18.0">
          <children>
             <JFXButton fx:id="openFloorMenu" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
@@ -109,7 +108,7 @@
             <JFXButton fx:id="changeToL2" onAction="#changeToL2" style="-fx-background-color: #123090;" text="L2" textFill="WHITE" />
          </children>
       </JFXNodesList>
-      <JFXNodesList fx:id="menuNodeList" layoutX="815.0" layoutY="660.0">
+      <JFXNodesList fx:id="menuNodeList" layoutX="850.0" layoutY="665.0">
          <children>
             <JFXButton fx:id="openMenu" style="-fx-background-color: #123090;" textFill="WHITE">
                <font>
@@ -124,5 +123,6 @@
             <JFXButton fx:id="homeButton" onAction="#homePage" style="-fx-background-color: #123090;" text="HOME" textFill="WHITE" />
          </children>
       </JFXNodesList>
+      <JFXSlider fx:id="zoomSlider" layoutX="841.0" layoutY="450.0" min="-50.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="30.0" />
    </children>
 </AnchorPane>

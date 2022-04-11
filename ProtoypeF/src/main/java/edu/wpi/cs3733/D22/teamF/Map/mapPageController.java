@@ -2,10 +2,8 @@ package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapPopUp;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
+import com.jfoenix.controls.JFXSlider;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -15,8 +13,8 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,6 +52,8 @@ public class mapPageController implements Initializable {
   @FXML ScrollPane scrollPane;
   @FXML Group mapGroup;
   @FXML AnchorPane iconPane;
+
+  @FXML JFXSlider zoomSlider;
 
   @FXML JFXButton showIconButton;
 
@@ -130,7 +130,7 @@ public class mapPageController implements Initializable {
     }
 
     try {
-      loadTable();
+      MapTableHolder.loadTable(table);
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -139,7 +139,7 @@ public class mapPageController implements Initializable {
 
     for (Location lo : nLocations) {
       try {
-        addIcon(lo);
+        MapIconModifier.addIcon(table, iconPane, lo);
       } catch (SQLException e) {
         e.printStackTrace();
       } catch (FileNotFoundException e) {
@@ -149,6 +149,7 @@ public class mapPageController implements Initializable {
     loadAllLegend();
     setUpNode();
     changeToF1();
+    iniSlider();
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */
@@ -294,48 +295,53 @@ public class mapPageController implements Initializable {
     updateScale();
   }
 
-  public void zoomIn() {
-    onScroll(2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
-  }
-
-  public void zoomOut() {
-    onScroll(-2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
+  public void iniSlider() {
+    zoomSlider
+        .valueProperty()
+        .addListener(
+            new ChangeListener<Number>() {
+              public void changed(
+                  ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                if (old_val != new_val) {
+                  // Change scale of map based on slider position.
+                  double sliderValue = new_val.doubleValue();
+                  // double d = SettlementMapPanel.DEFAULT_SCALE;
+                  double newScale = 1 + sliderValue * 0.01;
+                  iconPane.setScaleX(scaleValue * newScale);
+                  iconPane.setScaleY(scaleValue * newScale);
+                }
+              }
+            });
   }
 
   @FXML
   void popUpReset() throws SQLException, IOException {
     MapPopUp.popUpReset();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
   @FXML
   void popUpAdd() throws SQLException, IOException {
     MapPopUp.popUpAdd();
-    loadMap();
-  }
-
-  @FXML
-  void popUpDelete() throws SQLException, IOException {
-    MapPopUp.popUpDelete();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
   @FXML
   void popUpSave() throws SQLException, IOException {
     MapPopUp.popUpSave();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
   @FXML
   void openHistory() throws SQLException, IOException {
     MapPopUp.openHistory();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
   @FXML
   void openFullTable() throws SQLException, IOException {
     MapPopUp.openFullTable();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
   @FXML
@@ -417,90 +423,6 @@ public class mapPageController implements Initializable {
 
   public void showIcon() {
     MapIconModifier.showIcon(showIconButton);
-  }
-
-  public void wipeMap() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    oldLocs.addAll(eLocations);
-    for (Location loc : oldLocs) {
-      MapIconModifier.deleteIcon(loc);
-    }
-  }
-
-  public void displayMap() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-
-    ArrayList<Location> nLocations = null;
-    ArrayList<Location> eLocations = null;
-    try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-      eLocations = MapTableHolder.equipToLocation(eList);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
-    nLocations.addAll(eLocations);
-    for (Location lo : nLocations) {
-      try {
-        addIcon(lo);
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
-    MapIconModifier.showAllIcon();
-  }
-
-  public void loadTable() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    oldLocs.addAll(eLocations);
-    ObservableList<Location> nlocationList = FXCollections.observableList(oldLocs);
-    table.setItems(nlocationList);
-  }
-
-  public void loadMap() throws SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    loadTable();
-    wipeMap();
-    displayMap();
-  }
-
-  /**
-   * Add an icon to the map at a location node to provide a graphical representation of the location
-   *
-   * @param location
-   * @throws FileNotFoundException
-   */
-  public void addIcon(Location location) throws FileNotFoundException, SQLException {
-    JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
-    newButton.setPrefSize(20, 20);
-    newButton.setMinSize(20, 20);
-    newButton.setMaxSize(20, 20);
-    newButton.setOnAction(
-        e -> {
-          if (MapIconModifier.locationIconList.containsValue(newButton)) {
-            Location lo =
-                new ArrayList<>(
-                        MapIconModifier.getKeysByValue(MapIconModifier.locationIconList, newButton))
-                    .get(0);
-            try {
-              MapPopUp.popUpModify(lo);
-              loadMap();
-            } catch (IOException | SQLException ex) {
-              ex.printStackTrace();
-            }
-          }
-        });
-    double x =
-        (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 856.0) * 630;
-    newButton.setLayoutX(x);
-    newButton.setLayoutY(y);
-    iconPane.getChildren().add(newButton);
-    MapIconModifier.locationIconList.put(location, newButton);
   }
 
   public void setUpNode() {

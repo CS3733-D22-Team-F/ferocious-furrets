@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -348,5 +351,40 @@ public class MapIconModifier {
         .filter(entry -> Objects.equals(entry.getValue(), value))
         .map(Map.Entry::getKey)
         .collect(Collectors.toSet());
+  }
+
+  /**
+   * Add an icon to the map at a location node to provide a graphical representation of the location
+   *
+   * @param location
+   * @throws FileNotFoundException
+   */
+  public static void addIcon(TableView<Location> table, AnchorPane iconPane, Location location)
+      throws FileNotFoundException, SQLException {
+    JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
+    newButton.setPrefSize(20, 20);
+    newButton.setMinSize(20, 20);
+    newButton.setMaxSize(20, 20);
+    newButton.setOnAction(
+        e -> {
+          if (MapIconModifier.locationIconList.containsValue(newButton)) {
+            Location lo =
+                new ArrayList<>(
+                        MapIconModifier.getKeysByValue(MapIconModifier.locationIconList, newButton))
+                    .get(0);
+            try {
+              MapPopUp.popUpModify(table, iconPane, lo);
+            } catch (IOException | SQLException ex) {
+              ex.printStackTrace();
+            }
+          }
+        });
+    double x =
+        (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
+    double y = (location.getYcoord() / 3550.0) * 700;
+    newButton.setLayoutX(x);
+    newButton.setLayoutY(y);
+    iconPane.getChildren().add(newButton);
+    MapIconModifier.locationIconList.put(location, newButton);
   }
 }
