@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -19,11 +18,7 @@ public class mapResetController implements Initializable {
 
   @FXML private TextField idField;
   @FXML Button cancel;
-  @FXML Button reset;
-  @FXML Button delete;
   @FXML Button select;
-
-  LocationsDAOImpl LDAOImpl = new LocationsDAOImpl();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {}

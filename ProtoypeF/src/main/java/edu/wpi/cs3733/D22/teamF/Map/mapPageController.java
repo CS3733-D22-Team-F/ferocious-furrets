@@ -131,7 +131,7 @@ public class mapPageController implements Initializable {
     }
 
     try {
-      loadTable();
+      MapTableHolder.loadTable(table);
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -140,7 +140,7 @@ public class mapPageController implements Initializable {
 
     for (Location lo : nLocations) {
       try {
-        addIcon(lo);
+        MapIconModifier.addIcon(table, iconPane, lo);
       } catch (SQLException e) {
         e.printStackTrace();
       } catch (FileNotFoundException e) {
@@ -321,7 +321,8 @@ public class mapPageController implements Initializable {
       Alert error = new Alert(Alert.AlertType.ERROR);
       error.show();
     } else {
-      MapPopUp.popUpReset();
+      MapTableHolder.wipeMap();
+      MapPopUp.popUpReset(table, iconPane);
       MapTableHolder.loadMap(table, iconPane);
     }
   }

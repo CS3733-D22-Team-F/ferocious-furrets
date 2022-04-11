@@ -48,9 +48,8 @@ public class MapTableHolder {
   }
 
   public static void loadMap(TableView<Location> table, AnchorPane iconPane) throws SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    loadTable(table);
     wipeMap();
+    loadTable(table);
     displayMap(table, iconPane);
   }
 
@@ -64,10 +63,7 @@ public class MapTableHolder {
   }
 
   public static void wipeMap() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    oldLocs.addAll(eLocations);
+    ArrayList<Location> oldLocs = new ArrayList<>(MapIconModifier.locationIconList.keySet());
     for (Location loc : oldLocs) {
       MapIconModifier.deleteIcon(loc);
     }
@@ -85,8 +81,8 @@ public class MapTableHolder {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
     nLocations.addAll(eLocations);
+    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
     for (Location lo : nLocations) {
       try {
         MapIconModifier.addIcon(table, iconPane, lo);

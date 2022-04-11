@@ -2,12 +2,9 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -90,12 +87,10 @@ public class MapPopUp {
    * and redisplay to update view
    *
    * @throws IOException
-   * @throws SQLException
    */
-  public static void popUpReset() throws IOException, SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    ArrayList<equipment> eList = null;
-    eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+  public static void popUpReset(TableView<Location> table, AnchorPane iconPane) throws IOException {
+    nodeTempHolder.setLocationTable(table);
+    nodeTempHolder.setPassIconPane(iconPane);
     Parent root = FXMLLoader.load(mapPageController.class.getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);

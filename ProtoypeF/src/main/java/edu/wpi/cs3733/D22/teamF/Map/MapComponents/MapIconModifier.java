@@ -29,6 +29,7 @@ public class MapIconModifier {
           .getChildren()
           .remove(locationIconList.get(location));
       locationIconList.remove(location);
+    } else {
     }
   }
 
