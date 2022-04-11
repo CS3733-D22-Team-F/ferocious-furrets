@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed getAvailableEquipment method for equipmentDeliveryRequest">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed resolveRequest bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/labRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/labRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649688185540</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed resolveRequest bug">
+      <created>1649688527038</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649688527038</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +458,8 @@
     <MESSAGE value="Updated service request csvs" />
     <MESSAGE value="Updated med equip csv" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
+    <MESSAGE value="Fixed resolveRequest bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed resolveRequest bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

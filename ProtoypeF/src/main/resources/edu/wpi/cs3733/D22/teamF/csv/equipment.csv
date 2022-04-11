@@ -20,7 +20,7 @@ equipID,equipType,nodeID,status
 19,Bed,fPATI01903,available
 20,Bed,fPATI02003,available
 21,Xray,fSTOR00103,available
-22,Infusion Pump,fSTOR00203,unavailable
+22,Infusion Pump,fSTOR00503,unavailable
 23,Infusion Pump,fSTOR00203,available
 24,Infusion Pump,fSTOR00203,available
 25,Infusion Pump,fSTOR00203,available
