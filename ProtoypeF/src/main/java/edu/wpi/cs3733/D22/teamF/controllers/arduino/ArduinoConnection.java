@@ -7,16 +7,20 @@ import java.nio.charset.StandardCharsets;
 public class ArduinoConnection {
 
   SerialPort arduinoPort;
-//
-//  private ArduinoConnection() {}
-//
-//  public static ArduinoConnection initConnection(){
-//    return Helper.arduinoConn;
-//  }
+  //
+  //  private ArduinoConnection() {}
+  //
+  //  public static ArduinoConnection initConnection(){
+  //    return Helper.arduinoConn;
+  //  }
 
-  public void startConnection() throws InterruptedException, IOException {
+  public ArduinoConnection(String port) throws IOException, InterruptedException {
+    this.startConnection(port);
+  }
+
+  public void startConnection(String port) throws InterruptedException, IOException {
     //    arduinoPort = SerialPort.getCommPorts()[0];
-    arduinoPort = SerialPort.getCommPort("COM7");
+    arduinoPort = SerialPort.getCommPort(port);
     arduinoPort.setComPortParameters(115200, 8, 1, 0);
     arduinoPort.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0);
     Thread.sleep(2000);
@@ -30,20 +34,15 @@ public class ArduinoConnection {
   }
 
   public void testWriteConnection() throws InterruptedException, IOException {
-    //    for (Integer i = 0; i < 5; ++i) {
-    //      arduinoPort.getOutputStream().write(i.byteValue());
-    String stringToSend = "hello there my sweet prince";
+    String stringToSend = "hello there!! Wow";
     String totalBytesToSend = (char) (stringToSend.length()) + stringToSend;
     byte[] bytes = totalBytesToSend.getBytes(StandardCharsets.UTF_8);
     arduinoPort.getOutputStream().write(bytes);
-    //      arduinoPort.getOutputStream().flush();
-    //      System.out.println("Sent number: " + i);
     System.out.println("Sent " + stringToSend);
     Thread.sleep(1000);
-    //    }
   }
 
-  public void testReadConnection() {
+  public void readSerialString() {
     byte[] sizeByte =
         new byte
             [1]; // gets the size of the message in bytes from the first bit that sends the length
@@ -56,20 +55,30 @@ public class ArduinoConnection {
     String s = new String(inputBytes, StandardCharsets.UTF_8);
     System.out.println(s);
   }
-//
-//  /**
-//   * Helper for Arduino Connection Object
-//   */
-//  private static class Helper{
-//    private static final ArduinoConnection arduinoConn = new ArduinoConnection();
-//  }
-//
-//  /**
-//   * Singleton helper for the Arduino Connection object
-//   */
-//  private static class SingletonHelper{
-//    private static final ArduinoConnection ARDUINO_CONNECTION = new ArduinoConnection();
-//  }
+
+  public void sendSerialString(String stringToSend) throws IOException, InterruptedException {
+
+    //    String totalBytesToSend = (char) (stringToSend.length()) + stringToSend;
+    String totalBytesToSend = stringToSend;
+    byte[] bytes = totalBytesToSend.getBytes(StandardCharsets.UTF_8);
+    arduinoPort.getOutputStream().write(bytes);
+    System.out.println("Sent " + stringToSend);
+    Thread.sleep(50);
+  }
+
+  //
+  //  /**
+  //   * Helper for Arduino Connection Object
+  //   */
+  //  private static class Helper{
+  //    private static final ArduinoConnection arduinoConn = new ArduinoConnection();
+  //  }
+  //
+  //  /**
+  //   * Singleton helper for the Arduino Connection object
+  //   */
+  //  private static class SingletonHelper{
+  //    private static final ArduinoConnection ARDUINO_CONNECTION = new ArduinoConnection();
+  //  }
 
 }
-

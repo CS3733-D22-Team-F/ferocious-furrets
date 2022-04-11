@@ -21,11 +21,7 @@ public class Main {
     DatabaseManager dbMan =
         DatabaseManager.initalizeDatabaseManager(); // initialize locations and MEDDDELREQ table
 
-    ArduinoConnection arduinoConnection = new ArduinoConnection();
-    arduinoConnection.startConnection();
-
-    arduinoConnection.testWriteConnection();
-    arduinoConnection.testReadConnection();
+    ArduinoConnection arduinoConnection = new ArduinoConnection("COM7");
 
     //    Fapp.launch(Fapp.class, args);
     // backup database to csv files

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Works again, prints medequip to fields">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" afterDir="false" />
     </list>
@@ -72,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -81,7 +82,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dashboard_starter" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,36 +108,32 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="derby" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/lib/arduino.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.27676952" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="project.structure.side.proportion" value="0.45632184" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF\lib" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\csv" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF\lib" />
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF" />
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF\src\main\java" />
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF\src" />
-      <recent name="C:\Users\black\Documents\CS3733SOFT_ENG_D22\furious-ferrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\libs" />
+      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
+      <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
+      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="edu.wpi.furious_furrets" />
@@ -254,19 +251,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
+      <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
       <item itemvalue="Gradle.ProtoypeF [build]" />
-      <item itemvalue="Gradle.ProtoypeF [classes]" />
       <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
-      <item itemvalue="Gradle.ProtoypeF [run]" />
+      <item itemvalue="Gradle.ProtoypeF [classes]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
+        <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
+        <item itemvalue="Gradle.ProtoypeF [classes]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
-        <item itemvalue="Gradle.ProtoypeF [classes]" />
-        <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -293,7 +290,6 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
-      <workItem from="1649634629488" duration="7951000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -484,70 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649477326216</updated>
     </task>
-    <task id="LOCAL-00028" summary="Started dashboard page">
-      <created>1649563523484</created>
+    <task id="LOCAL-00028" summary="Sets text boxes">
+      <created>1649645187176</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1649563523484</updated>
+      <updated>1649645187176</updated>
     </task>
-    <task id="LOCAL-00029" summary="Implemented dashboard replacement for homePage">
-      <created>1649567162430</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1649567162430</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Combined into HBox">
-      <created>1649628614011</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1649628614011</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Testing arduino implementation">
-      <created>1649630650798</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1649630650798</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Started imports">
-      <created>1649634285209</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1649634285209</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Successfully opens connection">
-      <created>1649637884210</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1649637884210</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Sends bytes over serial to arduino">
-      <created>1649638757787</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1649638757788</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Sends 32 bytes">
-      <created>1649640770172</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1649640770172</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte">
-      <created>1649641195857</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1649641195857</updated>
-    </task>
-    <option name="localTasksCounter" value="37" />
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +517,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fixed Scan page bug" />
+    <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
+    <MESSAGE value="Fixed add Location bug with double/integer formatting" />
+    <MESSAGE value="Fixed icon update on map when reset from csv file" />
+    <MESSAGE value="Icons update on add/delete" />
+    <MESSAGE value="Icons update on reset from CSV" />
     <MESSAGE value="Fixed open ResultSet bug" />
     <MESSAGE value="Icons appear at correct location on click to add" />
     <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
@@ -593,17 +538,11 @@
     <MESSAGE value="Merged with Evans' IController and PageController abstraction refactoring" />
     <MESSAGE value="Updated DAOImpl classes to include proper methods and return types" />
     <MESSAGE value="Implemented initTable for scan and labs" />
-    <MESSAGE value="Started dashboard page" />
-    <MESSAGE value="Implemented dashboard replacement for homePage" />
-    <MESSAGE value="Small updates to dashboard page" />
-    <MESSAGE value="Combined into HBox" />
-    <MESSAGE value="Testing arduino implementation" />
-    <MESSAGE value="Started imports" />
-    <MESSAGE value="Successfully opens connection" />
-    <MESSAGE value="Sends bytes over serial to arduino" />
-    <MESSAGE value="Sends 32 bytes" />
-    <MESSAGE value="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte" />
+    <MESSAGE value="Sets text boxes" />
+    <MESSAGE value="Extracts floor from equipment data" />
+    <MESSAGE value="Broken currently" />
+    <MESSAGE value="Works again, prints medequip to fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Works again, prints medequip to fields" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
