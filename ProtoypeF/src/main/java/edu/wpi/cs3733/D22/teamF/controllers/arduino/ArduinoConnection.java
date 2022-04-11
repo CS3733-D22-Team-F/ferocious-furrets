@@ -7,8 +7,12 @@ import java.nio.charset.StandardCharsets;
 public class ArduinoConnection {
 
   SerialPort arduinoPort;
-
-  public ArduinoConnection() {}
+//
+//  private ArduinoConnection() {}
+//
+//  public static ArduinoConnection initConnection(){
+//    return Helper.arduinoConn;
+//  }
 
   public void startConnection() throws InterruptedException, IOException {
     //    arduinoPort = SerialPort.getCommPorts()[0];
@@ -52,4 +56,20 @@ public class ArduinoConnection {
     String s = new String(inputBytes, StandardCharsets.UTF_8);
     System.out.println(s);
   }
+//
+//  /**
+//   * Helper for Arduino Connection Object
+//   */
+//  private static class Helper{
+//    private static final ArduinoConnection arduinoConn = new ArduinoConnection();
+//  }
+//
+//  /**
+//   * Singleton helper for the Arduino Connection object
+//   */
+//  private static class SingletonHelper{
+//    private static final ArduinoConnection ARDUINO_CONNECTION = new ArduinoConnection();
+//  }
+
 }
+

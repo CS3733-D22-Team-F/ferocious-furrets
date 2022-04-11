@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Sends 32 bytes">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte">
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -292,7 +293,7 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
-      <workItem from="1649634629488" duration="6476000" />
+      <workItem from="1649634629488" duration="7951000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -539,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649640770172</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte">
+      <created>1649641195857</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1649641195857</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Icons update on reset from CSV" />
     <MESSAGE value="Fixed open ResultSet bug" />
     <MESSAGE value="Icons appear at correct location on click to add" />
     <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
@@ -595,7 +602,8 @@
     <MESSAGE value="Successfully opens connection" />
     <MESSAGE value="Sends bytes over serial to arduino" />
     <MESSAGE value="Sends 32 bytes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sends 32 bytes" />
+    <MESSAGE value="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sends specified number of bytes, and reads in that number from the leading &quot;Size&quot; byte" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -23,9 +23,8 @@ public class Main {
 
     ArduinoConnection arduinoConnection = new ArduinoConnection();
     arduinoConnection.startConnection();
-    //    for (int k = 0; k < 1000; k++) {
+
     arduinoConnection.testWriteConnection();
-    //    }
     arduinoConnection.testReadConnection();
 
     //    Fapp.launch(Fapp.class, args);
