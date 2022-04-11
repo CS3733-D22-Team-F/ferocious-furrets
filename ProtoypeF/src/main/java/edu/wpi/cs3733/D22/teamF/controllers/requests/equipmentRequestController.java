@@ -92,7 +92,10 @@ public class equipmentRequestController implements Initializable, IRequestContro
 
   public String getAvailableEquipment() throws SQLException {
     ResultSet rset =
-        DatabaseManager.runQuery("SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available'");
+        DatabaseManager.runQuery(
+            "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
+                + typeChoice.getValue().toString()
+                + "'");
     String eID = "";
     if (!rset.next()) {
 
