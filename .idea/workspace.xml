@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed login label bug and added alert to login page on invalid auth">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added toggle button for show credits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" afterDir="false" />
@@ -277,7 +277,7 @@
       <workItem from="1649641056536" duration="251000" />
       <workItem from="1649641358665" duration="64000" />
       <workItem from="1649641459335" duration="43000" />
-      <workItem from="1649642633151" duration="683000" />
+      <workItem from="1649642633151" duration="919000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -538,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649640910442</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="added toggle button for show credits">
+      <created>1649643334012</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1649643334012</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed open ResultSet bug" />
     <MESSAGE value="Icons appear at correct location on click to add" />
     <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
     <MESSAGE value="Fixed map tracker bug with floor numbers" />
@@ -593,7 +599,8 @@
     <MESSAGE value="Finished merge with everything" />
     <MESSAGE value="removed unused login method" />
     <MESSAGE value="fixed login label bug and added alert to login page on invalid auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed login label bug and added alert to login page on invalid auth" />
+    <MESSAGE value="added toggle button for show credits" />
+    <option name="LAST_COMMIT_MESSAGE" value="added toggle button for show credits" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -142,9 +142,9 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <Label fx:id="johnnikolaLabel" prefHeight="17.0" prefWidth="170.0" text="Map created by John &amp; Nikola">
+                              <Label fx:id="johnnikolaLabel" prefHeight="17.0" prefWidth="201.0" text="Medicine created by John and Nikola">
                                  <VBox.margin>
-                                    <Insets bottom="10.0" left="90.0" top="10.0" />
+                                    <Insets bottom="10.0" left="75.0" top="10.0" />
                                  </VBox.margin>
                               </Label>
                               <JFXButton buttonType="RAISED" onAction="#switchToMeals" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text=" MEALS" textFill="WHITE">

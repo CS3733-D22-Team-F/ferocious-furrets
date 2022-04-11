@@ -210,25 +210,25 @@ public class landingPageController implements Initializable {
     StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
-  public void toggleCredits(ActionEvent event) throws IOException {
-    if (!toggleOff) {
-      azuLabel.setVisible(false);
-      nikolaLabel.setVisible(false);
-      johnLabel.setVisible(false);
-      johnnikolaLabel.setVisible(false);
-      evansLabel.setVisible(false);
-      carterLabel.setVisible(false);
-      toggleOff = true;
-    } else if (toggleOff) {
-      azuLabel.setVisible(true);
-      nikolaLabel.setVisible(true);
-      johnLabel.setVisible(true);
-      johnnikolaLabel.setVisible(true);
-      evansLabel.setVisible(true);
-      carterLabel.setVisible(true);
-      toggleOff = false;
-    }
-  }
+  //  public void toggleCredits(ActionEvent event) throws IOException {
+  //    if (!toggleOff) {
+  //      azuLabel.setVisible(false);
+  //      nikolaLabel.setVisible(false);
+  //      johnLabel.setVisible(false);
+  //      johnnikolaLabel.setVisible(false);
+  //      evansLabel.setVisible(false);
+  //      carterLabel.setVisible(false);
+  //      toggleOff = true;
+  //    } else if (toggleOff) {
+  //      azuLabel.setVisible(true);
+  //      nikolaLabel.setVisible(true);
+  //      johnLabel.setVisible(true);
+  //      johnnikolaLabel.setVisible(true);
+  //      evansLabel.setVisible(true);
+  //      carterLabel.setVisible(true);
+  //      toggleOff = false;
+  //    }
+  //  }
 
   /** exits */
   @FXML
