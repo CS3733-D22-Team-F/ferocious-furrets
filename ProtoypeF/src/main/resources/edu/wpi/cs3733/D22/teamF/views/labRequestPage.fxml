@@ -35,7 +35,7 @@
                   </HBox>
                   <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="673.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../bwhlogo.png" />
+                        <Image url="@../BWHlogo-new.png" />
                      </image>
                   </ImageView>
                </children>

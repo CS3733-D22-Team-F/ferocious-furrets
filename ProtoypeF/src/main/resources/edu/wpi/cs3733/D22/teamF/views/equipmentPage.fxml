@@ -131,9 +131,9 @@
                   </Label>
                </children>
             </HBox>
-            <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="581.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../bwhlogo.png" />
+                  <Image url="@../BWHlogo-new.png" />
                </image>
             </ImageView>
          </children>

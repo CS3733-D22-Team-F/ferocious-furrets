@@ -23,9 +23,8 @@ public class mealsController extends PageController implements Initializable, IR
 
   ArrayList<Object> returnList = new ArrayList<>();
   ArrayList<Object> requestList = new ArrayList<>();
-  @FXML private ComboBox<Object> status;
 
-  // submit button sendind delivery
+
   // @FXML private Button submitButton;
   @FXML private AnchorPane masterPane;
   @FXML private BorderPane menuPane;
@@ -35,16 +34,15 @@ public class mealsController extends PageController implements Initializable, IR
   @FXML private TextField requestType;
   @FXML private TextField deliveryType;
   @FXML private TextField deliveryID;
+  @FXML private ComboBox<Object> status;
 
   public mealsController() {}
-
   public mealsController(ContextMenu c_menu, MenuBar m_menu) {
     super(c_menu, m_menu);
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-
     this.makeMenuBar(masterPane);
 
     ArrayList<Object> temp = new ArrayList<>();
@@ -66,7 +64,6 @@ public class mealsController extends PageController implements Initializable, IR
   }
 
   // on press returns fields into delivery object only if required fields aren't empty
-
   public String generateReqID(int requestListLength, String nodeID) {
     String reqAbb = "MR";
 
