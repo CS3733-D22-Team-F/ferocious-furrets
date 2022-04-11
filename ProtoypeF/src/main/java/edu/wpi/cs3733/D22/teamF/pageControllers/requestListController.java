@@ -51,5 +51,4 @@ public class requestListController extends PageController implements Initializab
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
   }
-
 }

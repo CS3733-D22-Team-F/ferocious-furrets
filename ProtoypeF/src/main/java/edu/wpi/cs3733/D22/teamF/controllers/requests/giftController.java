@@ -1,15 +1,15 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
-import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,23 +23,18 @@ public class giftController extends PageController implements Initializable, IRe
 
   private ArrayList<Object> itemList = new ArrayList<>();
 
-  @FXML private JFXComboBox giftChoice;
-
-  @FXML JFXTextArea employeeField;
-  @FXML JFXTextArea nodeField;
-  @FXML JFXTextArea itemField;
-
   @FXML JFXButton submitButton;
   @FXML JFXButton homeButton;
+  @FXML JFXButton queueButton;
 
   @FXML TextField employeeID;
   @FXML TextField nodeID;
   @FXML TextField patientName;
   @FXML TextField assigned;
+  @FXML JFXComboBox statusChoice;
+  @FXML JFXComboBox giftChoice;
 
   @FXML private AnchorPane masterPane;
-
-  @FXML JFXComboBox statusChoice;
 
   String reqType = "";
 
@@ -53,19 +48,21 @@ public class giftController extends PageController implements Initializable, IRe
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
 
+    submitButton.disableProperty().setValue(false);
+
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
-    temp.add("processing");
-    temp.add("done");
+    temp.add("Processing");
+    temp.add("Done");
     statusChoice.getItems().addAll(temp);
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("");
-    temp1.add("Teddy Bear");
-    temp1.add("Tea");
-    temp1.add("Get Well Soon Card");
-    temp1.add("Blanket");
-    temp1.add("Brigham and Women's T-Shirt");
+    temp1.add("TED - Teddy Bear");
+    temp1.add("TEA - Tea");
+    temp1.add("GWS - Get Well Soon Card");
+    temp1.add("BLA - Blanket");
+    temp1.add("TSH - Brigham and Women's T-Shirt");
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
   }
@@ -78,27 +75,32 @@ public class giftController extends PageController implements Initializable, IRe
    *
    * @return giftDeliveryRequest
    */
-  public void submit() {
+  public void submit() throws SQLException {
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
-    fields.add(nodeField.getText());
+    fields.add(nodeID.getText());
     fields.add(assigned.getText());
     fields.add(employeeID.getText());
     fields.add(statusChoice.getValue().toString());
-    fields.add(itemField.getText());
+    fields.add(giftChoice.getValue().toString());
     req.placeRequest(fields);
 
-    submitButton.disableProperty().setValue(true);
-    itemField.setText("Empty");
-    employeeField.setText("Empty");
-    nodeField.setText("Empty");
+    employeeID.setText("Empty");
+    nodeID.setText("Empty");
     assigned.clear();
     employeeID.clear();
     nodeID.clear();
     statusChoice.valueProperty().set(null);
+    giftChoice.valueProperty().set(null);
     patientName.clear();
   }
+
+  /*public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Gift");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }*/
 
   /**
    * shows the queue scene
@@ -110,25 +112,18 @@ public class giftController extends PageController implements Initializable, IRe
     StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
   }
 
-  public String generateReqID(int requestListLength) {
-    String reqAbb = "GR";
-    String giftID = "";
-    /*if ((rose != null) && roseB) {
-      giftID = giftID + "R01";
+  public String generateReqID() throws SQLException {
+    String nNodeType = giftChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
     }
-    if ((teddyBear != null) && teddyB) {
-      giftID = giftID + "TB01";
-    }
-    if ((giftCard != null) && giftB) {
-      giftID = giftID + "GC01";
-    }
-    if ((jasmine != null) && jasmineB) {
-      giftID = giftID + "J01";
-    }
-    if ((chrys != null) && chrysB) {
-      giftID = giftID + "C01";
-    }*/
-    return reqAbb + giftID + (requestListLength + 1);
+    rset.close();
+
+    String nID = nNodeType + reqNum;
+    return nID;
   }
 
   @FXML

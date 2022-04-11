@@ -83,7 +83,7 @@ public abstract class PageController {
     // pageMenu.prefWidthProperty().bindBidirectional(masterPane.widthProperty(),NumberFormat.getNumberInstance());
     pageMenu.setMinWidth(2000);
 
-    MenuItem home = this.addMenuItem("homePage.fxml");
+    MenuItem home = this.addMenuItem("landingPage.fxml");
     home.setText("home");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
