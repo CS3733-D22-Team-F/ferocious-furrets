@@ -1,13 +1,12 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -33,11 +32,7 @@ public class homePageController {
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
-    scene = SceneManager.getInstance().setScene("medicalPage.fxml");
-
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("medicalPage.fxml");
   }
 
   /**
@@ -48,10 +43,7 @@ public class homePageController {
    */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("Map/mapPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("mapPage.fxml");
   }
 
   /**
@@ -62,10 +54,7 @@ public class homePageController {
    */
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("equipmentPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("equipmentPage.fxml");
   }
 
   /**
@@ -76,10 +65,7 @@ public class homePageController {
    */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("medicinePage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("medicinePage.fxml");
   }
 
   /**
@@ -90,10 +76,7 @@ public class homePageController {
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("giftPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("giftPage.fxml");
   }
 
   /**
@@ -104,10 +87,7 @@ public class homePageController {
    */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("mealPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("mealPage.fxml");
   }
 
   /**
@@ -218,10 +198,13 @@ public class homePageController {
    */
   @FXML
   public void switchToRequests(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("requestListPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("requestListPage.fxml");
+  }
+
+  @FXML
+  public void switchToLanding(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("landingPage.fxml");
+    //    SceneManager.getInstance().setScene("landingPage.fxml");
   }
 
   /** exits */

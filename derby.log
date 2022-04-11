@@ -1,13 +1,144 @@
-----------------------------------------------------------------
-Sat Apr 09 19:10:55 UTC 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-0fbc-55b2-0000074849a0 
-on database directory A:\WPI\Sophomore\D\CS3733\ferocious-furrets\ProtoypeF\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5b37e0d2 
-Loaded from file:/C:/Users/deshi/AppData/Roaming/JetBrains/IntelliJIdea2021.2/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=JetBrains s.r.o.
-java.runtime.version=11.0.12+7-b1504.28
-user.dir=A:\WPI\Sophomore\D\CS3733\ferocious-furrets
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+Sun Apr 10 20:14:49 EDT 2022 Thread[main,5,main] Cleanup action starting
+ERROR XBM0J: Directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.connectDatabase(DatabaseInitializer.java:44)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.<init>(DatabaseInitializer.java:14)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer$Helper.<clinit>(DatabaseInitializer.java:69)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.getConnection(DatabaseInitializer.java:23)
+	at edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager.<clinit>(DatabaseManager.java:20)
+	at edu.wpi.cs3733.D22.teamF.Main.main(Main.java:21)
+Cleanup action completed
+Sun Apr 10 20:14:49 EDT 2022 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to create database 'myDB', see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.connectDatabase(DatabaseInitializer.java:44)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.<init>(DatabaseInitializer.java:14)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer$Helper.<clinit>(DatabaseInitializer.java:69)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.getConnection(DatabaseInitializer.java:23)
+	at edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager.<clinit>(DatabaseManager.java:20)
+	at edu.wpi.cs3733.D22.teamF.Main.main(Main.java:21)
+Caused by: ERROR XJ041: Failed to create database 'myDB', see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 20 more
+Caused by: ERROR XBM0J: Directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	... 17 more
+============= begin nested exception, level (1) ===========
+java.sql.SQLException: Directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB already exists.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.connectDatabase(DatabaseInitializer.java:44)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.<init>(DatabaseInitializer.java:14)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer$Helper.<clinit>(DatabaseInitializer.java:69)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.getConnection(DatabaseInitializer.java:23)
+	at edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager.<clinit>(DatabaseManager.java:20)
+	at edu.wpi.cs3733.D22.teamF.Main.main(Main.java:21)
+Caused by: ERROR XBM0J: Directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	... 17 more
+============= end nested exception, level (1) ===========
+============= begin nested exception, level (2) ===========
+ERROR XBM0J: Directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.connectDatabase(DatabaseInitializer.java:44)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.<init>(DatabaseInitializer.java:14)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer$Helper.<clinit>(DatabaseInitializer.java:69)
+	at edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer.getConnection(DatabaseInitializer.java:23)
+	at edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager.<clinit>(DatabaseManager.java:20)
+	at edu.wpi.cs3733.D22.teamF.Main.main(Main.java:21)
+============= end nested exception, level (2) ===========
+Cleanup action completed

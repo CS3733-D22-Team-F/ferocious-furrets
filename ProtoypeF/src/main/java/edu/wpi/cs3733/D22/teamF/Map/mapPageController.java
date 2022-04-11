@@ -6,10 +6,10 @@ import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapPopUp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquip;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
@@ -25,14 +25,12 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class mapPageController implements Initializable {
   private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
@@ -121,7 +119,7 @@ public class mapPageController implements Initializable {
     legend.setExpanded(false);
 
     ArrayList<Location> nLocations = null;
-    ArrayList<MedEquip> eList = null;
+    ArrayList<equipment> eList = null;
     ArrayList<Location> eLocations = null;
     try {
       nLocations = DatabaseManager.getLocationDAO().getAllLocations();
@@ -136,6 +134,7 @@ public class mapPageController implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
     nLocations.addAll(eLocations);
 
     for (Location lo : nLocations) {
@@ -341,10 +340,7 @@ public class mapPageController implements Initializable {
 
   @FXML
   private void homePage(ActionEvent event) throws IOException {
-    Scene scene = SceneManager.getInstance().setScene("homePage.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setHomeScreen();
   }
 
   public void showPatient() {
@@ -424,7 +420,7 @@ public class mapPageController implements Initializable {
   }
 
   public void wipeMap() throws SQLException {
-    ArrayList<MedEquip> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     oldLocs.addAll(eLocations);
@@ -434,7 +430,7 @@ public class mapPageController implements Initializable {
   }
 
   public void displayMap() throws SQLException {
-    ArrayList<MedEquip> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
 
     ArrayList<Location> nLocations = null;
     ArrayList<Location> eLocations = null;
@@ -457,7 +453,7 @@ public class mapPageController implements Initializable {
   }
 
   public void loadTable() throws SQLException {
-    ArrayList<MedEquip> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     oldLocs.addAll(eLocations);
@@ -561,5 +557,14 @@ public class mapPageController implements Initializable {
             + FX_TEXT_FILL_WHITE
             + ";"
             + FX_BACKGROUND_BLUE);
+  }
+
+  @FXML
+  public void switchToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setHomeScreen();
+  }
+
+  public void showAll() {
+    MapIconModifier.showAllIcon();
   }
 }

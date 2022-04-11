@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquip;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class MapPopUp {
    */
   public static void popUpReset() throws IOException, SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    ArrayList<MedEquip> eList = null;
+    ArrayList<equipment> eList = null;
     eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     Parent root = FXMLLoader.load(mapPageController.class.getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();

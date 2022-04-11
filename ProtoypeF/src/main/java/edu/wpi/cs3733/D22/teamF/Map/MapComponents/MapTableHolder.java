@@ -1,9 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
-import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquip;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,14 +17,14 @@ public class MapTableHolder {
    * @return
    * @throws SQLException
    */
-  public static ArrayList<Location> equipToLocation(ArrayList<MedEquip> medList)
+  public static ArrayList<Location> equipToLocation(ArrayList<equipment> medList)
       throws SQLException {
     ArrayList<Location> returnList = new ArrayList<>();
     int x = -1;
     int y = -1;
     String floor = "";
     String specificID = "";
-    for (MedEquip med : medList) {
+    for (equipment med : medList) {
       specificID = med.getNodeID();
       Statement stm = DatabaseManager.getConn().createStatement();
       String cmd = "SELECT * FROM Locations WHERE nodeID = '" + specificID + "'";
