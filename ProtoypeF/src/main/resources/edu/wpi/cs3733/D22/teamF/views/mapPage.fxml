@@ -111,7 +111,7 @@
       </JFXNodesList>
       <JFXNodesList fx:id="menuNodeList" layoutX="815.0" layoutY="660.0">
          <children>
-            <JFXButton fx:id="openMenu" style="-fx-background-color: #123090;" text="Menu" textFill="WHITE">
+            <JFXButton fx:id="openMenu" style="-fx-background-color: #123090;" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -523,18 +523,25 @@ public class mapPageController implements Initializable {
     changeToL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     setCircleButton(openMenu, 55);
     openMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    openMenu.setGraphic(MapIconModifier.getIcon("menu"));
     setCircleButton(addButton, 40);
     addButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    addButton.setGraphic(MapIconModifier.getIcon("add"));
     setCircleButton(saveButton, 40);
     saveButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    saveButton.setGraphic(MapIconModifier.getIcon("save"));
     setCircleButton(loadButton, 40);
     loadButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    loadButton.setGraphic(MapIconModifier.getIcon("load"));
     setCircleButton(tableButton, 40);
     tableButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    tableButton.setGraphic(MapIconModifier.getIcon("table"));
     setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    historyButton.setGraphic(MapIconModifier.getIcon("history"));
     setCircleButton(homeButton, 40);
     homeButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    homeButton.setGraphic(MapIconModifier.getIcon("home"));
   }
 
   public static void setCircleButton(Button button, int radius) {
@@ -562,9 +569,5 @@ public class mapPageController implements Initializable {
   @FXML
   public void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
-  }
-
-  public void showAll() {
-    MapIconModifier.showAllIcon();
   }
 }
