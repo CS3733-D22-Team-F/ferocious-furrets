@@ -23,11 +23,12 @@ public class Main {
 
     ArduinoConnection arduinoConnection = new ArduinoConnection();
     arduinoConnection.startConnection();
-    for (int k = 0; k < 1000; k++) {
-      arduinoConnection.testConnection();
-    }
+    //    for (int k = 0; k < 1000; k++) {
+    arduinoConnection.testWriteConnection();
+    //    }
+    arduinoConnection.testReadConnection();
 
-    Fapp.launch(Fapp.class, args);
+    //    Fapp.launch(Fapp.class, args);
     // backup database to csv files
 
   }

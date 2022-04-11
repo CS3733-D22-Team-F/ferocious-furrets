@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Successfully opens connection">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Sends bytes over serial to arduino">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/ArduinoConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/arduinoTestBlink.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/arduino/arduinoTestBlink.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +294,7 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649348213430" duration="299000" />
-      <workItem from="1649634629488" duration="3880000" />
+      <workItem from="1649634629488" duration="6123000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -527,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649637884210</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Sends bytes over serial to arduino">
+      <created>1649638757787</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1649638757788</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,7 +565,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed icon update on map when reset from csv file" />
     <MESSAGE value="Icons update on add/delete" />
     <MESSAGE value="Icons update on reset from CSV" />
     <MESSAGE value="Fixed open ResultSet bug" />
@@ -583,7 +589,8 @@
     <MESSAGE value="Testing arduino implementation" />
     <MESSAGE value="Started imports" />
     <MESSAGE value="Successfully opens connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully opens connection" />
+    <MESSAGE value="Sends bytes over serial to arduino" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sends bytes over serial to arduino" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
