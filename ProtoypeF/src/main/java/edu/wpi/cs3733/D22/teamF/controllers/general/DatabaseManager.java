@@ -17,7 +17,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -34,6 +34,12 @@ public class DatabaseManager {
   private static DatabaseManager DatabaseManager;
 
   private DatabaseManager() {}
+
+  private static Connection switchConnection(boolean runEmbedded) {
+    DatabaseInitializer.switchConnection(runEmbedded);
+    conn = DatabaseInitializer.getConnection().getDbConnection();
+    return conn;
+  }
 
   /**
    * inits the dao objects
