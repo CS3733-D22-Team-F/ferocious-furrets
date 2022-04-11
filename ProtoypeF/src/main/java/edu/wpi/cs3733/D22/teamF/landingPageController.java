@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -202,18 +200,12 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void switchToRequests(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("requestListPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("requestListPage.fxml");
   }
 
   @FXML
   public void switchToLogin(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("logInPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
   @FXML
