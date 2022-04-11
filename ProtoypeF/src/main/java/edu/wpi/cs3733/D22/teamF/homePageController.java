@@ -203,10 +203,7 @@ public class homePageController {
 
   @FXML
   public void switchToLanding(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("landingPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("landingPage.fxml");
     //    SceneManager.getInstance().setScene("landingPage.fxml");
   }
 
