@@ -27,13 +27,6 @@ public class logInController extends returnHomePage {
   private Parent root;
   private Scene scene;
 
-  /*
-   * method to send user to the homepage after a successful authentication of username and password
-   */
-  public void loginSuccess() throws IOException {
-    StageManager.getInstance().setDisplay("homePage.fxml");
-  }
-
   @FXML
   private void helpQuit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
