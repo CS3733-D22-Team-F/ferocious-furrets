@@ -30,6 +30,7 @@ public class DatabaseInitializer {
 
   /**
    * sets the embedded bool and returns a new Helped.db
+   *
    * @param runEmbedded boolean run in an embedded or client server mode
    * @return a new DatabaseInitializer object
    */

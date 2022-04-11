@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added back up to csv to switch function">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/general/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/general/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/DatabaseInitializer.java" afterDir="false" />
     </list>
@@ -45,6 +46,12 @@
                 <item name="ProtoypeF" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -260,7 +267,7 @@
       <workItem from="1649205998338" duration="1241000" />
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
-      <workItem from="1649717081604" duration="2699000" />
+      <workItem from="1649717081604" duration="3636000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -423,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649718482535</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added comments">
+      <created>1649720165822</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649720165822</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +467,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
     <MESSAGE value="Reset map from csv functionality" />
     <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
     <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
@@ -478,7 +491,8 @@
     <MESSAGE value="made function to switch bd type" />
     <MESSAGE value="added database" />
     <MESSAGE value="added back up to csv to switch function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added back up to csv to switch function" />
+    <MESSAGE value="added comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

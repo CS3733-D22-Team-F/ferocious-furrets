@@ -36,8 +36,8 @@ public class DatabaseManager {
   private DatabaseManager() {}
 
   /**
-   * first backs up the current database to csvs then makes a new DatabaseInitializer object with
-   * a connection to a client-server database
+   * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
+   * connection to a client-server database
    *
    * @param runEmbedded boolean true to run embedded database
    * @return Connection object
@@ -70,6 +70,7 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+
     return Helper.dbMan;
   }
 
