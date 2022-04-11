@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.net.URL;
@@ -35,11 +36,7 @@ public class landingPageController implements Initializable {
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
-    scene = SceneManager.getInstance().setScene("medicalPage.fxml");
-
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("medicalPage.fxml");
   }
 
   /**
@@ -50,10 +47,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("mapPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("mapPage.fxml");
   }
 
   /**
@@ -64,10 +58,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("equipmentPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("equipmentPage.fxml");
   }
 
   /**
@@ -78,10 +69,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("medicinePage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("medicinePage.fxml");
   }
 
   /**
@@ -92,10 +80,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("giftPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("giftPage.fxml");
   }
 
   /**
@@ -106,10 +91,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    scene = SceneManager.getInstance().setScene("mealPage.fxml");
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    StageManager.getInstance().setDisplay("mealPage.fxml");
   }
 
   /**

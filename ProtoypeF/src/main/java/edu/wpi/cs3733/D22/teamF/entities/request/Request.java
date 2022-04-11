@@ -1,16 +1,19 @@
 package edu.wpi.cs3733.D22.teamF.entities.request;
 
-public abstract class Request {
+import edu.wpi.cs3733.D22.teamF.entities.database.Repository;
 
-  private String reqID; // id of request
-  private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
-  private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
-  private String
+public abstract class Request implements IRequest {
+
+  protected String reqID; // id of request
+  protected String assignedEmpID; // Employee that is assigned the task (First name, Last name)
+  protected String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
+  protected String
       nodeID; // nodeID is the key for the location in which the request is directed to (Check
   // Locations.csv for examples)
-  private String status; // Status of the request (In Progress or Done)
+  protected String status; // Status of the request (In Progress or Done)
   // TODO enum
   private String reqType; // Type of request made
+  protected Repository db;
 
   /**
    * @param reqID reqID
@@ -18,22 +21,23 @@ public abstract class Request {
    * @param assignedEmpID requester name
    * @param requesterEmpID requester id
    * @param status request status processing/done
-   * @param reqType request tpye Medical/Delivery
    */
   public Request(
-      String reqID,
-      String nodeID,
-      String assignedEmpID,
-      String requesterEmpID,
-      String status,
-      String reqType) {
+      String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
     this.reqID = reqID;
     this.nodeID = nodeID;
     this.assignedEmpID = assignedEmpID;
     this.requesterEmpID = requesterEmpID;
     this.status = status;
-    this.reqType = reqType;
   }
+
+  public String generateInsertStatement() {
+    return String.format(
+        "INSERT INTO ServiceRequest VALUES ('%s', '%s', '%s', '%s', '%s')",
+        reqID, nodeID, assignedEmpID, requesterEmpID, status);
+  }
+
+  public Request() {}
 
   public String getAssignedEmpID() {
     return assignedEmpID;

@@ -1,17 +1,16 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
+import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.MedEquipDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest.MedDelReqDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest.labRequestDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest.scanRequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
- * access a DAO call DatabaseManager.getWantedDAO()
+ * access a DAO call DatabaseManager.getWantedDAO() Uses Singleton Design pattern to ensure only one
+ * connection is made to the database
  *
  * @see LocationsDAOImpl
  * @see edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer
@@ -19,11 +18,18 @@ import java.sql.*;
 public class DatabaseManager {
 
   private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
-  private static final MedDelReqDAOImpl medicalEquipmentDeliveryRequestDAO = new MedDelReqDAOImpl();
-  private static final MedEquipDAOImpl medicalEquipmentDAO = new MedEquipDAOImpl();
-  private static final labRequestDAOImpl labRequestDAO = new labRequestDAOImpl();
-  private static final scanRequestDAOImpl scanRequestDAO = new scanRequestDAOImpl();
+  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
+      new equipmentDeliveryDAOImpl();
+  private static final equipmentDAOImpl medicalEquipmentDAO = new equipmentDAOImpl();
+  private static final labDAOImpl labRequestDAO = new labDAOImpl();
+  private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
+  private static final floralDAOImpl floralDAO = new floralDAOImpl();
+  private static final giftDAOImpl giftDAO = new giftDAOImpl();
+  private static final mealDAOImpl mealDAO = new mealDAOImpl();
+  private static final patientDAOImpl patientDAO = new patientDAOImpl();
+  private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -37,11 +43,17 @@ public class DatabaseManager {
    * @throws IOException
    */
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
+
+    dropAllTables();
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDeliveryRequestDAO.initTable();
-    medicalEquipmentDAO.initTable();
-    labRequestDAO.initTable();
-    scanRequestDAO.initScanRequestTable();
+    RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
+    medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
+    medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
+    labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
+    scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     return Helper.dbMan;
   }
 
@@ -88,6 +100,21 @@ public class DatabaseManager {
     return null;
   }
 
+  public static void dropAllTables() throws SQLException {
+
+    // DROP ALL REQUEST
+    dropTableIfExist("ScanRequest");
+    dropTableIfExist("LabRequest");
+    dropTableIfExist("GIFTREQUEST");
+    dropTableIfExist("MEALREQUEST");
+    dropTableIfExist("MEDICINEREQUEST");
+    dropTableIfExist("EquipmentDeliveryRequest");
+    // DROP BIG TABLES
+    dropTableIfExist("ServiceRequest");
+    dropTableIfExist("MedicalEquipment");
+    dropTableIfExist("Locations");
+  }
+
   public static void dropTableIfExist(String droppingTable) throws SQLException {
     if (conn.getMetaData().getTables(null, null, droppingTable.toUpperCase(), null).next()) {
       runStatement("DROP TABLE " + droppingTable);
@@ -105,8 +132,9 @@ public class DatabaseManager {
    */
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.saveMedEquipToCSV();
-    medicalEquipmentDeliveryRequestDAO.saveRequestToCSV();
+    medicalEquipmentDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
+    medicalEquipmentDeliveryRequestDAO.backUpToCSV(
+        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
@@ -125,7 +153,7 @@ public class DatabaseManager {
    *
    * @return MedDelReqDAOImpl
    */
-  public static MedDelReqDAOImpl getMedEquipDelReqDAO() {
+  public static equipmentDeliveryDAOImpl getMedEquipDelReqDAO() {
     return medicalEquipmentDeliveryRequestDAO;
   }
   /**
@@ -133,16 +161,36 @@ public class DatabaseManager {
    *
    * @return medEquipImpl DAO object
    */
-  public static MedEquipDAOImpl getMedEquipDAO() {
+  public static equipmentDAOImpl getMedEquipDAO() {
     return medicalEquipmentDAO;
   }
   /** gets the LabRequestDAO */
-  public static labRequestDAOImpl getLabRequestDAO() {
+  public static labDAOImpl getLabRequestDAO() {
     return labRequestDAO;
   }
   /** gets the scanRequestDAO */
-  public static scanRequestDAOImpl getScanRequestDAO() {
+  public static scanDAOImpl getScanRequestDAO() {
     return scanRequestDAO;
+  }
+
+  public static mealDAOImpl getMealDAO() {
+    return mealDAO;
+  }
+
+  public static floralDAOImpl getFloralDAO() {
+    return floralDAO;
+  }
+
+  public static giftDAOImpl getGiftDAO() {
+    return giftDAO;
+  }
+
+  public static medicineDAOImpl getMedicineDAO() {
+    return medicineDAO;
+  }
+
+  public static patientDAOImpl getPatientDAO() {
+    return patientDAO;
   }
 
   /** helper */
