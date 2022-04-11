@@ -1,7 +1,7 @@
 reqID,nodeID,assEmpID,reqEmpID,status
-blo1,fDEPT00303,1,2,processing
-MRI2,fDEPT00303,3,4,processing
-Inf3,fDEPT00303,5,6,processing
-Ant4,fDEPT00303,7,8,processing
-Ted5,fDEPT00303,1,9,processing
+blo1,fDEPT00303,1,2,done
+MRI2,fDEPT00303,3,4,done
+Inf3,fDEPT00303,5,6,done
+Ant4,fDEPT00303,7,8,done
+Ted5,fDEPT00303,1,9,done
 Inf6,fDEPT00303,1,2,processing

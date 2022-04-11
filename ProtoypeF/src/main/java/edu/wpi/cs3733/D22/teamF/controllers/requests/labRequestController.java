@@ -120,7 +120,7 @@ public class labRequestController implements Initializable, IRequestController {
   }
 
   public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Equipment");
+    RequestSystem req = new RequestSystem("Lab");
     req.resolveRequest(reqID.getText());
     reqID.clear();
   }

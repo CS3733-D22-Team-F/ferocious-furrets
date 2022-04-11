@@ -84,7 +84,7 @@ public class medicineController implements Initializable, IRequestController {
   }
 
   public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Equipment");
+    RequestSystem req = new RequestSystem("Medicine");
     req.resolveRequest(reqID.getText());
     reqID.clear();
   }
