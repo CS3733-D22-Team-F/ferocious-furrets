@@ -1,3 +1,5 @@
 reqID,nodeID,assEmpID,reqEmpID,status
 Bed8,fDEPT00303,1,2,processing
 Bed9,fDEPT00303,3,4,done
+Bed3,fDEPT00303,4,5,done
+blo4,fDEPT00303,6,7,done
