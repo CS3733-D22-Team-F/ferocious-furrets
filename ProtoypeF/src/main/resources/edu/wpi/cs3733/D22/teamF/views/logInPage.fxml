@@ -96,11 +96,6 @@
             </VBox>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="793.0" onAction="#loginSuccess" prefHeight="42.0" prefWidth="96.0" style="-fx-background-color: #123090;" text="Home" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </JFXButton>
       <MenuBar prefHeight="28.0" prefWidth="1302.0">
         <menus>
           <Menu mnemonicParsing="false" text="Help">
