@@ -28,8 +28,8 @@ public class ArduinoConnection {
   public void testWriteConnection() throws InterruptedException, IOException {
     //    for (Integer i = 0; i < 5; ++i) {
     //      arduinoPort.getOutputStream().write(i.byteValue());
-    String stringToSend = "Bello The";
-    String totalBytesToSend = (char)stringToSend.length() + stringToSend;
+    String stringToSend = "hello there my sweet prince";
+    String totalBytesToSend = (char) (stringToSend.length()) + stringToSend;
     byte[] bytes = totalBytesToSend.getBytes(StandardCharsets.UTF_8);
     arduinoPort.getOutputStream().write(bytes);
     //      arduinoPort.getOutputStream().flush();
@@ -40,10 +40,15 @@ public class ArduinoConnection {
   }
 
   public void testReadConnection() {
-//    char sizeByte = 0;
-//    arduinoPort.readBytes(sizeByte, 1);
-    byte[] inputBytes = new byte[32];
-    arduinoPort.readBytes(inputBytes, inputBytes.length);
+    byte[] sizeByte =
+        new byte
+            [1]; // gets the size of the message in bytes from the first bit that sends the length
+    // of the string
+    arduinoPort.readBytes(sizeByte, 1);
+    int lengthOfMessage = (char) sizeByte[0];
+
+    byte[] inputBytes = new byte[lengthOfMessage];
+    arduinoPort.readBytes(inputBytes, lengthOfMessage);
     String s = new String(inputBytes, StandardCharsets.UTF_8);
     System.out.println(s);
   }
