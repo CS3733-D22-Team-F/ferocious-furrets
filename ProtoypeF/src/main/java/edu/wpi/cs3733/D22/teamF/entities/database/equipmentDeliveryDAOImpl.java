@@ -40,7 +40,7 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
@@ -53,7 +53,7 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
@@ -74,15 +74,43 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     ServiceRequestFields.add(3, fields.get(3)); // requester emp id
     ServiceRequestFields.add(4, fields.get(4)); // status
 
-    DatabaseManager.runStatement(generateInsertStatement(EquipmentDeliveryRequestFields));
+    String updateCmd =
+        "UPDATE MEDICALEQUIPMENT SET STATUS = 'unavailable' WHERE EQUIPID = '"
+            + fields.get(5)
+            + "'";
+    DatabaseManager.runStatement(updateCmd);
     DatabaseManager.runStatement(
         RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(EquipmentDeliveryRequestFields));
+  }
+
+  public void addInit(ArrayList<String> fields) throws SQLException {
+    ArrayList<String> EquipmentDeliveryRequestFields = new ArrayList<>();
+
+    EquipmentDeliveryRequestFields.add(0, fields.get(0)); // request id
+    EquipmentDeliveryRequestFields.add(1, fields.get(1)); // equipID
+
+    DatabaseManager.runStatement(generateInsertStatement(EquipmentDeliveryRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
-    String cmd = "DELETE FROM EquipmentDeliveryRequest WHERE reqID = '" + reqID + "'";
+    //    String cmd = "DELETE FROM EquipmentDeliveryRequest WHERE reqID = '" + reqID + "'";
+    //    DatabaseManager.runStatement(cmd);
+    //    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
+    //    DatabaseManager.runStatement(cmd1);
+    // mark request status as 'done'
+    // move equipment to dirty storage for cleaning
+    String cmd = "UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '" + reqID + "'";
     DatabaseManager.runStatement(cmd);
-    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
+    ResultSet rset =
+        DatabaseManager.runQuery(
+            "Select * from EQUIPMENTDELIVERYREQUEST WHERE REQID = '" + reqID + "'");
+    String eID = "";
+    if (rset.next()) {
+      eID = rset.getString("equipID");
+    }
+    rset.close();
+    String cmd1 = "UPDATE MEDICALEQUIPMENT SET NODEID = 'fSTOR00503' WHERE EQUIPID = '" + eID + "'";
     DatabaseManager.runStatement(cmd1);
   }
 
@@ -90,7 +118,7 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO ServiceRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
+        "INSERT INTO EQUIPMENTDELIVERYREQUEST VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   private ArrayList<String> makeArrayListFromString(String currentLine) {

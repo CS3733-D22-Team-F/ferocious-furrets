@@ -23,9 +23,13 @@ public class giftDeliveryRequest extends DeliveryRequest {
     this.gift = gift;
   }
 
-  public void place(ArrayList<String> fields) throws SQLException {}
+  public void place(ArrayList<String> fields) throws SQLException {
+    db.addRequest(fields);
+  }
 
-  public void resolve(String reqID) {}
+  public void resolve(String reqID) throws SQLException {
+    db.deleteRequest(reqID);
+  }
 
   public void modify(ArrayList<String> fields) {}
 

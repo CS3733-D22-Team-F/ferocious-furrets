@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
@@ -130,7 +131,7 @@ public class mapPageController implements Initializable {
     }
 
     try {
-      MapTableHolder.loadTable(table);
+      loadTable();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -139,7 +140,7 @@ public class mapPageController implements Initializable {
 
     for (Location lo : nLocations) {
       try {
-        MapIconModifier.addIcon(table, iconPane, lo);
+        addIcon(lo);
       } catch (SQLException e) {
         e.printStackTrace();
       } catch (FileNotFoundException e) {
@@ -316,26 +317,46 @@ public class mapPageController implements Initializable {
 
   @FXML
   void popUpReset() throws SQLException, IOException {
-    MapPopUp.popUpReset();
-    MapTableHolder.loadMap(table, iconPane);
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpReset();
+      MapTableHolder.loadMap(table, iconPane);
+    }
   }
 
   @FXML
   void popUpAdd() throws SQLException, IOException {
-    MapPopUp.popUpAdd();
-    MapTableHolder.loadMap(table, iconPane);
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpAdd();
+      MapTableHolder.loadMap(table, iconPane);
+    }
   }
 
   @FXML
   void popUpSave() throws SQLException, IOException {
-    MapPopUp.popUpSave();
-    MapTableHolder.loadMap(table, iconPane);
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpSave();
+      MapTableHolder.loadMap(table, iconPane);
+    }
   }
 
   @FXML
   void openHistory() throws SQLException, IOException {
-    MapPopUp.openHistory();
-    MapTableHolder.loadMap(table, iconPane);
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.openHistory();
+      MapTableHolder.loadMap(table, iconPane);
+    }
   }
 
   @FXML

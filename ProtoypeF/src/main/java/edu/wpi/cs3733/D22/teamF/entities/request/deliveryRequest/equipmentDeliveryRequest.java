@@ -42,7 +42,7 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
    */
   public String generateInsertStatement() {
     return String.format(
-        "INSERT INTO MEDICALEQUIPMENTDELIVERYREQUEST VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        "INSERT INTO EQUIPMENTDELIVERYREQUEST VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
         reqID, requestedEquipmentID, nodeID, assignedEmpID, requesterEmpID, status);
   }
 
@@ -57,9 +57,12 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
   public void place(ArrayList<String> fields) throws SQLException {
     //    db.addRequest(fields); //ADD FIELDS FOR REQ ID ALSO MAKE SURE FIELDS ARE CORRECT ORDER
     // @equipmentDeliveryDaoImpl
+    db.addRequest(fields);
   }
 
-  public void resolve(String reqID) {}
+  public void resolve(String reqID) throws SQLException {
+    db.deleteRequest(reqID);
+  }
 
   public void modify(ArrayList<String> fields) {}
 

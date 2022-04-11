@@ -32,6 +32,8 @@ public class requestListController implements Initializable {
   /** adds items to the list to requestList ArrayList */
   public void populateList() {
     requestList.getItems().clear();
+    ArrayList<ArrayList<Object>> reqs = new ArrayList<ArrayList<Object>>();
+
     for (ArrayList<Object> list : serviceRequestStorage.getArrayList()) {
       requestList.getItems().add(list);
     }
