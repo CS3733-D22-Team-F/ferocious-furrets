@@ -138,5 +138,8 @@
             </ImageView>
          </children>
       </Pane>
+      <TextField fx:id="reqID" layoutX="14.0" layoutY="601.0" />
+      <Label layoutX="14.0" layoutY="576.0" text="Resolved Request ID" textFill="WHITE" />
+      <JFXButton fx:id="resolveReq" buttonType="RAISED" layoutX="14.0" layoutY="645.0" onAction="#resolveRequest" ripplerFill="RED" text="Resolve" />
    </children>
 </AnchorPane>

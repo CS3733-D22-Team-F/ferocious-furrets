@@ -1,10 +1,14 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,6 +33,8 @@ public class equipmentRequestController implements Initializable, IRequestContro
   @FXML private TextField userField;
   @FXML private ComboBox typeChoice;
   @FXML private ComboBox statusChoice;
+  @FXML private TextField reqID;
+  @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
 
@@ -43,7 +49,7 @@ public class equipmentRequestController implements Initializable, IRequestContro
   }
 
   @FXML
-  public void submit() {
+  public void submit() throws SQLException {
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
@@ -61,21 +67,53 @@ public class equipmentRequestController implements Initializable, IRequestContro
 
       RequestSystem req = new RequestSystem("Equipment");
       ArrayList<String> fields = new ArrayList<String>();
+      fields.add(generateReqID());
       fields.add(nodeField.getText());
       fields.add(employeeIDField.getText());
       fields.add(userField.getText());
       fields.add(statusChoice.getValue().toString());
-      fields.add(typeChoice.getValue().toString());
+      fields.add(getAvailableEquipment());
       req.placeRequest(fields);
 
-      //      req.nodeField.clear();
-
+      nodeField.clear();
       employeeIDField.clear();
       userField.clear();
       typeChoice.valueProperty().setValue(null);
       statusChoice.valueProperty().setValue(null);
       userField.clear();
     }
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Equipment");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String getAvailableEquipment() throws SQLException {
+    ResultSet rset =
+        DatabaseManager.runQuery("SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available'");
+    String eID = "";
+    if (!rset.next()) {
+
+    } else {
+      eID = rset.getString("equipID");
+    }
+    return eID;
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = nNodeType + reqNum;
+    return nID;
   }
 
   @Override
