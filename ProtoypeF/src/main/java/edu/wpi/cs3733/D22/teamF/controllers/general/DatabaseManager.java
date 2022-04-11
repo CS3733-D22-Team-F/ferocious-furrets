@@ -35,6 +35,15 @@ public class DatabaseManager {
 
   private DatabaseManager() {}
 
+  /**
+   * first backs up the current database to csvs then makes a new DatabaseInitializer object with
+   * a connection to a client-server database
+   *
+   * @param runEmbedded boolean true to run embedded database
+   * @return Connection object
+   * @throws SQLException
+   * @throws IOException
+   */
   private static Connection switchConnection(boolean runEmbedded) throws SQLException, IOException {
     backUpDatabaseToCSV();
     DatabaseInitializer.switchConnection(runEmbedded);

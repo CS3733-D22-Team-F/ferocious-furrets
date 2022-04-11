@@ -13,7 +13,7 @@ public class DatabaseInitializer {
   /**
    * Constructor
    *
-   * @param embedded
+   * @param embedded boolean run in a embedded db mode or client server mode
    */
   private DatabaseInitializer(boolean embedded) {
     this.dbConnection = this.connectDatabase(DatabaseInitializer.embedded);
@@ -29,7 +29,8 @@ public class DatabaseInitializer {
   }
 
   /**
-   * @param runEmbedded
+   * sets the embedded bool and returns a new Helped.db
+   * @param runEmbedded boolean run in an embedded or client server mode
    * @return a new DatabaseInitializer object
    */
   public static DatabaseInitializer switchConnection(boolean runEmbedded) {
