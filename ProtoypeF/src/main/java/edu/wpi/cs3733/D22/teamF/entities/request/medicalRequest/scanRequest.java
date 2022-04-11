@@ -33,7 +33,9 @@ public class scanRequest extends MedicalRequest {
   }
 
   @Override
-  public void resolve(String reqID) {}
+  public void resolve(String reqID) throws SQLException {
+    db.deleteRequest(reqID);
+  }
 
   @Override
   public void modify(ArrayList<String> fields) {}
