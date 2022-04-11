@@ -28,8 +28,10 @@ public class ArduinoConnection {
   public void testConnection() throws InterruptedException, IOException {
     for (Integer i = 0; i < 5; ++i) {
       arduinoPort.getOutputStream().write(i.byteValue());
+//      arduinoPort.getOutputStream().write(Byte.parseByte("Hello"));
       arduinoPort.getOutputStream().flush();
       System.out.println("Sent number: " + i);
+//      System.out.println("Sent Hello");
       Thread.sleep(1000);
     }
   }
