@@ -162,12 +162,47 @@ public class MapIconModifier {
                       "Icons/EquipmentIcons/RECL Icon.png"));
           break;
         }
-      case "Xray":
+      case "add":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/add.png"));
+          break;
+        }
+      case "history":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/EquipmentIcons/XRAY Icon.png"));
+                  mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/history.png"));
+          break;
+        }
+      case "home":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/home.png"));
+          break;
+        }
+      case "load":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/load.png"));
+          break;
+        }
+      case "menu":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/menu.png"));
+          break;
+        }
+      case "save":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/save.png"));
+          break;
+        }
+      case "table":
+        {
+          image =
+              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/table.png"));
           break;
         }
     }

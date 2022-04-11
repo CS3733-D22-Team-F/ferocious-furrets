@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.Map.*;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
@@ -79,12 +80,7 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpSave() throws IOException {
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapBackUpPage.fxml"));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
+    StageManager.getInstance().setDisplayAndWait("mapBackUpPage.fxml");
   }
 
   /**
