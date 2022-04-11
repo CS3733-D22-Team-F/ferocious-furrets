@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -11,23 +11,23 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * lab request controller
  *
  * @see Initializable
  */
-public class labRequestController implements Initializable, IRequestController {
+public class labRequestController extends PageController
+    implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
   @FXML TextField userField;
-
+  @FXML private AnchorPane masterPane;
   @FXML ComboBox typeChoice; // Lab Type Choice Box
   @FXML ComboBox statusChoice; // Status Choice Box
 
@@ -39,6 +39,8 @@ public class labRequestController implements Initializable, IRequestController {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
+
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
     temp.add("processing");
@@ -105,19 +107,6 @@ public class labRequestController implements Initializable, IRequestController {
     statusChoice.valueProperty().setValue(null);
   }
 
-  /**
-   * shows the queue scene for lab requests
-   *
-   * @param event
-   * @throws IOException
-   */
-  public void showQueueScene(ActionEvent event) throws IOException {
-    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-  }
-
   // TODO make a interaface for all controllers
   public String generateReqID(int requestListLength, String sampleType, String nodeID) {
     String reqAbb = "LR";
@@ -133,5 +122,10 @@ public class labRequestController implements Initializable, IRequestController {
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }

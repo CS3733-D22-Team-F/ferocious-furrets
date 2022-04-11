@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -14,15 +15,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class medicineController implements Initializable, IRequestController {
+public class medicineController extends PageController
+    implements Initializable, IRequestController {
   private Stage stage;
   private Scene scene;
   private Parent root;
 
   @FXML private TextField nodeField;
+  @FXML private AnchorPane masterPane;
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
   @FXML private TextField typeOfMed;
@@ -30,6 +35,30 @@ public class medicineController implements Initializable, IRequestController {
   @FXML private Button resetButton;
   @FXML private Button submitButton;
   @FXML private ComboBox typeChoice;
+
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
+  public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
+
+    ArrayList<Object> statusDrop = new ArrayList<>();
+    ArrayList<Object> medicineType = new ArrayList<>();
+    statusDrop.add("");
+    statusDrop.add("processing");
+    statusDrop.add("done");
+    statusChoice.getItems().addAll(statusDrop);
+    statusChoice.setValue("");
+    medicineType.add("Steroids");
+    medicineType.add("Anti-inflammatory");
+    medicineType.add("Pain-Killers");
+    medicineType.add("Capsules");
+    medicineType.add("Tablet");
+    typeChoice.getItems().addAll(medicineType);
+  }
 
   @FXML
   public void reset() {
@@ -75,30 +104,13 @@ public class medicineController implements Initializable, IRequestController {
     }
   }
 
-  /**
-   * inits
-   *
-   * @param location URL
-   * @param resources ResourceBundle
-   */
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> statusDrop = new ArrayList<>();
-    ArrayList<Object> medicineType = new ArrayList<>();
-    statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
-    statusChoice.getItems().addAll(statusDrop);
-    statusChoice.setValue("");
-    medicineType.add("Steroids");
-    medicineType.add("Anti-inflammatory");
-    medicineType.add("Pain-Killers");
-    medicineType.add("Capsules");
-    medicineType.add("Tablet");
-    typeChoice.getItems().addAll(medicineType);
-  }
-
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }

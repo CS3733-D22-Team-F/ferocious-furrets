@@ -134,7 +134,7 @@
                   <Insets top="95.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="279.0" promptText="Select Type" unFocusColor="WHITE">
+            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="277.0" promptText="Select Type" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

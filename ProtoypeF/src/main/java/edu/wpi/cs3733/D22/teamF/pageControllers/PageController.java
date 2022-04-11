@@ -40,7 +40,7 @@ public abstract class PageController {
   }
   // All methods for switching between all pages specifically for scene builder
   public void menu_Home() {
-    switchScene("homePage.fxml");
+    switchScene("landingPage.fxml");
   }
 
   public void menu_Equipment() {

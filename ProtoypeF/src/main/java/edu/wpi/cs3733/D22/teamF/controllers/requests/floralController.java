@@ -1,13 +1,15 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
 
-public class floralController implements Initializable, IRequestController {
+public class floralController extends PageController implements Initializable, IRequestController {
   @Override
   public void submit() {}
 
@@ -26,5 +28,10 @@ public class floralController implements Initializable, IRequestController {
 
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }
