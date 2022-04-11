@@ -11,7 +11,7 @@ public interface IRequest {
 
   public void place(ArrayList<String> fields) throws SQLException;
 
-  public void resolve(String reqID);
+  public void resolve(String reqID) throws SQLException;
 
   public void modify(ArrayList<String> fields);
 

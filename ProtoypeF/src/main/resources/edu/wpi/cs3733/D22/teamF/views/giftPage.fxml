@@ -158,5 +158,7 @@
             <Font size="24.0" />
          </font>
       </TextField>
+      <TextField fx:id="reqID" layoutX="36.0" layoutY="624.0" promptText="Request ID" />
+      <Button fx:id="resolve" layoutX="36.0" layoutY="657.0" mnemonicParsing="false" onAction="#resolveRequest" text="Resolve" />
    </children>
 </AnchorPane>

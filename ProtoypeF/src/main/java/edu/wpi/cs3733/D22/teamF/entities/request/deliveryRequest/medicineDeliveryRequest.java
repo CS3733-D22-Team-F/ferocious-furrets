@@ -24,10 +24,14 @@ public class medicineDeliveryRequest extends DeliveryRequest {
   }
 
   @Override
-  public void place(ArrayList<String> fields) throws SQLException {}
+  public void place(ArrayList<String> fields) throws SQLException {
+    db.addRequest(fields);
+  }
 
   @Override
-  public void resolve(String reqID) {}
+  public void resolve(String reqID) throws SQLException {
+    db.deleteRequest(reqID);
+  }
 
   @Override
   public void modify(ArrayList<String> fields) {}

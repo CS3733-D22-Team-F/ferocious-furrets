@@ -37,8 +37,8 @@ public class mapMouseTracker {
   public void submit() {
     if (!xValue.getText().isEmpty() && !yValue.getText().isEmpty()) {
       coordTempHolder.setFloorValue(floorValue.getText());
-      coordTempHolder.setxValue(((Double.parseDouble(xValue.getText()) / 790) * 1070) + "");
-      coordTempHolder.setyValue(((Double.parseDouble(yValue.getText()) / 630) * 856) + "");
+      coordTempHolder.setxValue(((Double.parseDouble(xValue.getText()) / 814) * 4450) + "");
+      coordTempHolder.setyValue(((Double.parseDouble(yValue.getText()) / 650) * 3550) + "");
       //      (x/790)*1070
       //      coordTempHolder.setxValue(xValue.getText());
       //      coordTempHolder.setyValue(yValue.getText());

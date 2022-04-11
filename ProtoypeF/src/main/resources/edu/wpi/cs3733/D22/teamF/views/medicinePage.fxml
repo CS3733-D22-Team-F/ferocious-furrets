@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -135,5 +136,7 @@
             </JFXComboBox>
          </children>
       </VBox>
+      <TextField fx:id="reqID" layoutX="24.0" layoutY="600.0" promptText="Request ID" />
+      <Button fx:id="resolveReq" layoutX="24.0" layoutY="634.0" mnemonicParsing="false" onAction="#resolveRequest" text="Resolve" />
    </children>
 </AnchorPane>

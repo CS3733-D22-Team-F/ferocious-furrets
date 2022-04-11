@@ -5,10 +5,13 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -38,6 +41,9 @@ public class giftController implements Initializable, IRequestController {
   @FXML TextField nodeID;
   @FXML TextField patientName;
   @FXML TextField assigned;
+  @FXML TextField reqID;
+
+  @FXML Button resolve;
 
   @FXML JFXComboBox statusChoice;
   boolean roseB = false;
@@ -153,10 +159,15 @@ public class giftController implements Initializable, IRequestController {
    *
    * @return giftDeliveryRequest
    */
-  public void submit() {
+  public void submit() throws SQLException {
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
-
+    fields.add(generateReqID());
+    fields.add(nodeField.getText());
+    fields.add(assigned.getText());
+    fields.add(employeeID.getText());
+    fields.add(statusChoice.getValue().toString());
+    fields.add(itemField.getText());
     req.placeRequest(fields);
 
     submitButton.disableProperty().setValue(true);
@@ -184,6 +195,12 @@ public class giftController implements Initializable, IRequestController {
     if ((chrys != null) && chrysB) {
       chrys.fire();
     }
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Gift");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
   }
 
   public void boxChangeRose() {
@@ -241,25 +258,18 @@ public class giftController implements Initializable, IRequestController {
     StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
   }
 
-  public String generateReqID(int requestListLength) {
-    String reqAbb = "GR";
-    String giftID = "";
-    if ((rose != null) && roseB) {
-      giftID = giftID + "R01";
+  public String generateReqID() throws SQLException {
+    String nNodeType = itemField.getText().substring(1, 4);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
     }
-    if ((teddyBear != null) && teddyB) {
-      giftID = giftID + "TB01";
-    }
-    if ((giftCard != null) && giftB) {
-      giftID = giftID + "GC01";
-    }
-    if ((jasmine != null) && jasmineB) {
-      giftID = giftID + "J01";
-    }
-    if ((chrys != null) && chrysB) {
-      giftID = giftID + "C01";
-    }
-    return reqAbb + giftID + (requestListLength + 1);
+    rset.close();
+
+    String nID = nNodeType + reqNum;
+    return nID;
   }
 
   @FXML

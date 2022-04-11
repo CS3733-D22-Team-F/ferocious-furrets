@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ public class medicineDAOImpl implements IRequestDAO {
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
@@ -32,7 +33,7 @@ public class medicineDAOImpl implements IRequestDAO {
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
@@ -53,23 +54,34 @@ public class medicineDAOImpl implements IRequestDAO {
     ArrayList<String> RequestFields = new ArrayList<>();
 
     MedicineRequestFields.add(0, fields.get(0)); // request id
-    MedicineRequestFields.add(1, fields.get(1)); // medicine
+    MedicineRequestFields.add(1, fields.get(5)); // medicine
 
-    //    RequestFields.add(0, fields.get(0)); // request ID
-    //    RequestFields.add(1, fields.get(1)); // node ID
-    //    RequestFields.add(2, fields.get(2)); // assigned emp id
-    //    RequestFields.add(3, fields.get(3)); // requester emp id
-    //    RequestFields.add(4, fields.get(4)); // status
+    RequestFields.add(0, fields.get(0)); // request ID
+    RequestFields.add(1, fields.get(1)); // node ID
+    RequestFields.add(2, fields.get(2)); // assigned emp id
+    RequestFields.add(3, fields.get(3)); // requester emp id
+    RequestFields.add(4, fields.get(4)); // status
 
+    DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(RequestFields));
     DatabaseManager.runStatement(generateInsertStatement(MedicineRequestFields));
-    // DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(RequestFields));
+  }
+
+  public void addInit(ArrayList<String> fields) throws SQLException {
+    ArrayList<String> medicineRequestFields = new ArrayList<>();
+
+    medicineRequestFields.add(0, fields.get(0)); // request id
+    medicineRequestFields.add(1, fields.get(1)); // medicine type
+
+    DatabaseManager.runStatement(generateInsertStatement(medicineRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM MedicineRequest WHERE reqID = '%s'", reqID));
+    //    DatabaseManager.runStatement(
+    //        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
+    //    DatabaseManager.runStatement(
+    //        String.format("DELETE FROM MedicineRequest WHERE reqID = '%s'", reqID));
+    String cmd = "UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd);
   }
 
   public void update(ArrayList<String> fields) {}

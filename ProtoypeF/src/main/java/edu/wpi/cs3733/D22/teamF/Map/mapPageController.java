@@ -516,8 +516,10 @@ public class mapPageController implements Initializable {
           }
         });
     double x =
-        (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 856.0) * 630;
+        (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
+    double y = (location.getYcoord() / 3550.0) * 700;
+    System.out.println(location.getXcoord());
+    System.out.println(x);
     newButton.setLayoutX(x);
     newButton.setLayoutY(y);
     iconPane.getChildren().add(newButton);
