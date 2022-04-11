@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class landingPageController implements Initializable {
   @FXML private Label johnnikolaLabel;
   @FXML private Label evansLabel;
   @FXML private Label carterLabel;
+  @FXML private JFXToggleButton toggleButton;
 
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
@@ -208,7 +210,6 @@ public class landingPageController implements Initializable {
     StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
-  @FXML
   public void toggleCredits(ActionEvent event) throws IOException {
     if (!toggleOff) {
       azuLabel.setVisible(false);
@@ -244,5 +245,28 @@ public class landingPageController implements Initializable {
     johnnikolaLabel.setVisible(false);
     evansLabel.setVisible(false);
     carterLabel.setVisible(false);
+
+    toggleButton
+        .selectedProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (toggleButton.isSelected() == true) {
+                toggleButton.setText("Show Credits: ON");
+                azuLabel.setVisible(true);
+                nikolaLabel.setVisible(true);
+                johnLabel.setVisible(true);
+                johnnikolaLabel.setVisible(true);
+                evansLabel.setVisible(true);
+                carterLabel.setVisible(true);
+              } else {
+                toggleButton.setText("Show Credits: OFF");
+                azuLabel.setVisible(false);
+                nikolaLabel.setVisible(false);
+                johnLabel.setVisible(false);
+                johnnikolaLabel.setVisible(false);
+                evansLabel.setVisible(false);
+                carterLabel.setVisible(false);
+              }
+            });
   }
 }
