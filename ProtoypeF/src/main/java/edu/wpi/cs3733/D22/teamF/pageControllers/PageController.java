@@ -18,6 +18,7 @@ public abstract class PageController {
 
   /**
    * Creates a PageController
+   *
    * @param c_menu the pages context menu
    * @param m_menu the pages menu bar
    */
@@ -38,21 +39,40 @@ public abstract class PageController {
     return newMItem;
   }
   // All methods for switching between all pages specifically for scene builder
-  public void menu_Home() {switchScene("homePage.fxml");}
-  public void menu_Equipment() {switchScene("equipmentPage.fxml");}
-  public void menu_Gift() {switchScene("giftPage.fxml");}
-  public void menu_Map() {switchScene("mapPage.fxml");}
-  public void menu_Medecine() {switchScene("medicinePage.fxml");}
-  public void menu_Medical() {switchScene("medicalPage.fxml");}
+  public void menu_Home() {
+    switchScene("homePage.fxml");
+  }
+
+  public void menu_Equipment() {
+    switchScene("equipmentPage.fxml");
+  }
+
+  public void menu_Gift() {
+    switchScene("giftPage.fxml");
+  }
+
+  public void menu_Map() {
+    switchScene("mapPage.fxml");
+  }
+
+  public void menu_Medecine() {
+    switchScene("medicinePage.fxml");
+  }
+
+  public void menu_Medical() {
+    switchScene("medicalPage.fxml");
+  }
 
   /**
-   *  Method to create a class specifics context menu
+   * Method to create a class specifics context menu
+   *
    * @return A specific's class context menu
    */
   public abstract ContextMenu makeContextMenu();
 
   /**
    * Creates the main menu bar for the entire application except the login screen
+   *
    * @param masterPane the main pane of a page
    * @return
    */
@@ -63,14 +83,13 @@ public abstract class PageController {
     // pageMenu.prefWidthProperty().bindBidirectional(masterPane.widthProperty(),NumberFormat.getNumberInstance());
     pageMenu.setMinWidth(2000);
 
-
     MenuItem home = this.addMenuItem("homePage.fxml");
     home.setText("home");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
     MenuItem gift = this.addMenuItem("giftPage.fxml");
     gift.setText("Gift Request");
-    //TODO add an if statement for admin here using John's code for line 68- 69
+    // TODO add an if statement for admin here using John's code for line 68- 69
     MenuItem map = this.addMenuItem("mapPage.fxml");
     map.setText("Map Request");
     MenuItem medicine = this.addMenuItem("medicinePage.fxml");
@@ -84,7 +103,7 @@ public abstract class PageController {
     // adding menus into the menu bar
     pageMenu.getMenus().add(navigator);
 
-    //adding menu bar to the main pane of a page
+    // adding menu bar to the main pane of a page
     masterPane.getChildren().add(pageMenu);
 
     return pageMenu;
@@ -92,15 +111,14 @@ public abstract class PageController {
 
   /**
    * abstraction of Stage manger display to switch scenes for
+   *
    * @param fileName name of page to switch to
    */
   public void switchScene(String fileName) {
     StageManager.getInstance().setDisplay(fileName);
   }
 
-  /**
-   * abstaction of StageManager to getback to home
-   */
+  /** abstaction of StageManager to getback to home */
   public void switchToHome() {
     StageManager.getInstance().setHomeScreen();
   }

@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -10,17 +10,17 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * controller for scan scene
  *
  * @see Initializable
  */
-public class scanController implements Initializable, IRequestController {
+public class scanController extends PageController implements Initializable, IRequestController {
 
+  @FXML AnchorPane masterPane;
   @FXML TextField nodeField;
   @FXML TextField employeeIDField;
   @FXML TextField userField;
@@ -29,14 +29,16 @@ public class scanController implements Initializable, IRequestController {
   @FXML ComboBox typeChoice; // Lab Type Choice Box
   @FXML ComboBox statusChoice; // Status Choice Box
 
-  /**
-   * inits
-   *
-   * @param location URL
-   * @param resources ResourceBundle
-   */
+  public scanController() {}
+
+  public scanController(ContextMenu c_menu, MenuBar m_menu) {
+    super(c_menu, m_menu);
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
+
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
     temp.add("processing");
@@ -51,12 +53,40 @@ public class scanController implements Initializable, IRequestController {
     typeChoice.setValue("CAT");
   }
 
+  public String generateReqID(int requestListLength, String scanType, String nodeID) {
+    String reqAbb = "SR";
+    String sAb = "";
+    if (scanType.equals("CAT")) {
+      sAb = "C";
+    } else if (scanType.equals("xray")) {
+      sAb = "X";
+    } else if (scanType.equals("MRI")) {
+      sAb = "M";
+    }
+    return reqAbb + sAb + (requestListLength + 1) + nodeID;
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
   public void reset() {
     nodeField.clear();
     employeeIDField.clear();
     userField.clear();
     typeChoice.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null); // Status Choice Box
+  }
+
+  /**
+   * shows the queue scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  void showSceneQueue(ActionEvent event) throws IOException {
+    switchScene("labRequestQueue.fxml");
   }
 
   /**
@@ -93,34 +123,8 @@ public class scanController implements Initializable, IRequestController {
       requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue().toString());
       serviceRequestStorage.addToArrayList(requestList);
+
+      this.reset();
     }
-  }
-
-  /**
-   * shows the queue scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  void showSceneQueue(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("labRequestQueue.fxml");
-  }
-
-  public String generateReqID(int requestListLength, String scanType, String nodeID) {
-    String reqAbb = "SR";
-    String sAb = "";
-    if (scanType.equals("CAT")) {
-      sAb = "C";
-    } else if (scanType.equals("xray")) {
-      sAb = "X";
-    } else if (scanType.equals("MRI")) {
-      sAb = "M";
-    }
-    return reqAbb + sAb + (requestListLength + 1) + nodeID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
   }
 }

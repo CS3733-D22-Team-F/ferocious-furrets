@@ -24,7 +24,6 @@ public class mealsController extends PageController implements Initializable, IR
   ArrayList<Object> returnList = new ArrayList<>();
   ArrayList<Object> requestList = new ArrayList<>();
 
-
   // @FXML private Button submitButton;
   @FXML private AnchorPane masterPane;
   @FXML private BorderPane menuPane;
@@ -37,6 +36,7 @@ public class mealsController extends PageController implements Initializable, IR
   @FXML private ComboBox<Object> status;
 
   public mealsController() {}
+
   public mealsController(ContextMenu c_menu, MenuBar m_menu) {
     super(c_menu, m_menu);
   }
@@ -53,6 +53,19 @@ public class mealsController extends PageController implements Initializable, IR
     status.setValue("");
   }
 
+  // on press returns fields into delivery object only if required fields aren't empty
+  public String generateReqID(int requestListLength, String nodeID) {
+    String reqAbb = "MR";
+
+    return reqAbb + nodeID + (requestListLength + 1);
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    ContextMenu mealsMenu = new ContextMenu();
+    return mealsMenu;
+  }
+
   public void reset() {
     employeeName.setText("");
     employeeID.setText("");
@@ -61,13 +74,6 @@ public class mealsController extends PageController implements Initializable, IR
     requestType.setText("");
     deliveryID.setText("");
     deliveryType.setText("");
-  }
-
-  // on press returns fields into delivery object only if required fields aren't empty
-  public String generateReqID(int requestListLength, String nodeID) {
-    String reqAbb = "MR";
-
-    return reqAbb + nodeID + (requestListLength + 1);
   }
 
   public void submit() {
@@ -110,11 +116,5 @@ public class mealsController extends PageController implements Initializable, IR
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    ContextMenu mealsMenu = new ContextMenu();
-    return mealsMenu;
   }
 }
