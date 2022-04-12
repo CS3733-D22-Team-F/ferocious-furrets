@@ -340,11 +340,6 @@ public class mapPageController implements Initializable {
     MapTableHolder.loadMap(table, iconPane);
   }
 
-  @FXML
-  private void homePage(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
-  }
-
   public void showPatient() {
     MapIconModifier.showPatient();
   }
@@ -464,6 +459,10 @@ public class mapPageController implements Initializable {
 
   @FXML
   public void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+  }
+
+  public void homePage(ActionEvent event) {
+    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 }

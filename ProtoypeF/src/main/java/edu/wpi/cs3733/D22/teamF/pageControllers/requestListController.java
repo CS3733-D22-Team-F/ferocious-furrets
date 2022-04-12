@@ -41,6 +41,6 @@ public class requestListController implements Initializable {
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

@@ -112,7 +112,7 @@ public class mealsController extends PageController implements Initializable, IR
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 
   @Override
