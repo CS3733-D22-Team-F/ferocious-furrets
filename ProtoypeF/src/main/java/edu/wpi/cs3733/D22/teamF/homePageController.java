@@ -202,7 +202,10 @@ public class homePageController extends PageController {
   @FXML
   public void switchToLanding(ActionEvent event) throws IOException {
     StageManager.getInstance().setDisplay("landingPage.fxml");
-    //    SceneManager.getInstance().setScene("landingPage.fxml");
+  }
+
+  public void switchToLogin(ActionEvent event) {
+    StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
   /** exits */

@@ -48,8 +48,14 @@ public class medicalController {
     StageManager.getInstance().setDisplay("scanPage.fxml");
   }
 
+  /**
+   * Switch to the home scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

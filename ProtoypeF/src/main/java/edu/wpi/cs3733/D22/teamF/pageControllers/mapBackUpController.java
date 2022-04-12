@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/** controller for the map backup */
 public class mapBackUpController implements Initializable {
 
   @FXML private TextField idField;
@@ -101,6 +102,13 @@ public class mapBackUpController implements Initializable {
         .backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/" + filename + ".csv");
   }
 
+  /**
+   * calls Databasemanager backnup to csv
+   *
+   * @param file File
+   * @throws SQLException
+   * @throws IOException
+   */
   public void backUpToCSVFile(File file) throws SQLException, IOException {
 
     // String csvName = "/edu/wpi/furious_furrets/TowerLocationsBackedUp.csv";

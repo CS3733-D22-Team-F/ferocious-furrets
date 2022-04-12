@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -18,7 +19,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class equipmentRequestController extends PageController
@@ -29,13 +34,22 @@ public class equipmentRequestController extends PageController
   private Scene scene;
   private Parent root;
 
-  @FXML private AnchorPane masterPane;
+  @FXML private BorderPane masterPane;
   @FXML private TextField nodeField;
-  @FXML private TextField employeeIDField;
-  @FXML private TextField userField;
+  @FXML private JFXComboBox employeeIDField;
+  @FXML private JFXComboBox userField;
   @FXML private ComboBox typeChoice;
   @FXML private ComboBox statusChoice;
   @FXML private TextField reqID;
+  @FXML private Rectangle rectangle1;
+  @FXML private Rectangle rectangle2;
+  @FXML private Label label1;
+  @FXML private VBox leftVBox;
+  @FXML private HBox leftHBox1;
+  @FXML private HBox leftHBox2;
+  @FXML private HBox leftHBox3;
+  @FXML private ImageView backgroundIMG;
+  @FXML private ImageView logo;
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
@@ -50,6 +64,21 @@ public class equipmentRequestController extends PageController
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
 
+    masterPane.setMinHeight(500);
+    masterPane.setMinWidth(500);
+
+    rectangle1.heightProperty().bind(masterPane.heightProperty());
+    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
+    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2).add(2));
+    leftHBox1.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftHBox2.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftHBox1.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    leftHBox2.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    leftHBox3.maxWidthProperty().bind(rectangle1.widthProperty().subtract(15));
+    leftVBox.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
+    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");
@@ -62,16 +91,33 @@ public class equipmentRequestController extends PageController
     equipmentType.add("Infusion Pump");
     equipmentType.add("Recliner");
     typeChoice.getItems().addAll(equipmentType);
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    employeeIDField.getItems().addAll(employees);
+    userField.getItems().addAll(employees);
+    employeeIDField.setValue("");
+    userField.setValue("");
   }
 
   @FXML
   void resetFunction() {
     nodeField.clear();
-    employeeIDField.clear();
-    userField.clear();
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
-    userField.clear();
   }
 
   @FXML
@@ -79,15 +125,15 @@ public class equipmentRequestController extends PageController
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank field");
     } else {
       requestList.clear();
       requestList.add("Equipment Request of type: " + typeChoice.getValue().toString());
-      requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("Assigned Doctor: " + userField.getValue().toString());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
 
@@ -95,19 +141,33 @@ public class equipmentRequestController extends PageController
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
       fields.add(nodeField.getText());
-      fields.add(employeeIDField.getText());
-      fields.add(userField.getText());
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
       fields.add(getAvailableEquipment());
       req.placeRequest(fields);
 
-      nodeField.clear();
-      employeeIDField.clear();
-      userField.clear();
-      typeChoice.valueProperty().setValue(null);
-      statusChoice.valueProperty().setValue(null);
-      userField.clear();
+      resetFunction();
     }
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   public void resolveRequest() throws SQLException {
@@ -141,7 +201,7 @@ public class equipmentRequestController extends PageController
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 
@@ -157,7 +217,7 @@ public class equipmentRequestController extends PageController
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 
   @Override

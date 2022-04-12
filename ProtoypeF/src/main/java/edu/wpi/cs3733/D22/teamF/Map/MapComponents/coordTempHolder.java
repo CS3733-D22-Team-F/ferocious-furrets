@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
+/** holder for coordinates */
 public class coordTempHolder {
   private static String xValue;
   private static String yValue;

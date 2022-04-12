@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * implementation of the IRequestDAO
+ *
+ * @see IRequestDAO
+ */
 public class RequestDAOImpl implements IRequestDAO {
 
   /**
@@ -26,7 +31,8 @@ public class RequestDAOImpl implements IRequestDAO {
   public void initTable(String filepath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("SERVICEREQUEST");
     DatabaseManager.runStatement(
-        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
+            + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
@@ -38,7 +44,8 @@ public class RequestDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("ServiceRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16))");
+        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
+            + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {

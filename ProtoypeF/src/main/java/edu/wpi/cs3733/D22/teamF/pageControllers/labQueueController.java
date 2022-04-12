@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 /**
- * Lab queue controll
+ * Lab queue controller class
  *
  * @see Initializable
  */

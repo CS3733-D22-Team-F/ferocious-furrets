@@ -4,9 +4,9 @@ equipID,equipType,nodeID,status
 3,Bed,fPATI00303,unavailable
 4,Bed,fPATI00403,unavailable
 5,Bed,fPATI00503,unavailable
-6,Bed,fSTOR00503,unavailable
+6,Bed,fPATI00603,unavailable
 7,Bed,fPATI00703,unavailable
-8,Bed,fPATI00803,available
+8,Bed,fPATI00803,unavailable
 9,Bed,fPATI00903,available
 10,Bed,fPATI01003,available
 11,Bed,fPATI01103,available
@@ -20,8 +20,8 @@ equipID,equipType,nodeID,status
 19,Bed,fPATI01903,available
 20,Bed,fPATI02003,available
 21,Xray,fSTOR00103,available
-22,Infusion Pump,fSTOR00503,unavailable
-23,Infusion Pump,fSTOR00203,unavailable
+22,Infusion Pump,fSTOR00203,available
+23,Infusion Pump,fSTOR00203,available
 24,Infusion Pump,fSTOR00203,available
 25,Infusion Pump,fSTOR00203,available
 26,Infusion Pump,fSTOR00203,available
