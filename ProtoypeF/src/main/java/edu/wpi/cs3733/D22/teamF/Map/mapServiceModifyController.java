@@ -40,5 +40,7 @@ public class mapServiceModifyController implements Initializable {
         String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
     MapIconModifier.deleteIcon(locTempHolder.getLocation());
     DatabaseManager.runStatement(cmd);
+    Stage stage = (Stage) cancel.getScene().getWindow();
+    stage.close();
   }
 }

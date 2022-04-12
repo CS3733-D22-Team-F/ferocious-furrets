@@ -422,70 +422,73 @@ public class MapIconModifier {
    */
   public static void addIcon(TableView<Location> table, AnchorPane iconPane, Location location)
       throws FileNotFoundException, SQLException {
-    JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
-    newButton.setPrefSize(20, 20);
-    newButton.setMinSize(20, 20);
-    newButton.setMaxSize(20, 20);
-    if (getLocType(location).equals("location")) {
-      newButton.setOnAction(
-          e -> {
-            if (MapIconModifier.locationIconList.containsValue(newButton)) {
-              Location lo =
-                  new ArrayList<>(
-                          MapIconModifier.getKeysByValue(
-                              MapIconModifier.locationIconList, newButton))
-                      .get(0);
-              try {
-                MapPopUp.popUpLocModify(table, iconPane, lo);
-                MapTableHolder.loadMap(table, iconPane);
-              } catch (IOException | SQLException ex) {
-                ex.printStackTrace();
+    if (!location.getShortName().equals("done")) {
+      JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
+      newButton.setPrefSize(20, 20);
+      newButton.setMinSize(20, 20);
+      newButton.setMaxSize(20, 20);
+      if (getLocType(location).equals("location")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpLocModify(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
               }
-            }
-          });
-    } else if (getLocType(location).equals("service")) {
-      newButton.setOnAction(
-          e -> {
-            if (MapIconModifier.locationIconList.containsValue(newButton)) {
-              Location lo =
-                  new ArrayList<>(
-                          MapIconModifier.getKeysByValue(
-                              MapIconModifier.locationIconList, newButton))
-                      .get(0);
-              try {
-                MapPopUp.popUpDone(table, iconPane, lo);
-                MapTableHolder.loadMap(table, iconPane);
-              } catch (IOException | SQLException ex) {
-                ex.printStackTrace();
+            });
+      } else if (getLocType(location).equals("service")
+          && !location.getShortName().equals("done")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpDone(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
               }
-            }
-          });
-    } else {
-      newButton.setOnAction(
-          e -> {
-            if (MapIconModifier.locationIconList.containsValue(newButton)) {
-              Location lo =
-                  new ArrayList<>(
-                          MapIconModifier.getKeysByValue(
-                              MapIconModifier.locationIconList, newButton))
-                      .get(0);
-              try {
-                MapPopUp.popUpEquipModify(table, iconPane, lo);
-                MapTableHolder.loadMap(table, iconPane);
-              } catch (IOException | SQLException ex) {
-                ex.printStackTrace();
+            });
+      } else if (getLocType(location).equals("equipment")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpEquipModify(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
               }
-            }
-          });
-    }
+            });
+      }
 
-    double x =
-        (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 3550.0) * 700;
-    newButton.setLayoutX(x);
-    newButton.setLayoutY(y);
-    iconPane.getChildren().add(newButton);
-    MapIconModifier.locationIconList.put(location, newButton);
+      double x =
+          (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
+      double y = (location.getYcoord() / 3550.0) * 700;
+      newButton.setLayoutX(x);
+      newButton.setLayoutY(y);
+      iconPane.getChildren().add(newButton);
+      MapIconModifier.locationIconList.put(location, newButton);
+    }
   }
 
   public static String getLocType(Location location) {
