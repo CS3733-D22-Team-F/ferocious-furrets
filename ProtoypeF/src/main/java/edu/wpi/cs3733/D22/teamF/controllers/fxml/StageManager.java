@@ -44,6 +44,11 @@ public class StageManager {
     m_stage.show();
   }
 
+  public void setHome(String filename) {
+    m_stage.setScene(SceneManager.getInstance().setScene(filename));
+    m_stage.show();
+  }
+
   public void setDisplayAndWait(String filename) throws IOException {
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);

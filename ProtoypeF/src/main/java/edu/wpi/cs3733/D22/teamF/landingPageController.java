@@ -198,7 +198,7 @@ public class landingPageController implements Initializable {
 
   @FXML
   public void returnToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("homePage.fxml");
+    StageManager.getInstance().setHome("homePage.fxml");
   }
 
   /**
