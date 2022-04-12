@@ -78,7 +78,8 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftPage.fxml");
+    // TODO: Switch back to og page
+    StageManager.getInstance().setDisplay("giftPageResized.fxml");
   }
 
   /**

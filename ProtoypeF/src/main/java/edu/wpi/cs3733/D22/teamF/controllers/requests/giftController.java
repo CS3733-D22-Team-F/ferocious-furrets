@@ -16,7 +16,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
+// import javax.swing.text.html.ImageView;
 
 /** Controller for gift scene */
 public class giftController extends PageController implements Initializable, IRequestController {
@@ -34,6 +37,8 @@ public class giftController extends PageController implements Initializable, IRe
   @FXML JFXComboBox statusChoice;
   @FXML JFXComboBox giftChoice;
 
+  @FXML ImageView backgroundIMG;
+
   @FXML private AnchorPane masterPane;
 
   String reqType = "";
@@ -47,7 +52,8 @@ public class giftController extends PageController implements Initializable, IRe
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
-
+    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
+    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty());
     submitButton.disableProperty().setValue(false);
 
     ArrayList<Object> temp = new ArrayList<>();
