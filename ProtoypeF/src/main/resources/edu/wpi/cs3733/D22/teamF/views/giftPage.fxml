@@ -17,37 +17,52 @@
    <children>
       <Rectangle arcWidth="5.0" fill="#123090" height="722.0" layoutX="1.1368683772161603E-13" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="605.0" />
       <Rectangle arcWidth="5.0" fill="#3e8cd0" height="156.0" layoutX="1.1368683772161603E-13" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="605.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fitHeight="726.0" fitWidth="741.0" layoutX="605.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="605.0" AnchorPane.rightAnchor="0.3333333333334849" AnchorPane.topAnchor="-3.0">
+      <ImageView fitHeight="726.0" fitWidth="741.0" layoutX="605.0" layoutY="-3.0" pickOnBounds="true">
          <image>
             <Image url="@../Images/small-basket.png" />
          </image>
       </ImageView>
-      <VBox layoutX="87.0" layoutY="224.0" prefHeight="306.0" prefWidth="431.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="828.2222222222224" AnchorPane.topAnchor="224.0">
+      <VBox layoutX="87.0" layoutY="211.0" prefHeight="319.0" prefWidth="431.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="828.0" AnchorPane.topAnchor="211.0">
          <children>
             <TextField fx:id="employeeID" prefHeight="51.0" prefWidth="290.0" promptText="Employee ID">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
             </TextField>
             <TextField fx:id="nodeID" prefHeight="51.0" prefWidth="369.0" promptText="Location Node ID ">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
             </TextField>
             <TextField fx:id="patientName" prefHeight="51.0" prefWidth="429.0" promptText="Patient Name">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
             </TextField>
             <TextField fx:id="assigned" prefHeight="8.0" prefWidth="282.0" promptText="Assigned Staff Name">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="giftChoice" depthTest="DISABLE" focusColor="#123090" prefHeight="49.0" prefWidth="431.0" promptText="     Gift Choice" style="-fx-background-color: white;" unFocusColor="BLACK" />
+            <JFXComboBox fx:id="giftChoice" depthTest="DISABLE" focusColor="#123090" prefHeight="49.0" prefWidth="431.0" promptText="     Gift Choice" style="-fx-background-color: white;" unFocusColor="BLACK">
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin></JFXComboBox>
             <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="51.0" prefWidth="431.0" promptText="     Status" style="-fx-background-color: white;" unFocusColor="BLACK">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="3.0" />
                </VBox.margin>
             </JFXComboBox>
          </children>

@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.entities.database;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -15,24 +16,24 @@ public class giftDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("GiftRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(16), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
+        "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(64), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
   public void initTable(String filepath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("GiftRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(16), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
+        "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(64), FOREIGN KEY (reqID) REFERENCES SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
-      add(makeArrayListFromString(currentLine));
+      addInit(makeArrayListFromString(currentLine));
     }
   }
 
@@ -53,24 +54,36 @@ public class giftDAOImpl implements IRequestDAO {
     ArrayList<String> giftRequestFields = new ArrayList<>();
 
     giftRequestFields.add(0, fields.get(0)); // request id
+    giftRequestFields.add(1, fields.get(5)); // gift type
+
+    ServiceRequestFields.add(0, fields.get(0)); // request ID
+    ServiceRequestFields.add(1, fields.get(1)); // node ID
+    ServiceRequestFields.add(2, fields.get(2)); // assigned emp id
+    ServiceRequestFields.add(3, fields.get(3)); // requester emp id
+    ServiceRequestFields.add(4, fields.get(4)); // status
+
+    DatabaseManager.runStatement(
+        RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(giftRequestFields));
+  }
+
+  public void addInit(ArrayList<String> fields) throws SQLException {
+    ArrayList<String> giftRequestFields = new ArrayList<>();
+
+    giftRequestFields.add(0, fields.get(0)); // request id
     giftRequestFields.add(1, fields.get(1)); // equipID
 
-    //    ServiceRequestFields.add(0, fields.get(0)); // request ID
-    //    ServiceRequestFields.add(1, fields.get(1)); // node ID
-    //    ServiceRequestFields.add(2, fields.get(2)); // assigned emp id
-    //    ServiceRequestFields.add(3, fields.get(3)); // requester emp id
-    //    ServiceRequestFields.add(4, fields.get(4)); // status
-
     DatabaseManager.runStatement(generateInsertStatement(giftRequestFields));
-    //    DatabaseManager.runStatement(
-    //        RequestDAOImpl.generateInsertStatementForService(ServiceRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM GiftRequest WHERE reqID = '%s'", reqID));
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
+    //    DatabaseManager.runStatement(
+    //        String.format("DELETE FROM GiftRequest WHERE reqID = '%s'", reqID));
+    //    DatabaseManager.runStatement(
+    //        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
+
+    String cmd = "UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '" + reqID + "'";
+    DatabaseManager.runStatement(cmd);
   }
 
   public void update(ArrayList<String> fields) {}

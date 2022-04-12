@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -52,7 +53,7 @@ public class RequestSystem {
     }
   }
 
-  public void resolveRequest(String nodeID) {
+  public void resolveRequest(String nodeID) throws SQLException {
     request.resolve(nodeID);
   }
 

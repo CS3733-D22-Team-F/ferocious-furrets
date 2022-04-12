@@ -7,6 +7,7 @@ import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapPopUp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
@@ -304,14 +305,24 @@ public class mapPageController implements Initializable {
 
   @FXML
   void popUpReset() throws SQLException, IOException {
-    MapPopUp.popUpReset();
-    loadMap();
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpReset();
+      loadMap();
+    }
   }
 
   @FXML
   void popUpAdd() throws SQLException, IOException {
-    MapPopUp.popUpAdd();
-    loadMap();
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpAdd();
+      loadMap();
+    }
   }
 
   @FXML
@@ -322,14 +333,24 @@ public class mapPageController implements Initializable {
 
   @FXML
   void popUpSave() throws SQLException, IOException {
-    MapPopUp.popUpSave();
-    loadMap();
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.popUpSave();
+      loadMap();
+    }
   }
 
   @FXML
   void openHistory() throws SQLException, IOException {
-    MapPopUp.openHistory();
-    loadMap();
+    if (UserType.getUserType() != "admin") {
+      Alert error = new Alert(Alert.AlertType.ERROR);
+      error.show();
+    } else {
+      MapPopUp.openHistory();
+      loadMap();
+    }
   }
 
   @FXML
@@ -495,8 +516,10 @@ public class mapPageController implements Initializable {
           }
         });
     double x =
-        (location.getXcoord() / 1070.0) * 790; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 856.0) * 630;
+        (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
+    double y = (location.getYcoord() / 3550.0) * 700;
+    System.out.println(location.getXcoord());
+    System.out.println(x);
     newButton.setLayoutX(x);
     newButton.setLayoutY(y);
     iconPane.getChildren().add(newButton);

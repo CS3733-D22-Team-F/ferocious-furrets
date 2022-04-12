@@ -80,7 +80,7 @@ public abstract class Request implements IRequest {
   }
 
   public String getReqID() {
-    return reqID;
+    return null;
   }
 
   public void setReqID(String reqID) {

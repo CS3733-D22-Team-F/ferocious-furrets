@@ -17,7 +17,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -33,7 +33,30 @@ public class DatabaseManager {
 
   private static DatabaseManager DatabaseManager;
 
+  enum connType {
+    embedded,
+    clientserver
+  }
+
   private DatabaseManager() {}
+
+  /**
+   * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
+   * connection to a client-server database
+   *
+   * @param type boolean true to run embedded database
+   * @return Connection object
+   * @throws SQLException
+   * @throws IOException
+   */
+  public static Connection switchConnection(DatabaseInitializer.ConnType type)
+      throws SQLException, IOException {
+    // backUpDatabaseToCSV();
+    DatabaseInitializer.switchConnection(type);
+    conn = DatabaseInitializer.getConnection().getDbConnection();
+    DatabaseManager dbMan = DatabaseManager.initalizeDatabaseManager();
+    return conn;
+  }
 
   /**
    * inits the dao objects
@@ -54,6 +77,7 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+
     return Helper.dbMan;
   }
 
@@ -132,9 +156,16 @@ public class DatabaseManager {
    */
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquip.csv");
+    medicalEquipmentDAO.backUpToCSV(
+        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.backUpToCSV(
         "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    giftDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
+    labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
+    mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+    medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
