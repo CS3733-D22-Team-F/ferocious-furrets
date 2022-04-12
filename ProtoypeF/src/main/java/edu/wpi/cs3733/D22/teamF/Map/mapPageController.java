@@ -3,16 +3,14 @@ package edu.wpi.cs3733.D22.teamF.Map;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -32,8 +30,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class mapPageController implements Initializable {
-  private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
-  private static final String FX_BACKGROUND_BLUE = "-fx-background-color:#123090";
   private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
   private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
   private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
@@ -119,34 +115,12 @@ public class mapPageController implements Initializable {
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
     legend.setExpanded(false);
 
-    ArrayList<Location> nLocations = null;
-    ArrayList<equipment> eList = null;
-    ArrayList<Location> eLocations = null;
     try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-      eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-      eLocations = MapTableHolder.equipToLocation(eList);
-    } catch (SQLException e) {
+      MapTableHolder.loadMap(table, iconPane);
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
 
-    try {
-      MapTableHolder.loadTable(table);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    nLocations.addAll(eLocations);
-
-    for (Location lo : nLocations) {
-      try {
-        MapIconModifier.addIcon(table, iconPane, lo);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
     loadAllLegend();
     setUpNode();
     changeToF1();
@@ -451,63 +425,41 @@ public class mapPageController implements Initializable {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
     menuNodeList.setRotate(90);
-    setCircleButton(openFloorMenu, 55);
+    AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF5, 40);
+    AGlobalMethods.setCircleButton(changeToF5, 40);
     changeToF5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF4, 40);
+    AGlobalMethods.setCircleButton(changeToF4, 40);
     changeToF4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF3, 40);
+    AGlobalMethods.setCircleButton(changeToF3, 40);
     changeToF3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF2, 40);
+    AGlobalMethods.setCircleButton(changeToF2, 40);
     changeToF2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToL1, 40);
+    AGlobalMethods.setCircleButton(changeToL1, 40);
     changeToL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToL2, 40);
+    AGlobalMethods.setCircleButton(changeToL2, 40);
     changeToL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(openMenu, 55);
+    AGlobalMethods.setCircleButton(openMenu, 55);
     openMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     openMenu.setGraphic(MapIconModifier.getIcon("menu"));
-    setCircleButton(addButton, 40);
+    AGlobalMethods.setCircleButton(addButton, 40);
     addButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     addButton.setGraphic(MapIconModifier.getIcon("add"));
-    setCircleButton(saveButton, 40);
+    AGlobalMethods.setCircleButton(saveButton, 40);
     saveButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     saveButton.setGraphic(MapIconModifier.getIcon("save"));
-    setCircleButton(loadButton, 40);
+    AGlobalMethods.setCircleButton(loadButton, 40);
     loadButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     loadButton.setGraphic(MapIconModifier.getIcon("load"));
-    setCircleButton(tableButton, 40);
+    AGlobalMethods.setCircleButton(tableButton, 40);
     tableButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     tableButton.setGraphic(MapIconModifier.getIcon("table"));
-    setCircleButton(historyButton, 40);
+    AGlobalMethods.setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
-    setCircleButton(homeButton, 40);
+    AGlobalMethods.setCircleButton(homeButton, 40);
     homeButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     homeButton.setGraphic(MapIconModifier.getIcon("home"));
-  }
-
-  public static void setCircleButton(Button button, int radius) {
-    button.setStyle(
-        "-fx-background-radius: "
-            + radius
-            + "em; "
-            + "-fx-min-width: "
-            + radius
-            + "px; "
-            + "-fx-min-height: "
-            + radius
-            + "px; "
-            + "-fx-max-width: "
-            + radius
-            + "px; "
-            + "-fx-max-height: "
-            + radius
-            + "px;"
-            + FX_TEXT_FILL_WHITE
-            + ";"
-            + FX_BACKGROUND_BLUE);
   }
 
   @FXML

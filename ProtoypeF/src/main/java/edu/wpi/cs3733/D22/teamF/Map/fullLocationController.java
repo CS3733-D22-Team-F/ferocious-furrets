@@ -1,17 +1,17 @@
-package edu.wpi.cs3733.D22.teamF.pageControllers;
+package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -45,22 +45,11 @@ public class fullLocationController implements Initializable {
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
     shortName.setCellValueFactory(new PropertyValueFactory<Location, String>("shortName"));
 
-    ArrayList<Location> nLocations = null;
-    ArrayList<equipment> eList = null;
-    ArrayList<Location> eLocations = null;
     try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-      eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-      for (equipment e : eList) {
-        System.out.println(e.getNodeID());
-      }
-      eLocations = equipToLocation(eList);
-    } catch (SQLException e) {
+      MapTableHolder.loadTable(table);
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
-    nLocations.addAll(eLocations);
-    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
-    table.setItems(nlocationList);
   }
 
   public void cancel() {

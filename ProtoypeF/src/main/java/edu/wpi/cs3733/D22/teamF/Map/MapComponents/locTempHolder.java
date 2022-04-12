@@ -4,7 +4,7 @@ import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-public class nodeTempHolder {
+public class locTempHolder {
   private static Location location;
 
   private static AnchorPane passIconPane;
@@ -16,7 +16,7 @@ public class nodeTempHolder {
   }
 
   public static void setLocation(Location location) {
-    nodeTempHolder.location = location;
+    locTempHolder.location = location;
   }
 
   public static AnchorPane getPassIconPane() {
@@ -24,7 +24,7 @@ public class nodeTempHolder {
   }
 
   public static void setPassIconPane(AnchorPane passIconPane) {
-    nodeTempHolder.passIconPane = passIconPane;
+    locTempHolder.passIconPane = passIconPane;
   }
 
   public static TableView<Location> getLocationTable() {
@@ -32,6 +32,6 @@ public class nodeTempHolder {
   }
 
   public static void setLocationTable(TableView<Location> locationTale) {
-    nodeTempHolder.locationTable = locationTale;
+    locTempHolder.locationTable = locationTale;
   }
 }

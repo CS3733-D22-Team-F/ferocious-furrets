@@ -89,8 +89,8 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpReset(TableView<Location> table, AnchorPane iconPane) throws IOException {
-    nodeTempHolder.setLocationTable(table);
-    nodeTempHolder.setPassIconPane(iconPane);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
     Parent root = FXMLLoader.load(mapPageController.class.getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -99,12 +99,42 @@ public class MapPopUp {
     popupwindow.showAndWait();
   }
 
-  public static void popUpModify(TableView<Location> table, AnchorPane iconPane, Location location)
+  public static void popUpLocModify(
+      TableView<Location> table, AnchorPane iconPane, Location location)
       throws IOException, SQLException {
-    nodeTempHolder.setLocation(location);
-    nodeTempHolder.setLocationTable(table);
-    nodeTempHolder.setPassIconPane(iconPane);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapModifyPage.fxml"));
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapLocModifyPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+  }
+
+  public static void popUpDone(TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapServiceModifyPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+  }
+
+  public static void popUpEquipModify(
+      TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapEquipModifyPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
