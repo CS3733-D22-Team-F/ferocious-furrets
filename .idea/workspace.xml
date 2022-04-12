@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added setHome singleton function">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added removed med request button, added lab &amp; scan and proper labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/landingPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/landingPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/homePage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +265,7 @@
       <workItem from="1649205998338" duration="1241000" />
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
-      <workItem from="1649722265281" duration="1866000" />
+      <workItem from="1649722265281" duration="2302000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -415,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649723052593</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added removed med request button, added lab &amp; scan and proper labels">
+      <created>1649724188531</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649724188531</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +451,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added UI for backing Locations up to a csv" />
     <MESSAGE value="Merged csv-save branch into master" />
     <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
     <MESSAGE value="Reset map from csv functionality" />
@@ -470,7 +475,8 @@
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="added setHome singleton function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added setHome singleton function" />
+    <MESSAGE value="added removed med request button, added lab &amp; scan and proper labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="added removed med request button, added lab &amp; scan and proper labels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
