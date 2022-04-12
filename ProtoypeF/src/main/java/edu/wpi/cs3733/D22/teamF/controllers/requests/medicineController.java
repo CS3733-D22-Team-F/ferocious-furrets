@@ -1,11 +1,14 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -60,6 +63,9 @@ public class medicineController extends PageController
     typeChoice.getItems().addAll(medicineType);
   }
 
+  @FXML private TextField reqID;
+  @FXML private Button resolveReq;
+
   @FXML
   public void reset() {
     nodeField.clear();
@@ -72,7 +78,7 @@ public class medicineController extends PageController
   }
 
   @FXML
-  public void submit() {
+  public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
         || employeeIDField.getText().equals("")
@@ -88,10 +94,12 @@ public class medicineController extends PageController
       serviceRequestStorage.addToArrayList(requestList);
       RequestSystem req = new RequestSystem("Medicine");
       ArrayList<String> fields = new ArrayList<String>();
+      fields.add(generateReqID());
       fields.add(nodeField.getText());
       fields.add(employeeIDField.getText());
       fields.add(userField.getText());
       fields.add(statusChoice.getValue().toString());
+      fields.add(typeOfMed.getText());
       req.placeRequest(fields);
 
       nodeField.clear();
@@ -102,6 +110,48 @@ public class medicineController extends PageController
       typeChoice.valueProperty().setValue(null);
       userField.clear();
     }
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Medicine");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = nNodeType + reqNum;
+    return nID;
+  }
+
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> statusDrop = new ArrayList<>();
+    ArrayList<Object> medicineType = new ArrayList<>();
+    statusDrop.add("");
+    statusDrop.add("processing");
+    statusDrop.add("done");
+    statusChoice.getItems().addAll(statusDrop);
+    statusChoice.setValue("");
+    medicineType.add("Steroids");
+    medicineType.add("Anti-inflammatory");
+    medicineType.add("Pain-Killers");
+    medicineType.add("Capsules");
+    medicineType.add("Tablet");
+    typeChoice.getItems().addAll(medicineType);
   }
 
   @FXML

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="More giftPage edits and fixes, made it cleaner and up to current design standards/patterns">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed resolveRequest bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/giftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/giftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/mealsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/mealsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +50,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="shadow" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -102,7 +89,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS3733/StrategyGrowthDemoStart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -127,6 +114,53 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+    <configuration name="Fapp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Fapp" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Main" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProtoypeF [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProtoypeF [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -139,27 +173,6 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ProtoypeF [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="runShadow" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -190,27 +203,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ProtoypeF [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="shadowJar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="/Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -232,25 +224,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TeamF_Iteration1.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/ProtoypeF/build/libs/TeamF_Iteration1.jar" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
+      <item itemvalue="Application.Fapp" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
-      <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
-      <item itemvalue="Gradle.ProtoypeF [runShadow]" />
-      <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
+      <item itemvalue="Gradle.ProtoypeF [build]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [run]" />
-        <item itemvalue="JAR Application.TeamF_Iteration1.jar" />
-        <item itemvalue="Gradle.ProtoypeF [runShadow]" />
-        <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
+        <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Fapp" />
       </list>
     </recent_temporary>
   </component>
@@ -276,9 +264,6 @@
       <workItem from="1649205998338" duration="1241000" />
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
-      <workItem from="1649634617679" duration="4382000" />
-      <workItem from="1649640361650" duration="8741000" />
-      <workItem from="1649691673926" duration="11402000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -392,21 +377,35 @@
       <option name="project" value="LOCAL" />
       <updated>1649281563951</updated>
     </task>
-    <task id="LOCAL-00017" summary="Fixed map page not opening bug">
-      <created>1649631222828</created>
+    <task id="LOCAL-00017" summary="Updated service request csvs">
+      <created>1649687516897</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1649631222828</updated>
+      <updated>1649687516897</updated>
     </task>
-    <task id="LOCAL-00018" summary="More giftPage edits and fixes, made it cleaner and up to current design standards/patterns">
-      <created>1649711902226</created>
+    <task id="LOCAL-00018" summary="Updated med equip csv">
+      <created>1649687762450</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1649711902227</updated>
+      <updated>1649687762450</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fixed getAvailableEquipment method for equipmentDeliveryRequest">
+      <created>1649688185540</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1649688185540</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed resolveRequest bug">
+      <created>1649688527038</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649688527038</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +422,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="azu-icon" />
+                        <option value="dao-impls-serv-req" />
                       </list>
                     </value>
                   </entry>
@@ -456,9 +455,11 @@
     <MESSAGE value="Icons appear at correct location on click to add" />
     <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
     <MESSAGE value="Fixed map tracker bug with floor numbers" />
-    <MESSAGE value="Fixed map page not opening bug" />
-    <MESSAGE value="More giftPage edits and fixes, made it cleaner and up to current design standards/patterns" />
-    <option name="LAST_COMMIT_MESSAGE" value="More giftPage edits and fixes, made it cleaner and up to current design standards/patterns" />
+    <MESSAGE value="Updated service request csvs" />
+    <MESSAGE value="Updated med equip csv" />
+    <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
+    <MESSAGE value="Fixed resolveRequest bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed resolveRequest bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
