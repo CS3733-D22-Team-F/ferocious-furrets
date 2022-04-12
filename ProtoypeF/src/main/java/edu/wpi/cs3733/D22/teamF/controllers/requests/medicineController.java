@@ -132,28 +132,6 @@ public class medicineController extends PageController
     return nID;
   }
 
-  /**
-   * inits
-   *
-   * @param location URL
-   * @param resources ResourceBundle
-   */
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> statusDrop = new ArrayList<>();
-    ArrayList<Object> medicineType = new ArrayList<>();
-    statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
-    statusChoice.getItems().addAll(statusDrop);
-    statusChoice.setValue("");
-    medicineType.add("Steroids");
-    medicineType.add("Anti-inflammatory");
-    medicineType.add("Pain-Killers");
-    medicineType.add("Capsules");
-    medicineType.add("Tablet");
-    typeChoice.getItems().addAll(medicineType);
-  }
-
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
