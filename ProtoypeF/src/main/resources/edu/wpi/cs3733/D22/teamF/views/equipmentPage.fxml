@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <right>
       <ImageView fx:id="backgroundIMG" fitHeight="821.0" fitWidth="755.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
@@ -75,40 +74,34 @@
                   </JFXButton>
                </children>
             </HBox>
-            <VBox fx:id="leftVBox" layoutX="168.0" layoutY="197.0" prefHeight="264.0" prefWidth="299.0">
+            <VBox fx:id="leftVBox" layoutX="168.0" layoutY="197.0" prefHeight="285.0" prefWidth="299.0">
                <children>
                   <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="employeeIDField" prefHeight="8.0" prefWidth="282.0" promptText="Employee ID">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
+                  <JFXComboBox fx:id="employeeIDField" prefHeight="61.0" prefWidth="298.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0" promptText="Assigned User">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="userField" prefHeight="58.0" prefWidth="298.0" promptText="Requesting Employee" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="50.0" prefWidth="299.0" promptText="Equipment Type" style="-fx-background-color: white;" unFocusColor="WHITE">
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </JFXComboBox>
                   <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="50.0" prefWidth="299.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </JFXComboBox>
                </children>
