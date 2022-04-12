@@ -59,40 +59,34 @@
             </JFXButton>
          </children>
       </HBox>
-      <VBox layoutX="127.0" layoutY="180.0" prefHeight="270.0" prefWidth="320.0">
+      <VBox layoutX="127.0" layoutY="180.0" prefHeight="308.0" prefWidth="320.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                <font>
                   <Font size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="employeeIDField" prefHeight="8.0" prefWidth="282.0" promptText="Employee ID">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
-            </TextField>
-            <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0" promptText="Assigned User">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            </JFXComboBox>
+            <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
-            </TextField>
+            </JFXComboBox>
             <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="348.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="WHITE">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </JFXComboBox>
             <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="337.0" promptText="Scan Type" style="-fx-background-color: white;" unFocusColor="WHITE">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </JFXComboBox>
          </children>
@@ -103,7 +97,7 @@
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font></TextField>
-            <Button fx:id="resolveReq" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="43.0" prefWidth="128.0" style="-fx-background-color: 012090;" text="Resolve" textFill="WHITE">
+            <Button fx:id="resolveReq" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="43.0" prefWidth="128.0" style="-fx-background-color: #012090;" text="Resolve" textFill="WHITE">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
