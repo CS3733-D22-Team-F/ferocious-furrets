@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -26,8 +27,8 @@ public class medicineController implements Initializable, IRequestController {
   private Parent root;
 
   @FXML private TextField nodeField;
-  @FXML private TextField employeeIDField;
-  @FXML private TextField userField;
+  @FXML private JFXComboBox employeeIDField;
+  @FXML private JFXComboBox userField;
   @FXML private TextField typeOfMed;
   @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
@@ -46,12 +47,11 @@ public class medicineController implements Initializable, IRequestController {
   @FXML
   public void reset() {
     nodeField.clear();
-    employeeIDField.clear();
-    userField.clear();
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
     typeOfMed.clear();
     statusChoice.valueProperty().setValue(null);
     // typeChoice.valueProperty().setValue(null);
-    userField.clear();
     prescribingDoctor.clear();
     dosage.clear();
     units.valueProperty().setValue(null);
@@ -64,23 +64,23 @@ public class medicineController implements Initializable, IRequestController {
   public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
         || typeOfMed.getText().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank field");
     } else {
       requestList.clear();
       // requestList.add("Medicine Request for: " + typeChoice.getValue());
-      requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("Assigned Doctor: " + userField.getValue().toString());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
       RequestSystem req = new RequestSystem("Medicine");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
       fields.add(nodeField.getText());
-      fields.add(employeeIDField.getText());
-      fields.add(userField.getText());
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
       fields.add(typeOfMed.getText());
       fields.add(prescribingDoctor.getText());
@@ -93,6 +93,25 @@ public class medicineController implements Initializable, IRequestController {
 
       reset();
     }
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   public void resolveRequest() throws SQLException {
@@ -122,6 +141,24 @@ public class medicineController implements Initializable, IRequestController {
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    employeeIDField.getItems().addAll(employees);
+    userField.getItems().addAll(employees);
+    employeeIDField.setValue("");
+    userField.setValue("");
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> medicineType = new ArrayList<>();
     statusDrop.add("");

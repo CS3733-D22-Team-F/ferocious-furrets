@@ -51,22 +51,16 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="employeeIDField" prefHeight="8.0" prefWidth="282.0" promptText="Employee ID">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <JFXComboBox fx:id="employeeIDField" prefHeight="48.0" prefWidth="386.0" promptText="Requesting Employee" style="-fx-background-color: white;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
-            </TextField>
-            <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0" promptText="Assigned Employee">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            </JFXComboBox>
+            <JFXComboBox fx:id="userField" prefHeight="48.0" prefWidth="386.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
-            </TextField>
+            </JFXComboBox>
             <TextField fx:id="prescribingDoctor" prefHeight="8.0" prefWidth="282.0" promptText="Doctor">
                <font>
                   <Font size="24.0" />
