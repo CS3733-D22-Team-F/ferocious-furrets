@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.logInController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.logInController">
    <children>
       <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
          <image>
@@ -33,7 +33,7 @@
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="usernameField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="" unFocusColor="white">
+                        <TextField fx:id="usernameField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -43,15 +43,15 @@
                            <font>
                               <Font size="24.0" />
                            </font>
-                        </JFXTextField>
-                        <JFXPasswordField fx:id="passwordField" focusColor="#1EC8E7" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="" unFocusColor="white">
+                        </TextField>
+                        <TextField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
                            <font>
                               <Font size="24.0" />
                            </font>
-                        </JFXPasswordField>
+                        </TextField>
                      </children>
                      <padding>
                         <Insets left="2.0" />
@@ -85,7 +85,7 @@
                         </JFXButton>
                         <JFXComboBox fx:id="databaseChooser" prefHeight="40.0" prefWidth="430.0">
                            <VBox.margin>
-                              <Insets left="25.0" right="25.0"/>
+                              <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </JFXComboBox>
                      </children>

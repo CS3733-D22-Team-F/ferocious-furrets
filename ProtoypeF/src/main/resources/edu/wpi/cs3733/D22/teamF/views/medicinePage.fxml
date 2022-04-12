@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.medicineController">
+<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.medicineController">
    <children>
       <ImageView fitHeight="1056.0" fitWidth="1582.0" layoutX="-6.0" layoutY="-271.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,21 +22,21 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="816.0" stroke="BLACK" strokeType="INSIDE" width="740.0" />
-      <HBox layoutX="175.0" layoutY="739.0" prefHeight="59.0" prefWidth="366.0">
+      <HBox layoutX="175.0" layoutY="739.0" prefHeight="15.0" prefWidth="366.0">
          <children>
             <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="46.0" prefWidth="127.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Serif Regular" size="24.0" />
                </font>
             </JFXButton>
             <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="37.0" prefWidth="119.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Serif Regular" size="24.0" />
                </font>
             </JFXButton>
             <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="37.0" prefWidth="119.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Serif Regular" size="24.0" />
                </font>
             </JFXButton>
          </children>
@@ -128,18 +134,18 @@
       </VBox>
       <Pane layoutX="-7.0" prefHeight="123.0" prefWidth="748.0" style="-fx-background-color: #27aad0;">
          <children>
-            <HBox layoutX="136.0" layoutY="24.0" prefHeight="70.0" prefWidth="461.0">
+            <HBox layoutX="103.0" layoutY="45.0" prefHeight="71.0" prefWidth="469.0">
                <children>
-                  <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="455.0" text="Medicine Request" textFill="WHITE">
+                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="470.0" text="Medicine Request" textFill="WHITE">
                      <font>
-                        <Font name="Times New Roman" size="55.0" />
+                        <Font name="Serif Regular" size="64.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="607.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../bwhlogo.png" />
+                  <Image url="@../BWHlogo-new.png" />
                </image>
             </ImageView>
          </children>
