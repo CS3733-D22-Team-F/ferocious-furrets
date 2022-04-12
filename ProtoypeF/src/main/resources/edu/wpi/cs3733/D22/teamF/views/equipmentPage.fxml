@@ -14,14 +14,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../EquipReqStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
+<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../EquipReqStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <children>
       <ImageView fitHeight="863.0" fitWidth="1352.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/patientBed.jpeg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="821.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="806.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
       <VBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="140.0" prefHeight="444.0" prefWidth="310.0">
          <children>
             <Label text="Node ID:" textFill="WHITE">
@@ -120,9 +120,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <Pane layoutX="-17.0" layoutY="-6.0" prefHeight="118.0" prefWidth="699.0" style="-fx-background-color: #27aad0;">
+      <Pane layoutX="-17.0" layoutY="-6.0" prefHeight="141.0" prefWidth="699.0" style="-fx-background-color: #27aad0;">
          <children>
-            <HBox layoutX="136.0" layoutY="24.0" prefHeight="70.0" prefWidth="461.0">
+            <HBox layoutX="119.0" layoutY="53.0" prefHeight="70.0" prefWidth="461.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="455.0" text="Equipment Request" textFill="WHITE">
                      <font>
@@ -131,9 +131,9 @@
                   </Label>
                </children>
             </HBox>
-            <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="96.0" fitWidth="111.0" layoutX="580.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../bwhlogo.png" />
+                  <Image url="@../BWHlogo-new.png" />
                </image>
             </ImageView>
          </children>

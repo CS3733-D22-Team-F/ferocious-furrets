@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import edu.wpi.cs3733.D22.teamF.IController;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.net.URL;
 import java.util.ArrayList;
@@ -7,14 +8,16 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuBar;
 
 /**
  * control for the queue for gifts
  *
  * @see Initializable
  */
-public class giftQueueController implements Initializable {
+public class giftQueueController implements Initializable, IController {
 
   @FXML private ListView queue;
   ArrayList<String> list1 = new ArrayList();
@@ -78,5 +81,20 @@ public class giftQueueController implements Initializable {
     list5.add("done");
     list5.add("doctor5");
     queue.getItems().add(list5.toString());
+  }
+
+  @Override
+  public void clear() {
+    return;
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
+  @Override
+  public MenuBar makeMenuBar() {
+    return null;
   }
 }

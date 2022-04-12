@@ -9,16 +9,19 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * controller for request list
  *
  * @see Initializable
  */
-public class requestListController implements Initializable {
+public class requestListController extends PageController implements Initializable {
 
   @FXML ListView requestList;
+  @FXML private AnchorPane masterPane;
 
   /**
    * inits
@@ -27,7 +30,14 @@ public class requestListController implements Initializable {
    * @param resources ResourceBundle
    */
   @Override
-  public void initialize(URL location, ResourceBundle resources) {}
+  public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
 
   /** adds items to the list to requestList ArrayList */
   public void populateList() {
@@ -43,4 +53,5 @@ public class requestListController implements Initializable {
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
   }
+
 }

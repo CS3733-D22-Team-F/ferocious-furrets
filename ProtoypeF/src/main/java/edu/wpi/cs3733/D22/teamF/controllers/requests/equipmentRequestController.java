@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -16,18 +17,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class equipmentRequestController implements Initializable, IRequestController {
+public class equipmentRequestController extends PageController
+    implements Initializable, IRequestController {
 
   // TODO remove
   private Stage stage;
   private Scene scene;
   private Parent root;
 
+  @FXML private AnchorPane masterPane;
   @FXML private TextField nodeField;
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
@@ -37,6 +39,30 @@ public class equipmentRequestController implements Initializable, IRequestContro
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
+
+  public equipmentRequestController() {}
+
+  public equipmentRequestController(ContextMenu cm, MenuBar mb) {
+    super(cm, mb);
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
+
+    ArrayList<Object> statusDrop = new ArrayList<>();
+    ArrayList<Object> equipmentType = new ArrayList<>();
+    statusDrop.add("");
+    statusDrop.add("processing");
+    statusDrop.add("done");
+    statusChoice.getItems().addAll(statusDrop);
+    statusChoice.setValue("");
+    equipmentType.add("Bed");
+    equipmentType.add("X-Ray");
+    equipmentType.add("Infusion Pump");
+    equipmentType.add("Recliner");
+    typeChoice.getItems().addAll(equipmentType);
+  }
 
   @FXML
   void resetFunction() {
@@ -122,22 +148,6 @@ public class equipmentRequestController implements Initializable, IRequestContro
   @Override
   public void reset() {}
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> statusDrop = new ArrayList<>();
-    ArrayList<Object> equipmentType = new ArrayList<>();
-    statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
-    statusChoice.getItems().addAll(statusDrop);
-    statusChoice.setValue("");
-    equipmentType.add("Bed");
-    equipmentType.add("X-Ray");
-    equipmentType.add("Infusion Pump");
-    equipmentType.add("Recliner");
-    typeChoice.getItems().addAll(equipmentType);
-  }
-
   // TODO make a interaface for all controllers
   public String generateReqID(int requestListLength, String equipID, String nodeID) {
     String reqAbb = "ER";
@@ -148,5 +158,10 @@ public class equipmentRequestController implements Initializable, IRequestContro
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }
