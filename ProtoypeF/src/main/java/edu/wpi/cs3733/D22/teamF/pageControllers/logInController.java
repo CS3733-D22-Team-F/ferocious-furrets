@@ -90,11 +90,11 @@ public class logInController extends returnHomePage implements Initializable {
     } else {
       popUpLabel.setVisible(true);
     }
-    /*if (databaseChooser.getValue().toString().equals("Embedded")) {
+    if (databaseChooser.getValue().toString().equals("Embedded")) {
       dbType = DatabaseInitializer.ConnType.EMBEDDED;
     } else {
       dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    }*/
+    }
 
     //    DatabaseManager.switchConnection(dbType);
   }
@@ -106,6 +106,6 @@ public class logInController extends returnHomePage implements Initializable {
     databaseDrop.add("Embedded");
     databaseDrop.add("Client-Server");
     databaseChooser.getItems().addAll(databaseDrop);
-    databaseChooser.setValue("");
+    databaseChooser.setValue("Embedded");
   }
 }

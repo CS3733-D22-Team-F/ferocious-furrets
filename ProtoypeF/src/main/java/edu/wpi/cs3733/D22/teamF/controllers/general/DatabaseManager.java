@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
+import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
@@ -30,6 +31,7 @@ public class DatabaseManager {
   private static final mealDAOImpl mealDAO = new mealDAOImpl();
   private static final patientDAOImpl patientDAO = new patientDAOImpl();
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
+  private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -68,6 +70,7 @@ public class DatabaseManager {
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
+    // employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
