@@ -61,7 +61,7 @@ public class giftResizedController extends PageController
     fields.add(assigned.getText());
     fields.add(employeeID.getText());
     fields.add(statusChoice.getValue().toString());
-    fields.add(giftChoice.getValue().toString());
+    fields.add(giftChoice.getValue().toString().substring(0, 15));
     req.placeRequest(fields);
 
     employeeID.setText("Empty");
@@ -85,6 +85,7 @@ public class giftResizedController extends PageController
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
+
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
     rectangle1.heightProperty().bind(masterPane.heightProperty());
@@ -106,8 +107,6 @@ public class giftResizedController extends PageController
     backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
 
-    submitButton.disableProperty().setValue(false);
-
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
     temp.add("Processing");
@@ -120,7 +119,7 @@ public class giftResizedController extends PageController
     temp1.add("TEA - Tea");
     temp1.add("GWS - Get Well Soon Card");
     temp1.add("BLA - Blanket");
-    temp1.add("TSH - Brigham and Women's T-Shirt");
+    temp1.add("TSH - Brigham and Womens T-Shirt");
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
   }
@@ -137,7 +136,7 @@ public class giftResizedController extends PageController
 
   public String generateReqID() throws SQLException {
     String nNodeType = giftChoice.getValue().toString().substring(0, 3);
-    int reqNum = 1;
+    int reqNum = 0;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
     while (rset.next()) {
@@ -145,7 +144,11 @@ public class giftResizedController extends PageController
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    if (reqNum == 0) {
+      reqNum = 1;
+    }
+
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 

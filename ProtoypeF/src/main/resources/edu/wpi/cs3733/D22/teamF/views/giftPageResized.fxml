@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -25,7 +26,7 @@
                   <Font name="Serif Regular" size="64.0" />
                </font>
             </Label>
-            <ImageView fx:id="logo" fitHeight="116.0" fitWidth="129.0" layoutX="461.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="461.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../BWHlogo-new.png" />
                </image>
@@ -33,30 +34,48 @@
                   <Rectangle2D minX="50.0" width="500.0" />
                </viewport>
             </ImageView>
-            <VBox layoutX="12.0" layoutY="240.0" prefHeight="306.0" prefWidth="567.0">
+            <VBox layoutX="12.0" layoutY="240.0" prefHeight="318.0" prefWidth="567.0">
                <children>
                   <TextField fx:id="employeeID" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Employee ID" style="-fx-background-color: white;">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </TextField>
-                  <TextField fx:id="nodeID" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Loctation Node ID" style="-fx-background-color: white;">
+                  <TextField fx:id="nodeID" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Location Node ID" style="-fx-background-color: white;">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </TextField>
                   <TextField fx:id="patientName" layoutX="10.0" layoutY="139.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Patient Name" style="-fx-background-color: white;">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </TextField>
                   <TextField fx:id="assigned" layoutX="10.0" layoutY="112.0" minHeight="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Assigned Staff Name" style="-fx-background-color: white;">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </TextField>
-                  <JFXComboBox fx:id="giftChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText=" Gift Choice" style="-fx-background-color: white;" unFocusColor="#00000080" />
-                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="51.0" prefWidth="690.0" promptText=" Status" style="-fx-background-color: white;" unFocusColor="#0000007e" />
+                  <JFXComboBox fx:id="giftChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText=" Gift Choice" style="-fx-background-color: white;" unFocusColor="#00000080">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></JFXComboBox>
+                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="51.0" prefWidth="690.0" promptText=" Status" style="-fx-background-color: white;" unFocusColor="#0000007e">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></JFXComboBox>
                </children>
             </VBox>
             <HBox fx:id="leftHbox" layoutX="1.0" layoutY="615.0" prefHeight="62.0" prefWidth="608.0">
@@ -84,7 +103,7 @@
    <right>
       <ImageView fx:id="backgroundIMG" fitHeight="727.0" fitWidth="736.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
-            <Image url="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\Images\small-basket.png" />
+            <Image url="@../Images/small-basket.png" />
          </image>
       </ImageView>
    </right>

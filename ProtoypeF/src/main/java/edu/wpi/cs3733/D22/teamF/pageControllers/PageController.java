@@ -15,7 +15,6 @@ public abstract class PageController {
   protected MenuBar menuBar;
 
   public PageController() {}
-
   /**
    * Creates a PageController
    *
@@ -55,21 +54,19 @@ public abstract class PageController {
     switchScene("mapPage.fxml");
   }
 
-  public void menu_Medecine() {
+  public void menu_Medicine() {
     switchScene("medicinePage.fxml");
   }
 
   public void menu_Medical() {
     switchScene("medicalPage.fxml");
   }
-
   /**
    * Method to create a class specifics context menu
    *
    * @return A specific's class context menu
    */
   public abstract ContextMenu makeContextMenu();
-
   /**
    * Creates the main menu bar for the entire application except the login screen
    *
@@ -78,30 +75,49 @@ public abstract class PageController {
    */
   public MenuBar makeMenuBar(Pane masterPane) {
     MenuBar pageMenu = new MenuBar();
-    Menu navigator = new Menu("Navigation");
-
+    Menu navigator = new Menu("Navigate");
+    Menu serviceRequests = new Menu("Service Requests");
+    Menu map_Navigate = new Menu("Go to Map");
     // pageMenu.prefWidthProperty().bindBidirectional(masterPane.widthProperty(),NumberFormat.getNumberInstance());
-    pageMenu.setMinWidth(2000);
-
+    pageMenu.setMinWidth(1500);
+    // TODO switch to home page at end
+    // Navigate Menus
     MenuItem home = this.addMenuItem("landingPage.fxml");
-    home.setText("home");
+    home.setText("Home Page");
+    // Map
+    MenuItem map = this.addMenuItem("mapPage.fxml");
+    // TODO add an if statement for admin here using John's code for line 68- 69
+    map.setText("Map Request");
+
+    // Serivce Requst Menus
+    MenuItem audioVisual = this.addMenuItem("audioVisualPage.fxml");
+    audioVisual.setText("Audio/Visual Request");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
     MenuItem gift = this.addMenuItem("giftPage.fxml");
     gift.setText("Gift Request");
-    // TODO add an if statement for admin here using John's code for line 68- 69
-    MenuItem map = this.addMenuItem("mapPage.fxml");
-    map.setText("Map Request");
-    MenuItem medicine = this.addMenuItem("medicinePage.fxml");
-    medicine.setText("Medicine Request");
+    MenuItem labs = this.addMenuItem("labRequestPage.fxml");
+    labs.setText("Labs Request");
+    MenuItem meals = this.addMenuItem("mealPage.fxml");
+    meals.setText("Meals Request");
     MenuItem medical = this.addMenuItem("medicalPage.fxml");
     medical.setText("Medical Request");
+    MenuItem medicine = this.addMenuItem("medicinePage.fxml");
+    medicine.setText("Medicine Request");
+    MenuItem scans = this.addMenuItem("scanPage.fxml");
+    scans.setText("Scans Request");
+    MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
+    allRequests.setText("All Requests List");
 
-    // a menu in the menubar for navigating between pages
-    navigator.getItems().addAll(home, equip, gift, map, medicine, medical);
+    // adding options to menus in the menubar
+    navigator.getItems().addAll(home);
+    map_Navigate.getItems().addAll(map);
+    serviceRequests
+        .getItems()
+        .addAll(audioVisual, equip, gift, labs, meals, medicine, medical, allRequests);
 
     // adding menus into the menu bar
-    pageMenu.getMenus().add(navigator);
+    pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
 
     // adding menu bar to the main pane of a page
     masterPane.getChildren().add(pageMenu);
