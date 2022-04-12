@@ -19,6 +19,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * controller for the locations full
+ */
 public class fullLocationController implements Initializable {
 
   @FXML TableView<Location> table;
@@ -34,6 +37,11 @@ public class fullLocationController implements Initializable {
 
   @FXML JFXButton cancel;
 
+  /**
+   * inits the locations
+   * @param location
+   * @param resources
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     nodeID.setCellValueFactory(new PropertyValueFactory<Location, String>("nodeID"));
@@ -63,11 +71,20 @@ public class fullLocationController implements Initializable {
     table.setItems(nlocationList);
   }
 
+  /**
+   * cancels the scene
+   */
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }
 
+  /**
+   * pulls medical equipment to locations
+   * @param medList ArrayList </equipment>
+   * @return ArrayList </Location>
+   * @throws SQLException
+   */
   public ArrayList<Location> equipToLocation(ArrayList<equipment> medList) throws SQLException {
     ArrayList<Location> returnList = new ArrayList<>();
     int x = -1;

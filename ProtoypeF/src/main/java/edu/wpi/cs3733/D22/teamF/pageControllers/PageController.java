@@ -9,7 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 
-/// abstract class for all pages in application
+/** abstract class for all pages in application*/
 public abstract class PageController {
   protected ContextMenu contextMenu;
   protected MenuBar menuBar;
@@ -59,6 +59,11 @@ public abstract class PageController {
 
   public abstract ContextMenu makeContextMenu();
 
+  /**
+   * implemented make a menu bar from a Pane
+   * @param masterPane Pane
+   * @return MenuBar
+   */
   public MenuBar makeMenuBar(Pane masterPane) {
     MenuBar pageMenu = new MenuBar();
     Menu navigator = new Menu("Navigation");
@@ -90,10 +95,17 @@ public abstract class PageController {
     return pageMenu;
   }
 
+  /**
+   * switch to scene passed in
+   * @param fileName String scene to switch to
+   */
   public void switchScene(String fileName) {
     StageManager.getInstance().setDisplay(fileName);
   }
 
+  /**
+   * switch to home scene
+   */
   public void switchToHome() {
     StageManager.getInstance().setHomeScreen();
   }

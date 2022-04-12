@@ -6,6 +6,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * its pronounces Fapp not fap
+ */
 @Slf4j
 public class Fapp extends Application {
 
