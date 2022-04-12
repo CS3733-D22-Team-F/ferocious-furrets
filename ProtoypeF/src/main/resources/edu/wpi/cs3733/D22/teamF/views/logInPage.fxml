@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.logInController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #123090;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.logInController">
    <children>
       <ImageView fitHeight="860.0" fitWidth="1403.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.67822265625" AnchorPane.topAnchor="0.0">
          <image>
@@ -72,9 +65,9 @@
                         <Insets left="100.0" />
                      </VBox.margin>
                   </Label>
-                  <VBox prefHeight="204.0" prefWidth="455.0" spacing="40.0">
+                  <VBox prefHeight="247.0" prefWidth="455.0" spacing="40.0">
                      <children>
-                        <JFXButton defaultButton="true" fx:id="loginButton" onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="" text="Login" textFill="WHITE">
+                        <JFXButton fx:id="loginButton" defaultButton="true" onAction="#logIn" prefHeight="62.0" prefWidth="430.0" style="" text="Login" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -90,6 +83,11 @@
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </JFXButton>
+                        <JFXComboBox fx:id="databaseChooser" prefHeight="40.0" prefWidth="430.0">
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0"/>
+                           </VBox.margin>
+                        </JFXComboBox>
                      </children>
                   </VBox>
                </children>

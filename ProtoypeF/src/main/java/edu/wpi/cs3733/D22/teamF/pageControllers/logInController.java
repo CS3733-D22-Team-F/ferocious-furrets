@@ -1,12 +1,17 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,14 +24,22 @@ import javafx.stage.Stage;
  *
  * @see returnHomePage
  */
-public class logInController extends returnHomePage {
+public class logInController extends returnHomePage implements Initializable {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label popUpLabel;
+  @FXML private JFXComboBox databaseChooser;
 
   private Stage stage = new Stage();
   private Parent root;
   private Scene scene;
+
+  enum connType{
+    EMBEDDED,
+    CLIENTSERVER
+  }
+
+  private connType dbType;
 
   /*
    * method to send user to the homepage after a successful authentication of username and password
@@ -81,6 +94,20 @@ public class logInController extends returnHomePage {
     } else {
       popUpLabel.setVisible(true);
     }
-    ;
+    if (databaseChooser.getValue().toString().equals("Embedded")) {
+      dbType = connType.EMBEDDED;
+    } else {
+      dbType = connType.CLIENTSERVER;
+    }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> databaseDrop = new ArrayList<>();
+    databaseDrop.add("");
+    databaseDrop.add("Embedded");
+    databaseDrop.add("Client-Server");
+    databaseChooser.getItems().addAll(databaseDrop);
+    databaseChooser.setValue("");
   }
 }
