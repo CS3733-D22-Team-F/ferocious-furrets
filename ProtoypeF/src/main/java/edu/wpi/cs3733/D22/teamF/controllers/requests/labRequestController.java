@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -33,8 +34,8 @@ public class labRequestController extends PageController
     implements Initializable, IRequestController {
 
   @FXML TextField nodeField;
-  @FXML TextField employeeIDField;
-  @FXML TextField userField;
+  @FXML JFXComboBox employeeIDField;
+  @FXML JFXComboBox userField;
   @FXML private AnchorPane masterPane;
   @FXML TextField reqID;
   @FXML Button resolve;
@@ -64,6 +65,44 @@ public class labRequestController extends PageController
     temp1.add("urine");
     typeChoice.getItems().addAll(temp1);
     typeChoice.setValue("");
+
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    employeeIDField.getItems().addAll(employees);
+    userField.getItems().addAll(employees);
+    employeeIDField.setValue("");
+    userField.setValue("");
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   // Use Try/Catch when call this function
@@ -80,8 +119,8 @@ public class labRequestController extends PageController
     String sampleType = null;
     // If any of the field is missing, pop up a notice
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
@@ -98,29 +137,25 @@ public class labRequestController extends PageController
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
       fields.add(nodeField.getText());
-      fields.add(employeeIDField.getText());
-      fields.add(userField.getText());
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
       fields.add(typeChoice.getValue().toString());
       req.placeRequest(fields);
       requestList.clear();
       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
-      requestList.add("Assigned Doctor: " + userField.getText());
+      // requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
     }
-    nodeField.clear();
-    employeeIDField.clear();
-    userField.clear();
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null);
+    reset();
   }
 
   @FXML
   public void reset() {
     nodeField.clear();
-    employeeIDField.clear();
-    userField.clear();
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
   }
