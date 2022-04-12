@@ -116,13 +116,13 @@ public class giftController extends PageController implements Initializable, IRe
     String nNodeType = giftChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM GIFTREQUEST");
     while (rset.next()) {
       reqNum++;
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 

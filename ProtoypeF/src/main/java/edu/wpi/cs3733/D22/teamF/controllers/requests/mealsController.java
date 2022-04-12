@@ -47,8 +47,8 @@ public class mealsController extends PageController implements Initializable, IR
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
-    temp.add("processing");
-    temp.add("done");
+    temp.add("Processing");
+    temp.add("Done");
     status.getItems().addAll(temp);
     status.setValue("");
   }
@@ -105,7 +105,7 @@ public class mealsController extends PageController implements Initializable, IR
       fields.add(employeeName.getText());
       fields.add("Requested Employee");
       fields.add(status.getValue().toString());
-      fields.add(foodList.get(0));
+      // fields.add(foodList.get(0));
 
       req.placeRequest(fields);
       this.reset();
