@@ -22,7 +22,7 @@
          <children>
             <VBox spacing="10.0">
                <children>
-                  <JFXButton fx:id="mapButton" buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MAP">
+                  <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MAP">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
@@ -39,7 +39,7 @@
                   </JFXButton>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="REQUEST LIST">
+            <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="LOGOUT">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>

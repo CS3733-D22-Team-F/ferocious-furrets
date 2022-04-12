@@ -44,8 +44,9 @@ public class StageManager {
     m_stage.show();
   }
 
-  public void setHome(String filename) {
-    m_stage.setScene(SceneManager.getInstance().setScene(filename));
+  /** makes current screen the home */
+  public void setHome() {
+    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
     m_stage.show();
   }
 
@@ -55,12 +56,6 @@ public class StageManager {
     Scene scene1 = SceneManager.getInstance().setScene("views/" + filename);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
-  }
-
-  /** makes current screen the home */
-  public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("landingPage.fxml"));
-    m_stage.show();
   }
 
   public void cancel() {

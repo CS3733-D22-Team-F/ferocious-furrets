@@ -106,6 +106,6 @@ public class equipmentRequestController implements Initializable, IRequestContro
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

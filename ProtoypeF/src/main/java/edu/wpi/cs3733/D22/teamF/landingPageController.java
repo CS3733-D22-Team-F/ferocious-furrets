@@ -25,7 +25,6 @@ public class landingPageController implements Initializable {
   boolean toggleOff = false;
 
   @FXML private BorderPane reportBorderPane;
-  @FXML private Label azuLabel;
   @FXML private Label nikolaLabel;
   @FXML private Label johnnikolaLabel;
   @FXML private Label evansLabel;
@@ -199,7 +198,7 @@ public class landingPageController implements Initializable {
 
   @FXML
   public void returnToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome("homePage.fxml");
+    StageManager.getInstance().setHome();
   }
 
   @FXML
@@ -255,7 +254,6 @@ public class landingPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    azuLabel.setVisible(false);
     nikolaLabel.setVisible(false);
     johnnikolaLabel.setVisible(false);
     evansLabel.setVisible(false);
@@ -269,7 +267,6 @@ public class landingPageController implements Initializable {
             (observable, oldValue, newValue) -> {
               if (toggleButton.isSelected() == true) {
                 toggleButton.setText("Show Credits: ON");
-                azuLabel.setVisible(true);
                 nikolaLabel.setVisible(true);
                 johnnikolaLabel.setVisible(true);
                 evansLabel.setVisible(true);
@@ -278,7 +275,6 @@ public class landingPageController implements Initializable {
                 nikolaLabLabel.setVisible(true);
               } else {
                 toggleButton.setText("Show Credits: OFF");
-                azuLabel.setVisible(false);
                 nikolaLabel.setVisible(false);
                 johnnikolaLabel.setVisible(false);
                 evansLabel.setVisible(false);
