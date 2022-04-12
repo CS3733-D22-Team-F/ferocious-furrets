@@ -14,6 +14,6 @@
 }
 
 .text-field{
-    -fx-prompt-text-fill: black;
+    -fx-prompt-text-fill: grey;
     -fx-text-fill: black;
 }

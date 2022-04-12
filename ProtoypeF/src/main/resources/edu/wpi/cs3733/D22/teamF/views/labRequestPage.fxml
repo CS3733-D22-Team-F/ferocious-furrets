@@ -40,23 +40,13 @@
                   </ImageView>
                </children>
             </Pane>
-            <HBox layoutX="151.0" layoutY="544.0" prefHeight="52.0" prefWidth="455.0" spacing="20.0">
+            <HBox layoutX="108.0" layoutY="544.0" prefHeight="52.0" prefWidth="455.0" spacing="20.0">
                <children>
-                  <Label text="Status:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                  </Label>
                   <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="325.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
                </children>
             </HBox>
             <HBox layoutX="108.0" layoutY="461.0" prefHeight="62.0" prefWidth="515.0" spacing="20.0">
                <children>
-                  <Label text="Lab Type:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                  </Label>
                   <JFXComboBox fx:id="typeChoice" focusColor="#2aa7d0" prefHeight="43.0" prefWidth="320.0" promptText="Select a lab" style="-fx-background-color: white;" unFocusColor="WHITE" />
                </children>
             </HBox>
@@ -70,42 +60,14 @@
                   <Insets left="50.0" />
                </padding>
             </HBox>
-            <VBox alignment="TOP_RIGHT" layoutX="24.0" layoutY="185.0" prefHeight="255.0" prefWidth="245.0" spacing="35.0">
+            <VBox layoutX="108.0" layoutY="186.0" prefHeight="245.0" prefWidth="316.0" spacing="40.0">
                <children>
-                  <Label text="Node ID:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Employee ID: " textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Assigned User:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox layoutX="282.0" layoutY="186.0" prefHeight="245.0" prefWidth="316.0" spacing="40.0">
-               <children>
-                  <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
+                  <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="employeeIDField" prefHeight="45.0" prefWidth="338.0">
+                  <TextField fx:id="employeeIDField" prefHeight="45.0" prefWidth="338.0" promptText="Employee ID">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -113,7 +75,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0">
+                  <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0" promptText="Assigned User">
                      <font>
                         <Font size="24.0" />
                      </font>

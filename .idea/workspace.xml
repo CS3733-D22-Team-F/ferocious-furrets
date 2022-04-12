@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed home button issue">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed &quot;invisible&quot; text label bug">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_8_22,_11_07_PM_[Changes]/Floor3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/labRequest.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/labRequest.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/landingPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/landingPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -277,7 +280,7 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649722265281" duration="3381000" />
-      <workItem from="1649725716261" duration="3040000" />
+      <workItem from="1649725716261" duration="3395000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -454,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649728546325</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fixed &quot;invisible&quot; text label bug">
+      <created>1649728889496</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649728889496</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
     <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
     <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
     <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
@@ -509,7 +518,8 @@
     <MESSAGE value="removed unused buttons in homepage" />
     <MESSAGE value="refactored landing page into 'views' folder and add functionality to homepage buttons" />
     <MESSAGE value="fixed home button issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed home button issue" />
+    <MESSAGE value="fixed &quot;invisible&quot; text label bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed &quot;invisible&quot; text label bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
