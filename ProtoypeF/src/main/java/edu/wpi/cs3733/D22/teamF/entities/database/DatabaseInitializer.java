@@ -22,7 +22,7 @@ public class DatabaseInitializer {
    *
    * @param type boolean run in a embedded db mode or client server mode
    */
-  private DatabaseInitializer(ConnType type) {
+  public DatabaseInitializer(ConnType type) {
     this.dbConnection = this.connectDatabase(connType);
   }
 

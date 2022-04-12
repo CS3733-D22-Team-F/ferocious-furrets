@@ -1,4 +1,6 @@
-reqID,medicine
-Ant4,Ibuprofen
-Pai10,Oxycodone
-fOxy24,Oxycodone
+reqID,medicine,RxDoctor,dosage,totalAmount,pharmacyAddress
+fAnt4,Ibuprofen,Downey,1 mg,10 mg,CVS
+fBee6,Beer,Downey,1 mg,10 mg,CVS
+fBee7,Beer,Downey,1 mg,10 mg,CVS
+fAlb8,Albuterol,Downey,1 mg,10 mg,CVS
+fWor9,World Domination,Doom,1mg,2mg,Latvia

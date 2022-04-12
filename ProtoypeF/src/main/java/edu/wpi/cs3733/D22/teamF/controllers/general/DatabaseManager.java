@@ -70,7 +70,7 @@ public class DatabaseManager {
   public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
-    // employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
+    employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");

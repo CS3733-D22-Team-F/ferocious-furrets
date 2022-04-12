@@ -1,25 +1,10 @@
 reqID,nodeID,assEmpID,reqEmpID,status
-blo1,fDEPT00303,1,2,done
-MRI2,fDEPT00303,3,4,done
-Inf3,fDEPT00303,5,6,done
-Ant4,fDEPT00303,7,8,done
-Ted5,fDEPT00303,1,9,done
-Inf6,fDEPT00303,1,2,done
-furi7,567,5678,56789,processing
-X-R8,67,56789,567890,processing
-Bed9,fDEPT00101,12345,Nurse Joy,processing
-Pai10,fDEPT00101,12345,Nurse Joy,processing
-fTSH2,fDEPT00101,Nurse Joy,12345,Processing
-fGWS2,fDEPT00101,NJ,12345,Processing
-fTEA2,fDEPT00201,NJ,12345,Processing
-fGWS3,fDEPT00101,nj,12345,Processing
-fTSH3,fDEPT00101,nj,12345,Processing
-fTSH4,fSTOR00101,nuj,12345,Processing
-fGWS5,fDEPT00101,gtvyhujiko,12345,Processing
-fTSH6,fDEPT00101,NURSE JOY,12345,Processing
-fTSH7,fDEPT00101,Nurse Joy,12345,Processing
-fTSH19,fDEPT00101,Nurse Joy,12345,Processing
-GWS21,fDEPT00101,Nurse Joy,12345,Processing
-fTSH21,fDEPT00101,Nurse Joy,12345,Processing
-fGWS22,fDEPT00101,Nurse Joy,12345,Processing
-fOxy24,fDEPT00101,12345,Nurse Joy,processing
+fblo1,fDEPT00303,1,2,done
+fMRI2,fDEPT00303,3,4,done
+fInf3,fDEPT00303,5,6,done
+fAnt4,fDEPT00303,7,8,done
+fInf6,fDEPT00303,1,2,done
+fBee6,fDEPT00101,1,2,processing
+fBee7,fDEPT00101,1,2,processing
+fAlb8,fDEPT00101,1,2,processing
+fWor9,fDEPT00101,3,4,processing

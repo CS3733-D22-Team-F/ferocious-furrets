@@ -99,7 +99,9 @@ public class logInController extends returnHomePage implements Initializable {
       dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
     }
 
-    //    DatabaseManager.switchConnection(dbType);
+    // DatabaseManager.switchConnection(dbType);
+    DatabaseInitializer.switchConnection(dbType);
+    DatabaseManager.initalizeDatabaseManager();
   }
 
   @Override
