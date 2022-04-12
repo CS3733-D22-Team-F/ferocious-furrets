@@ -32,6 +32,7 @@ public class landingPageController implements Initializable {
   @FXML private Label johnScan;
   @FXML private Label nikolaLabLabel;
   @FXML private JFXToggleButton toggleButton;
+  @FXML private Label raffiLabel;
 
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
@@ -260,6 +261,7 @@ public class landingPageController implements Initializable {
     carterLabel.setVisible(false);
     johnScan.setVisible(false);
     nikolaLabLabel.setVisible(false);
+    raffiLabel.setVisible(false);
 
     toggleButton
         .selectedProperty()
@@ -273,6 +275,7 @@ public class landingPageController implements Initializable {
                 carterLabel.setVisible(true);
                 johnScan.setVisible(true);
                 nikolaLabLabel.setVisible(true);
+                raffiLabel.setVisible(true);
               } else {
                 toggleButton.setText("Show Credits: OFF");
                 nikolaLabel.setVisible(false);
@@ -281,6 +284,7 @@ public class landingPageController implements Initializable {
                 carterLabel.setVisible(false);
                 johnScan.setVisible(false);
                 nikolaLabLabel.setVisible(false);
+                raffiLabel.setVisible(false);
               }
             });
   }
