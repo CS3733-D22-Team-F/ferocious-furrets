@@ -88,20 +88,20 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
+      if (databaseChooser.getValue().toString().equals("Embedded")) {
+        dbType = DatabaseInitializer.ConnType.EMBEDDED;
+      } else {
+        dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+      }
+
+      // DatabaseManager.switchConnection(dbType);
+      DatabaseInitializer.switchConnection(dbType);
+      DatabaseManager.initalizeDatabaseManager();
       StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
     }
-    if (databaseChooser.getValue().toString().equals("Embedded")) {
-      dbType = DatabaseInitializer.ConnType.EMBEDDED;
-    } else {
-      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    }
-
-    // DatabaseManager.switchConnection(dbType);
-    DatabaseInitializer.switchConnection(dbType);
-    DatabaseManager.initalizeDatabaseManager();
   }
 
   @Override
