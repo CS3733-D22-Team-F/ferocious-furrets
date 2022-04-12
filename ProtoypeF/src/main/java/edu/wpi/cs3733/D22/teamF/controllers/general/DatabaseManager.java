@@ -33,20 +33,26 @@ public class DatabaseManager {
 
   private static DatabaseManager DatabaseManager;
 
+  enum connType {
+    embedded,
+    clientserver
+  }
+
   private DatabaseManager() {}
 
   /**
    * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
    * connection to a client-server database
    *
-   * @param runEmbedded boolean true to run embedded database
+   * @param type boolean true to run embedded database
    * @return Connection object
    * @throws SQLException
    * @throws IOException
    */
-  private static Connection switchConnection(boolean runEmbedded) throws SQLException, IOException {
+  private static Connection switchConnection(DatabaseInitializer.ConnType type)
+      throws SQLException, IOException {
     backUpDatabaseToCSV();
-    DatabaseInitializer.switchConnection(runEmbedded);
+    DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
     return conn;
   }

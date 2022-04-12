@@ -8,15 +8,22 @@ import java.sql.SQLException;
 public class DatabaseInitializer {
 
   private Connection dbConnection;
-  private static boolean embedded = true;
+
+  public enum ConnType {
+    NEITHER,
+    EMBEDDED,
+    CLIENTSERVER
+  }
+
+  static ConnType connType = ConnType.NEITHER;
 
   /**
    * Constructor
    *
-   * @param embedded boolean run in a embedded db mode or client server mode
+   * @param type boolean run in a embedded db mode or client server mode
    */
-  private DatabaseInitializer(boolean embedded) {
-    this.dbConnection = this.connectDatabase(DatabaseInitializer.embedded);
+  private DatabaseInitializer(ConnType type) {
+    this.dbConnection = this.connectDatabase(connType);
   }
 
   /**
@@ -31,11 +38,11 @@ public class DatabaseInitializer {
   /**
    * sets the embedded bool and returns a new Helped.db
    *
-   * @param runEmbedded boolean run in an embedded or client server mode
+   * @param connectionType boolean run in an embedded or client server mode
    * @return a new DatabaseInitializer object
    */
-  public static DatabaseInitializer switchConnection(boolean runEmbedded) {
-    embedded = runEmbedded;
+  public static DatabaseInitializer switchConnection(ConnType connectionType) {
+    connType = connectionType;
     return Helper.db;
   }
 
@@ -43,9 +50,10 @@ public class DatabaseInitializer {
    * Connects to the database returns null object if connection failed
    *
    * @return Connection object
+   * @param type
    */
-  private Connection connectDatabase(boolean embedded) {
-    if (embedded) {
+  private Connection connectDatabase(ConnType type) {
+    if (type == ConnType.EMBEDDED) {
       try {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
       } catch (ClassNotFoundException e) {
@@ -108,6 +116,6 @@ public class DatabaseInitializer {
 
   /** makes a new DatabaseInitializer */
   private static class Helper {
-    private static final DatabaseInitializer db = new DatabaseInitializer(embedded);
+    private static final DatabaseInitializer db = new DatabaseInitializer(connType);
   }
 }
