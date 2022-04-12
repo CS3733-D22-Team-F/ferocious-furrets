@@ -151,12 +151,12 @@ public class scanController extends PageController implements Initializable, IRe
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

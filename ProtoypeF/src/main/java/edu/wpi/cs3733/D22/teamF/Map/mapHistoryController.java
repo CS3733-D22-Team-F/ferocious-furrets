@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/** controller for saving and recovering the map history */
 public class mapHistoryController implements Initializable {
   @FXML TableView<MapOperation> table;
 

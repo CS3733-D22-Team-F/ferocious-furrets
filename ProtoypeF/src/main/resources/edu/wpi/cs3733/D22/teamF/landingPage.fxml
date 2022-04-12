@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="reportAnchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
+<BorderPane fx:id="reportAnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
    <top>
       <VBox prefHeight="124.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
@@ -46,7 +46,7 @@
                      <children>
                         <Label text="Brigham and Women's Hospital" textFill="WHITE">
                            <font>
-                              <Font name="Cascadia Code Regular" size="40.0" />
+                              <Font name="Serif Regular" size="64.0" />
                            </font>
                         </Label>
                         <ImageView fitHeight="105.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
@@ -68,19 +68,19 @@
                <children>
                   <AnchorPane prefHeight="550.0" prefWidth="370.0">
                      <children>
-                        <VBox maxWidth="-Infinity" prefHeight="716.0" prefWidth="352.0">
+                        <VBox layoutX="-19.0" maxWidth="-Infinity" prefHeight="716.0" prefWidth="371.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="75.0" prefWidth="371.0" text="Service Request Systems" underline="true">
                                  <font>
-                                    <Font name="System Bold" size="20.0" />
+                                    <Font name="Serif Bold" size="24.0" />
                                  </font>
                                  <padding>
                                     <Insets bottom="25.0" top="20.0" />
                                  </padding>
                               </Label>
-                              <JFXButton fx:id="mapButton" alignment="CENTER" buttonType="RAISED" onAction="#switchToMap" prefHeight="82.0" prefWidth="300.0" ripplerFill="WHITE" style="" text="MAP" textFill="WHITE">
+                              <JFXButton fx:id="mapButton" alignment="CENTER" buttonType="RAISED" onAction="#switchToMap" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                                  <font>
-                                    <Font name="Palatino" size="24.0" />
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -94,10 +94,13 @@
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="115.0" top="10.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Serif Regular" size="14.0" />
+                                 </font>
                               </Label>
-                               <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style=";" text="MEDICAL REQUEST" textAlignment="CENTER" textFill="WHITE">
+                               <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MEDICAL REQUEST" textAlignment="CENTER" textFill="WHITE">
                                    <font>
-                                       <Font name="Palatino" size="24.0" />
+                                       <Font name="Serif Regular" size="24.0" />
                                    </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -107,14 +110,17 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                                </JFXButton>
-                              <Label fx:id="johnLabel" prefHeight="17.0" prefWidth="178.0" text="Medical Request created by John">
+                              <Label fx:id="johnLabel" prefHeight="17.0" prefWidth="192.0" text="Medical Request created by John">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="85.0" top="10.0" />
                                  </VBox.margin>
-                              </Label>
-                              <JFXButton buttonType="RAISED" onAction="#switchToEquipment" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text="EQUIPMENT" textFill="WHITE">
                                  <font>
-                                    <Font name="Palatino" size="24.0" />
+                                    <Font name="Serif Regular" size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton buttonType="RAISED" onAction="#switchToEquipment" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="EQUIPMENT" textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -124,14 +130,17 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <Label fx:id="nikolaLabel" prefHeight="17.0" prefWidth="157.0" text="Equipment created by Nikola">
+                              <Label fx:id="nikolaLabel" prefHeight="17.0" prefWidth="170.0" text="Equipment created by Nikola">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="95.0" top="10.0" />
                                  </VBox.margin>
-                              </Label>
-                              <JFXButton buttonType="RAISED" onAction="#switchToMedicine" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text="MEDICINE" textFill="WHITE">
                                  <font>
-                                    <Font name="Palatino" size="24.0" />
+                                    <Font name="Serif Regular" size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton buttonType="RAISED" onAction="#switchToMedicine" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MEDICINE" textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -141,14 +150,14 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <Label fx:id="johnnikolaLabel" prefHeight="17.0" prefWidth="170.0" text="Map created by John &amp; Nikola">
+                              <Label fx:id="johnnikolaLabel" prefHeight="17.0" prefWidth="170.0" text="Map created by John &amp; Jack">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="90.0" top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <JFXButton buttonType="RAISED" onAction="#switchToMeals" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text="MEALS" textFill="WHITE">
+                              <JFXButton buttonType="RAISED" onAction="#switchToMeals" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MEALS" textFill="WHITE">
                                  <font>
-                                    <Font name="Palatino" size="24.0" />
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -163,9 +172,9 @@
                                     <Insets bottom="10.0" left="115.0" top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <JFXButton buttonType="RAISED" onAction="#switchToGift" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text="GIFTS" textFill="WHITE">
+                              <JFXButton buttonType="RAISED" onAction="#switchToGift" prefHeight="65.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="GIFTS" textFill="WHITE">
                                  <font>
-                                    <Font name="Palatino" size="24.0" />
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -175,12 +184,12 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <Label fx:id="carterLabel" prefHeight="17.0" prefWidth="131.0" text="Map created by Carter">
+                              <Label fx:id="carterLabel" prefHeight="17.0" prefWidth="163.0" text="Map created by Carter &amp; Jack">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="110.0" top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <JFXButton onAction="#toggleCredits" prefHeight="0.0" prefWidth="301.0" style="" text="PAGE CREDITS" textFill="WHITE">
+                              <JFXButton maxWidth="336.0" onAction="#toggleCredits" prefHeight="25.0" prefWidth="336.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="PAGE CREDITS" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="20.0" right="30.0" />
                                  </VBox.margin>
@@ -199,9 +208,9 @@
          <children>
             <HBox layoutY="6.0" prefHeight="94.0" prefWidth="1435.0" spacing="30.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="74.0" prefWidth="305.0" ripplerFill="#801818" style="" text="Logout" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="74.0" prefWidth="305.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="LOG OUT" textFill="WHITE">
                      <font>
-                        <Font name="Palatino" size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -211,9 +220,9 @@
                         <Insets bottom="10.0" left="20.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#801818" style="" text="SERVICE REQUESTS" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="SERVICE REQUESTS" textFill="WHITE">
                      <font>
-                        <Font name="Palatino" size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -223,9 +232,9 @@
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="445.0" ripplerFill="#801818" style="" text="CALL SERVICE" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="445.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="CALL SERVICE" textFill="WHITE">
                      <font>
-                        <Font name="Palatino" size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
@@ -235,9 +244,9 @@
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#exitProgram" prefHeight="82.0" prefWidth="356.0" ripplerFill="#801818" style="" text="  EXIT" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#exitProgram" prefHeight="82.0" prefWidth="356.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="  EXIT" textFill="WHITE">
                      <font>
-                        <Font name="Palatino" size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">

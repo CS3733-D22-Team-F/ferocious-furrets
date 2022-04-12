@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/** Controller for the landing page */
 public class landingPageController implements Initializable {
 
   private Stage stage;
@@ -24,13 +26,22 @@ public class landingPageController implements Initializable {
   boolean toggleOff = false;
 
   @FXML private BorderPane reportBorderPane;
-  @FXML private Label azuLabel;
   @FXML private Label nikolaLabel;
-  @FXML private Label johnLabel;
+  @FXML private Label azuLabel;
   @FXML private Label johnnikolaLabel;
   @FXML private Label evansLabel;
   @FXML private Label carterLabel;
+  @FXML private Label johnScan;
+  @FXML private Label nikolaLabLabel;
+  @FXML private JFXToggleButton toggleButton;
+  @FXML private Label raffiLabel;
 
+  /**
+   * switch to the medical scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
@@ -195,7 +206,24 @@ public class landingPageController implements Initializable {
     window.show();
   }
 
+  @FXML
+  public void returnToHome(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+  }
+
+  @FXML
+  public void returnToLab(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("labRequestPage.fxml");
+  }
+
+  @FXML
+  public void returnToScan(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("scanPage.fxml");
+  }
+
   /**
+   * switch to the request scene
+   *
    * @param event
    * @throws IOException
    */
@@ -204,17 +232,29 @@ public class landingPageController implements Initializable {
     StageManager.getInstance().setDisplay("requestListPage.fxml");
   }
 
+  /**
+   * switch to the login scene
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void switchToLogin(ActionEvent event) throws IOException {
     StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
+  /**
+   * toggle credits, in MLA format
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void toggleCredits(ActionEvent event) throws IOException {
     if (!toggleOff) {
       azuLabel.setVisible(false);
       nikolaLabel.setVisible(false);
-      johnLabel.setVisible(false);
+      johnScan.setVisible(false);
       johnnikolaLabel.setVisible(false);
       evansLabel.setVisible(false);
       carterLabel.setVisible(false);
@@ -222,7 +262,7 @@ public class landingPageController implements Initializable {
     } else if (toggleOff) {
       azuLabel.setVisible(true);
       nikolaLabel.setVisible(true);
-      johnLabel.setVisible(true);
+      johnScan.setVisible(true);
       johnnikolaLabel.setVisible(true);
       evansLabel.setVisible(true);
       carterLabel.setVisible(true);
@@ -239,11 +279,37 @@ public class landingPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    azuLabel.setVisible(false);
     nikolaLabel.setVisible(false);
-    johnLabel.setVisible(false);
     johnnikolaLabel.setVisible(false);
     evansLabel.setVisible(false);
     carterLabel.setVisible(false);
+    johnScan.setVisible(false);
+    nikolaLabLabel.setVisible(false);
+    raffiLabel.setVisible(false);
+
+    toggleButton
+        .selectedProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              if (toggleButton.isSelected() == true) {
+                toggleButton.setText("Show Credits: ON");
+                nikolaLabel.setVisible(true);
+                johnnikolaLabel.setVisible(true);
+                evansLabel.setVisible(true);
+                carterLabel.setVisible(true);
+                johnScan.setVisible(true);
+                nikolaLabLabel.setVisible(true);
+                raffiLabel.setVisible(true);
+              } else {
+                toggleButton.setText("Show Credits: OFF");
+                nikolaLabel.setVisible(false);
+                johnnikolaLabel.setVisible(false);
+                evansLabel.setVisible(false);
+                carterLabel.setVisible(false);
+                johnScan.setVisible(false);
+                nikolaLabLabel.setVisible(false);
+                raffiLabel.setVisible(false);
+              }
+            });
   }
 }

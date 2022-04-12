@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * implementation of the IRequestDAO
+ *
+ * @see IRequestDAO
+ */
 public class RequestDAOImpl implements IRequestDAO {
 
   /**

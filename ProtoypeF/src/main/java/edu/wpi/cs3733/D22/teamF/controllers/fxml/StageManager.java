@@ -44,18 +44,30 @@ public class StageManager {
     m_stage.show();
   }
 
+  /** take a string file name then set scene and display scene for StageManager */
+  public void setDisplayNoViews(String filename) {
+    m_stage.setScene(SceneManager.getInstance().setScene(filename));
+    m_stage.show();
+  }
+
+  /** makes current screen the home */
+  public void setHome() {
+    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
+    m_stage.show();
+  }
+
+  /** makes current screen the home */
+  public void setHomeScreen() {
+    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
+    m_stage.show();
+  }
+
   public void setDisplayAndWait(String filename) throws IOException {
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = SceneManager.getInstance().setScene("views/" + filename);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
-  }
-
-  /** makes current screen the home */
-  public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("landingPage.fxml"));
-    m_stage.show();
   }
 
   public void cancel() {

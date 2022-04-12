@@ -33,6 +33,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controller for the map page including functionality for contolling the map scene up changing
+ * views
+ */
 public class mapPageController implements Initializable {
   private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
   private static final String FX_BACKGROUND_BLUE = "-fx-background-color:#123090";
@@ -363,7 +367,7 @@ public class mapPageController implements Initializable {
   private void homePage(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
   }
-
+  // START show functions
   public void showPatient() {
     MapIconModifier.showPatient();
   }
@@ -439,7 +443,12 @@ public class mapPageController implements Initializable {
   public void showIcon() {
     MapIconModifier.showIcon(showIconButton);
   }
-
+  // end show functions
+  /**
+   * deletes icons from the map
+   *
+   * @throws SQLException
+   */
   public void wipeMap() throws SQLException {
     ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
@@ -450,6 +459,11 @@ public class mapPageController implements Initializable {
     }
   }
 
+  /**
+   * displays the map with the location objects
+   *
+   * @throws SQLException
+   */
   public void displayMap() throws SQLException {
     ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
 
@@ -473,6 +487,11 @@ public class mapPageController implements Initializable {
     MapIconModifier.showAllIcon();
   }
 
+  /**
+   * loads tables from the DAOs
+   *
+   * @throws SQLException
+   */
   public void loadTable() throws SQLException {
     ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
@@ -482,6 +501,11 @@ public class mapPageController implements Initializable {
     table.setItems(nlocationList);
   }
 
+  /**
+   * loads a map from the locationsDAO
+   *
+   * @throws SQLException
+   */
   public void loadMap() throws SQLException {
     ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
     loadTable();
@@ -526,6 +550,7 @@ public class mapPageController implements Initializable {
     MapIconModifier.locationIconList.put(location, newButton);
   }
 
+  /** sets up a node */
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
@@ -567,6 +592,12 @@ public class mapPageController implements Initializable {
     homeButton.setGraphic(MapIconModifier.getIcon("home"));
   }
 
+  /**
+   * sets a buttion to a circle
+   *
+   * @param button
+   * @param radius
+   */
   public static void setCircleButton(Button button, int radius) {
     button.setStyle(
         "-fx-background-radius: "
@@ -587,10 +618,5 @@ public class mapPageController implements Initializable {
             + FX_TEXT_FILL_WHITE
             + ";"
             + FX_BACKGROUND_BLUE);
-  }
-
-  @FXML
-  public void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
   }
 }
