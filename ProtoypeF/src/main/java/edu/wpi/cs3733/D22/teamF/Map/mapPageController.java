@@ -79,6 +79,7 @@ public class mapPageController implements Initializable {
   @FXML JFXButton changeToF4;
   @FXML JFXButton changeToF3;
   @FXML JFXButton changeToF2;
+  @FXML JFXButton changeToF1;
   @FXML JFXButton changeToL1;
   @FXML JFXButton changeToL2;
 
@@ -419,7 +420,7 @@ public class mapPageController implements Initializable {
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
-    menuNodeList.setRotate(90);
+    menuNodeList.setRotate(-90);
     AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF5, 40);
@@ -430,6 +431,8 @@ public class mapPageController implements Initializable {
     changeToF3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF2, 40);
     changeToF2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(changeToF1, 40);
+    changeToF1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToL1, 40);
     changeToL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToL2, 40);
