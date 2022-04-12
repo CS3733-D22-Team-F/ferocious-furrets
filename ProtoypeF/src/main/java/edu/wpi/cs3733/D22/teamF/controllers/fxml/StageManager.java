@@ -44,9 +44,15 @@ public class StageManager {
     m_stage.show();
   }
 
+  /** take a string file name then set scene and display scene for StageManager */
+  public void setDisplayNoViews(String filename) {
+    m_stage.setScene(SceneManager.getInstance().setScene(filename));
+    m_stage.show();
+  }
+
   /** makes current screen the home */
   public void setHome() {
-    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
     m_stage.show();
   }
 

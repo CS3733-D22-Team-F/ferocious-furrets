@@ -69,7 +69,7 @@ public class logInController extends returnHomePage {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      StageManager.getInstance().setHome();
+      StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

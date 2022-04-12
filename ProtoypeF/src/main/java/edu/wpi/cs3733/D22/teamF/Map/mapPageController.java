@@ -563,10 +563,10 @@ public class mapPageController implements Initializable {
 
   @FXML
   public void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 
   public void homePage(ActionEvent event) {
-    StageManager.getInstance().setHome();
+    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 }
