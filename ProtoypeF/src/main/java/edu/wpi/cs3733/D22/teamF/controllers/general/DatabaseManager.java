@@ -51,9 +51,10 @@ public class DatabaseManager {
    */
   public static Connection switchConnection(DatabaseInitializer.ConnType type)
       throws SQLException, IOException {
-    backUpDatabaseToCSV();
+    // backUpDatabaseToCSV();
     DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
+    DatabaseManager dbMan = DatabaseManager.initalizeDatabaseManager();
     return conn;
   }
 
