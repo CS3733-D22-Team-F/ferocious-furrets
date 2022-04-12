@@ -43,8 +43,8 @@ public class DatabaseInitializer {
    */
   public static DatabaseInitializer switchConnection(ConnType connectionType) throws SQLException {
     connType = connectionType;
-     System.out.println(connType.toString());
-     System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
+    System.out.println(connType.toString());
+    System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
     return Helper.db;
   }
 

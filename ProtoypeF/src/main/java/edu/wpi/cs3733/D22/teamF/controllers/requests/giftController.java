@@ -62,7 +62,7 @@ public class giftController extends PageController implements Initializable, IRe
     temp1.add("TEA - Tea");
     temp1.add("GWS - Get Well Soon Card");
     temp1.add("BLA - Blanket");
-    temp1.add("TSH - Brigham and Women's T-Shirt");
+    temp1.add("TSH - Brigham and Womens T-Shirt");
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
   }
@@ -114,6 +114,7 @@ public class giftController extends PageController implements Initializable, IRe
 
   public String generateReqID() throws SQLException {
     String nNodeType = giftChoice.getValue().toString().substring(0, 3);
+    System.out.println(nNodeType);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM GIFTREQUEST");
