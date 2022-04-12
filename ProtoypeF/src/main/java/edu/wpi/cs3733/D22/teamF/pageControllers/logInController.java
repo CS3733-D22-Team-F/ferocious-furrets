@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import java.io.IOException;
 import java.net.URL;
@@ -34,12 +35,7 @@ public class logInController extends returnHomePage implements Initializable {
   private Parent root;
   private Scene scene;
 
-  enum connType{
-    EMBEDDED,
-    CLIENTSERVER
-  }
-
-  private connType dbType;
+  private DatabaseInitializer.ConnType dbType;
 
   /*
    * method to send user to the homepage after a successful authentication of username and password
@@ -55,7 +51,7 @@ public class logInController extends returnHomePage implements Initializable {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn() {
+  private void logIn() throws SQLException, IOException {
     boolean success = false;
     UserType userType = new UserType();
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
@@ -95,10 +91,12 @@ public class logInController extends returnHomePage implements Initializable {
       popUpLabel.setVisible(true);
     }
     if (databaseChooser.getValue().toString().equals("Embedded")) {
-      dbType = connType.EMBEDDED;
+      dbType = DatabaseInitializer.ConnType.EMBEDDED;
     } else {
-      dbType = connType.CLIENTSERVER;
+      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
     }
+
+    DatabaseManager.switchConnection(dbType);
   }
 
   @Override
