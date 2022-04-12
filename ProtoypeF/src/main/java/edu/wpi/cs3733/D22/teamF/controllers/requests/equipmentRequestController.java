@@ -115,7 +115,7 @@ public class equipmentRequestController implements Initializable, IRequestContro
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 
