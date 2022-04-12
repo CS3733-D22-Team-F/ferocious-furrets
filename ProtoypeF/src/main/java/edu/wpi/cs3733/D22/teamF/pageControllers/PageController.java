@@ -9,7 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 
-/// abstract class for all pages in application
+/** abstract class for all pages in application*/
 public abstract class PageController {
   protected ContextMenu contextMenu;
   protected MenuBar menuBar;
@@ -67,11 +67,11 @@ public abstract class PageController {
    * @return A specific's class context menu
    */
   public abstract ContextMenu makeContextMenu();
+
   /**
-   * Creates the main menu bar for the entire application except the login screen
-   *
-   * @param masterPane the main pane of a page
-   * @return
+   * implemented make a menu bar from a Pane
+   * @param masterPane Pane
+   * @return MenuBar
    */
   public MenuBar makeMenuBar(Pane masterPane) {
     MenuBar pageMenu = new MenuBar();
@@ -126,15 +126,19 @@ public abstract class PageController {
   }
 
   /**
-   * abstraction of Stage manger display to switch scenes for
-   *
+   * abstraction of Stage manager display to switch scenes for
    * @param fileName name of page to switch to
+   * switch to scene passed in
+   * @param fileName String scene to switch to
    */
   public void switchScene(String fileName) {
     StageManager.getInstance().setDisplay(fileName);
   }
 
   /** abstaction of StageManager to getback to home */
+  /**
+   * switch to home scene
+   */
   public void switchToHome() {
     StageManager.getInstance().setHomeScreen();
   }

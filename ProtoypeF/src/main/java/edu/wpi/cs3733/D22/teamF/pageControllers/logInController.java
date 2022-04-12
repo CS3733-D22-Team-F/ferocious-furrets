@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * controll for log in scene
+ * controller for log in scene
  *
  * @see returnHomePage
  */
@@ -37,13 +37,15 @@ public class logInController extends returnHomePage implements Initializable {
 
   private DatabaseInitializer.ConnType dbType;
 
-  /*
-   * method to send user to the homepage after a successful authentication of username and password
-   */
   public void loginSuccess() throws IOException {
     StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
+  /**
+   * backs up the db to csvs then quits the application
+   * @throws SQLException
+   * @throws IOException
+   */
   @FXML
   private void helpQuit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();

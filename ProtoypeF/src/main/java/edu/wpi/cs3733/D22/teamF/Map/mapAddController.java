@@ -20,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controller for adding stuff to the map
+ */
 public class mapAddController implements Initializable {
 
   @FXML ChoiceBox<String> nodeBox;

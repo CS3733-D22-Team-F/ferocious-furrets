@@ -151,7 +151,7 @@ public class scanController extends PageController implements Initializable, IRe
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 

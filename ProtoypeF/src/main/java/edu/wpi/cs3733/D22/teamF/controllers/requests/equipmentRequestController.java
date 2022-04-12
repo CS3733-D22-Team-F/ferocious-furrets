@@ -141,7 +141,7 @@ public class equipmentRequestController extends PageController
     }
     rset.close();
 
-    String nID = nNodeType + reqNum;
+    String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 

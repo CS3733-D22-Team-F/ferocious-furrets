@@ -4,7 +4,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuBar;
 
-// Interface for all pages
+/**
+ * Interface for all pages
+ */
 public interface IController extends Initializable {
 
   /** clear user inputed fields of a page */

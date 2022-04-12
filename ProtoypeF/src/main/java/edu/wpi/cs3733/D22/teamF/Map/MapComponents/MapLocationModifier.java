@@ -6,9 +6,21 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * for modifying locations
+ */
 public class MapLocationModifier {
   public static String currentFloor;
 
+  /**
+   * adds a location taking in individual fields and making an object
+   * @param type String type of location
+   * @param x String coord
+   * @param y String coord
+   * @param floor String floor number
+   * @param longName String
+   * @param shortName String abbrev
+   */
   public static void addLocation(
       String type, String x, String y, String floor, String longName, String shortName) {
     try {
@@ -31,6 +43,11 @@ public class MapLocationModifier {
     }
   }
 
+  /**
+   * adds a location taking in a location object
+   * @param location Location
+   * @throws SQLException
+   */
   public static void addLocation(Location location) throws SQLException {
     mapUserHistory.userHistory.add(new MapOperation("add", location));
     DatabaseManager.getLocationDAO().addLocation(location);
@@ -44,10 +61,10 @@ public class MapLocationModifier {
   }
 
   /**
-   * @param nodeType
-   * @param floor
-   * @param x
-   * @param y
+   * @param nodeType String type of node
+   * @param floor String floor id
+   * @param x String coord
+   * @param y String coord
    * @return
    * @throws SQLException
    * @throws IOException

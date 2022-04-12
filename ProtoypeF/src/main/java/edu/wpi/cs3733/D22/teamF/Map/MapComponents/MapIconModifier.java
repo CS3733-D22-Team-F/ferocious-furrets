@@ -10,6 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * for dealing with modifying icons on the map
+ */
 public class MapIconModifier {
   static String currentIcon = "";
 
@@ -212,6 +215,10 @@ public class MapIconModifier {
     return imageView;
   }
 
+  /**
+   * Shows an icon on the map
+   * @param type String type of icon
+   */
   public static void showOneIcon(String type) {
     Collection<JFXButton> iconList = locationIconList.values();
     ArrayList<JFXButton> iconArrayList = new ArrayList<>(iconList);
@@ -226,6 +233,10 @@ public class MapIconModifier {
     }
   }
 
+  /**
+   * shows an icon taking in a button
+   * @param showIconButton JFXButton
+   */
   public static void showIcon(JFXButton showIconButton) {
     if (showIconButton.getText().equals("ALL ICON")) {
       showFloorIcon(MapLocationModifier.currentFloor);
