@@ -7,11 +7,11 @@ public class UserType {
     userType = "";
   }
 
-  public void setUserType(String clearance) {
+  public static void setUserType(String clearance) {
     userType = clearance;
   }
 
-  public String getUserType() {
-    return this.userType;
+  public static String getUserType() {
+    return userType;
   }
 }
