@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
+import afester.javafx.svg.SvgLoader;
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -14,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MapIconModifier {
+  public static SvgLoader iconLoader = new SvgLoader();
+
   static String currentIcon = "";
 
   public static HashMap<Location, JFXButton> locationIconList = new HashMap<>();

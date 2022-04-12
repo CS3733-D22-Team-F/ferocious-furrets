@@ -70,6 +70,5 @@ public class SceneManager {
       e.printStackTrace();
     }
     System.out.println("Loading Scene");
-    return;
   }
 }

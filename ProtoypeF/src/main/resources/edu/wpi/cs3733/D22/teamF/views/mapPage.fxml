@@ -93,7 +93,7 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXNodesList fx:id="floorNodeList" layoutX="15.0" layoutY="10.0">
+      <JFXNodesList fx:id="floorNodeList" layoutX="20.0" layoutY="10.0">
          <children>
             <JFXButton fx:id="openFloorMenu" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
                <font>
