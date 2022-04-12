@@ -27,7 +27,7 @@ public class floralController extends PageController implements Initializable, I
   public void initialize(URL location, ResourceBundle resources) {}
 
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 
   @Override

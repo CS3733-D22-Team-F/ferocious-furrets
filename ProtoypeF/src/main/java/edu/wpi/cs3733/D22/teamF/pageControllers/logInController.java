@@ -87,7 +87,7 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      StageManager.getInstance().setHomeScreen();
+      StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

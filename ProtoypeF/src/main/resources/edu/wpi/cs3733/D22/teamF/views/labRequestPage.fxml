@@ -30,7 +30,7 @@
                         <Image url="@../BWHlogo-new.png" />
                      </image>
                   </ImageView>
-                  <Label contentDisplay="TOP" layoutX="55.0" layoutY="75.0" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
+                  <Label contentDisplay="TOP" layoutX="65.0" layoutY="75.0" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>

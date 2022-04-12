@@ -616,8 +616,4 @@ public class mapPageController implements Initializable {
             + FX_BACKGROUND_BLUE);
   }
 
-  @FXML
-  public void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
-  }
 }
