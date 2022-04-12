@@ -17,7 +17,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -33,7 +33,29 @@ public class DatabaseManager {
 
   private static DatabaseManager DatabaseManager;
 
+  enum connType {
+    embedded,
+    clientserver
+  }
+
   private DatabaseManager() {}
+
+  /**
+   * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
+   * connection to a client-server database
+   *
+   * @param type boolean true to run embedded database
+   * @return Connection object
+   * @throws SQLException
+   * @throws IOException
+   */
+  private static Connection switchConnection(DatabaseInitializer.ConnType type)
+      throws SQLException, IOException {
+    backUpDatabaseToCSV();
+    DatabaseInitializer.switchConnection(type);
+    conn = DatabaseInitializer.getConnection().getDbConnection();
+    return conn;
+  }
 
   /**
    * inits the dao objects
@@ -54,6 +76,7 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+
     return Helper.dbMan;
   }
 

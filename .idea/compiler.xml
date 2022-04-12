@@ -11,6 +11,12 @@
         <module name="ProtoypeF.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="Fdb.main" target="11" />
+      <module name="Fdb.test" target="11" />
+      <module name="ferocious-furrets.Fapp" target="11" />
+      <module name="ferocious-furrets.Fapp.main" target="11" />
+      <module name="ferocious-furrets.Fapp.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
