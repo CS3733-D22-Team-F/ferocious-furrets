@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * controller for log in scene
+ * controll for log in scene
  *
  * @see returnHomePage
  */
@@ -44,12 +44,6 @@ public class logInController extends returnHomePage implements Initializable {
     StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
-  /**
-   * backs up the db to csvs then quits the application
-   *
-   * @throws SQLException
-   * @throws IOException
-   */
   @FXML
   private void helpQuit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
@@ -91,11 +85,16 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      if (databaseChooser.getValue().toString().equals("Embedded")) {
-        dbType = DatabaseInitializer.ConnType.EMBEDDED;
-      } else {
-        dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-      }
+      StageManager.getInstance().setHomeScreen();
+      popUpLabel.setVisible(false);
+    } else {
+      popUpLabel.setVisible(true);
+    }
+    if (databaseChooser.getValue().toString().equals("Client-Server")) {
+      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    } else {
+      dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    }
 
     DatabaseManager.switchConnection(dbType);
   }
@@ -107,6 +106,6 @@ public class logInController extends returnHomePage implements Initializable {
     databaseDrop.add("Embedded");
     databaseDrop.add("Client-Server");
     databaseChooser.getItems().addAll(databaseDrop);
-    databaseChooser.setValue("Embedded");
+    databaseChooser.setValue("");
   }
 }
