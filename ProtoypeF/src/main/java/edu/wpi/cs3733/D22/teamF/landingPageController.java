@@ -93,6 +93,17 @@ public class landingPageController implements Initializable {
   }
 
   /**
+   * switch to audio/Visual scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  @FXML
+  public void switchToAudioVisual(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("audioVisualPage.fxml");
+  }
+
+  /**
    * return to the map scene
    *
    * @param event

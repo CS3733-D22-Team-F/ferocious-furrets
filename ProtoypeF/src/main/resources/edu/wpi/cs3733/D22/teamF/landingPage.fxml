@@ -180,6 +180,22 @@
                                     <Insets bottom="10.0" left="110.0" top="10.0" />
                                  </VBox.margin>
                               </Label>
+                              <JFXButton buttonType="RAISED" onAction="#switchToAudioVisual" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style="" text="AUDIO/VISUAL" textFill="WHITE">
+                                 <font>
+                                    <Font name="Palatino" size="24.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <Label fx:id="carterLabel1" prefHeight="17.0" prefWidth="157.0" text="Audio/Visual created by Raffi">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="97.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
                               <JFXButton onAction="#toggleCredits" prefHeight="0.0" prefWidth="301.0" style="" text="PAGE CREDITS" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="20.0" right="30.0" />

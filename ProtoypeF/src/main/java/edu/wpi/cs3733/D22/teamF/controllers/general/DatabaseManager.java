@@ -30,6 +30,7 @@ public class DatabaseManager {
   private static final mealDAOImpl mealDAO = new mealDAOImpl();
   private static final patientDAOImpl patientDAO = new patientDAOImpl();
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
+  private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -42,7 +43,7 @@ public class DatabaseManager {
    * @throws SQLException
    * @throws IOException
    */
-  public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
+  public static DatabaseManager initializeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
@@ -54,6 +55,7 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+    audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     return Helper.dbMan;
   }
 
@@ -113,6 +115,7 @@ public class DatabaseManager {
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
     dropTableIfExist("Locations");
+    dropTableIfExist("audioVisualRequest");
   }
 
   public static void dropTableIfExist(String droppingTable) throws SQLException {
