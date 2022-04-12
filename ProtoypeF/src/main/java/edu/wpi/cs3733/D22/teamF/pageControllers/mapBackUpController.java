@@ -17,9 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * controller for the map backup
- */
+/** controller for the map backup */
 public class mapBackUpController implements Initializable {
 
   @FXML private TextField idField;
@@ -106,6 +104,7 @@ public class mapBackUpController implements Initializable {
 
   /**
    * calls Databasemanager backnup to csv
+   *
    * @param file File
    * @throws SQLException
    * @throws IOException

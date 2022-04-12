@@ -34,7 +34,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
- * Controller for the map page including functionality for contolling the map scene  up changing views
+ * Controller for the map page including functionality for contolling the map scene up changing
+ * views
  */
 public class mapPageController implements Initializable {
   private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
@@ -366,7 +367,7 @@ public class mapPageController implements Initializable {
   private void homePage(ActionEvent event) throws IOException {
     StageManager.getInstance().setHomeScreen();
   }
-//START show functions
+  // START show functions
   public void showPatient() {
     MapIconModifier.showPatient();
   }
@@ -442,9 +443,10 @@ public class mapPageController implements Initializable {
   public void showIcon() {
     MapIconModifier.showIcon(showIconButton);
   }
-//end show functions
+  // end show functions
   /**
    * deletes icons from the map
+   *
    * @throws SQLException
    */
   public void wipeMap() throws SQLException {
@@ -459,6 +461,7 @@ public class mapPageController implements Initializable {
 
   /**
    * displays the map with the location objects
+   *
    * @throws SQLException
    */
   public void displayMap() throws SQLException {
@@ -486,6 +489,7 @@ public class mapPageController implements Initializable {
 
   /**
    * loads tables from the DAOs
+   *
    * @throws SQLException
    */
   public void loadTable() throws SQLException {
@@ -499,6 +503,7 @@ public class mapPageController implements Initializable {
 
   /**
    * loads a map from the locationsDAO
+   *
    * @throws SQLException
    */
   public void loadMap() throws SQLException {
@@ -545,9 +550,7 @@ public class mapPageController implements Initializable {
     MapIconModifier.locationIconList.put(location, newButton);
   }
 
-  /**
-   * sets up a node
-   */
+  /** sets up a node */
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
@@ -591,6 +594,7 @@ public class mapPageController implements Initializable {
 
   /**
    * sets a buttion to a circle
+   *
    * @param button
    * @param radius
    */
@@ -615,5 +619,4 @@ public class mapPageController implements Initializable {
             + ";"
             + FX_BACKGROUND_BLUE);
   }
-
 }

@@ -43,6 +43,7 @@ public class logInController extends returnHomePage implements Initializable {
 
   /**
    * backs up the db to csvs then quits the application
+   *
    * @throws SQLException
    * @throws IOException
    */

@@ -50,6 +50,7 @@ public class medicalController {
 
   /**
    * Switch to the home scene
+   *
    * @param event
    * @throws IOException
    */

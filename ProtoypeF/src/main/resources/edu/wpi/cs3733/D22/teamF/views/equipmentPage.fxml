@@ -62,7 +62,7 @@
       </VBox>
       <HBox layoutX="154.0" layoutY="555.0" prefHeight="56.0" prefWidth="374.0" style="-fx-background-color: #123090;">
          <children>
-            <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" stylesheets="@../EquipReqStyle.css" text="Submit" textFill="WHITE">
+            <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font>

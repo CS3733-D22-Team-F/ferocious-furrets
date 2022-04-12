@@ -8,9 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
-/**
- * object for makeing a Zoomable scroll pane for the map
- */
+/** object for makeing a Zoomable scroll pane for the map */
 public class ZoomableScrollPane extends ScrollPane {
   private double scaleValue = 0.7;
   private double zoomIntensity = 0.02;
@@ -19,6 +17,7 @@ public class ZoomableScrollPane extends ScrollPane {
 
   /**
    * Contstuctor
+   *
    * @param target Node
    */
   public ZoomableScrollPane(Node target) {
@@ -38,6 +37,7 @@ public class ZoomableScrollPane extends ScrollPane {
 
   /**
    * makes a node the outer node
+   *
    * @param node Node
    * @return Node
    */
@@ -53,6 +53,7 @@ public class ZoomableScrollPane extends ScrollPane {
 
   /**
    * makes a node the center node
+   *
    * @param node Node
    * @return Node
    */
@@ -62,9 +63,7 @@ public class ZoomableScrollPane extends ScrollPane {
     return vBox;
   }
 
-  /**
-   * sets the scales to scaleValue
-   */
+  /** sets the scales to scaleValue */
   private void updateScale() {
     target.setScaleX(scaleValue);
     target.setScaleY(scaleValue);
@@ -72,6 +71,7 @@ public class ZoomableScrollPane extends ScrollPane {
 
   /**
    * controlls actions on mouse scrolling
+   *
    * @param wheelDelta double
    * @param mousePoint Point2D
    */

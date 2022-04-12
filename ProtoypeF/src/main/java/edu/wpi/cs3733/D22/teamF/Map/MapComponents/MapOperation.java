@@ -2,15 +2,14 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 
-/**
- * object for different map operatoins
- */
+/** object for different map operatoins */
 public class MapOperation {
   private String type;
   private Location location;
 
   /**
    * Contructor
+   *
    * @param type String
    * @param location Location
    */

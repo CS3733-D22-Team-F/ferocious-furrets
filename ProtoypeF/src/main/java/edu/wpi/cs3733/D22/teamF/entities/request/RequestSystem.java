@@ -17,6 +17,7 @@ public class RequestSystem {
 
   /**
    * Contructor
+   *
    * @param reqType String type of request
    */
   public RequestSystem(String reqType) {
@@ -51,6 +52,7 @@ public class RequestSystem {
 
   /**
    * places a request
+   *
    * @param fields
    */
   public void placeRequest(ArrayList<String> fields) {
@@ -63,6 +65,7 @@ public class RequestSystem {
 
   /**
    * marks a request as resoved
+   *
    * @param nodeID String location id
    * @throws SQLException
    */
@@ -72,6 +75,7 @@ public class RequestSystem {
 
   /**
    * modifys a request taking in a arraylist of the fields
+   *
    * @param fields ArrayLiss</String>
    */
   public void modifyRequest(ArrayList<String> fields) {
@@ -80,6 +84,7 @@ public class RequestSystem {
 
   /**
    * Concales a request taking a nodeID of a location?
+   *
    * @param nodeID String
    */
   public void cancelRequest(String nodeID) {

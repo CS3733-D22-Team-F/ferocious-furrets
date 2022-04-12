@@ -17,9 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/**
- * Controller for the landing page
- */
+/** Controller for the landing page */
 public class landingPageController implements Initializable {
 
   private Stage stage;
@@ -40,6 +38,7 @@ public class landingPageController implements Initializable {
 
   /**
    * switch to the medical scene
+   *
    * @param event
    * @throws IOException
    */
@@ -224,6 +223,7 @@ public class landingPageController implements Initializable {
 
   /**
    * switch to the request scene
+   *
    * @param event
    * @throws IOException
    */
@@ -234,6 +234,7 @@ public class landingPageController implements Initializable {
 
   /**
    * switch to the login scene
+   *
    * @param event
    * @throws IOException
    */
@@ -244,6 +245,7 @@ public class landingPageController implements Initializable {
 
   /**
    * toggle credits, in MLA format
+   *
    * @param event
    * @throws IOException
    */

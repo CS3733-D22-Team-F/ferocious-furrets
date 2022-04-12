@@ -17,9 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * controller for backing up the map
- */
+/** controller for backing up the map */
 public class mapBackUpController implements Initializable {
 
   @FXML private TextField idField;
@@ -44,6 +42,7 @@ public class mapBackUpController implements Initializable {
 
   /**
    * selects a file/file location to save the map data to
+   *
    * @throws SQLException
    * @throws IOException
    */

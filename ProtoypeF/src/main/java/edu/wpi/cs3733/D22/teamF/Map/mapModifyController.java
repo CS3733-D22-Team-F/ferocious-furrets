@@ -17,9 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * controller for modifying map
- */
+/** controller for modifying map */
 public class mapModifyController implements Initializable {
 
   String floor = "1";

@@ -6,14 +6,13 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * for modifying locations
- */
+/** for modifying locations */
 public class MapLocationModifier {
   public static String currentFloor;
 
   /**
    * adds a location taking in individual fields and making an object
+   *
    * @param type String type of location
    * @param x String coord
    * @param y String coord
@@ -45,6 +44,7 @@ public class MapLocationModifier {
 
   /**
    * adds a location taking in a location object
+   *
    * @param location Location
    * @throws SQLException
    */

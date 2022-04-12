@@ -15,9 +15,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- * object for map pop ups includeing full table, history and the ability to add more
- */
+/** object for map pop ups includeing full table, history and the ability to add more */
 public class MapPopUp {
   /**
    * open a fullscreen view of the locations table on the right side of the page
@@ -107,6 +105,7 @@ public class MapPopUp {
 
   /**
    * pop up for modifying locations
+   *
    * @param location Location
    * @throws IOException
    * @throws SQLException

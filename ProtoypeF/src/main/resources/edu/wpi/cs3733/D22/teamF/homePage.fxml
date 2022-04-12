@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.homePageController">
+<AnchorPane fx:id="reportAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.homePageController">
    <children>
       <ImageView fitHeight="947.0" fitWidth="1396.0" layoutX="-92.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-204.19146728515625" AnchorPane.leftAnchor="-92.0" AnchorPane.rightAnchor="-24.0" AnchorPane.topAnchor="-4.80853271484375">
          <image>
@@ -22,24 +22,24 @@
          <children>
             <VBox spacing="10.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="MAP">
+                  <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToLanding" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="SERVICE REQUESTS">
+                  <JFXButton buttonType="RAISED" onAction="#switchToLanding" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="SERVICE REQUESTS" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="REQUEST LIST">
+                  <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="REQUEST LIST" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </JFXButton>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="108.0" prefWidth="385.0" ripplerFill="#801818" style="" text="LOGOUT">
+            <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="LOGOUT" textFill="WHITE">
                <font>
                   <Font name="Palatino" size="24.0" />
                </font>

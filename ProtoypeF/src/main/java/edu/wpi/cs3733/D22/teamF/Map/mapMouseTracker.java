@@ -10,9 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/**
- * Tracks the mouse on the map
- */
+/** Tracks the mouse on the map */
 public class mapMouseTracker {
 
   @FXML Label xValue;
@@ -32,6 +30,7 @@ public class mapMouseTracker {
 
   /**
    * tracks the mouses x and y coordinates
+   *
    * @param event
    */
   @FXML
@@ -41,9 +40,7 @@ public class mapMouseTracker {
     floorValue.setText(floor);
   }
 
-  /**
-   * submits a location using the mouse
-   */
+  /** submits a location using the mouse */
   public void submit() {
     if (!xValue.getText().isEmpty() && !yValue.getText().isEmpty()) {
       coordTempHolder.setFloorValue(floorValue.getText());

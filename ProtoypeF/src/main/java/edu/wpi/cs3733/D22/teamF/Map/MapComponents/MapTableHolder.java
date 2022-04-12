@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * object for a holder for the map tables
- */
+/** object for a holder for the map tables */
 public class MapTableHolder {
   /**
    * converts an equipment object to a temporary location to get the x-y coords to display icon on
