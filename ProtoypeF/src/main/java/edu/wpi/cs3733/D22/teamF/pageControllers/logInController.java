@@ -90,13 +90,13 @@ public class logInController extends returnHomePage implements Initializable {
     } else {
       popUpLabel.setVisible(true);
     }
-    if (databaseChooser.getValue().toString().equals("Embedded")) {
+    /*if (databaseChooser.getValue().toString().equals("Embedded")) {
       dbType = DatabaseInitializer.ConnType.EMBEDDED;
     } else {
       dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    }
+    }*/
 
-    DatabaseManager.switchConnection(dbType);
+    //    DatabaseManager.switchConnection(dbType);
   }
 
   @Override
