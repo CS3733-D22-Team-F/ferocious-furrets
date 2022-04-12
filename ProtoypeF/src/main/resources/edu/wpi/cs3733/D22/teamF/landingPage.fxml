@@ -65,7 +65,7 @@
             </VBox>
          </top>
          <right>
-            <ScrollPane vvalue="1.0">
+            <ScrollPane hvalue="0.51" vvalue="1.0">
                <content>
                   <VBox alignment="TOP_CENTER" prefHeight="486.0" prefWidth="350.0">
                      <children>
@@ -81,36 +81,34 @@
                                           <Insets bottom="25.0" top="20.0" />
                                        </padding>
                                     </Label>
-                                    <JFXButton fx:id="mapButton" alignment="CENTER" buttonType="RAISED" onAction="#switchToMap" prefHeight="82.0" prefWidth="300.0" ripplerFill="WHITE" style="" text="  MAP" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" onAction="#returnToLab" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style=";" text="LAB" textFill="WHITE">
                                        <font>
                                           <Font name="Palatino" size="24.0" />
                                        </font>
                                        <graphic>
-                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <Label fx:id="azuLabel" prefHeight="17.0" prefWidth="118.0" text="Map created by Azu">
+                                    <Label fx:id="nikolaLabLabel" prefHeight="17.0" prefWidth="195.0" text="Medical Request created by Nikola">
                                        <VBox.margin>
-                                          <Insets bottom="10.0" left="115.0" top="10.0" />
+                                          <Insets bottom="10.0" left="85.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                     <JFXButton buttonType="RAISED" onAction="#switchToMedical" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style=";" text=" MEDICAL REQUEST" textFill="WHITE">
-                                         <font>
-                                             <Font name="Palatino" size="24.0" />
-                                         </font>
+                                    <JFXButton fx:id="johnScanLabel" buttonType="RAISED" onAction="#returnToScan" prefHeight="82.0" prefWidth="300.0" ripplerFill="#801818" style=";" text="SCAN" textFill="WHITE">
+                                       <font>
+                                          <Font name="Palatino" size="24.0" />
+                                       </font>
                                        <graphic>
-                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
-                                     </JFXButton>
-                                    <Label fx:id="johnLabel" prefHeight="17.0" prefWidth="256.0" text="Medical Request created by John">
+                                    </JFXButton>
+                                    <Label fx:id="johnScan" prefHeight="10.0" prefWidth="220.0" text="Medical Request created by John">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="85.0" top="10.0" />
                                        </VBox.margin>
@@ -214,18 +212,6 @@
                            </HBox.margin>
                         </JFXButton>
                         <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#801818" style="" text="  SERVICE REQUESTS" textFill="WHITE">
-                           <font>
-                              <Font name="Palatino" size="24.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                        </ImageView>
-                           </graphic>
-                           <HBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="445.0" ripplerFill="#801818" style="" text="  CALL SERVICE" textFill="WHITE">
                            <font>
                               <Font name="Palatino" size="24.0" />
                            </font>

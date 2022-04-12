@@ -27,10 +27,11 @@ public class landingPageController implements Initializable {
   @FXML private BorderPane reportBorderPane;
   @FXML private Label azuLabel;
   @FXML private Label nikolaLabel;
-  @FXML private Label johnLabel;
   @FXML private Label johnnikolaLabel;
   @FXML private Label evansLabel;
   @FXML private Label carterLabel;
+  @FXML private Label johnScan;
+  @FXML private Label nikolaLabLabel;
   @FXML private JFXToggleButton toggleButton;
 
   @FXML
@@ -201,6 +202,16 @@ public class landingPageController implements Initializable {
     StageManager.getInstance().setHome("homePage.fxml");
   }
 
+  @FXML
+  public void returnToLab(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("labRequestPage.fxml");
+  }
+
+  @FXML
+  public void returnToScan(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("scanPage.fxml");
+  }
+
   /**
    * @param event
    * @throws IOException
@@ -246,10 +257,11 @@ public class landingPageController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     azuLabel.setVisible(false);
     nikolaLabel.setVisible(false);
-    johnLabel.setVisible(false);
     johnnikolaLabel.setVisible(false);
     evansLabel.setVisible(false);
     carterLabel.setVisible(false);
+    johnScan.setVisible(false);
+    nikolaLabLabel.setVisible(false);
 
     toggleButton
         .selectedProperty()
@@ -259,18 +271,20 @@ public class landingPageController implements Initializable {
                 toggleButton.setText("Show Credits: ON");
                 azuLabel.setVisible(true);
                 nikolaLabel.setVisible(true);
-                johnLabel.setVisible(true);
                 johnnikolaLabel.setVisible(true);
                 evansLabel.setVisible(true);
                 carterLabel.setVisible(true);
+                johnScan.setVisible(true);
+                nikolaLabLabel.setVisible(true);
               } else {
                 toggleButton.setText("Show Credits: OFF");
                 azuLabel.setVisible(false);
                 nikolaLabel.setVisible(false);
-                johnLabel.setVisible(false);
                 johnnikolaLabel.setVisible(false);
                 evansLabel.setVisible(false);
                 carterLabel.setVisible(false);
+                johnScan.setVisible(false);
+                nikolaLabLabel.setVisible(false);
               }
             });
   }
