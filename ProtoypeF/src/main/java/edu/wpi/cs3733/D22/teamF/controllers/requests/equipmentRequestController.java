@@ -18,7 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class equipmentRequestController extends PageController
@@ -29,13 +33,22 @@ public class equipmentRequestController extends PageController
   private Scene scene;
   private Parent root;
 
-  @FXML private AnchorPane masterPane;
+  @FXML private BorderPane masterPane;
   @FXML private TextField nodeField;
   @FXML private TextField employeeIDField;
   @FXML private TextField userField;
   @FXML private ComboBox typeChoice;
   @FXML private ComboBox statusChoice;
   @FXML private TextField reqID;
+  @FXML private Rectangle rectangle1;
+  @FXML private Rectangle rectangle2;
+  @FXML private Label label1;
+  @FXML private VBox leftVBox;
+  @FXML private HBox leftHBox1;
+  @FXML private HBox leftHBox2;
+  @FXML private HBox leftHBox3;
+  @FXML private ImageView backgroundIMG;
+  @FXML private ImageView logo;
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
@@ -50,6 +63,21 @@ public class equipmentRequestController extends PageController
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
 
+    masterPane.setMinHeight(500);
+    masterPane.setMinWidth(500);
+
+    rectangle1.heightProperty().bind(masterPane.heightProperty());
+    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
+    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2).add(2));
+    leftHBox1.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftHBox2.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
+    leftHBox1.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    leftHBox2.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    leftHBox3.maxWidthProperty().bind(rectangle1.widthProperty().subtract(15));
+    leftVBox.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
+    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");
