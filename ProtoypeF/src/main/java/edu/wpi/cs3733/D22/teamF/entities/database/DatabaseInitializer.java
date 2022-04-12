@@ -41,8 +41,10 @@ public class DatabaseInitializer {
    * @param connectionType boolean run in an embedded or client server mode
    * @return a new DatabaseInitializer object
    */
-  public static DatabaseInitializer switchConnection(ConnType connectionType) {
+  public static DatabaseInitializer switchConnection(ConnType connectionType) throws SQLException {
     connType = connectionType;
+     System.out.println(connType.toString());
+     System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
     return Helper.db;
   }
 
@@ -85,7 +87,7 @@ public class DatabaseInitializer {
         e.printStackTrace();
       }
 
-      System.out.println("Driver registered");
+      System.out.println("Remote Driver registered");
 
       dbConnection = null;
       try {
@@ -95,12 +97,12 @@ public class DatabaseInitializer {
         assert (dbConnection != null);
 
       } catch (SQLException e) {
-        System.out.println("Connection failed");
+        System.out.println("Remote Connection failed");
         e.printStackTrace();
         return null;
       }
 
-      System.out.println("Derby connection established");
+      System.out.println("Derby Remote connection established");
     }
     return dbConnection;
   }
