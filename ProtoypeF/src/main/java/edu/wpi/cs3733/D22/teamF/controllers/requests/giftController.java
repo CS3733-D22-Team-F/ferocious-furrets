@@ -30,10 +30,10 @@ public class giftController extends PageController implements Initializable, IRe
   @FXML JFXButton homeButton;
   @FXML JFXButton queueButton;
 
-  @FXML TextField employeeID;
+  @FXML JFXComboBox employeeID;
   @FXML TextField nodeID;
   @FXML TextField patientName;
-  @FXML TextField assigned;
+  @FXML JFXComboBox assigned;
   @FXML JFXComboBox statusChoice;
   @FXML JFXComboBox giftChoice;
 
@@ -71,9 +71,35 @@ public class giftController extends PageController implements Initializable, IRe
     temp1.add("TSH - Brigham and Womens T-Shirt");
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
+
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    assigned.getItems().addAll(employees);
+    employeeID.getItems().addAll(employees);
+    assigned.setValue("");
+    employeeID.setValue("");
   }
 
-  public void reset() {}
+  public void reset() {
+    assigned.valueProperty().setValue(null);
+    employeeID.valueProperty().setValue(null);
+    nodeID.clear();
+    statusChoice.valueProperty().set(null);
+    giftChoice.valueProperty().set(null);
+    patientName.clear();
+  }
 
   /**
    * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
@@ -86,20 +112,32 @@ public class giftController extends PageController implements Initializable, IRe
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
     fields.add(nodeID.getText());
-    fields.add(assigned.getText());
-    fields.add(employeeID.getText());
+    fields.add(employeeIDFinder(assigned.getValue().toString()));
+    fields.add(employeeIDFinder(employeeID.getValue().toString()));
     fields.add(statusChoice.getValue().toString());
     fields.add(giftChoice.getValue().toString().substring(0, 15));
     req.placeRequest(fields);
 
-    employeeID.setText("Empty");
-    nodeID.setText("Empty");
-    assigned.clear();
-    employeeID.clear();
-    nodeID.clear();
-    statusChoice.valueProperty().set(null);
-    giftChoice.valueProperty().set(null);
-    patientName.clear();
+    reset();
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   /*public void resolveRequest() throws SQLException {
