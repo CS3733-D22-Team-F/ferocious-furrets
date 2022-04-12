@@ -19,7 +19,6 @@ public class Main {
     //    DatabaseManager dbMan =
     //        DatabaseManager.initalizeDatabaseManager(); // initialize locations and MEDDDELREQ
     // table
-
     Fapp.launch(Fapp.class, args);
     // backup database to csv files
 

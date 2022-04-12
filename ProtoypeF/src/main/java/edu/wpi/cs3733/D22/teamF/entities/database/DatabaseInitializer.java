@@ -10,12 +10,11 @@ public class DatabaseInitializer {
   private Connection dbConnection;
 
   public enum ConnType {
-    NEITHER,
     EMBEDDED,
     CLIENTSERVER
   }
-
-  static ConnType connType = ConnType.NEITHER;
+  // default embedded
+  static ConnType connType = ConnType.EMBEDDED;
 
   /**
    * Constructor
@@ -23,6 +22,7 @@ public class DatabaseInitializer {
    * @param type boolean run in a embedded db mode or client server mode
    */
   private DatabaseInitializer(ConnType type) {
+    System.out.println("int db init conn type: " + type.toString());
     this.dbConnection = this.connectDatabase(connType);
   }
 
@@ -43,8 +43,8 @@ public class DatabaseInitializer {
    */
   public static DatabaseInitializer switchConnection(ConnType connectionType) throws SQLException {
     connType = connectionType;
-     System.out.println(connType.toString());
-     System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
+    System.out.println("set connType to: " + connType.toString());
+    System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
     return Helper.db;
   }
 
@@ -55,6 +55,7 @@ public class DatabaseInitializer {
    * @param type
    */
   private Connection connectDatabase(ConnType type) {
+    System.out.println("Connection to database type:" + type.toString());
     if (type == ConnType.EMBEDDED) {
       try {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");

@@ -17,7 +17,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn; // = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
