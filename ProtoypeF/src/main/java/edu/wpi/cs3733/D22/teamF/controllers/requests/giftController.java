@@ -83,7 +83,7 @@ public class giftController extends PageController implements Initializable, IRe
     fields.add(assigned.getText());
     fields.add(employeeID.getText());
     fields.add(statusChoice.getValue().toString());
-    fields.add(giftChoice.getValue().toString());
+    fields.add(giftChoice.getValue().toString().substring(0, 15));
     req.placeRequest(fields);
 
     employeeID.setText("Empty");
@@ -115,11 +115,14 @@ public class giftController extends PageController implements Initializable, IRe
   public String generateReqID() throws SQLException {
     String nNodeType = giftChoice.getValue().toString().substring(0, 3);
     System.out.println(nNodeType);
-    int reqNum = 1;
+    int reqNum = 0;
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM GIFTREQUEST");
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
     while (rset.next()) {
       reqNum++;
+    }
+    if (reqNum == 0) {
+      reqNum = 1;
     }
     rset.close();
 
