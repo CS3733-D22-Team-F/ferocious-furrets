@@ -14,7 +14,7 @@ public class cachePageController implements Initializable {
     Task<Void> loader = new Load();
     loader.setOnSucceeded(
         e -> {
-          StageManager.getInstance().setDisplay("logInPage.fxml");
+          StageManager.getInstance().setDisplay("pageHolder.fxml");
         });
     Thread thread = new Thread(loader, "Starting App...");
     thread.start();

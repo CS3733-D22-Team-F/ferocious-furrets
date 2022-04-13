@@ -35,14 +35,60 @@ public class Cache {
       e.printStackTrace();
     }
 
-    SceneManager.getInstance().loadViews("views/giftRequestQueue.fxml");
-    SceneManager.getInstance().loadViews("views/labRequestPage.fxml");
-    SceneManager.getInstance().loadViews("views/landingPage.fxml");
-    SceneManager.getInstance().loadViews("views/mealPage.fxml");
-    SceneManager.getInstance().loadViews("views/medicalPage.fxml");
-    SceneManager.getInstance().loadViews("views/medicinePage.fxml");
-    SceneManager.getInstance().loadViews("views/requestListPage.fxml");
-    SceneManager.getInstance().loadViews("views/scanPage.fxml");
+    try {
+      SceneManager.getInstance().loadViews("views/giftRequestQueue.fxml");
+    } catch (Exception e) {
+      System.out.println("Gift Queue Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/labRequestPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Lab Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/landingPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Landing Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/mealPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Meal Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/medicalPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Medical Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/medicinePage.fxml");
+    } catch (Exception e) {
+      System.out.println("Medicine Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/requestListPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Request Queue Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/scanPage.fxml");
+    } catch (Exception e) {
+      System.out.println("Scan Page Loading Error");
+      e.printStackTrace();
+    }
+    try {
+      SceneManager.getInstance().loadViews("views/employee/employeePage.fxml");
+    } catch (Exception e) {
+      System.out.println("Employee Page Loading Error");
+      e.printStackTrace();
+    }
   }
 
   public static void loadIcons() throws IOException {

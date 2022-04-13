@@ -38,6 +38,9 @@ public class StageManager {
     return m_StageManager;
   }
 
+  public Stage getStage() {
+    return m_stage;
+  }
   /** take a string file name then set scene and display scene for StageManager */
   public void setDisplay(String filename) {
     m_stage.setScene(SceneManager.getInstance().setScene("views/" + filename));
