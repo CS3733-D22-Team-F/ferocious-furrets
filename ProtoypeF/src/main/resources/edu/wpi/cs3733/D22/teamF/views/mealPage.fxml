@@ -84,7 +84,7 @@
          <center>
             <Pane prefHeight="706.0" prefWidth="492.0" style="-fx-background-color: #123090;">
                <children>
-                  <VBox layoutX="57.0" layoutY="44.0" prefHeight="434.0" prefWidth="378.0">
+                  <VBox layoutX="236.0" layoutY="48.0" prefHeight="410.0" prefWidth="221.0">
                      <children>
                         <TextField fx:id="employeeName" prefHeight="17.0" prefWidth="375.0" promptText="Employee Name">
                            <font>
@@ -134,6 +134,40 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
+                  <VBox layoutX="20.0" layoutY="52.0" prefHeight="398.0" prefWidth="194.0" spacing="40.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="275.0" text="Employee Name:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Employee ID:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Node ID:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Request Type:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Delivery ID:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Delivery Type:" textFill="WHITE">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </Pane>
          </center>

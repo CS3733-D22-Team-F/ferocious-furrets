@@ -40,7 +40,7 @@
             </ImageView>
          </children>
       </Pane>
-      <HBox layoutX="100.0" layoutY="489.0" prefHeight="53.0" prefWidth="374.0">
+      <HBox layoutX="90.0" layoutY="505.0" prefHeight="53.0" prefWidth="374.0">
          <children>
             <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f2ba49" text="Submit" textFill="WHITE">
                <font>
@@ -59,7 +59,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <VBox layoutX="127.0" layoutY="180.0" prefHeight="308.0" prefWidth="320.0">
+      <VBox layoutX="282.0" layoutY="182.0" prefHeight="308.0" prefWidth="261.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                <font>
@@ -74,7 +74,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Request Employee" style="-fx-background-color: white;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -89,6 +89,35 @@
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </JFXComboBox>
+         </children>
+      </VBox>
+      <VBox layoutX="29.0" layoutY="185.0" prefHeight="297.0" prefWidth="230.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Node ID:" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="306.0" text="Assigned Employee:" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Request Employee:" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Status:" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Scan Type:" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <HBox layoutX="118.0" layoutY="586.0">
