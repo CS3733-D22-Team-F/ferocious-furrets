@@ -33,6 +33,11 @@ public class homePageController extends PageController {
     StageManager.getInstance().setDisplay("medicalPage.fxml");
   }
 
+  @FXML
+  void switchToDashboard(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("dashboardPage.fxml");
+  }
+
   /**
    * switch to map scene
    *

@@ -67,7 +67,7 @@ public class StageManager {
 
   /** makes current screen the home */
   public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
     m_stage.show();
   }
 

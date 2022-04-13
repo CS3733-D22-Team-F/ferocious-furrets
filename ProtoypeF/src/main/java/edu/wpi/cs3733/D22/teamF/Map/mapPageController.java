@@ -476,7 +476,7 @@ public class mapPageController implements Initializable {
     StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 
-  public void homePage(ActionEvent event) {
-    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
-  }
+  //  public void homePage(ActionEvent event) {
+  //    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+  //  }
 }

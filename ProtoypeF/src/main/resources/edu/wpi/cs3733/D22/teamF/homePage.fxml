@@ -20,7 +20,7 @@
       </ImageView>
       <VBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="389.0" spacing="5.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.topAnchor="28.0">
          <children>
-            <VBox spacing="10.0">
+            <VBox prefWidth="390.0" spacing="10.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#switchToMap" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="MAP" textFill="WHITE">
                      <font>
@@ -33,6 +33,11 @@
                      </font>
                   </JFXButton>
                   <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="REQUEST LIST" textFill="WHITE">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#switchToDashboard" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="DASHBOARD" textFill="WHITE">
                      <font>
                         <Font name="Palatino" size="24.0" />
                      </font>
