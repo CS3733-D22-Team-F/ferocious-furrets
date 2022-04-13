@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
    <right>
       <Pane prefHeight="685.0" prefWidth="424.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
          <children>
@@ -114,22 +114,22 @@
                               </VBox>
                               <VBox layoutX="470.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Quiche" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" text="Quiche" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Omelet" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" text="Omlette" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Belgian Waffles" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" text="Belgian Waffles" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Corned Beef Hash" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" text="Corned Beef Hash" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
@@ -300,7 +300,7 @@
                               </VBox>
                               <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="666.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ferocious-furrets/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/Dinner.png" />
+                                    <Image url="@../Images/Dinner.png" />
                                  </image>
                               </ImageView>
                               <JFXComboBox fx:id="dinnerChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Dinner" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />

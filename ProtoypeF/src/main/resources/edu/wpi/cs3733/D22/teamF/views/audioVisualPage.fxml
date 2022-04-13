@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.audioVisualController">
+<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.audioVisualController">
    <right>
       <ImageView fx:id="backgroundIMG" fitHeight="819.0" fitWidth="781.0" pickOnBounds="true" BorderPane.alignment="TOP_LEFT">
          <image>
