@@ -6,36 +6,36 @@ import java.util.ArrayList;
 
 public class audioVisualRequest extends DeliveryRequest {
 
-    private String accessObject;
+  private String accessObject;
 
-    public audioVisualRequest() {
-        db = new Repository("Medicine");
-    }
+  public audioVisualRequest() {
+    db = new Repository("AudioVisual");
+  }
 
-    public audioVisualRequest(
-            String reqID,
-            String nodeID,
-            String assignedEmployeeID,
-            String requesterEmployeeID,
-            String status,
-            String accessObject) {
-        super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
-        this.accessObject = accessObject;
-    }
+  public audioVisualRequest(
+      String reqID,
+      String nodeID,
+      String assignedEmployeeID,
+      String requesterEmployeeID,
+      String status,
+      String accessObject) {
+    super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
+    this.accessObject = accessObject;
+  }
 
-    @Override
-    public void place(ArrayList<String> fields) throws SQLException {
-        db.addRequest(fields);
-    }
+  @Override
+  public void place(ArrayList<String> fields) throws SQLException {
+    db.addRequest(fields);
+  }
 
-    @Override
-    public void resolve(String reqID) throws SQLException {
-        db.deleteRequest(reqID);
-    }
+  @Override
+  public void resolve(String reqID) throws SQLException {
+    db.deleteRequest(reqID);
+  }
 
-    @Override
-    public void modify(ArrayList<String> fields) {}
+  @Override
+  public void modify(ArrayList<String> fields) {}
 
-    @Override
-    public void cancel(String reqID) {}
+  @Override
+  public void cancel(String reqID) {}
 }

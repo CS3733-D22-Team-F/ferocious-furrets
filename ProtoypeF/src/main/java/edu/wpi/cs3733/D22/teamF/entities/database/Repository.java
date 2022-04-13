@@ -37,6 +37,10 @@ public class Repository {
         break;
       case "Equipment":
         db = DatabaseManager.getMedEquipDelReqDAO();
+        break;
+      case "AudioVisual":
+        db = DatabaseManager.getAudioVisDAO();
+        break;
       default:
         break;
     }

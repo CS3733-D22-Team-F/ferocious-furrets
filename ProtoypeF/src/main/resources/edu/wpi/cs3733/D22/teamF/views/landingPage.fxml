@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane hvalue="1.0" prefWidth="1266.0" vvalue="0.64" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
+<ScrollPane hvalue="1.0" prefWidth="1266.0" vvalue="0.64" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
    <content>
       <BorderPane fx:id="reportAnchorPane" prefHeight="720.0" prefWidth="1280.0">
          <top>
@@ -172,7 +182,7 @@
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>
                                     </Label>
-                                    <JFXButton buttonType="RAISED" onAction="#switchToEquipment" prefHeight="82.0" prefWidth="300.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="AUDIO/VISUAL" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" onAction="#switchToAudioVis" prefHeight="82.0" prefWidth="300.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="AUDIO/VISUAL" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
@@ -233,7 +243,7 @@
                <children>
                   <HBox layoutY="6.0" prefHeight="94.0" prefWidth="1435.0" spacing="30.0">
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#returnToHome" prefHeight="74.0" prefWidth="446.0" ripplerFill="#801818" style="" text="HOME PAGE" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#returnToHome" prefHeight="74.0" prefWidth="446.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="HOME PAGE" textFill="WHITE">
                            <font>
                               <Font name="Palatino" size="24.0" />
                            </font>
@@ -241,7 +251,7 @@
                               <Insets bottom="10.0" left="20.0" top="10.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#801818" style="" text="  SERVICE REQUESTS" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#switchToRequests" prefHeight="74.0" prefWidth="494.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="  SERVICE REQUESTS" textFill="WHITE">
                            <font>
                               <Font name="Palatino" size="24.0" />
                            </font>
@@ -253,7 +263,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#exitProgram" prefHeight="74.0" prefWidth="423.0" ripplerFill="#801818" style="" text="  EXIT" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#exitProgram" prefHeight="74.0" prefWidth="423.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="  EXIT" textFill="WHITE">
                            <font>
                               <Font name="Palatino" size="24.0" />
                            </font>

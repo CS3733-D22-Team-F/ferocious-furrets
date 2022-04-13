@@ -111,7 +111,7 @@ public class landingPageController implements Initializable {
    * @throws IOException
    */
   @FXML
-  public void switchToAudioVisual(ActionEvent event) throws IOException {
+  public void switchToAudioVis(ActionEvent event) throws IOException {
     StageManager.getInstance().setDisplay("audioVisualPage.fxml");
   }
 

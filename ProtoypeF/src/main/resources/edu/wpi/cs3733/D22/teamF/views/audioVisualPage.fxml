@@ -44,37 +44,26 @@
                   </JFXButton>
                </children>
             </HBox>
-            <VBox layoutX="106.0" layoutY="158.0" prefHeight="466.0" prefWidth="531.0">
+            <VBox layoutX="349.0" layoutY="158.0" prefHeight="466.0" prefWidth="288.0">
                <children>
                   <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
                         <Font size="24.0" />
                      </font>
-                  </TextField>
-                  <TextField fx:id="employeeIDField" prefHeight="8.0" prefWidth="282.0" promptText="Employee ID">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="userField" prefHeight="8.0" prefWidth="282.0" promptText="Assigned User">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
+                  <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="reqID" prefHeight="47.0" prefWidth="386.0" promptText="Request ID">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
-                  </TextField>
+                  </JFXComboBox>
                   <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0" style="-fx-background-color: WHITE;">
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -108,11 +97,60 @@
                   </HBox>
                   <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../bwhlogo-new.png" />
+                        <Image url="@../BWHlogo-new.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
+            <VBox layoutX="40.0" layoutY="158.0" prefHeight="462.0" prefWidth="288.0">
+               <children>
+                  <Label prefHeight="52.0" prefWidth="242.0" text="Location ID" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="242.0" text="Assigned Employee" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="280.0" text="Requesting Employee" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="242.0" text="Category" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="242.0" text="Accessibility Device" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="242.0" text="Status" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -30,8 +31,8 @@ public class audioVisualController implements Initializable, IRequestController 
   @FXML private BorderPane masterPane;
   @FXML private ImageView backgroundIMG;
   @FXML private TextField nodeField;
-  @FXML private TextField employeeIDField;
-  @FXML private TextField userField;
+  @FXML private JFXComboBox employeeIDField;
+  @FXML private JFXComboBox userField;
   @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
@@ -44,45 +45,39 @@ public class audioVisualController implements Initializable, IRequestController 
   @FXML
   public void reset() {
     nodeField.clear();
-    employeeIDField.clear();
-    userField.clear();
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    userField.clear();
+    typeChoice.valueProperty().setValue("");
+    objectChoice.valueProperty().setValue("");
   }
 
   @FXML
   public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getText().equals("")
-        || employeeIDField.getText().equals("")
-        || userField.getText().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
         || objectChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
     } else {
       requestList.clear();
       requestList.add("Audio/Visual Request for: " + objectChoice.getValue());
-      requestList.add("Assigned Doctor: " + userField.getText());
+      // requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
       RequestSystem req = new RequestSystem("Audio/Visual");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
       fields.add(nodeField.getText());
-      fields.add(employeeIDField.getText());
-      fields.add(userField.getText());
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
-      fields.add(objectChoice.getValue().toString().substring(0,3));
+      fields.add(objectChoice.getValue().toString().substring(0, 3));
       req.placeRequest(fields);
 
-      nodeField.clear();
-      employeeIDField.clear();
-      userField.clear();
-      statusChoice.valueProperty().setValue(null);
-      typeChoice.valueProperty().setValue("Accessibility Object Type");
-      objectChoice.valueProperty().setValue("");
-      userField.clear();
+      reset();
     }
   }
 
@@ -123,13 +118,30 @@ public class audioVisualController implements Initializable, IRequestController 
     statusDrop.add("done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
-    accessibilityType.add("Accessibility Object Type");
     accessibilityType.add("Deaf/Hard of Hearing");
     accessibilityType.add("Blind/Visually Impaired");
     typeChoice.getItems().addAll(accessibilityType);
-    typeChoice.setValue("Accessibility Object Type");
+    typeChoice.setValue("");
     objectChoice.getItems().add("");
     objectChoice.setValue("");
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    employeeIDField.getItems().addAll(employees);
+    userField.getItems().addAll(employees);
+    employeeIDField.setValue("");
+    userField.setValue("");
   }
 
   /**
@@ -156,6 +168,25 @@ public class audioVisualController implements Initializable, IRequestController 
       objectChoice.getItems().clear();
       objectChoice.getItems().add("");
     }
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   /**
