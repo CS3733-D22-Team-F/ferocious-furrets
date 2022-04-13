@@ -6,22 +6,32 @@ import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.TextField;
 
 public class deleteEmployeePopUpController extends PageController implements Initializable {
 
+  @FXML TextField employeeID;
 
-  public void submit() throws SQLException {
-    String employeeID = null;
-    DatabaseManager.getEmployeeDAO().delete(employeeID);
+  public void submit(ActionEvent actionEvent) throws SQLException {
+    String empID = employeeID.getText();
+    if (empID.equals("")) {
+      System.out.println("Cannot leave text fields blank");
+    }
+    else {
+      DatabaseManager.getEmployeeDAO().delete(empID);
+    }
   }
 
-  public void reset() {
-
+  public void reset(ActionEvent actionEvent) {
+    employeeID.clear();
   }
 
-  public void back() {
+  public void back(ActionEvent actionEvent) {
     StageManager.getInstance().setDisplay("employee/employeePage.fxml");
   }
 
