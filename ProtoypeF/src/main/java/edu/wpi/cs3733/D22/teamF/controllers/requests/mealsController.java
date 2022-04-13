@@ -60,7 +60,7 @@ public class mealsController extends PageController implements Initializable, IR
     breakfast.add("Yogurt");
     breakfast.add("Fruit");
     breakfast.add("Quiche");
-    breakfast.add("Omelet");
+    breakfast.add("Omelette");
     breakfast.add("Belgian Waffles");
     breakfast.add("Corned Beef Hash");
     breakfastChoice.getItems().addAll(breakfast);
