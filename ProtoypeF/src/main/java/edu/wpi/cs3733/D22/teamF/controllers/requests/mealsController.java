@@ -16,7 +16,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class mealsController extends PageController implements Initializable, IRequestController {
@@ -25,8 +24,7 @@ public class mealsController extends PageController implements Initializable, IR
   ArrayList<Object> requestList = new ArrayList<>();
 
   // @FXML private Button submitButton;
-  @FXML private AnchorPane masterPane;
-  @FXML private BorderPane menuPane;
+  @FXML private BorderPane masterPane;
   @FXML private TextField employeeName;
   @FXML private TextField employeeID;
   @FXML private TextField nodeID;
