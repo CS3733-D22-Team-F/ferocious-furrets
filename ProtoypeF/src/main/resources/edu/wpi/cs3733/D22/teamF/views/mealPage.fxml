@@ -31,7 +31,7 @@
                   <JFXComboBox fx:id="status" prefHeight="50.0" prefWidth="203.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Home" textFill="#123090">
+            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Return" textFill="#123090">
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font>

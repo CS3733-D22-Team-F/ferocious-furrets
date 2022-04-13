@@ -19,7 +19,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="315.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
         <HBox layoutX="132.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
             <children>
-                <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="290.0" text="Add Employee" textFill="WHITE">
+                <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="290.0" text="Modify Employee" textFill="WHITE">
                     <font>
                         <Font name="SansSerif Regular" size="30.0" />
                     </font>

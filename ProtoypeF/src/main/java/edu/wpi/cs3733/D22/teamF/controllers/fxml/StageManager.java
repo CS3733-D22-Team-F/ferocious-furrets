@@ -61,13 +61,13 @@ public class StageManager {
 
   /** makes current screen the home */
   public void setHome() {
-    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
     m_stage.show();
   }
 
   /** makes current screen the home */
-  public void setHomeScreen() {
-    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
+  public void setLandingScreen() {
+    m_stage.setScene(SceneManager.getInstance().setScene("views/landingPage.fxml"));
     m_stage.show();
   }
 

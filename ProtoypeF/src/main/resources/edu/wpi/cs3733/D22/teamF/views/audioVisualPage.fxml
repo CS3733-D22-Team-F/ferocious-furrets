@@ -32,7 +32,7 @@
                         <Font size="28.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="59.0" prefWidth="149.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="59.0" prefWidth="149.0" ripplerFill="#ffc44d" text="Return" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -145,7 +145,7 @@
    <right>
       <ImageView fitHeight="819.0" fitWidth="781.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
-            <Image url="@../Images/hearingAid.png.png" />
+            <Image url="@../Images/hearingAid.png" />
          </image>
       </ImageView>
    </right>

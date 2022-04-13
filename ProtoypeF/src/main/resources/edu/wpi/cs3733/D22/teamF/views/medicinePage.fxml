@@ -34,7 +34,7 @@
                   <Font name="Serif Regular" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="37.0" prefWidth="119.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="37.0" prefWidth="119.0" ripplerFill="#ffc44d" text="Return" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font>

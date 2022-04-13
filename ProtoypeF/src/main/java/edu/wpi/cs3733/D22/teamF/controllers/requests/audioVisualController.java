@@ -195,6 +195,6 @@ public class audioVisualController implements Initializable, IRequestController 
    */
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setLandingScreen();
   }
 }
