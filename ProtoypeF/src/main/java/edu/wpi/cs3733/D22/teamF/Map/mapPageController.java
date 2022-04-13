@@ -349,7 +349,7 @@ public class mapPageController implements Initializable {
 
   @FXML
   private void homePage(ActionEvent event) throws IOException {
-    StageManager.getInstance().setLandingScreen();
+    StageManager.getInstance().setHome();
   }
   // START show functions
   public void showPatient() {

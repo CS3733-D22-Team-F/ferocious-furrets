@@ -5,7 +5,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -36,17 +35,14 @@
             </ImageView>
             <VBox layoutX="273.0" layoutY="224.0" prefHeight="271.0" prefWidth="308.0">
                <children>
-                  <TextField fx:id="nodeID" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Location Node ID" style="-fx-background-color: white;">
-                     <font>
-                        <Font name="System Font" size="27.0" />
-                     </font>
+                  <JFXComboBox fx:id="nodeID" prefHeight="44.0" prefWidth="307.0" promptText="Location">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
-                  </TextField>
+                  </JFXComboBox>
                   <JFXComboBox fx:id="assigned" prefHeight="54.0" prefWidth="566.0" promptText="Assigned Employee">
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -78,9 +74,9 @@
                      </padding></JFXComboBox>
                </children>
             </VBox>
-            <VBox layoutX="30.0" layoutY="224.0" prefHeight="273.0" prefWidth="239.0">
+            <VBox layoutX="30.0" layoutY="224.0" prefHeight="297.0" prefWidth="239.0">
                <children>
-                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="239.0" text="Location ID:" textFill="WHITE">
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="239.0" text="Location:" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -121,7 +117,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                      <padding>
-                        <Insets top="20.0" />
+                        <Insets top="30.0" />
                      </padding>
                   </Label>
                   <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="398.0" text="Status:" textFill="WHITE">
@@ -132,7 +128,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                      <padding>
-                        <Insets top="20.0" />
+                        <Insets top="30.0" />
                      </padding>
                   </Label>
                </children>

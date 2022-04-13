@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 public class scanController extends PageController implements Initializable, IRequestController {
 
   @FXML AnchorPane masterPane;
-  @FXML TextField nodeField;
+  @FXML JFXComboBox nodeField;
   @FXML JFXComboBox employeeIDField;
   @FXML JFXComboBox userField;
   @FXML Button reset;
@@ -48,8 +48,8 @@ public class scanController extends PageController implements Initializable, IRe
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
-    temp.add("processing");
-    temp.add("done");
+    temp.add("Processing");
+    temp.add("Done");
     statusChoice.getItems().addAll(temp);
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
@@ -59,24 +59,14 @@ public class scanController extends PageController implements Initializable, IRe
     typeChoice.getItems().addAll(temp1);
     typeChoice.setValue("CAT");
 
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   public String generateReqID(int requestListLength, String scanType, String nodeID) {
@@ -98,7 +88,7 @@ public class scanController extends PageController implements Initializable, IRe
   }
 
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
@@ -129,7 +119,7 @@ public class scanController extends PageController implements Initializable, IRe
     //            nodeField.getText());
     String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
@@ -139,7 +129,7 @@ public class scanController extends PageController implements Initializable, IRe
       RequestSystem req = new RequestSystem("Scan");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -153,25 +143,6 @@ public class scanController extends PageController implements Initializable, IRe
       serviceRequestStorage.addToArrayList(requestList);
       this.reset();
     }
-  }
-
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
   }
 
   public void resolveRequest() throws SQLException {

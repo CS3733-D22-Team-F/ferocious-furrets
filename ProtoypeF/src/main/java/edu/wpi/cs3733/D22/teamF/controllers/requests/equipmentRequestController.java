@@ -35,7 +35,7 @@ public class equipmentRequestController extends PageController
   private Parent root;
 
   @FXML private BorderPane masterPane;
-  @FXML private TextField nodeField;
+  @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private ComboBox typeChoice;
@@ -83,8 +83,8 @@ public class equipmentRequestController extends PageController
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
     equipmentType.add("Bed");
@@ -92,29 +92,20 @@ public class equipmentRequestController extends PageController
     equipmentType.add("Infusion Pump");
     equipmentType.add("Recliner");
     typeChoice.getItems().addAll(equipmentType);
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   @FXML
   void resetFunction() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
@@ -125,7 +116,7 @@ public class equipmentRequestController extends PageController
   public void submit() throws SQLException {
 
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
@@ -141,7 +132,7 @@ public class equipmentRequestController extends PageController
       RequestSystem req = new RequestSystem("Equipment");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
