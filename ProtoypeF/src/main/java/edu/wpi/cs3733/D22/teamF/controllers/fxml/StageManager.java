@@ -64,6 +64,14 @@ public class StageManager {
     popupwindow.showAndWait();
   }
 
+  public void setDisplayAndWaitMap(String filename) throws IOException {
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = SceneManager.getInstance().setScene("Map/" + filename);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+  }
+
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();

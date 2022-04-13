@@ -112,8 +112,8 @@ public class mapLocModifyController implements Initializable {
         }
         MapLocationModifier.addLocation(
             nodeBox.getValue(),
-            ((Double.parseDouble(xValue) / 680) * 4450) + "",
-            ((Double.parseDouble(yValue) / 505) * 3550) + "",
+            ((Double.parseDouble(xValue) / 630) * 4450) + "",
+            ((Double.parseDouble(yValue) / 500) * 3550) + "",
             floorValue,
             longField.getText(),
             shortName);

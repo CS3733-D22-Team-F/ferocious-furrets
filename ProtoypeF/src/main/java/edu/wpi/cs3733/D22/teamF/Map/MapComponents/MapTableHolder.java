@@ -47,7 +47,14 @@ public class MapTableHolder {
       rset.close();
       Location tempLocation =
           new Location(
-              med.getNodeID(), x, y, floor, status, med.getEquipType(), "Equipment", equipID);
+              med.getNodeID(),
+              x,
+              y,
+              floor,
+              status,
+              med.getEquipType(),
+              "Equipment" + " - " + med.getEquipType() + " - " + equipID,
+              equipID);
       // TODO: building = status, longName= type, shortName = equipID
       returnList.add(tempLocation);
     }

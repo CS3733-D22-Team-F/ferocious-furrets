@@ -1,6 +1,12 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.animation.alert.JFXAlertAnimation;
+import com.jfoenix.controls.JFXAlert;
+import com.jfoenix.controls.JFXDialogLayout;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Modality;
 
 public class AGlobalMethods {
 
@@ -27,5 +33,16 @@ public class AGlobalMethods {
             + FX_TEXT_FILL_WHITE
             + ";"
             + FX_BACKGROUND_BLUE);
+  }
+
+  public static void showAlert(String info, Node random) {
+    JFXDialogLayout layout = new JFXDialogLayout();
+    layout.setBody(new Label(info));
+    JFXAlert<Void> alert = new JFXAlert<>(random.getScene().getWindow());
+    alert.setOverlayClose(true);
+    alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
+    alert.setContent(layout);
+    alert.initModality(Modality.NONE);
+    alert.showAndWait();
   }
 }

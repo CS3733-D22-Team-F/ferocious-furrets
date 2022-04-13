@@ -79,7 +79,7 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpSave() throws IOException {
-    StageManager.getInstance().setDisplayAndWait("mapBackUpPage.fxml");
+    StageManager.getInstance().setDisplayAndWaitMap("mapBackUpPage.fxml");
   }
 
   /**
