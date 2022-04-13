@@ -1,48 +1,44 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
+import static org.reflections.scanners.Scanners.Resources;
+
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import java.io.*;
 import java.sql.SQLException;
+import java.util.*;
+import java.util.ArrayList;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 
 public class Cache {
   // load everything
 
-  public static boolean isDataUpdate;
+  public static boolean isDataUpdated = false;
 
   public static void loadViews() throws SQLException, IOException {
     DatabaseManager.switchConnection(DatabaseInitializer.ConnType.EMBEDDED);
-    try {
-      SceneManager.getInstance().loadViews("views/mapPage.fxml");
-    } catch (Exception e) {
-      System.out.println("Map Page Loading Error");
-      e.printStackTrace();
-    }
 
-    try {
-      SceneManager.getInstance().loadViews("views/equipmentPage.fxml");
-    } catch (Exception e) {
-      System.out.println("Equipment Page Loading Error");
-      e.printStackTrace();
-    }
+    // Views that can't be cached
+    ArrayList<String> exceptions =
+        new ArrayList<>(List.of("views/logInPage.fxml", "views/cachePage.fxml"));
 
-    try {
-      SceneManager.getInstance().loadViews("views/giftPage.fxml");
-    } catch (Exception e) {
-      System.out.println("Gift Page Loading Error");
-      e.printStackTrace();
-    }
+    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF.views", Scanners.values());
+    Set<String> fxmlPaths = reflections.get(Resources.with(".*\\.fxml"));
 
-    SceneManager.getInstance().loadViews("views/giftRequestQueue.fxml");
-    SceneManager.getInstance().loadViews("views/labRequestPage.fxml");
-    SceneManager.getInstance().loadViews("views/landingPage.fxml");
-    SceneManager.getInstance().loadViews("views/mealPage.fxml");
-    SceneManager.getInstance().loadViews("views/medicalPage.fxml");
-    SceneManager.getInstance().loadViews("views/medicinePage.fxml");
-    SceneManager.getInstance().loadViews("views/requestListPage.fxml");
-    SceneManager.getInstance().loadViews("views/scanPage.fxml");
+    for (String path : fxmlPaths) {
+      path = path.substring(25); // Strip "edu/wpi/cs3733/D22/teamF/"
+      if (exceptions.contains(path)) continue; // Skip pages that can't be cached
+
+      try {
+        SceneManager.getInstance().loadViews(path);
+      } catch (Exception e) {
+        System.out.println("Loading Error: " + path);
+        e.printStackTrace();
+      }
+    }
   }
 
   public static void loadIcons() throws IOException {
