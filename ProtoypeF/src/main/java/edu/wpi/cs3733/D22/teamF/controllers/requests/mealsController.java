@@ -1,21 +1,22 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.mealDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
 public class mealsController extends PageController implements Initializable, IRequestController {
@@ -32,12 +33,16 @@ public class mealsController extends PageController implements Initializable, IR
   @FXML private ComboBox<Object> requestedEmployee;
   @FXML private ComboBox<Object> status;
 
+  @FXML private TabPane mealMenu;
+  @FXML private Tab b;
+  @FXML private Tab l;
+  @FXML private Tab d;
+
   // TODO remove these old fxids
-  @FXML private TextField employeeName;
-  @FXML private TextField employeeID;
-  @FXML private TextField requestType;
-  @FXML private TextField deliveryType;
-  @FXML private TextField deliveryID;
+
+  @FXML private JFXComboBox breakfastChoice;
+  @FXML private JFXComboBox lunchChoice;
+  @FXML private JFXComboBox dinnerChoice;
 
   public mealsController() {}
 
@@ -49,12 +54,67 @@ public class mealsController extends PageController implements Initializable, IR
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
 
+    ArrayList<Object> breakfast = new ArrayList<>();
+    breakfast.add("French Toast");
+    breakfast.add("Oatmeal");
+    breakfast.add("Yogurt");
+    breakfast.add("Fruit");
+    breakfast.add("Quiche");
+    breakfast.add("Omelet");
+    breakfast.add("Belgian Waffles");
+    breakfast.add("Corned Beef Hash");
+    breakfastChoice.getItems().addAll(breakfast);
+    breakfastChoice.setValue("Choose Breakfast Food");
+
+    ArrayList<Object> lunch = new ArrayList<>();
+    lunch.add("French Toast");
+    lunch.add("Oatmeal");
+    lunch.add("Yogurt");
+    lunch.add("Fruit");
+    lunch.add("Quiche");
+    lunch.add("Omelet");
+    lunch.add("Belgian Waffles");
+    lunch.add("Corned Beef Hash");
+    lunchChoice.getItems().addAll(lunch);
+    lunchChoice.setValue("Choose Lunch Food");
+
+    ArrayList<Object> dinner = new ArrayList<>();
+    dinner.add("French Toast");
+    dinner.add("Oatmeal");
+    dinner.add("Yogurt");
+    dinner.add("Fruit");
+    dinner.add("Quiche");
+    dinner.add("Omelet");
+    dinner.add("Belgian Waffles");
+    dinner.add("Corned Beef Hash");
+    dinnerChoice.getItems().addAll(dinner);
+    dinnerChoice.setValue("Choose Dinner Food");
+
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
     temp.add("Processing");
     temp.add("Done");
     status.getItems().addAll(temp);
     status.setValue("");
+
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    assignedEmployee.getItems().addAll(employees);
+    requestedEmployee.getItems().addAll(employees);
+    assignedEmployee.setValue("");
+    requestedEmployee.setValue("");
   }
 
   // on press returns fields into delivery object only if required fields aren't empty
@@ -71,16 +131,17 @@ public class mealsController extends PageController implements Initializable, IR
   }
 
   public void reset() {
-    employeeName.setText("");
-    employeeID.setText("");
+
     nodeID.setText("");
-    status.setValue("");
-    requestType.setText("");
-    deliveryID.setText("");
-    deliveryType.setText("");
+    status.valueProperty().setValue(null);
+    assignedEmployee.valueProperty().setValue(null);
+    requestedEmployee.valueProperty().setValue(null);
+    breakfastChoice.valueProperty().setValue("Choose Breakfast Food");
+    lunchChoice.valueProperty().setValue("Choose Lunch Food");
+    dinnerChoice.valueProperty().setValue("Choose Dinner Food");
   }
 
-  public void submit() {
+  public void submit() throws SQLException {
     ArrayList<String> foodList = new ArrayList<>();
 
     returnList.add(status.getAccessibleText());
@@ -90,31 +151,85 @@ public class mealsController extends PageController implements Initializable, IR
 
     requestList.clear();
     requestList.add("Meal Request");
-    requestList.add("Assigned Doctor: " + employeeName.getText());
+    // requestList.add("Assigned Doctor: " + employeeName.getText());
     requestList.add("Status: " + status.getValue());
     serviceRequestStorage.addToArrayList(requestList);
 
-    if (employeeName.getText().equals("")
-        || employeeID.getText().equals("")
-        || nodeID.getText().equals("")
+    if (nodeID.getText().equals("")
         || status.getValue().toString().equals("")
-        || requestType.getText().equals("")) {
+        || assignedEmployee.getValue().toString().equals("")
+        || requestedEmployee.getValue().toString().equals("")) {
       mealDeliveryRequest sendMealRequest = null;
       System.out.println("Meal Not Sent");
     } else {
       // String reqID = generateReqID()//TODO
+      String meal = "";
+      if(!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")){
+        //breakfast meal requested
+        meal = breakfastChoice.getValue().toString();
+      }
+      else if(!lunchChoice.getValue().toString().equals("Choose Lunch Food")){
+        meal = lunchChoice.getValue().toString();
+      }
+      else if(!dinnerChoice.getValue().toString().equals("Choose Dinner Food")){
+        meal = dinnerChoice.getValue().toString();
+      }
       RequestSystem req = new RequestSystem("Meal");
       ArrayList<String> fields = new ArrayList<String>();
+      fields.add(generateReqID());
       fields.add(nodeID.getText());
-      fields.add(employeeName.getText());
-      fields.add("Requested Employee");
+      fields.add(employeeIDFinder(assignedEmployee.getValue().toString()));
+      fields.add(employeeIDFinder(requestedEmployee.getValue().toString()));
       fields.add(status.getValue().toString());
-      // fields.add(foodList.get(0));
-
+      fields.add(meal);
       req.placeRequest(fields);
       this.reset();
       System.out.println("Meal Sent");
     }
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = "";
+    if(!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")){
+      //breakfast meal requested
+      nNodeType = breakfastChoice.getValue().toString();
+    }
+    else if(!lunchChoice.getValue().toString().equals("Choose Lunch Food")){
+      nNodeType = lunchChoice.getValue().toString();
+    }
+    else if(!dinnerChoice.getValue().toString().equals("Choose Dinner Food")){
+      nNodeType = dinnerChoice.getValue().toString();
+    }
+    nNodeType = nNodeType.substring(0,3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return "test";
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 
   @FXML
