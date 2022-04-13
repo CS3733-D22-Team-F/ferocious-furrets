@@ -1,6 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
@@ -199,5 +203,32 @@ public abstract class PageController {
   /** switch to home scene */
   public void switchToHome() {
     StageManager.getInstance().setHome();
+  }
+
+  public ArrayList<Object> locationNames() {
+    ArrayList<Object> locations = new ArrayList<>();
+    ResultSet r = null;
+    try {
+      r = DatabaseManager.runQuery("SELECT SHORTNAME FROM LOCATIONS");
+      while (r.next()) {
+        String name = r.getString("SHORTNAME");
+        locations.add(name);
+      }
+      r.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return locations;
+  }
+
+  public String nodeIDFinder(String name) throws SQLException {
+    String nodeID = "";
+    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE SHORTNAME = '%s'", name);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      nodeID = rset.getString("NODEID");
+    }
+    rset.close();
+    return nodeID;
   }
 }

@@ -35,7 +35,7 @@ public class audioVisualController extends PageController
 
   @FXML private BorderPane masterPane;
   @FXML private ImageView backgroundIMG;
-  @FXML private TextField nodeField;
+  @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private ComboBox statusChoice;
@@ -54,7 +54,7 @@ public class audioVisualController extends PageController
 
   @FXML
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
@@ -65,7 +65,7 @@ public class audioVisualController extends PageController
   @FXML
   public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
@@ -80,7 +80,7 @@ public class audioVisualController extends PageController
       RequestSystem req = new RequestSystem("Audio/Visual");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -162,6 +162,9 @@ public class audioVisualController extends PageController
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   /**

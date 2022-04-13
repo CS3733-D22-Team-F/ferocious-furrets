@@ -61,14 +61,11 @@
       </HBox>
       <VBox layoutX="282.0" layoutY="182.0" prefHeight="308.0" prefWidth="261.0">
          <children>
-            <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="318.0" promptText="Location">
                <VBox.margin>
-                  <Insets bottom="10.0" top="5.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
-            </TextField>
+            </JFXComboBox>
             <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee">
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -91,9 +88,9 @@
             </JFXComboBox>
          </children>
       </VBox>
-      <VBox layoutX="17.0" layoutY="185.0" prefHeight="316.0" prefWidth="242.0" spacing="30.0">
+      <VBox layoutX="17.0" layoutY="185.0" prefHeight="316.0" prefWidth="242.0" spacing="20.0">
          <children>
-            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Node ID:" textFill="WHITE">
+            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Location:" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
@@ -112,6 +109,9 @@
                <font>
                   <Font size="27.0" />
                </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Scan Type:" textFill="WHITE">
                <font>

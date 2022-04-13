@@ -35,7 +35,7 @@ public class equipmentRequestController extends PageController
   private Parent root;
 
   @FXML private BorderPane masterPane;
-  @FXML private TextField nodeField;
+  @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private ComboBox typeChoice;
@@ -110,11 +110,14 @@ public class equipmentRequestController extends PageController
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   @FXML
   void resetFunction() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
@@ -125,7 +128,7 @@ public class equipmentRequestController extends PageController
   public void submit() throws SQLException {
 
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
@@ -141,7 +144,7 @@ public class equipmentRequestController extends PageController
       RequestSystem req = new RequestSystem("Equipment");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());

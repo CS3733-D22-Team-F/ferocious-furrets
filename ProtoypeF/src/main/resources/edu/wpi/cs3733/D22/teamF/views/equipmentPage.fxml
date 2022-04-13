@@ -78,7 +78,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Node ID: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -86,11 +86,11 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="nodeField" prefHeight="44.0" prefWidth="296.0" promptText="Node ID">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
+                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="298.0" promptText="Location">
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </JFXComboBox>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">

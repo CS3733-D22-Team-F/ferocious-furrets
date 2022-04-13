@@ -35,7 +35,7 @@ public class giftResizedController extends PageController
   @FXML ImageView backgroundIMG;
 
   @FXML JFXComboBox employeeID;
-  @FXML TextField nodeID;
+  @FXML JFXComboBox nodeID;
   @FXML TextField patientName;
   @FXML JFXComboBox assigned;
   @FXML JFXComboBox statusChoice;
@@ -57,7 +57,7 @@ public class giftResizedController extends PageController
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
-    fields.add(nodeID.getText());
+    fields.add(nodeIDFinder(nodeID.getValue().toString()));
     fields.add(employeeIDFinder(assigned.getValue().toString()));
     fields.add(employeeIDFinder(employeeID.getValue().toString()));
     fields.add(statusChoice.getValue().toString());
@@ -92,7 +92,7 @@ public class giftResizedController extends PageController
   public void reset() {
     assigned.valueProperty().setValue(null);
     employeeID.valueProperty().setValue(null);
-    nodeID.clear();
+    nodeID.valueProperty().setValue(null);
     statusChoice.valueProperty().set(null);
     giftChoice.valueProperty().set(null);
   }
@@ -159,6 +159,9 @@ public class giftResizedController extends PageController
     employeeID.getItems().addAll(employees);
     assigned.setValue("");
     employeeID.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeID.getItems().addAll(locations);
   }
 
   /**

@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 public class scanController extends PageController implements Initializable, IRequestController {
 
   @FXML AnchorPane masterPane;
-  @FXML TextField nodeField;
+  @FXML JFXComboBox nodeField;
   @FXML JFXComboBox employeeIDField;
   @FXML JFXComboBox userField;
   @FXML Button reset;
@@ -77,6 +77,9 @@ public class scanController extends PageController implements Initializable, IRe
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   public String generateReqID(int requestListLength, String scanType, String nodeID) {
@@ -98,7 +101,7 @@ public class scanController extends PageController implements Initializable, IRe
   }
 
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
@@ -129,7 +132,7 @@ public class scanController extends PageController implements Initializable, IRe
     //            nodeField.getText());
     String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
@@ -139,7 +142,7 @@ public class scanController extends PageController implements Initializable, IRe
       RequestSystem req = new RequestSystem("Scan");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
