@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
-import edu.wpi.cs3733.D22.teamF.controllers.requests.IRequestController;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
 import java.sql.SQLException;
@@ -8,11 +8,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 
-public class deleteEmployeePopUpController extends PageController
-    implements Initializable, IRequestController {
-  public void submit() throws SQLException {}
+public class deleteEmployeePopUpController extends PageController implements Initializable {
+  public void submit() throws SQLException {
+    String employeeID = null;
+    DatabaseManager.getEmployeeDAO().delete(employeeID);
+  }
 
   public void reset() {}
+
+  public void back() {}
 
   /**
    * Method to create a class specifics context menu

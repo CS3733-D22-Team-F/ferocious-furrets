@@ -2,30 +2,53 @@ package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
-import edu.wpi.cs3733.D22.teamF.controllers.requests.IRequestController;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
-
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.TextField;
 
-public class addEmployeePopUpController extends PageController
-    implements Initializable, IRequestController {
+public class addEmployeePopUpController extends PageController implements Initializable {
 
-  @FXML
-  JFXButton backButton;
-  public void submit() throws SQLException {}
+  @FXML JFXButton submitButton;
+  @FXML JFXButton backButton;
+  @FXML TextField employeeID;
+  @FXML TextField firstName;
+  @FXML TextField lastName;
+  @FXML TextField salaryText;
 
-  public void reset() {}
+  public void submit(ActionEvent event) throws SQLException {
+    String empID = employeeID.getText();
+    String fName = firstName.getText();
+    String lName = lastName.getText();
+    String salary = salaryText.getText();
+    if (!(empID.equals("") || fName.equals("") || lName.equals("") || salary.equals(""))) {
+      ArrayList<String> newEmployee = new ArrayList<>();
+      newEmployee.add(0, empID);
+      newEmployee.add(1, fName);
+      newEmployee.add(2, lName);
+      newEmployee.add(3, salary);
+      DatabaseManager.getEmployeeDAO().add(newEmployee);
+    } else {
+      System.out.println("One of more of the fields are empty!");
+    }
+  }
 
-  public void back(ActionEvent event){
+  public void reset(ActionEvent event) {
+    employeeID.clear();
+    firstName.clear();
+    lastName.clear();
+    salaryText.clear();
+  }
+
+  public void back(ActionEvent event) {
     StageManager.getInstance().setDisplay("employee/employeePage.fxml");
-
   }
 
   /**
@@ -45,8 +68,4 @@ public class addEmployeePopUpController extends PageController
    * @param resources The resources used to localize the root object, or {@code null} if
    */
   public void initialize(URL location, ResourceBundle resources) {}
-
-  public void back(javafx.event.ActionEvent actionEvent) {
-    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
-  }
 }

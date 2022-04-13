@@ -3,9 +3,9 @@ package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.controllers.requests.IRequestController;
-import edu.wpi.cs3733.D22.teamF.entities.employees.Employee;
+import edu.wpi.cs3733.D22.teamF.entities.employees.*;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
-public class employeePageController extends PageController
-    implements Initializable, IRequestController {
+public class employeePageController extends PageController implements Initializable {
 
   @FXML Label employeeTitle;
   @FXML Rectangle upperRect;
@@ -47,7 +46,7 @@ public class employeePageController extends PageController
    * Called to initialize a controller after its root element has been completely processed.
    *
    * @param location The location used to resolve relative paths for the root object, or {@code
-   *     null} if the location is not known.
+   *     null if the location is not known.
    * @param resources The resources used to localize the root object, or {@code null} if
    */
   public void initialize(URL location, ResourceBundle resources) {
@@ -57,9 +56,8 @@ public class employeePageController extends PageController
     salary.setCellValueFactory(new PropertyValueFactory<Employee, String>("salary"));
 
     ArrayList<Employee> employees = new ArrayList<>();
-    ResultSet rset = null;
     try {
-      rset = DatabaseManager.runQuery("SELECT * FROM EMPLOYEE");
+      ResultSet rset = DatabaseManager.getEmployeeDAO().get();
       while (rset.next()) {
         String empID = rset.getString("employeeID");
         String first = rset.getString("firstName");
@@ -69,7 +67,7 @@ public class employeePageController extends PageController
         Employee emp = new Employee(empID, first, last, salary);
         employees.add(emp);
       }
-    } catch (SQLException e) {
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
     // employees is a list of all employees in the table
@@ -79,18 +77,18 @@ public class employeePageController extends PageController
   }
 
   @FXML
-  private void addEmployee(ActionEvent event) {
-    StageManager.getInstance().setDisplay("employee/addEmployee.fxml");
+  private void addEmployee(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplayAndWait("employee/addEmployee.fxml");
   }
 
   @FXML
-  private void modifyEmployee(ActionEvent event) {
-    StageManager.getInstance().setDisplay("employee/modifyEmployee.fxml");
+  private void modifyEmployee(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplayAndWait("employee/modifyEmployee.fxml");
   }
 
   @FXML
-  private void deleteEmployee(ActionEvent event) {
-    StageManager.getInstance().setDisplay("employee/deleteEmployee.fxml");
+  private void deleteEmployee(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplayAndWait("employee/deleteEmployee.fxml");
   }
 
   public void submit() throws SQLException {}
