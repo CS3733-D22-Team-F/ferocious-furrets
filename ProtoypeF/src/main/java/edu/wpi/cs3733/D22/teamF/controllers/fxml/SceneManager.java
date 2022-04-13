@@ -51,7 +51,7 @@ public class SceneManager {
         e.printStackTrace();
       }
       h_map.put(filename, scene); // hashing any object hence generic
-      System.out.println("Loading Scene");
+      System.out.println("Loading Scene: " + filename);
     } else {
       scene = h_map.get(filename);
       System.out.println("Load from hash map");
@@ -69,6 +69,6 @@ public class SceneManager {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println("Loading Scene");
+    System.out.println("Loading Scene: " + path);
   }
 }
