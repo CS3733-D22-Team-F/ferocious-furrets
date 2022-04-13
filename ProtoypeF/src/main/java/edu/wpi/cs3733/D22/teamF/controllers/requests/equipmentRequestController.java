@@ -83,8 +83,8 @@ public class equipmentRequestController extends PageController
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
     equipmentType.add("Bed");

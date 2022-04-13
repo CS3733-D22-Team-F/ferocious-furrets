@@ -134,8 +134,8 @@ public class audioVisualController extends PageController
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> accessibilityType = new ArrayList<>();
     statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
     accessibilityType.add("Deaf/Hard of Hearing");

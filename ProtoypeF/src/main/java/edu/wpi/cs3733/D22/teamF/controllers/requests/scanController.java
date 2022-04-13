@@ -48,8 +48,8 @@ public class scanController extends PageController implements Initializable, IRe
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
-    temp.add("processing");
-    temp.add("done");
+    temp.add("Processing");
+    temp.add("Done");
     statusChoice.getItems().addAll(temp);
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();

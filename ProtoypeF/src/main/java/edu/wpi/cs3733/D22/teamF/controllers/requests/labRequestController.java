@@ -55,14 +55,14 @@ public class labRequestController extends PageController
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
-    temp.add("processing");
-    temp.add("done");
+    temp.add("Processing");
+    temp.add("Done");
     statusChoice.getItems().addAll(temp);
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("");
-    temp1.add("blood");
-    temp1.add("urine");
+    temp1.add("Blood");
+    temp1.add("Urine");
     typeChoice.getItems().addAll(temp1);
     typeChoice.setValue("");
 
