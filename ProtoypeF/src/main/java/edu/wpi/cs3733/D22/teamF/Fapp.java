@@ -16,7 +16,7 @@ public class Fapp extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException {
-    StageManager.getInstance().setDisplay("cachePage.fxml");
+    StageManager.getInstance().openLoad();
   }
 
   @Override
