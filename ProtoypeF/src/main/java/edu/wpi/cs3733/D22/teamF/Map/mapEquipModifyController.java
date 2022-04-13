@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
+import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapEquipmentModifier;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -13,28 +16,31 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/** controller for modifying map */
-public class mapModifyController implements Initializable {
+public class mapEquipModifyController implements Initializable {
 
   String floor = "1";
 
-  @FXML ChoiceBox<String> nodeBox;
+  @FXML JFXComboBox<String> nodeBox;
+  @FXML JFXComboBox<String> statusBox;
 
   @FXML private AnchorPane iconPane;
 
-  @FXML private TextField longField;
+  ArrayList<String> node = new ArrayList<>();
+  ArrayList<Integer> x = new ArrayList<>();
+  ArrayList<Integer> y = new ArrayList<>();
+  ArrayList<String> floors = new ArrayList<>();
+  ArrayList<String> room = new ArrayList<>();
 
   @FXML private Button cancel;
 
   @FXML private JFXButton selectedIcon;
 
   @FXML private Label currentNode;
-  @FXML private String xValue;
-  @FXML private String yValue;
+  @FXML private int xValue;
+  @FXML private int yValue;
   @FXML private String floorValue;
 
   @FXML private ImageView mapHolder;
@@ -48,29 +54,32 @@ public class mapModifyController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    currentNode.setText(nodeTempHolder.getLocation().getLongName());
+    currentNode.setText(
+        locTempHolder.getLocation().getNodeType()
+            + " - "
+            + locTempHolder.getLocation().getShortName());
     changeToF1();
-    ArrayList<String> temp = new ArrayList<>();
-    temp.add("PATI - Patient Room");
-    temp.add("STOR - Equipment Storage Room");
-    temp.add("DIRT - Dirty Equipment Pickup Locations");
-    temp.add("HALL - Hallway");
-    temp.add("ELEV - Elevator");
-    temp.add("REST - Restroom");
-    temp.add("STAI - Staircase");
-    temp.add("DEPT - Medical Departments, Clinics, and Waiting Room Areas");
-    temp.add("LABS - Labs, Imaging Centers, and Medical Testing Areas");
-    temp.add("INFO - Information Desks, Security Desks, Lost and Dound");
-    temp.add("CONF - Conference Room");
-    temp.add("EXIT - Exit/Entrance");
-    temp.add(
-        "RETL - Shops, Food, Pay Phone, Areas That Provide Non-medical\n"
-            + "Services For Immediate Payment");
-    temp.add(
-        "SERV - Hospital Non-medical Services, Interpreters, Shuttles, Spiritual Library,\n"
-            + "Patient Financial, etc.");
-    nodeBox.getItems().addAll(temp);
-    nodeBox.setValue("PATI - Patient Room");
+    ArrayList<Location> locations = new ArrayList<>();
+    try {
+      locations = DatabaseManager.getLocationDAO().getAllLocations();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    for (Location lo : locations) {
+      x.add(lo.getXcoord());
+      y.add(lo.getYcoord());
+      floors.add(lo.getFloor());
+      node.add(lo.getNodeID());
+      room.add(lo.getLongName());
+    }
+    nodeBox.getItems().addAll(room);
+    nodeBox.setValue(room.get(0));
+    ArrayList<String> status = new ArrayList<>();
+    status.add("available");
+    status.add("unavailable");
+    statusBox.getItems().addAll(status);
+    statusBox.setValue("available");
   }
 
   /** Cancel add, close window */
@@ -81,11 +90,11 @@ public class mapModifyController implements Initializable {
 
   /** reset fields in add window */
   public void reset() {
-    nodeBox.setValue("PATI - Patient Room");
-    floorValue = "";
-    xValue = "";
-    yValue = "";
-    longField.clear();
+    nodeBox.setValue(room.get(0));
+    statusBox.setValue("available");
+    floorValue = floors.get(room.indexOf(room.get(0)));
+    xValue = x.get(room.indexOf(room.get(0)));
+    yValue = x.get(room.indexOf(room.get(0)));
     iconPane.getChildren().remove(selectedIcon);
   }
 
@@ -96,44 +105,49 @@ public class mapModifyController implements Initializable {
    *     passes that object to the LocationDAOImpl class to add to the database
    */
   public void submit() throws SQLException, IOException {
-    if (!nodeBox.getValue().equals("")
-        && !floorValue.equals("")
-        && !xValue.equals("")
-        && !yValue.equals("")
-        && !longField.getText().equals("")) {
-      try {
-        String shortName = longField.getText();
-        if (longField.getText().length() > 128) {
-          shortName = longField.getText().substring(0, 127);
-        }
-        MapLocationModifier.addLocation(
-            nodeBox.getValue(), xValue, yValue, floorValue, longField.getText(), shortName);
-        Stage stage = (Stage) cancel.getScene().getWindow();
-        stage.close();
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    } else {
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Alert");
-      alert.setHeaderText("Blank Field");
-      String s = "At least one required field is missing!";
-      alert.setContentText(s);
-      alert.show();
+    try {
+      MapEquipmentModifier.modifyEquipment(
+          node.get(room.indexOf(nodeBox.getValue())),
+          statusBox.getValue(),
+          locTempHolder.getLocation().getShortName());
+      Stage stage = (Stage) cancel.getScene().getWindow();
+      stage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 
-  public void delete() throws SQLException, IOException {
-    MapLocationModifier.deleteLocation(nodeTempHolder.getLocation());
-    Stage stage = (Stage) cancel.getScene().getWindow();
-    stage.close();
+  public void onRoomChange() {
+    String selectFloor = floors.get(room.indexOf(nodeBox.getValue()));
+    System.out.println(selectFloor);
+    if (selectFloor.equals("1")) {
+      changeToF1();
+    } else if (selectFloor.equals("2")) {
+      changeToF2();
+    } else if (selectFloor.equals("3")) {
+      changeToF3();
+    } else if (selectFloor.equals("4")) {
+      changeToF4();
+    } else if (selectFloor.equals("5")) {
+      changeToF5();
+    } else if (selectFloor.equals("L1")) {
+      changeToL1();
+    } else if (selectFloor.equals("L2")) {
+      changeToL2();
+    }
+    selectedIcon = new JFXButton("", getIcon());
+    selectedIcon.setPrefSize(15, 15);
+    int xValue = x.get(room.indexOf(nodeBox.getValue()));
+    int yValue = y.get(room.indexOf(nodeBox.getValue()));
+    selectedIcon.setLayoutX((xValue / 4450.0) * 620);
+    selectedIcon.setLayoutY((yValue / 3550.0) * 470);
+    iconPane.getChildren().add(selectedIcon);
   }
 
-  public void track(MouseEvent event) {
-    xValue = (event.getX() + 2) + "";
-    yValue = (event.getY() - 2) + "";
-    floorValue = floor;
-    addIcon(xValue, yValue);
+  public void delete() throws SQLException, IOException {
+    MapEquipmentModifier.deleteEquipment();
+    Stage stage = (Stage) cancel.getScene().getWindow();
+    stage.close();
   }
 
   public void changeToF1() {
@@ -176,17 +190,6 @@ public class mapModifyController implements Initializable {
     mapHolder.setImage(L2);
     floor = "L2";
     iconPane.getChildren().remove(selectedIcon);
-  }
-
-  public void addIcon(String x, String y) {
-    iconPane.getChildren().remove(selectedIcon);
-    selectedIcon = new JFXButton("", getIcon());
-    selectedIcon.setPrefSize(10, 10);
-    selectedIcon.setMinSize(10, 10);
-    selectedIcon.setMaxSize(10, 10);
-    selectedIcon.setLayoutX(Double.parseDouble(x));
-    selectedIcon.setLayoutY(Double.parseDouble(y));
-    iconPane.getChildren().add(selectedIcon);
   }
 
   public ImageView getIcon() {

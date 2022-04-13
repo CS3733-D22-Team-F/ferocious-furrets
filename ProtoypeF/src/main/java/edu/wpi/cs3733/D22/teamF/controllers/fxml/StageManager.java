@@ -42,12 +42,21 @@ public class StageManager {
   public void setDisplay(String filename) {
     m_stage.setScene(SceneManager.getInstance().setScene("views/" + filename));
     m_stage.show();
+    m_stage.setX(0);
+    m_stage.setX(0);
+  }
+  /** take a string file name then set scene and display scene for StageManager */
+  public void openLoad() {
+    m_stage.setScene(SceneManager.getInstance().setScene("views/cachePage.fxml"));
+    m_stage.show();
   }
 
   /** take a string file name then set scene and display scene for StageManager */
   public void setDisplayNoViews(String filename) {
     m_stage.setScene(SceneManager.getInstance().setScene(filename));
     m_stage.show();
+    m_stage.setX(0);
+    m_stage.setX(0);
   }
 
   /** makes current screen the home */
@@ -66,6 +75,14 @@ public class StageManager {
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = SceneManager.getInstance().setScene("views/" + filename);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+  }
+
+  public void setDisplayAndWaitMap(String filename) throws IOException {
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = SceneManager.getInstance().setScene("Map/" + filename);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
   }

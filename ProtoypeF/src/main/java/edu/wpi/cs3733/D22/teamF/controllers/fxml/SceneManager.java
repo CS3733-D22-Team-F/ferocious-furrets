@@ -59,4 +59,16 @@ public class SceneManager {
     currentScene = filename;
     return scene;
   }
+
+  public void loadViews(String path) {
+    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(path));
+    // alt enter while hover over/cursor in red
+    try {
+      Scene scene = new Scene(fxmlLoader.load());
+      h_map.put(path, scene); // hashing any object hence generic
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    System.out.println("Loading Scene");
+  }
 }
