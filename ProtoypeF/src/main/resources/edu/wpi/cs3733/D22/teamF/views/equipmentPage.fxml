@@ -41,7 +41,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox2" layoutX="169.0" layoutY="629.0">
+            <HBox fx:id="leftHBox2" layoutX="189.0" layoutY="599.0">
                <children>
                   <TextField fx:id="reqID" prefWidth="194.0" promptText="Request ID">
                      <font>
@@ -55,7 +55,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox1" layoutX="128.0" layoutY="485.0" prefHeight="56.0" prefWidth="374.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="leftHBox1" layoutX="153.0" layoutY="499.0" prefHeight="56.0" prefWidth="374.0" style="-fx-background-color: #123090;">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                      <font>
@@ -74,7 +74,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <VBox fx:id="leftVBox" layoutX="168.0" layoutY="197.0" prefHeight="285.0" prefWidth="299.0">
+            <VBox fx:id="leftVBox" layoutX="278.0" layoutY="195.0" prefHeight="281.0" prefWidth="298.0">
                <children>
                   <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
@@ -104,6 +104,35 @@
                         <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </JFXComboBox>
+               </children>
+            </VBox>
+            <VBox layoutX="11.0" layoutY="201.0" prefHeight="278.0" prefWidth="245.0" spacing="25.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Node ID:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Assigned Employee:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Request Employee:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Equipment Type:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>
