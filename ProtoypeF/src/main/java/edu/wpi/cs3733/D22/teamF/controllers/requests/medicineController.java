@@ -147,7 +147,6 @@ public class medicineController extends PageController
     units.getItems().addAll(unitMeasurements);
     units2.getItems().addAll(unitMeasurements);
     units.setValue("mg");
-    units2.getItems().addAll(unitMeasurements);
     units2.setValue("mg");
 
     ArrayList<Object> locations = locationNames();

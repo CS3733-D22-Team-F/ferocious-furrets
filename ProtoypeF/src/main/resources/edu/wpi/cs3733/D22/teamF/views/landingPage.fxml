@@ -19,7 +19,8 @@
                             <Menu mnemonicParsing="false" text="Navigation">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#returnToMap" text="Maps" />
-                                    <MenuItem mnemonicParsing="false" onAction="#returnToMedical" text="Medical" />
+                                    <MenuItem mnemonicParsing="false" onAction="#returnToLab" text="Lab" />
+                                    <MenuItem mnemonicParsing="false" onAction="#returnToScan" text="Scan" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />

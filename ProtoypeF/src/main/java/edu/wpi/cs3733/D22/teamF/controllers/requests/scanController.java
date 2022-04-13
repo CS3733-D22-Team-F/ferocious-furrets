@@ -53,11 +53,12 @@ public class scanController extends PageController implements Initializable, IRe
     statusChoice.getItems().addAll(temp);
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
+    temp1.add("");
     temp1.add("CAT");
-    temp1.add("xray");
+    temp1.add("XRAY");
     temp1.add("MRI");
     typeChoice.getItems().addAll(temp1);
-    typeChoice.setValue("CAT");
+    typeChoice.setValue("");
 
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
@@ -74,7 +75,7 @@ public class scanController extends PageController implements Initializable, IRe
     String sAb = "";
     if (scanType.equals("CAT")) {
       sAb = "C";
-    } else if (scanType.equals("xray")) {
+    } else if (scanType.equals("XRAY")) {
       sAb = "X";
     } else if (scanType.equals("MRI")) {
       sAb = "M";

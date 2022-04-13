@@ -121,7 +121,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -134,7 +134,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />

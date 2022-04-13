@@ -3,12 +3,11 @@ package edu.wpi.cs3733.D22.teamF;
 import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /** Controller for the landing page */
