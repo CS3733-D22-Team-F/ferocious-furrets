@@ -1,6 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
@@ -199,5 +203,69 @@ public abstract class PageController {
   /** switch to home scene */
   public void switchToHome() {
     StageManager.getInstance().setHome();
+  }
+
+  public ArrayList<Object> locationNames() {
+    ArrayList<Object> locations = new ArrayList<>();
+    ResultSet r = null;
+    try {
+      r = DatabaseManager.runQuery("SELECT SHORTNAME FROM LOCATIONS");
+      while (r.next()) {
+        String name = r.getString("SHORTNAME");
+        locations.add(name);
+      }
+      r.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return locations;
+  }
+
+  public ArrayList<Object> employeeNames() {
+    ArrayList<Object> employees = new ArrayList<>();
+    ResultSet rset = null;
+    try {
+      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      while (rset.next()) {
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String name = last + ", " + first;
+        employees.add(name);
+      }
+      rset.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return employees;
+  }
+
+  public String nodeIDFinder(String name) throws SQLException {
+    String nodeID = "";
+    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE SHORTNAME = '%s'", name);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      nodeID = rset.getString("NODEID");
+    }
+    rset.close();
+    return nodeID;
+  }
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
   }
 }

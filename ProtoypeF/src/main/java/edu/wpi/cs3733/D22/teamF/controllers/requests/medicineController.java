@@ -30,7 +30,7 @@ public class medicineController extends PageController
   private Scene scene;
   private Parent root;
 
-  @FXML private TextField nodeField;
+  @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private TextField typeOfMed;
@@ -50,7 +50,7 @@ public class medicineController extends PageController
 
   @FXML
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeOfMed.clear();
@@ -67,7 +67,7 @@ public class medicineController extends PageController
   @FXML
   public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeOfMed.getText().equals("")
@@ -82,7 +82,7 @@ public class medicineController extends PageController
       RequestSystem req = new RequestSystem("Medicine");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -97,25 +97,6 @@ public class medicineController extends PageController
 
       reset();
     }
-  }
-
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
   }
 
   public void resolveRequest() throws SQLException {
@@ -146,20 +127,7 @@ public class medicineController extends PageController
    */
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
@@ -167,8 +135,8 @@ public class medicineController extends PageController
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> medicineType = new ArrayList<>();
     statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
     ArrayList<Object> unitMeasurements = new ArrayList<>();
@@ -181,6 +149,9 @@ public class medicineController extends PageController
     units.setValue("mg");
     units2.getItems().addAll(unitMeasurements);
     units2.setValue("mg");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   @FXML

@@ -28,7 +28,7 @@ public class mealsController extends PageController implements Initializable, IR
   @FXML private BorderPane masterPane;
 
   // TODO use these fxids for the combo boxes, nodes, and status
-  @FXML private TextField nodeID;
+  @FXML private JFXComboBox nodeID;
   @FXML private ComboBox<Object> assignedEmployee;
   @FXML private ComboBox<Object> requestedEmployee;
   @FXML private ComboBox<Object> status;
@@ -60,33 +60,33 @@ public class mealsController extends PageController implements Initializable, IR
     breakfast.add("Yogurt");
     breakfast.add("Fruit");
     breakfast.add("Quiche");
-    breakfast.add("Omelet");
+    breakfast.add("Omelette");
     breakfast.add("Belgian Waffles");
     breakfast.add("Corned Beef Hash");
     breakfastChoice.getItems().addAll(breakfast);
     breakfastChoice.setValue("Choose Breakfast Food");
 
     ArrayList<Object> lunch = new ArrayList<>();
-    lunch.add("French Toast");
-    lunch.add("Oatmeal");
-    lunch.add("Yogurt");
-    lunch.add("Fruit");
-    lunch.add("Quiche");
-    lunch.add("Omelet");
-    lunch.add("Belgian Waffles");
-    lunch.add("Corned Beef Hash");
+    lunch.add("Pizza");
+    lunch.add("Cod");
+    lunch.add("Meatloaf");
+    lunch.add("Spinach Salad");
+    lunch.add("Cheeseburger");
+    lunch.add("Italian Sub");
+    lunch.add("Chicken Tenders");
+    lunch.add("Meatball Sub");
     lunchChoice.getItems().addAll(lunch);
     lunchChoice.setValue("Choose Lunch Food");
 
     ArrayList<Object> dinner = new ArrayList<>();
-    dinner.add("French Toast");
-    dinner.add("Oatmeal");
-    dinner.add("Yogurt");
-    dinner.add("Fruit");
-    dinner.add("Quiche");
-    dinner.add("Omelet");
-    dinner.add("Belgian Waffles");
-    dinner.add("Corned Beef Hash");
+    dinner.add("Grilled Tofu");
+    dinner.add("Macaroni and Cheese");
+    dinner.add("Chicken Quesadilla");
+    dinner.add("Grilled Chicken");
+    dinner.add("Spaghetti");
+    dinner.add("Chicken Noodle Soup");
+    dinner.add("Hamburger");
+    dinner.add("Pork Loin");
     dinnerChoice.getItems().addAll(dinner);
     dinnerChoice.setValue("Choose Dinner Food");
 
@@ -97,24 +97,14 @@ public class mealsController extends PageController implements Initializable, IR
     status.getItems().addAll(temp);
     status.setValue("");
 
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     assignedEmployee.getItems().addAll(employees);
     requestedEmployee.getItems().addAll(employees);
     assignedEmployee.setValue("");
     requestedEmployee.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeID.getItems().addAll(locations);
   }
 
   // on press returns fields into delivery object only if required fields aren't empty
@@ -132,7 +122,7 @@ public class mealsController extends PageController implements Initializable, IR
 
   public void reset() {
 
-    nodeID.setText("");
+    nodeID.valueProperty().setValue(null);
     status.valueProperty().setValue(null);
     assignedEmployee.valueProperty().setValue(null);
     requestedEmployee.valueProperty().setValue(null);
@@ -155,7 +145,7 @@ public class mealsController extends PageController implements Initializable, IR
     requestList.add("Status: " + status.getValue());
     serviceRequestStorage.addToArrayList(requestList);
 
-    if (nodeID.getText().equals("")
+    if (nodeID.getValue().toString().equals("")
         || status.getValue().toString().equals("")
         || assignedEmployee.getValue().toString().equals("")
         || requestedEmployee.getValue().toString().equals("")) {
@@ -175,7 +165,7 @@ public class mealsController extends PageController implements Initializable, IR
       RequestSystem req = new RequestSystem("Meal");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeID.getText());
+      fields.add(nodeIDFinder(nodeID.getValue().toString()));
       fields.add(employeeIDFinder(assignedEmployee.getValue().toString()));
       fields.add(employeeIDFinder(requestedEmployee.getValue().toString()));
       fields.add(status.getValue().toString());
@@ -207,25 +197,6 @@ public class mealsController extends PageController implements Initializable, IR
 
     String nID = "f" + nNodeType + reqNum;
     return nID;
-  }
-
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
   }
 
   @FXML
