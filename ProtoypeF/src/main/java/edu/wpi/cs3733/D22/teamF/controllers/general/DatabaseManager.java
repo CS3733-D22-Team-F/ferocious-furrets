@@ -226,6 +226,10 @@ public class DatabaseManager {
     return medicineDAO;
   }
 
+  public static EmployeeDAOImpl getEmployeeDAO() {
+    return employeeDAO;
+  }
+
   public static patientDAOImpl getPatientDAO() {
     return patientDAO;
   }

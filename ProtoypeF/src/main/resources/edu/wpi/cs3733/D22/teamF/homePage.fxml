@@ -42,6 +42,11 @@
                         <Font name="Palatino" size="24.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#switchToEmployee" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="EMPLOYEES" textFill="WHITE">
+                     <font>
+                        <Font name="Palatino" size="24.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
             <JFXButton buttonType="RAISED" onAction="#switchToLogin" prefHeight="108.0" prefWidth="385.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="LOGOUT" textFill="WHITE">
