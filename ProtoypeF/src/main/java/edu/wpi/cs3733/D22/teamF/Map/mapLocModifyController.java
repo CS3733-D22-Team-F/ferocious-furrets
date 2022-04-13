@@ -2,7 +2,8 @@ package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.nodeTempHolder;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -17,10 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * controller for modifying map
- */
-public class mapModifyController implements Initializable {
+public class mapLocModifyController implements Initializable {
 
   String floor = "1";
 
@@ -50,7 +48,11 @@ public class mapModifyController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    currentNode.setText(nodeTempHolder.getLocation().getLongName());
+
+    xValue = "";
+    yValue = "";
+    floorValue = "";
+    currentNode.setText(locTempHolder.getLocation().getLongName());
     changeToF1();
     ArrayList<String> temp = new ArrayList<>();
     temp.add("PATI - Patient Room");
@@ -109,7 +111,14 @@ public class mapModifyController implements Initializable {
           shortName = longField.getText().substring(0, 127);
         }
         MapLocationModifier.addLocation(
-            nodeBox.getValue(), xValue, yValue, floorValue, longField.getText(), shortName);
+            nodeBox.getValue(),
+            ((Double.parseDouble(xValue) / 630) * 4450) + "",
+            ((Double.parseDouble(yValue) / 500) * 3550) + "",
+            floorValue,
+            longField.getText(),
+            shortName);
+        MapLocationModifier.deleteLocation(locTempHolder.getLocation());
+        MapTableHolder.loadMap(locTempHolder.getLocationTable(), locTempHolder.getPassIconPane());
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
@@ -126,7 +135,7 @@ public class mapModifyController implements Initializable {
   }
 
   public void delete() throws SQLException, IOException {
-    MapLocationModifier.deleteLocation(nodeTempHolder.getLocation());
+    MapLocationModifier.deleteLocation(locTempHolder.getLocation());
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }

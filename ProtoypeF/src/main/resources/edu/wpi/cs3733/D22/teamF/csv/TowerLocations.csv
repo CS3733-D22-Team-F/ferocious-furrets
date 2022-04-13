@@ -145,6 +145,11 @@ fPATI01703,1560,2734,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01803,1788,2714,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01903,1872,2672,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI02003,1976,2444,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
+fSTOR00104,1610,1123,4,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
+fSTOR00204,1610,2439,4,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
+fSTOR00304,2204,2223,4,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
+fSTOR00404,2213,1304,4,Tower,STOR,Bed and Recliner Storage B,Bed and Recliner Storage B
+fSTOR00504,1673,1763,4,Tower,STOR,Dirty Equipment Storage,Dirty Equipment Storage
 fPATI00104,1976,1033,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
 fPATI00204,1913,846,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
 fPATI00304,1788,763,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
@@ -165,6 +170,11 @@ fPATI01704,1560,2734,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01804,1788,2714,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI01904,1872,2672,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
 fPATI02004,1976,2444,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
+fSTOR00105,1610,1123,5,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
+fSTOR00205,1610,2439,5,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
+fSTOR00305,2204,2223,5,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
+fSTOR00405,2213,1304,5,Tower,STOR,Bed and Recliner Storage B,Bed and Recliner Storage B
+fSTOR00505,1673,1763,5,Tower,STOR,Dirty Equipment Storage,Dirty Equipment Storage
 fPATI00105,1976,1033,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
 fPATI00205,1913,846,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
 fPATI00305,1788,763,5,Tower,PATI,Patient Bed Pod B,Patient Bed B

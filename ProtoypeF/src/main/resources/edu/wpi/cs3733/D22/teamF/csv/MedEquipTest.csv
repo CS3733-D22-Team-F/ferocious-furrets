@@ -1,0 +1,120 @@
+equipID,equipType,nodeID,status
+1,Bed,fPATI00103,unavailable
+2,Bed,fPATI00203,unavailable
+3,Bed,fPATI00303,unavailable
+4,Bed,fPATI00403,unavailable
+5,Bed,fPATI00503,unavailable
+6,Bed,fPATI00603,unavailable
+7,Bed,fPATI00703,unavailable
+8,Bed,fPATI00803,unavailable
+9,Bed,fPATI00903,available
+10,Bed,fPATI01003,available
+11,Bed,fPATI01103,available
+12,Bed,fPATI01203,available
+13,Bed,fPATI01303,available
+14,Bed,fPATI01403,available
+15,Bed,fPATI01503,available
+16,Bed,fPATI01603,available
+17,Bed,fPATI01703,available
+18,Bed,fPATI01803,available
+19,Bed,fPATI01903,available
+20,Bed,fPATI02003,available
+21,Xray,fSTOR00103,available
+22,Infusion Pump,fSTOR00203,available
+23,Infusion Pump,fSTOR00203,available
+24,Infusion Pump,fSTOR00203,available
+25,Infusion Pump,fSTOR00203,available
+26,Infusion Pump,fSTOR00203,available
+27,Infusion Pump,fSTOR00203,available
+28,Infusion Pump,fSTOR00203,available
+29,Infusion Pump,fSTOR00203,available
+30,Infusion Pump,fSTOR00203,available
+31,Infusion Pump,fSTOR00203,available
+32,Infusion Pump,fSTOR00203,available
+33,Infusion Pump,fSTOR00203,available
+34,Infusion Pump,fSTOR00203,available
+35,Infusion Pump,fSTOR00203,available
+36,Infusion Pump,fSTOR00203,available
+37,Infusion Pump,fSTOR00203,available
+38,Infusion Pump,fSTOR00203,available
+39,Infusion Pump,fSTOR00203,available
+40,Infusion Pump,fSTOR00203,available
+41,Infusion Pump,fSTOR00203,available
+42,Infusion Pump,fSTOR00203,available
+43,Infusion Pump,fSTOR00203,available
+44,Infusion Pump,fSTOR00203,available
+45,Infusion Pump,fSTOR00203,available
+46,Infusion Pump,fSTOR00203,available
+47,Infusion Pump,fSTOR00203,available
+48,Infusion Pump,fSTOR00203,available
+49,Infusion Pump,fSTOR00203,available
+50,Infusion Pump,fSTOR00203,available
+51,Infusion Pump,fSTOR00203,available
+52,Recliner,fSTOR00303,available
+53,Recliner,fSTOR00303,available
+54,Recliner,fSTOR00303,available
+55,Recliner,fSTOR00403,available
+56,Recliner,fSTOR00403,available
+57,Recliner,fSTOR00403,available
+58,Xray,fSTOR00104,available
+59,Infusion Pump,fSTOR00204,available
+60,Infusion Pump,fSTOR00204,available
+61,Infusion Pump,fSTOR00204,available
+62,Infusion Pump,fSTOR00204,available
+63,Infusion Pump,fSTOR00204,available
+64,Infusion Pump,fSTOR00204,available
+65,Infusion Pump,fSTOR00204,available
+66,Infusion Pump,fSTOR00204,available
+67,Infusion Pump,fSTOR00204,available
+68,Infusion Pump,fSTOR00204,available
+69,Infusion Pump,fSTOR00204,available
+70,Infusion Pump,fSTOR00204,available
+71,Infusion Pump,fSTOR00204,available
+72,Infusion Pump,fSTOR00204,available
+73,Infusion Pump,fSTOR00204,available
+74,Bed,fPATI00104,unavailable
+75,Bed,fPATI00204,unavailable
+76,Bed,fPATI00304,unavailable
+77,Bed,fPATI00404,unavailable
+78,Bed,fPATI00504,unavailable
+79,Bed,fPATI00604,unavailable
+80,Bed,fPATI00704,unavailable
+81,Bed,fPATI00804,unavailable
+82,Bed,fPATI00904,available
+83,Bed,fPATI01004,available
+84,Recliner,fSTOR00304,available
+85,Recliner,fSTOR00304,available
+86,Recliner,fSTOR00304,available
+87,Recliner,fSTOR00304,available
+88,Recliner,fSTOR00304,available
+89,Xray,fSTOR00105,available
+90,Infusion Pump,fSTOR00205,available
+91,Infusion Pump,fSTOR00205,available
+92,Infusion Pump,fSTOR00205,available
+93,Infusion Pump,fSTOR00205,available
+94,Infusion Pump,fSTOR00205,available
+95,Infusion Pump,fSTOR00205,available
+96,Infusion Pump,fSTOR00205,available
+97,Infusion Pump,fSTOR00205,available
+98,Infusion Pump,fSTOR00205,available
+99,Infusion Pump,fSTOR00205,available
+100,Infusion Pump,fSTOR00205,available
+101,Infusion Pump,fSTOR00205,available
+102,Infusion Pump,fSTOR00205,available
+103,Infusion Pump,fSTOR00205,available
+104,Infusion Pump,fSTOR00205,available
+105,Bed,fPATI00105,unavailable
+106,Bed,fPATI00205,unavailable
+107,Bed,fPATI00305,unavailable
+108,Bed,fPATI00405,unavailable
+109,Bed,fPATI00505,unavailable
+110,Bed,fPATI00605,unavailable
+111,Bed,fPATI00705,unavailable
+112,Bed,fPATI00805,unavailable
+113,Bed,fPATI00905,available
+114,Bed,fPATI01005,available
+115,Recliner,fSTOR00305,available
+116,Recliner,fSTOR00305,available
+117,Recliner,fSTOR00305,available
+118,Recliner,fSTOR00405,available
+119,Recliner,fSTOR00405,available

@@ -14,9 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * controller for the map reset functinos including reseting fields and using the file explorer
- */
+/** controller for the map reset functinos including reseting fields and using the file explorer */
 public class mapResetController implements Initializable {
 
   @FXML private TextField idField;
@@ -26,9 +24,7 @@ public class mapResetController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
 
-  /**
-   * cancels stage
-   */
+  /** cancels stage */
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
@@ -36,6 +32,7 @@ public class mapResetController implements Initializable {
 
   /**
    * Opens a file chooser allowing the user to select a file from the file explorer
+   *
    * @throws SQLException
    * @throws IOException
    */
@@ -50,9 +47,7 @@ public class mapResetController implements Initializable {
     stage.close();
   }
 
-  /**
-   * clears fields
-   */
+  /** clears fields */
   public void reset() {
     idField.clear();
   }

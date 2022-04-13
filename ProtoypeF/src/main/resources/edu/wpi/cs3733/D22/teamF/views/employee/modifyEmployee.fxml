@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.modifyEmployeePopUpController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="89.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="315.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+        <HBox layoutX="132.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
+            <children>
+                <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="290.0" text="Modify Employee" textFill="WHITE">
+                    <font>
+                        <Font name="SansSerif Regular" size="30.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="70.0" top="20.0" />
+                    </HBox.margin>
+                </Label>
+                <ImageView fitHeight="76.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../BWHlogo-new.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </ImageView>
+            </children>
+        </HBox>
+        <HBox layoutX="89.0" layoutY="98.0" prefHeight="190.0" prefWidth="422.0">
+            <children>
+                <VBox alignment="TOP_RIGHT" prefHeight="257.0" prefWidth="212.0" spacing="20.0">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="144.0" text="EmployeeID:" textFill="WHITE">
+                            <font>
+                                <Font name="SansSerif Regular" size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="15.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="First Name:" textFill="WHITE">
+                            <font>
+                                <Font name="SansSerif Regular" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="127.0" text="Last Name:" textFill="WHITE">
+                            <font>
+                                <Font name="SansSerif Regular" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="27.0" prefWidth="81.0" text="Salary:" textFill="WHITE">
+                            <font>
+                                <Font name="SansSerif Regular" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                    <children>
+                        <TextField fx:id="employeeID">
+                            <VBox.margin>
+                                <Insets top="15.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="firstName" />
+                        <TextField fx:id="lastName" />
+                        <TextField fx:id="salaryText" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <HBox layoutX="130.0" layoutY="315.0" prefHeight="46.0" prefWidth="341.0">
+            <children>
+                <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#modify" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="backButton" buttonType="RAISED" onAction="#back" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Return" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </JFXButton>
+                <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </JFXButton>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

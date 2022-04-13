@@ -9,9 +9,21 @@ public class DatabaseInitializer {
 
   private Connection dbConnection;
 
-  /** Constructor */
-  private DatabaseInitializer() {
-    this.dbConnection = this.connectDatabase();
+  public enum ConnType {
+    EMBEDDED,
+    CLIENTSERVER
+  }
+  // default embedded
+  static ConnType connType = ConnType.EMBEDDED;
+
+  /**
+   * Constructor
+   *
+   * @param type boolean run in a embedded db mode or client server mode
+   */
+  private DatabaseInitializer(ConnType type) {
+    System.out.println("int db init conn type: " + type.toString());
+    this.dbConnection = this.connectDatabase(connType);
   }
 
   /**
@@ -24,34 +36,75 @@ public class DatabaseInitializer {
   }
 
   /**
+   * sets the embedded bool and returns a new Helped.db
+   *
+   * @param connectionType boolean run in an embedded or client server mode
+   * @return a new DatabaseInitializer object
+   */
+  public static DatabaseInitializer switchConnection(ConnType connectionType) throws SQLException {
+    connType = connectionType;
+    System.out.println("set connType to: " + connType.toString());
+    System.out.println(Helper.db.dbConnection.getMetaData().getConnection().toString());
+    return Helper.db;
+  }
+
+  /**
    * Connects to the database returns null object if connection failed
    *
    * @return Connection object
+   * @param type
    */
-  private Connection connectDatabase() {
-    try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-    } catch (ClassNotFoundException e) {
-      System.out.println("Driver not found");
-      e.printStackTrace();
+  private Connection connectDatabase(ConnType type) {
+    System.out.println("Connection to database type:" + type.toString());
+    if (type == ConnType.EMBEDDED) {
+      try {
+        Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+      } catch (ClassNotFoundException e) {
+        System.out.println("Driver not found");
+        e.printStackTrace();
+      }
+
+      System.out.println("Driver registered");
+      dbConnection = null;
+
+      try {
+        dbConnection =
+            DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO DATABASE
+        assert (dbConnection != null);
+        // initTable();
+
+      } catch (SQLException e) {
+        System.out.println("Connection failed");
+        e.printStackTrace();
+        return null;
+      }
+
+      System.out.println("Derby connection established");
+    } else {
+
+      try {
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+
+      System.out.println("Remote Driver registered");
+
+      dbConnection = null;
+      try {
+        dbConnection =
+            DriverManager.getConnection(
+                "jdbc:derby://localhost:1527/csDB;create=true"); // CONNECT TO DATABASE
+        assert (dbConnection != null);
+
+      } catch (SQLException e) {
+        System.out.println("Remote Connection failed");
+        e.printStackTrace();
+        return null;
+      }
+
+      System.out.println("Derby Remote connection established");
     }
-
-    System.out.println("Driver registered");
-    dbConnection = null;
-
-    try {
-      dbConnection =
-          DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO DATABASE
-      assert (dbConnection != null);
-      // initTable();
-
-    } catch (SQLException e) {
-      System.out.println("Connection failed");
-      e.printStackTrace();
-      return null;
-    }
-
-    System.out.println("Derby connection established");
     return dbConnection;
   }
 
@@ -66,6 +119,6 @@ public class DatabaseInitializer {
 
   /** makes a new DatabaseInitializer */
   private static class Helper {
-    private static final DatabaseInitializer db = new DatabaseInitializer();
+    private static final DatabaseInitializer db = new DatabaseInitializer(connType);
   }
 }

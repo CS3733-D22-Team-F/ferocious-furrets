@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
+import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
@@ -17,7 +18,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static final Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn; // = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -30,10 +31,35 @@ public class DatabaseManager {
   private static final mealDAOImpl mealDAO = new mealDAOImpl();
   private static final patientDAOImpl patientDAO = new patientDAOImpl();
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
+  private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+  private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
+  enum connType {
+    embedded,
+    clientserver
+  }
+
   private DatabaseManager() {}
+
+  /**
+   * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
+   * connection to a client-server database
+   *
+   * @param type boolean true to run embedded database
+   * @return Connection object
+   * @throws SQLException
+   * @throws IOException
+   */
+  public static Connection switchConnection(DatabaseInitializer.ConnType type)
+      throws SQLException, IOException {
+    // backUpDatabaseToCSV();
+    DatabaseInitializer.switchConnection(type);
+    conn = DatabaseInitializer.getConnection().getDbConnection();
+    DatabaseManager dbMan = DatabaseManager.initializeDatabaseManager();
+    return conn;
+  }
 
   /**
    * inits the dao objects
@@ -42,9 +68,10 @@ public class DatabaseManager {
    * @throws SQLException
    * @throws IOException
    */
-  public static DatabaseManager initalizeDatabaseManager() throws SQLException, IOException {
+  public static DatabaseManager initializeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
+    employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
@@ -54,6 +81,7 @@ public class DatabaseManager {
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+    audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     return Helper.dbMan;
   }
 
@@ -103,6 +131,7 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
+    dropTableIfExist("audioVisualRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
     dropTableIfExist("GIFTREQUEST");
@@ -142,6 +171,7 @@ public class DatabaseManager {
     medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
+    audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
@@ -196,8 +226,16 @@ public class DatabaseManager {
     return medicineDAO;
   }
 
+  public static EmployeeDAOImpl getEmployeeDAO() {
+    return employeeDAO;
+  }
+
   public static patientDAOImpl getPatientDAO() {
     return patientDAO;
+  }
+
+  public static audioVisualDAOImpl getAudioVisDAO() {
+    return audioVisualDAO;
   }
 
   /** helper */

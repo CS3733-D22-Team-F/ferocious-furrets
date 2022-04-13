@@ -14,9 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-/**
- * object for a holder for the map tables
- */
+/** object for a holder for the map tables */
 public class MapTableHolder {
   /**
    * converts an equipment object to a temporary location to get the x-y coords to display icon on
@@ -50,7 +48,14 @@ public class MapTableHolder {
       rset.close();
       Location tempLocation =
           new Location(
-              med.getNodeID(), x, y, floor, status, med.getEquipType(), "Equipment", equipID);
+              med.getNodeID(),
+              x,
+              y,
+              floor,
+              status,
+              med.getEquipType(),
+              "Equipment" + " - " + med.getEquipType() + " - " + equipID,
+              equipID);
       // TODO: building = status, longName= type, shortName = equipID
       returnList.add(tempLocation);
     }
