@@ -49,7 +49,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
     ArrayList<String> audioVisualRequest = new ArrayList<>();
 
     audioVisualRequest.add(0, fields.get(0)); // request id
-    audioVisualRequest.add(1, fields.get(1)); // accessibility device
+    audioVisualRequest.add(1, fields.get(5)); // accessibility device
 
     serviceRequestFields.add(0, fields.get(0)); // request ID
     serviceRequestFields.add(1, fields.get(1)); // node iD

@@ -74,7 +74,7 @@ public class audioVisualController implements Initializable, IRequestController 
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
-      fields.add(objectChoice.getValue().toString().substring(0, 3));
+      fields.add(objectChoice.getValue().toString().substring(0, 31));
       req.placeRequest(fields);
 
       reset();
