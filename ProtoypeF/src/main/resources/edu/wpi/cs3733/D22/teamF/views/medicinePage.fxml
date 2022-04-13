@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.medicineController">
+<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.medicineController">
    <children>
       <ImageView fitHeight="1056.0" fitWidth="1582.0" layoutX="-6.0" layoutY="-271.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +22,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="816.0" stroke="BLACK" strokeType="INSIDE" width="740.0" />
-      <HBox layoutX="177.0" layoutY="717.0" prefHeight="15.0" prefWidth="366.0">
+      <HBox layoutX="184.0" layoutY="737.0" prefHeight="15.0" prefWidth="366.0">
          <children>
             <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="46.0" prefWidth="127.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                <font>
@@ -96,7 +96,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="273.0" layoutY="165.0" prefHeight="517.0" prefWidth="356.0">
+      <VBox layoutX="273.0" layoutY="165.0" prefHeight="560.0" prefWidth="356.0" spacing="2.0">
          <children>
             <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                <font>
