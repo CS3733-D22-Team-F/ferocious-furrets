@@ -7,24 +7,28 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /** Controller for the landing page */
-public class landingPageController implements Initializable {
+public class landingPageController extends PageController implements Initializable {
 
   private Stage stage;
   private Scene scene;
   private Parent root;
   boolean toggleOff = false;
 
-  @FXML private BorderPane reportBorderPane;
+  @FXML private ScrollPane masterPane;
   @FXML private Label nikolaLabel;
   @FXML private Label azuLabel;
   @FXML private Label johnnikolaLabel;
@@ -43,9 +47,9 @@ public class landingPageController implements Initializable {
    * @throws IOException
    */
   @FXML
-  void switchToMedical(ActionEvent event) throws IOException {
+  void switchToScan(ActionEvent event) throws IOException {
     // TODO fix
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
+    StageManager.getInstance().setDisplay("scanPage.fxml");
   }
 
   /**
@@ -138,17 +142,6 @@ public class landingPageController implements Initializable {
   }
 
   /**
-   * return to the medical scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  @FXML
-  public void returnToMedical(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
-  }
-
-  /**
    * return to medicine scene
    *
    * @param event
@@ -208,17 +201,6 @@ public class landingPageController implements Initializable {
   }
 
   /**
-   * switch to the login scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  @FXML
-  public void switchToLogin(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("logInPage.fxml");
-  }
-
-  /**
    * toggle credits, in MLA format
    *
    * @param event
@@ -254,6 +236,7 @@ public class landingPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
     nikLanding.setVisible(false);
     nikolaLabel.setVisible(false);
     johnnikolaLabel.setVisible(false);
@@ -289,5 +272,10 @@ public class landingPageController implements Initializable {
                 raffiLabel.setVisible(false);
               }
             });
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }

@@ -59,8 +59,12 @@ public abstract class PageController {
     switchScene("medicinePage.fxml");
   }
 
-  public void menu_Medical() {
-    switchScene("medicalPage.fxml");
+  public void menu_Lab() {
+    switchScene("labRequestPage.fxml");
+  }
+
+  public void menu_Scan() {
+    switchScene("scanPage.fxml");
   }
   /**
    * Method to create a class specifics context menu
@@ -102,8 +106,6 @@ public abstract class PageController {
     labs.setText("Labs Request");
     MenuItem meals = this.addMenuItem("mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
-    medical.setText("Medical Request");
     MenuItem medicine = this.addMenuItem("medicinePage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("scanPage.fxml");
@@ -116,7 +118,7 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, medical, allRequests);
+        .addAll(audioVisual, equip, gift, labs, scans, meals, medicine, allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
@@ -160,8 +162,6 @@ public abstract class PageController {
     labs.setText("Labs Request");
     MenuItem meals = this.addMenuItem("mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
-    medical.setText("Medical Request");
     MenuItem medicine = this.addMenuItem("medicinePage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("scanPage.fxml");
@@ -174,7 +174,7 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, medical, allRequests);
+        .addAll(audioVisual, equip, gift, labs, scans, meals, medicine, allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
