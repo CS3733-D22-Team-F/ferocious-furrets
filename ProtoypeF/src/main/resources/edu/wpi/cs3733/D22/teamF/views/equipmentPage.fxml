@@ -76,15 +76,12 @@
             </HBox>
             <VBox fx:id="leftVBox" layoutY="199.0" prefHeight="281.0" prefWidth="669.0" stylesheets="@../combobox.css">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="50.0" prefWidth="178.0">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Node ID: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
                         </Label>
                         <TextField fx:id="nodeField" prefHeight="44.0" prefWidth="296.0" promptText="Node ID">
                            <font>
@@ -142,9 +139,6 @@
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
                         </Label>
                         <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="WHITE" />
                      </children>

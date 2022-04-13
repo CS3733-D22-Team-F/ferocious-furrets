@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
    <right>
       <Pane prefHeight="685.0" prefWidth="424.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +31,7 @@
                   <JFXComboBox fx:id="status" prefHeight="50.0" prefWidth="203.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Return" textFill="#123090">
+            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Home" textFill="#123090">
                <font>
                   <Font name="Serif Regular" size="24.0" />
                </font>
@@ -292,7 +300,7 @@
                               </VBox>
                               <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="666.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Dinner.png" />
+                                    <Image url="@../Documents/GitHub/ferocious-furrets/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/Dinner.png" />
                                  </image>
                               </ImageView>
                               <JFXComboBox fx:id="dinnerChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Dinner" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />

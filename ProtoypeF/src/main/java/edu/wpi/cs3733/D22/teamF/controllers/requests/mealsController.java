@@ -67,26 +67,26 @@ public class mealsController extends PageController implements Initializable, IR
     breakfastChoice.setValue("Choose Breakfast Food");
 
     ArrayList<Object> lunch = new ArrayList<>();
-    lunch.add("French Toast");
-    lunch.add("Oatmeal");
-    lunch.add("Yogurt");
-    lunch.add("Fruit");
-    lunch.add("Quiche");
-    lunch.add("Omelet");
-    lunch.add("Belgian Waffles");
-    lunch.add("Corned Beef Hash");
+    lunch.add("Pizza");
+    lunch.add("Cod");
+    lunch.add("Meatloaf");
+    lunch.add("Spinach Salad");
+    lunch.add("Cheeseburger");
+    lunch.add("Italian Sub");
+    lunch.add("Meatball Sub");
+    lunch.add("Chicken Tenders");
     lunchChoice.getItems().addAll(lunch);
     lunchChoice.setValue("Choose Lunch Food");
 
     ArrayList<Object> dinner = new ArrayList<>();
-    dinner.add("French Toast");
-    dinner.add("Oatmeal");
-    dinner.add("Yogurt");
-    dinner.add("Fruit");
-    dinner.add("Quiche");
-    dinner.add("Omelet");
-    dinner.add("Belgian Waffles");
-    dinner.add("Corned Beef Hash");
+    dinner.add("Grilled Tofu");
+    dinner.add("Macaroni and Cheese");
+    dinner.add("Chicken Quesadilla");
+    dinner.add("Grilled Chicken");
+    dinner.add("Spaghetti");
+    dinner.add("Chicken Noodle Soup");
+    dinner.add("Hamburger");
+    dinner.add("Pork Loin");
     dinnerChoice.getItems().addAll(dinner);
     dinnerChoice.setValue("Choose Dinner Food");
 
