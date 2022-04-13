@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed resolveRequest bug">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" afterDir="false" />
@@ -21,23 +21,6 @@
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/medicineController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/scanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/scanController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/audioVisualPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/audioVisualPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/equipmentPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/equipmentPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftPageResized.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftPageResized.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicinePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/medicinePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/scanPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/scanPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -448,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649722909018</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID">
+      <created>1649884677729</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649884677729</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +468,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merged csv-save branch into master" />
     <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
     <MESSAGE value="Reset map from csv functionality" />
     <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
@@ -503,7 +492,8 @@
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="Controller updates" />
     <MESSAGE value="Updated service request fxml pages to incorporate css file for combo box" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated service request fxml pages to incorporate css file for combo box" />
+    <MESSAGE value="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

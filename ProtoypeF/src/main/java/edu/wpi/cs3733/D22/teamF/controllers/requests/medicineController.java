@@ -99,25 +99,6 @@ public class medicineController extends PageController
     }
   }
 
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
-  }
-
   public void resolveRequest() throws SQLException {
     RequestSystem req = new RequestSystem("Medicine");
     req.resolveRequest(reqID.getText());
@@ -146,20 +127,7 @@ public class medicineController extends PageController
    */
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");

@@ -66,20 +66,7 @@ public class labRequestController extends PageController
     typeChoice.getItems().addAll(temp1);
     typeChoice.setValue("");
 
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
@@ -87,25 +74,6 @@ public class labRequestController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
-  }
-
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
   }
 
   // Use Try/Catch when call this function

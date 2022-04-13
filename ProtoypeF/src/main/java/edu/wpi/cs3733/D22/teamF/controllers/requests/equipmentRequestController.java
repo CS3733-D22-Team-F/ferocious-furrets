@@ -92,20 +92,8 @@ public class equipmentRequestController extends PageController
     equipmentType.add("Infusion Pump");
     equipmentType.add("Recliner");
     typeChoice.getItems().addAll(equipmentType);
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");

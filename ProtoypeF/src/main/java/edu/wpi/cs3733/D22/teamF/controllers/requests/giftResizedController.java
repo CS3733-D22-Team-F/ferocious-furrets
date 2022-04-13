@@ -69,25 +69,6 @@ public class giftResizedController extends PageController
     reset();
   }
 
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
-  }
-
   @Override
   public void reset() {
     assigned.valueProperty().setValue(null);
@@ -141,20 +122,7 @@ public class giftResizedController extends PageController
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
 
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     assigned.getItems().addAll(employees);
     employeeID.getItems().addAll(employees);
     assigned.setValue("");
