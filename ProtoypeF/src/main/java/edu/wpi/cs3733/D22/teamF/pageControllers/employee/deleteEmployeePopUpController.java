@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
@@ -11,10 +11,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class deleteEmployeePopUpController extends PageController implements Initializable {
 
   @FXML TextField employeeID;
+  @FXML JFXButton submitButton;
+  @FXML JFXButton backButton;
 
   public void submit(ActionEvent actionEvent) throws SQLException {
     String empID = employeeID.getText();
@@ -30,7 +33,9 @@ public class deleteEmployeePopUpController extends PageController implements Ini
   }
 
   public void back(ActionEvent actionEvent) {
-    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    //    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    Stage stage = (Stage) backButton.getScene().getWindow();
+    stage.close();
   }
 
   /**

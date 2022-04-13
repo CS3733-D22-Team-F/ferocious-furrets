@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
@@ -13,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class addEmployeePopUpController extends PageController implements Initializable {
 
@@ -48,7 +48,9 @@ public class addEmployeePopUpController extends PageController implements Initia
   }
 
   public void back(ActionEvent event) {
-    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    //    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    Stage stage = (Stage) backButton.getScene().getWindow();
+    stage.close();
   }
 
   /**
