@@ -5,13 +5,16 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/ProtoypeF/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
         </processorPath>
-        <module name="furrets.ProtoypeF.test" />
-        <module name="furrets.ProtoypeF.main" />
+        <module name="ProtoypeF.main" />
+        <module name="ProtoypeF.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="empty-project" target="11" />
+      <module name="empty-project.main" target="11" />
+      <module name="empty-project.test" target="11" />
       <module name="Fdb.main" target="11" />
       <module name="Fdb.test" target="11" />
       <module name="ferocious-furrets.Fapp" target="11" />
