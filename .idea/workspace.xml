@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed gift shop labels">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed med equipment labels">
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/hearingAid.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +290,7 @@
       <workItem from="1649722923532" duration="3666000" />
       <workItem from="1649795859625" duration="838000" />
       <workItem from="1649799215871" duration="2239000" />
-      <workItem from="1649806599841" duration="2126000" />
+      <workItem from="1649806599841" duration="2729000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -459,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649808338076</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixed med equipment labels">
+      <created>1649808790168</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1649808790168</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reset map from csv functionality" />
     <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
     <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
     <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
@@ -514,7 +521,8 @@
     <MESSAGE value="default connection is now embedded, fixed bug where db connection was established before choosing type" />
     <MESSAGE value="added labels to laboratory request" />
     <MESSAGE value="fixed gift shop labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed gift shop labels" />
+    <MESSAGE value="fixed med equipment labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed med equipment labels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
