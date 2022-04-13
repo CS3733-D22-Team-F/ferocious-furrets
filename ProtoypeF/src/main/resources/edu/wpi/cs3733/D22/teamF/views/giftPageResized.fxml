@@ -19,7 +19,7 @@
    <left>
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="611.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="610.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
             <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="618.0" />
             <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="287.0" text="Gift Shop" textFill="WHITE">
                <font>
@@ -34,30 +34,65 @@
                   <Rectangle2D minX="50.0" width="500.0" />
                </viewport>
             </ImageView>
-            <VBox layoutX="12.0" layoutY="240.0" prefHeight="318.0" prefWidth="567.0">
+            <VBox layoutX="271.0" layoutY="240.0" prefHeight="384.0" prefWidth="308.0">
                <children>
-                  <TextField fx:id="nodeID" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Location Node ID" style="-fx-background-color: white;">
+                  <TextField fx:id="nodeID" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Location Node ID" style="-fx-background-color: white;">
                      <font>
-                        <Font name="Serif Regular" size="24.0" />
+                        <Font name="System Font" size="27.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="10.0" top="5.0" />
+                        <Insets bottom="15.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
                   <JFXComboBox fx:id="assigned" prefHeight="54.0" prefWidth="566.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="15.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="employeeID" prefHeight="54.0" prefWidth="566.0" promptText="Requesting Employee" style="-fx-background-color: white;" />
+                  <JFXComboBox fx:id="employeeID" prefHeight="54.0" prefWidth="566.0" promptText="Requesting Employee" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin></JFXComboBox>
                   <JFXComboBox fx:id="giftChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText=" Gift Choice" style="-fx-background-color: white;" unFocusColor="#00000080">
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="15.0" top="5.0" />
                      </VBox.margin></JFXComboBox>
                   <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="51.0" prefWidth="690.0" promptText=" Status" style="-fx-background-color: white;" unFocusColor="#0000007e">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin></JFXComboBox>
+               </children>
+            </VBox>
+            <VBox layoutX="8.0" layoutY="254.0" prefHeight="302.0" prefWidth="239.0" spacing="35.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="204.0" text="Location ID:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="277.0" text="Assigned Employee:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="268.0" text="Request Employee:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="364.0" text="Gift Choice:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="398.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <HBox fx:id="leftHbox" layoutX="1.0" layoutY="615.0" prefHeight="62.0" prefWidth="608.0">

@@ -57,7 +57,7 @@
                <children>
                   <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="27.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="15.0" top="5.0" />
