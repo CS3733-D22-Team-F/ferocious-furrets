@@ -164,14 +164,12 @@ public class mealsController extends PageController implements Initializable, IR
     } else {
       // String reqID = generateReqID()//TODO
       String meal = "";
-      if(!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")){
-        //breakfast meal requested
+      if (!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")) {
+        // breakfast meal requested
         meal = breakfastChoice.getValue().toString();
-      }
-      else if(!lunchChoice.getValue().toString().equals("Choose Lunch Food")){
+      } else if (!lunchChoice.getValue().toString().equals("Choose Lunch Food")) {
         meal = lunchChoice.getValue().toString();
-      }
-      else if(!dinnerChoice.getValue().toString().equals("Choose Dinner Food")){
+      } else if (!dinnerChoice.getValue().toString().equals("Choose Dinner Food")) {
         meal = dinnerChoice.getValue().toString();
       }
       RequestSystem req = new RequestSystem("Meal");
@@ -190,17 +188,15 @@ public class mealsController extends PageController implements Initializable, IR
 
   public String generateReqID() throws SQLException {
     String nNodeType = "";
-    if(!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")){
-      //breakfast meal requested
+    if (!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")) {
+      // breakfast meal requested
       nNodeType = breakfastChoice.getValue().toString();
-    }
-    else if(!lunchChoice.getValue().toString().equals("Choose Lunch Food")){
+    } else if (!lunchChoice.getValue().toString().equals("Choose Lunch Food")) {
       nNodeType = lunchChoice.getValue().toString();
-    }
-    else if(!dinnerChoice.getValue().toString().equals("Choose Dinner Food")){
+    } else if (!dinnerChoice.getValue().toString().equals("Choose Dinner Food")) {
       nNodeType = dinnerChoice.getValue().toString();
     }
-    nNodeType = nNodeType.substring(0,3);
+    nNodeType = nNodeType.substring(0, 3);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
@@ -210,7 +206,7 @@ public class mealsController extends PageController implements Initializable, IR
     rset.close();
 
     String nID = "f" + nNodeType + reqNum;
-    return "test";
+    return nID;
   }
 
   public String employeeIDFinder(String name) throws SQLException {
