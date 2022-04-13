@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,12 +19,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class audioVisualController implements Initializable, IRequestController {
+public class audioVisualController extends PageController
+    implements Initializable, IRequestController {
   private Stage stage;
   private Scene scene;
   private Parent root;
@@ -38,6 +43,11 @@ public class audioVisualController implements Initializable, IRequestController 
   @FXML private Button submitButton;
   @FXML private ComboBox typeChoice;
   @FXML private ComboBox objectChoice;
+  @FXML private HBox topHBox;
+  @FXML private HBox middleHBox;
+  @FXML private HBox bottomHBox;
+  @FXML private Rectangle rectangle1;
+  @FXML private Rectangle rectangle2;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -74,7 +84,7 @@ public class audioVisualController implements Initializable, IRequestController 
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
-      fields.add(objectChoice.getValue().toString().substring(0, 31));
+      fields.add(objectChoice.getValue().toString().substring(0, 3));
       req.placeRequest(fields);
 
       reset();
@@ -108,9 +118,19 @@ public class audioVisualController implements Initializable, IRequestController 
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    backgroundIMG.maxWidth(736);
+    this.makeMenuBar(masterPane);
+
     backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
+    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
+    rectangle1.heightProperty().bind(masterPane.heightProperty());
+    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
+    topHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+    middleHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(400));
+    middleHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+    bottomHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
+    bottomHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> accessibilityType = new ArrayList<>();
     statusDrop.add("");
@@ -196,5 +216,10 @@ public class audioVisualController implements Initializable, IRequestController 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setLandingScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,10 +19,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class medicineController implements Initializable, IRequestController {
+public class medicineController extends PageController
+    implements Initializable, IRequestController {
   private Stage stage;
   private Scene scene;
   private Parent root;
@@ -33,13 +37,13 @@ public class medicineController implements Initializable, IRequestController {
   @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private ComboBox typeChoice;
   @FXML private TextField prescribingDoctor;
   @FXML private TextField dosage;
   @FXML private ComboBox units;
   @FXML private ComboBox units2;
   @FXML private TextField totalAmount;
   @FXML private TextField pharmacyAddress;
+  @FXML private AnchorPane masterPane;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -141,6 +145,7 @@ public class medicineController implements Initializable, IRequestController {
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(masterPane);
     ArrayList<Object> employees = new ArrayList<>();
     ResultSet rset = null;
     try {
@@ -181,5 +186,10 @@ public class medicineController implements Initializable, IRequestController {
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setLandingScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 }

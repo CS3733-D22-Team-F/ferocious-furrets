@@ -4,10 +4,13 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
@@ -15,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /** control for the home page */
-public class homePageController extends PageController {
+public class homePageController extends PageController implements Initializable {
 
   @FXML private AnchorPane reportAnchorPane;
   // Theme Color: #154487
@@ -93,7 +96,7 @@ public class homePageController extends PageController {
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftPage.fxml");
+    StageManager.getInstance().setDisplay("giftPageResized.fxml");
   }
 
   /**
@@ -201,7 +204,7 @@ public class homePageController extends PageController {
   @FXML
   public void returnToGifts(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("giftPage.fxml"));
+    loader.setLocation(getClass().getResource("giftPageResized.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -237,5 +240,10 @@ public class homePageController extends PageController {
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    this.makeMenuBar(reportAnchorPane);
   }
 }

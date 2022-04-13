@@ -77,6 +77,7 @@ public class equipmentRequestController extends PageController
     leftHBox2.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
     leftHBox3.maxWidthProperty().bind(rectangle1.widthProperty().subtract(15));
     leftVBox.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
+    leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
     backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
     backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     ArrayList<Object> statusDrop = new ArrayList<>();

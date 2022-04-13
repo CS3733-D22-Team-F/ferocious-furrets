@@ -23,7 +23,7 @@ public class modifyEmployeePopUpController extends PageController implements Ini
   @FXML TextField lastName;
   @FXML TextField salaryText;
 
-  public void submit(ActionEvent event) throws SQLException {
+  public void modify(ActionEvent event) throws SQLException {
     String empID = employeeID.getText();
     String fName = firstName.getText();
     String lName = lastName.getText();
@@ -34,7 +34,13 @@ public class modifyEmployeePopUpController extends PageController implements Ini
       newEmployee.add(1, fName);
       newEmployee.add(2, lName);
       newEmployee.add(3, salary);
-      DatabaseManager.getEmployeeDAO().add(newEmployee);
+      String cmd =
+          String.format(
+              "UPDATE EMPLOYEE SET FIRSTNAME = '%s', LASTNAME = '%s', SALARY = '%s' WHERE EMPLOYEEID = '%s'",
+              newEmployee.get(1), newEmployee.get(2), newEmployee.get(3), newEmployee.get(0));
+      DatabaseManager.runStatement(cmd);
+      // DatabaseManager.getEmployeeDAO().add(newEmployee);
+
     } else {
       System.out.println("One of more of the fields are empty!");
     }

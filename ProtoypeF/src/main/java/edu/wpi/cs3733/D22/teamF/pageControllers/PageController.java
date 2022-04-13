@@ -48,7 +48,7 @@ public abstract class PageController {
   }
 
   public void menu_Gift() {
-    switchScene("giftPage.fxml");
+    switchScene("giftPageResized.fxml");
   }
 
   public void menu_Map() {
@@ -96,7 +96,7 @@ public abstract class PageController {
     audioVisual.setText("Audio/Visual Request");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
-    MenuItem gift = this.addMenuItem("giftPage.fxml");
+    MenuItem gift = this.addMenuItem("giftPageResized.fxml");
     gift.setText("Gift Request");
     MenuItem labs = this.addMenuItem("labRequestPage.fxml");
     labs.setText("Labs Request");
@@ -154,7 +154,7 @@ public abstract class PageController {
     audioVisual.setText("Audio/Visual Request");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
-    MenuItem gift = this.addMenuItem("giftPage.fxml");
+    MenuItem gift = this.addMenuItem("giftPageResized.fxml");
     gift.setText("Gift Request");
     MenuItem labs = this.addMenuItem("labRequestPage.fxml");
     labs.setText("Labs Request");
