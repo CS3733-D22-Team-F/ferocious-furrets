@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -90,36 +91,54 @@
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </TextField>
                         <JFXBadge prefHeight="27.0" prefWidth="375.0" />
                         <TextField fx:id="employeeID" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="375.0" promptText="Employee ID">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </TextField>
                         <JFXBadge layoutX="10.0" layoutY="54.0" prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="nodeID" layoutX="10.0" layoutY="81.0" prefHeight="17.0" prefWidth="375.0" promptText="NodeID">
+                        <TextField fx:id="nodeID" layoutX="10.0" layoutY="81.0" prefHeight="17.0" prefWidth="375.0" promptText="Node ID">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </TextField>
                         <JFXBadge layoutX="10.0" layoutY="125.0" prefHeight="27.0" prefWidth="375.0" />
                         <TextField fx:id="requestType" layoutX="10.0" layoutY="152.0" prefHeight="17.0" prefWidth="375.0" promptText="Request Type">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </TextField>
                         <JFXBadge layoutX="10.0" layoutY="196.0" prefHeight="27.0" prefWidth="375.0" />
                         <TextField fx:id="deliveryID" layoutX="10.0" layoutY="223.0" prefHeight="17.0" prefWidth="375.0" promptText="Delivery ID">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </TextField>
                         <JFXBadge layoutX="10.0" layoutY="267.0" prefHeight="27.0" prefWidth="375.0" />
                         <TextField fx:id="deliveryType" layoutX="10.0" layoutY="294.0" prefHeight="17.0" prefWidth="375.0" promptText="Delivery Type">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </TextField>
                      </children>
                   </VBox>
@@ -134,37 +153,55 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <VBox layoutX="20.0" layoutY="52.0" prefHeight="398.0" prefWidth="194.0" spacing="40.0">
+                  <VBox layoutX="20.0" layoutY="52.0" prefHeight="193.0" prefWidth="194.0" spacing="40.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="275.0" text="Employee Name:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="275.0" text="Employee Name:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Employee ID:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="292.0" text="Employee ID:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Node ID:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="292.0" text="Node ID:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Request Type:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="194.0" text="Request Type:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Delivery ID:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="292.0" text="Delivery ID:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="292.0" text="Delivery Type:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="292.0" text="Delivery Type:" textFill="WHITE">
                            <font>
-                              <Font size="27.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
