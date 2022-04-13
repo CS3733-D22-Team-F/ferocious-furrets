@@ -83,7 +83,7 @@
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXComboBox fx:id="databaseChooser" prefHeight="40.0" prefWidth="430.0">
+                        <JFXComboBox fx:id="databaseChooser" prefHeight="40.0" prefWidth="430.0" promptText="Choose Database Connection Type" style="-fx-background-color: white;" unFocusColor="#3e8cd0">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>

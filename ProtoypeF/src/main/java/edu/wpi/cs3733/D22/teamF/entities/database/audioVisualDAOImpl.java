@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class mealDAOImpl implements IRequestDAO {
+public class audioVisualDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("mealRequest");
+    DatabaseManager.dropTableIfExist("audioVisualRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -25,9 +25,9 @@ public class mealDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("mealRequest");
+    DatabaseManager.dropTableIfExist("audioVisualRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
@@ -35,12 +35,21 @@ public class mealDAOImpl implements IRequestDAO {
     }
   }
 
+  public void addInit(ArrayList<String> fields) throws SQLException {
+    ArrayList<String> serviceRequestFields = new ArrayList<>();
+    ArrayList<String> audioVisualRequest = new ArrayList<>();
+
+    audioVisualRequest.add(0, fields.get(0)); // request id
+    audioVisualRequest.add(1, fields.get(1)); // accessibility device
+    DatabaseManager.runStatement(generateInsertStatement(audioVisualRequest));
+  }
+
   public void add(ArrayList<String> fields) throws SQLException {
     ArrayList<String> serviceRequestFields = new ArrayList<>();
-    ArrayList<String> mealRequestFields = new ArrayList<>();
+    ArrayList<String> audioVisualRequest = new ArrayList<>();
 
-    mealRequestFields.add(0, fields.get(0)); // request id
-    mealRequestFields.add(1, fields.get(5)); // meal type
+    audioVisualRequest.add(0, fields.get(0)); // request id
+    audioVisualRequest.add(1, fields.get(5)); // accessibility device
 
     serviceRequestFields.add(0, fields.get(0)); // request ID
     serviceRequestFields.add(1, fields.get(1)); // node iD
@@ -50,21 +59,11 @@ public class mealDAOImpl implements IRequestDAO {
 
     DatabaseManager.runStatement(
         RequestDAOImpl.generateInsertStatementForService(serviceRequestFields));
-    DatabaseManager.runStatement(generateInsertStatement(mealRequestFields));
-  }
-
-  public void addInit(ArrayList<String> fields) throws SQLException {
-    // ArrayList<String> serviceRequestFields = new ArrayList<>();
-    ArrayList<String> mealRequestFields = new ArrayList<>();
-
-    mealRequestFields.add(0, fields.get(0)); // request id
-    mealRequestFields.add(1, fields.get(1)); // meal type
-
-    DatabaseManager.runStatement(generateInsertStatement(mealRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(audioVisualRequest));
   }
 
   public void delete(String reqID) throws SQLException {
-    //    String cmd = "DELETE FROM mealRequest WHERE reqID = '" + reqID + "'";
+    //    String cmd = "DELETE FROM audioVisualRequest WHERE reqID = '" + reqID + "'";
     //    DatabaseManager.runStatement(cmd);
     //    String cmd1 = "DELETE FROM ServiceRequest WHERE reqID = '" + reqID + "'";
     //    DatabaseManager.runStatement(cmd1);
@@ -75,7 +74,7 @@ public class mealDAOImpl implements IRequestDAO {
   public void update(ArrayList<String> fields) {}
 
   public ResultSet get() throws SQLException {
-    return DatabaseManager.runQuery("SELECT * FROM MEALREQUEST");
+    return DatabaseManager.runQuery("SELECT * FROM AUDIOVISUALREQUEST");
   }
 
   private ArrayList<String> makeArrayListFromString(String currentLine) {
@@ -92,17 +91,18 @@ public class mealDAOImpl implements IRequestDAO {
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO mealRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
+        "INSERT INTO audioVisualRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
   }
 
   public void backUpToCSV(String filename) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
-    toAdd.add("reqID,meal");
+    toAdd.add("reqID,accessObject");
 
     while (currentRow.next()) {
       toAdd.add(
-          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
+          String.format(
+              "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
     }
 
     CSVWriter.writeAllToDir(filename, toAdd);
@@ -111,11 +111,12 @@ public class mealDAOImpl implements IRequestDAO {
   public void backUpToCSV(File file) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
-    toAdd.add("reqID,meal");
+    toAdd.add("reqID,accessObject");
 
     while (currentRow.next()) {
       toAdd.add(
-          String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
+          String.format(
+              "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
     }
 
     CSVWriter.writeAll(file, toAdd);

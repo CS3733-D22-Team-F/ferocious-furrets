@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,135 +8,316 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
-   <children>
-      <TabPane layoutY="26.0" prefHeight="694.0" prefWidth="834.0" tabClosingPolicy="UNAVAILABLE">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.mealsController">
+   <right>
+      <Pane prefHeight="685.0" prefWidth="424.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="210.88888549804688" layoutY="97.0" spacing="30.0">
+               <children>
+                  <TextField fx:id="nodeID" prefHeight="44.0" prefWidth="202.0" promptText="NodeID">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </TextField>
+                  <JFXComboBox fx:id="assignedEmployee" prefHeight="50.0" prefWidth="203.0" promptText="   Assigned Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+                  <JFXComboBox fx:id="requestedEmployee" prefHeight="50.0" prefWidth="203.0" promptText="   Requested Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+                  <JFXComboBox fx:id="status" prefHeight="50.0" prefWidth="203.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+               </children>
+            </VBox>
+            <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Home" textFill="#123090">
+               <font>
+                  <Font name="Serif Regular" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="594.0" onAction="#submit" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Submit" textFill="#123090">
+               <font>
+                  <Font name="Serif Regular" size="24.0" />
+               </font>
+            </JFXButton>
+            <VBox alignment="TOP_RIGHT" layoutX="-7.0" layoutY="97.0" prefHeight="291.0" prefWidth="209.0" spacing="40.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="143.0" text="Node ID:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="252.0" text="Request Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="159.0" text="Request Status:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </right>
+   <top>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="35.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1283.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <TabPane prefHeight="679.0" prefWidth="865.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
          <tabs>
-            <Tab text="Breakfeast">
+            <Tab text="Breakfast">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="834.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="54.0" layoutX="40.0" layoutY="128.0" stroke="WHITE" strokeType="INSIDE" width="746.0" />
-                        <Label layoutX="314.0" layoutY="14.0" text="Breakfast" textFill="#123090">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="401.0" layoutX="60.0" layoutY="36.0" stroke="WHITE" strokeType="INSIDE" width="745.0" />
+                              <ImageView fitHeight="127.0" fitWidth="159.0" layoutX="724.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Breakfast.png" />
+                                 </image>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="343.0" layoutX="85.0" layoutY="65.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="10.0" width="694.0" />
+                              <Line endX="34.79998779296875" endY="-140.0" layoutX="397.0" layoutY="239.0" startX="34.79998779296875" startY="133.5999755859375" stroke="WHITE" strokeWidth="5.0" />
+                              <VBox layoutX="141.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="French Toast" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Oatmeal" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Yogurt" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Fruit" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="470.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Quiche" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Omelet" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Belgian Waffles" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Corned Beef Hash" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="665.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Breakfast.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXComboBox fx:id="breakfastChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Breakfast" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
+                           </children>
+                        </Pane>
+                     </center>
+                     <top>
+                        <Label text="Breakfast" textFill="#123090" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Times New Roman" size="48.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="173.0" fitWidth="233.0" layoutX="571.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="626.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Breakfast.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
+                     </top>
+                  </BorderPane>
                </content>
             </Tab>
             <Tab text="Lunch">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="54.0" layoutX="40.0" layoutY="128.0" stroke="WHITE" strokeType="INSIDE" width="746.0" />
-                        <Label layoutX="352.0" layoutY="14.0" text="Lunch" textFill="#123090">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="401.0" layoutX="60.0" layoutY="36.0" stroke="WHITE" strokeType="INSIDE" width="745.0" />
+                              <ImageView fitHeight="127.0" fitWidth="159.0" layoutX="724.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Breakfast.png" />
+                                 </image>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="343.0" layoutX="85.0" layoutY="65.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="10.0" width="694.0" />
+                              <Line endX="34.79998779296875" endY="-140.0" layoutX="397.0" layoutY="239.0" startX="34.79998779296875" startY="133.5999755859375" stroke="WHITE" strokeWidth="5.0" />
+                              <VBox layoutX="141.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Pizza" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Baked Cod" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Yogurt" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Tropical Couscos" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="470.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Spinach Salad" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Fruit Kabob" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Five Foot Grinder" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Lavosh" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="665.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Lunch.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXComboBox fx:id="lunchChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Lunch" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
+                           </children>
+                        </Pane>
+                     </center>
+                     <top>
+                        <Label text="Lunch" textFill="#123090" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Times New Roman" size="48.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="619.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Lunch.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
+                     </top>
+                  </BorderPane>
                </content>
             </Tab>
             <Tab text="Dinner">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="690.0" prefWidth="834.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="54.0" layoutX="40.0" layoutY="128.0" stroke="WHITE" strokeType="INSIDE" width="746.0" />
-                        <Label layoutX="351.0" layoutY="14.0" text="Dinner" textFill="#123090">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="401.0" layoutX="60.0" layoutY="36.0" stroke="WHITE" strokeType="INSIDE" width="745.0" />
+                              <ImageView fitHeight="127.0" fitWidth="159.0" layoutX="724.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Breakfast.png" />
+                                 </image>
+                              </ImageView>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="343.0" layoutX="85.0" layoutY="65.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="10.0" width="694.0" />
+                              <Line endX="34.79998779296875" endY="-140.0" layoutX="397.0" layoutY="239.0" startX="34.79998779296875" startY="133.5999755859375" stroke="WHITE" strokeWidth="5.0" />
+                              <VBox layoutX="141.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Mashed Potato Bar" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Macaroni &amp; Cheese" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Quesadillas" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Barley Pilaf" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="470.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Chicken Marsala" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Diablo Shrimp" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Pacific Infused Tofu" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="103.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Roasted Pork Loin" textFill="#123090">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="666.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Dinner.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXComboBox fx:id="dinnerChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Dinner" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
+                           </children>
+                        </Pane>
+                     </center>
+                     <top>
+                        <Label text="Dinner" textFill="#123090" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Times New Roman" size="48.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="201.0" fitWidth="226.0" layoutX="619.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Dinner.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
+                     </top>
+                  </BorderPane>
                </content>
             </Tab>
          </tabs>
       </TabPane>
-      <BorderPane layoutX="834.0" layoutY="26.0">
-         <center>
-            <Pane prefHeight="706.0" prefWidth="492.0" style="-fx-background-color: #123090;">
-               <children>
-                  <VBox layoutX="57.0" layoutY="44.0" prefHeight="434.0" prefWidth="378.0">
-                     <children>
-                        <TextField fx:id="employeeName" prefHeight="17.0" prefWidth="375.0" promptText="Employee Name">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                        <JFXBadge prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="employeeID" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="375.0" promptText="Employee ID">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                        <JFXBadge layoutX="10.0" layoutY="54.0" prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="nodeID" layoutX="10.0" layoutY="81.0" prefHeight="17.0" prefWidth="375.0" promptText="NodeID">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                        <JFXBadge layoutX="10.0" layoutY="125.0" prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="requestType" layoutX="10.0" layoutY="152.0" prefHeight="17.0" prefWidth="375.0" promptText="Request Type">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                        <JFXBadge layoutX="10.0" layoutY="196.0" prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="deliveryID" layoutX="10.0" layoutY="223.0" prefHeight="17.0" prefWidth="375.0" promptText="Delivery ID">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                        <JFXBadge layoutX="10.0" layoutY="267.0" prefHeight="27.0" prefWidth="375.0" />
-                        <TextField fx:id="deliveryType" layoutX="10.0" layoutY="294.0" prefHeight="17.0" prefWidth="375.0" promptText="Delivery Type">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-                  <JFXComboBox fx:id="status" layoutX="87.0" layoutY="501.0" prefHeight="41.0" prefWidth="318.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
-                  <JFXButton buttonType="RAISED" layoutX="319.0" layoutY="590.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Home" textFill="#123090">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="57.0" layoutY="590.0" onAction="#submit" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Submit" textFill="#123090">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </Pane>
-         </center>
-      </BorderPane>
-      <BorderPane fx:id="menuPane" prefHeight="27.0" prefWidth="1326.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   </children>
-</AnchorPane>
+   </center>
+</BorderPane>

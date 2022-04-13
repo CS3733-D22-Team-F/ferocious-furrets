@@ -45,6 +45,10 @@ public class RequestSystem {
         break;
       case "Equipment":
         request = new equipmentDeliveryRequest();
+        break;
+      case "Audio/Visual":
+        request = new audioVisualRequest();
+        break;
       default:
         break;
     }

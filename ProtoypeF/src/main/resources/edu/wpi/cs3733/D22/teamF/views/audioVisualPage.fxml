@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.audioVisualController">
+   <center>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="819.0" stroke="BLACK" strokeType="INSIDE" width="743.0" />
+            <HBox layoutX="138.0" layoutY="626.0" prefHeight="59.0" prefWidth="421.0">
+               <children>
+                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="59.0" prefWidth="137.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="59.0" prefWidth="149.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <VBox layoutX="349.0" layoutY="158.0" prefHeight="401.0" prefWidth="288.0">
+               <children>
+                  <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0" style="-fx-background-color: WHITE;">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="objectChoice" prefHeight="49.0" prefWidth="541.0" style="-fx-background-color: WHITE;">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0" style="-fx-background-color: WHITE;">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+               </children>
+            </VBox>
+            <Pane layoutX="-7.0" prefHeight="123.0" prefWidth="748.0" style="-fx-background-color: #27aad0;">
+               <children>
+                  <Label contentDisplay="TOP" layoutX="28.0" layoutY="38.0" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="90.0" fitWidth="99.0" layoutX="612.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../BWHlogo-new.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="158.0" prefHeight="401.0" prefWidth="288.0">
+               <children>
+                  <Label prefHeight="52.0" prefWidth="126.0" text="Location ID:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="204.0" text="Assigned Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="220.0" text="Requesting Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="97.0" text="Category:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="208.0" text="Accessibility Device:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="52.0" prefWidth="68.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <right>
+      <ImageView fitHeight="819.0" fitWidth="781.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
+         <image>
+            <Image url="@../Images/hearingAid.png.png" />
+         </image>
+      </ImageView>
+   </right>
+</BorderPane>
