@@ -73,8 +73,8 @@ public class mealsController extends PageController implements Initializable, IR
     lunch.add("Spinach Salad");
     lunch.add("Cheeseburger");
     lunch.add("Italian Sub");
-    lunch.add("Meatball Sub");
     lunch.add("Chicken Tenders");
+    lunch.add("Meatball Sub");
     lunchChoice.getItems().addAll(lunch);
     lunchChoice.setValue("Choose Lunch Food");
 

@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ComboBox?>
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.labRequestController">
+<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.labRequestController">
    <children>
       <ImageView fitHeight="752.0" fitWidth="1076.0" layoutX="207.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,101 +23,129 @@
       </ImageView>
       <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;">
          <children>
-            <Pane prefHeight="113.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
+            <Pane prefHeight="149.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
                <children>
-                  <HBox layoutX="136.0" layoutY="24.0" prefHeight="70.0" prefWidth="461.0">
-                     <children>
-                        <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="455.0" text="Laboratory Request" textFill="WHITE">
-                           <font>
-                              <Font name="Times New Roman" size="55.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="673.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="645.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../bwhlogo.png" />
+                        <Image url="@../BWHlogo-new.png" />
                      </image>
                   </ImageView>
+                  <Label contentDisplay="TOP" layoutX="65.0" layoutY="75.0" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <HBox layoutX="151.0" layoutY="544.0" prefHeight="52.0" prefWidth="455.0" spacing="20.0">
+            <HBox layoutX="143.0" layoutY="484.0" prefHeight="53.0" prefWidth="492.0">
                <children>
-                  <Label text="Status:" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
-                        <Font size="37.0" />
-                     </font>
-                  </Label>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="325.0" promptText="Current Status" style="-fx-background-color: white; " unFocusColor="WHITE" />
+                        <Font name="Serif Regular" size="24.0" />
+                     </font></JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font></JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font></JFXButton>
                </children>
             </HBox>
-            <HBox layoutX="108.0" layoutY="461.0" prefHeight="62.0" prefWidth="515.0" spacing="20.0">
+            <VBox layoutX="272.0" layoutY="178.0" prefHeight="265.0" prefWidth="354.0">
                <children>
-                  <Label text="Lab Type:" textFill="WHITE">
+                  <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
-                        <Font size="37.0" />
+                        <Font size="27.0" />
                      </font>
-                  </Label>
-                  <JFXComboBox fx:id="typeChoice" focusColor="#2aa7d0" prefHeight="43.0" prefWidth="320.0" promptText="Select a lab" style="-fx-background-color: white;" unFocusColor="WHITE" />
-               </children>
-            </HBox>
-            <HBox layoutX="150.0" layoutY="656.0" prefHeight="51.0" prefWidth="504.0" spacing="30.0">
-               <children>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="61.0" prefWidth="121.0" ripplerFill="#f3ba48" style="-fx-background-color: #2aa7d0;" text="Home" textFill="WHITE" />
-                  <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="61.0" prefWidth="121.0" ripplerFill="#f3ba48" style="-fx-background-color: #2aa7d0;" text="Submit" textFill="WHITE" />
-                  <JFXButton buttonType="RAISED" onAction="#reset" prefHeight="61.0" prefWidth="121.0" style="-fx-background-color: #2aa7d0;" text="Reset" textFill="WHITE" />
-               </children>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </HBox>
-            <VBox alignment="TOP_RIGHT" layoutX="24.0" layoutY="185.0" prefHeight="255.0" prefWidth="245.0" spacing="35.0">
-               <children>
-                  <Label text="Node ID:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                      <padding>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </padding>
-                  </Label>
-                  <Label text="Employee ID: " textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
+                  </TextField>
+                  <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="6.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label text="Assigned User:" textFill="WHITE">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="7.0" />
                      </VBox.margin>
-                  </Label>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" unFocusColor="WHITE">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" unFocusColor="WHITE">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
                </children>
             </VBox>
-            <VBox layoutX="282.0" layoutY="186.0" prefHeight="245.0" prefWidth="316.0" spacing="40.0">
+            <HBox layoutX="221.0" layoutY="566.0" prefHeight="43.0">
                <children>
-                  <JFXComboBox fx:id="nodeField" prefHeight="8.0" prefWidth="282.0">
-
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="employeeIDField" prefHeight="45.0" prefWidth="338.0">
+                  <TextField fx:id="reqID" prefHeight="44.0" prefWidth="194.0" promptText="Request ID">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="resolve" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #123090;" text="Resolve" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox alignment="TOP_RIGHT" layoutX="20.0" layoutY="182.0" prefHeight="251.0" prefWidth="245.0" spacing="23.0">
+               <children>
+                  <Label prefHeight="28.0" prefWidth="112.0" text="Node ID:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="userField" prefHeight="8.0" prefWidth="282.0">
+                  </Label>
+                  <Label prefHeight="28.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
-                  </JFXComboBox>
+                  </Label>
+                  <Label prefHeight="28.0" prefWidth="208.0" text="Request Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="28.0" prefWidth="120.0" text="Lab Type:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="28.0" prefWidth="164.0" text="Current Status:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
-            <TextField fx:id="reqID" layoutX="24.0" layoutY="619.0" promptText="Request ID" />
-            <Button fx:id="resolve" layoutX="24.0" layoutY="656.0" mnemonicParsing="false" onAction="#resolveRequest" text="Resolve" />
          </children>
       </AnchorPane>
    </children>

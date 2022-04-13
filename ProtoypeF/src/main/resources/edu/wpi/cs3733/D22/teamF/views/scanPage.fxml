@@ -69,22 +69,22 @@
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Request Employee" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Request Employee">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="348.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="WHITE">
+            <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="348.0" promptText="Status" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="337.0" promptText="Scan Type" style="-fx-background-color: white;" unFocusColor="WHITE">
+            <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="337.0" promptText="Scan Type" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>

@@ -106,12 +106,12 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="employeeIDField" prefHeight="48.0" prefWidth="386.0" promptText="Requesting Employee" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="employeeIDField" prefHeight="48.0" prefWidth="386.0" promptText="Requesting Employee">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </JFXComboBox>
-            <JFXComboBox fx:id="userField" prefHeight="48.0" prefWidth="386.0" promptText="Assigned Employee" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="userField" prefHeight="48.0" prefWidth="386.0" promptText="Assigned Employee">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -139,7 +139,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <JFXComboBox fx:id="units" prefHeight="50.0" prefWidth="197.0" style="-fx-background-color: white;" unFocusColor="#123090">
+                  <JFXComboBox fx:id="units" prefHeight="50.0" prefWidth="197.0" unFocusColor="#123090">
                      <HBox.margin>
                         <Insets left="65.0" />
                      </HBox.margin>
@@ -159,7 +159,7 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <JFXComboBox fx:id="units2" prefHeight="55.0" prefWidth="198.0" style="-fx-background-color: white;" unFocusColor="#123090">
+                  <JFXComboBox fx:id="units2" prefHeight="55.0" prefWidth="198.0" unFocusColor="#123090">
                      <HBox.margin>
                         <Insets left="65.0" top="10.0" />
                      </HBox.margin>
@@ -174,7 +174,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <JFXComboBox fx:id="statusChoice" prefHeight="43.0" prefWidth="386.0" promptText="Status" style="-fx-background-color: white;">
+            <JFXComboBox fx:id="statusChoice" prefHeight="43.0" prefWidth="386.0" promptText="Status">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

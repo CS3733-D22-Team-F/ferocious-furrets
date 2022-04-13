@@ -91,7 +91,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="employeeIDField" minWidth="-Infinity" prefHeight="61.0" prefWidth="298.0" promptText="Assigned Employee" style="-fx-background-color: white;" stylesheets="@../combobox.css">
+                        <JFXComboBox fx:id="employeeIDField" minWidth="-Infinity" prefHeight="61.0" prefWidth="298.0" promptText="Assigned Employee">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -108,7 +108,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="58.0" prefWidth="298.0" promptText="Requesting Employee" style="-fx-background-color: white;" />
+                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="58.0" prefWidth="298.0" promptText="Requesting Employee" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -121,7 +121,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" style="-fx-background-color: white;" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -134,7 +134,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
