@@ -33,7 +33,7 @@
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="usernameField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="">
+                        <TextField fx:id="usernameField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Username" style="">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -43,15 +43,15 @@
                            <font>
                               <Font size="24.0" />
                            </font>
-                        </JFXTextField>
-                        <JFXTextField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="">
+                        </TextField>
+                        <TextField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
                            <font>
                               <Font size="24.0" />
                            </font>
-                        </JFXTextField>
+                        </TextField>
                      </children>
                      <padding>
                         <Insets left="2.0" />
