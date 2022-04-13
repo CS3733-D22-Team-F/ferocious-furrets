@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -15,24 +14,28 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/** controller for the map reset functinos including reseting fields and using the file explorer */
 public class mapResetController implements Initializable {
 
   @FXML private TextField idField;
   @FXML Button cancel;
-  @FXML Button reset;
-  @FXML Button delete;
   @FXML Button select;
-
-  LocationsDAOImpl LDAOImpl = new LocationsDAOImpl();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {}
 
+  /** cancels stage */
   public void cancel() {
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }
 
+  /**
+   * Opens a file chooser allowing the user to select a file from the file explorer
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
   public void selectFile() throws SQLException, IOException {
     FileChooser fChoose = new FileChooser();
     fChoose.setTitle("Open CSV File");
@@ -44,6 +47,7 @@ public class mapResetController implements Initializable {
     stage.close();
   }
 
+  /** clears fields */
   public void reset() {
     idField.clear();
   }

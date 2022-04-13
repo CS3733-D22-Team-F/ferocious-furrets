@@ -2,22 +2,18 @@ package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapPopUp;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
+import com.jfoenix.controls.JFXSlider;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +29,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controller for the map page including functionality for contolling the map scene up changing
+ * views
+ */
 public class mapPageController implements Initializable {
   private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
   private static final String FX_BACKGROUND_BLUE = "-fx-background-color:#123090";
@@ -55,6 +55,8 @@ public class mapPageController implements Initializable {
   @FXML ScrollPane scrollPane;
   @FXML Group mapGroup;
   @FXML AnchorPane iconPane;
+
+  @FXML JFXSlider zoomSlider;
 
   @FXML JFXButton showIconButton;
 
@@ -83,6 +85,7 @@ public class mapPageController implements Initializable {
   @FXML JFXButton changeToF4;
   @FXML JFXButton changeToF3;
   @FXML JFXButton changeToF2;
+  @FXML JFXButton changeToF1;
   @FXML JFXButton changeToL1;
   @FXML JFXButton changeToL2;
 
@@ -119,37 +122,16 @@ public class mapPageController implements Initializable {
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
     legend.setExpanded(false);
 
-    ArrayList<Location> nLocations = null;
-    ArrayList<equipment> eList = null;
-    ArrayList<Location> eLocations = null;
     try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-      eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-      eLocations = MapTableHolder.equipToLocation(eList);
-    } catch (SQLException e) {
+      MapTableHolder.loadMap(table, iconPane);
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
 
-    try {
-      loadTable();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    nLocations.addAll(eLocations);
-
-    for (Location lo : nLocations) {
-      try {
-        addIcon(lo);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
     loadAllLegend();
     setUpNode();
     changeToF1();
+    iniSlider();
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */
@@ -295,12 +277,23 @@ public class mapPageController implements Initializable {
     updateScale();
   }
 
-  public void zoomIn() {
-    onScroll(2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
-  }
-
-  public void zoomOut() {
-    onScroll(-2.5, new Point2D(scrollPane.getWidth() / 2, scrollPane.getHeight() / 2));
+  public void iniSlider() {
+    zoomSlider
+        .valueProperty()
+        .addListener(
+            new ChangeListener<Number>() {
+              public void changed(
+                  ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                if (old_val != new_val) {
+                  // Change scale of map based on slider position.
+                  double sliderValue = new_val.doubleValue();
+                  // double d = SettlementMapPanel.DEFAULT_SCALE;
+                  double newScale = 1 + sliderValue * 0.01;
+                  iconPane.setScaleX(scaleValue * newScale);
+                  iconPane.setScaleY(scaleValue * newScale);
+                }
+              }
+            });
   }
 
   @FXML
@@ -309,8 +302,9 @@ public class mapPageController implements Initializable {
       Alert error = new Alert(Alert.AlertType.ERROR);
       error.show();
     } else {
-      MapPopUp.popUpReset();
-      loadMap();
+      MapTableHolder.wipeMap();
+      MapPopUp.popUpReset(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane);
     }
   }
 
@@ -321,14 +315,8 @@ public class mapPageController implements Initializable {
       error.show();
     } else {
       MapPopUp.popUpAdd();
-      loadMap();
+      MapTableHolder.loadMap(table, iconPane);
     }
-  }
-
-  @FXML
-  void popUpDelete() throws SQLException, IOException {
-    MapPopUp.popUpDelete();
-    loadMap();
   }
 
   @FXML
@@ -338,7 +326,7 @@ public class mapPageController implements Initializable {
       error.show();
     } else {
       MapPopUp.popUpSave();
-      loadMap();
+      MapTableHolder.loadMap(table, iconPane);
     }
   }
 
@@ -349,16 +337,21 @@ public class mapPageController implements Initializable {
       error.show();
     } else {
       MapPopUp.openHistory();
-      loadMap();
+      MapTableHolder.loadMap(table, iconPane);
     }
   }
 
   @FXML
   void openFullTable() throws SQLException, IOException {
     MapPopUp.openFullTable();
-    loadMap();
+    MapTableHolder.loadMap(table, iconPane);
   }
 
+  @FXML
+  private void homePage(ActionEvent event) throws IOException {
+    StageManager.getInstance().setLandingScreen();
+  }
+  // START show functions
   public void showPatient() {
     MapIconModifier.showPatient();
   }
@@ -435,153 +428,47 @@ public class mapPageController implements Initializable {
     MapIconModifier.showIcon(showIconButton);
   }
 
-  public void wipeMap() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    oldLocs.addAll(eLocations);
-    for (Location loc : oldLocs) {
-      MapIconModifier.deleteIcon(loc);
-    }
-  }
-
-  public void displayMap() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-
-    ArrayList<Location> nLocations = null;
-    ArrayList<Location> eLocations = null;
-    try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
-      eLocations = MapTableHolder.equipToLocation(eList);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    ObservableList<Location> nlocationList = FXCollections.observableList(nLocations);
-    nLocations.addAll(eLocations);
-    for (Location lo : nLocations) {
-      try {
-        addIcon(lo);
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      }
-    }
-    MapIconModifier.showAllIcon();
-  }
-
-  public void loadTable() throws SQLException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
-    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    oldLocs.addAll(eLocations);
-    ObservableList<Location> nlocationList = FXCollections.observableList(oldLocs);
-    table.setItems(nlocationList);
-  }
-
-  public void loadMap() throws SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    loadTable();
-    wipeMap();
-    displayMap();
-  }
-
-  /**
-   * Add an icon to the map at a location node to provide a graphical representation of the location
-   *
-   * @param location
-   * @throws FileNotFoundException
-   */
-  public void addIcon(Location location) throws FileNotFoundException, SQLException {
-    JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
-    newButton.setPrefSize(20, 20);
-    newButton.setMinSize(20, 20);
-    newButton.setMaxSize(20, 20);
-    newButton.setOnAction(
-        e -> {
-          if (MapIconModifier.locationIconList.containsValue(newButton)) {
-            Location lo =
-                new ArrayList<>(
-                        MapIconModifier.getKeysByValue(MapIconModifier.locationIconList, newButton))
-                    .get(0);
-            try {
-              MapPopUp.popUpModify(lo);
-              loadMap();
-            } catch (IOException | SQLException ex) {
-              ex.printStackTrace();
-            }
-          }
-        });
-    double x =
-        (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
-    double y = (location.getYcoord() / 3550.0) * 700;
-    System.out.println(location.getXcoord());
-    System.out.println(x);
-    newButton.setLayoutX(x);
-    newButton.setLayoutY(y);
-    iconPane.getChildren().add(newButton);
-    MapIconModifier.locationIconList.put(location, newButton);
-  }
-
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
-    menuNodeList.setRotate(90);
-    setCircleButton(openFloorMenu, 55);
+    menuNodeList.setRotate(-90);
+    AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF5, 40);
+    AGlobalMethods.setCircleButton(changeToF5, 40);
     changeToF5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF4, 40);
+    AGlobalMethods.setCircleButton(changeToF4, 40);
     changeToF4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF3, 40);
+    AGlobalMethods.setCircleButton(changeToF3, 40);
     changeToF3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToF2, 40);
+    AGlobalMethods.setCircleButton(changeToF2, 40);
     changeToF2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToL1, 40);
+    AGlobalMethods.setCircleButton(changeToF1, 40);
+    changeToF1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(changeToL1, 40);
     changeToL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(changeToL2, 40);
+    AGlobalMethods.setCircleButton(changeToL2, 40);
     changeToL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    setCircleButton(openMenu, 55);
+    AGlobalMethods.setCircleButton(openMenu, 55);
     openMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     openMenu.setGraphic(MapIconModifier.getIcon("menu"));
-    setCircleButton(addButton, 40);
+    AGlobalMethods.setCircleButton(addButton, 40);
     addButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     addButton.setGraphic(MapIconModifier.getIcon("add"));
-    setCircleButton(saveButton, 40);
+    AGlobalMethods.setCircleButton(saveButton, 40);
     saveButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     saveButton.setGraphic(MapIconModifier.getIcon("save"));
-    setCircleButton(loadButton, 40);
+    AGlobalMethods.setCircleButton(loadButton, 40);
     loadButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     loadButton.setGraphic(MapIconModifier.getIcon("load"));
-    setCircleButton(tableButton, 40);
+    AGlobalMethods.setCircleButton(tableButton, 40);
     tableButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     tableButton.setGraphic(MapIconModifier.getIcon("table"));
-    setCircleButton(historyButton, 40);
+    AGlobalMethods.setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
-    setCircleButton(homeButton, 40);
+    AGlobalMethods.setCircleButton(homeButton, 40);
     homeButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     homeButton.setGraphic(MapIconModifier.getIcon("home"));
-  }
-
-  public static void setCircleButton(Button button, int radius) {
-    button.setStyle(
-        "-fx-background-radius: "
-            + radius
-            + "em; "
-            + "-fx-min-width: "
-            + radius
-            + "px; "
-            + "-fx-min-height: "
-            + radius
-            + "px; "
-            + "-fx-max-width: "
-            + radius
-            + "px; "
-            + "-fx-max-height: "
-            + radius
-            + "px;"
-            + FX_TEXT_FILL_WHITE
-            + ";"
-            + FX_BACKGROUND_BLUE);
   }
 
   @FXML
@@ -589,7 +476,7 @@ public class mapPageController implements Initializable {
     StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 
-  public void homePage(ActionEvent event) {
-    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
-  }
+  //  public void homePage(ActionEvent event) {
+  //    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+  //  }
 }

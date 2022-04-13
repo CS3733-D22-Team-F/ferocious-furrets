@@ -2,19 +2,19 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/** object for map pop ups includeing full table, history and the ability to add more */
 public class MapPopUp {
   /**
    * open a fullscreen view of the locations table on the right side of the page
@@ -80,7 +80,7 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpSave() throws IOException {
-    StageManager.getInstance().setDisplayAndWait("mapBackUpPage.fxml");
+    StageManager.getInstance().setDisplayAndWaitMap("mapBackUpPage.fxml");
   }
 
   /**
@@ -88,12 +88,10 @@ public class MapPopUp {
    * and redisplay to update view
    *
    * @throws IOException
-   * @throws SQLException
    */
-  public static void popUpReset() throws IOException, SQLException {
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
-    ArrayList<equipment> eList = null;
-    eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+  public static void popUpReset(TableView<Location> table, AnchorPane iconPane) throws IOException {
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
     Parent root = FXMLLoader.load(mapPageController.class.getResource("mapResetPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -102,9 +100,42 @@ public class MapPopUp {
     popupwindow.showAndWait();
   }
 
-  public static void popUpModify(Location location) throws IOException, SQLException {
-    nodeTempHolder.setLocation(location);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapModifyPage.fxml"));
+  public static void popUpLocModify(
+      TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapLocModifyPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+  }
+
+  public static void popUpDone(TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapServiceModifyPage.fxml"));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+  }
+
+  public static void popUpEquipModify(
+      TableView<Location> table, AnchorPane iconPane, Location location)
+      throws IOException, SQLException {
+    locTempHolder.setLocation(location);
+    locTempHolder.setLocationTable(table);
+    locTempHolder.setPassIconPane(iconPane);
+    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapEquipModifyPage.fxml"));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.employeePageController">
+   <left>
+      <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="670.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Rectangle fx:id="lowerRect" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="675.0" />
+            <Rectangle fx:id="upperRect" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="681.0" />
+            <Label fx:id="employeeTitle" layoutX="74.0" layoutY="51.0" prefHeight="80.0" prefWidth="287.0" text="Employees" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="64.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="516.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../BWHlogo-new.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D minX="50.0" width="500.0" />
+               </viewport>
+            </ImageView>
+            <VBox fx:id="buttons" layoutX="188.0" layoutY="200.0" prefHeight="396.0" prefWidth="290.0">
+               <children>
+                  <JFXButton fx:id="modifyButton" buttonType="RAISED" onAction="#modifyEmployee" prefHeight="76.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Modify" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="addButton" buttonType="RAISED" onAction="#addEmployee" prefHeight="86.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="deleteButton" buttonType="RAISED" onAction="#deleteEmployee" prefHeight="79.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="homeButton" buttonType="RAISED" onAction="#switchToHome" prefHeight="78.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Home Page" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <TableView fx:id="employeeTable" prefHeight="721.0" prefWidth="697.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="employeeID" prefWidth="175.0" text="employeID" />
+          <TableColumn fx:id="firstName" prefWidth="169.0" text="firstName" />
+            <TableColumn fx:id="lastName" prefWidth="211.0" text="lastName" />
+            <TableColumn fx:id="salary" prefWidth="119.0" text="salary" />
+        </columns>
+      </TableView>
+   </right>
+</BorderPane>

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapAddController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapAddController">
    <children>
       <HBox layoutX="24.0" layoutY="32.0" prefHeight="291.0" prefWidth="560.0">
          <children>
@@ -120,8 +116,8 @@
             </VBox>
          </children>
       </HBox>
-      <JFXButton fx:id="cancel" layoutX="104.0" layoutY="334.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
-      <JFXButton layoutX="233.0" layoutY="334.0" onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
-      <JFXButton layoutX="358.0" layoutY="334.0" onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
+      <JFXButton fx:id="cancel" layoutX="104.0" layoutY="346.0" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
+      <JFXButton layoutX="358.0" layoutY="346.0" onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
+      <JFXButton layoutX="239.0" layoutY="346.0" onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
    </children>
 </AnchorPane>

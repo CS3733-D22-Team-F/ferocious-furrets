@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class RequestSystem {
   private IRequest request;
 
+  /**
+   * Contructor
+   *
+   * @param reqType String type of request
+   */
   public RequestSystem(String reqType) {
     switch (reqType) {
       case "Meal":
@@ -40,11 +45,20 @@ public class RequestSystem {
         break;
       case "Equipment":
         request = new equipmentDeliveryRequest();
+        break;
+      case "Audio/Visual":
+        request = new audioVisualRequest();
+        break;
       default:
         break;
     }
   }
 
+  /**
+   * places a request
+   *
+   * @param fields
+   */
   public void placeRequest(ArrayList<String> fields) {
     try {
       request.place(fields);
@@ -53,14 +67,30 @@ public class RequestSystem {
     }
   }
 
+  /**
+   * marks a request as resoved
+   *
+   * @param nodeID String location id
+   * @throws SQLException
+   */
   public void resolveRequest(String nodeID) throws SQLException {
     request.resolve(nodeID);
   }
 
+  /**
+   * modifys a request taking in a arraylist of the fields
+   *
+   * @param fields ArrayLiss</String>
+   */
   public void modifyRequest(ArrayList<String> fields) {
     request.modify(fields);
   }
 
+  /**
+   * Concales a request taking a nodeID of a location?
+   *
+   * @param nodeID String
+   */
   public void cancelRequest(String nodeID) {
     request.cancel(nodeID);
   }

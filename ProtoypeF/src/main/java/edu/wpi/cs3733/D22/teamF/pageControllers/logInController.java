@@ -1,12 +1,18 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import edu.wpi.cs3733.D22.teamF.returnHomePage;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,18 +21,21 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * controll for log in scene
+ * controller for log in scene
  *
  * @see returnHomePage
  */
-public class logInController extends returnHomePage {
+public class logInController extends returnHomePage implements Initializable {
   @FXML private TextField usernameField;
   @FXML private TextField passwordField;
   @FXML private Label popUpLabel;
+  @FXML private JFXComboBox databaseChooser;
 
   private Stage stage = new Stage();
   private Parent root;
   private Scene scene;
+
+  private DatabaseInitializer.ConnType dbType;
 
   /*
    * method to send user to the homepage after a successful authentication of username and password
@@ -35,6 +44,12 @@ public class logInController extends returnHomePage {
     StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
+  /**
+   * backs up the db to csvs then quits the application
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
   @FXML
   private void helpQuit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
@@ -42,7 +57,7 @@ public class logInController extends returnHomePage {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn() {
+  private void logIn() throws SQLException, IOException {
     boolean success = false;
     UserType userType = new UserType();
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
@@ -76,11 +91,34 @@ public class logInController extends returnHomePage {
     if (success) {
       usernameField.clear();
       passwordField.clear();
+      if (databaseChooser.getValue().toString().equals("Embedded")) {
+        dbType = DatabaseInitializer.ConnType.EMBEDDED;
+      } else {
+        dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+      }
+
+      // DatabaseManager.switchConnection(dbType);
+
+      DatabaseManager.switchConnection(dbType);
       StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
     }
-    ;
+    if (databaseChooser.getValue().toString().equals("Client-Server")) {
+      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    } else {
+      dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> databaseDrop = new ArrayList<>();
+    databaseDrop.add("");
+    databaseDrop.add("Embedded");
+    databaseDrop.add("Client-Server");
+    databaseChooser.getItems().addAll(databaseDrop);
+    databaseChooser.setValue("Embedded");
   }
 }
