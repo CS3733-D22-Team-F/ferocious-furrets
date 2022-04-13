@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="default connection is now embedded, fixed bug where db connection was established before choosing type">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed gift shop labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/logInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/logInController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,11 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ProtoypeF" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -106,7 +110,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/Documentation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -242,19 +246,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ProtoypeF" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ProtoypeF" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Fapp" />
       <item itemvalue="Application.Main" />
@@ -298,6 +289,7 @@
       <workItem from="1649722923532" duration="3666000" />
       <workItem from="1649795859625" duration="838000" />
       <workItem from="1649799215871" duration="2239000" />
+      <workItem from="1649806599841" duration="2126000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -453,7 +445,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649804069182</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added labels to laboratory request">
+      <created>1649807693282</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649807693282</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fixed gift shop labels">
+      <created>1649808338076</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649808338076</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,8 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merged csv-save branch into master" />
-    <MESSAGE value="Added UI to take in user inputted filepath and reset Locations table from that csv file. Need to fix NullPointerException that occurs when user tries to return to map page after reset." />
     <MESSAGE value="Reset map from csv functionality" />
     <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
     <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
@@ -508,7 +512,9 @@
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="logInController fixes, labRequestController fixes, medicinePage.fxml removal of JFXTextFields" />
     <MESSAGE value="default connection is now embedded, fixed bug where db connection was established before choosing type" />
-    <option name="LAST_COMMIT_MESSAGE" value="default connection is now embedded, fixed bug where db connection was established before choosing type" />
+    <MESSAGE value="added labels to laboratory request" />
+    <MESSAGE value="fixed gift shop labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed gift shop labels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
