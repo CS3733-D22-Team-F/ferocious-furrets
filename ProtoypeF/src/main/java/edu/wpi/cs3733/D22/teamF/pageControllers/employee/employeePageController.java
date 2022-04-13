@@ -54,15 +54,14 @@ public class employeePageController extends PageController implements Initializa
     firstName.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastName"));
     salary.setCellValueFactory(new PropertyValueFactory<Employee, String>("salary"));
-
     ArrayList<Employee> employees = new ArrayList<>();
     try {
       ResultSet rset = DatabaseManager.getEmployeeDAO().get();
       while (rset.next()) {
-        String empID = rset.getString("employeeID");
-        String first = rset.getString("firstName");
-        String last = rset.getString("lastName");
-        String salary = rset.getString("salary");
+        String empID = rset.getString("EMPLOYEEID");
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String salary = rset.getString("SALARY");
         System.out.println(empID + first + last + salary);
         Employee emp = new Employee(empID, first, last, salary);
         employees.add(emp);

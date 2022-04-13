@@ -6,7 +6,6 @@ import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,8 +20,7 @@ public class deleteEmployeePopUpController extends PageController implements Ini
     String empID = employeeID.getText();
     if (empID.equals("")) {
       System.out.println("Cannot leave text fields blank");
-    }
-    else {
+    } else {
       DatabaseManager.getEmployeeDAO().delete(empID);
     }
   }
