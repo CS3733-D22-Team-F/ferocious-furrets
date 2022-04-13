@@ -84,6 +84,14 @@
                                           <Insets top="25.0" />
                                        </VBox.margin>
                                     </Label>
+                                    <Label fx:id="nikLanding" prefHeight="16.0" prefWidth="206.0" text="Landing Page created by Nikola" textFill="#3e8cd0">
+                                       <font>
+                                          <Font name="Serif Regular" size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" left="75.0" />
+                                       </VBox.margin>
+                                    </Label>
                                     <JFXButton buttonType="RAISED" onAction="#returnToLab" prefHeight="82.0" prefWidth="300.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="LAB" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
