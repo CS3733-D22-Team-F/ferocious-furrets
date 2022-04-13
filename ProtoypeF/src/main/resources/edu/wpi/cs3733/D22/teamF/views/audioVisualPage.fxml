@@ -19,32 +19,27 @@
    <center>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="816.0" stroke="BLACK" strokeType="INSIDE" width="740.0" />
-            <HBox layoutX="78.0" layoutY="624.0" prefHeight="59.0" prefWidth="617.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="819.0" stroke="BLACK" strokeType="INSIDE" width="743.0" />
+            <HBox layoutX="138.0" layoutY="626.0" prefHeight="59.0" prefWidth="421.0">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="resolveReq" buttonType="RAISED" onAction="#resolveRequest" prefHeight="53.0" prefWidth="189.0" ripplerFill="#ffcd57" text="Resolve" textFill="WHITE">
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="59.0" prefWidth="137.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="37.0" prefWidth="119.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="59.0" prefWidth="173.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="59.0" prefWidth="149.0" ripplerFill="#ffc44d" text="Home" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </JFXButton>
                </children>
             </HBox>
-            <VBox layoutX="349.0" layoutY="158.0" prefHeight="466.0" prefWidth="288.0">
+            <VBox layoutX="349.0" layoutY="158.0" prefHeight="401.0" prefWidth="288.0">
                <children>
                   <TextField fx:id="nodeField" prefHeight="8.0" prefWidth="282.0" promptText="Node ID">
                      <font>
@@ -83,67 +78,60 @@
             </VBox>
             <Pane layoutX="-7.0" prefHeight="123.0" prefWidth="748.0" style="-fx-background-color: #27aad0;">
                <children>
-                  <HBox layoutX="96.0" layoutY="24.0" prefHeight="70.0" prefWidth="501.0">
-                     <children>
-                        <Label contentDisplay="TOP" prefHeight="70.0" prefWidth="564.0" text="Audio/Visual Request" textFill="WHITE">
-                           <font>
-                              <Font name="Times New Roman" size="55.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <ImageView fitHeight="111.0" fitWidth="175.0" layoutX="596.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <Label contentDisplay="TOP" layoutX="28.0" layoutY="38.0" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="90.0" fitWidth="99.0" layoutX="612.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../BWHlogo-new.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <VBox layoutX="40.0" layoutY="158.0" prefHeight="462.0" prefWidth="288.0">
+            <VBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="158.0" prefHeight="401.0" prefWidth="288.0">
                <children>
-                  <Label prefHeight="52.0" prefWidth="242.0" text="Location ID" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="126.0" text="Location ID:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="52.0" prefWidth="242.0" text="Assigned Employee" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="204.0" text="Assigned Employee:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="52.0" prefWidth="280.0" text="Requesting Employee" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="220.0" text="Requesting Employee:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="52.0" prefWidth="242.0" text="Category" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="97.0" text="Category:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="52.0" prefWidth="242.0" text="Accessibility Device" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="208.0" text="Accessibility Device:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="52.0" prefWidth="242.0" text="Status" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="68.0" text="Status:" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -155,9 +143,9 @@
       </AnchorPane>
    </center>
    <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="1056.0" fitWidth="1582.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
+      <ImageView fitHeight="819.0" fitWidth="781.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
-            <Image url="@../Images/hearingAid.jpg" />
+            <Image url="@../Images/hearingAid.png.png" />
          </image>
       </ImageView>
    </right>

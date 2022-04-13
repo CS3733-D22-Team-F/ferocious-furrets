@@ -9,7 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -20,11 +19,16 @@
    <right>
       <Pane prefHeight="685.0" prefWidth="424.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="212.0" layoutY="209.0" prefHeight="339.0" prefWidth="204.0" spacing="65.0">
+            <VBox layoutX="210.88888549804688" layoutY="97.0" spacing="30.0">
                <children>
-                  <JFXComboBox fx:id="assignedEmployee" prefHeight="50.0" prefWidth="327.0" promptText="   Assigend Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
-                  <JFXComboBox fx:id="requestedEmployee" prefHeight="50.0" prefWidth="327.0" promptText="   Requested Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
-                  <JFXComboBox fx:id="status" prefHeight="50.0" prefWidth="327.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+                  <TextField fx:id="nodeID" prefHeight="44.0" prefWidth="202.0" promptText="NodeID">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </TextField>
+                  <JFXComboBox fx:id="assignedEmployee" prefHeight="50.0" prefWidth="203.0" promptText="   Assigned Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+                  <JFXComboBox fx:id="requestedEmployee" prefHeight="50.0" prefWidth="203.0" promptText="   Requested Employee" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
+                  <JFXComboBox fx:id="status" prefHeight="50.0" prefWidth="203.0" promptText="   Request Status" style="-fx-background-color: white;" unFocusColor="#ffc44d" />
                </children>
             </VBox>
             <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="594.0" onAction="#switchToHome" prefHeight="64.0" prefWidth="127.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Home" textFill="#123090">
@@ -37,35 +41,30 @@
                   <Font name="Serif Regular" size="24.0" />
                </font>
             </JFXButton>
-            <HBox layoutX="50.0" layoutY="97.0" prefHeight="73.0" prefWidth="370.0" spacing="33.0">
+            <VBox alignment="TOP_RIGHT" layoutX="-7.0" layoutY="97.0" prefHeight="291.0" prefWidth="209.0" spacing="40.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="128.0" text="Node ID:    " textFill="WHITE">
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="143.0" text="Node ID:" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nodeID" prefHeight="44.0" prefWidth="202.0" promptText="NodeID">
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
-                  </TextField>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="252.0" text="Request Employee:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="159.0" text="Request Status:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
                </children>
-            </HBox>
-            <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="209.0" prefHeight="40.0" prefWidth="169.0" text="Assig. Employee" textFill="WHITE">
-               <font>
-                  <Font name="Serif Regular" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="15.0" layoutY="322.0" prefHeight="40.0" prefWidth="176.0" text="Reqest. Employee" textFill="WHITE">
-               <font>
-                  <Font name="Serif Regular" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="32.0" layoutY="439.0" prefHeight="40.0" prefWidth="143.0" text="Request Status" textFill="WHITE">
-               <font>
-                  <Font name="Serif Regular" size="24.0" />
-               </font>
-            </Label>
+            </VBox>
          </children>
       </Pane>
    </right>
@@ -139,9 +138,10 @@
                               </VBox>
                               <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="665.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ferocious-furrets/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/Breakfast.png" />
+                                    <Image url="@../Images/Breakfast.png" />
                                  </image>
                               </ImageView>
+                              <JFXComboBox fx:id="breakfastChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Breakfast" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
                            </children>
                         </Pane>
                      </center>
@@ -200,7 +200,7 @@
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Fruit kabob" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Fruit Kabob" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
@@ -219,9 +219,10 @@
                               </VBox>
                               <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="665.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ferocious-furrets/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/Lunch.png" />
+                                    <Image url="@../Images/Lunch.png" />
                                  </image>
                               </ImageView>
+                              <JFXComboBox fx:id="lunchChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Lunch" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
                            </children>
                         </Pane>
                      </center>
@@ -275,7 +276,7 @@
                               </VBox>
                               <VBox layoutX="470.0" layoutY="107.0" prefHeight="257.0" prefWidth="254.0" spacing="20.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Chiken Marsala" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Chicken Marsala" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
@@ -285,7 +286,7 @@
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Paciffic Infused Tofu" textFill="#123090">
+                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="254.0" ripplerFill="#f3ba48" style="-fx-background-color: white;" text="Pacific Infused Tofu" textFill="#123090">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
@@ -299,9 +300,10 @@
                               </VBox>
                               <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="666.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Documents/GitHub/ferocious-furrets/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Images/Dinner.png" />
+                                    <Image url="@../Images/Dinner.png" />
                                  </image>
                               </ImageView>
+                              <JFXComboBox fx:id="dinnerChoice" focusColor="#123090" layoutX="258.0" layoutY="461.0" prefHeight="43.0" prefWidth="349.0" promptText="Choose Dinner" style="-fx-background-color: 123090;" unFocusColor="#3e8cd0" />
                            </children>
                         </Pane>
                      </center>
