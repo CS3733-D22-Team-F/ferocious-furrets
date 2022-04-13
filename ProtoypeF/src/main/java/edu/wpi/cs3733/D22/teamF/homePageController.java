@@ -34,6 +34,11 @@ public class homePageController extends PageController {
   }
 
   @FXML
+  void switchToDashboard(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("dashboardPage.fxml");
+  }
+
+  @FXML
   void switchToEmployee(ActionEvent event) throws IOException {
     //    if (!UserType.getUserType().equals("admin")) {
     //      Alert alert = new Alert(Alert.AlertType.ERROR);

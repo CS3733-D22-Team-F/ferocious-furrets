@@ -196,7 +196,7 @@ public class labRequestController extends PageController
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    StageManager.getInstance().setLandingScreen();
   }
 
   @Override

@@ -35,6 +35,7 @@ public class landingPageController implements Initializable {
   @FXML private Label nikolaLabLabel;
   @FXML private JFXToggleButton toggleButton;
   @FXML private Label raffiLabel;
+  @FXML private Label nikLanding;
 
   /**
    * switch to the medical scene
@@ -290,6 +291,7 @@ public class landingPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    nikLanding.setVisible(false);
     nikolaLabel.setVisible(false);
     johnnikolaLabel.setVisible(false);
     evansLabel.setVisible(false);
@@ -304,6 +306,7 @@ public class landingPageController implements Initializable {
             (observable, oldValue, newValue) -> {
               if (toggleButton.isSelected() == true) {
                 toggleButton.setText("Show Credits: ON");
+                nikLanding.setVisible(true);
                 nikolaLabel.setVisible(true);
                 johnnikolaLabel.setVisible(true);
                 evansLabel.setVisible(true);
@@ -313,6 +316,7 @@ public class landingPageController implements Initializable {
                 raffiLabel.setVisible(true);
               } else {
                 toggleButton.setText("Show Credits: OFF");
+                nikLanding.setVisible(false);
                 nikolaLabel.setVisible(false);
                 johnnikolaLabel.setVisible(false);
                 evansLabel.setVisible(false);

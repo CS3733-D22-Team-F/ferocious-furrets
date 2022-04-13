@@ -40,7 +40,7 @@
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font></JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Home" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font></JFXButton>

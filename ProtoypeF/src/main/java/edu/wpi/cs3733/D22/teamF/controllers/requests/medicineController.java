@@ -180,6 +180,6 @@ public class medicineController implements Initializable, IRequestController {
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    StageManager.getInstance().setLandingScreen();
   }
 }

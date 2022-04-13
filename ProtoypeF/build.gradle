@@ -30,6 +30,7 @@ javafx {
 
 dependencies {
     implementation(
+            'com.github.afester.javafx:FranzXaver:0.1',
             'com.jfoenix:jfoenix:9.0.10',
 
             // You may comment out the database dependency you do not use
