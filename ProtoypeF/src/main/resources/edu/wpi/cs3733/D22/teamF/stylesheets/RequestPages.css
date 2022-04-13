@@ -1,9 +1,5 @@
 /*** variable declarations***/
-{
-/*Our Colors */
-    f-blue: #123090;
-    f-gold: #f3ba48;
-}
+@import url(vars.css);
 /**
 W? works too well and is problematic
 W for works
