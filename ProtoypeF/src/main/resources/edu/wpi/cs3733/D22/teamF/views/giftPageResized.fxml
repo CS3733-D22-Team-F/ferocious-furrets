@@ -34,68 +34,110 @@
                   <Rectangle2D minX="50.0" width="500.0" />
                </viewport>
             </ImageView>
-            <VBox layoutX="271.0" layoutY="240.0" prefHeight="384.0" prefWidth="308.0">
+            <VBox layoutX="273.0" layoutY="224.0" prefHeight="271.0" prefWidth="308.0">
                <children>
                   <TextField fx:id="nodeID" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="100.0" promptText="Location Node ID" style="-fx-background-color: white;">
                      <font>
                         <Font name="System Font" size="27.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="15.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </TextField>
                   <JFXComboBox fx:id="assigned" prefHeight="54.0" prefWidth="566.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets bottom="15.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </JFXComboBox>
                   <JFXComboBox fx:id="employeeID" prefHeight="54.0" prefWidth="566.0" promptText="Requesting Employee" style="-fx-background-color: white;">
                      <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin></JFXComboBox>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></JFXComboBox>
                   <JFXComboBox fx:id="giftChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText=" Gift Choice" style="-fx-background-color: white;" unFocusColor="#00000080">
                      <VBox.margin>
-                        <Insets bottom="15.0" top="5.0" />
-                     </VBox.margin></JFXComboBox>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></JFXComboBox>
                   <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="51.0" prefWidth="690.0" promptText=" Status" style="-fx-background-color: white;" unFocusColor="#0000007e">
                      <VBox.margin>
                         <Insets top="5.0" />
-                     </VBox.margin></JFXComboBox>
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></JFXComboBox>
                </children>
             </VBox>
-            <VBox layoutX="8.0" layoutY="254.0" prefHeight="302.0" prefWidth="239.0" spacing="35.0">
+            <VBox layoutX="30.0" layoutY="224.0" prefHeight="273.0" prefWidth="239.0">
                <children>
-                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="204.0" text="Location ID:" textFill="WHITE">
+                  <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="239.0" text="Location ID:" textFill="WHITE">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="50.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
                   <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="277.0" text="Assigned Employee:" textFill="WHITE">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
                   <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="268.0" text="Request Employee:" textFill="WHITE">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
                   <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="364.0" text="Gift Choice:" textFill="WHITE">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
                   <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="398.0" text="Status:" textFill="WHITE">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </Label>
                </children>
             </VBox>
-            <HBox fx:id="leftHbox" layoutX="1.0" layoutY="615.0" prefHeight="62.0" prefWidth="608.0">
+            <HBox fx:id="leftHbox" layoutX="2.0" layoutY="554.0" prefHeight="62.0" prefWidth="608.0">
                <children>
                   <JFXButton fx:id="queueButton" buttonType="RAISED" onAction="#showQueueScene" prefHeight="71.0" prefWidth="236.0" ripplerFill="#f2ba49" text="Gift Queue" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -118,7 +160,7 @@
       </Pane>
    </left>
    <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="727.0" fitWidth="736.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
+      <ImageView fx:id="backgroundIMG" fitHeight="721.0" fitWidth="736.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
             <Image url="@../Images/small-basket.png" />
          </image>
