@@ -97,12 +97,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
   /**
    * deletes row from database table
    *
-   * @param reqID String reqID using to delete
+   * @param empID String reqID using to delete
    * @throws SQLException
    */
-  public void delete(String reqID) throws SQLException {
+  public void delete(String empID) throws SQLException {
     DatabaseManager.runStatement(
-        String.format("DELETE FROM Employee WHERE employeeID = '%s'", reqID));
+        String.format("DELETE FROM Employee WHERE employeeID = '%s'", empID));
   }
 
   public void update(ArrayList<String> fields) throws SQLException {

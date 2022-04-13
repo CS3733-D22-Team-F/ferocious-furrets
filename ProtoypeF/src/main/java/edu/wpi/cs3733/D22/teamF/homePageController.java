@@ -33,6 +33,20 @@ public class homePageController extends PageController {
     StageManager.getInstance().setDisplay("medicalPage.fxml");
   }
 
+  @FXML
+  void switchToEmployee(ActionEvent event) throws IOException {
+    //    if (!UserType.getUserType().equals("admin")) {
+    //      Alert alert = new Alert(Alert.AlertType.ERROR);
+    //      alert.setTitle("ERROR");
+    //      alert.setHeaderText("You do not have access to this feature");
+    //      alert.setContentText("Please consult an administrator");
+    //      alert.showAndWait();
+    //    } else {
+    //      StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    //    }
+    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+  }
+
   /**
    * switch to map scene
    *
