@@ -121,27 +121,27 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" style="-fx-background-color: white;">
+                        <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" style="-fx-background-color: white;">
+                        <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0" style="-fx-background-color: WHITE;">
+                        <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="objectChoice" prefHeight="49.0" prefWidth="541.0" style="-fx-background-color: WHITE;">
+                        <JFXComboBox fx:id="objectChoice" prefHeight="49.0" prefWidth="541.0">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0" style="-fx-background-color: WHITE;">
+                        <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
