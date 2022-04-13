@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 public class labRequestController extends PageController
     implements Initializable, IRequestController {
 
-  @FXML TextField nodeField;
+  @FXML JFXComboBox nodeField;
   @FXML JFXComboBox employeeIDField;
   @FXML JFXComboBox userField;
   @FXML private AnchorPane masterPane;
@@ -118,7 +118,7 @@ public class labRequestController extends PageController
     ArrayList<Object> requestList = new ArrayList<>();
     String sampleType = null;
     // If any of the field is missing, pop up a notice
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
@@ -136,7 +136,7 @@ public class labRequestController extends PageController
       RequestSystem req = new RequestSystem("Lab");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeField.getValue().toString());
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -153,7 +153,7 @@ public class labRequestController extends PageController
 
   @FXML
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     typeChoice.valueProperty().setValue(null);
