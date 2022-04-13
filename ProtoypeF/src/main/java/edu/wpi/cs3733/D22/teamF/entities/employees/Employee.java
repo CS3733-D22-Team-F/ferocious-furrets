@@ -1,15 +1,15 @@
 package edu.wpi.cs3733.D22.teamF.entities.employees;
 
-public abstract class Employee {
-  private String position;
-  private String employeeID;
-  private String name;
-  private String status;
+public class Employee {
+  public String employeeID;
+  public String firstName;
+  public String lastName;
+  public String salary;
 
-  public Employee(String employeeID, String name, String position, String status) {
+  public Employee(String employeeID, String firstName, String lastName, String salary) {
     this.employeeID = employeeID;
-    this.name = name;
-    this.position = position;
-    this.status = status;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.salary = salary;
   }
 }
