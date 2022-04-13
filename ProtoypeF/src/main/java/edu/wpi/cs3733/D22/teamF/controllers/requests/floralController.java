@@ -25,6 +25,6 @@ public class floralController implements Initializable, IRequestController {
   public void initialize(URL location, ResourceBundle resources) {}
 
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

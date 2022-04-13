@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +32,7 @@ public class MapIconModifier {
           .getChildren()
           .remove(locationIconList.get(location));
       locationIconList.remove(location);
+    } else {
     }
   }
 
@@ -165,6 +169,14 @@ public class MapIconModifier {
                       "Icons/EquipmentIcons/RECL Icon.png"));
           break;
         }
+      case "Xray":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream(
+                      "Icons/EquipmentIcons/XRAY Icon.png"));
+          break;
+        }
       case "add":
         {
           image =
@@ -206,6 +218,58 @@ public class MapIconModifier {
         {
           image =
               new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/table.png"));
+          break;
+        }
+      case "audio&visual":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream(
+                      "Icons/ServiceIcon/AudioVisualIcon.png"));
+          break;
+        }
+      case "equip":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream(
+                      "Icons/ServiceIcon/EquipmentIcon.png"));
+          break;
+        }
+      case "gift":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/GiftIcon.png"));
+          break;
+        }
+      case "lab":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/LabIcon.png"));
+          break;
+        }
+      case "meal":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/MealIcon.png"));
+          break;
+        }
+      case "medical":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream(
+                      "Icons/ServiceIcon/MedicineIcon.png"));
+          break;
+        }
+      case "scan":
+        {
+          image =
+              new Image(
+                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/ScanIcon.png"));
           break;
         }
     }
@@ -359,5 +423,101 @@ public class MapIconModifier {
         .filter(entry -> Objects.equals(entry.getValue(), value))
         .map(Map.Entry::getKey)
         .collect(Collectors.toSet());
+  }
+
+  /**
+   * Add an icon to the map at a location node to provide a graphical representation of the location
+   *
+   * @param location
+   * @throws FileNotFoundException
+   */
+  public static void addIcon(TableView<Location> table, AnchorPane iconPane, Location location)
+      throws FileNotFoundException, SQLException {
+    if (!location.getShortName().equals("done")) {
+      JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
+      newButton.setPrefSize(20, 20);
+      newButton.setMinSize(20, 20);
+      newButton.setMaxSize(20, 20);
+      if (getLocType(location).equals("location")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpLocModify(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
+              }
+            });
+      } else if (getLocType(location).equals("service")
+          && !location.getShortName().equals("done")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpDone(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
+              }
+            });
+      } else if (getLocType(location).equals("equipment")) {
+        newButton.setOnAction(
+            e -> {
+              if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                Location lo =
+                    new ArrayList<>(
+                            MapIconModifier.getKeysByValue(
+                                MapIconModifier.locationIconList, newButton))
+                        .get(0);
+                try {
+                  MapPopUp.popUpEquipModify(table, iconPane, lo);
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (IOException | SQLException ex) {
+                  ex.printStackTrace();
+                }
+              }
+            });
+      }
+
+      double x =
+          (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
+      double y = (location.getYcoord() / 3550.0) * 700;
+      newButton.setLayoutX(x);
+      newButton.setLayoutY(y);
+      iconPane.getChildren().add(newButton);
+      MapIconModifier.locationIconList.put(location, newButton);
+    }
+  }
+
+  public static String getLocType(Location location) {
+    if (location.getNodeType().equals("Infusion Pump")
+        || location.getNodeType().equals("Bed")
+        || location.getNodeType().equals("Recliner")
+        || location.getNodeType().equals("Xray")) {
+      return "equipment";
+    } else if (location.getNodeType().equals("audio&visual")
+        || location.getNodeType().equals("equip")
+        || location.getNodeType().equals("gift")
+        || location.getNodeType().equals("lab")
+        || location.getNodeType().equals("meal")
+        || location.getNodeType().equals("medicine")
+        || location.getNodeType().equals("scan")) {
+      return "service";
+    } else {
+      return "location";
+    }
   }
 }

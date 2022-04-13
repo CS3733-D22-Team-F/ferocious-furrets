@@ -55,6 +55,6 @@ public class medicalController {
    */
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }

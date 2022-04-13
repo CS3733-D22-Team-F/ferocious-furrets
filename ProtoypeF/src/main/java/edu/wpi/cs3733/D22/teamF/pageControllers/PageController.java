@@ -107,6 +107,6 @@ public abstract class PageController {
    * switch to home scene
    */
   public void switchToHome() {
-    StageManager.getInstance().setHomeScreen();
+    StageManager.getInstance().setHome();
   }
 }
