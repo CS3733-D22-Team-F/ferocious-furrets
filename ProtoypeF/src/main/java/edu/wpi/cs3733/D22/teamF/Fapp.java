@@ -22,6 +22,6 @@ public class Fapp extends Application {
 
   @Override
   public void stop() {
-    log.info("Shutting Down");
+    log.info("Shutting Down ");
   }
 }
