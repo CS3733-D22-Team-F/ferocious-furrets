@@ -18,7 +18,7 @@ public interface LocationDAO {
    * @return ArrayList of type Location
    * @throws SQLException
    */
-  public ArrayList<Location> getAllLocations() throws SQLException;
+  public ArrayList<Location> getAllLocationsFromDB() throws SQLException;
   /**
    * Taking user input for the ID of the new location node. A new Java Location object is created
    * and the node is added to the SQL table.

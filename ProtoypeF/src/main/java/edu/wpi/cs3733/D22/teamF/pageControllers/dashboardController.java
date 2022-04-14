@@ -1,13 +1,13 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -187,25 +187,27 @@ public class dashboardController implements Initializable {
   private String getLocationTypeFromNodeID(String id) throws SQLException {
     String retVal = "";
 
-    ResultSet rset =
-        DatabaseManager.runQuery("Select * from LOCATIONS WHERE NODEID = '" + id + "'");
+    Location loc = Cache.getLocation(id);
 
-    ArrayList<Location> locArray = DatabaseManager.getLocationDAO().locationsFromRSET(rset);
-    Location loc = locArray.get(0);
-    if (loc.getNodeType().equals("PATI")) {
-      retVal = "Pod";
-    }
-    // if clean storage
-    else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Clean")) {
-      //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+    try {
+      if (loc.getNodeType().equals("PATI")) {
+        retVal = "Pod";
+      }
 
-      retVal = "Clean";
-    }
-    // if dirty storage
-    else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Dirty")) {
-      //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+      // if clean storage
+      else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Clean")) {
+        //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
 
-      retVal = "Dirty";
+        retVal = "Clean";
+      }
+      // if dirty storage
+      else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Dirty")) {
+        //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+
+        retVal = "Dirty";
+      }
+    } catch (NullPointerException e) {
+      System.out.println("ERROR! Couldn't fetch node: " + id);
     }
 
     return retVal;
