@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
@@ -214,11 +213,11 @@ public class dashboardController implements Initializable {
 
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mapPage.fxml");
+    // StageManager.getInstance().setDisplay("mapPage.fxml");
   }
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    // StageManager.getInstance().setHome();
   }
 }

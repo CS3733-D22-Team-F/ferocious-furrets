@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
@@ -51,6 +50,6 @@ public class requestListController extends PageController implements Initializab
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    // StageManager.getInstance().setHome();
   }
 }

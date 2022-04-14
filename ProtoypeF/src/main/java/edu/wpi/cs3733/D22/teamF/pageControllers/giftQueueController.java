@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.IController;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -33,7 +32,7 @@ public class giftQueueController implements Initializable, IController {
    */
   @FXML
   void switchToGift(ActionEvent event) {
-    StageManager.getInstance().setDisplay("giftPage.fxml");
+    // StageManager.getInstance().setDisplay("giftPage.fxml");
   }
 
   /**

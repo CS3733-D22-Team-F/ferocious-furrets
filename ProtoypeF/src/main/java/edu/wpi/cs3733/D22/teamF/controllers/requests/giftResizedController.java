@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
@@ -139,7 +138,7 @@ public class giftResizedController extends PageController
    * @throws IOException
    */
   public void showQueueScene(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
+    // StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
   }
 
   public String generateReqID() throws SQLException {
@@ -162,6 +161,6 @@ public class giftResizedController extends PageController
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setLandingScreen();
+    // StageManager.getInstance().setLandingScreen();
   }
 }

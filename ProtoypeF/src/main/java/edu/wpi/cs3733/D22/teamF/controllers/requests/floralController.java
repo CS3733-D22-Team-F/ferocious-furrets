@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +26,7 @@ public class floralController extends PageController implements Initializable, I
   public void initialize(URL location, ResourceBundle resources) {}
 
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    // StageManager.getInstance().setHome();
   }
 
   @Override

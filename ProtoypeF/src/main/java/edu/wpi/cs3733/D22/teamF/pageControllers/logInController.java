@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXComboBox;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
@@ -41,7 +40,7 @@ public class logInController extends returnHomePage implements Initializable {
    * method to send user to the homepage after a successful authentication of username and password
    */
   public void loginSuccess() throws IOException {
-    StageManager.getInstance().setDisplay("homePage.fxml");
+    // StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
   /**
@@ -100,7 +99,7 @@ public class logInController extends returnHomePage implements Initializable {
       // DatabaseManager.switchConnection(dbType);
 
       DatabaseManager.switchConnection(dbType);
-      StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+      // StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

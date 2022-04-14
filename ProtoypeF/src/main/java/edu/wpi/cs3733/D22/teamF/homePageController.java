@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
@@ -33,12 +32,12 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
+    // StageManager.getInstance().setDisplay("medicalPage.fxml");
   }
 
   @FXML
   void switchToDashboard(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("dashboardPage.fxml");
+    // StageManager.getInstance().setDisplay("dashboardPage.fxml");
   }
 
   @FXML
@@ -52,7 +51,7 @@ public class homePageController extends PageController implements Initializable 
     //    } else {
     //      StageManager.getInstance().setDisplay("employee/employeePage.fxml");
     //    }
-    StageManager.getInstance().setDisplay("employee/employeePage.fxml");
+    // StageManager.getInstance().setDisplay("employee/employeePage.fxml");
   }
 
   /**
@@ -63,7 +62,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mapPage.fxml");
+    // StageManager.getInstance().setDisplay("mapPage.fxml");
   }
 
   /**
@@ -74,7 +73,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToEquipment(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("equipmentPage.fxml");
+    // StageManager.getInstance().setDisplay("equipmentPage.fxml");
   }
 
   /**
@@ -85,7 +84,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("medicinePage.fxml");
+    // StageManager.getInstance().setDisplay("medicinePage.fxml");
   }
 
   /**
@@ -96,7 +95,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftPageResized.fxml");
+    // StageManager.getInstance().setDisplay("giftPageResized.fxml");
   }
 
   /**
@@ -107,7 +106,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mealPage.fxml");
+    // StageManager.getInstance().setDisplay("mealPage.fxml");
   }
 
   /**
@@ -218,16 +217,16 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   public void switchToRequests(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("requestListPage.fxml");
+    // StageManager.getInstance().setDisplay("requestListPage.fxml");
   }
 
   @FXML
   public void switchToLanding(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("landingPage.fxml");
+    // StageManager.getInstance().setDisplay("landingPage.fxml");
   }
 
   public void switchToLogin(ActionEvent event) {
-    StageManager.getInstance().setDisplay("logInPage.fxml");
+    // StageManager.getInstance().setDisplay("logInPage.fxml");
   }
 
   /** exits */

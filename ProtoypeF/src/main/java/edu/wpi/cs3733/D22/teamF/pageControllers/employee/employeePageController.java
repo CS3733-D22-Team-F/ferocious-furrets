@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.employees.*;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
@@ -77,17 +76,17 @@ public class employeePageController extends PageController implements Initializa
 
   @FXML
   private void addEmployee(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplayAndWait("employee/addEmployee.fxml");
+    // StageManager.getInstance().setDisplayAndWait("employee/addEmployee.fxml");
   }
 
   @FXML
   private void modifyEmployee(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplayAndWait("employee/modifyEmployee.fxml");
+    // StageManager.getInstance().setDisplayAndWait("employee/modifyEmployee.fxml");
   }
 
   @FXML
   private void deleteEmployee(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplayAndWait("employee/deleteEmployee.fxml");
+    // StageManager.getInstance().setDisplayAndWait("employee/deleteEmployee.fxml");
   }
 
   public void submit() throws SQLException {}

@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.Map.*;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -80,7 +79,7 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpSave() throws IOException {
-    StageManager.getInstance().setDisplayAndWaitMap("mapBackUpPage.fxml");
+    // StageManager.getInstance().setDisplayAndWaitMap("mapBackUpPage.fxml");
   }
 
   /**

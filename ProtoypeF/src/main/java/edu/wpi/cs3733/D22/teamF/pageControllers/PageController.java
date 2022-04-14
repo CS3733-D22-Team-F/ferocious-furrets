@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -196,13 +195,13 @@ public abstract class PageController {
    * @param fileName String scene to switch to
    */
   public void switchScene(String fileName) {
-    StageManager.getInstance().setDisplay(fileName);
+    // StageManager.getInstance().setDisplay(fileName);
   }
 
   /** abstaction of StageManager to getback to home */
   /** switch to home scene */
   public void switchToHome() {
-    StageManager.getInstance().setHome();
+    // StageManager.getInstance().setHome();
   }
 
   public ArrayList<Object> locationNames() {
@@ -250,7 +249,7 @@ public abstract class PageController {
     return nodeID;
   }
 
-  public String employeeIDFinder(String name) throws SQLException {
+  public String employeeIDFinder(String name) throws SQLException, SQLException {
     String empID = "";
     String[] employeeName = name.split(",");
     String last = employeeName[0];

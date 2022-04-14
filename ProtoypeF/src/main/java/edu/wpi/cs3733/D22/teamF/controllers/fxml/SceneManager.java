@@ -4,15 +4,17 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.SubScene;
+import javafx.stage.Stage;
 
 /** Scene manager class, singleton so there can only be one instance */
 public class SceneManager {
   // <> generic doesn't care accepts all key,object type pair
   // smart compiler <> alt + enter
-  private HashMap<String, Scene> h_map = new HashMap<>();
+  private HashMap<String, SubScene> h_map = new HashMap<>();
   private static SceneManager m_SceneManager = null;
   private String currentScene = "";
+  private Stage currentStage;
 
   private SceneManager() {}
 
@@ -37,19 +39,14 @@ public class SceneManager {
    * @param filename Takes a string to acess fxml file/scene
    * @return
    */
-  public Scene setScene(String filename) // acess from anywhere global
+  public SubScene setScene(String filename) throws IOException // acess from anywhere global
       { // higlight tab /shift+tab
-    Scene scene = null;
-
+    SubScene scene = null;
     // checks in hash
     if (!h_map.containsKey(filename)) {
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(filename));
       // alt enter while hover over/cursor in red
-      try {
-        scene = new Scene(fxmlLoader.load());
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      scene = new SubScene(fxmlLoader.load(), 1200, 720);
       h_map.put(filename, scene); // hashing any object hence generic
       System.out.println("Loading Scene: " + filename);
     } else {
@@ -64,11 +61,19 @@ public class SceneManager {
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(path));
     // alt enter while hover over/cursor in red
     try {
-      Scene scene = new Scene(fxmlLoader.load());
+      SubScene scene = new SubScene(fxmlLoader.load(), 1200, 720);
       h_map.put(path, scene); // hashing any object hence generic
     } catch (IOException e) {
       e.printStackTrace();
     }
     System.out.println("Loading Scene: " + path);
+  }
+
+  public Stage getStage() {
+    return currentStage;
+  }
+
+  public void setStage(Stage stage) {
+    currentStage = stage;
   }
 }

@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
 import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.*;
@@ -349,7 +348,7 @@ public class mapPageController implements Initializable {
 
   @FXML
   private void homePage(ActionEvent event) throws IOException {
-    StageManager.getInstance().setHome();
+    // StageManager.getInstance().setLandingScreen();
   }
   // START show functions
   public void showPatient() {
@@ -473,7 +472,7 @@ public class mapPageController implements Initializable {
 
   @FXML
   public void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
+    // StageManager.getInstance().setDisplayNoViews("homePage.fxml");
   }
 
   //  public void homePage(ActionEvent event) {

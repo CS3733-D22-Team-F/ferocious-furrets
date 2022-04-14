@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -30,7 +29,7 @@ public class labQueueController implements Initializable {
    */
   @FXML
   void switchToLab(ActionEvent event) {
-    StageManager.getInstance().setDisplay("labRequestPage.fxml");
+    // StageManager.getInstance().setDisplay("labRequestPage.fxml");
   }
 
   /**

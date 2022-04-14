@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
@@ -16,14 +14,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * lab request controller
@@ -144,10 +139,10 @@ public class labRequestController extends PageController
    * @throws IOException
    */
   public void showQueueScene(ActionEvent event) throws IOException {
-    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    //    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
+    //    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    //    stage.setScene(scene);
+    //    stage.show();
   }
 
   // TODO make a interaface for all controllers
@@ -167,7 +162,7 @@ public class labRequestController extends PageController
 
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
-    StageManager.getInstance().setLandingScreen();
+    // StageManager.getInstance().setLandingScreen();
   }
 
   @Override
