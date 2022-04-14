@@ -35,7 +35,7 @@ public class giftResizedController extends PageController
   @FXML ImageView backgroundIMG;
 
   @FXML JFXComboBox employeeID;
-  @FXML TextField nodeID;
+  @FXML JFXComboBox nodeID;
   @FXML TextField patientName;
   @FXML JFXComboBox assigned;
   @FXML JFXComboBox statusChoice;
@@ -57,7 +57,7 @@ public class giftResizedController extends PageController
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
-    fields.add(nodeID.getText());
+    fields.add(nodeIDFinder(nodeID.getValue().toString()));
     fields.add(employeeIDFinder(assigned.getValue().toString()));
     fields.add(employeeIDFinder(employeeID.getValue().toString()));
     fields.add(statusChoice.getValue().toString());
@@ -69,30 +69,11 @@ public class giftResizedController extends PageController
     reset();
   }
 
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
-  }
-
   @Override
   public void reset() {
     assigned.valueProperty().setValue(null);
     employeeID.valueProperty().setValue(null);
-    nodeID.clear();
+    nodeID.valueProperty().setValue(null);
     statusChoice.valueProperty().set(null);
     giftChoice.valueProperty().set(null);
   }
@@ -141,24 +122,14 @@ public class giftResizedController extends PageController
     giftChoice.getItems().addAll(temp1);
     giftChoice.setValue("");
 
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    ArrayList<Object> employees = employeeNames();
     assigned.getItems().addAll(employees);
     employeeID.getItems().addAll(employees);
     assigned.setValue("");
     employeeID.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeID.getItems().addAll(locations);
   }
 
   /**

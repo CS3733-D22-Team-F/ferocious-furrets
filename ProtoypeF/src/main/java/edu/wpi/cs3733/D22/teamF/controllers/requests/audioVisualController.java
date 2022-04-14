@@ -35,7 +35,7 @@ public class audioVisualController extends PageController
 
   @FXML private BorderPane masterPane;
   @FXML private ImageView backgroundIMG;
-  @FXML private TextField nodeField;
+  @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private ComboBox statusChoice;
@@ -54,7 +54,7 @@ public class audioVisualController extends PageController
 
   @FXML
   public void reset() {
-    nodeField.clear();
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
@@ -65,7 +65,7 @@ public class audioVisualController extends PageController
   @FXML
   public void submit() throws SQLException {
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getText().equals("")
+    if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
@@ -80,7 +80,7 @@ public class audioVisualController extends PageController
       RequestSystem req = new RequestSystem("Audio/Visual");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(nodeField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -134,8 +134,8 @@ public class audioVisualController extends PageController
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> accessibilityType = new ArrayList<>();
     statusDrop.add("");
-    statusDrop.add("processing");
-    statusDrop.add("done");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
     accessibilityType.add("Deaf/Hard of Hearing");
@@ -144,24 +144,15 @@ public class audioVisualController extends PageController
     typeChoice.setValue("");
     objectChoice.getItems().add("");
     objectChoice.setValue("");
-    ArrayList<Object> employees = new ArrayList<>();
-    ResultSet rset = null;
-    try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
-      while (rset.next()) {
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String name = last + ", " + first;
-        employees.add(name);
-      }
-      rset.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+
+    ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
   }
 
   /**
@@ -188,25 +179,6 @@ public class audioVisualController extends PageController
       objectChoice.getItems().clear();
       objectChoice.getItems().add("");
     }
-  }
-
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
   }
 
   /**

@@ -4,18 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed CSS Color Error">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4e933174-d9d8-44d4-af88-bd42a988e540.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/694b132c-fd18-4148-9cff-4d47909446df.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_05_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_05_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_18_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2022_9_04_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2022_9_04_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/svgTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/MedEquipReqTest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReqTest.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/svgTester.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Map/mapPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Map/mapPageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +34,6 @@
         <task path="$PROJECT_DIR$/ProtoypeF">
           <activation />
         </task>
-        <task path="$PROJECT_DIR$/empty-project/empty-project">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -57,6 +52,12 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ProtoypeF" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -73,30 +74,16 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/newConnerclientserver" />
+    <option name="BRANCH" value="nodeID-dropdown" />
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Totally Azu &lt;sde@wpi.edu&gt;" />
-        <option value="Totally Azu" />
-      </list>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="azu-icon" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -107,34 +94,28 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="DatabaseDriversLRU" value="derby" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45632184" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\csv" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Sam Laird\Documents\WPI\GitExamples\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\csv" />
-      <recent name="C:\Users\Sam Laird\Documents\WPI\GitExamples\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\stylesheets" />
-      <recent name="C:\Users\Sam Laird\Documents\WPI\GitExamples\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
@@ -143,12 +124,33 @@
       <recent name="edu.wpi.furious_furrets" />
     </key>
   </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="gradle clean" />
-    </option>
-  </component>
-  <component name="RunManager" selected="Gradle.ProtoypeF [runShadow]">
+  <component name="RunManager" selected="Gradle.ProtoypeF [run]">
+    <configuration name="Fapp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Fapp" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.wpi.cs3733.D22.teamF.Main" />
+      <module name="ProtoypeF.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.wpi.cs3733.D22.teamF.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProtoypeF [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -191,27 +193,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ProtoypeF [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="runShadow" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="ProtoypeF [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -224,27 +205,6 @@
         <option name="taskNames">
           <list>
             <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ProtoypeF [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="shadowJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -276,20 +236,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Fapp" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
       <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [clean]" />
       <item itemvalue="Gradle.ProtoypeF [build]" />
-      <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
-      <item itemvalue="Gradle.ProtoypeF [runShadow]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ProtoypeF [runShadow]" />
-        <item itemvalue="Gradle.ProtoypeF [clean]" />
-        <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
         <item itemvalue="Gradle.ProtoypeF [run]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
+        <item itemvalue="Gradle.ProtoypeF [clean]" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Fapp" />
       </list>
     </recent_temporary>
   </component>
@@ -315,13 +275,7 @@
       <workItem from="1649205998338" duration="1241000" />
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
-      <workItem from="1649722923532" duration="6192000" />
-      <workItem from="1649731836783" duration="2102000" />
-      <workItem from="1649735091009" duration="1766000" />
-      <workItem from="1649825077247" duration="587000" />
-      <workItem from="1649825731375" duration="8196000" />
-      <workItem from="1649878205232" duration="2033000" />
-      <workItem from="1649880364326" duration="1748000" />
+      <workItem from="1649881003906" duration="318000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -463,105 +417,28 @@
       <option name="project" value="LOCAL" />
       <updated>1649688527038</updated>
     </task>
-    <task id="LOCAL-00021" summary="logInController fixes, labRequestController fixes, medicinePage.fxml removal of JFXTextFields">
-      <created>1649726358089</created>
+    <task id="LOCAL-00021" summary="Updated request ID generator algorithm to include 'f' at beginning">
+      <created>1649722909018</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1649726358089</updated>
+      <updated>1649722909018</updated>
     </task>
-    <task id="LOCAL-00022" summary="Database swap put onto this branch&#10;This is becoming master lol">
-      <created>1649726865289</created>
+    <task id="LOCAL-00022" summary="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID">
+      <created>1649884677729</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1649726865289</updated>
+      <updated>1649884677729</updated>
     </task>
-    <task id="LOCAL-00023" summary="Added employee">
-      <created>1649768567170</created>
+    <task id="LOCAL-00023" summary="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController">
+      <created>1649885240736</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1649768567170</updated>
+      <updated>1649885240736</updated>
     </task>
-    <task id="LOCAL-00024" summary="Integrated employee tables and updated medicineDAO">
-      <created>1649770716195</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1649770716195</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID">
-      <created>1649772153211</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1649772153211</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for equipmentRequestController">
-      <created>1649772775256</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1649772775256</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for giftRequestController">
-      <created>1649774176690</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1649774176690</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for labRequestController">
-      <created>1649774689098</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1649774689098</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for scanRequestController">
-      <created>1649775098805</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1649775098805</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Updated log in controller to load in database on log in success">
-      <created>1649775353587</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1649775353587</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Fixed add bug in audio/vis request system">
-      <created>1649813083345</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1649813083345</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Added dashboard code written by Cole, Carter, and Evans">
-      <created>1649823092779</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1649823092779</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Programatically load all FXMLs in Cache">
-      <created>1649877956289</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1649877956289</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Fixed CSS Color Error">
-      <created>1649881032361</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1649881032361</updated>
-    </task>
-    <option name="localTasksCounter" value="35" />
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,13 +449,36 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reset map from csv functionality" />
+    <MESSAGE value="Updated add and delete Location functionality to make use of DAO pattern" />
+    <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
+    <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
+    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
+    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
+    <MESSAGE value="added login menu bar to exit application" />
+    <MESSAGE value="Fixed Scan page bug" />
+    <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
+    <MESSAGE value="Fixed add Location bug with double/integer formatting" />
+    <MESSAGE value="Fixed icon update on map when reset from csv file" />
     <MESSAGE value="Icons update on add/delete" />
     <MESSAGE value="Icons update on reset from CSV" />
     <MESSAGE value="Fixed open ResultSet bug" />
@@ -589,33 +489,11 @@
     <MESSAGE value="Updated med equip csv" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
     <MESSAGE value="Fixed resolveRequest bug" />
-    <MESSAGE value="logInController fixes, labRequestController fixes, medicinePage.fxml removal of JFXTextFields" />
-    <MESSAGE value="Database swap put onto this branch&#10;This is becoming master lol" />
-    <MESSAGE value="Added employee" />
-    <MESSAGE value="Integrated employee tables and updated medicineDAO" />
-    <MESSAGE value="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID" />
-    <MESSAGE value="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for equipmentRequestController" />
-    <MESSAGE value="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for giftRequestController" />
-    <MESSAGE value="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for labRequestController" />
-    <MESSAGE value="Added dropdown box for employee IDs and made algorithm to get employee name to employee ID for scanRequestController" />
-    <MESSAGE value="Updated log in controller to load in database on log in success" />
-    <MESSAGE value="Fixed add bug in audio/vis request system" />
-    <MESSAGE value="Added dashboard code written by Cole, Carter, and Evans" />
-    <MESSAGE value="Updated request controllers to return to landing page, changed buttons to &quot;Return&quot;" />
-    <MESSAGE value="Programatically load all FXMLs in Cache" />
-    <MESSAGE value="Fixed CSS Color Error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed CSS Color Error" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/giftDAOImpl.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Controller updates" />
+    <MESSAGE value="Updated service request fxml pages to incorporate css file for combo box" />
+    <MESSAGE value="Updated all location fields on controllers and fxml service requests to have a dropdown of location names instead of writing in a nodeID" />
+    <MESSAGE value="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
