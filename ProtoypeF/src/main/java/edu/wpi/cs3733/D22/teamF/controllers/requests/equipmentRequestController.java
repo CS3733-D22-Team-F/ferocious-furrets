@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -49,6 +50,7 @@ public class equipmentRequestController extends PageController
   @FXML private HBox leftHBox2;
   @FXML private HBox leftHBox3;
   @FXML private ImageView backgroundIMG;
+  @FXML private JFXTreeTableView EquipTable;
   @FXML private ImageView logo;
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;

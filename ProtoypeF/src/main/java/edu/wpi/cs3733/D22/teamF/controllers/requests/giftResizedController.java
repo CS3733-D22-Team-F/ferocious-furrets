@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -44,8 +45,10 @@ public class giftResizedController extends PageController
   @FXML JFXButton submitButton;
   @FXML JFXButton homeButton;
   @FXML JFXButton queueButton;
+  @FXML JFXTreeTableView treeTable;
 
   @FXML HBox leftHbox;
+  @FXML HBox infoHBox;
 
   /**
    * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
@@ -93,18 +96,20 @@ public class giftResizedController extends PageController
     rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
     rectangle2.widthProperty().bind(masterPane.widthProperty().add(15).divide(2));
     logo.xProperty().bind(rectangle2.widthProperty().subtract(600));
-    employeeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    employeeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    nodeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    nodeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    assigned.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    assigned.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    giftChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    backgroundIMG.maxWidth(736);
-    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
-    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
+    //    employeeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    employeeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    nodeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    nodeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    assigned.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    assigned.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    giftChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    infoHBox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    infoHBox.maxHeightProperty().bind(rectangle1.heightProperty().subtract(400));
+    treeTable.maxWidth(736);
+    treeTable.maxHeightProperty().bind(masterPane.heightProperty());
+    treeTable.minWidthProperty().bind(masterPane.widthProperty().divide(2));
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");

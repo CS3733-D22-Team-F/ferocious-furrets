@@ -2,141 +2,178 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.labRequestController">
-   <children>
-      <ImageView fitHeight="752.0" fitWidth="1076.0" layoutX="207.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../labimage.jpg" />
-         </image>
-      </ImageView>
-      <AnchorPane prefHeight="722.0" prefWidth="781.0" style="-fx-background-color: #123090;">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.labRequestController">
+   <left>
+      <AnchorPane fx:id="masterPane" prefHeight="722.0" prefWidth="1497.0" stylesheets="@../combobox.css" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="149.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
+            <JFXTreeTableView fx:id="treeTable" layoutX="792.0" prefHeight="722.0" prefWidth="704.0">
+               <columns>
+                  <TreeTableColumn prefWidth="110.0" text="Location:" />
+                  <TreeTableColumn prefWidth="110.0" text="Assigned To:" />
+                  <TreeTableColumn prefWidth="110.0" text="Requested By:" />
+                  <TreeTableColumn prefWidth="110.0" text="Acces. Type:" />
+                  <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Item Type:" />
+                  <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Status" />
+               </columns>
+            </JFXTreeTableView>
+            <AnchorPane fx:id="rectangle1" prefHeight="722.0" prefWidth="654.0" style="-fx-background-color: #123090;">
                <children>
-                  <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="645.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../BWHlogo-new.png" />
-                     </image>
-                  </ImageView>
-                  <Label contentDisplay="TOP" layoutX="65.0" layoutY="75.0" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="64.0" />
-                     </font>
-                  </Label>
+                  <Pane fx:id="rectangle2" prefHeight="149.0" prefWidth="790.0" style="-fx-background-color: #27aad0;">
+                     <children>
+                        <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="645.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../BWHlogo-new.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="TOP" layoutX="65.0" layoutY="75.0" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="64.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="infoVBox" layoutX="103.0" layoutY="214.0" prefHeight="488.0" prefWidth="554.0">
+                     <children>
+                        <HBox prefHeight="289.0" prefWidth="534.0">
+                           <children>
+                              <VBox alignment="TOP_RIGHT" prefHeight="251.0" prefWidth="245.0" spacing="23.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="112.0" text="Location:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="28.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="28.0" prefWidth="208.0" text="Request Employee:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="28.0" prefWidth="120.0" text="Lab Type:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="28.0" prefWidth="164.0" text="Current Status:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="292.0" prefWidth="258.0">
+                                 <children>
+                                    <JFXComboBox fx:id="nodeField" prefHeight="47.0" prefWidth="388.0" promptText="Location" />
+                                    <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee">
+                                       <VBox.margin>
+                                          <Insets top="6.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee">
+                                       <VBox.margin>
+                                          <Insets top="7.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" unFocusColor="WHITE">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="158.0" prefWidth="320.0">
+                           <children>
+                              <HBox prefHeight="53.0" prefWidth="492.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" prefHeight="44.0" prefWidth="384.0">
+                                 <children>
+                                    <TextField fx:id="reqID" prefHeight="44.0" prefWidth="194.0" promptText="Request ID">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button fx:id="resolve" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #123090;" text="Resolve" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
                </children>
-            </Pane>
-            <HBox layoutX="143.0" layoutY="484.0" prefHeight="53.0" prefWidth="492.0">
-               <children>
-                  <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font></JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font></JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font></JFXButton>
-               </children>
-            </HBox>
-            <VBox layoutX="272.0" layoutY="178.0" prefHeight="265.0" prefWidth="354.0">
-               <children>
-                  <JFXComboBox fx:id="nodeField" prefHeight="47.0" prefWidth="388.0" promptText="Location" />
-                  <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee">
-                     <VBox.margin>
-                        <Insets top="6.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee">
-                     <VBox.margin>
-                        <Insets top="7.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" unFocusColor="WHITE">
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" unFocusColor="WHITE">
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-               </children>
-            </VBox>
-            <HBox layoutX="221.0" layoutY="566.0" prefHeight="43.0">
-               <children>
-                  <TextField fx:id="reqID" prefHeight="44.0" prefWidth="194.0" promptText="Request ID">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="resolve" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #123090;" text="Resolve" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <VBox alignment="TOP_RIGHT" layoutX="20.0" layoutY="182.0" prefHeight="251.0" prefWidth="245.0" spacing="23.0">
-               <children>
-                  <Label prefHeight="28.0" prefWidth="112.0" text="Location:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="208.0" text="Request Employee:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="120.0" text="Lab Type:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="164.0" text="Current Status:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
+            </AnchorPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </AnchorPane>
-   </children>
-</AnchorPane>
+   </left>
+</BorderPane>

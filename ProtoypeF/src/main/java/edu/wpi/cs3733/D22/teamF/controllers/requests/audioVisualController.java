@@ -120,16 +120,14 @@ public class audioVisualController extends PageController
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
 
-    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
-    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
-    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
-    topHBox.maxWidthProperty().bind(rectangle1.widthProperty());
-    middleHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(400));
-    middleHBox.maxWidthProperty().bind(rectangle1.widthProperty());
-    bottomHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
-    bottomHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+    //    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
+    //    rectangle1.heightProperty().bind(masterPane.heightProperty());
+    //    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
+    //    topHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+    //    middleHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(400));
+    //    middleHBox.maxWidthProperty().bind(rectangle1.widthProperty());
+    //    bottomHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
+    //    bottomHBox.maxWidthProperty().bind(rectangle1.widthProperty());
 
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> accessibilityType = new ArrayList<>();

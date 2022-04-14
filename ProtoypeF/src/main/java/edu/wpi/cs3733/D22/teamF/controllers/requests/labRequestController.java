@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -23,6 +24,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -43,6 +46,11 @@ public class labRequestController extends PageController
   @FXML ComboBox typeChoice; // Lab Type Choice Box
   @FXML ComboBox statusChoice; // Status Choice Box
 
+  @FXML VBox infoVBox;
+  @FXML AnchorPane rectangle1;
+  @FXML Pane rectangle2;
+  @FXML JFXTreeTableView treeTable;
+
   /**
    * inits
    *
@@ -52,6 +60,15 @@ public class labRequestController extends PageController
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     this.makeMenuBar(masterPane);
+
+    rectangle1.maxHeightProperty().bind(masterPane.heightProperty());
+    rectangle1.maxWidthProperty().bind(masterPane.widthProperty().divide(2));
+    rectangle2.maxWidthProperty().bind(masterPane.widthProperty().add(15).divide(2));
+    infoVBox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    infoVBox.maxHeightProperty().bind(rectangle1.heightProperty().subtract(400));
+    treeTable.maxWidth(736);
+    treeTable.maxHeightProperty().bind(masterPane.heightProperty());
+    treeTable.minWidthProperty().bind(masterPane.widthProperty().divide(2));
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");

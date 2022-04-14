@@ -2,9 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,16 +18,11 @@
 
 <BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="821.0" fitWidth="755.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
-         <image>
-            <Image url="@../Images/patientBed.jpeg" />
-         </image>
-      </ImageView>
    </right>
    <left>
       <Pane prefHeight="821.0" prefWidth="684.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="823.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="726.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
             <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="684.0" />
             <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="40.0" prefHeight="71.0" prefWidth="660.0">
                <children>
@@ -157,4 +154,15 @@
          </children>
       </Pane>
    </left>
+   <center>
+      <JFXTreeTableView prefHeight="432.0" prefWidth="428.0" BorderPane.alignment="CENTER">
+         <columns>
+            <TreeTableColumn prefWidth="135.0" text="Location:" />
+            <TreeTableColumn prefWidth="135.0" text="Assigned To:" />
+            <TreeTableColumn prefWidth="135.0" text="Requested By:" />
+            <TreeTableColumn prefWidth="135.0" text="Equip. Type" />
+            <TreeTableColumn prefWidth="135.0" text="Status" />
+         </columns>
+      </JFXTreeTableView>
+   </center>
 </BorderPane>
