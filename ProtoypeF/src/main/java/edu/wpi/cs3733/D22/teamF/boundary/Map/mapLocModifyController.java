@@ -233,7 +233,9 @@ public class mapLocModifyController implements Initializable {
     Image image =
         new Image(
             Objects.requireNonNull(
-                getClass().getResourceAsStream("views/Map/Icons/MapIcons/INFO Icon.png")));
+                getClass()
+                    .getResourceAsStream(
+                        "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/INFO Icon.png")));
     ImageView imageView = new ImageView(image);
     imageView.setFitHeight(10);
     imageView.setFitWidth(10);
