@@ -4,8 +4,6 @@ import static org.reflections.scanners.Scanners.Resources;
 
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.*;
@@ -19,8 +17,6 @@ public class Cache {
   public static boolean isDataUpdated = false;
 
   public static void loadViews() throws SQLException, IOException {
-    DatabaseManager.switchConnection(DatabaseInitializer.ConnType.EMBEDDED);
-
     // Views that can't be cached
     ArrayList<String> exceptions =
         new ArrayList<>(List.of("views/logInPage.fxml", "views/cachePage.fxml"));
