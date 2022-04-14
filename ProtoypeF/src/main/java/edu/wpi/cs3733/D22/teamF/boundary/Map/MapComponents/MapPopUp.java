@@ -5,6 +5,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.StageManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +24,11 @@ public class MapPopUp {
    */
   @FXML
   public static void openFullTable() throws IOException {
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("fullLocationPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/fullLocationPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -33,7 +38,11 @@ public class MapPopUp {
 
   @FXML
   public static void openHistory() throws IOException, SQLException {
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapHistoryPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapHistoryPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -49,7 +58,11 @@ public class MapPopUp {
    * @throws SQLException
    */
   public static void popUpAdd() throws IOException, SQLException {
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapAddPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapAddPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -66,7 +79,11 @@ public class MapPopUp {
    * @throws SQLException
    */
   public static void popUpDelete() throws IOException, SQLException {
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapDeletePage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapDeletePage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -92,7 +109,11 @@ public class MapPopUp {
   public static void popUpReset(TableView<Location> table, AnchorPane iconPane) throws IOException {
     locTempHolder.setLocationTable(table);
     locTempHolder.setPassIconPane(iconPane);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapResetPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapResetPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -106,7 +127,11 @@ public class MapPopUp {
     locTempHolder.setLocation(location);
     locTempHolder.setLocationTable(table);
     locTempHolder.setPassIconPane(iconPane);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapLocModifyPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapLocModifyPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -120,7 +145,11 @@ public class MapPopUp {
     locTempHolder.setLocation(location);
     locTempHolder.setLocationTable(table);
     locTempHolder.setPassIconPane(iconPane);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapServiceModifyPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/ServiceModifyPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
@@ -135,7 +164,11 @@ public class MapPopUp {
     locTempHolder.setLocation(location);
     locTempHolder.setLocationTable(table);
     locTempHolder.setPassIconPane(iconPane);
-    Parent root = FXMLLoader.load(mapPageController.class.getResource("mapEquipModifyPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(
+                mapPageController.class.getResource(
+                    "/edu/wpi/cs3733/D22/teamF/views/Map/mapEquipModifyPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
