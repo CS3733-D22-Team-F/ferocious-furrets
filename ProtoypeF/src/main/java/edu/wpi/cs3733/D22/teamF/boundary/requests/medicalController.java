@@ -32,7 +32,7 @@ public class medicalController {
    */
   @FXML
   void switchToLab(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("labRequestPage.fxml");
+    StageManager.getInstance().setDisplay("request/labRequestPage.fxml");
   }
 
   /**
@@ -43,7 +43,7 @@ public class medicalController {
    */
   @FXML
   void switchToScan(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("scanPage.fxml");
+    StageManager.getInstance().setDisplay("request/scanPage.fxml");
   }
 
   /**

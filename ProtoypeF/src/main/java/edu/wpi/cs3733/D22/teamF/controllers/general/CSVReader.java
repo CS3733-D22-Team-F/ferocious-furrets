@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CSVReader {
 
@@ -28,7 +29,8 @@ public class CSVReader {
     br =
         new BufferedReader(
             new InputStreamReader(
-                CSVReader.class.getResourceAsStream(filepath), StandardCharsets.UTF_8));
+                Objects.requireNonNull(CSVReader.class.getResourceAsStream(filepath)),
+                StandardCharsets.UTF_8));
     fileList = bufferedReaderToString();
     br.close();
     return fileList;

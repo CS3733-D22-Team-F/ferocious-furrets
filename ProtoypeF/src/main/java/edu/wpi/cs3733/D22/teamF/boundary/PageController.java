@@ -52,7 +52,7 @@ public abstract class PageController {
   }
 
   public void menu_Gift() {
-    switchScene("giftPageResized.fxml");
+    switchScene("request/giftPageResized.fxml");
   }
 
   public void menu_Map() {
@@ -60,11 +60,11 @@ public abstract class PageController {
   }
 
   public void menu_Medicine() {
-    switchScene("medicinePage.fxml");
+    switchScene("request/medicinePage.fxml");
   }
 
   public void menu_Medical() {
-    switchScene("medicalPage.fxml");
+    switchScene("request/medicalPage.fxml");
   }
   /**
    * Method to create a class specifics context menu
@@ -100,17 +100,17 @@ public abstract class PageController {
     audioVisual.setText("Audio/Visual Request");
     MenuItem equip = this.addMenuItem("equipmentPage.fxml");
     equip.setText("Equipment Request");
-    MenuItem gift = this.addMenuItem("giftPageResized.fxml");
+    MenuItem gift = this.addMenuItem("request/giftPageResized.fxml");
     gift.setText("Gift Request");
-    MenuItem labs = this.addMenuItem("labRequestPage.fxml");
+    MenuItem labs = this.addMenuItem("request/labRequestPage.fxml");
     labs.setText("Labs Request");
-    MenuItem meals = this.addMenuItem("mealPage.fxml");
+    MenuItem meals = this.addMenuItem("request/mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
+    MenuItem medical = this.addMenuItem("request/medicalPage.fxml");
     medical.setText("Medical Request");
-    MenuItem medicine = this.addMenuItem("medicinePage.fxml");
+    MenuItem medicine = this.addMenuItem("request/medicinePage.fxml");
     medicine.setText("Medicine Request");
-    MenuItem scans = this.addMenuItem("scanPage.fxml");
+    MenuItem scans = this.addMenuItem("request/scanPage.fxml");
     scans.setText("Scans Request");
     MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
     allRequests.setText("All Requests List");
@@ -154,21 +154,21 @@ public abstract class PageController {
     map.setText("Map Request");
 
     // Serivce Requst Menus
-    MenuItem audioVisual = this.addMenuItem("audioVisualPage.fxml");
+    MenuItem audioVisual = this.addMenuItem("request/audioVisualPage.fxml");
     audioVisual.setText("Audio/Visual Request");
-    MenuItem equip = this.addMenuItem("equipmentPage.fxml");
+    MenuItem equip = this.addMenuItem("request/equipmentPage.fxml");
     equip.setText("Equipment Request");
-    MenuItem gift = this.addMenuItem("giftPageResized.fxml");
+    MenuItem gift = this.addMenuItem("request/giftPageResized.fxml");
     gift.setText("Gift Request");
-    MenuItem labs = this.addMenuItem("labRequestPage.fxml");
+    MenuItem labs = this.addMenuItem("request/labRequestPage.fxml");
     labs.setText("Labs Request");
-    MenuItem meals = this.addMenuItem("mealPage.fxml");
+    MenuItem meals = this.addMenuItem("request/mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
+    MenuItem medical = this.addMenuItem("request/medicalPage.fxml");
     medical.setText("Medical Request");
-    MenuItem medicine = this.addMenuItem("medicinePage.fxml");
+    MenuItem medicine = this.addMenuItem("request/medicinePage.fxml");
     medicine.setText("Medicine Request");
-    MenuItem scans = this.addMenuItem("scanPage.fxml");
+    MenuItem scans = this.addMenuItem("request/scanPage.fxml");
     scans.setText("Scans Request");
     MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
     allRequests.setText("All Requests List");

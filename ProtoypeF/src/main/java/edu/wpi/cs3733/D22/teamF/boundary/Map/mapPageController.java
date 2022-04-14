@@ -14,6 +14,7 @@ import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -101,13 +102,41 @@ public class mapPageController implements Initializable {
   @FXML JFXButton historyButton;
   @FXML JFXButton homeButton;
 
-  Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
-  Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
-  Image F3 = new Image(getClass().getResourceAsStream("FloorMap/Floor3.jpg"));
-  Image F4 = new Image(getClass().getResourceAsStream("FloorMap/Floor4.jpg"));
-  Image F5 = new Image(getClass().getResourceAsStream("FloorMap/Floor5.jpg"));
-  Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
-  Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
+  Image F1 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor1.jpg")));
+  Image F2 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor2.jpg")));
+  Image F3 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor3.jpg")));
+  Image F4 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor4.jpg")));
+  Image F5 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor5.jpg")));
+  Image L1 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower1.jpg")));
+  Image L2 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower2.jpg")));
 
   /**
    * Initialize the map page, get all the equipment and locations from the database, get the x-y

@@ -33,7 +33,7 @@ public class giftQueueController implements Initializable, IController {
    */
   @FXML
   void switchToGift(ActionEvent event) {
-    StageManager.getInstance().setDisplay("giftPage.fxml");
+    StageManager.getInstance().setDisplay("request/giftPage.fxml");
   }
 
   /**
