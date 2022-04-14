@@ -242,7 +242,9 @@ public class DatabaseManager {
     return audioVisualDAO;
   }
 
-  public static physicalTherapyDAOImpl getPTDAO(){return ptDAO;}
+  public static physicalTherapyDAOImpl getPTDAO() {
+    return ptDAO;
+  }
 
   /** helper */
   private static class Helper {
