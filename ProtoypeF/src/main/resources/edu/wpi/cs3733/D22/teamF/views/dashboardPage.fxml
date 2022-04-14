@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.dashboardController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.boundary.dashboardController">
    <left>
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="345.0" BorderPane.alignment="TOP_LEFT">
          <children>
@@ -27,7 +27,7 @@
             </Label>
             <ImageView fx:id="logo" fitHeight="70.0" fitWidth="77.0" layoutX="267.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../BWHlogo-new.png" />
+                  <Image url="@../Images/BWHlogo-new.png" />
                </image>
                <viewport>
                   <Rectangle2D minX="50.0" width="500.0" />

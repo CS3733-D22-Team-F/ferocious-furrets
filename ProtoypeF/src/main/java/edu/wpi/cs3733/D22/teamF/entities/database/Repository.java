@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.entities.database;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.IRequestDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

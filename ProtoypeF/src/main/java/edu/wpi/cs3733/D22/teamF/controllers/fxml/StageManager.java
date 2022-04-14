@@ -33,7 +33,7 @@ public class StageManager {
           .add(
               new Image(
                   StageManager.class.getResourceAsStream(
-                      "/edu/wpi/cs3733/D22/teamF/BWHlogo-new.png")));
+                      "/edu/wpi/cs3733/D22/teamF/Images/BWHlogo-new.png")));
     }
     return m_StageManager;
   }
@@ -61,7 +61,7 @@ public class StageManager {
 
   /** makes current screen the home */
   public void setHome() {
-    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("views/homePage.fxml"));
     m_stage.show();
   }
 
@@ -82,7 +82,7 @@ public class StageManager {
   public void setDisplayAndWaitMap(String filename) throws IOException {
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = SceneManager.getInstance().setScene("Map/" + filename);
+    Scene scene1 = SceneManager.getInstance().setScene("views/Map/" + filename);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
   }

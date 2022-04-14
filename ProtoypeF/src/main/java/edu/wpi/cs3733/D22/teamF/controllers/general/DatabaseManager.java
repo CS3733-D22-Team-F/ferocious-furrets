@@ -5,6 +5,9 @@ import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.lab.labDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scan.scanDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -62,7 +65,7 @@ public class DatabaseManager {
   }
 
   /**
-   * inits the dao objects
+   * inits the database objects
    *
    * @return DatabaseManager
    * @throws SQLException
@@ -161,20 +164,25 @@ public class DatabaseManager {
    */
   public static void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.backUpToCSV(
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
+    System.out.println("Locations table updated to csv :)");
     medicalEquipmentDeliveryRequestDAO.backUpToCSV(
         "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
+    System.out.println("EquipmentDeliveryRequests table updated to csv :)");
     giftDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
+    System.out.println("Gifts table updated to csv :)");
     labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
+    System.out.println("Labs table updated to csv :)");
     mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
+    System.out.println("Meals table updated to csv :)");
     medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    System.out.println("Medicines table updated to csv :)");
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
+    System.out.println("Scan table updated to csv :)");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
+    System.out.println("serviceRequest table updated to csv :)");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
-    System.out.println("Locations table updated to csv :)");
-    System.out.println("MedEquip table updated to csv :)");
-    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
+    System.out.println("audioVis table updated to csv :)");
+    employeeDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
   }
 
   /**
@@ -194,7 +202,7 @@ public class DatabaseManager {
     return medicalEquipmentDeliveryRequestDAO;
   }
   /**
-   * Return med equipment DAO object to ad
+   * Return med equipment DAO object to add
    *
    * @return medEquipImpl DAO object
    */

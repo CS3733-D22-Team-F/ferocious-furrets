@@ -2,8 +2,8 @@ package edu.wpi.cs3733.D22.teamF.entities.request;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.lab.labRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scan.scanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
