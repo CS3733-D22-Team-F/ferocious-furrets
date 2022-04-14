@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.Fapp;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
@@ -11,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -96,10 +99,19 @@ public class logInController extends returnHomePage implements Initializable {
         dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
       }
 
-      // DatabaseManager.switchConnection(dbType);
+      FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
+      Scene scene = null;
+      try {
+        scene = new Scene(fxmlLoader.load());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      Stage stage = new Stage();
+      SceneManager.getInstance().setStage(stage);
+      stage.setScene(scene);
+      stage.show();
 
       DatabaseManager.switchConnection(dbType);
-      // StageManager.getInstance().setDisplayNoViews("homePage.fxml");
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

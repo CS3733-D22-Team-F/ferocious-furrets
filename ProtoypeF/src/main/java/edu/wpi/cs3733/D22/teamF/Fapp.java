@@ -19,7 +19,7 @@ public class Fapp extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
     Scene scene = null;
     try {
       scene = new Scene(fxmlLoader.load());
