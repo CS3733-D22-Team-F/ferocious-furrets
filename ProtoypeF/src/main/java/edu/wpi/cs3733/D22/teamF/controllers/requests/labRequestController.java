@@ -83,7 +83,7 @@ public class labRequestController extends PageController
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
     String sampleType = null;
-    // If any of the field is missing, pop up a notice
+    // Alert is made if any of the fields are empty
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
