@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
-<BorderPane fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.cachePageController" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.cachePageController" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <StackPane prefHeight="269.0" prefWidth="348.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -33,7 +33,7 @@
       </StackPane>
    </center>
    <bottom>
-      <Label fx:id="statusLabel" text="Loading System Files..." BorderPane.alignment="CENTER">
+      <Label fx:id="statusLabel" BorderPane.alignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>
