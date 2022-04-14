@@ -5,6 +5,12 @@
     f-white: #ffffff;
 }
 
+#TextTitleWhite {
+    -fx-font-family: Serif;
+    -fx-font-size: 64px;
+    -fx-text-fill: f-white;
+}
+
 #TextTitle {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
