@@ -8,6 +8,7 @@ public class Load extends Task<Void> {
 
   @Override
   protected Void call() throws IOException, SQLException {
+    Cache.updateDBCache();
     Cache.loadViews();
     Cache.loadIcons();
     return null;
