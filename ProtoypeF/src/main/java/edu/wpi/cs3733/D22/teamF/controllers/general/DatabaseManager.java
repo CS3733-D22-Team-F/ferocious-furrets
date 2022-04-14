@@ -55,7 +55,7 @@ public class DatabaseManager {
   public static Connection switchConnection(DatabaseInitializer.ConnType type)
       throws SQLException, IOException {
     // backUpDatabaseToCSV();
-    DatabaseInitializer.switchConnection(type);
+    // DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
     DatabaseManager dbMan = DatabaseManager.initializeDatabaseManager();
     return conn;
@@ -101,7 +101,7 @@ public class DatabaseManager {
    */
   public static void runStatement(String statement) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + statement);
+    // System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
     } catch (SQLException e) {
@@ -118,7 +118,7 @@ public class DatabaseManager {
    */
   public static ResultSet runQuery(String query) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + query);
+    // System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
     } catch (SQLException e) {

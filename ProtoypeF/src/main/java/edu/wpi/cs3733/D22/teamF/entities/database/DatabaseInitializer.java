@@ -147,6 +147,10 @@ public class DatabaseInitializer {
     return dbConnection;
   }
 
+  public static ConnType getConnType() {
+    return connType;
+  }
+
   public enum ConnType {
     EMBEDDED,
     CLIENTSERVER

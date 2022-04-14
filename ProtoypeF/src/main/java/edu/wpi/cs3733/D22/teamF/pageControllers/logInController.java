@@ -99,6 +99,8 @@ public class logInController extends returnHomePage implements Initializable {
         dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
       }
 
+      DatabaseInitializer.switchConnection(dbType);
+
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       Scene scene = null;
       try {
@@ -111,16 +113,16 @@ public class logInController extends returnHomePage implements Initializable {
       stage.setScene(scene);
       stage.show();
 
-      DatabaseManager.switchConnection(dbType);
+      // DatabaseManager.switchConnection(dbType);
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
     }
-    if (databaseChooser.getValue().toString().equals("Client-Server")) {
-      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    } else {
-      dbType = DatabaseInitializer.ConnType.EMBEDDED;
-    }
+    //    if (databaseChooser.getValue().toString().equals("Client-Server")) {
+    //      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    //    } else {
+    //      dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    //    }
   }
 
   @Override
