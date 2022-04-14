@@ -45,6 +45,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void initTable(String Filepath) throws SQLException, IOException {
     Cache.clearLocations();
+    ArrayList<Location> locations = new ArrayList<>();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -53,10 +54,10 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      Cache.addLocation(addedLocation);
+      locations.add(addedLocation);
     }
 
-    for (Location currentLocation : Cache.getLocationsCache()) {
+    for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }
@@ -69,6 +70,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void initTable(File file) throws SQLException, IOException {
     Cache.clearLocations();
+    ArrayList<Location> locations = new ArrayList<>();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -77,10 +79,10 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      Cache.addLocation(addedLocation);
+      locations.add(addedLocation);
     }
 
-    for (Location currentLocation : Cache.getLocationsCache()) {
+    for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }

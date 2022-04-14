@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
@@ -7,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,18 +34,19 @@ public class MapTableHolder {
     String equipID = "";
     String status = "";
     for (equipment med : medList) {
-      specificID = med.getNodeID();
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + specificID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      equipID = med.getEquipID();
-      status = med.getStatus();
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+      Location fetchedNode = Cache.getLocation(med.getNodeID());
+
+      try {
+        equipID = med.getEquipID();
+        status = med.getStatus();
+        x = fetchedNode.getXcoord();
+        y = fetchedNode.getYcoord();
+        floor = fetchedNode.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + med.getNodeID());
+        continue;
       }
-      rset.close();
+
       Location tempLocation =
           new Location(
               med.getNodeID(),
@@ -159,15 +160,15 @@ public class MapTableHolder {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
       }
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + nodeID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
       }
-      reqInfo.close();
       scans.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
     scanReqs.close();
@@ -197,15 +198,14 @@ public class MapTableHolder {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
       }
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + nodeID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
       }
-      reqInfo.close();
       labs.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
     labReqs.close();
@@ -235,15 +235,14 @@ public class MapTableHolder {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
       }
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + nodeID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
       }
-      reqInfo.close();
       gifts.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
     giftReqs.close();
@@ -273,15 +272,14 @@ public class MapTableHolder {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
       }
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + nodeID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
       }
-      reqInfo.close();
       medi.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
     medicineReqs.close();
@@ -312,15 +310,14 @@ public class MapTableHolder {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
       }
-      Statement stm = DatabaseManager.getConn().createStatement();
-      String cmd = "SELECT * FROM Locations WHERE nodeID = '" + nodeID + "'";
-      ResultSet rset = stm.executeQuery(cmd);
-      while (rset.next()) {
-        x = rset.getInt(2);
-        y = rset.getInt(3);
-        floor = rset.getString(4);
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
       }
-      reqInfo.close();
       equip.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
     equipReqs.close();

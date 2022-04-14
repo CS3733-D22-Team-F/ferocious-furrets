@@ -188,23 +188,26 @@ public class dashboardController implements Initializable {
     String retVal = "";
 
     Location loc = Cache.getLocation(id);
-    if (loc == null) {
-      return "";
-    }
-    if (loc.getNodeType().equals("PATI")) {
-      retVal = "Pod";
-    }
-    // if clean storage
-    else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Clean")) {
-      //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
 
-      retVal = "Clean";
-    }
-    // if dirty storage
-    else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Dirty")) {
-      //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+    try {
+      if (loc.getNodeType().equals("PATI")) {
+        retVal = "Pod";
+      }
 
-      retVal = "Dirty";
+      // if clean storage
+      else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Clean")) {
+        //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+
+        retVal = "Clean";
+      }
+      // if dirty storage
+      else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Dirty")) {
+        //      System.out.println(loc.getLongName().substring(0, 5) + loc.getNodeType());
+
+        retVal = "Dirty";
+      }
+    } catch (NullPointerException e) {
+      System.out.println("ERROR! Couldn't fetch node: " + id);
     }
 
     return retVal;
