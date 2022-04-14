@@ -19,7 +19,7 @@ public class svgTester implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     try {
       SVGGlyphLoader.loadGlyphsFont(
-          mapPageController.class.getResourceAsStream("Icons/MapMenuSVG/load.svg"), "load");
+          mapPageController.class.getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuSVG/load.svg"), "load");
     } catch (IOException e) {
       e.printStackTrace();
     }
