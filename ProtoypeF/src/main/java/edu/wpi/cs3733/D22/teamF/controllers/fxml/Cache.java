@@ -24,7 +24,9 @@ public class Cache {
   }
 
   public static void loadIcons() throws IOException {
-    InputStream file = Fapp.class.getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuSVG/home.svg");
+    InputStream file =
+        Fapp.class.getResourceAsStream(
+            "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuSVG/home.svg");
     MapIconModifier.iconLoader.loadSvg(file);
   }
 }
