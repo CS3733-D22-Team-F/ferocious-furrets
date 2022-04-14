@@ -61,7 +61,7 @@ public class mapEquipModifyController implements Initializable {
     changeToF1();
     ArrayList<Location> locations = new ArrayList<>();
     try {
-      locations = DatabaseManager.getLocationDAO().getAllLocations();
+      locations = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
     } catch (SQLException e) {
       e.printStackTrace();
     }

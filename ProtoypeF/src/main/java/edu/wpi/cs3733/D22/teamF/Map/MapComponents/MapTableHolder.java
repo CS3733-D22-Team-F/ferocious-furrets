@@ -81,7 +81,7 @@ public class MapTableHolder {
   public static void loadTable(TableView<Location> table) throws SQLException, IOException {
     ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocations();
+    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
     oldLocs.addAll(eLocations);
     ArrayList<Location> rList = new ArrayList<>(getAllReq());
     oldLocs.addAll(rList);
@@ -108,7 +108,7 @@ public class MapTableHolder {
     ArrayList<Location> nLocations = null;
     ArrayList<Location> eLocations = null;
     try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocations();
+      nLocations = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
       eLocations = MapTableHolder.equipToLocation(eList);
     } catch (SQLException e) {
       e.printStackTrace();

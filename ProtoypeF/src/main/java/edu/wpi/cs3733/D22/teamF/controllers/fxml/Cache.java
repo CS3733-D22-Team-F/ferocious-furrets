@@ -49,7 +49,7 @@ public class Cache {
     }
   }
 
-  public static void loadIcons(){
+  public static void loadIcons() {
     InputStream file = Fapp.class.getResourceAsStream("Map/Icons/MapMenuSVG/home.svg");
     MapIconModifier.iconLoader.loadSvg(file);
   }
@@ -58,7 +58,7 @@ public class Cache {
      Database Cache Setters/Getters
   */
   public static ArrayList<Location> getLocationsCache() {
-    if (isLocationsUpdated) {
+    if (!isLocationsUpdated) {
       try {
         updateDBCache(DBType.DBT_LOC);
       } catch (Exception e) {
@@ -71,7 +71,7 @@ public class Cache {
   }
 
   public static Location getLocation(String nodeID) {
-    if (isLocationsUpdated) {
+    if (!isLocationsUpdated) {
       try {
         updateDBCache(DBType.DBT_LOC);
       } catch (Exception e) {
@@ -80,25 +80,45 @@ public class Cache {
         return null;
       }
     }
-    return locationsCacheMap.get(nodeID);
+
+    return locationsCacheMap.getOrDefault(nodeID, null);
   }
 
-  public static void updateDBCache() throws SQLException {
-    updateDBCache(DBType.DBT_ALL);
+  public static void addLocation(Location loc) {
+    locationsCache.add(loc);
+    locationsCacheMap.put(loc.getNodeID(), loc);
+  }
+
+  public static void remLocation(String nodeID) {
+    if (locationsCacheMap.containsKey(nodeID)) {
+      locationsCache.remove(locationsCacheMap.get(nodeID));
+      locationsCacheMap.remove(nodeID);
+    }
+  }
+
+  public static void clearLocations() {
+    locationsCache = new ArrayList<>();
+    locationsCacheMap = new HashMap<>();
+    isLocationsUpdated = false;
   }
 
   /*
      Database Cache Management
   */
+
+  public static void updateDBCache() throws SQLException {
+    updateDBCache(DBType.DBT_ALL);
+  }
+
   public static void updateDBCache(DBType type) throws SQLException {
     switch (type) {
       case DBT_LOC:
-        locationsCache = DatabaseManager.getLocationDAO().getAllLocations();
+        locationsCache = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
         isLocationsUpdated = true;
         buildMaps(DBType.DBT_LOC);
       case DBT_ALL:
       default:
-        locationsCache = DatabaseManager.getLocationDAO().getAllLocations();
+        locationsCache = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
         isLocationsUpdated = true;
         buildMaps(DBType.DBT_ALL);
     }

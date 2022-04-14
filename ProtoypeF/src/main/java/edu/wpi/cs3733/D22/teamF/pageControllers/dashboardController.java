@@ -1,13 +1,13 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -187,11 +187,10 @@ public class dashboardController implements Initializable {
   private String getLocationTypeFromNodeID(String id) throws SQLException {
     String retVal = "";
 
-    ResultSet rset =
-        DatabaseManager.runQuery("Select * from LOCATIONS WHERE NODEID = '" + id + "'");
-
-    ArrayList<Location> locArray = DatabaseManager.getLocationDAO().locationsFromRSET(rset);
-    Location loc = locArray.get(0);
+    Location loc = Cache.getLocation(id);
+    if (loc == null) {
+      return "";
+    }
     if (loc.getNodeType().equals("PATI")) {
       retVal = "Pod";
     }
