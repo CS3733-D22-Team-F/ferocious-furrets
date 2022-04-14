@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
+<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <right>
       <ImageView fx:id="backgroundIMG" fitHeight="821.0" fitWidth="755.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
@@ -74,7 +74,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <VBox fx:id="leftVBox" layoutY="199.0" prefHeight="281.0" prefWidth="669.0" stylesheets="@../combobox.css">
+            <VBox fx:id="leftVBox" layoutY="199.0" prefHeight="281.0" prefWidth="669.0" stylesheets="@../stylesheets/combobox.css">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
