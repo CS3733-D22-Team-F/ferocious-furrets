@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapPageController">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapPageController">
    <children>
       <TableView fx:id="table" layoutX="895.0" prefHeight="720.0" prefWidth="385.0">
         <columns>
@@ -23,13 +23,13 @@
             <TableColumn fx:id="longName" prefWidth="280.7999267578125" text="longName" />
         </columns>
       </TableView>
-      <ScrollPane fx:id="scrollPane" prefHeight="720.0" prefWidth="895.0">
+      <ScrollPane fx:id="scrollPane" cache="true" cacheHint="SCALE" prefHeight="720.0" prefWidth="895.0">
          <content>
             <Group fx:id="mapGroup">
                <children>
                   <AnchorPane fx:id="iconPane" prefHeight="720.0" prefWidth="895.0">
                      <children>
-                        <ImageView fx:id="mapHolder" fitHeight="720.0" fitWidth="895.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mapHolder" cache="true" cacheHint="SCALE" fitHeight="720.0" fitWidth="895.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Map/FloorMap/Floor1.jpg" />
                            </image>

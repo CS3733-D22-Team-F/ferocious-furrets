@@ -39,9 +39,15 @@ public class Cache {
   public static void loadViews() {
     // Views that can't be cached
     ArrayList<String> exceptions =
-        new ArrayList<>(List.of("views/logInPage.fxml", "views/cachePage.fxml"));
+        new ArrayList<>(
+            List.of(
+                "views/logInPage.fxml",
+                "views/cachePage.fxml",
+                "Map/mapServiceModifyPage.fxml",
+                "Map/mapLocModifyPage.fxml",
+                "Map/mapEquipModifyPage.fxml"));
 
-    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF.views", Scanners.values());
+    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF", Scanners.values());
     Set<String> fxmlPaths = reflections.get(Resources.with(".*\\.fxml"));
 
     for (String path : fxmlPaths) {

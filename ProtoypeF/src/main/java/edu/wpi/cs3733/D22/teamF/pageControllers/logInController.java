@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -31,7 +32,7 @@ import javafx.stage.Stage;
  */
 public class logInController extends returnHomePage implements Initializable {
   @FXML private TextField usernameField;
-  @FXML private TextField passwordField;
+  @FXML private PasswordField passwordField;
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
 
