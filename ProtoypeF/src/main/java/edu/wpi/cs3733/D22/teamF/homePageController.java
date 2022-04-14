@@ -244,6 +244,6 @@ public class homePageController extends PageController implements Initializable 
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(reportAnchorPane);
+    this.makeMenuBarHP(reportAnchorPane);
   }
 }

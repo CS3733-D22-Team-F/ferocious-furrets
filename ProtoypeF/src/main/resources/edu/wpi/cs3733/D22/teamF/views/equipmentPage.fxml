@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
+<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../RequestPages.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <right>
       <ImageView fx:id="backgroundIMG" fitHeight="821.0" fitWidth="755.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
          <image>
@@ -76,15 +70,12 @@
             </HBox>
             <VBox fx:id="leftVBox" layoutY="199.0" prefHeight="281.0" prefWidth="669.0" stylesheets="@../combobox.css">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="50.0" prefWidth="178.0">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
                         </Label>
                         <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="298.0" promptText="Location">
                            <HBox.margin>
@@ -130,7 +121,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -142,11 +133,8 @@
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
                         </Label>
-                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />

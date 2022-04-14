@@ -101,7 +101,7 @@ public class DatabaseManager {
    */
   public static void runStatement(String statement) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + statement);
+    //    System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
     } catch (SQLException e) {
@@ -118,7 +118,7 @@ public class DatabaseManager {
    */
   public static ResultSet runQuery(String query) throws SQLException {
     Statement stm = conn.createStatement();
-    System.out.println("SQL: " + query);
+    //    System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
     } catch (SQLException e) {
@@ -172,9 +172,9 @@ public class DatabaseManager {
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
-    System.out.println("Locations table updated to csv :)");
-    System.out.println("MedEquip table updated to csv :)");
-    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
+    //    System.out.println("Locations table updated to csv :)");
+    //    System.out.println("MedEquip table updated to csv :)");
+    //    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
   }
 
   /**

@@ -63,8 +63,12 @@ public abstract class PageController {
     switchScene("medicinePage.fxml");
   }
 
-  public void menu_Medical() {
-    switchScene("medicalPage.fxml");
+  public void menu_Lab() {
+    switchScene("labRequestPage.fxml");
+  }
+
+  public void menu_Scan() {
+    switchScene("scanPage.fxml");
   }
   /**
    * Method to create a class specifics context menu
@@ -106,8 +110,6 @@ public abstract class PageController {
     labs.setText("Labs Request");
     MenuItem meals = this.addMenuItem("mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
-    medical.setText("Medical Request");
     MenuItem medicine = this.addMenuItem("medicinePage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("scanPage.fxml");
@@ -120,10 +122,61 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, medical, allRequests);
+        .addAll(audioVisual, equip, gift, labs, scans, meals, medicine, allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
+
+    // adding menu bar to the main pane of a page
+    masterPane.getChildren().add(pageMenu);
+
+    return pageMenu;
+  }
+
+  /**
+   * implemented make a menu bar from a Pane - ONLY FOR THE HOME PAGE
+   *
+   * @param masterPane Pane
+   * @return MenuBar
+   */
+  public MenuBar makeMenuBarHP(Pane masterPane) {
+    MenuBar pageMenu = new MenuBar();
+    Menu serviceRequests = new Menu("Service Requests");
+    Menu map_Navigate = new Menu("Go to Map");
+    // pageMenu.prefWidthProperty().bindBidirectional(masterPane.widthProperty(),NumberFormat.getNumberInstance());
+    pageMenu.setMinWidth(1500);
+    // TODO switch to home page at end
+    // Map
+    MenuItem map = this.addMenuItem("mapPage.fxml");
+    // TODO add an if statement for admin here using John's code for line 68- 69
+    map.setText("Map Page");
+
+    // Serivce Requst Menus
+    MenuItem audioVisual = this.addMenuItem("audioVisualPage.fxml");
+    audioVisual.setText("Audio/Visual Request");
+    MenuItem equip = this.addMenuItem("equipmentPage.fxml");
+    equip.setText("Equipment Request");
+    MenuItem gift = this.addMenuItem("giftPageResized.fxml");
+    gift.setText("Gift Request");
+    MenuItem labs = this.addMenuItem("labRequestPage.fxml");
+    labs.setText("Labs Request");
+    MenuItem meals = this.addMenuItem("mealPage.fxml");
+    meals.setText("Meals Request");
+    MenuItem medicine = this.addMenuItem("medicinePage.fxml");
+    medicine.setText("Medicine Request");
+    MenuItem scans = this.addMenuItem("scanPage.fxml");
+    scans.setText("Scans Request");
+    MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
+    allRequests.setText("All Requests List");
+
+    // adding options to menus in the menubar
+    map_Navigate.getItems().addAll(map);
+    serviceRequests
+        .getItems()
+        .addAll(audioVisual, equip, gift, labs, scans, meals, medicine, allRequests);
+
+    // adding menus into the menu bar
+    pageMenu.getMenus().addAll(serviceRequests, map_Navigate);
 
     // adding menu bar to the main pane of a page
     masterPane.getChildren().add(pageMenu);
@@ -164,8 +217,6 @@ public abstract class PageController {
     labs.setText("Labs Request");
     MenuItem meals = this.addMenuItem("mealPage.fxml");
     meals.setText("Meals Request");
-    MenuItem medical = this.addMenuItem("medicalPage.fxml");
-    medical.setText("Medical Request");
     MenuItem medicine = this.addMenuItem("medicinePage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("scanPage.fxml");
@@ -178,7 +229,7 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, medical, allRequests);
+        .addAll(audioVisual, equip, gift, labs, scans, meals, medicine, allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
