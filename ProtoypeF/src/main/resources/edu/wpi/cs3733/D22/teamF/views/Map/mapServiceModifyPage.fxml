@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="170.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.boundary.Map.mapServiceModifyController">
+   <children>
+      <Label prefHeight="35.0" prefWidth="68.0" text="Current: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </Label>
+      <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="95.0" ripplerFill="#182c9e" text="Mark As Done" />
+      <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="99.0" ripplerFill="RED" text="Close" />
+   </children>
+</VBox>
