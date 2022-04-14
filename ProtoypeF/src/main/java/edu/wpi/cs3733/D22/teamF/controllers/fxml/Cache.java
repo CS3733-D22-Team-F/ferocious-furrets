@@ -5,6 +5,7 @@ import static org.reflections.scanners.Scanners.Resources;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.*;
 import java.sql.SQLException;
@@ -25,8 +26,14 @@ public class Cache {
     DBT_LOC
   }
 
-  public static void startDB() throws SQLException, IOException {
-    DatabaseManager.initializeDatabaseManager();
+  public static void startDB(boolean embedded) throws SQLException, IOException {
+    DatabaseInitializer.ConnType dbType;
+    if (embedded) {
+      dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    } else {
+      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    }
+    DatabaseManager.switchConnection(dbType);
   }
 
   public static void loadViews() {

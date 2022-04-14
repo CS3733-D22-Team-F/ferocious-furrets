@@ -12,6 +12,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -93,13 +95,11 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      if (databaseChooser.getValue().toString().equals("Embedded")) {
-        dbType = DatabaseInitializer.ConnType.EMBEDDED;
-      } else {
-        dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-      }
+      final BooleanProperty embedded =
+          new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
+      fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
       Scene scene = null;
       try {
         scene = new Scene(fxmlLoader.load());
@@ -111,15 +111,9 @@ public class logInController extends returnHomePage implements Initializable {
       stage.setScene(scene);
       stage.show();
 
-      DatabaseManager.switchConnection(dbType);
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
-    }
-    if (databaseChooser.getValue().toString().equals("Client-Server")) {
-      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    } else {
-      dbType = DatabaseInitializer.ConnType.EMBEDDED;
     }
   }
 

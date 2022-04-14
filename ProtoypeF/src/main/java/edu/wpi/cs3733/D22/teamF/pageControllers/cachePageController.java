@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,9 +15,15 @@ import javafx.stage.Stage;
 
 public class cachePageController implements Initializable {
 
+  private final BooleanProperty useEmbedded;
+
+  public cachePageController(BooleanProperty embedded) {
+    this.useEmbedded = embedded;
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    Task<Void> loader = new Load();
+    Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {
           try {
