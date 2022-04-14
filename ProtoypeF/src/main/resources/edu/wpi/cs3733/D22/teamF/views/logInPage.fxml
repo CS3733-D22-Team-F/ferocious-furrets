@@ -44,14 +44,14 @@
                               <Font size="24.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="">
+                        <PasswordField fx:id="passwordField" prefHeight="64.0" prefWidth="327.0" promptText="Enter Password" style="">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
                            <font>
                               <Font size="24.0" />
                            </font>
-                        </TextField>
+                        </PasswordField>
                      </children>
                      <padding>
                         <Insets left="2.0" />
