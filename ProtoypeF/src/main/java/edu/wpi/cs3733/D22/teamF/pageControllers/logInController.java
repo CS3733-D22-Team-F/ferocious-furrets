@@ -111,6 +111,7 @@ public class logInController extends returnHomePage implements Initializable {
       SceneManager.getInstance().setStage(stage);
       stage.setScene(scene);
       stage.show();
+      ((Stage) usernameField.getScene().getWindow()).close();
 
       popUpLabel.setVisible(false);
     } else {
