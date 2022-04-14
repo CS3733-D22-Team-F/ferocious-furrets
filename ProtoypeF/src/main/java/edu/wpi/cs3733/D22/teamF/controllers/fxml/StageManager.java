@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -32,8 +33,9 @@ public class StageManager {
           .getIcons()
           .add(
               new Image(
-                  StageManager.class.getResourceAsStream(
-                      "/edu/wpi/cs3733/D22/teamF/Images/BWHlogo-new.png")));
+                  Objects.requireNonNull(
+                      StageManager.class.getResourceAsStream(
+                          "/edu/wpi/cs3733/D22/teamF/Images/BWHlogo-new.png"))));
     }
     return m_StageManager;
   }

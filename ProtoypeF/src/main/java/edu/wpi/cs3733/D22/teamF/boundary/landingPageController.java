@@ -45,7 +45,7 @@ public class landingPageController implements Initializable {
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
+    StageManager.getInstance().setDisplay("request/medicalPage.fxml");
   }
 
   /**
@@ -56,7 +56,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToMap(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mapPage.fxml");
+    StageManager.getInstance().setDisplay("request/mapPage.fxml");
   }
 
   /**
@@ -78,7 +78,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("medicinePage.fxml");
+    StageManager.getInstance().setDisplay("request/medicinePage.fxml");
   }
 
   /**
@@ -90,7 +90,7 @@ public class landingPageController implements Initializable {
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
     // TODO: Switch back to og page
-    StageManager.getInstance().setDisplay("giftPageResized.fxml");
+    StageManager.getInstance().setDisplay("request/giftPageResized.fxml");
   }
 
   /**
@@ -101,7 +101,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mealPage.fxml");
+    StageManager.getInstance().setDisplay("request/mealPage.fxml");
   }
 
   /**
@@ -112,7 +112,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void switchToAudioVis(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("audioVisualPage.fxml");
+    StageManager.getInstance().setDisplay("request/audioVisualPage.fxml");
   }
 
   /**
@@ -145,7 +145,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void returnToMedical(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
+    StageManager.getInstance().setDisplay("request/medicalPage.fxml");
   }
 
   /**
@@ -167,7 +167,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void returnToMeals(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mealPage.fxml");
+    StageManager.getInstance().setDisplay("request/mealPage.fxml");
   }
 
   /**
@@ -178,7 +178,7 @@ public class landingPageController implements Initializable {
    */
   @FXML
   public void returnToGifts(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftPageResized.fxml");
+    StageManager.getInstance().setDisplay("request/giftPageResized.fxml");
   }
 
   @FXML
@@ -188,12 +188,12 @@ public class landingPageController implements Initializable {
 
   @FXML
   public void returnToLab(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("labRequestPage.fxml");
+    StageManager.getInstance().setDisplay("request/labRequestPage.fxml");
   }
 
   @FXML
   public void returnToScan(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("scanPage.fxml");
+    StageManager.getInstance().setDisplay("request/scanPage.fxml");
   }
 
   /**

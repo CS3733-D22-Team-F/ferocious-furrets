@@ -61,17 +61,17 @@
       </JFXButton>
       <ImageView fitHeight="265.0" fitWidth="281.0" layoutX="802.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@./Images/GiftQueue/pink_gift_basket-no%20bg.png" />
+            <Image url="@../Images/GiftQueue/pink_gift_basket-no_bg.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="238.0" fitWidth="238.0" layoutX="963.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@./Images/GiftQueue/basket-no%20bg.png" />
+            <Image url="@../Images/GiftQueue/basket-no_bg.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="777.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@./Images/GiftQueue/chocolate_cigars-no%20bg.png" />
+            <Image url="@../Images/GiftQueue/chocolate_cigars-no_bg.png" />
          </image>
       </ImageView>
     </children>

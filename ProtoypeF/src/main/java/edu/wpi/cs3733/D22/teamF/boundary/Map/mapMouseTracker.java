@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.boundary.Map;
 
 import edu.wpi.cs3733.D22.teamF.boundary.Map.MapComponents.coordTempHolder;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,13 +21,41 @@ public class mapMouseTracker {
   @FXML ImageView mapHolder;
   private String floor = "1";
 
-  Image F1 = new Image(getClass().getResourceAsStream("FloorMap/Floor1.jpg"));
-  Image F2 = new Image(getClass().getResourceAsStream("FloorMap/Floor2.jpg"));
-  Image F3 = new Image(getClass().getResourceAsStream("FloorMap/Floor3.jpg"));
-  Image F4 = new Image(getClass().getResourceAsStream("FloorMap/Floor4.jpg"));
-  Image F5 = new Image(getClass().getResourceAsStream("FloorMap/Floor5.jpg"));
-  Image L1 = new Image(getClass().getResourceAsStream("FloorMap/Lower1.jpg"));
-  Image L2 = new Image(getClass().getResourceAsStream("FloorMap/Lower2.jpg"));
+  Image F1 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor1.jpg")));
+  Image F2 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor2.jpg")));
+  Image F3 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor3.jpg")));
+  Image F4 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor4.jpg")));
+  Image F5 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor5.jpg")));
+  Image L1 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower1.jpg")));
+  Image L2 =
+      new Image(
+          Objects.requireNonNull(
+              getClass()
+                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower2.jpg")));
 
   /**
    * tracks the mouses x and y coordinates

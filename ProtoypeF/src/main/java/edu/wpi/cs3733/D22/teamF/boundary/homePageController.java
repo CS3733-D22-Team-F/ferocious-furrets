@@ -32,7 +32,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   void switchToMedical(ActionEvent event) throws IOException {
     // TODO fix
-    StageManager.getInstance().setDisplay("medicalPage.fxml");
+    StageManager.getInstance().setDisplay("request/medicalPage.fxml");
   }
 
   @FXML
@@ -84,7 +84,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToMedicine(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("medicinePage.fxml");
+    StageManager.getInstance().setDisplay("request/medicinePage.fxml");
   }
 
   /**
@@ -95,7 +95,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   void switchToGift(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("giftPageResized.fxml");
+    StageManager.getInstance().setDisplay("request/giftPageResized.fxml");
   }
 
   /**
@@ -106,7 +106,7 @@ public class homePageController extends PageController implements Initializable 
    */
   @FXML
   public void switchToMeals(ActionEvent event) throws IOException {
-    StageManager.getInstance().setDisplay("mealPage.fxml");
+    StageManager.getInstance().setDisplay("request/mealPage.fxml");
   }
 
   /**
@@ -118,7 +118,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToMap(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("mapPage.fxml"));
+    loader.setLocation(getClass().getResource("views/request/mapPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -135,7 +135,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToEquipment(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("equipmentPage.fxml"));
+    loader.setLocation(getClass().getResource("views/request/equipmentPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -152,7 +152,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToMedical(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("medicalPage.fxml"));
+    loader.setLocation(getClass().getResource("views/request/medicalPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -169,7 +169,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToMedicine(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("medicinePage.fxml"));
+    loader.setLocation(getClass().getResource("views/request/medicinePage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -186,7 +186,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToMeals(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("mealPage.fxml"));
+    loader.setLocation(getClass().getResource("views/request/mealPage.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
@@ -203,7 +203,7 @@ public class homePageController extends PageController implements Initializable 
   @FXML
   public void returnToGifts(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("giftPageResized.fxml"));
+    loader.setLocation(getClass().getResource("views/request/giftPageResized.fxml"));
     Parent ReportManager = loader.load();
     Scene ReportManagerScene = new Scene(ReportManager);
     Stage window = (Stage) reportAnchorPane.getScene().getWindow();
