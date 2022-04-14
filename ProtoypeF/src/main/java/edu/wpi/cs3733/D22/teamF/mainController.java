@@ -83,7 +83,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToEquipment() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/medicalPage.fxml");
+    SubScene scene = SceneManager.getInstance().setScene("views/equipmentPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
   }
