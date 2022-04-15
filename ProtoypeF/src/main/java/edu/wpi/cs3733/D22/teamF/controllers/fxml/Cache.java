@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
 import edu.wpi.cs3733.D22.teamF.Fapp;
-import edu.wpi.cs3733.D22.teamF.boundary.Map.MapComponents.MapIconModifier;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import java.io.*;
 
 public class Cache {

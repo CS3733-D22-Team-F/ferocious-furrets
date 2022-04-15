@@ -38,6 +38,6 @@ public class DAOTester {
     equipmentDAOImpl dao = new equipmentDAOImpl();
     dao.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipTest.csv");
     assertNotNull(dao.getAllEquipment());
-    //    System.out.println(database.getAllRequests().get(2).getLongName());
+    //    System.out.println(dao.getAllRequests().get(2).getLongName());
   }
 }

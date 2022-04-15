@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.controllers.fxml;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -33,9 +32,8 @@ public class StageManager {
           .getIcons()
           .add(
               new Image(
-                  Objects.requireNonNull(
-                      StageManager.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/Images/BWHlogo-new.png"))));
+                  StageManager.class.getResourceAsStream(
+                      "/edu/wpi/cs3733/D22/teamF/BWHlogo-new.png")));
     }
     return m_StageManager;
   }
@@ -63,7 +61,7 @@ public class StageManager {
 
   /** makes current screen the home */
   public void setHome() {
-    m_stage.setScene(SceneManager.getInstance().setScene("views/homePage.fxml"));
+    m_stage.setScene(SceneManager.getInstance().setScene("homePage.fxml"));
     m_stage.show();
   }
 
@@ -84,7 +82,7 @@ public class StageManager {
   public void setDisplayAndWaitMap(String filename) throws IOException {
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = SceneManager.getInstance().setScene("views/Map/" + filename);
+    Scene scene1 = SceneManager.getInstance().setScene("Map/" + filename);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
   }

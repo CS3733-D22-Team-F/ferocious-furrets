@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.fullLocationController">
+   <children>
+      <TableView fx:id="table" prefHeight="720.0" prefWidth="800.0">
+         <columns>
+            <TableColumn fx:id="nodeID" prefWidth="87.0800952911377" text="nodeID" />
+            <TableColumn prefWidth="49.194175720214844" text="xcoord" fx:id="xcoord" />
+            <TableColumn fx:id="ycoord" prefWidth="51.034088134765625" text="ycoord" />
+            <TableColumn fx:id="Floor" prefWidth="62.95404052734375" text="Floor" />
+            <TableColumn fx:id="Building" prefWidth="78.06661987304688" text="Building" />
+            <TableColumn fx:id="nodeType" prefWidth="111.82745361328125" text="nodeType" />
+            <TableColumn fx:id="longName" prefWidth="256.67254638671875" text="longName" />
+            <TableColumn fx:id="shortName" prefWidth="101.5877685546875" text="shortName" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="cancel" layoutX="835.0" layoutY="630.0" onAction="#cancel" prefHeight="58.0" prefWidth="139.0" ripplerFill="RED" style="-fx-background-color: aliceblue;" text="Close Page" textFill="RED" />
+   </children>
+</AnchorPane>

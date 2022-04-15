@@ -70,7 +70,7 @@ public class DatabaseInitializer {
    *
    * @return Connection object
    */
-  private Connection connectDatabase(ConnType type, String url) {
+  private Connection connectDatabase(ConnType type,String url) {
     System.out.println("Connecting to Database Type:" + type.toString());
     dbConnection = null;
     if (type == ConnType.EMBEDDED) {

@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<ScrollPane hvalue="1.0" prefWidth="1266.0" stylesheets="@../styles/combobox.css" vvalue="0.64" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.boundary.landingPageController">
+<ScrollPane hvalue="1.0" prefWidth="1266.0" stylesheets="@../combobox.css" vvalue="0.64" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
    <content>
       <BorderPane fx:id="reportAnchorPane" prefHeight="720.0" prefWidth="1280.0">
          <top>
@@ -54,7 +44,7 @@
                               </Label>
                               <ImageView fitHeight="105.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/bwhlogo.png" />
+                                    <Image url="@../bwhlogo.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -84,32 +74,26 @@
                                           <Insets top="25.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="nikLanding" prefHeight="16.0" prefWidth="182.0" text="Landing Page created by Nikola" textFill="#3e8cd0">
+                                    <Label fx:id="nikLanding" prefHeight="16.0" prefWidth="206.0" text="Landing Page created by Nikola" textFill="#3e8cd0">
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets bottom="15.0" left="75.0" />
                                        </VBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
                                     </Label>
                                     <JFXButton buttonType="RAISED" onAction="#returnToLab" prefHeight="82.0" prefWidth="300.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="LAB" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                        <graphic>
-                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Lab Request Button.png" />
-                                             </image></ImageView>
+                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <Label fx:id="nikolaLabLabel" prefHeight="16.0" prefWidth="177.0" text="Lab Request created by Nikola" textFill="#3e8cd0">
+                                    <Label fx:id="nikolaLabLabel" prefHeight="16.0" prefWidth="206.0" text="Medical Request created by Nikola" textFill="#3e8cd0">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="85.0" top="10.0" />
                                        </VBox.margin>
@@ -122,16 +106,13 @@
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                        <graphic>
-                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Scan Request Button.png" />
-                                             </image></ImageView>
+                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <Label fx:id="johnScan" prefHeight="16.0" prefWidth="186.0" text="Scan Request created by John" textFill="#3e8cd0">
+                                    <Label fx:id="johnScan" prefHeight="16.0" prefWidth="186.0" text="Medical Request created by John" textFill="#3e8cd0">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="85.0" top="10.0" />
                                        </VBox.margin>
@@ -145,9 +126,7 @@
                                        </font>
                                        <graphic>
                                           <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Equipment Request Button.png" />
-                                             </image></ImageView>
+                                    </ImageView>
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
@@ -167,9 +146,7 @@
                                        </font>
                                        <graphic>
                                           <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Medicine Request Button.png" />
-                                             </image></ImageView>
+                                    </ImageView>
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
@@ -189,9 +166,7 @@
                                        </font>
                                        <graphic>
                                           <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Meals Request Button.png" />
-                                             </image></ImageView>
+                                    </ImageView>
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
@@ -199,7 +174,7 @@
                                     </JFXButton>
                                     <Label fx:id="evansLabel" prefHeight="17.0" prefWidth="138.0" text="Meals created by Evans" textFill="#3e8cd0">
                                        <VBox.margin>
-                                          <Insets bottom="10.0" left="105.0" top="10.0" />
+                                          <Insets bottom="10.0" left="115.0" top="10.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
@@ -210,18 +185,15 @@
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                        <graphic>
-                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/AudioVisual Request Button.png" />
-                                             </image></ImageView>
+                                          <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <Label fx:id="raffiLabel" prefHeight="16.0" prefWidth="169.0" text="Audio/Visual created by Raffi" textFill="#3e8cd0">
+                                    <Label fx:id="raffiLabel" prefHeight="17.0" prefWidth="138.0" text="Meals created by Raffi" textFill="#3e8cd0">
                                        <VBox.margin>
-                                          <Insets bottom="10.0" left="90.0" top="10.0" />
+                                          <Insets bottom="10.0" left="115.0" top="10.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
@@ -233,9 +205,7 @@
                                        </font>
                                        <graphic>
                                           <ImageView fitHeight="39.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@LandingPageIcons/Gift Request Button.png" />
-                                             </image></ImageView>
+                                    </ImageView>
                                        </graphic>
                                        <VBox.margin>
                                           <Insets left="20.0" />
@@ -311,7 +281,7 @@
          <center>
             <ImageView fitHeight="720.0" fitWidth="1083.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../Images/hospitalImage.jpg" />
+                  <Image url="@../hospitalImage.jpg" />
                </image>
                <viewport>
                   <Rectangle2D />

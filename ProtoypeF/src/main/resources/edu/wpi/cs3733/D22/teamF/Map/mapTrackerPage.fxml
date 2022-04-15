@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapMouseTracker">
+   <children>
+      <ImageView fx:id="mapHolder" fitHeight="650.0" fitWidth="814.0" onMouseClicked="#track" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@FloorMap/Floor1.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="815.0" layoutY="15.0" prefHeight="632.0" prefWidth="197.0">
+         <children>
+            <Label prefHeight="33.0" prefWidth="17.0" text="X: " />
+            <Label prefHeight="33.0" prefWidth="61.0" fx:id="xValue" />
+            <Label prefHeight="33.0" prefWidth="17.0" text="Y: " />
+            <Label fx:id="yValue" prefHeight="33.0" prefWidth="61.0" />
+            <Label prefHeight="33.0" prefWidth="36.0" text="Floor: " />
+            <Label fx:id="floorValue" prefHeight="33.0" prefWidth="36.0" />
+            <JFXButton onAction="#submit" text="Confirm" />
+            <JFXButton fx:id="cancel" onAction="#cancel" ripplerFill="RED" text="Cancel" textFill="#d73d3d" />
+         </children>
+      </VBox>
+      <MenuBar layoutX="14.0" layoutY="14.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Change Map">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF5" text="Floor 5" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF4" text="Floor 4" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF3" text="Floor 3" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF2" text="Floor 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToF1" text="Floor 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL1" text="Lower 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeToL2" text="Lower 2" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

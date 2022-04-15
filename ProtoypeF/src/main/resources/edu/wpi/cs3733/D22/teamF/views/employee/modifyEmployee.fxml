@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.boundary.employee.modifyEmployeePopUpController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.modifyEmployeePopUpController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="89.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="315.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
@@ -28,7 +28,7 @@
                 </Label>
                 <ImageView fitHeight="76.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Images/BWHlogo-new.png" />
+                        <Image url="@../../BWHlogo-new.png" />
                     </image>
                     <HBox.margin>
                         <Insets left="10.0" />
