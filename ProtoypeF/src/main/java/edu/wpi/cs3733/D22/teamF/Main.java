@@ -18,7 +18,7 @@ public class Main {
     //    Connection conn = dbConn.getDbConnection(); // get the connection
     //        DatabaseManager dbMan =
     //            DatabaseManager.initalizeDatabaseManager(); // initialize locations and MEDDDELREQ
-    // table
+    /// table
     Fapp.launch(Fapp.class, args);
     // backup database to csv files
 
