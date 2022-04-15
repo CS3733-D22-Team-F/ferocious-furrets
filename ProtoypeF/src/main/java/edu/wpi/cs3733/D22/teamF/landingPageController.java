@@ -172,6 +172,17 @@ public class landingPageController extends PageController implements Initializab
     StageManager.getInstance().setDisplay("giftPageResized.fxml");
   }
 
+  /**
+   * return to gifts scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  @FXML
+  public void returnToSecurity(ActionEvent event) throws IOException {
+    StageManager.getInstance().setDisplay("securityPage.fxml");
+  }
+
   @FXML
   public void returnToHome(ActionEvent event) throws IOException {
     StageManager.getInstance().setDisplayNoViews("homePage.fxml");

@@ -32,7 +32,7 @@
                                     <MenuItem mnemonicParsing="false" onAction="#returnToScan" text="Scan" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToLab" text="Lab" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToEquipment" text="Equipment Delivery" />
-                                    <MenuItem mnemonicParsing="false" onAction="#returnToMedicine" text="Medicine" />
+                                    <MenuItem mnemonicParsing="false" onAction="#returnToSecurity" text="Medicine" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToMeals" text="Meals" />
                                     <MenuItem mnemonicParsing="false" onAction="#returnToGifts" text="Gifts" />
                                 </items>
