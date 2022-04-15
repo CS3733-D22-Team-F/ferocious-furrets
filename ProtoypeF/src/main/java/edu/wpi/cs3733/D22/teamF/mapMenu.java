@@ -8,11 +8,7 @@ public class mapMenu extends mainMenu {
 
   public mapMenu(
       StackPane pageHolder, JFXDrawer menu, VBox homeMenu, VBox mapMenu, VBox serviceMenu) {
-    this.pageHolder = pageHolder;
-    this.menu = menu;
-    this.homeMenu = homeMenu;
-    this.mapMenu = mapMenu;
-    this.serviceMenu = serviceMenu;
+    super(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
   }
 
   @Override

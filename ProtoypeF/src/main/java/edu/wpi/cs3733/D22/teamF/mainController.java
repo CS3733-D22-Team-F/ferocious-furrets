@@ -22,6 +22,7 @@ public class mainController implements Initializable {
 
   mainMenu homeMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
   mainMenu mapMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
+  mainMenu serviceMenuObject = new serviceMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
 
   @SneakyThrows
   @Override
@@ -58,11 +59,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToServiceMenu() throws IOException {
-    menu.setSidePane(serviceMenu);
-    homeMenu.setVisible(false);
-    serviceMenu.setVisible(true);
-    mapMenu.setVisible(false);
-    menu.setSidePane(serviceMenu);
+    serviceMenuObject.changeTo();
   }
 
   public void changeToLab() throws IOException {
