@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
@@ -14,6 +12,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class physicalTherapyController extends PageController
     implements Initializable, IRequestController {
@@ -22,8 +22,8 @@ public class physicalTherapyController extends PageController
   @FXML JFXComboBox employeeIDField;
   @FXML JFXComboBox userField;
   @FXML JFXComboBox typeChoice; // Lab Type Choice Box
-  @FXML JFXTextField durationTime; // duration time field in minutes
-  @FXML JFXTextArea notes;
+  @FXML TextField durationTime; // duration time field in minutes
+  @FXML TextArea notes;
   @FXML JFXComboBox statusChoice; // Status Choice Box
 
   /**
@@ -67,8 +67,8 @@ public class physicalTherapyController extends PageController
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")
-        || durationTime.getText().toString().equals("")
-        || notes.getText().toString().equals("")) {
+        || durationTime.getText().equals("")
+        || notes.getText().equals("")) {
       System.out.println("There are still blank fields");
     } else {
       RequestSystem req = new RequestSystem("PT");
@@ -83,6 +83,7 @@ public class physicalTherapyController extends PageController
       fields.add(notes.getText());
       req.placeRequest(fields);
     }
+    reset();
   }
 
   public String generateReqID() throws SQLException {

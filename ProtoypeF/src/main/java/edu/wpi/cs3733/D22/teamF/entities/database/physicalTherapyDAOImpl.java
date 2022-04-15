@@ -16,7 +16,7 @@ public class physicalTherapyDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("PTRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE PTRequest (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(8), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+        "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -29,7 +29,7 @@ public class physicalTherapyDAOImpl implements IRequestDAO {
   public void initTable(String filePath) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("PTRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE PTRequest (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(8), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+        "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
@@ -103,7 +103,7 @@ public class physicalTherapyDAOImpl implements IRequestDAO {
   @Override
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO PTRequest VALUES ('%s', '%s', '%s', '%s')",
+        "INSERT INTO PTREQUEST VALUES ('%s', '%s', '%s', '%s')",
         fields.get(0), fields.get(1), fields.get(2), fields.get(3));
   }
 
@@ -117,10 +117,10 @@ public class physicalTherapyDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format(
               "%s,%s,%s,%s",
-              currentRow.getString("reqID"),
-              currentRow.getString("type"),
-              currentRow.getString("duration"),
-              currentRow.getString("notes")));
+              currentRow.getString("REQID"),
+              currentRow.getString("TYPE"),
+              currentRow.getString("DURATION"),
+              currentRow.getString("NOTES")));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);

@@ -28,6 +28,7 @@ public class RequestSystem {
         break;
       case "PT":
         request = new physicalTherapyRequest();
+        break;
       case "Gift":
         request = new giftDeliveryRequest();
         break;
