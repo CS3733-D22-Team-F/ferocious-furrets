@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.entities.location;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVReader;
 import edu.wpi.cs3733.D22.teamF.controllers.general.CSVWriter;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -18,7 +19,8 @@ import javafx.scene.control.TextField;
  */
 public class LocationsDAOImpl implements LocationDAO {
 
-  private ArrayList<Location> Locations = new ArrayList<Location>(); // LIST OF LOCATIONS RIGHT NOW
+  // private ArrayList<Location> Locations = new ArrayList<Location>(); // LIST OF LOCATIONS RIGHT
+  // NOW
 
   @FXML private TextField newCSVName;
   @FXML private TextField newLocNodeID;
@@ -42,7 +44,8 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws IOException
    */
   public void initTable(String Filepath) throws SQLException, IOException {
-    Locations.clear();
+    Cache.clearLocations();
+    ArrayList<Location> locations = new ArrayList<>();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -51,10 +54,10 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      Locations.add(addedLocation);
+      locations.add(addedLocation);
     }
 
-    for (Location currentLocation : Locations) {
+    for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }
@@ -66,7 +69,8 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws IOException
    */
   public void initTable(File file) throws SQLException, IOException {
-    Locations.clear();
+    Cache.clearLocations();
+    ArrayList<Location> locations = new ArrayList<>();
     DatabaseManager.dropTableIfExist("Locations");
     DatabaseManager.runStatement(
         "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
@@ -75,16 +79,16 @@ public class LocationsDAOImpl implements LocationDAO {
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
       Location addedLocation = makeObjectFromString(currentLine);
-      Locations.add(addedLocation);
+      locations.add(addedLocation);
     }
 
-    for (Location currentLocation : Locations) {
+    for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
   }
 
   /**
-   * Saves the Locations table to a csv file
+   * Saves the Locations' table to a csv file
    *
    * @param fileDir is the name of the file the map will be backed up to
    * @throws SQLException
@@ -94,7 +98,7 @@ public class LocationsDAOImpl implements LocationDAO {
 
     ArrayList<String> toAdd = new ArrayList<>();
     toAdd.add("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName");
-    for (Location l : Locations) {
+    for (Location l : Cache.getLocationsCache()) {
       toAdd.add(
           String.format(
               "%s,%s,%s,%s,%s,%s,%s,%s",
@@ -115,7 +119,7 @@ public class LocationsDAOImpl implements LocationDAO {
 
     ArrayList<String> toAdd = new ArrayList<>();
     toAdd.add("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName");
-    for (Location l : Locations) {
+    for (Location l : Cache.getLocationsCache()) {
       toAdd.add(
           String.format(
               "%s,%s,%s,%s,%s,%s,%s,%s",
@@ -164,7 +168,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @returns ArrayList of type Locations
    * @see Location
    */
-  public ArrayList<Location> getAllLocations() throws SQLException {
+  public ArrayList<Location> getAllLocationsFromDB() throws SQLException {
     Statement stm = DatabaseManager.getConn().createStatement();
     String q = "SELECT * FROM LOCATIONS";
     ResultSet rset = stm.executeQuery(q);
@@ -182,7 +186,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @param newLocation
    */
   public void addLocation(Location newLocation) throws SQLException {
-    Locations.add(newLocation);
+    Cache.addLocation(newLocation);
     DatabaseManager.runStatement(newLocation.generateInsertStatement());
   }
 
@@ -194,12 +198,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @param nID
    */
   public void deleteLocation(String nID) throws SQLException {
-    for (Location l : Locations) {
-      if (nID.equals(l.getNodeID())) {
-        Locations.remove(l);
-        break;
-      }
-    }
+    Cache.remLocation(nID);
     DatabaseManager.runStatement(String.format("DELETE FROM Locations WHERE nodeID = '%s'", nID));
   }
 
@@ -220,7 +219,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws SQLException
    */
   public void updateLocationsListFromDatabase() throws SQLException {
-    Locations = locationsFromRSET(DatabaseManager.runQuery("SELECT * FROM Locations"));
+    Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
 
   /**

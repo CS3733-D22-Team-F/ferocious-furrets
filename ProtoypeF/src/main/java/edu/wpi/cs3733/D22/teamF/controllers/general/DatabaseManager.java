@@ -58,7 +58,7 @@ public class DatabaseManager {
     // backUpDatabaseToCSV();
     // DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
-    DatabaseManager dbMan = DatabaseManager.initializeDatabaseManager();
+    DatabaseManager dbMan = initializeDatabaseManager();
     return conn;
   }
 

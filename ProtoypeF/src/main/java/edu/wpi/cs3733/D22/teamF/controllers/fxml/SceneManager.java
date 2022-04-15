@@ -51,7 +51,7 @@ public class SceneManager {
       System.out.println("Loading Scene: " + filename);
     } else {
       scene = h_map.get(filename);
-      System.out.println("Load from hash map");
+      System.out.println("Load: " + filename + " from hash map");
     }
     currentScene = filename;
     return scene;

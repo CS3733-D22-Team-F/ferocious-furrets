@@ -8,8 +8,16 @@ import javafx.concurrent.Task;
 
 public class Load extends Task<Void> {
 
+  boolean useEmbedded;
+
+  public Load(boolean embedded) {
+    useEmbedded = embedded;
+  }
+
   @Override
   protected Void call() throws IOException, SQLException {
+    Cache.startDB(useEmbedded);
+    Cache.updateDBCache();
     DatabaseManager.switchConnection(DatabaseInitializer.getConnType());
     Cache.loadViews();
     Cache.loadIcons();

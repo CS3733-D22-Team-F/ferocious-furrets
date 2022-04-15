@@ -12,6 +12,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -29,7 +32,7 @@ import javafx.stage.Stage;
  */
 public class logInController extends returnHomePage implements Initializable {
   @FXML private TextField usernameField;
-  @FXML private TextField passwordField;
+  @FXML private PasswordField passwordField;
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
 
@@ -93,15 +96,13 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      if (databaseChooser.getValue().toString().equals("Embedded")) {
-        dbType = DatabaseInitializer.ConnType.EMBEDDED;
-      } else {
-        dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-      }
+      final BooleanProperty embedded =
+          new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
       DatabaseInitializer.switchConnection(dbType);
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
+      fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
       Scene scene = null;
       try {
         scene = new Scene(fxmlLoader.load());
@@ -112,6 +113,7 @@ public class logInController extends returnHomePage implements Initializable {
       SceneManager.getInstance().setStage(stage);
       stage.setScene(scene);
       stage.show();
+      ((Stage) usernameField.getScene().getWindow()).close();
 
       // DatabaseManager.switchConnection(dbType);
       popUpLabel.setVisible(false);
