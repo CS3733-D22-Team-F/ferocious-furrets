@@ -68,7 +68,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="outButton" buttonType="RAISED" prefHeight="23.0" prefWidth="201.0" text="Log out">
+            <JFXButton fx:id="outButton" buttonType="RAISED" onAction="#logOut" prefHeight="23.0" prefWidth="201.0" text="Log out">
                <font>
                   <Font size="24.0" />
                </font>
