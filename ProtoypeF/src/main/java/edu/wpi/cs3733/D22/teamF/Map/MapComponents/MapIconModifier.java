@@ -2,7 +2,7 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import afester.javafx.svg.SvgLoader;
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javafx.scene.Cursor;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 
 /** for dealing with modifying icons on the map */
@@ -48,231 +50,264 @@ public class MapIconModifier {
    */
   public static ImageView getIcon(String type) {
     Image image =
-        new Image(mapPageController.class.getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
+        new Image(
+            Objects.requireNonNull(
+                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
     switch (type) {
       case "PATI":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/PATI Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
           break;
         }
       case "STOR":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/STOR Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/STOR Icon.png")));
           break;
         }
       case "DIRT":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/DIRT Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/DIRT Icon.png")));
           break;
         }
       case "HALL":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/HALL Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/HALL Icon.png")));
           break;
         }
       case "ELEV":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/ELEV Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/ELEV Icon.png")));
           break;
         }
       case "REST":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/REST Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/REST Icon.png")));
           break;
         }
       case "STAI":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/STAI Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/STAI Icon.png")));
           break;
         }
       case "DEPT":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/DEPT Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/DEPT Icon.png")));
           break;
         }
       case "LABS":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/LABS Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/LABS Icon.png")));
           break;
         }
       case "INFO":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/INFO Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/INFO Icon.png")));
           break;
         }
       case "CONF":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/CONF Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/CONF Icon.png")));
           break;
         }
       case "EXIT":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/EXIT Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/EXIT Icon.png")));
           break;
         }
       case "RETL":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/RETL Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/RETL Icon.png")));
           break;
         }
       case "SERV":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapIcons/SERV Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/SERV Icon.png")));
           break;
         }
       case "Infusion Pump":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/EquipmentIcons/IPMP Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/IPMP Icon.png")));
           break;
         }
       case "Bed":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/EquipmentIcons/PTBD Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/PTBD Icon.png")));
           break;
         }
       case "Recliner":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/EquipmentIcons/RECL Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/RECL Icon.png")));
           break;
         }
       case "Xray":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/EquipmentIcons/XRAY Icon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/XRAY Icon.png")));
           break;
         }
       case "add":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/add.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/add.png")));
           break;
         }
       case "history":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/history.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/history.png")));
           break;
         }
       case "home":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/home.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/home.png")));
           break;
         }
       case "load":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/load.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/load.png")));
           break;
         }
       case "menu":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/menu.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/menu.png")));
           break;
         }
       case "save":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/save.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/save.png")));
           break;
         }
       case "table":
         {
           image =
-              new Image(mapPageController.class.getResourceAsStream("Icons/MapMenuIcon/table.png"));
+              new Image(
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/table.png")));
           break;
         }
       case "audio&visual":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/ServiceIcon/AudioVisualIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/AudioVisualIcon.png")));
           break;
         }
       case "equip":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/ServiceIcon/EquipmentIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/EquipmentIcon.png")));
           break;
         }
       case "gift":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/GiftIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/GiftIcon.png")));
           break;
         }
       case "lab":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/LabIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/LabIcon.png")));
           break;
         }
       case "meal":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/MealIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MealIcon.png")));
           break;
         }
       case "medical":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream(
-                      "Icons/ServiceIcon/MedicineIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MedicineIcon.png")));
           break;
         }
       case "scan":
         {
           image =
               new Image(
-                  mapPageController.class.getResourceAsStream("Icons/ServiceIcon/ScanIcon.png"));
+                  Objects.requireNonNull(
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/ScanIcon.png")));
           break;
         }
     }
@@ -443,33 +478,51 @@ public class MapIconModifier {
       newButton.setPrefSize(20, 20);
       newButton.setMinSize(20, 20);
       newButton.setMaxSize(20, 20);
-      if (getLocType(location).equals("location")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
-                if (MapIconModifier.locationIconList.containsValue(newButton)) {
-                  Location lo =
-                      new ArrayList<>(
-                              MapIconModifier.getKeysByValue(
-                                  MapIconModifier.locationIconList, newButton))
-                          .get(0);
-                  try {
-                    MapPopUp.popUpLocModify(table, iconPane, lo);
-                    MapTableHolder.loadMap(table, iconPane);
-                  } catch (IOException | SQLException ex) {
-                    ex.printStackTrace();
+      if (UserType.getUserType().equals("admin")) {
+        if (getLocType(location).equals("location")) {
+          final Delta dragDelta = new Delta();
+          newButton.setOnMouseClicked(
+              e -> {
+                if (e.getButton() == MouseButton.SECONDARY) {
+                  if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                    Location lo =
+                        new ArrayList<>(
+                                MapIconModifier.getKeysByValue(
+                                    MapIconModifier.locationIconList, newButton))
+                            .get(0);
+                    try {
+                      MapPopUp.popUpLocModify(table, iconPane, lo);
+                      MapTableHolder.loadMap(table, iconPane);
+                    } catch (IOException | SQLException ex) {
+                      ex.printStackTrace();
+                    }
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify locations", newButton);
-              }
-            });
-      } else if (getLocType(location).equals("service")
-          && !location.getShortName().equals("done")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
+              });
 
+          newButton.setOnMousePressed(
+              e -> {
+                dragDelta.x = newButton.getLayoutX() - e.getSceneX();
+                dragDelta.y = newButton.getLayoutY() - e.getSceneY();
+                newButton.setCursor(Cursor.MOVE);
+              });
+          newButton.setOnMouseReleased(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseDragged(
+              e -> {
+                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+              });
+        } else if (getLocType(location).equals("service")
+            && !location.getShortName().equals("done")) {
+          newButton.setOnAction(
+              e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
                   Location lo =
                       new ArrayList<>(
@@ -483,14 +536,10 @@ public class MapIconModifier {
                     ex.printStackTrace();
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify service request", newButton);
-              }
-            });
-      } else if (getLocType(location).equals("equipment")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
+              });
+        } else if (getLocType(location).equals("equipment")) {
+          newButton.setOnAction(
+              e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
                   Location lo =
                       new ArrayList<>(
@@ -504,12 +553,9 @@ public class MapIconModifier {
                     ex.printStackTrace();
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify equipment", newButton);
-              }
-            });
+              });
+        }
       }
-
       double x =
           (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
       double y = (location.getYcoord() / 3550.0) * 700;
@@ -538,4 +584,8 @@ public class MapIconModifier {
       return "location";
     }
   }
+}
+
+class Delta {
+  double x, y;
 }

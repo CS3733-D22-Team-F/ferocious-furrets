@@ -95,8 +95,6 @@ public class logInController extends returnHomePage implements Initializable {
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
-      // DatabaseInitializer.switchConnection(dbType);
-
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
       Scene scene = null;
@@ -105,13 +103,10 @@ public class logInController extends returnHomePage implements Initializable {
       } catch (IOException e) {
         e.printStackTrace();
       }
-      Stage stage = new Stage();
+      Stage stage = SceneManager.getInstance().getStage();
       SceneManager.getInstance().setStage(stage);
       stage.setScene(scene);
       stage.show();
-      ((Stage) usernameField.getScene().getWindow()).close();
-
-      // DatabaseManager.switchConnection(dbType);
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

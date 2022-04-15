@@ -1,15 +1,22 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lombok.SneakyThrows;
 
 public class mainController implements Initializable {
@@ -19,10 +26,10 @@ public class mainController implements Initializable {
   @FXML VBox homeMenu;
   @FXML VBox mapMenu;
   @FXML VBox serviceMenu;
-
-  mainMenu homeMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
-  mainMenu mapMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
-  mainMenu serviceMenuObject = new serviceMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
+  @FXML JFXButton mapButton;
+  @FXML JFXButton serviceButton;
+  @FXML JFXButton settingsButton;
+  @FXML JFXButton outButton;
 
   @SneakyThrows
   @Override
@@ -30,7 +37,7 @@ public class mainController implements Initializable {
     mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
     menu.setSidePane(homeMenu);
-    menu.close();
+    menuClose();
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
@@ -38,18 +45,44 @@ public class mainController implements Initializable {
 
   public void menuClose() {
     menu.close();
+    menu.setMaxWidth(50);
+    homeMenu.setMaxWidth(50);
+    mapButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    mapButton.setText("");
+    serviceButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    serviceButton.setText("");
+    settingsButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    settingsButton.setText("");
+    outButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    outButton.setText("");
   }
 
   public void menuOpen() {
     menu.open();
+    menu.setMaxWidth(200);
+    homeMenu.setMaxWidth(200);
+    mapButton.setGraphic(null);
+    mapButton.setText("Map");
+    serviceButton.setGraphic(null);
+    serviceButton.setText("Service");
+    settingsButton.setGraphic(null);
+    settingsButton.setText("Settings");
+    outButton.setGraphic(null);
+    outButton.setText("Log out");
   }
 
   public void changeToHomeMenu() throws IOException {
-    homeMenuObject.changeTo();
+    menu.setSidePane(homeMenu);
+    homeMenu.setVisible(true);
+    serviceMenu.setVisible(false);
+    mapMenu.setVisible(false);
   }
 
   public void changeToMapMenu() throws IOException {
-    mapMenuObject.changeTo();
+    menu.setSidePane(mapMenu);
+    homeMenu.setVisible(false);
+    serviceMenu.setVisible(false);
+    mapMenu.setVisible(true);
   }
 
   public void changeToMap() throws IOException {
@@ -59,7 +92,10 @@ public class mainController implements Initializable {
   }
 
   public void changeToServiceMenu() throws IOException {
-    serviceMenuObject.changeTo();
+    menu.setSidePane(serviceMenu);
+    homeMenu.setVisible(false);
+    serviceMenu.setVisible(true);
+    mapMenu.setVisible(false);
   }
 
   public void changeToLab() throws IOException {
@@ -102,5 +138,31 @@ public class mainController implements Initializable {
     SubScene scene = SceneManager.getInstance().setScene("views/medicinePage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
+  }
+
+  public void changeToDashboard() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/dashboardPage.fxml");
+    pageHolder.getChildren().clear();
+    pageHolder.getChildren().addAll(scene);
+  }
+
+  public void logOut() throws IOException {
+    pageHolder.getChildren().clear();
+    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
+    Scene scene = null;
+    try {
+      scene = new Scene(fxmlLoader.load());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Stage stage = SceneManager.getInstance().getStage();
+    SceneManager.getInstance().setStage(stage);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void exit() throws SQLException, IOException {
+    DatabaseManager.backUpDatabaseToCSV();
+    System.exit(0);
   }
 }
