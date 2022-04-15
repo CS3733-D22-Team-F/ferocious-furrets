@@ -30,7 +30,7 @@ public class cachePageController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     statusLabel.setText(randomFact());
     statusLabel.setTextAlignment(TextAlignment.CENTER);
-    //Task<Void> loader = new Load();
+    // Task<Void> loader = new Load();
     Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {

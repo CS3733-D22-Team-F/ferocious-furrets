@@ -99,7 +99,7 @@ public class logInController extends returnHomePage implements Initializable {
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
-      DatabaseInitializer.switchConnection(dbType);
+      // DatabaseInitializer.switchConnection(dbType);
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
@@ -120,11 +120,11 @@ public class logInController extends returnHomePage implements Initializable {
     } else {
       popUpLabel.setVisible(true);
     }
-    //    if (databaseChooser.getValue().toString().equals("Client-Server")) {
-    //      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    //    } else {
-    //      dbType = DatabaseInitializer.ConnType.EMBEDDED;
-    //    }
+    //        if (databaseChooser.getValue().toString().equals("Client-Server")) {
+    //          dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    //        } else {
+    //          dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    //        }
   }
 
   @Override
