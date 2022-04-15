@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import afester.javafx.svg.SvgLoader;
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -11,9 +10,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javafx.scene.Cursor;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 
 /** for dealing with modifying icons on the map */
@@ -443,33 +444,51 @@ public class MapIconModifier {
       newButton.setPrefSize(20, 20);
       newButton.setMinSize(20, 20);
       newButton.setMaxSize(20, 20);
-      if (getLocType(location).equals("location")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
-                if (MapIconModifier.locationIconList.containsValue(newButton)) {
-                  Location lo =
-                      new ArrayList<>(
-                              MapIconModifier.getKeysByValue(
-                                  MapIconModifier.locationIconList, newButton))
-                          .get(0);
-                  try {
-                    MapPopUp.popUpLocModify(table, iconPane, lo);
-                    MapTableHolder.loadMap(table, iconPane);
-                  } catch (IOException | SQLException ex) {
-                    ex.printStackTrace();
+      if (UserType.getUserType().equals("admin")) {
+        if (getLocType(location).equals("location")) {
+          final Delta dragDelta = new Delta();
+          newButton.setOnMouseClicked(
+              e -> {
+                if (e.getButton() == MouseButton.SECONDARY) {
+                  if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                    Location lo =
+                        new ArrayList<>(
+                                MapIconModifier.getKeysByValue(
+                                    MapIconModifier.locationIconList, newButton))
+                            .get(0);
+                    try {
+                      MapPopUp.popUpLocModify(table, iconPane, lo);
+                      MapTableHolder.loadMap(table, iconPane);
+                    } catch (IOException | SQLException ex) {
+                      ex.printStackTrace();
+                    }
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify locations", newButton);
-              }
-            });
-      } else if (getLocType(location).equals("service")
-          && !location.getShortName().equals("done")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
+              });
 
+          newButton.setOnMousePressed(
+              e -> {
+                dragDelta.x = newButton.getLayoutX() - e.getSceneX();
+                dragDelta.y = newButton.getLayoutY() - e.getSceneY();
+                newButton.setCursor(Cursor.MOVE);
+              });
+          newButton.setOnMouseReleased(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseDragged(
+              e -> {
+                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+              });
+        } else if (getLocType(location).equals("service")
+            && !location.getShortName().equals("done")) {
+          newButton.setOnAction(
+              e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
                   Location lo =
                       new ArrayList<>(
@@ -483,14 +502,10 @@ public class MapIconModifier {
                     ex.printStackTrace();
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify service request", newButton);
-              }
-            });
-      } else if (getLocType(location).equals("equipment")) {
-        newButton.setOnAction(
-            e -> {
-              if (UserType.getUserType().equals("admin")) {
+              });
+        } else if (getLocType(location).equals("equipment")) {
+          newButton.setOnAction(
+              e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
                   Location lo =
                       new ArrayList<>(
@@ -504,12 +519,9 @@ public class MapIconModifier {
                     ex.printStackTrace();
                   }
                 }
-              } else {
-                AGlobalMethods.showAlert("Sorry, you cannot modify equipment", newButton);
-              }
-            });
+              });
+        }
       }
-
       double x =
           (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
       double y = (location.getYcoord() / 3550.0) * 700;
@@ -538,4 +550,8 @@ public class MapIconModifier {
       return "location";
     }
   }
+}
+
+class Delta {
+  double x, y;
 }

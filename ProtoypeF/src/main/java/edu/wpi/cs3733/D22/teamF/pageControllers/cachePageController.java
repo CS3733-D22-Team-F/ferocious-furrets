@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +30,7 @@ public class cachePageController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     statusLabel.setText(randomFact());
     statusLabel.setTextAlignment(TextAlignment.CENTER);
-    Task<Void> loader = new Load();
+    Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {
           try {

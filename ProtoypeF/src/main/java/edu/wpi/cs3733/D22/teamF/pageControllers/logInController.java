@@ -103,12 +103,10 @@ public class logInController extends returnHomePage implements Initializable {
       } catch (IOException e) {
         e.printStackTrace();
       }
-      Stage stage = new Stage();
+      Stage stage = SceneManager.getInstance().getStage();
       SceneManager.getInstance().setStage(stage);
       stage.setScene(scene);
       stage.show();
-      ((Stage) usernameField.getScene().getWindow()).close();
-
       popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);

@@ -43,32 +43,32 @@
                <children>
                   <AnchorPane prefHeight="720.0" prefWidth="1330.0">
                      <children>
-                        <StackPane fx:id="pageHolder" layoutX="100.0" prefHeight="720.0" prefWidth="1280.0" />
-                        <JFXDrawer fx:id="menu" defaultDrawerSize="-1.0" maxHeight="720.0" maxWidth="50.0" minHeight="720.0" minWidth="50.0" onMouseEntered="#menuOpen" onMouseExited="#menuClose" prefHeight="720.0" prefWidth="50.0" />
+                        <StackPane fx:id="pageHolder" layoutX="50.0" prefHeight="720.0" prefWidth="1280.0" />
+                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="720.0" maxWidth="200.0" minHeight="720.0" minWidth="50.0" miniDrawerSize="50.0" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="720.0" prefWidth="200.0" resizeContent="true" />
                      </children>
                   </AnchorPane>
                </children>
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="homeMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
+      <VBox fx:id="homeMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="50.0">
          <children>
-            <JFXButton buttonType="RAISED" onAction="#changeToMapMenu" prefHeight="52.0" prefWidth="215.0" text="Map">
+            <JFXButton fx:id="mapButton" buttonType="RAISED" onAction="#changeToMapMenu" prefHeight="52.0" prefWidth="215.0" text="Map">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#changeToServiceMenu" prefHeight="23.0" prefWidth="286.0" text="Service">
+            <JFXButton fx:id="serviceButton" buttonType="RAISED" onAction="#changeToServiceMenu" prefHeight="23.0" prefWidth="286.0" text="Service">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" prefHeight="23.0" prefWidth="239.0" text="Settings">
+            <JFXButton fx:id="settingsButton" buttonType="RAISED" prefHeight="23.0" prefWidth="239.0" text="Settings">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" prefHeight="23.0" prefWidth="201.0" text="Log out">
+            <JFXButton fx:id="outButton" buttonType="RAISED" prefHeight="23.0" prefWidth="201.0" text="Log out">
                <font>
                   <Font size="24.0" />
                </font>
