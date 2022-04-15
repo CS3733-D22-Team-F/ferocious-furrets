@@ -82,7 +82,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" prefHeight="23.0" prefWidth="286.0" text="Dashboard">
+            <JFXButton buttonType="RAISED" onAction="#changeToDashboard" prefHeight="23.0" prefWidth="286.0" text="Dashboard">
                <font>
                   <Font size="24.0" />
                </font>

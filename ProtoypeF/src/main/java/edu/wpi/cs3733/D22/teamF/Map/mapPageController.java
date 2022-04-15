@@ -47,8 +47,6 @@ public class mapPageController implements Initializable {
 
   @FXML public TableView<Location> table;
 
-  @FXML TitledPane legend;
-
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
   @FXML TableColumn<Location, String> longName;
@@ -128,7 +126,6 @@ public class mapPageController implements Initializable {
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
     Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
-    legend.setExpanded(false);
 
     try {
       MapTableHolder.loadMap(table, iconPane);
@@ -439,7 +436,8 @@ public class mapPageController implements Initializable {
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
-    menuNodeList.setRotate(-90);
+    menuNodeList.setRotate(180);
+    floorNodeList.setRotate(180);
     AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF5, 40);
