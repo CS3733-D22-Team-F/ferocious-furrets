@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -17,7 +18,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -80,11 +80,7 @@ public class logInController extends returnHomePage implements Initializable {
       userType.setUserType("staff");
       success = true;
     } else if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("ERROR");
-      alert.setHeaderText("One or more field is empty");
-      alert.setContentText("Please fill out any empty fields.");
-      alert.showAndWait();
+      AGlobalMethods.showAlert("At least one required field is empty", popUpLabel);
     } else {
       userType.setUserType("");
       popUpLabel.setStyle("-fx-text-fill: red;");

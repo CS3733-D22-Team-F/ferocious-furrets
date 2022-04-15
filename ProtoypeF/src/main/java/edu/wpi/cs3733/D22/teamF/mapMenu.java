@@ -6,7 +6,8 @@ import javafx.scene.layout.VBox;
 
 public class mapMenu extends mainMenu {
 
-  public mapMenu(StackPane pageHolder, JFXDrawer menu, VBox homeMenu, VBox mapMenu, VBox serviceMenu) {
+  public mapMenu(
+      StackPane pageHolder, JFXDrawer menu, VBox homeMenu, VBox mapMenu, VBox serviceMenu) {
     super(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
   }
 
