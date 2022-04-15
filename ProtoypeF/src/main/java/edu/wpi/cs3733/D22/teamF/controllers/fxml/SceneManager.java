@@ -24,7 +24,7 @@ public class SceneManager {
    * @return the sole instance
    */
   public static SceneManager getInstance() {
-    // seperation for ease of control i.e intilization method
+    // separation for ease of control i.e initialization method
     if (m_SceneManager == null) m_SceneManager = new SceneManager();
     return m_SceneManager;
   }
@@ -39,15 +39,20 @@ public class SceneManager {
    * @param filename Takes a string to acess fxml file/scene
    * @return
    */
-  public SubScene setScene(String filename) throws IOException // acess from anywhere global
-      { // higlight tab /shift+tab
+
+  /*
+   * Singleton implementation with global access
+   */
+  public SubScene setScene(String filename) throws IOException { // highlight tab /shift+tab
     SubScene scene = null;
-    // checks in hash
+    /*
+     * Checks the hashmap to see if filename already exists.
+     */
     if (!h_map.containsKey(filename)) {
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(filename));
       // alt enter while hover over/cursor in red
       scene = new SubScene(fxmlLoader.load(), 1200, 720);
-      h_map.put(filename, scene); // hashing any object hence generic
+      h_map.put(filename, scene); // Hashes the filename path into a scene object
       System.out.println("Loading Scene: " + filename);
     } else {
       scene = h_map.get(filename);
@@ -62,7 +67,7 @@ public class SceneManager {
     // alt enter while hover over/cursor in red
     try {
       SubScene scene = new SubScene(fxmlLoader.load(), 1200, 720);
-      h_map.put(path, scene); // hashing any object hence generic
+      h_map.put(path, scene); // Hashes the filename path into a scene object
     } catch (IOException e) {
       e.printStackTrace();
     }

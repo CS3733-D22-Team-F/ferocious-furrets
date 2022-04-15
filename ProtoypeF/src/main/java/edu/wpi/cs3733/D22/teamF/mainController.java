@@ -20,6 +20,10 @@ public class mainController implements Initializable {
   @FXML VBox mapMenu;
   @FXML VBox serviceMenu;
 
+  mainMenu homeMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
+  mainMenu mapMenuObject = new homeMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
+  mainMenu serviceMenuObject = new serviceMenu(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
+
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -41,19 +45,11 @@ public class mainController implements Initializable {
   }
 
   public void changeToHomeMenu() throws IOException {
-    menu.setSidePane(homeMenu);
-    homeMenu.setVisible(true);
-    serviceMenu.setVisible(false);
-    mapMenu.setVisible(false);
-    menu.setSidePane(homeMenu);
+    homeMenuObject.changeTo();
   }
 
   public void changeToMapMenu() throws IOException {
-    menu.setSidePane(mapMenu);
-    homeMenu.setVisible(false);
-    serviceMenu.setVisible(false);
-    mapMenu.setVisible(true);
-    menu.setSidePane(mapMenu);
+    mapMenuObject.changeTo();
   }
 
   public void changeToMap() throws IOException {
@@ -63,11 +59,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToServiceMenu() throws IOException {
-    menu.setSidePane(serviceMenu);
-    homeMenu.setVisible(false);
-    serviceMenu.setVisible(true);
-    mapMenu.setVisible(false);
-    menu.setSidePane(serviceMenu);
+    serviceMenuObject.changeTo();
   }
 
   public void changeToLab() throws IOException {
