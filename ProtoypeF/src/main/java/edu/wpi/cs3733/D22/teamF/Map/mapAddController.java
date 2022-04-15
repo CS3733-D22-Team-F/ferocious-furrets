@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -118,7 +119,9 @@ public class mapAddController implements Initializable {
    * @throws IOException
    */
   public void popUpTracker() throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("mapTrackerPage.fxml"));
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(getClass().getResource("views/Map/mapTrackerPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
