@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import afester.javafx.svg.SvgLoader;
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -51,16 +52,14 @@ public class MapIconModifier {
     Image image =
         new Image(
             Objects.requireNonNull(
-                mapPageController.class.getResourceAsStream(
-                    "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/PATI Icon.png")));
+                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
     switch (type) {
       case "PATI":
         {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/PATI Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
           break;
         }
       case "STOR":
@@ -68,8 +67,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/STOR Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/STOR Icon.png")));
           break;
         }
       case "DIRT":
@@ -77,8 +75,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/DIRT Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/DIRT Icon.png")));
           break;
         }
       case "HALL":
@@ -86,8 +83,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/HALL Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/HALL Icon.png")));
           break;
         }
       case "ELEV":
@@ -95,8 +91,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/ELEV Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/ELEV Icon.png")));
           break;
         }
       case "REST":
@@ -104,8 +99,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/REST Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/REST Icon.png")));
           break;
         }
       case "STAI":
@@ -113,8 +107,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/STAI Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/STAI Icon.png")));
           break;
         }
       case "DEPT":
@@ -122,8 +115,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/DEPT Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/DEPT Icon.png")));
           break;
         }
       case "LABS":
@@ -131,8 +123,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/LABS Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/LABS Icon.png")));
           break;
         }
       case "INFO":
@@ -140,8 +131,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/INFO Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/INFO Icon.png")));
           break;
         }
       case "CONF":
@@ -149,8 +139,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/CONF Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/CONF Icon.png")));
           break;
         }
       case "EXIT":
@@ -158,8 +147,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/EXIT Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/EXIT Icon.png")));
           break;
         }
       case "RETL":
@@ -167,8 +155,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/RETL Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/RETL Icon.png")));
           break;
         }
       case "SERV":
@@ -176,8 +163,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/SERV Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapIcons/SERV Icon.png")));
           break;
         }
       case "Infusion Pump":
@@ -185,8 +171,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/EquipmentIcons/IPMP Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/IPMP Icon.png")));
           break;
         }
       case "Bed":
@@ -194,8 +179,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/EquipmentIcons/PTBD Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/PTBD Icon.png")));
           break;
         }
       case "Recliner":
@@ -203,8 +187,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/EquipmentIcons/RECL Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/RECL Icon.png")));
           break;
         }
       case "Xray":
@@ -212,8 +195,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/EquipmentIcons/XRAY Icon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/XRAY Icon.png")));
           break;
         }
       case "add":
@@ -221,8 +203,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/add.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/add.png")));
           break;
         }
       case "history":
@@ -230,8 +211,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/history.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/history.png")));
           break;
         }
       case "home":
@@ -239,8 +219,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/home.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/home.png")));
           break;
         }
       case "load":
@@ -248,8 +227,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/load.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/load.png")));
           break;
         }
       case "menu":
@@ -257,8 +235,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/menu.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/menu.png")));
           break;
         }
       case "save":
@@ -266,8 +243,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/save.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/save.png")));
           break;
         }
       case "table":
@@ -275,8 +251,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapMenuIcon/table.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/table.png")));
           break;
         }
       case "audio&visual":
@@ -284,8 +259,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/AudioVisualIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/AudioVisualIcon.png")));
           break;
         }
       case "equip":
@@ -293,8 +267,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/EquipmentIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/EquipmentIcon.png")));
           break;
         }
       case "gift":
@@ -302,8 +275,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/GiftIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/GiftIcon.png")));
           break;
         }
       case "lab":
@@ -311,8 +283,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/LabIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/LabIcon.png")));
           break;
         }
       case "meal":
@@ -320,8 +291,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/MealIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MealIcon.png")));
           break;
         }
       case "medical":
@@ -329,8 +299,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/MedicineIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MedicineIcon.png")));
           break;
         }
       case "scan":
@@ -338,8 +307,7 @@ public class MapIconModifier {
           image =
               new Image(
                   Objects.requireNonNull(
-                      mapPageController.class.getResourceAsStream(
-                          "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/ServiceIcon/ScanIcon.png")));
+                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/ScanIcon.png")));
           break;
         }
     }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
 import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -99,40 +100,19 @@ public class mapPageController implements Initializable {
   @FXML JFXButton homeButton;
 
   Image F1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));
   Image F2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor2.jpg")));
   Image F3 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor3.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor3.jpg")));
   Image F4 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor4.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor4.jpg")));
   Image F5 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor5.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor5.jpg")));
   Image L1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower1.jpg")));
   Image L2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower2.jpg")));
 
   /**
    * Initialize the map page, get all the equipment and locations from the database, get the x-y
