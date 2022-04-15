@@ -12,5 +12,12 @@ public abstract class mainMenu {
   VBox mapMenu;
   VBox serviceMenu;
 
+  public mainMenu(StackPane pageHolder, JFXDrawer menu, VBox homeMenu, VBox mapMenu, VBox serviceMenu){
+    this.pageHolder = pageHolder;
+    this.menu = menu;
+    this.homeMenu = homeMenu;
+    this.mapMenu = mapMenu;
+    this.serviceMenu = serviceMenu;
+  }
   abstract void changeTo();
 }
