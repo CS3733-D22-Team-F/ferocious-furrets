@@ -43,8 +43,7 @@ public class SceneManager {
   /*
    * Singleton implementation with global access
    */
-  public SubScene setScene(String filename) throws IOException
-      { // highlight tab /shift+tab
+  public SubScene setScene(String filename) throws IOException { // highlight tab /shift+tab
     SubScene scene = null;
     /*
      * Checks the hashmap to see if filename already exists.
