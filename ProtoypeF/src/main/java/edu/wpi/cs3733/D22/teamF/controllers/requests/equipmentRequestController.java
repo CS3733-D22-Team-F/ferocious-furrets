@@ -169,7 +169,7 @@ public class equipmentRequestController extends PageController
             currentFields.add(1, ServiceRequest.getString("nodeID"));
             currentFields.add(2, ServiceRequest.getString("assignedEmployeeID"));
             currentFields.add(3, ServiceRequest.getString("requesterEmployeeID"));
-            currentFields.add(4, ServiceRequest.getString("requesterEmployeeID"));
+            currentFields.add(4, ServiceRequest.getString("status"));
             currentFields.add(5, EquipmentRequest.getString("equipID"));
 
             updateTableFromFields(currentFields);
