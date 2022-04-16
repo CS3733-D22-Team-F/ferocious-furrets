@@ -140,6 +140,12 @@ public class mainController implements Initializable {
     pageHolder.getChildren().addAll(scene);
   }
 
+  public void changeToSecurity() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/securityPage.fxml");
+    pageHolder.getChildren().clear();
+    pageHolder.getChildren().addAll(scene);
+  }
+
   public void changeToDashboard() throws IOException {
     SubScene scene = SceneManager.getInstance().setScene("views/dashboardPage.fxml");
     pageHolder.getChildren().clear();

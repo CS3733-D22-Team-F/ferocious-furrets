@@ -33,6 +33,7 @@ public class DatabaseManager {
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
   private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
   private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
+  private static final securityDAOImpl securityDAO = new securityDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -82,6 +83,7 @@ public class DatabaseManager {
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     return Helper.dbMan;
   }
 
@@ -132,6 +134,7 @@ public class DatabaseManager {
 
     // DROP ALL REQUEST
     dropTableIfExist("audioVisualRequest");
+    dropTableIfExist("securityRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
     dropTableIfExist("GIFTREQUEST");
@@ -172,6 +175,7 @@ public class DatabaseManager {
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
@@ -236,6 +240,10 @@ public class DatabaseManager {
 
   public static audioVisualDAOImpl getAudioVisDAO() {
     return audioVisualDAO;
+  }
+
+  public static securityDAOImpl getSecurityDAO() {
+    return securityDAO;
   }
 
   /** helper */
