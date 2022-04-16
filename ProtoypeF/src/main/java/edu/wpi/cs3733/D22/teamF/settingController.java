@@ -6,7 +6,6 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,21 +38,19 @@ public class settingController implements Initializable {
   }
 
   @FXML
-  public void furretCredit(){
-      
-  }
+  public void furretCredit() {}
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     themeSetLabel.setVisible(false);
     themeSetCombo.setVisible(false);
     furretImage.setPickOnBounds(true);
 
-    furretImage.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    furretImage.setOnMouseClicked(
+        new EventHandler<MouseEvent>() {
 
-      @Override
-      public void handle(MouseEvent event) {
-
-      }
-    });
+          @Override
+          public void handle(MouseEvent event) {}
+        });
   }
 }
