@@ -5,15 +5,18 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class settingController implements Initializable {
@@ -48,9 +51,23 @@ public class settingController implements Initializable {
 
     furretImage.setOnMouseClicked(
         new EventHandler<MouseEvent>() {
-
           @Override
-          public void handle(MouseEvent event) {}
+          public void handle(MouseEvent event) {
+            Parent root = null;
+            try {
+              root =
+                  FXMLLoader.load(
+                      Objects.requireNonNull(Fapp.class.getResource("views/creditsPage.fxml")));
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+            Stage popupwindow = new Stage();
+            popupwindow.initModality(Modality.APPLICATION_MODAL);
+            Scene scene1 = new Scene(root);
+            popupwindow.setScene(scene1);
+            popupwindow.initModality(Modality.APPLICATION_MODAL);
+            popupwindow.showAndWait();
+          }
         });
   }
 }
