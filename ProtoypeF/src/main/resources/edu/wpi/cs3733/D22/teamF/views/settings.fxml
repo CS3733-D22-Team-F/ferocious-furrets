@@ -110,7 +110,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <ImageView fitHeight="267.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="furretImage" fitHeight="267.0" fitWidth="312.0" onMouseClicked="#furretCredit" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets left="195.0" top="15.0" />
                      </VBox.margin>
