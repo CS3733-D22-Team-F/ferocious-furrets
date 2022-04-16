@@ -26,6 +26,12 @@ public class securityRequest extends DeliveryRequest {
     this.needs = needs;
   }
 
+  public securityRequest(String reqID, String urgency, String needs) {
+    this.reqID = reqID;
+    this.urgency = urgency;
+    this.needs = needs;
+  }
+
   @Override
   public void place(ArrayList<String> fields) throws SQLException {
     db.addRequest(fields);
@@ -41,4 +47,12 @@ public class securityRequest extends DeliveryRequest {
 
   @Override
   public void cancel(String reqID) {}
+
+  public String getUrgency() {
+    return this.urgency;
+  }
+
+  public String getNeeds() {
+    return this.needs;
+  }
 }

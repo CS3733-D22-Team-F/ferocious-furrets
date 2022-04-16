@@ -2,8 +2,11 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.Fapp;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.securityRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -12,22 +15,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class securityController extends PageController
     implements Initializable, IRequestController {
-  private Stage stage;
+  private Stage stage = SceneManager.getInstance().getStage();
   private Scene scene;
   private Parent root;
 
@@ -42,10 +46,15 @@ public class securityController extends PageController
   @FXML BorderPane masterPane;
   @FXML Rectangle rectangle1;
   @FXML Rectangle bottomRect;
-  @FXML JFXTreeTableView treeTable;
+//  @FXML JFXTreeTableView treeTable;
+  @FXML TreeTableView<securityRequest> treeTable;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
+
+  private String requestID;
+  private String urg;
+  private String needs;
 
   @FXML
   public void reset() {
@@ -160,6 +169,11 @@ public class securityController extends PageController
     statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
+    try {
+      startTable();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -170,5 +184,57 @@ public class securityController extends PageController
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  /////////////////////////////////////
+  ////////////////////////////////////
+  ///////////////////////////////////
+
+  private final ImageView depIcon =
+      new ImageView(new Image(Fapp.class.getResourceAsStream("BWHlogo-new.png")));
+
+  final TreeItem<securityRequest> treeRoot =
+      new TreeItem<>(new securityRequest(requestID, urg, needs), depIcon);
+
+  public void startTable() throws SQLException {
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM securityRequest");
+    ArrayList<securityRequest> secReqs = new ArrayList<securityRequest>();
+    securityRequest sr;
+
+    while (rset.next()) {
+      sr =
+          new securityRequest(
+              rset.getString("reqID"), rset.getString("urgency"), rset.getString("needs"));
+      secReqs.add(sr);
+    }
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (securityRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(securityRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+    Group sceneRoot = (Group) scene.getRoot();
+
+    TreeTableColumn<securityRequest, String> empColumn = new TreeTableColumn<>("Needs");
+    empColumn.setPrefWidth(150);
+    empColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<securityRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNeeds()));
+
+    TreeTableColumn<securityRequest, String> emailColumn = new TreeTableColumn<>("Urgency");
+    emailColumn.setPrefWidth(190);
+    emailColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<securityRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getUrgency()));
+
+    TreeTableView<securityRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(empColumn, emailColumn);
+    treeTable = treeTableView;
+//        sceneRoot.getChildren().add(treeTableView);
+//        stage.setScene(scene);
+//        stage.show();
   }
 }

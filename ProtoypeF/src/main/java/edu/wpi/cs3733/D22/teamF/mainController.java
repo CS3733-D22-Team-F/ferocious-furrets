@@ -135,7 +135,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToMedicine() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/medicinePage.fxml");
+    SubScene scene = SceneManager.getInstance().setScene("views/securityPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
   }

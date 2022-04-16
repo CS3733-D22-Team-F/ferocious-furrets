@@ -65,6 +65,10 @@ public abstract class PageController {
   public void menu_Security() {
     switchScene("request/securityPage.fxml");
   }
+
+  public void menu_Clean() {
+    switchScene("request/cleanEquipmentPage.fxml");
+  }
   /**
    * Method to create a class specifics context menu
    *
@@ -111,6 +115,8 @@ public abstract class PageController {
     scans.setText("Scans Request");
     MenuItem security = this.addMenuItem("request/securityPage.fxml");
     security.setText("Security Request");
+    MenuItem cleanEquipment = this.addMenuItem("request/cleanEquipmentPage.fxml");
+    cleanEquipment.setText("Clean Equipment Request");
     MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
     allRequests.setText("All Requests List");
 
@@ -119,7 +125,17 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, security, allRequests);
+        .addAll(
+            audioVisual,
+            equip,
+            gift,
+            labs,
+            scans,
+            meals,
+            medicine,
+            security,
+            cleanEquipment,
+            allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);
@@ -167,8 +183,10 @@ public abstract class PageController {
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("request/scanPage.fxml");
     scans.setText("Scans Request");
-    MenuItem security = this.addMenuItem("request/seccurityPage.fxml");
+    MenuItem security = this.addMenuItem("request/securityPage.fxml");
     security.setText("Scans Request");
+    MenuItem cleanEquipment = this.addMenuItem("request/cleanEquipmentPage.fxml");
+    cleanEquipment.setText("Clean Equipment Request");
     MenuItem allRequests = this.addMenuItem("requestListPage.fxml");
     allRequests.setText("All Requests List");
 
@@ -177,7 +195,17 @@ public abstract class PageController {
     map_Navigate.getItems().addAll(map);
     serviceRequests
         .getItems()
-        .addAll(audioVisual, equip, gift, labs, meals, medicine, security, allRequests);
+        .addAll(
+            audioVisual,
+            equip,
+            gift,
+            labs,
+            scans,
+            meals,
+            medicine,
+            security,
+            cleanEquipment,
+            allRequests);
 
     // adding menus into the menu bar
     pageMenu.getMenus().addAll(navigator, serviceRequests, map_Navigate);

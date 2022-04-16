@@ -2,11 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -193,16 +193,12 @@
             </children>
         </Pane>
     </left>
-    <right>
-        <JFXTreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="718.0" BorderPane.alignment="CENTER">
-            <columns>
-                <TreeTableColumn prefWidth="110.0" text="Location:" />
-                <TreeTableColumn prefWidth="110.0" text="Assigned To:" />
-                <TreeTableColumn prefWidth="110.0" text="Requested By:" />
-                <TreeTableColumn prefWidth="110.0" text="Needs:" />
-                <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Urgency" />
-                <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Status" />
-            </columns>
-        </JFXTreeTableView>
-    </right>
+   <right>
+      <TreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TreeTableColumn prefWidth="362.222296833992" text="Needs" />
+          <TreeTableColumn prefWidth="352.4443359375" text="Urgency" />
+        </columns>
+      </TreeTableView>
+   </right>
 </BorderPane>
