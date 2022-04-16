@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="401.0" prefWidth="602.0">
+      <AnchorPane prefHeight="452.0" prefWidth="602.0">
          <children>
             <HBox layoutY="80.0" prefHeight="258.0" prefWidth="373.0">
                <children>
@@ -40,7 +40,7 @@
                   </Label>
                </children>
             </VBox>
-            <HBox layoutY="80.0" prefHeight="310.0" prefWidth="600.0">
+            <HBox layoutY="80.0" prefHeight="370.0" prefWidth="600.0">
                <children>
                   <VBox prefHeight="310.0" prefWidth="340.0">
                      <children>
@@ -174,7 +174,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="310.0" prefWidth="303.0">
+                  <VBox prefHeight="310.0" prefWidth="282.0">
                      <children>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
@@ -191,7 +191,7 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Gifts Page" wrapText="true">
                                        <font>
                                           <Font size="9.0" />
@@ -220,7 +220,7 @@
                                  </HBox.margin>
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="215.0" text="Raffi Alexander" />
-                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Disability Page" wrapText="true">
                                        <font>
                                           <Font size="9.0" />
                                        </font>
@@ -245,7 +245,7 @@
                                  </HBox.margin>
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="215.0" text="Owen Radcliffe" />
-                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Request Page" wrapText="true">
                                        <font>
                                           <Font size="9.0" />
                                        </font>
@@ -269,7 +269,32 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="John Petra" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="John Petra (Product Manager)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Equipment &amp; Scan Page" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Will Huang (Assistant-Lead Back-End)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
                                        <font>
                                           <Font size="9.0" />
@@ -283,7 +308,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Cropped-Edits/Cole-modified.png" />
+                                    <Image url="@../Cropped-Edits/JACK%20HANLON-modified.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -294,8 +319,8 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Will Huang (Assistant-Lead Back-End)" />
-                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Jack Hanlon (Team Lead)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Sanitation Service Request" wrapText="true">
                                        <font>
                                           <Font size="9.0" />
                                        </font>
