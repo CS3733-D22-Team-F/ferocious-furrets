@@ -238,10 +238,6 @@ public class DatabaseManager {
     return audioVisualDAO;
   }
 
-  public static RequestDAOImpl getRequestDAO() {
-    return RequestDAO;
-  }
-
   /** helper */
   private static class Helper {
     private static final DatabaseManager dbMan = new DatabaseManager();

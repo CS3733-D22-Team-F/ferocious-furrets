@@ -2,10 +2,8 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -14,15 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -57,12 +52,6 @@ public class equipmentRequestController extends PageController
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private JFXTreeTableView table;
-  @FXML private TreeTableColumn locationCol;
-  @FXML private TreeTableColumn assignedCol;
-  @FXML private TreeTableColumn requestedCol;
-  @FXML private TreeTableColumn statusCol;
-  @FXML private TreeTableColumn equipCol;
 
   public equipmentRequestController() {}
 
@@ -111,67 +100,6 @@ public class equipmentRequestController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
-
-    ObservableList<equipmentDeliveryRequest> currentEquipmentRequestList =
-        FXCollections.observableArrayList(); // array list of all equipment
-    String currentReqIDM;
-    String currentReqIDO;
-    String currentEquipID;
-    String currentNodeID;
-    String currentAssignedEmployeeID;
-    String currentRequesterEmployeeID;
-    String currentStatus;
-    try {
-
-      // get from database
-      ResultSet ServiceRequest = DatabaseManager.getRequestDAO().get();
-      ResultSet EquipmentRequest = DatabaseManager.getMedEquipDelReqDAO().get();
-
-      while (EquipmentRequest.next()) {
-
-        currentReqIDM = EquipmentRequest.getString("reqID");
-
-        while (ServiceRequest.next()) {
-
-          currentReqIDO = ServiceRequest.getString("reqID");
-
-          if (currentReqIDO.equals(currentReqIDM)) {
-
-            currentEquipID = EquipmentRequest.getString("equipID");
-            currentNodeID = ServiceRequest.getString("nodeID");
-            currentAssignedEmployeeID = ServiceRequest.getString("assignedEmployeeID");
-            currentRequesterEmployeeID = ServiceRequest.getString("requesterEmployeeID");
-            currentStatus = ServiceRequest.getString("status");
-
-            currentEquipmentRequestList.add(
-                new equipmentDeliveryRequest(
-                    currentReqIDO,
-                    currentNodeID,
-                    currentAssignedEmployeeID,
-                    currentRequesterEmployeeID,
-                    currentStatus,
-                    currentEquipID));
-          }
-        }
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    locationCol.setCellValueFactory(
-        new PropertyValueFactory<equipmentDeliveryRequest, String>("nodeID"));
-    assignedCol.setCellValueFactory(
-        new PropertyValueFactory<equipmentDeliveryRequest, String>("assignedEmpID"));
-    requestedCol.setCellValueFactory(
-        new PropertyValueFactory<equipmentDeliveryRequest, String>("requesterEmpID"));
-    statusCol.setCellValueFactory(
-        new PropertyValueFactory<equipmentDeliveryRequest, String>("status"));
-    equipCol.setCellValueFactory(
-        new PropertyValueFactory<equipmentDeliveryRequest, String>("requestedEquipmentID"));
-
-    table.getColumns().setAll(locationCol, assignedCol, requestedCol, statusCol, equipCol);
   }
 
   @FXML
