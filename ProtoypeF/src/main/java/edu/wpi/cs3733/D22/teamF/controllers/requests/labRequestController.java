@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -11,13 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -37,7 +38,14 @@ public class labRequestController extends PageController
 
   @FXML ComboBox typeChoice; // Lab Type Choice Box
   @FXML ComboBox statusChoice; // Status Choice Box
+  @FXML TableView<labRequest> table;
+  @FXML TableColumn<labRequest, String> locationCol;
+  @FXML TableColumn<labRequest, String> assignedCol;
+  @FXML TableColumn<labRequest, String> requestedCol;
+  @FXML TableColumn<labRequest, String> statusCol;
+  @FXML TableColumn<labRequest, String> equipCol;
 
+  ObservableList<labRequest> currentTableRows = FXCollections.observableArrayList();
   /**
    * inits
    *
@@ -46,7 +54,6 @@ public class labRequestController extends PageController
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -69,6 +76,93 @@ public class labRequestController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    String currentReqIDM;
+    String currentReqIDO;
+
+    locationCol.setCellValueFactory(new PropertyValueFactory<labRequest, String>("nodeID"));
+    assignedCol.setCellValueFactory(new PropertyValueFactory<labRequest, String>("assignedEmpID"));
+    requestedCol.setCellValueFactory(
+        new PropertyValueFactory<labRequest, String>("requesterEmpID"));
+    statusCol.setCellValueFactory(new PropertyValueFactory<labRequest, String>("status"));
+    equipCol.setCellValueFactory(new PropertyValueFactory<labRequest, String>("reqtype"));
+
+    table.setItems(currentTableRows);
+
+    ArrayList<String> currentFields = new ArrayList<>();
+
+    try {
+
+      // get from database
+      ResultSet labRequest = DatabaseManager.getLabRequestDAO().get();
+
+      while (labRequest.next()) {
+
+        ResultSet ServiceRequest = DatabaseManager.getRequestDAO().get();
+
+        currentReqIDM = labRequest.getString("reqID");
+        //        System.out.println(currentReqIDM);
+
+        while (ServiceRequest.next()) {
+
+          currentReqIDO = ServiceRequest.getString("reqID");
+
+          //          System.out.println(currentReqIDO);
+
+          if (currentReqIDO.equals(currentReqIDM)) {
+
+            System.out.println("they are equal :)");
+
+            //            currentEquipID = EquipmentRequest.getString("equipID");
+            //            currentNodeID = ServiceRequest.getString("nodeID");
+            //            currentAssignedEmployeeID =
+            // ServiceRequest.getString("assignedEmployeeID");
+            //            currentRequesterEmployeeID =
+            // ServiceRequest.getString("requesterEmployeeID");
+            //            currentStatus = ServiceRequest.getString("status");
+
+            currentFields.add(0, currentReqIDO);
+            currentFields.add(1, ServiceRequest.getString("nodeID"));
+            currentFields.add(2, ServiceRequest.getString("assignedEmployeeID"));
+            currentFields.add(3, ServiceRequest.getString("requesterEmployeeID"));
+            currentFields.add(4, ServiceRequest.getString("status"));
+            currentFields.add(5, labRequest.getString("reqtype"));
+
+            updateTableFromFields(currentFields);
+
+            //            System.out.println(currentReqIDO);
+            //            System.out.println(currentNodeID);
+
+            //            currentEquipmentRequestList.add(
+            //                new equipmentDeliveryRequest(
+            //                    currentReqIDO,
+            //                    currentNodeID,
+            //                    currentAssignedEmployeeID,
+            //                    currentRequesterEmployeeID,
+            //                    currentStatus,
+            //                    currentEquipID));
+          } else {
+            //            System.out.println(currentReqIDM);
+            //            System.out.println(currentReqIDO);
+          }
+        }
+        ServiceRequest.close();
+      }
+      labRequest.close();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void updateTableFromFields(ArrayList<String> fields) {
+    currentTableRows.add(
+        new labRequest(
+            fields.get(0), // req id
+            fields.get(1), // node id
+            fields.get(2), // assigned emp id
+            fields.get(3), // requester emp id
+            fields.get(4), // status
+            fields.get(5))); // equip id
   }
 
   // Use Try/Catch when call this function
