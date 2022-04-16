@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.observers;
 
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -62,6 +63,14 @@ public class DashboardController implements Initializable {
     for (DashboardObserver observer : floorObservers) {
       allFloorData.addPropertyChangeListener(observer);
     }
+
+    try {
+      allFloorData.setState();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    currentFloor = Floor.FL3;
+    setLabels();
   }
 
   private int getCBedCount(DashboardObserver obs) {
@@ -72,15 +81,20 @@ public class DashboardController implements Initializable {
   /** Increases the value of the current floor by 1 */
   public void nextFloor() {
     currentFloor.next();
+    setLabels();
+    System.out.println("Next observer");
   }
 
   /** Increases the value of the current floor by 1 */
   public void prevFloor() {
     currentFloor.prev();
+    setLabels();
+    System.out.println("Prev observer");
   }
 
   /**
    * Takes in the list of equipment on the floor and returns only Beds
+   *
    * @param equip
    * @return
    */
@@ -96,6 +110,7 @@ public class DashboardController implements Initializable {
 
   /**
    * Takes in the list of equipment on the floor and returns only Infusion Pumps
+   *
    * @param equip
    * @return
    */
@@ -111,6 +126,7 @@ public class DashboardController implements Initializable {
 
   /**
    * Takes in the list of equipment on the floor and returns only Recliners
+   *
    * @param equip
    * @return
    */
@@ -126,6 +142,7 @@ public class DashboardController implements Initializable {
 
   /**
    * Takes in the list of equipment on the floor and returns only XRays
+   *
    * @param equip
    * @return
    */
@@ -139,18 +156,19 @@ public class DashboardController implements Initializable {
     return xrayList;
   }
 
-  /**
-   * takes all labels and applies
-   * appropriate amount based current observed floor
-   */
+  /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
     DashboardObserver current = floorObservers.get(currentFloor.toInt());
+
+    System.out.println("clean list size: " + current.getCleanList().size());
+    System.out.println("pod list size: " + current.getPodList().size());
+    System.out.println("dirty list size: " + current.getDirtyList().size());
+    System.out.println("in use list size: " + current.getInUse().size());
 
     List<equipment> cleanEquip = current.getCleanList();
     List<equipment> dirtyEquip = current.getDirtyList();
     List<equipment> podEquip = current.getPodList();
     List<equipment> inUseEquip = current.getInUse();
-
 
     cBed.setText(String.valueOf(filterBeds(cleanEquip).size()));
     cXRay.setText(String.valueOf(filterXRay(cleanEquip).size()));
@@ -171,6 +189,5 @@ public class DashboardController implements Initializable {
     iXRay.setText(String.valueOf(filterBeds(inUseEquip).size()));
     iRecliner.setText(String.valueOf(filterBeds(inUseEquip).size()));
     iInfusionPump.setText(String.valueOf(filterBeds(inUseEquip).size()));
-
   }
 }

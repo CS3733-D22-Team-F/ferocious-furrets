@@ -51,6 +51,8 @@ public class DashboardObserver implements PropertyChangeListener {
     for (equipment eq : eqip) {
       String equipFloor = eq.getNodeID().substring(8);
       if (equipFloor.equals(currFloor.toInt())) {
+        System.out.println(
+            currFloor.toFloorString() + " is adding to floor list " + listOfMedEquip.size());
         listOfMedEquip.add(eq);
       }
     }
@@ -68,8 +70,16 @@ public class DashboardObserver implements PropertyChangeListener {
    */
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    if (evt.getPropertyName().equals("equip"))
-      this.setFloorFilter((List<equipment>) evt.getNewValue());
+    List<equipment> rawList = (List<equipment>) evt.getNewValue();
+    System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
+    System.out.println(
+        "Raw list amount in observers, so the list is getting passed correctly: " + rawList.size());
+
+    this.setFloorFilter((List<equipment>) evt.getNewValue());
+    System.out.println(
+        this.currFloor.toFloorString() + " :observer filtered list: " + listOfMedEquip.size());
+    System.out.println();
+    System.out.println();
   }
 
   /**

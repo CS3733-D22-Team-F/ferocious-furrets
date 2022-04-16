@@ -49,13 +49,11 @@ public class FloorObservable {
     return allEquip;
   }
 
-  /**
-   * When list of equip is changed sends an event to all listeners
-   *
-   * @param newEquip the new vavlue of lists of equip
-   */
-  public void setState(List<equipment> newEquip) {
+  /** When list of equip is changed sends an event to all listeners */
+  public void setState() throws SQLException {
+    List<equipment> newEquip = pullFloorData();
     observers.firePropertyChange("equip", this.equip, newEquip);
     this.equip = newEquip;
+    System.out.println("Fired event from FloorObservable equip size: " + equip.size());
   }
 }
