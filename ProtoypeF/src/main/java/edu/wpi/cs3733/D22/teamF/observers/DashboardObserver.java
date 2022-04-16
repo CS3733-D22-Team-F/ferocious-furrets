@@ -58,7 +58,7 @@ public class DashboardObserver implements PropertyChangeListener {
     cleanList = filterInClean();
     dirtyList = filterInDirty();
     podList = filterInPod();
-    inUseList = filterInUse();
+    inUseList = filterInUse(cleanList, dirtyList, podList);
   }
 
   /**
@@ -128,13 +128,16 @@ public class DashboardObserver implements PropertyChangeListener {
    *
    * @return a list of in use equipment
    */
-  private List<equipment> filterInUse() {
+  private List<equipment> filterInUse(
+      List<equipment> list1, List<equipment> list2, List<equipment> list3) {
 
     List<equipment> allOtherEquip = new ArrayList<>();
+    allOtherEquip.addAll(list1);
+    allOtherEquip.addAll(list2);
+    allOtherEquip.addAll(list3);
     List<equipment> inUseEquip = new ArrayList<>();
     for (equipment eq : listOfMedEquip) {
-      Location loc = Cache.getLocation(eq.getNodeID());
-      if (loc.getNodeType().equals("PATI")) {
+      if (!allOtherEquip.contains(eq)) {
         inUseEquip.add(eq);
       }
     }
@@ -146,7 +149,7 @@ public class DashboardObserver implements PropertyChangeListener {
    *
    * @return list of alerts
    */
-  //TODO coubters for alerts
+  // TODO coubters for alerts
   public List<String> getAlerts() {
 
     return null;
