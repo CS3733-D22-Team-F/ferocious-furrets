@@ -63,7 +63,7 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="settingsButton" buttonType="RAISED" prefHeight="23.0" prefWidth="239.0" text="Settings">
+            <JFXButton fx:id="settingsButton" buttonType="RAISED" onAction="#changeToSetting" prefHeight="23.0" prefWidth="239.0" text="Settings">
                <font>
                   <Font size="24.0" />
                </font>

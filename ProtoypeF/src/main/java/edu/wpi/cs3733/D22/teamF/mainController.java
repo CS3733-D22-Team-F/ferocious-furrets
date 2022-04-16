@@ -146,6 +146,12 @@ public class mainController implements Initializable {
     pageHolder.getChildren().addAll(scene);
   }
 
+  public void changeToSetting() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/settings.fxml");
+    pageHolder.getChildren().clear();
+    pageHolder.getChildren().addAll(scene);
+  }
+
   public void logOut() throws IOException {
     pageHolder.getChildren().clear();
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
