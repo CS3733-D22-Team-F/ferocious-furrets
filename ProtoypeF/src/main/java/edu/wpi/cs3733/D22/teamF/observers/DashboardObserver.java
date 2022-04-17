@@ -15,6 +15,7 @@ import java.util.List;
  * database
  */
 public class DashboardObserver implements PropertyChangeListener {
+  private List<equipment> rawListEquip = new ArrayList<equipment>();
   private List<equipment> listOfMedEquip = new ArrayList<>(); // list
   private static Floor currFloor; // the floor the observer watches
   private List<String> floorAlerts = new ArrayList<>();
@@ -93,7 +94,7 @@ public class DashboardObserver implements PropertyChangeListener {
         "Raw list amount in observers, so the list is getting passed correctly: "
             + rawListEquip.size());
 
-    this.setFloorFilter((List<equipment>) evt.getNewValue());
+    this.setFloorFilter();
     System.out.println(
         this.currFloor.toFloorString() + " :observer filtered list: " + listOfMedEquip.size());
     System.out.println();
