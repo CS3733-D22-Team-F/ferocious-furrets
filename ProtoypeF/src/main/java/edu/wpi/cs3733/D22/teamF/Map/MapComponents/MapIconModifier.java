@@ -541,8 +541,10 @@ public class MapIconModifier {
               });
           newButton.setOnMouseDragged(
               e -> {
-                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
-                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                  newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                }
               });
         } else if (getLocType(location).equals("service")
             && !location.getShortName().equals("done")) {
@@ -590,30 +592,32 @@ public class MapIconModifier {
               });
           newButton.setOnMouseReleased(
               e -> {
-                newButton.setCursor(Cursor.HAND);
-                ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
-                ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
-                Location loc = list.get(bList.indexOf(newButton));
-                Location nearLoc = null;
-                double currentDis = 99999.9;
-                for (Location l : list) {
-                  if (calculateDistance(l, loc) < currentDis
-                      && l.getFloor().equals(loc.getFloor())
-                      && getLocType(l).equals("location")) {
-                    nearLoc = l;
-                    currentDis = calculateDistance(l, loc);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setCursor(Cursor.HAND);
+                  ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
+                  ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
+                  Location loc = list.get(bList.indexOf(newButton));
+                  Location nearLoc = null;
+                  double currentDis = 99999.9;
+                  for (Location l : list) {
+                    if (calculateDistance(l, loc) < currentDis
+                        && l.getFloor().equals(loc.getFloor())
+                        && getLocType(l).equals("location")) {
+                      nearLoc = l;
+                      currentDis = calculateDistance(l, loc);
+                    }
                   }
-                }
-                try {
-                  MapEquipmentModifier.modifyEquipment(
-                      nearLoc.getNodeID(), loc.getBuilding(), loc.getShortName());
-                } catch (SQLException ex) {
-                  ex.printStackTrace();
-                }
-                try {
-                  MapTableHolder.loadMap(table, iconPane);
-                } catch (SQLException | IOException ex) {
-                  ex.printStackTrace();
+                  try {
+                    MapEquipmentModifier.modifyEquipment(
+                        nearLoc.getNodeID(), loc.getBuilding(), loc.getShortName());
+                  } catch (SQLException ex) {
+                    ex.printStackTrace();
+                  }
+                  try {
+                    MapTableHolder.loadMap(table, iconPane);
+                  } catch (SQLException | IOException ex) {
+                    ex.printStackTrace();
+                  }
                 }
               });
           newButton.setOnMouseEntered(
@@ -622,8 +626,10 @@ public class MapIconModifier {
               });
           newButton.setOnMouseDragged(
               e -> {
-                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
-                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                  newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                }
               });
         }
       }
