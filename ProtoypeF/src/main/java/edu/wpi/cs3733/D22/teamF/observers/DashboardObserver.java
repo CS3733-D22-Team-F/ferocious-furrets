@@ -1,10 +1,12 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +24,9 @@ public class DashboardObserver implements PropertyChangeListener {
   private List<equipment> podList = new ArrayList<>();
   private List<equipment> inUseList = new ArrayList<>();
 
-  public DashboardObserver(Floor setFloor) {
-    currFloor = setFloor;
+  public DashboardObserver() throws SQLException {
+    //    currFloor = setFloor;
+    List<equipment> rawListEquip = DatabaseManager.getMedEquipDAO().getAllEquipment();
   }
 
   public List<equipment> getCleanList() {
@@ -42,9 +45,10 @@ public class DashboardObserver implements PropertyChangeListener {
     return this.inUseList;
   }
 
-  //  public void setFloor(Floor floorToSet) {
-  //    currFloor = floorToSet;
-  //  }
+  public void setFloor(Floor floorToSet) {
+    currFloor = floorToSet;
+    setFloorFilter();
+  }
 
   public Floor getFloor() {
     return currFloor;
@@ -53,11 +57,11 @@ public class DashboardObserver implements PropertyChangeListener {
   /**
    * Filters all hospital equipment for the specfic floor of observer
    *
-   * @param eqip
+   * //@param eqip
    */
-  public void setFloorFilter(List<equipment> eqip) {
+  public void setFloorFilter() {
     listOfMedEquip.clear();
-    for (equipment eq : eqip) {
+    for (equipment eq : rawListEquip) {
       String equipFloor = eq.getNodeID().substring(8);
       System.out.println(currFloor.toFloorString());
       System.out.println("floor is " + equipFloor);
@@ -82,10 +86,12 @@ public class DashboardObserver implements PropertyChangeListener {
    */
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    List<equipment> rawList = (List<equipment>) evt.getNewValue();
+    rawListEquip.clear();
+    rawListEquip = (List<equipment>) evt.getNewValue();
     System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
     System.out.println(
-        "Raw list amount in observers, so the list is getting passed correctly: " + rawList.size());
+        "Raw list amount in observers, so the list is getting passed correctly: "
+            + rawListEquip.size());
 
     this.setFloorFilter((List<equipment>) evt.getNewValue());
     System.out.println(

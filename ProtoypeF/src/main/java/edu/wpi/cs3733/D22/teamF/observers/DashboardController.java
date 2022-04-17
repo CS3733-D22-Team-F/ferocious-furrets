@@ -11,8 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 public class DashboardController implements Initializable {
-  List<DashboardObserver> floorObservers = new ArrayList<>();
-  static Floor currentFloor = Floor.FL4;
+  //  List<DashboardObserver> floorObservers = new ArrayList<>();
+  static Floor currentFloor = Floor.FL3;
+  DashboardObserver allFloorsObserver;
 
   @FXML Label cBed;
   @FXML Label cXRay;
@@ -44,25 +45,33 @@ public class DashboardController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
 
     FloorObservable allFloorData = new FloorObservable();
+    try {
+      allFloorsObserver = new DashboardObserver();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    allFloorsObserver.setFloor(currentFloor);
 
-    DashboardObserver ll2Observer = new DashboardObserver(Floor.LL2);
-    floorObservers.add(ll2Observer);
-    DashboardObserver ll1Observer = new DashboardObserver(Floor.LL1);
-    floorObservers.add(ll1Observer);
-    DashboardObserver f1Observer = new DashboardObserver(Floor.FL1);
-    floorObservers.add(f1Observer);
-    DashboardObserver f2Observer = new DashboardObserver(Floor.FL2);
-    floorObservers.add(f2Observer);
-    DashboardObserver f3Observer = new DashboardObserver(Floor.FL3);
-    floorObservers.add(f3Observer);
-    DashboardObserver f4Observer = new DashboardObserver(Floor.FL4);
-    floorObservers.add(f4Observer);
-    DashboardObserver f5Observer = new DashboardObserver(Floor.FL5);
-    floorObservers.add(f5Observer);
+    //    DashboardObserver ll2Observer = new DashboardObserver(Floor.LL2);
+    //    floorObservers.add(ll2Observer);
+    //    DashboardObserver ll1Observer = new DashboardObserver(Floor.LL1);
+    //    floorObservers.add(ll1Observer);
+    //    DashboardObserver f1Observer = new DashboardObserver(Floor.FL1);
+    //    floorObservers.add(f1Observer);
+    //    DashboardObserver f2Observer = new DashboardObserver(Floor.FL2);
+    //    floorObservers.add(f2Observer);
+    //    DashboardObserver f3Observer = new DashboardObserver(Floor.FL3);
+    //    floorObservers.add(f3Observer);
+    //    DashboardObserver f4Observer = new DashboardObserver(Floor.FL4);
+    //    floorObservers.add(f4Observer);
+    //    DashboardObserver f5Observer = new DashboardObserver(Floor.FL5);
+    //    floorObservers.add(f5Observer);
 
+    /*
     for (DashboardObserver observer : floorObservers) {
       allFloorData.addPropertyChangeListener(observer);
     }
+    */
 
     try {
       allFloorData.setState();
@@ -81,6 +90,7 @@ public class DashboardController implements Initializable {
   public void nextFloor() {
     setFloor(currentFloor.next());
     System.out.println(currentFloor);
+    allFloorsObserver.setFloor(currentFloor);
     setLabels();
     System.out.println("Next observer");
   }
@@ -89,6 +99,7 @@ public class DashboardController implements Initializable {
   public void prevFloor() {
     setFloor(currentFloor.prev());
     System.out.println(currentFloor);
+    allFloorsObserver.setFloor(currentFloor);
     setLabels();
     System.out.println("Prev observer");
   }
@@ -159,7 +170,7 @@ public class DashboardController implements Initializable {
 
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
-    DashboardObserver current = floorObservers.get(currentFloor.toInt());
+    DashboardObserver current = allFloorsObserver;
     System.out.println(currentFloor);
     System.out.println(current.getFloor().toFloorString());
     System.out.println("clean list size: " + current.getCleanList().size());
