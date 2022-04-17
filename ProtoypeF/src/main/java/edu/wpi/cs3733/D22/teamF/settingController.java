@@ -23,6 +23,7 @@ public class settingController implements Initializable {
   @FXML private Label themeSetLabel;
   @FXML private JFXComboBox themeSetCombo;
   @FXML private ImageView furretImage;
+  @FXML private Label userFromLogin;
   @FXML private JFXButton logoutButton;
 
   @FXML
@@ -48,7 +49,6 @@ public class settingController implements Initializable {
     themeSetLabel.setVisible(false);
     themeSetCombo.setVisible(false);
     furretImage.setPickOnBounds(true);
-
     furretImage.setOnMouseClicked(
         new EventHandler<MouseEvent>() {
           @Override
@@ -70,4 +70,8 @@ public class settingController implements Initializable {
           }
         });
   }
+
+  //  public void myFunction(String text) {
+  //    userFromLogin.setText(text);
+  //  }
 }

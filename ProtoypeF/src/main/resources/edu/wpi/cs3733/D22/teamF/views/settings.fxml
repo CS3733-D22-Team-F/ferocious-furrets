@@ -92,12 +92,12 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="44.0" prefWidth="196.0">
+                        <Label fx:id="userFromLogin" prefHeight="44.0" prefWidth="196.0">
                            <font>
                               <Font size="36.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets left="20.0" top="60.0" />
                            </HBox.margin>
                         </Label>
                         <JFXButton fx:id="logoutButton" buttonType="RAISED" onAction="#logoutSwitch" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: #123090;" text="Logout" textFill="WHITE">

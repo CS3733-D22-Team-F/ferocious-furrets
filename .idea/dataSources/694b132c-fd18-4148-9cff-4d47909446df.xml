@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="csDB@localhost">
   <database-model serializer="dbm" dbms="DERBY" family-id="DERBY" format-version="4.32">
-    <root id="1">
-      <ServerVersion>10.15.2.0</ServerVersion>
-    </root>
+    <root id="1"/>
     <schema id="2" parent="1" name="APP"/>
     <schema id="3" parent="1" name="NULLID"/>
     <schema id="4" parent="1" name="SQLJ"/>
