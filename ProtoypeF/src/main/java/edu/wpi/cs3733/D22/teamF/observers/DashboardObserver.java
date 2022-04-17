@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.beans.PropertyChangeEvent;
@@ -9,6 +8,7 @@ import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
 
 /**
  * An observer attaches to each floor of the hospital & updates based on any change from the
@@ -17,17 +17,48 @@ import java.util.List;
 public class DashboardObserver implements PropertyChangeListener {
   private List<equipment> rawListEquip = new ArrayList<equipment>();
   private List<equipment> listOfMedEquip = new ArrayList<>(); // list
-  private static Floor currFloor; // the floor the observer watches
+
+  private Floor currFloor; // the floor the observer watches
   private List<String> floorAlerts = new ArrayList<>();
 
+  private static List<List<String>> allFloorAlerts = new ArrayList<List<String>>();
   private List<equipment> cleanList = new ArrayList<>();
   private List<equipment> dirtyList = new ArrayList<>();
   private List<equipment> podList = new ArrayList<>();
   private List<equipment> inUseList = new ArrayList<>();
 
+  private List<equipment> cBedCount;
+  private List<equipment> cInfusionPumpCount;
+  private List<equipment> cRecliner;
+  private List<equipment> cXRay;
+
+  private List<equipment> dBedCount;
+  private List<equipment> dInfusionPumpCount;
+  private List<equipment> dRecliner;
+  private List<equipment> dXRay;
+
+  private List<equipment> pBedCount;
+  private List<equipment> pInfusionPumpCount;
+  private List<equipment> pRecliner;
+  private List<equipment> pXRay;
+
+  private List<equipment> iBedCount;
+  private List<equipment> iInfusionPumpCount;
+  private List<equipment> iRecliner;
+  private List<equipment> iXRay;
+
+  private List<Label> clabels = new ArrayList<>();
+  private List<Label> dlabels = new ArrayList<>();
+  private List<Label> plabels = new ArrayList<>();
+  private List<Label> ilabels = new ArrayList<>();
+
   public DashboardObserver() throws SQLException {
     //    currFloor = setFloor;
-    List<equipment> rawListEquip = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    // List<equipment> rawListEquip = DatabaseManager.getMedEquipDAO().getAllEquipment();
+  }
+
+  public DashboardObserver(Floor floorToSet) {
+    this.currFloor = floorToSet;
   }
 
   public List<equipment> getCleanList() {
@@ -46,13 +77,21 @@ public class DashboardObserver implements PropertyChangeListener {
     return this.inUseList;
   }
 
+  public Floor getFloor() {
+    return currFloor;
+  }
+
+  public List<String> getFloorAlerts() {
+    return floorAlerts;
+  }
+
+  public List<List<String>> getAllFloorAlerts() {
+    return allFloorAlerts;
+  }
+
   public void setFloor(Floor floorToSet) {
     currFloor = floorToSet;
     setFloorFilter();
-  }
-
-  public Floor getFloor() {
-    return currFloor;
   }
 
   /**
@@ -80,6 +119,55 @@ public class DashboardObserver implements PropertyChangeListener {
     inUseList = filterInUse(cleanList, dirtyList, podList);
   }
 
+  public void setLabels(
+      List<Label> cLabels, List<Label> dlabels, List<Label> plabels, List<Label> iLabels) {
+    this.clabels = cLabels;
+    this.dlabels = dlabels;
+    this.plabels = plabels;
+    this.ilabels = iLabels;
+  }
+
+  public void updateLabels() {
+    if (true) {
+      if (!clabels.isEmpty()) {
+        clabels.get(0).setText(String.valueOf(cBedCount.size()));
+        clabels.get(1).setText(String.valueOf(cInfusionPumpCount.size()));
+        clabels.get(2).setText(String.valueOf(cRecliner.size()));
+        clabels.get(3).setText(String.valueOf(cXRay.size()));
+      }
+
+      if (!dlabels.isEmpty()) {
+        dlabels.get(0).setText(String.valueOf(dBedCount.size()));
+        dlabels.get(1).setText(String.valueOf(dInfusionPumpCount.size()));
+        dlabels.get(2).setText(String.valueOf(dRecliner.size()));
+        dlabels.get(3).setText(String.valueOf(dXRay.size()));
+      }
+
+      if (!plabels.isEmpty()) {
+        plabels.get(0).setText(String.valueOf(pBedCount.size()));
+        plabels.get(1).setText(String.valueOf(pInfusionPumpCount.size()));
+        plabels.get(2).setText(String.valueOf(pRecliner.size()));
+        plabels.get(3).setText(String.valueOf(pXRay.size()));
+      }
+
+      if (!ilabels.isEmpty()) {
+        ilabels.get(0).setText(String.valueOf(iBedCount.size()));
+        ilabels.get(1).setText(String.valueOf(iInfusionPumpCount.size()));
+        ilabels.get(2).setText(String.valueOf(iRecliner.size()));
+        ilabels.get(3).setText(String.valueOf(iXRay.size()));
+      }
+    }
+  }
+
+  public void updateAllAlerts() {
+    checkAlerts();
+    if (!(allFloorAlerts.size() == 7)) allFloorAlerts.add(floorAlerts);
+    else {
+      allFloorAlerts.clear();
+      allFloorAlerts.add(floorAlerts);
+    }
+  }
+
   /**
    * receives any state changes in floor observable and applies approite filter
    *
@@ -96,8 +184,9 @@ public class DashboardObserver implements PropertyChangeListener {
     this.setFloorFilter();
     System.out.println(
         this.currFloor.toFloorString() + " :observer filtered list: " + listOfMedEquip.size());
-    System.out.println();
-    System.out.println();
+    this.updateLabels();
+
+    updateAllAlerts();
   }
 
   /**
@@ -114,6 +203,11 @@ public class DashboardObserver implements PropertyChangeListener {
         cleanEquip.add(eq);
       }
     }
+
+    cBedCount = filterBeds(cleanEquip);
+    cInfusionPumpCount = filterInfusionPump(cleanEquip);
+    cRecliner = filterRecliner(cleanEquip);
+    cXRay = filterXRay(cleanEquip);
     return cleanEquip;
   }
 
@@ -123,7 +217,6 @@ public class DashboardObserver implements PropertyChangeListener {
    * @return
    */
   private List<equipment> filterInDirty() {
-
     List<equipment> dirtyEquip = new ArrayList<>();
     for (equipment eq : listOfMedEquip) {
       Location loc = Cache.getLocation(eq.getNodeID());
@@ -131,6 +224,10 @@ public class DashboardObserver implements PropertyChangeListener {
         dirtyEquip.add(eq);
       }
     }
+    dBedCount = filterBeds(dirtyEquip);
+    dInfusionPumpCount = filterInfusionPump(dirtyEquip);
+    dRecliner = filterRecliner(dirtyEquip);
+    dXRay = filterXRay(dirtyEquip);
     return dirtyEquip;
   }
 
@@ -140,7 +237,6 @@ public class DashboardObserver implements PropertyChangeListener {
    * @return a list of equipment in pods
    */
   private List<equipment> filterInPod() {
-
     List<equipment> podEquip = new ArrayList<>();
     for (equipment eq : listOfMedEquip) {
       Location loc = Cache.getLocation(eq.getNodeID());
@@ -148,6 +244,11 @@ public class DashboardObserver implements PropertyChangeListener {
         podEquip.add(eq);
       }
     }
+
+    pBedCount = filterBeds(podEquip);
+    pInfusionPumpCount = filterInfusionPump(podEquip);
+    pRecliner = filterRecliner(podEquip);
+    pXRay = filterXRay(podEquip);
     return podEquip;
   }
 
@@ -169,7 +270,70 @@ public class DashboardObserver implements PropertyChangeListener {
         inUseEquip.add(eq);
       }
     }
+
+    iBedCount = filterBeds(inUseEquip);
+    iInfusionPumpCount = filterInfusionPump(inUseEquip);
+    iRecliner = filterRecliner(inUseEquip);
+    iXRay = filterXRay(inUseEquip);
     return inUseEquip;
+  }
+
+  private List<equipment> filterBeds(List<equipment> equip) {
+    List<equipment> bedList = new ArrayList<>();
+    for (equipment eq : equip) {
+      if (eq.getEquipType().equals("Bed")) {
+        bedList.add(eq);
+      }
+    }
+    return bedList;
+  }
+
+  /**
+   * Takes in the list of equipment on the floor and returns only Infusion Pumps
+   *
+   * @param equip
+   * @return
+   */
+  private List<equipment> filterInfusionPump(List<equipment> equip) {
+    List<equipment> pumpList = new ArrayList<>();
+    for (equipment eq : equip) {
+      if (eq.getEquipType().equals("Infusion Pump")) {
+        pumpList.add(eq);
+      }
+    }
+    return pumpList;
+  }
+
+  /**
+   * Takes in the list of equipment on the floor and returns only Recliners
+   *
+   * @param equip
+   * @return
+   */
+  private List<equipment> filterRecliner(List<equipment> equip) {
+    List<equipment> reclinerList = new ArrayList<>();
+    for (equipment eq : equip) {
+      if (eq.getEquipType().equals("Recliner")) {
+        reclinerList.add(eq);
+      }
+    }
+    return reclinerList;
+  }
+
+  /**
+   * Takes in the list of equipment on the floor and returns only XRays
+   *
+   * @param equip
+   * @return
+   */
+  private List<equipment> filterXRay(List<equipment> equip) {
+    List<equipment> xrayList = new ArrayList<>();
+    for (equipment eq : equip) {
+      if (eq.getEquipType().equals("Xray")) {
+        xrayList.add(eq);
+      }
+    }
+    return xrayList;
   }
 
   /**
@@ -177,9 +341,17 @@ public class DashboardObserver implements PropertyChangeListener {
    *
    * @return list of alerts
    */
-  // TODO coubters for alerts
-  public List<String> getAlerts() {
+  // TODO counter for alerts
+  public void checkAlerts() {
+    floorAlerts.clear();
+    String formatString = currFloor.toFloorString() + ": ";
 
-    return null;
+    if (dInfusionPumpCount.size() >= 10)
+      floorAlerts.add(formatString + "10 & more dirty infusion pumps");
+
+    if (cInfusionPumpCount.size() <= 5)
+      floorAlerts.add(formatString + " 5 & less clean infusion pumps");
+
+    if (dBedCount.size() >= 6) floorAlerts.add(formatString + " 6 & more Beds to be cleaned");
   }
 }
