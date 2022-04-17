@@ -119,7 +119,7 @@
                                     <Label fx:id="cXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
                                  </children>
                               </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="9.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
                               <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
                                  <children>
                                     <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
@@ -152,7 +152,7 @@
                                     <Label fx:id="pXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
                                  </children>
                               </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="9.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
                               <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
                                  <children>
                                     <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
@@ -185,7 +185,7 @@
                                     <Label fx:id="dXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
                                  </children>
                               </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="9.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
                               <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
                                  <children>
                                     <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
@@ -224,7 +224,7 @@
                   </VBox>
                </children>
             </HBox>
-            <TableView layoutX="976.0" layoutY="54.0" prefHeight="434.0" prefWidth="304.0">
+            <TableView layoutX="962.0" layoutY="54.0" prefHeight="434.0" prefWidth="304.0">
                <columns>
                   <TableColumn minWidth="117.052734375" prefWidth="149.2886962890625" text="Number:" />
                   <TableColumn minWidth="103.76409912109375" prefWidth="111.71124267578125" text="Type:" />

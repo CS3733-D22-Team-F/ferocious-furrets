@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 
 public class DashboardController implements Initializable {
   List<DashboardObserver> floorObservers = new ArrayList<>();
-  Floor currentFloor;
+  static Floor currentFloor = Floor.FL4;
 
   @FXML Label cBed;
   @FXML Label cXRay;
@@ -69,25 +69,26 @@ public class DashboardController implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    currentFloor = Floor.FL3;
+    // currentFloor = Floor.FL3;
     setLabels();
   }
 
-  private int getCBedCount(DashboardObserver obs) {
-    List<equipment> bedCount = obs.getCleanList();
-    return bedCount.size();
+  public void setFloor(Floor floorToSet) {
+    currentFloor = floorToSet;
   }
 
   /** Increases the value of the current floor by 1 */
   public void nextFloor() {
-    currentFloor.next();
+    setFloor(currentFloor.next());
+    System.out.println(currentFloor);
     setLabels();
     System.out.println("Next observer");
   }
 
   /** Increases the value of the current floor by 1 */
   public void prevFloor() {
-    currentFloor.prev();
+    setFloor(currentFloor.prev());
+    System.out.println(currentFloor);
     setLabels();
     System.out.println("Prev observer");
   }
@@ -159,7 +160,7 @@ public class DashboardController implements Initializable {
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
     DashboardObserver current = floorObservers.get(currentFloor.toInt());
-
+    System.out.println(currentFloor);
     System.out.println("clean list size: " + current.getCleanList().size());
     System.out.println("pod list size: " + current.getPodList().size());
     System.out.println("dirty list size: " + current.getDirtyList().size());

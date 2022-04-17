@@ -11,12 +11,65 @@ public enum Floor {
 
   public Floor next() {
     // No bounds checking required here, because the last instance overrides
-    return values()[ordinal() + 1];
+    Floor retVal;
+    switch (this) {
+      case LL2:
+        retVal = LL1;
+        break;
+      case LL1:
+        retVal = FL1;
+        break;
+      case FL1:
+        retVal = FL2;
+        break;
+      case FL2:
+        retVal = FL3;
+        break;
+      case FL3:
+        retVal = FL4;
+        break;
+      case FL4:
+        retVal = FL5;
+        break;
+      case FL5:
+        retVal = FL5;
+        break;
+      default:
+        retVal = FL5;
+    }
+    return retVal;
   }
 
   public Floor prev() {
     // No bounds checking required here, because the last instance overrides
-    return values()[ordinal() - 1];
+    //    return values()[ordinal() - 1];
+    Floor retVal;
+    switch (this) {
+      case LL2:
+        retVal = LL2;
+        break;
+      case LL1:
+        retVal = LL2;
+        break;
+      case FL1:
+        retVal = LL1;
+        break;
+      case FL2:
+        retVal = FL1;
+        break;
+      case FL3:
+        retVal = FL2;
+        break;
+      case FL4:
+        retVal = FL3;
+        break;
+      case FL5:
+        retVal = FL4;
+        break;
+      default:
+        retVal = LL2;
+    }
+    return retVal;
   }
 
   public int toInt() {

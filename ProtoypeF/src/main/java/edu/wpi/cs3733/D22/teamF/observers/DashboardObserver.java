@@ -9,17 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An observer attach to each floor of the hospital & updates based on any change from the database
+ * An observer attaches to each floor of the hospital & updates based on any change from the
+ * database
  */
 public class DashboardObserver implements PropertyChangeListener {
   private List<equipment> listOfMedEquip = new ArrayList<>(); // list
-  private Floor currFloor; // the floor the observer watches
+  private static Floor currFloor; // the floor the observer watches
   private List<String> floorAlerts = new ArrayList<>();
 
   private List<equipment> cleanList = new ArrayList<>();
   private List<equipment> dirtyList = new ArrayList<>();
   private List<equipment> podList = new ArrayList<>();
   private List<equipment> inUseList = new ArrayList<>();
+
+  public DashboardObserver(Floor setFloor) {
+    currFloor = setFloor;
+  }
 
   public List<equipment> getCleanList() {
     return cleanList;
@@ -37,8 +42,10 @@ public class DashboardObserver implements PropertyChangeListener {
     return this.inUseList;
   }
 
-  public DashboardObserver(Floor setFloor) {
-    this.currFloor = setFloor;
+
+
+  public void setFloor(Floor floorToSet) {
+    currFloor = floorToSet;
   }
 
   /**
@@ -50,7 +57,8 @@ public class DashboardObserver implements PropertyChangeListener {
 
     for (equipment eq : eqip) {
       String equipFloor = eq.getNodeID().substring(8);
-      if (equipFloor.equals(currFloor.toInt())) {
+      System.out.println("floor is " + equipFloor);
+      if (equipFloor.equals(currFloor.toFloorString())) {
         System.out.println(
             currFloor.toFloorString() + " is adding to floor list " + listOfMedEquip.size());
         listOfMedEquip.add(eq);
