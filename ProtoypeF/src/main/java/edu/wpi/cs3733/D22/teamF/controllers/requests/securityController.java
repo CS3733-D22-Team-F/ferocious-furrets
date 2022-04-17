@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
-import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -23,9 +22,8 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -46,8 +44,9 @@ public class securityController extends PageController
   @FXML BorderPane masterPane;
   @FXML Rectangle rectangle1;
   @FXML Rectangle bottomRect;
-//  @FXML JFXTreeTableView treeTable;
-  @FXML TreeTableView<securityRequest> treeTable;
+  @FXML JFXTreeTableView treeTable;
+  @FXML Pane tablePane;
+  //  @FXML TreeTableView<securityRequest> treeTable;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -129,8 +128,8 @@ public class securityController extends PageController
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
 
-    treeTable.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    treeTable.minHeightProperty().bind(masterPane.heightProperty());
+    //        treeTable.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    //        treeTable.minHeightProperty().bind(masterPane.heightProperty());
 
     rectangle1.heightProperty().bind(masterPane.heightProperty());
     rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
@@ -190,11 +189,7 @@ public class securityController extends PageController
   ////////////////////////////////////
   ///////////////////////////////////
 
-  private final ImageView depIcon =
-      new ImageView(new Image(Fapp.class.getResourceAsStream("BWHlogo-new.png")));
-
-  final TreeItem<securityRequest> treeRoot =
-      new TreeItem<>(new securityRequest(requestID, urg, needs), depIcon);
+  TreeItem<securityRequest> treeRoot = new TreeItem<>(new securityRequest(requestID, urg, needs));
 
   public void startTable() throws SQLException {
 
@@ -216,25 +211,26 @@ public class securityController extends PageController
               treeRoot.getChildren().add(new TreeItem<>(securityRequest));
             });
     final Scene scene = new Scene(new Group(), 400, 400);
-    Group sceneRoot = (Group) scene.getRoot();
 
-    TreeTableColumn<securityRequest, String> empColumn = new TreeTableColumn<>("Needs");
-    empColumn.setPrefWidth(150);
-    empColumn.setCellValueFactory(
+    TreeTableColumn<securityRequest, String> needsColumn = new TreeTableColumn<>("Needs");
+    needsColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<securityRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getNeeds()));
 
-    TreeTableColumn<securityRequest, String> emailColumn = new TreeTableColumn<>("Urgency");
-    emailColumn.setPrefWidth(190);
-    emailColumn.setCellValueFactory(
+    TreeTableColumn<securityRequest, String> urgencyColumn = new TreeTableColumn<>("Urgency");
+    urgencyColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<securityRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getUrgency()));
 
+
     TreeTableView<securityRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(empColumn, emailColumn);
-    treeTable = treeTableView;
-//        sceneRoot.getChildren().add(treeTableView);
-//        stage.setScene(scene);
-//        stage.show();
+    treeTableView.getColumns().setAll(needsColumn, urgencyColumn);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    needsColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    urgencyColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 }

@@ -2,11 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -193,12 +192,11 @@
             </children>
         </Pane>
     </left>
-   <right>
-      <TreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="720.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TreeTableColumn prefWidth="362.222296833992" text="Needs" />
-          <TreeTableColumn prefWidth="352.4443359375" text="Urgency" />
-        </columns>
-      </TreeTableView>
-   </right>
+   <center>
+      <Pane fx:id="tablePane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView prefHeight="721.0" prefWidth="716.0" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
