@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,7 +37,7 @@ public class logInController extends returnHomePage implements Initializable {
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
 
-  private Stage stage = new Stage();
+  private Stage stage;
   private Parent root;
   private Scene scene;
 
@@ -62,7 +63,13 @@ public class logInController extends returnHomePage implements Initializable {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn() throws SQLException, IOException {
+  private void logIn(ActionEvent event) throws SQLException, IOException {
+
+    //    FXMLLoader settingLoader = new
+    // FXMLLoader(getClass().getResource("views/settingsPage.fxml"));
+    //    settingController aSettingController = settingLoader.getController();
+    //    aSettingController.myFunction(usernameField.getText());
+
     boolean success = false;
     UserType userType = new UserType();
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {

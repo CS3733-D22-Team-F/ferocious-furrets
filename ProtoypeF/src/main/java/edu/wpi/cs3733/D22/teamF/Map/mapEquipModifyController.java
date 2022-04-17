@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapEquipmentModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -23,9 +24,9 @@ import javafx.stage.Stage;
 public class mapEquipModifyController implements Initializable {
 
   String floor = "1";
+  String Status = "available";
 
   @FXML JFXComboBox<String> nodeBox;
-  @FXML JFXComboBox<String> statusBox;
 
   @FXML private AnchorPane iconPane;
 
@@ -38,48 +39,31 @@ public class mapEquipModifyController implements Initializable {
   @FXML private Button cancel;
 
   @FXML private JFXButton selectedIcon;
+  @FXML private JFXButton cleanButton;
+  @FXML private JFXButton dirtyButton;
 
   @FXML private Label currentNode;
+  @FXML private Label statusLabel;
   @FXML private int xValue;
   @FXML private int yValue;
   @FXML private String floorValue;
 
   @FXML private ImageView mapHolder;
+
   Image F1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));
   Image F2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor2.jpg")));
   Image F3 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor3.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor3.jpg")));
   Image F4 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor4.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor4.jpg")));
   Image F5 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor5.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor5.jpg")));
   Image L1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower1.jpg")));
   Image L2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower2.jpg")));
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -94,7 +78,17 @@ public class mapEquipModifyController implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
+    if (locTempHolder.getLocation().getBuilding().equals("available")) {
+      dirtyButton.setDisable(false);
+      cleanButton.setDisable(true);
+      Status = "available";
+      statusLabel.setText("available");
+    } else {
+      dirtyButton.setDisable(true);
+      cleanButton.setDisable(false);
+      Status = "unavailable";
+      statusLabel.setText("unavailable");
+    }
     for (Location lo : locations) {
       x.add(lo.getXcoord());
       y.add(lo.getYcoord());
@@ -107,8 +101,6 @@ public class mapEquipModifyController implements Initializable {
     ArrayList<String> status = new ArrayList<>();
     status.add("available");
     status.add("unavailable");
-    statusBox.getItems().addAll(status);
-    statusBox.setValue("available");
   }
 
   /** Cancel add, close window */
@@ -120,7 +112,6 @@ public class mapEquipModifyController implements Initializable {
   /** reset fields in add window */
   public void reset() {
     nodeBox.setValue(room.get(0));
-    statusBox.setValue("available");
     floorValue = floors.get(room.indexOf(room.get(0)));
     xValue = x.get(room.indexOf(room.get(0)));
     yValue = x.get(room.indexOf(room.get(0)));
@@ -137,7 +128,7 @@ public class mapEquipModifyController implements Initializable {
     try {
       MapEquipmentModifier.modifyEquipment(
           node.get(room.indexOf(nodeBox.getValue())),
-          statusBox.getValue(),
+          Status,
           locTempHolder.getLocation().getShortName());
       Stage stage = (Stage) cancel.getScene().getWindow();
       stage.close();
@@ -230,5 +221,15 @@ public class mapEquipModifyController implements Initializable {
     imageView.setFitHeight(10);
     imageView.setFitWidth(10);
     return imageView;
+  }
+
+  public void toClean() {
+    Status = "available";
+    statusLabel.setText("available");
+  }
+
+  public void toDirty() {
+    Status = "unavailable";
+    statusLabel.setText("unavailable");
   }
 }

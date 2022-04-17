@@ -116,6 +116,7 @@ public class MapTableHolder {
     }
     nLocations.addAll(eLocations);
     nLocations.addAll(getAllReq());
+    MapIconModifier.locationIconList.clear();
     for (Location lo : nLocations) {
       try {
         MapIconModifier.addIcon(table, iconPane, lo);

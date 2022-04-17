@@ -10,13 +10,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import lombok.SneakyThrows;
 
 public class mainController implements Initializable {
@@ -30,6 +27,19 @@ public class mainController implements Initializable {
   @FXML JFXButton serviceButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
+
+  @FXML JFXButton mapViewButton;
+  @FXML JFXButton dashboardButton;
+  @FXML JFXButton homeButton1;
+
+  @FXML JFXButton labButton;
+  @FXML JFXButton scanButton;
+  @FXML JFXButton equipmentButton;
+  @FXML JFXButton mealButton;
+  @FXML JFXButton audioButton;
+  @FXML JFXButton medicineButton;
+  @FXML JFXButton giftButton;
+  @FXML JFXButton homeButton2;
 
   @SneakyThrows
   @Override
@@ -46,7 +56,9 @@ public class mainController implements Initializable {
   public void menuClose() {
     menu.close();
     menu.setMaxWidth(50);
-    homeMenu.setMaxWidth(50);
+    homeMenu.setPrefWidth(50);
+    serviceMenu.setPrefWidth(50);
+    mapMenu.setPrefWidth(50);
     mapButton.setGraphic(MapIconModifier.getIcon("Bed"));
     mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("Bed"));
@@ -55,20 +67,56 @@ public class mainController implements Initializable {
     settingsButton.setText("");
     outButton.setGraphic(MapIconModifier.getIcon("Bed"));
     outButton.setText("");
+    mapViewButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    mapViewButton.setText("");
+    dashboardButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    dashboardButton.setText("");
+    homeButton1.setGraphic(MapIconModifier.getIcon("Bed"));
+    homeButton1.setText("");
+    labButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    labButton.setText("");
+    scanButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    scanButton.setText("");
+    equipmentButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    equipmentButton.setText("");
+    medicineButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    medicineButton.setText("");
+    mealButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    mealButton.setText("");
+    audioButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    audioButton.setText("");
+    giftButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    giftButton.setText("");
+    homeButton2.setGraphic(MapIconModifier.getIcon("Bed"));
+    homeButton2.setText("");
   }
 
   public void menuOpen() {
     menu.open();
     menu.setMaxWidth(200);
     homeMenu.setMaxWidth(200);
-    mapButton.setGraphic(null);
+    homeMenu.setPrefWidth(200);
+    mapMenu.setMaxWidth(200);
+    mapMenu.setPrefWidth(200);
+    serviceMenu.setMaxWidth(200);
+    serviceMenu.setPrefWidth(200);
     mapButton.setText("Map");
-    serviceButton.setGraphic(null);
     serviceButton.setText("Service");
-    settingsButton.setGraphic(null);
     settingsButton.setText("Settings");
     outButton.setGraphic(null);
+    outButton.setText("Exit");
     outButton.setText("Log out");
+    mapViewButton.setText("Map View");
+    dashboardButton.setText("Dashboard");
+    homeButton1.setText("Home");
+    labButton.setText("Lab");
+    scanButton.setText("Scan");
+    equipmentButton.setText("Equipment");
+    medicineButton.setText("Medicine");
+    mealButton.setText("Meals");
+    audioButton.setText("Audio/Visual");
+    giftButton.setText("Gift");
+    homeButton2.setText("Home");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -146,19 +194,10 @@ public class mainController implements Initializable {
     pageHolder.getChildren().addAll(scene);
   }
 
-  public void logOut() throws IOException {
+  public void changeToSetting() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/settings.fxml");
     pageHolder.getChildren().clear();
-    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
-    Scene scene = null;
-    try {
-      scene = new Scene(fxmlLoader.load());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    Stage stage = SceneManager.getInstance().getStage();
-    SceneManager.getInstance().setStage(stage);
-    stage.setScene(scene);
-    stage.show();
+    pageHolder.getChildren().addAll(scene);
   }
 
   public void exit() throws SQLException, IOException {
