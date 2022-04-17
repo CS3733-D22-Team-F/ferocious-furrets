@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_10_28_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_2022_11_02_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2022_9_20_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_05_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_05_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2022_10_18_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2022_9_04_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2022_9_04_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added exit button to pageholder">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/cachePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/cachePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/cachePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/cachePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/creditPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/creditPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/creditsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/creditsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/pageHolder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/pageHolder.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +86,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27F4rhBPSgmbzg50QYJvc0kAZdh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="derby" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -117,6 +117,8 @@
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
+      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Map/FloorMap" />
       <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
@@ -285,6 +287,7 @@
       <workItem from="1649250436369" duration="7605000" />
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649881003906" duration="318000" />
+      <workItem from="1650151963650" duration="3510000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -461,7 +464,133 @@
       <option name="project" value="LOCAL" />
       <updated>1649944689481</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="deleted unused medicine page">
+      <created>1650066075156</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650066075156</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fixed null pointer exception error">
+      <created>1650066521829</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650066521829</updated>
+    </task>
+    <task id="LOCAL-00028" summary="refactored homePage and homePageController unused">
+      <created>1650066665760</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1650066665760</updated>
+    </task>
+    <task id="LOCAL-00029" summary="refactored homePage and homePageController unused">
+      <created>1650067607174</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1650067607174</updated>
+    </task>
+    <task id="LOCAL-00030" summary="settings page and floor 4">
+      <created>1650068048417</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1650068048418</updated>
+    </task>
+    <task id="LOCAL-00031" summary="resized dashboard page to 1280x720">
+      <created>1650068477788</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1650068477788</updated>
+    </task>
+    <task id="LOCAL-00032" summary="settings hbox refining">
+      <created>1650069447838</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1650069447838</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added theme jfx choice box to select appearance from">
+      <created>1650070368816</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1650070368816</updated>
+    </task>
+    <task id="LOCAL-00034" summary="settings page with credits toggle">
+      <created>1650073259920</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1650073259920</updated>
+    </task>
+    <task id="LOCAL-00035" summary="controller for setting fxml">
+      <created>1650074058962</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1650074058962</updated>
+    </task>
+    <task id="LOCAL-00036" summary="login functionality to new logout button in settings">
+      <created>1650074502162</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1650074502162</updated>
+    </task>
+    <task id="LOCAL-00037" summary="credits page &amp; controller">
+      <created>1650076323797</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1650076323797</updated>
+    </task>
+    <task id="LOCAL-00038" summary="checkpoint">
+      <created>1650079620235</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1650079620235</updated>
+    </task>
+    <task id="LOCAL-00039" summary="credit icons">
+      <created>1650079673487</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1650079673488</updated>
+    </task>
+    <task id="LOCAL-00040" summary="images">
+      <created>1650152305697</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1650152305697</updated>
+    </task>
+    <task id="LOCAL-00041" summary="sized user images">
+      <created>1650152659888</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1650152659888</updated>
+    </task>
+    <task id="LOCAL-00042" summary="images">
+      <created>1650152713651</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1650152713651</updated>
+    </task>
+    <task id="LOCAL-00043" summary="added functionality to ferocious furrets image credits popup">
+      <created>1650153066492</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1650153066492</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,23 +620,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
-    <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
-    <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
-    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
-    <MESSAGE value="added login menu bar to exit application" />
-    <MESSAGE value="Fixed Scan page bug" />
-    <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
-    <MESSAGE value="Fixed add Location bug with double/integer formatting" />
-    <MESSAGE value="Fixed icon update on map when reset from csv file" />
-    <MESSAGE value="Icons update on add/delete" />
-    <MESSAGE value="Icons update on reset from CSV" />
-    <MESSAGE value="Fixed open ResultSet bug" />
-    <MESSAGE value="Icons appear at correct location on click to add" />
-    <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
-    <MESSAGE value="Fixed map tracker bug with floor numbers" />
-    <MESSAGE value="Updated service request csvs" />
-    <MESSAGE value="Updated med equip csv" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="Controller updates" />
@@ -516,7 +629,24 @@
     <MESSAGE value="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController" />
     <MESSAGE value="Fixed database bug, changed logInController to set the connection type in DatabaseInitializer, then call initialize database in the Load class, fixed table not found error" />
     <MESSAGE value="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab" />
+    <MESSAGE value="deleted unused medicine page" />
+    <MESSAGE value="fixed null pointer exception error" />
+    <MESSAGE value="refactored homePage and homePageController unused" />
+    <MESSAGE value="settings page and floor 4" />
+    <MESSAGE value="resized dashboard page to 1280x720" />
+    <MESSAGE value="settings hbox refining" />
+    <MESSAGE value="added theme jfx choice box to select appearance from" />
+    <MESSAGE value="settings page with credits toggle" />
+    <MESSAGE value="controller for setting fxml" />
+    <MESSAGE value="login functionality to new logout button in settings" />
+    <MESSAGE value="credits page &amp; controller" />
+    <MESSAGE value="checkpoint" />
+    <MESSAGE value="credit icons" />
+    <MESSAGE value="sized user images" />
+    <MESSAGE value="images" />
+    <MESSAGE value="added functionality to ferocious furrets image credits popup" />
+    <MESSAGE value="added exit button to pageholder" />
+    <option name="LAST_COMMIT_MESSAGE" value="added exit button to pageholder" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
