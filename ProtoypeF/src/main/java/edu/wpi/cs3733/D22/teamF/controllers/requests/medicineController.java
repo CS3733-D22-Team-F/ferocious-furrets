@@ -3,6 +3,8 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.DeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.medicineDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -11,15 +13,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,6 +48,15 @@ public class medicineController extends PageController
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
+
+  @FXML private TableView<medicineDeliveryRequest> table;
+  @FXML private TableColumn<medicineDeliveryRequest, String> locationCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> assignedCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> requestedCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> medTypeCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> statusCol;
+
+  ObservableList<medicineDeliveryRequest> currentTableRows = FXCollections.observableArrayList();
 
   @FXML
   public void reset() {
@@ -125,7 +136,6 @@ public class medicineController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
@@ -151,6 +161,71 @@ public class medicineController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    String currentReqIDM;
+    String currentReqIDO;
+
+    locationCol.setCellValueFactory(
+        new PropertyValueFactory<medicineDeliveryRequest, String>("nodeID"));
+    assignedCol.setCellValueFactory(
+        new PropertyValueFactory<medicineDeliveryRequest, String>("assignedEmpID"));
+    requestedCol.setCellValueFactory(
+        new PropertyValueFactory<medicineDeliveryRequest, String>("requesterEmpID"));
+    medTypeCol.setCellValueFactory(
+        new PropertyValueFactory<medicineDeliveryRequest, String>("medicine"));
+    statusCol.setCellValueFactory(
+        new PropertyValueFactory<medicineDeliveryRequest, String>("status"));
+
+    table.setItems(currentTableRows);
+
+    ArrayList<String> currentFields = new ArrayList<>();
+
+    try {
+
+      ResultSet medicineDeliveryRequest = DatabaseManager.getMedicineDAO().get();
+
+      while (medicineDeliveryRequest.next()) {
+        ResultSet DeliveryRequest = DatabaseManager.getRequestDAO().get();
+
+        currentReqIDM = medicineDeliveryRequest.getString("reqID");
+
+        while (DeliveryRequest.next()) {
+          currentReqIDO = DeliveryRequest.getString("reqID");
+
+          if (currentReqIDO.equals(currentReqIDM)) {
+            System.out.println("they are equal :");
+
+            currentFields.add(0, currentReqIDO);
+            currentFields.add(1, DeliveryRequest.getString("nodeID"));
+            currentFields.add(2, DeliveryRequest.getString("assignedEmployeeID"));
+            currentFields.add(3, DeliveryRequest.getString("requesterEmployeeID"));
+            currentFields.add(4, DeliveryRequest.getString("status"));
+            currentFields.add(5, medicineDeliveryRequest.getString("medID"));
+
+            updateTableFromFields(currentFields);
+          } else {
+
+          }
+        }
+        DeliveryRequest.close();
+      }
+      medicineDeliveryRequest.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void updateTableFromFields(ArrayList<String> fields) {
+    currentTableRows.add(
+        new medicineDeliveryRequest(
+            fields.get(0), // req id
+            fields.get(1), // node id
+            fields.get(2), // assigned emp id
+            fields.get(3), // requester emp id
+            fields.get(4), // status
+            fields.get(5))); // equip id
   }
 
   @FXML
