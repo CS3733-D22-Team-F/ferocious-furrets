@@ -10,13 +10,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import lombok.SneakyThrows;
 
 public class mainController implements Initializable {
@@ -68,7 +65,7 @@ public class mainController implements Initializable {
     settingsButton.setGraphic(null);
     settingsButton.setText("Settings");
     outButton.setGraphic(null);
-    outButton.setText("Log out");
+    outButton.setText("Exit");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -150,21 +147,6 @@ public class mainController implements Initializable {
     SubScene scene = SceneManager.getInstance().setScene("views/settings.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
-  }
-
-  public void logOut() throws IOException {
-    pageHolder.getChildren().clear();
-    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
-    Scene scene = null;
-    try {
-      scene = new Scene(fxmlLoader.load());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    Stage stage = SceneManager.getInstance().getStage();
-    SceneManager.getInstance().setStage(stage);
-    stage.setScene(scene);
-    stage.show();
   }
 
   public void exit() throws SQLException, IOException {
