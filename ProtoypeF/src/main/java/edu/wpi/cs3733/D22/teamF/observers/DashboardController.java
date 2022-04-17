@@ -45,11 +45,14 @@ public class DashboardController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
 
     FloorObservable allFloorData = new FloorObservable();
+
     try {
       allFloorsObserver = new DashboardObserver();
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
+    allFloorData.addPropertyChangeListener(allFloorsObserver);
     allFloorsObserver.setFloor(currentFloor);
 
     //    DashboardObserver ll2Observer = new DashboardObserver(Floor.LL2);
@@ -89,7 +92,7 @@ public class DashboardController implements Initializable {
   /** Increases the value of the current floor by 1 */
   public void nextFloor() {
     setFloor(currentFloor.next());
-    System.out.println(currentFloor);
+    System.out.println(currentFloor + " for labels");
     allFloorsObserver.setFloor(currentFloor);
     setLabels();
     System.out.println("Next observer");
@@ -98,7 +101,7 @@ public class DashboardController implements Initializable {
   /** Increases the value of the current floor by 1 */
   public void prevFloor() {
     setFloor(currentFloor.prev());
-    System.out.println(currentFloor);
+    System.out.println(currentFloor + " for labels");
     allFloorsObserver.setFloor(currentFloor);
     setLabels();
     System.out.println("Prev observer");
@@ -170,18 +173,18 @@ public class DashboardController implements Initializable {
 
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
-    DashboardObserver current = allFloorsObserver;
-    System.out.println(currentFloor);
-    System.out.println(current.getFloor().toFloorString());
-    System.out.println("clean list size: " + current.getCleanList().size());
-    System.out.println("pod list size: " + current.getPodList().size());
-    System.out.println("dirty list size: " + current.getDirtyList().size());
-    System.out.println("in use list size: " + current.getInUse().size());
 
-    List<equipment> cleanEquip = current.getCleanList();
-    List<equipment> dirtyEquip = current.getDirtyList();
-    List<equipment> podEquip = current.getPodList();
-    List<equipment> inUseEquip = current.getInUse();
+    System.out.println(currentFloor);
+    System.out.println(allFloorsObserver.getFloor().toFloorString());
+    System.out.println("clean list size: " + allFloorsObserver.getCleanList().size());
+    System.out.println("pod list size: " + allFloorsObserver.getPodList().size());
+    System.out.println("dirty list size: " + allFloorsObserver.getDirtyList().size());
+    System.out.println("in use list size: " + allFloorsObserver.getInUse().size());
+
+    List<equipment> cleanEquip = allFloorsObserver.getCleanList();
+    List<equipment> dirtyEquip = allFloorsObserver.getDirtyList();
+    List<equipment> podEquip = allFloorsObserver.getPodList();
+    List<equipment> inUseEquip = allFloorsObserver.getInUse();
 
     cBed.setText(String.valueOf(filterBeds(cleanEquip).size()));
     cXRay.setText(String.valueOf(filterXRay(cleanEquip).size()));

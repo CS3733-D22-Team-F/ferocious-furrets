@@ -58,22 +58,22 @@ public class DashboardObserver implements PropertyChangeListener {
   /**
    * Filters all hospital equipment for the specfic floor of observer
    *
-   * //@param eqip
+   * <p>//@param eqip
    */
   public void setFloorFilter() {
     listOfMedEquip.clear();
     for (equipment eq : rawListEquip) {
       String equipFloor = eq.getNodeID().substring(8);
-      System.out.println(currFloor.toFloorString());
-      System.out.println("floor is " + equipFloor);
+      System.out.println(
+          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
+
       if (equipFloor.equals(currFloor.toFloorString())) {
         System.out.println(
-            currFloor.toFloorString() + " is adding to floor list " + listOfMedEquip.size());
+            currFloor.toFloorString() + "Adding to medEquipList, size:  " + listOfMedEquip.size());
         listOfMedEquip.add(eq);
       }
     }
-    System.out.println(listOfMedEquip.toString());
-
+    // System.out.println(listOfMedEquip.toString());
     cleanList = filterInClean();
     dirtyList = filterInDirty();
     podList = filterInPod();
@@ -89,10 +89,9 @@ public class DashboardObserver implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent evt) {
     rawListEquip.clear();
     rawListEquip = (List<equipment>) evt.getNewValue();
+
     System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
-    System.out.println(
-        "Raw list amount in observers, so the list is getting passed correctly: "
-            + rawListEquip.size());
+    System.out.println("Raw list amount in observers: " + rawListEquip.size());
 
     this.setFloorFilter();
     System.out.println(
