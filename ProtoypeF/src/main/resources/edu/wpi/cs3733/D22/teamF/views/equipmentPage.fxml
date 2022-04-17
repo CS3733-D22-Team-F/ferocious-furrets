@@ -2,11 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -153,14 +153,14 @@
       </Pane>
    </left>
    <right>
-      <TableView fx:id="table" prefHeight="721.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="equipCol" prefWidth="125.0" text="Equipment Id:" />
-          <TableColumn fx:id="locationCol" prefWidth="125.0" text="Location ID:" />
-            <TableColumn fx:id="assignedCol" prefWidth="125.0" text="Assigned To:" />
-            <TableColumn fx:id="requestedCol" prefWidth="125.0" text="Assigned By:" />
-            <TableColumn fx:id="statusCol" prefWidth="125.0" text="Status:" />
-        </columns>
-      </TableView>
+      <Pane fx:id="tablePane" prefHeight="721.0" prefWidth="644.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView fx:id="table">
+               <columnResizePolicy>
+                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </JFXTreeTableView>
+         </children>
+      </Pane>
    </right>
 </BorderPane>
