@@ -508,7 +508,32 @@ public class MapIconModifier {
               });
           newButton.setOnMouseReleased(
               e -> {
-                newButton.setCursor(Cursor.HAND);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setCursor(Cursor.HAND);
+                  ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
+                  ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
+                  Location loc = list.get(bList.indexOf(newButton));
+                  String oldID = loc.getNodeID();
+                  String xValue =
+                      (newButton.getLayoutX() / (iconPane.getPrefWidth() * 0.95) * 4450.0) + "";
+                  String yValue =
+                      (newButton.getLayoutY() / (iconPane.getPrefHeight() * 0.95) * 3550.0) + "";
+                  try {
+                    MapLocationModifier.modifyLocation(
+                        oldID,
+                        loc.getNodeType(),
+                        xValue,
+                        yValue,
+                        loc.getFloor(),
+                        loc.getLongName(),
+                        loc.getShortName());
+                    MapTableHolder.loadMap(table, iconPane);
+                  } catch (SQLException ex) {
+                    ex.printStackTrace();
+                  } catch (IOException ex) {
+                    ex.printStackTrace();
+                  }
+                }
               });
           newButton.setOnMouseEntered(
               e -> {
@@ -538,27 +563,74 @@ public class MapIconModifier {
                 }
               });
         } else if (getLocType(location).equals("equipment")) {
-          newButton.setOnAction(
+          final Delta dragDelta = new Delta();
+          newButton.setOnMouseClicked(
               e -> {
-                if (MapIconModifier.locationIconList.containsValue(newButton)) {
-                  Location lo =
-                      new ArrayList<>(
-                              MapIconModifier.getKeysByValue(
-                                  MapIconModifier.locationIconList, newButton))
-                          .get(0);
-                  try {
-                    MapPopUp.popUpEquipModify(table, iconPane, lo);
-                    MapTableHolder.loadMap(table, iconPane);
-                  } catch (IOException | SQLException ex) {
-                    ex.printStackTrace();
+                if (e.getButton() == MouseButton.SECONDARY) {
+                  if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                    Location lo =
+                        new ArrayList<>(
+                                MapIconModifier.getKeysByValue(
+                                    MapIconModifier.locationIconList, newButton))
+                            .get(0);
+                    try {
+                      MapPopUp.popUpEquipModify(table, iconPane, lo);
+                      MapTableHolder.loadMap(table, iconPane);
+                    } catch (IOException | SQLException ex) {
+                      ex.printStackTrace();
+                    }
                   }
                 }
+              });
+          newButton.setOnMousePressed(
+              e -> {
+                dragDelta.x = newButton.getLayoutX() - e.getSceneX();
+                dragDelta.y = newButton.getLayoutY() - e.getSceneY();
+                newButton.setCursor(Cursor.MOVE);
+              });
+          newButton.setOnMouseReleased(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+                ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
+                ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
+                Location loc = list.get(bList.indexOf(newButton));
+                Location nearLoc = null;
+                double currentDis = 99999.9;
+                for (Location l : list) {
+                  if (calculateDistance(l, loc) < currentDis
+                      && l.getFloor().equals(loc.getFloor())
+                      && getLocType(l).equals("location")) {
+                    nearLoc = l;
+                    currentDis = calculateDistance(l, loc);
+                  }
+                }
+                try {
+                  MapEquipmentModifier.modifyEquipment(
+                      nearLoc.getNodeID(), loc.getBuilding(), loc.getShortName());
+                } catch (SQLException ex) {
+                  ex.printStackTrace();
+                }
+                try {
+                  MapTableHolder.loadMap(table, iconPane);
+                } catch (SQLException | IOException ex) {
+                  ex.printStackTrace();
+                }
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseDragged(
+              e -> {
+                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
               });
         }
       }
       double x =
-          (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
-      double y = (location.getYcoord() / 3550.0) * 700;
+          (location.getXcoord() / 4450.0)
+              * (iconPane.getPrefWidth() * 0.95); // change the image resolution to pane resolution
+      double y = (location.getYcoord() / 3550.0) * (iconPane.getPrefHeight() * 0.95);
       newButton.setLayoutX(x);
       newButton.setLayoutY(y);
       iconPane.getChildren().add(newButton);
@@ -583,6 +655,15 @@ public class MapIconModifier {
     } else {
       return "location";
     }
+  }
+
+  public static double calculateDistance(Location random, Location thisLoc) {
+    JFXButton button1 = locationIconList.get(random);
+    JFXButton button2 = locationIconList.get(thisLoc);
+    double temp =
+        Math.pow((button1.getLayoutY() - button2.getLayoutY()), 2)
+            + Math.pow((button1.getLayoutX() - button2.getLayoutX()), 2);
+    return Math.pow(temp, 0.5);
   }
 }
 
