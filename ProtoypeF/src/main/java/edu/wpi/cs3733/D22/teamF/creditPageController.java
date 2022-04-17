@@ -13,6 +13,7 @@ public class creditPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
     ((Stage) (creditVbox.getScene().getWindow())).setResizable(false);
   }
 }
