@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="added exit button to pageholder">
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/.JACK HANLON-modified.png.icloud" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/.Nickola-modified.png.icloud" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/.Raffi Alexander Photo-modified.png.icloud" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/694b132c-fd18-4148-9cff-4d47909446df.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/694b132c-fd18-4148-9cff-4d47909446df.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="username from login now appears in settings page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/logInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/logInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/settingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/settingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/JACK HANLON-modified.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/Nickola-modified.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Cropped-Edits/Raffi Alexander Photo-modified.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/settings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +284,7 @@
       <workItem from="1649273538676" duration="1377000" />
       <workItem from="1649881003906" duration="318000" />
       <workItem from="1650151963650" duration="3523000" />
-      <workItem from="1650157027081" duration="2796000" />
+      <workItem from="1650157027081" duration="3099000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -603,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650155521789</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="checkpoint">
+      <created>1650159936815</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1650159936815</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="Controller updates" />
     <MESSAGE value="Updated service request fxml pages to incorporate css file for combo box" />
@@ -653,13 +650,14 @@
     <MESSAGE value="controller for setting fxml" />
     <MESSAGE value="login functionality to new logout button in settings" />
     <MESSAGE value="credits page &amp; controller" />
-    <MESSAGE value="checkpoint" />
     <MESSAGE value="credit icons" />
     <MESSAGE value="sized user images" />
     <MESSAGE value="images" />
     <MESSAGE value="added functionality to ferocious furrets image credits popup" />
     <MESSAGE value="added exit button to pageholder" />
-    <option name="LAST_COMMIT_MESSAGE" value="added exit button to pageholder" />
+    <MESSAGE value="checkpoint" />
+    <MESSAGE value="username from login now appears in settings page" />
+    <option name="LAST_COMMIT_MESSAGE" value="username from login now appears in settings page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

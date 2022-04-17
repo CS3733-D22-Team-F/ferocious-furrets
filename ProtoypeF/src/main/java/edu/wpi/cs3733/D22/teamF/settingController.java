@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -46,6 +47,7 @@ public class settingController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    userFromLogin.setText(UserType.getUserType());
     themeSetLabel.setVisible(false);
     themeSetCombo.setVisible(false);
     furretImage.setPickOnBounds(true);
