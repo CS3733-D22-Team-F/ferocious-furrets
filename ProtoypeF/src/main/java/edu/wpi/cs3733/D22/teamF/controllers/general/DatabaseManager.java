@@ -107,6 +107,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    System.out.println(statement);
     stm.close();
   }
   /**
@@ -184,6 +185,10 @@ public class DatabaseManager {
    */
   public static LocationsDAOImpl getLocationDAO() {
     return locationsDAO;
+  }
+
+  public static RequestDAOImpl getRequestDAO() {
+    return RequestDAO;
   }
   /**
    * gets the MedDelReqDAOImpl object Use to use the addLocation, update, delete, etc

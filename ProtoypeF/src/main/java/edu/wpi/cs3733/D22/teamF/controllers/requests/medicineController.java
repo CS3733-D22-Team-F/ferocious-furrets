@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.medicineDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -16,10 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,6 +44,13 @@ public class medicineController extends PageController
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
+
+  @FXML private TableView<medicineDeliveryRequest> table;
+  @FXML private TableColumn<medicineDeliveryRequest, String> locationCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> assignedCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> requestedCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> medTypeCol;
+  @FXML private TableColumn<medicineDeliveryRequest, String> statusCol;
 
   @FXML
   public void reset() {
@@ -125,7 +130,6 @@ public class medicineController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);

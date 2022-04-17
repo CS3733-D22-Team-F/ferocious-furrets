@@ -114,7 +114,7 @@ public class MapPopUp {
     locTempHolder.setPassIconPane(iconPane);
     Parent root =
         FXMLLoader.load(
-            Objects.requireNonNull(Fapp.class.getResource("Map/ServiceModifyPage.fxml")));
+            Objects.requireNonNull(Fapp.class.getResource("Map/mapServiceModifyPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
