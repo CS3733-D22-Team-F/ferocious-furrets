@@ -200,7 +200,7 @@ public class equipmentRequestController extends PageController
     //    }
     try {
       startTable();
-    } catch (SQLException e) {
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -215,7 +215,7 @@ public class equipmentRequestController extends PageController
   }
 
   @FXML
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
 
     String newReqID;
     String newNodeID;
@@ -264,7 +264,9 @@ public class equipmentRequestController extends PageController
       //              newStatus,
       //              newEquipID));
 
-      updateTableFromFields(fields);
+      updateTableFromFields(fields); // deprecated?
+
+//      startTable(); // should update table?
 
       resetFunction();
     }
@@ -321,11 +323,11 @@ public class equipmentRequestController extends PageController
     return eID;
   }
 
-  public String generateReqID() throws SQLException {
+  public String generateReqID() throws SQLException, IOException {
     String nNodeType = typeChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM EQUIPMENTREQUEST");
+    ResultSet rset = DatabaseManager.getMedEquipDelReqDAO().get();
     while (rset.next()) {
       reqNum++;
     }
@@ -367,22 +369,38 @@ public class equipmentRequestController extends PageController
           new equipmentDeliveryRequest(
               requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
 
-  public void startTable() throws SQLException {
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM EQUIPMENTREQUEST");
+  public void startTable() throws SQLException, IOException {
+    ResultSet equipRequest =
+        DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
     ArrayList<equipmentDeliveryRequest> secReqs = new ArrayList<equipmentDeliveryRequest>();
     equipmentDeliveryRequest er;
+    String currentEquipDelReqID;
 
-    while (rset.next()) {
-      er =
-          new equipmentDeliveryRequest(
-              rset.getString("reqID"),
-              rset.getString("nodeID"),
-              rset.getString("equipID"),
-              rset.getString("assignedEmpID"),
-              rset.getString("requesterEmpID"),
-              rset.getString("status"));
-      secReqs.add(er);
+    while (equipRequest.next()) {
+      currentEquipDelReqID = equipRequest.getString("reqID");
+      System.out.println(currentEquipDelReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
+          System.out.println("matched :)");
+          er =
+              new equipmentDeliveryRequest(
+                  equipRequest.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  equipRequest.getString(
+                      "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          break;
+        }
+      }
     }
+
+    equipRequest.close();
 
     treeRoot.setExpanded(true);
     secReqs.stream()
@@ -398,9 +416,9 @@ public class equipmentRequestController extends PageController
         (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
-    TreeTableColumn<equipmentDeliveryRequest, String> requestedCol =
-        new TreeTableColumn<>("Equipment Type:");
-    requestedCol.setCellValueFactory(
+    TreeTableColumn<equipmentDeliveryRequest, String> equipmentIDCol =
+        new TreeTableColumn<>("Equipment ID:");
+    equipmentIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
 
@@ -424,12 +442,12 @@ public class equipmentRequestController extends PageController
     TreeTableView<equipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
-        .setAll(nodeIDCol, requestedCol, assignedToCol, requestedByCol, statusCol);
+        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
