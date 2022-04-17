@@ -161,6 +161,7 @@ public class DashboardController implements Initializable {
   public void setLabels() {
     DashboardObserver current = floorObservers.get(currentFloor.toInt());
     System.out.println(currentFloor);
+    System.out.println(current.getFloor().toFloorString());
     System.out.println("clean list size: " + current.getCleanList().size());
     System.out.println("pod list size: " + current.getPodList().size());
     System.out.println("dirty list size: " + current.getDirtyList().size());

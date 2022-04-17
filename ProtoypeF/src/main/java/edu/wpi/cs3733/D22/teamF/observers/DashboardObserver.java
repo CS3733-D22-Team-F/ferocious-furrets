@@ -42,10 +42,12 @@ public class DashboardObserver implements PropertyChangeListener {
     return this.inUseList;
   }
 
+  //  public void setFloor(Floor floorToSet) {
+  //    currFloor = floorToSet;
+  //  }
 
-
-  public void setFloor(Floor floorToSet) {
-    currFloor = floorToSet;
+  public Floor getFloor() {
+    return currFloor;
   }
 
   /**
@@ -54,9 +56,10 @@ public class DashboardObserver implements PropertyChangeListener {
    * @param eqip
    */
   public void setFloorFilter(List<equipment> eqip) {
-
+    listOfMedEquip.clear();
     for (equipment eq : eqip) {
       String equipFloor = eq.getNodeID().substring(8);
+      System.out.println(currFloor.toFloorString());
       System.out.println("floor is " + equipFloor);
       if (equipFloor.equals(currFloor.toFloorString())) {
         System.out.println(
@@ -64,6 +67,7 @@ public class DashboardObserver implements PropertyChangeListener {
         listOfMedEquip.add(eq);
       }
     }
+    System.out.println(listOfMedEquip.toString());
 
     cleanList = filterInClean();
     dirtyList = filterInDirty();
