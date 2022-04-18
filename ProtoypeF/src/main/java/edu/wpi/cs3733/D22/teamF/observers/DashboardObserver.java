@@ -343,7 +343,7 @@ public class DashboardObserver implements PropertyChangeListener {
    * @return list of alerts
    */
   // TODO counter for alerts
-  public  void checkAlerts() {
+  public void checkAlerts() {
     floorAlerts.clear();
     String formatString = currFloor.toFloorString() + ": ";
 

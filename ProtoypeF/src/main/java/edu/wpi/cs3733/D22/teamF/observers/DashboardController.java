@@ -182,6 +182,5 @@ public class DashboardController implements Initializable {
       System.out.println(currentAlerts.get(alert));
 
     floorSelect.setText(currentFloor.toFloorString());
-
   }
 }
