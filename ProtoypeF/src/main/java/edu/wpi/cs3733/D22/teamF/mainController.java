@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -134,10 +135,19 @@ public class mainController implements Initializable {
     pageHolder.getChildren().addAll(scene);
   }
 
-  public void changeToMedicine() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/medicinePage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+  public void changeToMedicine() throws IOException, ServiceException {
+    //    SubScene scene = SceneManager.getInstance().setScene("views/medicinePage.fxml");
+    //    pageHolder.getChildren().clear();
+    //    pageHolder.getChildren().addAll(scene);
+    try {
+      //user needs to create csv files first
+      MedicineRequest.initializeDatabase(
+          "/edu/wpi/cs3733/D22/teamF/apiCSV/medicine.csv",
+          "/edu/wpi/cs3733/D22/teamF/apiCSV/employees.csv");
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    MedicineRequest.run(0, 0, 0, 0, "combobox.css", "FDEPT00301");
   }
 
   public void changeToDashboard() throws IOException {

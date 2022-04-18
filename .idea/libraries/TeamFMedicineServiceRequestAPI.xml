@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="TeamFMedicineServiceRequestAPI">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../TeamFMedicineServiceRequestAPI/build/libs/TeamFMedicineServiceRequestAPI-all.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
