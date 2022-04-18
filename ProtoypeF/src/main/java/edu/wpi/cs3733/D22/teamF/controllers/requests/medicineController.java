@@ -214,11 +214,11 @@ public class medicineController extends PageController
                   medicineReq.getString("totalAmount"),
                   medicineReq.getString("pharmacyAddress"));
           secReqs.add(er);
+          servRequest.close();
           break;
         }
       }
     }
-
     medicineReq.close();
 
     treeRoot.setExpanded(true);

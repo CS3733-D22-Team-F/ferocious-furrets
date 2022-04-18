@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
@@ -156,10 +157,10 @@
       </Pane>
    </left>
    <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="721.0" fitWidth="736.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
-         <image>
-            <Image url="@../Images/small-basket.png" />
-         </image>
-      </ImageView>
+      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView fx:id="table" />
+         </children>
+      </Pane>
    </right>
 </BorderPane>

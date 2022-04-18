@@ -395,6 +395,7 @@ public class equipmentRequestController extends PageController
                       "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
           // CORRECT TOO)
           secReqs.add(er);
+          servRequest.close();
           break;
         }
       }
