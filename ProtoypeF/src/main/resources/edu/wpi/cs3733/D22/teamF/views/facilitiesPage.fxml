@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.facilitiesController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.facilitiesController">
     <left>
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
@@ -36,7 +36,7 @@
                 </ImageView>
                 <VBox layoutX="24.0" layoutY="203.0" prefHeight="498.0" prefWidth="553.0">
                     <children>
-                    <HBox fx:id="infoHBox" prefHeight="434.0" prefWidth="554.0">
+                    <HBox fx:id="infoHBox" prefHeight="360.0" prefWidth="553.0">
                     <children>
                         <VBox fx:id="labelVBox" prefHeight="297.0" prefWidth="239.0">
                             <children>
