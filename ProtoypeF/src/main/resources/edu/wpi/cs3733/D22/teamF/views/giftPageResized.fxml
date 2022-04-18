@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
@@ -18,8 +19,8 @@
    <left>
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="611.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="618.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="640.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="640.0" />
             <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="287.0" text="Gift Shop" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="64.0" />
@@ -156,10 +157,10 @@
       </Pane>
    </left>
    <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="721.0" fitWidth="736.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
-         <image>
-            <Image url="@../Images/small-basket.png" />
-         </image>
-      </ImageView>
+      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView fx:id="table" />
+         </children>
+      </Pane>
    </right>
 </BorderPane>
