@@ -59,6 +59,18 @@ public class equipmentRequestController extends PageController
   @FXML private Button submitButton;
   @FXML private TreeTableView table;
   @FXML private Pane tablePane;
+
+  private String requestID;
+  private String nodeID;
+  private String assignedEmpID;
+  private String requesterEmpID;
+  private String status;
+  private String requestedEquipmentID;
+
+  TreeItem<equipmentDeliveryRequest> treeRoot =
+      new TreeItem<>(
+          new equipmentDeliveryRequest(
+              requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
   //  @FXML private TableColumn<equipmentDeliveryRequest, String> locationCol;
   //  @FXML private TableColumn<equipmentDeliveryRequest, String> assignedCol;
   //  @FXML private TableColumn<equipmentDeliveryRequest, String> requestedCol;
@@ -356,18 +368,6 @@ public class equipmentRequestController extends PageController
   public ContextMenu makeContextMenu() {
     return null;
   }
-
-  private String requestID;
-  private String nodeID;
-  private String assignedEmpID;
-  private String requesterEmpID;
-  private String status;
-  private String requestedEquipmentID;
-
-  TreeItem<equipmentDeliveryRequest> treeRoot =
-      new TreeItem<>(
-          new equipmentDeliveryRequest(
-              requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
 
   public void startTable() throws SQLException, IOException {
     ResultSet equipRequest =
