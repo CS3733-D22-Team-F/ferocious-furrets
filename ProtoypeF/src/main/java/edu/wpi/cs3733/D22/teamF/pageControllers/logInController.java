@@ -135,6 +135,6 @@ public class logInController extends returnHomePage implements Initializable {
     databaseDrop.add("Embedded");
     databaseDrop.add("Client-Server");
     databaseChooser.getItems().addAll(databaseDrop);
-    databaseChooser.setValue("");
+    databaseChooser.setValue("Embedded");
   }
 }

@@ -43,6 +43,7 @@ public class mainController implements Initializable {
   @FXML JFXButton audioButton;
   @FXML JFXButton medicineButton;
   @FXML JFXButton giftButton;
+  @FXML JFXButton physicalTherapyButton;
   @FXML JFXButton homeButton2;
 
   @FXML VBox v1;

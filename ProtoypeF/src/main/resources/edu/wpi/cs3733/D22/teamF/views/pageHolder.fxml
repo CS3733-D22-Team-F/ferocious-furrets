@@ -170,6 +170,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="physicalTherapyButton" buttonType="RAISED" onAction="#changeToPhysicalTherapy" prefHeight="30.0" prefWidth="201.0" text="Phys. Therapy" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
             <VBox fx:id="v6" prefHeight="200.0" prefWidth="200.0">
