@@ -1,3 +1,7 @@
-reqID,accessObject
-fLPP16,LPP - Large Print Info Pamphlet
-fWIP18,WIP
+reqID,accessObject,objectType
+fWIP18,WIP,Deaf/Hard of Hearing
+fLPP19,LPP,Blind/Visually Impaired
+fH&M20,H&M,Deaf/Hard of Hearing
+fCMT21,CMT,Deaf/Hard of Hearing
+fBIP22,BIP,Blind/Visually Impaired
+fCAN23,CAN,Blind/Visually Impaired
