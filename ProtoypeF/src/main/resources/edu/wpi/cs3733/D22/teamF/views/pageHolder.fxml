@@ -10,20 +10,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="770.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mainController">
+<StackPane prefHeight="720.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mainController">
    <children>
       <VBox fx:id="menuBar" prefHeight="770.0" prefWidth="1394.0">
          <children>
-            <AnchorPane style="-fx-background-color: #123090;">
+            <AnchorPane prefHeight="60.0" prefWidth="1342.0" style="-fx-background-color: #123090;">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="144.0" layoutX="-5.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="1347.0" />
-                  <HBox alignment="CENTER" layoutX="216.0" layoutY="24.0" prefHeight="81.0" prefWidth="916.0">
+                  <HBox alignment="CENTER" layoutX="216.0" layoutY="24.0" prefHeight="60.0" prefWidth="916.0">
                      <children>
-                        <Label alignment="CENTER" text="Brigham And Women's Hospital" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="60.0" text="Brigham And Women's Hospital" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="48.0" />
                            </font>
@@ -31,7 +28,7 @@
                               <Insets right="40.0" />
                            </HBox.margin>
                         </Label>
-                        <ImageView fitHeight="103.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../BWHlogo-new.png" />
                            </image>
@@ -40,12 +37,12 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1330.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0">
                <children>
-                  <AnchorPane prefHeight="720.0" prefWidth="1330.0">
+                  <AnchorPane prefHeight="680.0" prefWidth="1270.0">
                      <children>
-                        <StackPane fx:id="pageHolder" prefHeight="720.0" prefWidth="1280.0" />
-                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="720.0" maxWidth="200.0" minHeight="720.0" minWidth="50.0" miniDrawerSize="50.0" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="720.0" prefWidth="200.0" resizeContent="true" style="-fx-background-color: #4169E1;" />
+                        <StackPane fx:id="pageHolder" layoutX="50.0" prefHeight="660.0" prefWidth="1220.0" />
+                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" miniDrawerSize="50.0" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="660.0" prefWidth="200.0" resizeContent="true" style="-fx-background-color: #4169E1;" />
                      </children>
                   </AnchorPane>
                </children>
@@ -70,11 +67,6 @@
             </VBox>
             <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Line endX="150.0" stroke="#123090" strokeLineJoin="ROUND" strokeType="OUTSIDE">
-                     <VBox.margin>
-                        <Insets left="25.0" />
-                     </VBox.margin>
-                  </Line>
                   <JFXButton fx:id="settingsButton" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
@@ -115,11 +107,6 @@
             </VBox>
             <VBox fx:id="v4" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Line endX="150.0" stroke="#123090" strokeLineJoin="ROUND" strokeType="OUTSIDE">
-                     <VBox.margin>
-                        <Insets left="25.0" />
-                     </VBox.margin>
-                  </Line>
                   <JFXButton fx:id="settingsButton1" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
@@ -205,11 +192,6 @@
             </VBox>
             <VBox fx:id="v6" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Line endX="150.0" stroke="#123090" strokeLineJoin="ROUND" strokeType="OUTSIDE">
-                     <VBox.margin>
-                        <Insets left="25.0" />
-                     </VBox.margin>
-                  </Line>
                   <JFXButton fx:id="settingsButton2" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
