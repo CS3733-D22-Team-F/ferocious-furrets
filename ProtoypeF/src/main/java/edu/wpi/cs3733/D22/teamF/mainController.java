@@ -159,7 +159,7 @@ public class mainController implements Initializable {
     homeButton2.setText("Home");
     physicalButton.setText("Phy. Therapy");
     securityButton.setText("Security");
-    sanitationButton.setText("Sanitation");
+    sanitationButton.setText("Facilities");
     maintenanceButton.setText("Maintenance");
   }
 
@@ -233,9 +233,8 @@ public class mainController implements Initializable {
     changeTo("views/physicalTherapyPage.fxml");
   }
 
-  public void changeToSanitation() throws IOException {
-    // TODO add your page name before ".fxml"
-    // changeTo("views/.fxml");
+  public void changeToFacilities() throws IOException {
+    changeTo("views/facilitiesPage.fxml");
   }
 
   public void changeToMaintenance() throws IOException {
