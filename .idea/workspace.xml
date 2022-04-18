@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Finished frontend code for physical therapy service request">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/physicalTherapyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/physicalTherapyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/physicalTherapyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/request/medicalRequest/physicalTherapyRequest.java" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Added JFXTreeTableView to physicalTherapy request">
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/physicalTherapyPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/physicalTherapyPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649944689481</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added JFXTreeTableView to physicalTherapy request">
+      <created>1650242365253</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650242365253</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modify Map Page&#10;1. Mouse Tracker to Pick Location&#10;2. Rebuild Map Page&#10;3. Add Full Table Page" />
     <MESSAGE value="Fixed bug on Service Request page allowing user to edit label fields" />
     <MESSAGE value="removed &quot;Please Login&quot; button from main page, resized login page username and password text" />
     <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
@@ -512,7 +514,8 @@
     <MESSAGE value="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController" />
     <MESSAGE value="Fixed database bug, changed logInController to set the connection type in DatabaseInitializer, then call initialize database in the Load class, fixed table not found error" />
     <MESSAGE value="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab" />
+    <MESSAGE value="Added JFXTreeTableView to physicalTherapy request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JFXTreeTableView to physicalTherapy request" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
