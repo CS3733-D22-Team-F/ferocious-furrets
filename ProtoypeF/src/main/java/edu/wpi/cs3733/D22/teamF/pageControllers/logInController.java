@@ -150,6 +150,5 @@ public class logInController extends returnHomePage implements Initializable {
     backgroundImage.setManaged(false);
     backgroundImage.fitWidthProperty().bind(imageAnchor.widthProperty());
     backgroundImage.fitHeightProperty().bind(imageAnchor.heightProperty());
-
   }
 }
