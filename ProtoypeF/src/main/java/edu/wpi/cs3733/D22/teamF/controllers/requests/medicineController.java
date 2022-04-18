@@ -93,7 +93,7 @@ public class medicineController extends PageController
   }
 
   @FXML
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
@@ -125,6 +125,8 @@ public class medicineController extends PageController
 
       reset();
     }
+
+    startTable();
   }
 
   public void resolveRequest() throws SQLException {
@@ -188,6 +190,9 @@ public class medicineController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet medicineReq = DatabaseManager.getMedicineDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<medicineDeliveryRequest> secReqs = new ArrayList<medicineDeliveryRequest>();
@@ -307,6 +312,10 @@ public class medicineController extends PageController
     totalAmountCol.minWidthProperty().bind(tablePane.widthProperty().divide(9));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(9));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 
   @FXML

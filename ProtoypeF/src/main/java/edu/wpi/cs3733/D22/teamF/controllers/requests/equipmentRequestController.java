@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -71,13 +69,6 @@ public class equipmentRequestController extends PageController
       new TreeItem<>(
           new equipmentDeliveryRequest(
               requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> locationCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> assignedCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> requestedCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> statusCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> equipCol;
-
-  ObservableList<equipmentDeliveryRequest> currentTableRows = FXCollections.observableArrayList();
 
   public equipmentRequestController() {}
 
@@ -267,32 +258,10 @@ public class equipmentRequestController extends PageController
       fields.add(5, newEquipID);
       req.placeRequest(fields);
 
-      //      currentRows.add(
-      //          new equipmentDeliveryRequest(
-      //              newReqID,
-      //              newNodeID,
-      //              newAssignedEmployee,
-      //              newRequestedEmployee,
-      //              newStatus,
-      //              newEquipID));
-
-      updateTableFromFields(fields); // deprecated?
-
-      //      startTable(); // should update table? no
-
       resetFunction();
     }
-  }
 
-  public void updateTableFromFields(ArrayList<String> fields) {
-    currentTableRows.add(
-        new equipmentDeliveryRequest(
-            fields.get(0), // req id
-            fields.get(1), // node id
-            fields.get(2), // assigned emp id
-            fields.get(3), // requester emp id
-            fields.get(4), // status
-            fields.get(5))); // equip id
+    startTable();
   }
 
   public String employeeIDFinder(String name) throws SQLException {
@@ -339,7 +308,7 @@ public class equipmentRequestController extends PageController
     String nNodeType = typeChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
-    ResultSet rset = DatabaseManager.getMedEquipDelReqDAO().get();
+    ResultSet rset = DatabaseManager.getRequestDAO().get();
     while (rset.next()) {
       reqNum++;
     }
@@ -362,6 +331,7 @@ public class equipmentRequestController extends PageController
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setLandingScreen();
+    System.out.println(treeRoot.getChildren().size());
   }
 
   @Override
@@ -370,6 +340,9 @@ public class equipmentRequestController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet equipRequest =
         DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
@@ -454,5 +427,9 @@ public class equipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

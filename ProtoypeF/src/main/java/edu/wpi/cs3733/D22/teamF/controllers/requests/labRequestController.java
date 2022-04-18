@@ -104,7 +104,7 @@ public class labRequestController extends PageController
    *
    * @return labRequest object
    */
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
@@ -141,6 +141,8 @@ public class labRequestController extends PageController
       serviceRequestStorage.addToArrayList(requestList);
     }
     reset();
+
+    startTable();
   }
 
   @FXML
@@ -197,6 +199,9 @@ public class labRequestController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet labRequestTables =
         DatabaseManager.getLabRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
@@ -277,5 +282,9 @@ public class labRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

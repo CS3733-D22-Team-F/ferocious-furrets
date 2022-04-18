@@ -70,7 +70,7 @@ public class giftResizedController extends PageController
    *
    * @return giftDeliveryRequest
    */
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
@@ -84,6 +84,8 @@ public class giftResizedController extends PageController
     req.placeRequest(fields);
 
     reset();
+
+    startTable();
   }
 
   @Override
@@ -189,6 +191,9 @@ public class giftResizedController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet giftRequestTable = DatabaseManager.getGiftDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<giftDeliveryRequest> secReqs = new ArrayList<giftDeliveryRequest>();
@@ -268,5 +273,9 @@ public class giftResizedController extends PageController
     giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }
