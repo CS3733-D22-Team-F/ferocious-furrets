@@ -107,7 +107,7 @@ public abstract class PageController {
     meals.setText("Meals Request");
     MenuItem medical = this.addMenuItem("request/medicalPage.fxml");
     medical.setText("Medical Request");
-    MenuItem medicine = this.addMenuItem("request/medicinePage.fxml");
+    MenuItem medicine = this.addMenuItem("request/facilitiesPage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("request/scanPage.fxml");
     scans.setText("Scans Request");
@@ -165,7 +165,7 @@ public abstract class PageController {
     meals.setText("Meals Request");
     MenuItem medical = this.addMenuItem("request/medicalPage.fxml");
     medical.setText("Medical Request");
-    MenuItem medicine = this.addMenuItem("request/medicinePage.fxml");
+    MenuItem medicine = this.addMenuItem("request/facilitiesPage.fxml");
     medicine.setText("Medicine Request");
     MenuItem scans = this.addMenuItem("request/scanPage.fxml");
     scans.setText("Scans Request");

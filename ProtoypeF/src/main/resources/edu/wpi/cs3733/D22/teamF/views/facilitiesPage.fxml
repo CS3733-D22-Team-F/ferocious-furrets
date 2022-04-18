@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.giftResizedController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.facilitiesController">
    <left>
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="611.0" BorderPane.alignment="TOP_LEFT">
          <children>
@@ -58,7 +58,7 @@
                      <padding>
                         <Insets top="10.0" />
                      </padding></JFXComboBox>
-                  <JFXComboBox fx:id="requestChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText="Request Type" unFocusColor="#00000080">
+                  <JFXComboBox fx:id="requestType" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText="Request Type" unFocusColor="#00000080">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -133,9 +133,9 @@
                   </Label>
                </children>
             </VBox>
-            <HBox fx:id="bottomHBox" layoutX="95.0" layoutY="592.0" prefHeight="59.0" prefWidth="421.0">
+            <HBox fx:id="leftHbox" layoutX="95.0" layoutY="592.0" prefHeight="59.0" prefWidth="421.0">
                <children>
-                  <JFXButton fx:id="submitButton1" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
+                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                      <font>
                         <Font size="28.0" />
                      </font>

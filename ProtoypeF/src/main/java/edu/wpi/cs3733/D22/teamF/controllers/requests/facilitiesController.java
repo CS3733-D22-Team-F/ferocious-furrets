@@ -10,6 +10,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +25,7 @@ import javafx.scene.shape.Rectangle;
 
 // import javax.swing.text.html.ImageView;
 
-/** Controller for gift scene */
+/** Controller for facilities scene */
 public class facilitiesController extends PageController
     implements Initializable, IRequestController {
   @FXML Rectangle rectangle1;
@@ -48,14 +49,9 @@ public class facilitiesController extends PageController
 
   @FXML HBox leftHbox;
 
-  /**
-   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
-   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
-   *
-   * @return giftDeliveryRequest
-   */
+  /** @return facilitiesRequest */
   public void submit() throws SQLException {
-    RequestSystem req = new RequestSystem("Gift");
+    RequestSystem req = new RequestSystem("Facilities");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
     fields.add(nodeIDFinder(nodeID.getValue().toString()));
@@ -65,6 +61,7 @@ public class facilitiesController extends PageController
     if (requestType.getValue().toString().length() > 16)
       fields.add(requestType.getValue().toString().substring(0, 15));
     else fields.add(requestType.getValue().toString());
+    System.out.println(fields);
     req.placeRequest(fields);
 
     reset();
@@ -103,9 +100,6 @@ public class facilitiesController extends PageController
     statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
     requestType.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
     leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    backgroundIMG.maxWidth(736);
-    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
-    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -118,7 +112,8 @@ public class facilitiesController extends PageController
     temp1.add("Hazardous Waste Removal");
     temp1.add("General Waste Removal");
     temp1.add("Equipment Sterilization");
-    temp1.add("Equipment Repair Request");
+    temp1.add("Repair Request");
+    temp1.add("Other Facilities Request");
     requestType.getItems().addAll(temp1);
     requestType.setValue("");
 
@@ -143,7 +138,7 @@ public class facilitiesController extends PageController
   }
 
   public String generateReqID() throws SQLException {
-    String nNodeType = requestType.getValue().toString().substring(0, 3);
+    String nNodeType = requestType.getValue().toString().substring(0, 3).toUpperCase(Locale.ROOT);
     int reqNum = 0;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
