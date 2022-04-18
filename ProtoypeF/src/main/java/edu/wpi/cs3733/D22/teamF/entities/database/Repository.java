@@ -41,6 +41,9 @@ public class Repository {
       case "AudioVisual":
         db = DatabaseManager.getAudioVisDAO();
         break;
+      case "Facilities":
+        db = DatabaseManager.getFacilitiesDAO();
+        break;
       default:
         break;
     }
