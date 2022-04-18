@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -34,7 +35,7 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="35.0" prefWidth="156.0" text="Room: ">
+            <Label prefHeight="35.0" prefWidth="156.0" text="Equipment:">
                <font>
                   <Font size="18.0" />
                </font>
@@ -45,7 +46,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="statusBox" prefHeight="26.0" prefWidth="289.0" />
+            <Label fx:id="statusLabel" prefHeight="23.0" prefWidth="392.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="39.0" prefWidth="260.0">
+               <children>
+                  <JFXButton fx:id="cleanButton" disable="true" onAction="#toClean" prefHeight="46.0" prefWidth="130.0" text="Mark Clean" underline="true" />
+                  <JFXButton fx:id="dirtyButton" disable="true" onAction="#toDirty" prefHeight="64.0" prefWidth="130.0" text="Mark Dirty" underline="true" />
+               </children>
+            </HBox>
             <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
             <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
             <JFXButton onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" />
