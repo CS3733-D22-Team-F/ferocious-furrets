@@ -25,6 +25,7 @@ public class mainController implements Initializable {
   @FXML VBox serviceMenu;
   @FXML JFXButton mapButton;
   @FXML JFXButton serviceButton;
+  @FXML JFXButton linksButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
   @FXML JFXButton settingsButton1;
@@ -186,6 +187,10 @@ public class mainController implements Initializable {
     homeMenu.setVisible(false);
     serviceMenu.setVisible(true);
     mapMenu.setVisible(false);
+  }
+
+  public void changeToLinksPage() throws IOException {
+    changeTo("views/linksPage.fxml");
   }
 
   public void changeToLab() throws IOException {

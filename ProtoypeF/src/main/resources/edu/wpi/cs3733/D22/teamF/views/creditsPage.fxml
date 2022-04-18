@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="creditVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
@@ -248,7 +247,7 @@
                                        </HBox.margin>
                                        <children>
                                           <Label prefHeight="17.0" prefWidth="215.0" text="Owen Radcliffe" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Request Page" wrapText="true">
+                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Request Page" wrapText="true">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>

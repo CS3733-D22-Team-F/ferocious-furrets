@@ -63,6 +63,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="linksButton" buttonType="RAISED" onAction="#changeToLinksPage" prefHeight="30.0" prefWidth="286.0" text="Helpful Links" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
             <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">

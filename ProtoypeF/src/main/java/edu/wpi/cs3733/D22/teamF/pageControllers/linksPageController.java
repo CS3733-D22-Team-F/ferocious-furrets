@@ -1,0 +1,26 @@
+package edu.wpi.cs3733.D22.teamF.pageControllers;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
+import javax.swing.text.html.ImageView;
+
+public class linksPageController implements Initializable {
+
+  @FXML ImageView homeWebsiteQR;
+  @FXML ImageView employeePortalQR;
+  @FXML ImageView staffDirectoryQR;
+  @FXML ImageView hrQR;
+
+  @FXML VBox qrCodes;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
+
+  }
+
+  public void disappear(ImageView im) {}
+}
