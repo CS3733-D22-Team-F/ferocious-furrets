@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.beans.PropertyChangeEvent;
@@ -85,7 +86,7 @@ public class DashboardObserver implements PropertyChangeListener {
     return floorAlerts;
   }
 
-  public List<List<String>> getAllFloorAlerts() {
+  public static List<List<String>> getAllFloorAlerts() {
     return allFloorAlerts;
   }
 
@@ -128,7 +129,7 @@ public class DashboardObserver implements PropertyChangeListener {
   }
 
   public void updateLabels() {
-    if (true) {
+    if (SceneManager.getInstance().getCurrentScene().equals("views/dashboardPage.fxml")) {
       if (!clabels.isEmpty()) {
         clabels.get(0).setText(String.valueOf(cBedCount.size()));
         clabels.get(1).setText(String.valueOf(cInfusionPumpCount.size()));
@@ -342,7 +343,7 @@ public class DashboardObserver implements PropertyChangeListener {
    * @return list of alerts
    */
   // TODO counter for alerts
-  public void checkAlerts() {
+  public  void checkAlerts() {
     floorAlerts.clear();
     String formatString = currFloor.toFloorString() + ": ";
 

@@ -131,4 +131,35 @@ public enum Floor {
     }
     return retVal;
   }
+
+  public Floor toFloorEnum(String toConvert) {
+    Floor retVal = Floor.FL3; // IDK just need something quick
+    switch (toConvert) {
+      case "L2":
+        retVal = Floor.LL2;
+        break;
+      case "L1":
+        retVal = Floor.LL1;
+        break;
+      case "FL1":
+        retVal = Floor.FL1;
+        break;
+      case "FL2":
+        retVal = Floor.FL2;
+        break;
+      case "FL3":
+        retVal = Floor.FL3;
+        break;
+      case "FL4":
+        retVal = Floor.FL4;
+        break;
+      case "FL5":
+        retVal = Floor.FL5;
+        break;
+      default:
+        retVal = Floor.FL3;
+        break;
+    }
+    return retVal;
+  }
 }

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class DashboardController implements Initializable {
   List<Label> cleanLabels = new ArrayList<>();
@@ -21,6 +22,8 @@ public class DashboardController implements Initializable {
   List<DashboardObserver> floorObservers = new ArrayList<>();
 
   @FXML ComboBox layoutAlerts;
+  @FXML TextField floorSelect;
+
   @FXML Label cBed;
   @FXML Label cXRay;
   @FXML Label cRecliner;
@@ -98,6 +101,7 @@ public class DashboardController implements Initializable {
       e.printStackTrace();
     }
     // currentFloor = Floor.FL3;
+    floorSelect.setText(currentFloor.toFloorString());
     setLabels();
     setAlerts();
   }
@@ -138,9 +142,16 @@ public class DashboardController implements Initializable {
     }
   }
 
+  public void readFloorInput() {
+
+    currentFloor = currentFloor.toFloorEnum(floorSelect.getText());
+    setLabels();
+  }
+
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
 
+    floorSelect.setText(currentFloor.toFloorString());
     System.out.println(currentFloor);
     System.out.println(
         "Current Observer Floor"
