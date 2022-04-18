@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 
 public class creditPageController implements Initializable {
 
-  @FXML private VBox creditVbox;
+  @FXML VBox creditVbox;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
+    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
     ((Stage) (creditVbox.getScene().getWindow())).setResizable(false);
   }
 }
