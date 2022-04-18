@@ -92,8 +92,11 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
+      System.out.println(databaseChooser.getValue().toString());
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
+
+      System.out.println(embedded);
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
@@ -125,6 +128,6 @@ public class logInController extends returnHomePage implements Initializable {
     databaseDrop.add("Embedded");
     databaseDrop.add("Client-Server");
     databaseChooser.getItems().addAll(databaseDrop);
-    databaseChooser.setValue("Embedded");
+    databaseChooser.setValue("");
   }
 }

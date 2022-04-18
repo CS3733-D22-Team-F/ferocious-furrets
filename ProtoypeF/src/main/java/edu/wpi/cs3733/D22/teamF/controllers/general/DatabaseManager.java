@@ -18,7 +18,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn; // = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -56,7 +56,7 @@ public class DatabaseManager {
   public static Connection switchConnection(DatabaseInitializer.ConnType type)
       throws SQLException, IOException {
     // backUpDatabaseToCSV();
-    // DatabaseInitializer.switchConnection(type);
+    DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
     DatabaseManager dbMan = initializeDatabaseManager();
     return conn;

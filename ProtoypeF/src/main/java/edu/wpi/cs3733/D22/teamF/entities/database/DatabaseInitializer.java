@@ -18,7 +18,8 @@ public class DatabaseInitializer {
    */
   private DatabaseInitializer(ConnType type) {
     System.out.println("int db init conn type: " + type.toString());
-    this.dbConnection = this.connectDatabase(connType);
+    connType = type;
+    this.dbConnection = this.connectDatabase(type);
   }
 
   /**

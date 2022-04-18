@@ -131,6 +131,11 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
+            <JFXButton onAction="#changeToPhysicalTherapy" prefHeight="23.0" prefWidth="201.0" text="Physical Therapy">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
             <JFXButton buttonType="RAISED" onAction="#changeToHomeMenu" prefHeight="52.0" prefWidth="215.0" text="Home">
                <font>
                   <Font size="24.0" />

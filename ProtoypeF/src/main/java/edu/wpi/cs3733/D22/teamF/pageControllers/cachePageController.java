@@ -31,6 +31,7 @@ public class cachePageController implements Initializable {
     statusLabel.setText(randomFact());
     statusLabel.setTextAlignment(TextAlignment.CENTER);
     // Task<Void> loader = new Load();
+    System.out.println(useEmbedded.get());
     Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {

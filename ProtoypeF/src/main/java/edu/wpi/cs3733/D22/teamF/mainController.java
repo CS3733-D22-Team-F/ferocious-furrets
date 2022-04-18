@@ -129,7 +129,13 @@ public class mainController implements Initializable {
   }
 
   public void changeToMeal() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/mealPage.fxml");
+    SubScene scene = SceneManager.getInstance().setScene("views/mealsPage.fxml");
+    pageHolder.getChildren().clear();
+    pageHolder.getChildren().addAll(scene);
+  }
+
+  public void changeToPhysicalTherapy() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/physicalTherapyPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
   }
