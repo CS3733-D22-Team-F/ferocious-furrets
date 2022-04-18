@@ -67,7 +67,7 @@ public class equipmentRequestController extends PageController
   private String status;
   private String requestedEquipmentID;
 
-  TreeItem<equipmentDeliveryRequest> treeRoot =
+  private TreeItem<equipmentDeliveryRequest> treeRoot =
       new TreeItem<>(
           new equipmentDeliveryRequest(
               requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
