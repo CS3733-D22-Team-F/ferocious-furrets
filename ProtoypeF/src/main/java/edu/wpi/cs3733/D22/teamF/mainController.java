@@ -27,6 +27,10 @@ public class mainController implements Initializable {
   @FXML JFXButton serviceButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
+  @FXML JFXButton settingsButton1;
+  @FXML JFXButton outButton1;
+  @FXML JFXButton settingsButton2;
+  @FXML JFXButton outButton2;
 
   @FXML JFXButton mapViewButton;
   @FXML JFXButton dashboardButton;
@@ -41,6 +45,13 @@ public class mainController implements Initializable {
   @FXML JFXButton giftButton;
   @FXML JFXButton homeButton2;
 
+  @FXML VBox v1;
+  @FXML VBox v2;
+  @FXML VBox v3;
+  @FXML VBox v4;
+  @FXML VBox v5;
+  @FXML VBox v6;
+
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -51,6 +62,13 @@ public class mainController implements Initializable {
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
+    // settingsButton.setMa
+    v1.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
+    v3.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
+    v5.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
+    //    v2.prefHeightProperty().bind(menu.heightProperty().divide(11));
+    //    v4.prefHeightProperty().bind(menu.heightProperty().divide(11));
+    //    v6.prefHeightProperty().bind(menu.heightProperty().divide(11));
   }
 
   public void menuClose() {
@@ -59,35 +77,43 @@ public class mainController implements Initializable {
     homeMenu.setPrefWidth(50);
     serviceMenu.setPrefWidth(50);
     mapMenu.setPrefWidth(50);
-    mapButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    mapButton.setGraphic(MapIconModifier.getIcon("mapMenu"));
     mapButton.setText("");
-    serviceButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
     serviceButton.setText("");
-    settingsButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    settingsButton.setGraphic(MapIconModifier.getIcon("settingsMenu"));
     settingsButton.setText("");
-    outButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    outButton.setGraphic(MapIconModifier.getIcon("outMenu"));
     outButton.setText("");
-    mapViewButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    settingsButton1.setGraphic(MapIconModifier.getIcon("settingsMenu"));
+    settingsButton1.setText("");
+    outButton1.setGraphic(MapIconModifier.getIcon("outMenu"));
+    outButton1.setText("");
+    settingsButton2.setGraphic(MapIconModifier.getIcon("settingsMenu"));
+    settingsButton2.setText("");
+    outButton2.setGraphic(MapIconModifier.getIcon("outMenu"));
+    outButton2.setText("");
+    mapViewButton.setGraphic(MapIconModifier.getIcon("mapMenu"));
     mapViewButton.setText("");
-    dashboardButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    dashboardButton.setGraphic(MapIconModifier.getIcon("dashboardMenu"));
     dashboardButton.setText("");
-    homeButton1.setGraphic(MapIconModifier.getIcon("Bed"));
+    homeButton1.setGraphic(MapIconModifier.getIcon("home"));
     homeButton1.setText("");
-    labButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    labButton.setGraphic(MapIconModifier.getIcon("labMenu"));
     labButton.setText("");
-    scanButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    scanButton.setGraphic(MapIconModifier.getIcon("scanMenu"));
     scanButton.setText("");
-    equipmentButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    equipmentButton.setGraphic(MapIconModifier.getIcon("equipmentMenu"));
     equipmentButton.setText("");
-    medicineButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    medicineButton.setGraphic(MapIconModifier.getIcon("medicineMenu"));
     medicineButton.setText("");
-    mealButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    mealButton.setGraphic(MapIconModifier.getIcon("mealMenu"));
     mealButton.setText("");
-    audioButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    audioButton.setGraphic(MapIconModifier.getIcon("audioMenu"));
     audioButton.setText("");
-    giftButton.setGraphic(MapIconModifier.getIcon("Bed"));
+    giftButton.setGraphic(MapIconModifier.getIcon("giftMenu"));
     giftButton.setText("");
-    homeButton2.setGraphic(MapIconModifier.getIcon("Bed"));
+    homeButton2.setGraphic(MapIconModifier.getIcon("home"));
     homeButton2.setText("");
   }
 
@@ -103,9 +129,11 @@ public class mainController implements Initializable {
     mapButton.setText("Map");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
-    outButton.setGraphic(null);
     outButton.setText("Exit");
-    outButton.setText("Log out");
+    settingsButton1.setText("Settings");
+    outButton1.setText("Exit");
+    settingsButton2.setText("Settings");
+    outButton2.setText("Exit");
     mapViewButton.setText("Map View");
     dashboardButton.setText("Dashboard");
     homeButton1.setText("Home");

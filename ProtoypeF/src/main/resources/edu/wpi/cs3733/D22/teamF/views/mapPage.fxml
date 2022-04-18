@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXNodesList?>
 <?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -42,11 +43,11 @@
                         </Group>
                      </content>
                   </ScrollPane>
-                  <HBox prefHeight="46.0" prefWidth="836.0">
+                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="836.0">
                      <children>
                         <JFXNodesList fx:id="menuNodeList">
                            <children>
-                              <JFXButton fx:id="openMenu" style="-fx-background-color: #123090;" textFill="WHITE">
+                              <JFXButton fx:id="openMenu" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #123090;" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -58,10 +59,13 @@
                               <JFXButton fx:id="historyButton" onAction="#openHistory" style="-fx-background-color: #123090;" text="HISTORY" textFill="WHITE" />
                               <JFXButton fx:id="homeButton" onAction="#homePage" style="-fx-background-color: #123090;" text="HOME" textFill="WHITE" />
                            </children>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
                         </JFXNodesList>
                         <JFXNodesList fx:id="floorNodeList">
                            <children>
-                              <JFXButton fx:id="openFloorMenu" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
+                              <JFXButton fx:id="openFloorMenu" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -74,11 +78,17 @@
                               <JFXButton fx:id="changeToL1" onAction="#changeToL1" style="-fx-background-color: #123090;" text="L1" textFill="WHITE" />
                               <JFXButton fx:id="changeToL2" onAction="#changeToL2" style="-fx-background-color: #123090;" text="L2" textFill="WHITE" />
                            </children>
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
                         </JFXNodesList>
-                        <JFXButton fx:id="showIconButton" buttonType="RAISED" onAction="#showIcon" prefHeight="23.0" prefWidth="113.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
+                        <JFXButton fx:id="showIconButton" buttonType="RAISED" onAction="#showIcon" prefHeight="25.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
                         </JFXButton>
                         <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="43.0" prefWidth="300.0" />
                      </children>
