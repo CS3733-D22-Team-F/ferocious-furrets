@@ -266,7 +266,7 @@ public class equipmentRequestController extends PageController
 
       updateTableFromFields(fields); // deprecated?
 
-//      startTable(); // should update table?
+      //      startTable(); // should update table? no
 
       resetFunction();
     }
