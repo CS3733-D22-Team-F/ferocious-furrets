@@ -43,7 +43,10 @@ public class mainController implements Initializable {
   @FXML JFXButton audioButton;
   @FXML JFXButton medicineButton;
   @FXML JFXButton giftButton;
-  @FXML JFXButton physicalTherapyButton;
+  @FXML JFXButton physicalButton;
+  @FXML JFXButton securityButton;
+  @FXML JFXButton sanitationButton;
+  @FXML JFXButton maintenanceButton;
   @FXML JFXButton homeButton2;
 
   @FXML VBox v1;
@@ -114,6 +117,14 @@ public class mainController implements Initializable {
     audioButton.setText("");
     giftButton.setGraphic(MapIconModifier.getIcon("giftMenu"));
     giftButton.setText("");
+    physicalButton.setGraphic(MapIconModifier.getIcon("physicalMenu"));
+    physicalButton.setText("");
+    securityButton.setGraphic(MapIconModifier.getIcon("securityMenu"));
+    securityButton.setText("");
+    sanitationButton.setGraphic(MapIconModifier.getIcon("cleanMenu"));
+    sanitationButton.setText("");
+    maintenanceButton.setGraphic(MapIconModifier.getIcon("toolMenu"));
+    maintenanceButton.setText("");
     homeButton2.setGraphic(MapIconModifier.getIcon("home"));
     homeButton2.setText("");
   }
@@ -146,6 +157,10 @@ public class mainController implements Initializable {
     audioButton.setText("Audio/Visual");
     giftButton.setText("Gift");
     homeButton2.setText("Home");
+    physicalButton.setText("Phy. Therapy");
+    securityButton.setText("Security");
+    sanitationButton.setText("Sanitation");
+    maintenanceButton.setText("Maintenance");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -163,9 +178,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToMap() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/mapPage.fxml");
   }
 
   public void changeToServiceMenu() throws IOException {
@@ -176,68 +189,62 @@ public class mainController implements Initializable {
   }
 
   public void changeToLab() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/labRequestPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/labRequestPage.fxml");
   }
 
   public void changeToScan() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/scanPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/scanPage.fxml");
   }
 
   public void changeToEquipment() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/equipmentPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/equipmentPage.fxml");
   }
 
   public void changeToAudio() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/audioVisualPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/audioVisualPage.fxml");
   }
 
   public void changeToGift() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/giftPageResized.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/giftPageResized.fxml");
   }
 
   public void changeToMeal() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/mealPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/mealPage.fxml");
   }
-
-  public void changeToPhysicalTherapy() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/physicalTherapyPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
-  }
-
-  public void changeTOFacilities() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/facilitiesPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
-  }
-
 
   public void changeToMedicine() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/facilitiesPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/medicinePage.fxml");
   }
 
   public void changeToDashboard() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/dashboardPage.fxml");
-    pageHolder.getChildren().clear();
-    pageHolder.getChildren().addAll(scene);
+    changeTo("views/dashboardPage.fxml");
   }
 
   public void changeToSetting() throws IOException {
-    SubScene scene = SceneManager.getInstance().setScene("views/settings.fxml");
+    changeTo("views/settings.fxml");
+  }
+
+  public void changeToSecurity() throws IOException {
+    // TODO add your page name before ".fxml"
+    // changeTo("views/.fxml");
+  }
+
+  public void changeToPhysical() throws IOException {
+    changeTo("views/physicalTherapyPage.fxml");
+  }
+
+  public void changeToSanitation() throws IOException {
+    // TODO add your page name before ".fxml"
+    // changeTo("views/.fxml");
+  }
+
+  public void changeToMaintenance() throws IOException {
+    // TODO add your page name before ".fxml"
+    // changeTo("views/.fxml");
+  }
+
+  public void changeTo(String path) throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene(path);
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
   }
