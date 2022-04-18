@@ -77,10 +77,10 @@ public class mainController implements Initializable {
 
   public void menuClose() {
     menu.close();
-    menu.setMaxWidth(50);
+    menu.setPrefWidth(50);
     homeMenu.setPrefWidth(50);
-    serviceMenu.setPrefWidth(50);
     mapMenu.setPrefWidth(50);
+    serviceMenu.setPrefWidth(50);
     mapButton.setGraphic(MapIconModifier.getIcon("mapMenu"));
     mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
