@@ -20,9 +20,9 @@ public class DashboardObserver implements PropertyChangeListener {
   private List<equipment> listOfMedEquip = new ArrayList<>(); // list
 
   private Floor currFloor; // the floor the observer watches
-  private List<String> floorAlerts = new ArrayList<>();
+  private List<Alert> floorAlerts = new ArrayList<>();
 
-  private static List<List<String>> allFloorAlerts = new ArrayList<List<String>>();
+  private static List<List<Alert>> allFloorAlerts = new ArrayList<List<Alert>>();
   private List<equipment> cleanList = new ArrayList<>();
   private List<equipment> dirtyList = new ArrayList<>();
   private List<equipment> podList = new ArrayList<>();
@@ -82,11 +82,11 @@ public class DashboardObserver implements PropertyChangeListener {
     return currFloor;
   }
 
-  public List<String> getFloorAlerts() {
+  public List<Alert> getFloorAlerts() {
     return floorAlerts;
   }
 
-  public static List<List<String>> getAllFloorAlerts() {
+  public static List<List<Alert>> getAllFloorAlerts() {
     return allFloorAlerts;
   }
 
@@ -348,11 +348,12 @@ public class DashboardObserver implements PropertyChangeListener {
     String formatString = currFloor.toFloorString() + ": ";
 
     if (dInfusionPumpCount.size() >= 10)
-      floorAlerts.add(formatString + "10 & more dirty infusion pumps");
+      floorAlerts.add(new Alert(this.currFloor, formatString + "10 & more dirty infusion pumps"));
 
     if (cInfusionPumpCount.size() <= 5)
-      floorAlerts.add(formatString + " 5 & less clean infusion pumps");
+      floorAlerts.add(new Alert(this.currFloor, formatString + " 5 & less clean infusion pumps"));
 
-    if (dBedCount.size() >= 6) floorAlerts.add(formatString + " 6 & more Beds to be cleaned");
+    if (dBedCount.size() >= 6)
+      floorAlerts.add(new Alert(this.currFloor, formatString + " 6 & more Beds to be cleaned"));
   }
 }

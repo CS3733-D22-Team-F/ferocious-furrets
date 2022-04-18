@@ -129,20 +129,14 @@ public class DashboardController implements Initializable {
   }
 
   public void setAlerts() {
-    List<String> allFloorAlerts = new ArrayList<>();
-    for (int floorAlerts = 0;
-        floorAlerts < floorObservers.get(currentFloor.toInt()).getAllFloorAlerts().size();
-        floorAlerts++) {
-      List<String> currentFloorAlerts =
-          floorObservers.get(currentFloor.toInt()).getAllFloorAlerts().get(floorAlerts);
-      for (int inFloorAlerts = 0; inFloorAlerts < currentFloorAlerts.size(); inFloorAlerts++) {
-        layoutAlerts.getItems().add(currentFloorAlerts.get(inFloorAlerts));
-      }
-    }
+    layoutAlerts.getItems().clear();
+    List<List<Alert>> allFloorAlerts = DashboardObserver.getAllFloorAlerts();
+
+    for (List<Alert> floorAlert : allFloorAlerts)
+      for (Alert inFloorAlert : floorAlert) layoutAlerts.getItems().add(inFloorAlert.getMessage());
   }
 
   public void readFloorInput() {
-
     currentFloor = currentFloor.toFloorEnum(floorSelect.getText());
     setLabels();
   }
@@ -170,17 +164,12 @@ public class DashboardController implements Initializable {
         currentFloor.toFloorString()
             + " in-use List:"
             + floorObservers.get(currentFloor.toInt()).getInUse().size());
-    System.out.println(
-        currentFloor.toFloorString()
-            + " in-use List:"
-            + floorObservers.get(currentFloor.toInt()).getInUse().size());
-    floorObservers.get(currentFloor.toInt()).updateLabels();
 
-    List<String> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
-
+    List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
     for (int alert = 0; alert < currentAlerts.size(); alert++)
-      System.out.println(currentAlerts.get(alert));
+      System.out.println(currentAlerts.get(alert).getMessage());
 
+    this.floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
   }
 }
