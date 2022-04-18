@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -13,19 +14,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.audioVisualController">
-   <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="819.0" fitWidth="781.0" pickOnBounds="true" BorderPane.alignment="TOP_LEFT">
-         <image>
-            <Image url="@../Images/hearingAid.png" />
-         </image>
-      </ImageView>
-   </right>
+<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.audioVisualController">
    <left>
       <Pane prefHeight="819.0" prefWidth="744.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="819.0" stroke="BLACK" strokeType="INSIDE" width="743.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="597.0" layoutX="-4.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
             <HBox fx:id="topHBox" layoutX="5.0" layoutY="33.0" prefHeight="100.0" prefWidth="732.0" spacing="50.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
@@ -149,4 +143,11 @@
          </children>
       </Pane>
    </left>
+   <center>
+      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView prefHeight="720.0" prefWidth="536.0" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
