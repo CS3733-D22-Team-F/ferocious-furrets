@@ -217,6 +217,13 @@ public class mainController implements Initializable {
     pageHolder.getChildren().addAll(scene);
   }
 
+  public void changeTOFacilities() throws IOException {
+    SubScene scene = SceneManager.getInstance().setScene("views/facilitiesPage.fxml");
+    pageHolder.getChildren().clear();
+    pageHolder.getChildren().addAll(scene);
+  }
+
+
   public void changeToMedicine() throws IOException {
     SubScene scene = SceneManager.getInstance().setScene("views/facilitiesPage.fxml");
     pageHolder.getChildren().clear();
