@@ -101,7 +101,6 @@ public class DashboardController implements Initializable {
       e.printStackTrace();
     }
     // currentFloor = Floor.FL3;
-    floorSelect.setText(currentFloor.toFloorString());
     setLabels();
     setAlerts();
   }
@@ -151,7 +150,6 @@ public class DashboardController implements Initializable {
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
 
-    floorSelect.setText(currentFloor.toFloorString());
     System.out.println(currentFloor);
     System.out.println(
         "Current Observer Floor"
@@ -182,5 +180,8 @@ public class DashboardController implements Initializable {
 
     for (int alert = 0; alert < currentAlerts.size(); alert++)
       System.out.println(currentAlerts.get(alert));
+
+    floorSelect.setText(currentFloor.toFloorString());
+
   }
 }
