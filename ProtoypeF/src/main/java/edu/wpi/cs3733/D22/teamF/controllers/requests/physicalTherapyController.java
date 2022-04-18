@@ -1,19 +1,24 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.physicalTherapyRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class physicalTherapyController extends PageController
     implements Initializable, IRequestController {
@@ -25,6 +30,13 @@ public class physicalTherapyController extends PageController
   @FXML TextField durationTime; // duration time field in minutes
   @FXML TextArea notes;
   @FXML JFXComboBox statusChoice; // Status Choice Box
+  @FXML BorderPane masterPane;
+  @FXML JFXTreeTableView treeTable;
+  @FXML Pane tablePane;
+
+  private String typeChoiceS;
+  private String durationTimeS;
+  private String notesS;
 
   /**
    * Called to initialize a controller after its root element has been completely processed.
@@ -58,6 +70,65 @@ public class physicalTherapyController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    try {
+      startTable();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  TreeItem<physicalTherapyRequest> treeRoot =
+      new TreeItem<>(new physicalTherapyRequest(typeChoiceS, durationTimeS, notesS));
+
+  public void startTable() throws SQLException {
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM PTREQUEST");
+    ArrayList<physicalTherapyRequest> secReqs = new ArrayList<physicalTherapyRequest>();
+    physicalTherapyRequest sr;
+
+    while (rset.next()) {
+      sr =
+          new physicalTherapyRequest(
+              rset.getString("TYPE"), rset.getString("DURATION"), rset.getString("NOTES"));
+      secReqs.add(sr);
+    }
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (physicalTherapyRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(physicalTherapyRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<physicalTherapyRequest, String> therapyTypeColumn =
+        new TreeTableColumn<>("Therapy Time");
+    therapyTypeColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<physicalTherapyRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getTreatmentType()));
+
+    TreeTableColumn<physicalTherapyRequest, String> durationColumn =
+        new TreeTableColumn<>("Duration");
+    durationColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<physicalTherapyRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getDuration()));
+
+    TreeTableColumn<physicalTherapyRequest, String> notesColumn = new TreeTableColumn<>("Notes");
+    notesColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<physicalTherapyRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNotes()));
+
+    TreeTableView<physicalTherapyRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(therapyTypeColumn, durationColumn, notesColumn);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    therapyTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(4));
+    durationColumn.minWidthProperty().bind(tablePane.widthProperty().divide(4));
+    notesColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
   @Override

@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -212,15 +211,10 @@
         </Pane>
         </left>
 <right>
-<JFXTreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="718.0" BorderPane.alignment="CENTER">
-    <columns>
-        <TreeTableColumn prefWidth="110.0" text="Location:" />
-        <TreeTableColumn prefWidth="110.0" text="Assigned To:" />
-        <TreeTableColumn prefWidth="110.0" text="Requested By:" />
-        <TreeTableColumn prefWidth="110.0" text="Needs:" />
-        <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Urgency" />
-        <TreeTableColumn minWidth="0.0" prefWidth="110.0" text="Status" />
-    </columns>
-</JFXTreeTableView>
+      <Pane fx:id="tablePane" BorderPane.alignment="CENTER">
+         <children>
+      <JFXTreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="718.0" />
+         </children>
+      </Pane>
 </right>
         </BorderPane>

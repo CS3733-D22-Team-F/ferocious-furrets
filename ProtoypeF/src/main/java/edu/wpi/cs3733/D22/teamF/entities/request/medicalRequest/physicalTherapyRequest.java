@@ -28,6 +28,12 @@ public class physicalTherapyRequest extends MedicalRequest {
     this.notes = notes;
   }
 
+  public physicalTherapyRequest(String type, String duration, String notes) {
+    this.notes = notes;
+    this.duration = duration;
+    this.treatmentType = type;
+  }
+
   @Override
   public void place(ArrayList<String> fields) throws SQLException {
     db.addRequest(fields);
@@ -58,5 +64,13 @@ public class physicalTherapyRequest extends MedicalRequest {
 
   public void setDuration(String duration) {
     this.duration = duration;
+  }
+
+  public String getNotes() {
+    return this.notes;
+  }
+
+  public void setNotes(String note) {
+    this.notes = note;
   }
 }
