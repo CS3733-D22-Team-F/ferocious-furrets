@@ -60,6 +60,7 @@ public class LocationsDAOImpl implements LocationDAO {
     for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
+    Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
   /**
    * Method that initalizes all the tables for SQL and makes objects and adds them to the arrayList
@@ -85,6 +86,7 @@ public class LocationsDAOImpl implements LocationDAO {
     for (Location currentLocation : locations) {
       DatabaseManager.runStatement(currentLocation.generateInsertStatement());
     }
+    Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
 
   /**
@@ -209,8 +211,20 @@ public class LocationsDAOImpl implements LocationDAO {
    * @throws SQLException
    */
   public void updateLocation(String oldNodeID, Location updatedLocation) throws SQLException {
-    deleteLocation(oldNodeID);
-    addLocation(updatedLocation);
+    String cmd =
+        String.format(
+            "UPDATE LOCATIONS SET NODEID = '%s', XCOORD = %s, YCOORD = %s, FLOOR = '%s', BUILDING = '%s', NODETYPE = '%s', LONGNAME = '%s', SHORTNAME = '%s' WHERE NODEID = '%s'",
+            updatedLocation.getNodeID(),
+            updatedLocation.getXcoord(),
+            updatedLocation.getYcoord(),
+            updatedLocation.getFloor(),
+            updatedLocation.getBuilding(),
+            updatedLocation.getNodeType(),
+            updatedLocation.getLongName(),
+            updatedLocation.getShortName(),
+            oldNodeID);
+    DatabaseManager.runStatement(cmd);
+    Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
 
   /**

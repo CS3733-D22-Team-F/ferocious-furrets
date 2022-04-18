@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
@@ -40,40 +41,19 @@ public class mapLocModifyController implements Initializable {
 
   @FXML private ImageView mapHolder;
   Image F1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));
   Image F2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor2.jpg")));
   Image F3 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor3.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor3.jpg")));
   Image F4 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor4.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor4.jpg")));
   Image F5 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Floor5.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor5.jpg")));
   Image L1 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower1.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower1.jpg")));
   Image L2 =
-      new Image(
-          Objects.requireNonNull(
-              getClass()
-                  .getResourceAsStream("/edu/wpi/cs3733/D22/teamF/views/Map/FloorMap/Lower2.jpg")));
+      new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Lower2.jpg")));
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -233,9 +213,7 @@ public class mapLocModifyController implements Initializable {
     Image image =
         new Image(
             Objects.requireNonNull(
-                getClass()
-                    .getResourceAsStream(
-                        "/edu/wpi/cs3733/D22/teamF/views/Map/Icons/MapIcons/INFO Icon.png")));
+                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/INFO Icon.png")));
     ImageView imageView = new ImageView(image);
     imageView.setFitHeight(10);
     imageView.setFitWidth(10);

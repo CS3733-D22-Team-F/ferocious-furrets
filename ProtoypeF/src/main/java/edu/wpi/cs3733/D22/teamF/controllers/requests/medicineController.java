@@ -200,7 +200,7 @@ public class medicineController extends PageController
             currentFields.add(2, DeliveryRequest.getString("assignedEmployeeID"));
             currentFields.add(3, DeliveryRequest.getString("requesterEmployeeID"));
             currentFields.add(4, DeliveryRequest.getString("status"));
-            currentFields.add(5, medicineDeliveryRequest.getString("medID"));
+            currentFields.add(5, medicineDeliveryRequest.getString("medicine"));
 
             updateTableFromFields(currentFields);
           } else {

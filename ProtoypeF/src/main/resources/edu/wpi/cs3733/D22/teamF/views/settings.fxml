@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.settingController">
+   <children>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="652.0" prefWidth="635.0">
+               <children>
+                  <AnchorPane prefHeight="128.0" prefWidth="633.0" style="-fx-background-color: #123090;">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="635.0" text="System" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Regular" size="48.0" />
+                           </font>
+                           <padding>
+                              <Insets top="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets left="20.0" top="100.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label fx:id="themeSetLabel" contentDisplay="CENTER" prefHeight="44.0" prefWidth="233.0" text="Theme Color:">
+                           <font>
+                              <Font name="SansSerif Regular" size="36.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="themeSetCombo" prefHeight="35.0" prefWidth="240.0">
+                           <HBox.margin>
+                              <Insets left="30.0" top="6.0" />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Line endX="-99.99995422363281" endY="584.962158203125" startX="-100.0">
+               <HBox.margin>
+                  <Insets top="-35.0" />
+               </HBox.margin>
+            </Line>
+            <VBox prefHeight="720.0" prefWidth="693.0">
+               <children>
+                  <AnchorPane prefHeight="128.0" prefWidth="633.0" style="-fx-background-color: #123090;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="635.0" text="Profile" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Regular" size="48.0" />
+                           </font>
+                           <padding>
+                              <Insets top="35.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <HBox prefHeight="192.0" prefWidth="644.0">
+                     <children>
+                        <ImageView fitHeight="121.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../loginpfp.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Current User:">
+                           <HBox.margin>
+                              <Insets left="25.0" top="60.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userFromLogin" prefHeight="44.0" prefWidth="196.0">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="60.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton fx:id="logoutButton" buttonType="RAISED" onAction="#logoutSwitch" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: #123090;" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-375.0" top="165.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="furretImage" fitHeight="267.0" fitWidth="312.0" onMouseClicked="#furretCredit" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="195.0" top="15.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../furretimage.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="44.0" prefWidth="377.0" text="Click On Me For Credits!">
+                     <VBox.margin>
+                        <Insets left="150.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

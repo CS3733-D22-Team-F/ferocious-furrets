@@ -18,7 +18,7 @@ import java.sql.*;
  */
 public class DatabaseManager {
 
-  private static Connection conn = DatabaseInitializer.getConnection().getDbConnection();
+  private static Connection conn; // = DatabaseInitializer.getConnection().getDbConnection();
   private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
   private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
   private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
@@ -33,6 +33,7 @@ public class DatabaseManager {
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
   private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
   private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
+  private static final physicalTherapyDAOImpl ptDAO = new physicalTherapyDAOImpl();
   private static final facilitiesDAOImpl facilitiesDAO = new facilitiesDAOImpl();
 
   private static DatabaseManager DatabaseManager;
@@ -56,7 +57,7 @@ public class DatabaseManager {
   public static Connection switchConnection(DatabaseInitializer.ConnType type)
       throws SQLException, IOException {
     // backUpDatabaseToCSV();
-    // DatabaseInitializer.switchConnection(type);
+    DatabaseInitializer.switchConnection(type);
     conn = DatabaseInitializer.getConnection().getDbConnection();
     DatabaseManager dbMan = initializeDatabaseManager();
     return conn;
@@ -83,6 +84,7 @@ public class DatabaseManager {
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    ptDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     return Helper.dbMan;
   }
@@ -109,6 +111,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    System.out.println(statement);
     stm.close();
   }
   /**
@@ -133,6 +136,7 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
+    dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
     dropTableIfExist("facilitiesRequest");
     dropTableIfExist("ScanRequest");
@@ -175,6 +179,7 @@ public class DatabaseManager {
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
@@ -248,6 +253,10 @@ public class DatabaseManager {
 
   public static facilitiesDAOImpl getFacilitiesDAO() {
     return facilitiesDAO;
+  }
+
+  public static physicalTherapyDAOImpl getPTDAO() {
+    return ptDAO;
   }
 
   /** helper */
