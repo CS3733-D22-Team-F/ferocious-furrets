@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class audioVisualRequest extends DeliveryRequest {
 
   private String accessObject;
+  private String objectType;
 
   public audioVisualRequest() {
     db = new Repository("AudioVisual");
@@ -18,9 +19,17 @@ public class audioVisualRequest extends DeliveryRequest {
       String assignedEmployeeID,
       String requesterEmployeeID,
       String status,
+      String objectType,
       String accessObject) {
     super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
     this.accessObject = accessObject;
+    this.objectType = objectType;
+  }
+
+  public audioVisualRequest(String reqID, String objectType, String accessObject) {
+    this.reqID = reqID;
+    this.accessObject = accessObject;
+    this.objectType = objectType;
   }
 
   @Override
@@ -38,4 +47,12 @@ public class audioVisualRequest extends DeliveryRequest {
 
   @Override
   public void cancel(String reqID) {}
+
+  public String getAccessObject() {
+    return this.accessObject;
+  }
+
+  public String getObjectType() {
+    return this.objectType;
+  }
 }

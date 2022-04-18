@@ -15,7 +15,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
@@ -46,8 +45,6 @@ public class mapPageController implements Initializable {
   @FXML ImageView mapHolder;
 
   @FXML public TableView<Location> table;
-
-  @FXML TitledPane legend;
 
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
@@ -97,7 +94,6 @@ public class mapPageController implements Initializable {
   @FXML JFXButton loadButton;
   @FXML JFXButton tableButton;
   @FXML JFXButton historyButton;
-  @FXML JFXButton homeButton;
 
   Image F1 =
       new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));
@@ -128,7 +124,6 @@ public class mapPageController implements Initializable {
     Floor.setCellValueFactory(new PropertyValueFactory<Location, String>("Floor"));
     Building.setCellValueFactory(new PropertyValueFactory<Location, String>("Building"));
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
-    legend.setExpanded(false);
 
     try {
       MapTableHolder.loadMap(table, iconPane);
@@ -354,11 +349,6 @@ public class mapPageController implements Initializable {
     MapPopUp.openFullTable();
     MapTableHolder.loadMap(table, iconPane);
   }
-
-  @FXML
-  private void homePage(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-  }
   // START show functions
   public void showPatient() {
     MapIconModifier.showPatient();
@@ -439,7 +429,8 @@ public class mapPageController implements Initializable {
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
-    menuNodeList.setRotate(-90);
+    menuNodeList.setRotate(180);
+    floorNodeList.setRotate(180);
     AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF5, 40);
@@ -474,17 +465,5 @@ public class mapPageController implements Initializable {
     AGlobalMethods.setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
-    AGlobalMethods.setCircleButton(homeButton, 40);
-    homeButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    homeButton.setGraphic(MapIconModifier.getIcon("home"));
   }
-
-  @FXML
-  public void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setDisplayNoViews("homePage.fxml");
-  }
-
-  //  public void homePage(ActionEvent event) {
-  //    StageManager.getInstance().setDisplayNoViews("homePage.fxml");
-  //  }
 }

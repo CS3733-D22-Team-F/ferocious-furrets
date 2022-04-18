@@ -126,7 +126,7 @@ public class labRequestController extends PageController
             currentFields.add(2, ServiceRequest.getString("assignedEmployeeID"));
             currentFields.add(3, ServiceRequest.getString("requesterEmployeeID"));
             currentFields.add(4, ServiceRequest.getString("status"));
-            currentFields.add(5, labRequest.getString("reqtype"));
+            currentFields.add(5, labRequest.getString("type"));
 
             updateTableFromFields(currentFields);
 

@@ -198,62 +198,6 @@ public class MapIconModifier {
                       Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/XRAY Icon.png")));
           break;
         }
-      case "add":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/add.png")));
-          break;
-        }
-      case "history":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/history.png")));
-          break;
-        }
-      case "home":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/home.png")));
-          break;
-        }
-      case "load":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/load.png")));
-          break;
-        }
-      case "menu":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/menu.png")));
-          break;
-        }
-      case "save":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/save.png")));
-          break;
-        }
-      case "table":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/MapMenuIcon/table.png")));
-          break;
-        }
       case "audio&visual":
         {
           image =
@@ -308,6 +252,163 @@ public class MapIconModifier {
               new Image(
                   Objects.requireNonNull(
                       Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/ScanIcon.png")));
+          break;
+        }
+      case "add":
+        {
+          image =
+              new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/add.png")));
+          break;
+        }
+      case "history":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/history.png")));
+          break;
+        }
+      case "home":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/home.png")));
+          break;
+        }
+      case "load":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/load.png")));
+          break;
+        }
+      case "menu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/menu.png")));
+          break;
+        }
+      case "save":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/save.png")));
+          break;
+        }
+      case "table":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/table.png")));
+          break;
+        }
+      case "audioMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/audio.png")));
+          break;
+        }
+      case "dashboardMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/dashboard.png")));
+          break;
+        }
+      case "equipmentMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/equipment.png")));
+          break;
+        }
+      case "giftMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/gift.png")));
+          break;
+        }
+      case "labMenu":
+        {
+          image =
+              new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/lab.png")));
+          break;
+        }
+      case "mapMenu":
+        {
+          image =
+              new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/map.png")));
+          break;
+        }
+      case "mealMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/meal.png")));
+          break;
+        }
+      case "medicineMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/medicine.png")));
+          break;
+        }
+      case "outMenu":
+        {
+          image =
+              new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/out.png")));
+          break;
+        }
+      case "scanMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/scan.png")));
+          break;
+        }
+      case "serviceMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/service.png")));
+          break;
+        }
+      case "settingsMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/settings.png")));
+          break;
+        }
+      case "physicalMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/physical.png")));
+          break;
+        }
+      case "securityMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/security.png")));
+          break;
+        }
+      case "toolMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/tool.png")));
+          break;
+        }
+      case "cleanMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/clean.png")));
           break;
         }
     }
@@ -508,7 +609,32 @@ public class MapIconModifier {
               });
           newButton.setOnMouseReleased(
               e -> {
-                newButton.setCursor(Cursor.HAND);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setCursor(Cursor.HAND);
+                  ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
+                  ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
+                  Location loc = list.get(bList.indexOf(newButton));
+                  String oldID = loc.getNodeID();
+                  String xValue =
+                      (newButton.getLayoutX() / (iconPane.getPrefWidth() * 0.95) * 4450.0) + "";
+                  String yValue =
+                      (newButton.getLayoutY() / (iconPane.getPrefHeight() * 0.95) * 3550.0) + "";
+                  try {
+                    MapLocationModifier.modifyLocation(
+                        oldID,
+                        loc.getNodeType(),
+                        xValue,
+                        yValue,
+                        loc.getFloor(),
+                        loc.getLongName(),
+                        loc.getShortName());
+                    MapTableHolder.loadMap(table, iconPane);
+                  } catch (SQLException ex) {
+                    ex.printStackTrace();
+                  } catch (IOException ex) {
+                    ex.printStackTrace();
+                  }
+                }
               });
           newButton.setOnMouseEntered(
               e -> {
@@ -516,8 +642,10 @@ public class MapIconModifier {
               });
           newButton.setOnMouseDragged(
               e -> {
-                newButton.setLayoutX(e.getSceneX() + dragDelta.x);
-                newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                  newButton.setLayoutY(e.getSceneY() + dragDelta.y);
+                }
               });
         } else if (getLocType(location).equals("service")
             && !location.getShortName().equals("done")) {
@@ -538,27 +666,78 @@ public class MapIconModifier {
                 }
               });
         } else if (getLocType(location).equals("equipment")) {
-          newButton.setOnAction(
+          final Delta dragDelta = new Delta();
+          newButton.setOnMouseClicked(
               e -> {
-                if (MapIconModifier.locationIconList.containsValue(newButton)) {
-                  Location lo =
-                      new ArrayList<>(
-                              MapIconModifier.getKeysByValue(
-                                  MapIconModifier.locationIconList, newButton))
-                          .get(0);
+                if (e.getButton() == MouseButton.SECONDARY) {
+                  if (MapIconModifier.locationIconList.containsValue(newButton)) {
+                    Location lo =
+                        new ArrayList<>(
+                                MapIconModifier.getKeysByValue(
+                                    MapIconModifier.locationIconList, newButton))
+                            .get(0);
+                    try {
+                      MapPopUp.popUpEquipModify(table, iconPane, lo);
+                      MapTableHolder.loadMap(table, iconPane);
+                    } catch (IOException | SQLException ex) {
+                      ex.printStackTrace();
+                    }
+                  }
+                }
+              });
+          newButton.setOnMousePressed(
+              e -> {
+                dragDelta.x = newButton.getLayoutX() - e.getSceneX();
+                dragDelta.y = newButton.getLayoutY() - e.getSceneY();
+                newButton.setCursor(Cursor.MOVE);
+              });
+          newButton.setOnMouseReleased(
+              e -> {
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setCursor(Cursor.HAND);
+                  ArrayList<Location> list = new ArrayList<>(locationIconList.keySet());
+                  ArrayList<JFXButton> bList = new ArrayList<>(locationIconList.values());
+                  Location loc = list.get(bList.indexOf(newButton));
+                  Location nearLoc = null;
+                  double currentDis = 99999.9;
+                  for (Location l : list) {
+                    if (calculateDistance(l, loc) < currentDis
+                        && l.getFloor().equals(loc.getFloor())
+                        && getLocType(l).equals("location")) {
+                      nearLoc = l;
+                      currentDis = calculateDistance(l, loc);
+                    }
+                  }
                   try {
-                    MapPopUp.popUpEquipModify(table, iconPane, lo);
-                    MapTableHolder.loadMap(table, iconPane);
-                  } catch (IOException | SQLException ex) {
+                    MapEquipmentModifier.modifyEquipment(
+                        nearLoc.getNodeID(), loc.getBuilding(), loc.getShortName());
+                  } catch (SQLException ex) {
                     ex.printStackTrace();
                   }
+                  try {
+                    MapTableHolder.loadMap(table, iconPane);
+                  } catch (SQLException | IOException ex) {
+                    ex.printStackTrace();
+                  }
+                }
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                newButton.setCursor(Cursor.HAND);
+              });
+          newButton.setOnMouseDragged(
+              e -> {
+                if (e.getButton() == MouseButton.PRIMARY) {
+                  newButton.setLayoutX(e.getSceneX() + dragDelta.x);
+                  newButton.setLayoutY(e.getSceneY() + dragDelta.y);
                 }
               });
         }
       }
       double x =
-          (location.getXcoord() / 4450.0) * 880; // change the image resolution to pane resolution
-      double y = (location.getYcoord() / 3550.0) * 700;
+          (location.getXcoord() / 4450.0)
+              * (iconPane.getPrefWidth() * 0.95); // change the image resolution to pane resolution
+      double y = (location.getYcoord() / 3550.0) * (iconPane.getPrefHeight() * 0.95);
       newButton.setLayoutX(x);
       newButton.setLayoutY(y);
       iconPane.getChildren().add(newButton);
@@ -583,6 +762,15 @@ public class MapIconModifier {
     } else {
       return "location";
     }
+  }
+
+  public static double calculateDistance(Location random, Location thisLoc) {
+    JFXButton button1 = locationIconList.get(random);
+    JFXButton button2 = locationIconList.get(thisLoc);
+    double temp =
+        Math.pow((button1.getLayoutY() - button2.getLayoutY()), 2)
+            + Math.pow((button1.getLayoutX() - button2.getLayoutX()), 2);
+    return Math.pow(temp, 0.5);
   }
 }
 
