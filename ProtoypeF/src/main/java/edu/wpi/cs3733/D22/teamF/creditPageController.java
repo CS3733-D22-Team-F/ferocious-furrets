@@ -20,7 +20,6 @@ public class creditPageController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     bannerAnchor.maxWidthProperty().bind(creditPane.maxHeightProperty());
-
     //    creditVbox.layoutXProperty().bind(creditPane.maxWidthProperty());
     //    creditVbox.layoutYProperty().bind(creditPane.maxHeightProperty());
     //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
