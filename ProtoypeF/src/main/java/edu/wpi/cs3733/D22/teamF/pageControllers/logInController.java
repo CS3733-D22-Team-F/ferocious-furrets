@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -44,6 +45,7 @@ public class logInController extends returnHomePage implements Initializable {
   @FXML private ImageView backgroundImage;
   @FXML private BorderPane masterPane;
   @FXML private Pane imagePane;
+  @FXML private AnchorPane imageAnchor;
 
   private Stage stage;
   private Parent root;
@@ -145,11 +147,9 @@ public class logInController extends returnHomePage implements Initializable {
     databaseChooser.getItems().addAll(databaseDrop);
     databaseChooser.setValue("Embedded");
 
-    backgroundImage.fitHeightProperty().bind(masterPane.heightProperty());
-    backgroundImage.fitHeightProperty().bind(masterPane.widthProperty().divide(2));
-    loginVBox.maxWidthProperty().bind(masterPane.widthProperty().divide(2));
-    //    imagePane.setMaxSize(4000, 4000);
-    //    backgroundImage.fitHeightProperty(imagePane.getHeight());
+    backgroundImage.setManaged(false);
+    backgroundImage.fitWidthProperty().bind(imageAnchor.widthProperty());
+    backgroundImage.fitHeightProperty().bind(imageAnchor.heightProperty());
 
   }
 }
