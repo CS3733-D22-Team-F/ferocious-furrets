@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -86,7 +87,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXComboBox fx:id="databaseChooser" prefHeight="40.0" prefWidth="430.0" promptText="Choose Database Connection Type" style="-fx-background-color: white;" unFocusColor="#3e8cd0">
+                  <JFXComboBox fx:id="databaseChooser" prefHeight="50.0" prefWidth="430.0" promptText="Choose Database Connection Type" style="-fx-background-color: white;" unFocusColor="#3e8cd0">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
@@ -107,11 +108,15 @@
         </menus>
       </MenuBar>
    </top>
-   <left>
-      <ImageView fx:id="backgroundImage" fitHeight="706.0" fitWidth="834.0" opacity="0.78" pickOnBounds="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../BWHupdated.jpg" />
-         </image>
-      </ImageView>
-   </left>
+   <center>
+      <AnchorPane fx:id="imageAnchor" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="backgroundImage" fitHeight="706.0" fitWidth="834.0" opacity="0.78" pickOnBounds="true">
+               <image>
+                  <Image url="@../BWHupdated.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

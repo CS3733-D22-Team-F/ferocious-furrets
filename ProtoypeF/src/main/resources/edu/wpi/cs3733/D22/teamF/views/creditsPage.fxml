@@ -5,15 +5,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="creditVbox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+
+<BorderPane fx:id="creditPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
          <children>
-            <AnchorPane prefHeight="452.0" prefWidth="602.0">
+            <AnchorPane fx:id="bannerAnchor" prefHeight="452.0" prefWidth="602.0">
                <children>
                   <HBox layoutY="80.0" prefHeight="258.0" prefWidth="373.0">
                      <children>
@@ -247,7 +249,7 @@
                                        </HBox.margin>
                                        <children>
                                           <Label prefHeight="17.0" prefWidth="215.0" text="Owen Radcliffe" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Request Page" wrapText="true">
+                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Service Request" wrapText="true">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -285,7 +287,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
+                                          <Image url="@../Cropped-Edits/Cole-modified.png" />
                                        </image>
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -296,8 +298,8 @@
                                           <Insets left="10.0" top="15.0" />
                                        </HBox.margin>
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Will Huang (Assistant-Lead Back-End)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
+                                          <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)" />
+                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Enter A Service Request" wrapText="true">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -342,5 +344,5 @@
             </AnchorPane>
          </children>
       </VBox>
-   </children>
-</VBox>
+   </center>
+</BorderPane>
