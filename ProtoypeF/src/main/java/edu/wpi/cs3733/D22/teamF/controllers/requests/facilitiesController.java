@@ -77,6 +77,12 @@ public class facilitiesController extends PageController
   }
 
   @Override
+  public void startTable() throws SQLException, IOException {}
+
+  @Override
+  public void clearTable() {}
+
+  @Override
   public ContextMenu makeContextMenu() {
     return null;
   }
