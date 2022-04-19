@@ -42,7 +42,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <VBox.margin>
-                              <Insets bottom="30.0" />
+                              <Insets bottom="20.0" />
                            </VBox.margin>
                            <children>
                               <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true">
@@ -81,7 +81,7 @@
                               <Insets bottom="10.0" />
                            </padding>
                         </StackPane>
-                        <ImageView fitHeight="109.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                        <ImageView fitHeight="121.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                            <image>
                               <Image url="@../QR_Codes/BW_QR_Code.png" />
                            </image>
@@ -153,27 +153,102 @@
                   </VBox>
                   <VBox fx:id="covidVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="HEALTH &amp; SAFETY" />
-                        <ImageView fitHeight="211.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/updatedHealthSafety.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
+                              <ImageView fitHeight="255.0" fitWidth="188.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/hsIcon.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fitHeight="143.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                            <image>
                               <Image url="@../QR_Codes/COVID19Info_QR.png" />
                            </image>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </ImageView>
-                        <Label text="COVID-19 " />
+                        <Label text="COVID-19 ">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
                      </HBox.margin>
                   </VBox>
                   <VBox fx:id="signUpVBox" alignment="CENTER" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="INTERESTED IN JOINING US?" />
-                        <ImageView fx:id="" fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="168.0" text="INTERESTED JOINING US?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/updatedHealthSafety.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
+                              <ImageView fitHeight="272.0" fitWidth="183.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/signUpBwh.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="20.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fx:id="" fitHeight="110.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                            <image>
                               <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
                            </image>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </ImageView>
-                        <Label text="SIGN UP HERE" />
+                        <Label text="SIGN UP HERE">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
