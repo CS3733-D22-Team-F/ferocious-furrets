@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -36,32 +37,7 @@
                 </ImageView>
             </children>
         </HBox>
-        <HBox layoutX="115.0" layoutY="89.0" prefHeight="100.0" prefWidth="422.0">
-            <children>
-                <VBox alignment="TOP_RIGHT" prefHeight="108.0" prefWidth="205.0" spacing="20.0">
-                    <children>
-                        <Label prefHeight="27.0" prefWidth="144.0" text="RequestID:" textFill="WHITE">
-                            <font>
-                                <Font name="Serif Regular" size="24.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="15.0" />
-                            </VBox.margin>
-                        </Label>
-                    </children>
-                </VBox>
-                <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
-                    <children>
-                        <TextField fx:id="employeeID">
-                            <VBox.margin>
-                                <Insets top="15.0" />
-                            </VBox.margin>
-                        </TextField>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-        <HBox layoutX="156.0" layoutY="417.0" prefHeight="46.0" prefWidth="341.0">
+        <HBox layoutX="180.0" layoutY="428.0" prefHeight="46.0" prefWidth="341.0">
             <children>
                 <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                     <font>
@@ -86,5 +62,147 @@
                 </JFXButton>
             </children>
         </HBox>
+      <HBox alignment="CENTER" layoutX="139.0" layoutY="89.0" prefHeight="15.0" prefWidth="422.0">
+         <children>
+            <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+               <children>
+                  <JFXComboBox fx:id="nodeID" prefHeight="44.0" prefWidth="307.0" promptText="Request Type" style="-fx-background-color: white;">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </JFXComboBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="124.0" prefHeight="307.0" prefWidth="601.0">
+         <children>
+              <HBox alignment="TOP_CENTER" prefHeight="15.0" prefWidth="601.0">
+                  <children>
+                      <VBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="205.0" spacing="20.0">
+                          <children>
+                              <Label prefHeight="28.0" prefWidth="143.0" text="RequestID:" textFill="WHITE">
+                                  <font>
+                                      <Font name="Serif Regular" size="18.0" />
+                                  </font>
+                                  <VBox.margin>
+                                      <Insets top="15.0" />
+                                  </VBox.margin>
+                              </Label>
+                          </children>
+                      </VBox>
+                      <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                          <children>
+                              <TextField fx:id="employeeID" disable="true">
+                                  <VBox.margin>
+                                      <Insets top="15.0" />
+                                  </VBox.margin>
+                              </TextField>
+                          </children>
+                      </VBox>
+                  </children>
+              </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="601.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="205.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="131.0" text="NodeID:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                     <children>
+                        <TextField fx:id="employeeID1">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="601.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="108.0" prefWidth="205.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="2.0" prefWidth="192.0" text="Assigned Employee ID:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                     <children>
+                        <TextField fx:id="employeeID11" prefWidth="174.0">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="740.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="108.0" prefWidth="205.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="28.0" prefWidth="203.0" text="Reqeuester Employee ID:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                     <children>
+                        <TextField fx:id="employeeID111" prefWidth="174.0">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="740.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="205.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="28.0" prefWidth="128.0" text="Status:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
+                     <children>
+                        <TextField fx:id="employeeID1111" prefWidth="174.0">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
