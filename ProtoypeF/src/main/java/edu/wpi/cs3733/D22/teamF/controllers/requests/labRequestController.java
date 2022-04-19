@@ -145,59 +145,6 @@ public class labRequestController extends PageController
     startTable();
   }
 
-  @FXML
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null);
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Lab");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  /**
-   * shows the queue scene for lab requests
-   *
-   * @param event
-   * @throws IOException
-   */
-  public void showQueueScene(ActionEvent event) throws IOException {
-    //    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
-    //    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    //    stage.setScene(scene);
-    //    stage.show();
-  }
-
-  // TODO make a interaface for all controllers
-  public String generateReqID() throws SQLException {
-    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
   public void startTable() throws SQLException, IOException {
 
     clearTable();
@@ -282,6 +229,59 @@ public class labRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  @FXML
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null);
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Lab");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  /**
+   * shows the queue scene for lab requests
+   *
+   * @param event
+   * @throws IOException
+   */
+  public void showQueueScene(ActionEvent event) throws IOException {
+    //    Scene scene = SceneManager.getInstance().setScene("labRequestQueue.fxml");
+    //    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    //    stage.setScene(scene);
+    //    stage.show();
+  }
+
+  // TODO make a interaface for all controllers
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    // StageManager.getInstance().setLandingScreen();
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 
   public void clearTable() {

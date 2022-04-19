@@ -1,10 +1,12 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
+import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.maintenanceSRDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -33,6 +35,7 @@ public class DatabaseManager {
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
   private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
   private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
+  private static final maintenanceSRDAOImpl maintenanceDAO = new maintenanceSRDAOImpl();
   private static final physicalTherapyDAOImpl ptDAO = new physicalTherapyDAOImpl();
   private static final facilitiesDAOImpl facilitiesDAO = new facilitiesDAOImpl();
   private static final securityDAOImpl securityDAO = new securityDAOImpl();
@@ -79,12 +82,14 @@ public class DatabaseManager {
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    // medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.initializeDatabase("/apiCSV/medicine.csv", "/apiCSV/employees.csv");
     giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    maintenanceDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/request/maintenanceSR.csv");
     ptDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
@@ -113,7 +118,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    //    System.out.println(statement);
+    // System.out.println(statement);
     stm.close();
   }
   /**
@@ -148,6 +153,7 @@ public class DatabaseManager {
     dropTableIfExist("MEALREQUEST");
     dropTableIfExist("MEDICINEREQUEST");
     dropTableIfExist("EquipmentDeliveryRequest");
+    dropTableIfExist("MaintenanceRequest");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
@@ -179,6 +185,8 @@ public class DatabaseManager {
     labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.backUpDatabase(
+        "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
@@ -188,6 +196,7 @@ public class DatabaseManager {
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
+    System.out.println("Backed up to CSV :)");
   }
 
   /**
@@ -253,6 +262,10 @@ public class DatabaseManager {
 
   public static audioVisualDAOImpl getAudioVisDAO() {
     return audioVisualDAO;
+  }
+
+  public static maintenanceSRDAOImpl getMaintenanceDAO() {
+    return maintenanceDAO;
   }
 
   public static facilitiesDAOImpl getFacilitiesDAO() {

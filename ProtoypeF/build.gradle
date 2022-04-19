@@ -14,6 +14,9 @@ shadowJar {
 }
 
 repositories {
+    flatDir {
+        dirs '/APIJARs'
+    }
     mavenCentral()
     maven {
         url 'https://apisite.crmyers.dev/maven'
@@ -42,6 +45,8 @@ dependencies {
             'org.slf4j:slf4j-api:1.7.36',
             'org.slf4j:slf4j-simple:1.7.36',
     )
+
+    implementation name : 'edu.wpi.cs3733.D22.teamF'
 
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",

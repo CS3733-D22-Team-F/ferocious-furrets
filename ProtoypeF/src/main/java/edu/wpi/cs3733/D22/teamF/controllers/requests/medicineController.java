@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/** ARCHIVED, NOW HANDLED THROUGH TEAM F MEDICINE REQUEST API */
 public class medicineController extends PageController
     implements Initializable, IRequestController {
   private Stage stage;
@@ -76,20 +77,44 @@ public class medicineController extends PageController
               totalAmountO,
               pharmacyAddressO));
 
-  @FXML
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeOfMed.clear();
-    statusChoice.valueProperty().setValue(null);
-    // typeChoice.valueProperty().setValue(null);
-    prescribingDoctor.clear();
-    dosage.clear();
-    units.valueProperty().setValue(null);
-    units2.valueProperty().setValue(null);
-    totalAmount.clear();
-    pharmacyAddress.clear();
+  /**
+   * inits
+   *
+   * @param location URL
+   * @param resources ResourceBundle
+   */
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> employees = employeeNames();
+    employeeIDField.getItems().addAll(employees);
+    userField.getItems().addAll(employees);
+    employeeIDField.setValue("");
+    userField.setValue("");
+    ArrayList<Object> statusDrop = new ArrayList<>();
+    ArrayList<Object> medicineType = new ArrayList<>();
+    statusDrop.add("");
+    statusDrop.add("Processing");
+    statusDrop.add("Done");
+    statusChoice.getItems().addAll(statusDrop);
+    statusChoice.setValue("");
+    ArrayList<Object> unitMeasurements = new ArrayList<>();
+    unitMeasurements.add("g");
+    unitMeasurements.add("mg");
+    unitMeasurements.add("mcg");
+    unitMeasurements.add("mL");
+    units.getItems().addAll(unitMeasurements);
+    units2.getItems().addAll(unitMeasurements);
+    units.setValue("mg");
+    units2.getItems().addAll(unitMeasurements);
+    units2.setValue("mg");
+
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
+
+    try {
+      startTable();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -129,64 +154,20 @@ public class medicineController extends PageController
     startTable();
   }
 
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Medicine");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  public String generateReqID() throws SQLException {
-    String nNodeType = typeOfMed.getText().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
-
-  /**
-   * inits
-   *
-   * @param location URL
-   * @param resources ResourceBundle
-   */
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> employees = employeeNames();
-    employeeIDField.getItems().addAll(employees);
-    userField.getItems().addAll(employees);
-    employeeIDField.setValue("");
-    userField.setValue("");
-    ArrayList<Object> statusDrop = new ArrayList<>();
-    ArrayList<Object> medicineType = new ArrayList<>();
-    statusDrop.add("");
-    statusDrop.add("Processing");
-    statusDrop.add("Done");
-    statusChoice.getItems().addAll(statusDrop);
-    statusChoice.setValue("");
-    ArrayList<Object> unitMeasurements = new ArrayList<>();
-    unitMeasurements.add("g");
-    unitMeasurements.add("mg");
-    unitMeasurements.add("mcg");
-    unitMeasurements.add("mL");
-    units.getItems().addAll(unitMeasurements);
-    units2.getItems().addAll(unitMeasurements);
-    units.setValue("mg");
-    units2.getItems().addAll(unitMeasurements);
-    units2.setValue("mg");
-
-    ArrayList<Object> locations = locationNames();
-    nodeField.getItems().addAll(locations);
-
-    try {
-      startTable();
-    } catch (SQLException | IOException e) {
-      e.printStackTrace();
-    }
+  @FXML
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeOfMed.clear();
+    statusChoice.valueProperty().setValue(null);
+    // typeChoice.valueProperty().setValue(null);
+    prescribingDoctor.clear();
+    dosage.clear();
+    units.valueProperty().setValue(null);
+    units2.valueProperty().setValue(null);
+    totalAmount.clear();
+    pharmacyAddress.clear();
   }
 
   public void startTable() throws SQLException, IOException {
@@ -312,6 +293,28 @@ public class medicineController extends PageController
     totalAmountCol.minWidthProperty().bind(tablePane.widthProperty().divide(9));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(9));
+  }
+
+  /* helper */
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Medicine");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeOfMed.getText().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
   }
 
   public void clearTable() {

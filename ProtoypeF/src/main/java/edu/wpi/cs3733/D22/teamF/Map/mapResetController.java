@@ -42,7 +42,9 @@ public class mapResetController implements Initializable {
     Stage stage = (Stage) select.getScene().getWindow();
     File file = fChoose.showOpenDialog(stage);
     //    resetFromCSVFile(file);
-    DatabaseManager.getLocationDAO().initTable(file);
+    if (file != null) {
+      DatabaseManager.getLocationDAO().initTable(file);
+    }
     //    String path = file.getPath();
     stage.close();
   }
