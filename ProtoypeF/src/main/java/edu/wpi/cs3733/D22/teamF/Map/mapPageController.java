@@ -439,8 +439,10 @@ public class mapPageController implements Initializable {
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
+    alertNodeList.setSpacing(10);
     menuNodeList.setRotate(180);
     floorNodeList.setRotate(180);
+    alertNodeList.setRotate(180);
     AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF5, 40);
@@ -475,5 +477,21 @@ public class mapPageController implements Initializable {
     AGlobalMethods.setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
+    AGlobalMethods.setCircleButton(alertButton, 55);
+    alertButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButton1, 40);
+    alertButton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButton2, 40);
+    alertButton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButton3, 40);
+    alertButton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButton4, 40);
+    alertButton4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButton5, 40);
+    alertButton5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButtonL1, 40);
+    alertButtonL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+    AGlobalMethods.setCircleButton(alertButtonL2, 40);
+    alertButtonL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
   }
 }
