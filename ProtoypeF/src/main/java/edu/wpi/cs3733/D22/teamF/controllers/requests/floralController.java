@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -14,6 +15,27 @@ public class floralController extends PageController implements Initializable, I
 
   @Override
   public void reset() {}
+
+  /**
+   * Starts the table in the request page
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
+  public void startTable() throws SQLException, IOException {}
+
+  /** clears the table in the request page */
+  public void clearTable() {}
+
+  /**
+   * generates a reqID based on fields in the request page
+   *
+   * @return returns String (a reqID)
+   * @throws SQLException
+   */
+  public String generateReqID() throws SQLException, IOException {
+    return null;
+  }
 
   /**
    * Called to initialize a controller after its root element has been completely processed.
