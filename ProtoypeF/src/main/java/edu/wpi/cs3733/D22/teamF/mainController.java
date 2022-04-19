@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -74,7 +75,7 @@ public class mainController implements Initializable {
         new Thread(
             () -> {
               try {
-                exit();
+                DatabaseManager.backUpDatabaseToCSV();
               } catch (SQLException | IOException e) {
                 e.printStackTrace();
               }
@@ -305,8 +306,8 @@ public class mainController implements Initializable {
     changeTo("views/mealPage.fxml");
   }
 
-  public void changeToMedicine() throws IOException {
-    changeTo("views/medicinePage.fxml");
+  public void changeToMedicine() throws IOException, ServiceException {
+    MedicineRequest.run(0, 0, 0, 0, "stylesheets/RequestPages.css", "FDEPT00301");
   }
 
   public void changeToDashboard() throws IOException {
@@ -333,7 +334,7 @@ public class mainController implements Initializable {
 
   public void changeToMaintenance() throws IOException {
     // TODO add your page name before ".fxml"
-    // changeTo("views/.fxml");
+    changeTo("views/request/maintenanceRequestPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {

@@ -7,14 +7,12 @@ import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.audioVisualRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -57,67 +55,8 @@ public class audioVisualController extends PageController
   private String objectType;
   private String accessObject;
 
-  @FXML
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue("");
-    objectChoice.valueProperty().setValue("");
-  }
-
-  @FXML
-  public void submit() throws SQLException {
-    ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getValue().toString().equals("")
-        || employeeIDField.getValue().toString().equals("")
-        || userField.getValue().toString().equals("")
-        || statusChoice.getValue().equals("")
-        || objectChoice.getValue().equals("")) {
-      System.out.println("There are still blank fields");
-    } else {
-      requestList.clear();
-      requestList.add("Audio/Visual Request for: " + objectChoice.getValue());
-      // requestList.add("Assigned Doctor: " + userField.getText());
-      requestList.add("Status: " + statusChoice.getValue());
-      serviceRequestStorage.addToArrayList(requestList);
-      RequestSystem req = new RequestSystem("Audio/Visual");
-      ArrayList<String> fields = new ArrayList<String>();
-      fields.add(generateReqID());
-      fields.add(nodeIDFinder(nodeField.getValue().toString()));
-      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
-      fields.add(employeeIDFinder(userField.getValue().toString()));
-      fields.add(statusChoice.getValue().toString());
-      fields.add(objectChoice.getValue().toString().substring(0, 3));
-      fields.add(typeChoice.getValue().toString());
-      req.placeRequest(fields);
-
-      reset();
-    }
-
-    startTable();
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Audio/Visual");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  public String generateReqID() throws SQLException {
-    String nNodeType = objectChoice.getValue().toString().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
+  TreeItem<audioVisualRequest> treeRoot =
+      new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
 
   /**
    * inits
@@ -166,8 +105,47 @@ public class audioVisualController extends PageController
     }
   }
 
-  TreeItem<audioVisualRequest> treeRoot =
-      new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
+  @FXML
+  public void submit() throws SQLException {
+    ArrayList<Object> requestList = new ArrayList<>();
+    if (nodeField.getValue().toString().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
+        || statusChoice.getValue().equals("")
+        || objectChoice.getValue().equals("")) {
+      System.out.println("There are still blank fields");
+    } else {
+      requestList.clear();
+      requestList.add("Audio/Visual Request for: " + objectChoice.getValue());
+      // requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("Status: " + statusChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
+      RequestSystem req = new RequestSystem("Audio/Visual");
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(generateReqID());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
+      fields.add(statusChoice.getValue().toString());
+      fields.add(objectChoice.getValue().toString().substring(0, 3));
+      fields.add(typeChoice.getValue().toString());
+      req.placeRequest(fields);
+
+      reset();
+    }
+
+    startTable();
+  }
+
+  @FXML
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue("");
+    objectChoice.valueProperty().setValue("");
+  }
 
   public void startTable() throws SQLException {
 
@@ -217,10 +195,7 @@ public class audioVisualController extends PageController
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
-  /** clears the table in the request page */
-  public void clearTable() {
-    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
-  }
+  /* helper functions */
 
   /**
    * Fills the objectChoiceBox with the correct options based on whether the typeChoice is for
@@ -248,16 +223,36 @@ public class audioVisualController extends PageController
     }
   }
 
-  /**
-   * @param event
-   * @throws IOException
-   */
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Audio/Visual");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
   }
 
-  @Override
+  public String generateReqID() throws SQLException {
+    String nNodeType = objectChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
+  }
+
+  /** clears the table in the request page */
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  /**
+   * Method to create a class specifics context menu
+   *
+   * @return A specific's class context menu
+   */
   public ContextMenu makeContextMenu() {
     return null;
   }
