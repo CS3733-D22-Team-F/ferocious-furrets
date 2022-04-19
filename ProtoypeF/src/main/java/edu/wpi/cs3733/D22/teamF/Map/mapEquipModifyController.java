@@ -229,7 +229,13 @@ public class mapEquipModifyController implements Initializable {
   }
 
   public void toDirty() {
-    Status = "unavailable";
-    statusLabel.setText("unavailable");
+    try {
+      MapEquipmentModifier.modifyEquipment(
+          "fSTOR00101", "unavailable", locTempHolder.getLocation().getShortName());
+      Stage stage = (Stage) cancel.getScene().getWindow();
+      stage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

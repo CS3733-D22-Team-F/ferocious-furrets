@@ -44,7 +44,7 @@ public class mapPageController implements Initializable {
 
   @FXML ImageView mapHolder;
 
-  @FXML public TableView<Location> table;
+  @FXML TableView<Location> table;
 
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
@@ -56,6 +56,7 @@ public class mapPageController implements Initializable {
 
   @FXML JFXSlider zoomSlider;
 
+  @FXML JFXButton alertButton;
   @FXML JFXButton showIconButton;
 
   @FXML JFXButton patientRoomButton;
@@ -94,6 +95,15 @@ public class mapPageController implements Initializable {
   @FXML JFXButton loadButton;
   @FXML JFXButton tableButton;
   @FXML JFXButton historyButton;
+
+  @FXML JFXNodesList alertNodeList = new JFXNodesList();
+  @FXML JFXButton alertButton1;
+  @FXML JFXButton alertButton2;
+  @FXML JFXButton alertButton3;
+  @FXML JFXButton alertButton4;
+  @FXML JFXButton alertButton5;
+  @FXML JFXButton alertButtonL1;
+  @FXML JFXButton alertButtonL2;
 
   Image F1 =
       new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));

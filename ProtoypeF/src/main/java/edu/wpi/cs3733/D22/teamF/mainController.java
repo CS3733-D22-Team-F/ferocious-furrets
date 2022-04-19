@@ -54,6 +54,8 @@ public class mainController implements Initializable {
   @FXML JFXButton sanitationButton;
   @FXML JFXButton maintenanceButton;
   @FXML JFXButton homeButton2;
+  @FXML JFXButton employeeButton;
+  @FXML JFXButton queueButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -110,7 +112,7 @@ public class mainController implements Initializable {
     homeMenu.setPrefWidth(50);
     mapMenu.setPrefWidth(50);
     serviceMenu.setPrefWidth(50);
-    mapButton.setGraphic(MapIconModifier.getIcon("mapMenu"));
+    mapButton.setGraphic(MapIconModifier.getIcon("infoMenu"));
     mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
     serviceButton.setText("");
@@ -130,7 +132,7 @@ public class mainController implements Initializable {
     mapViewButton.setText("");
     dashboardButton.setGraphic(MapIconModifier.getIcon("dashboardMenu"));
     dashboardButton.setText("");
-    homeButton1.setGraphic(MapIconModifier.getIcon("home"));
+    homeButton1.setGraphic(MapIconModifier.getIcon("backMenu"));
     homeButton1.setText("");
     labButton.setGraphic(MapIconModifier.getIcon("labMenu"));
     labButton.setText("");
@@ -154,8 +156,12 @@ public class mainController implements Initializable {
     sanitationButton.setText("");
     maintenanceButton.setGraphic(MapIconModifier.getIcon("toolMenu"));
     maintenanceButton.setText("");
-    homeButton2.setGraphic(MapIconModifier.getIcon("home"));
+    homeButton2.setGraphic(MapIconModifier.getIcon("backMenu"));
     homeButton2.setText("");
+    employeeButton.setGraphic(MapIconModifier.getIcon("employeeMenu"));
+    employeeButton.setText("");
+    queueButton.setGraphic(MapIconModifier.getIcon("queueMenu"));
+    queueButton.setText("");
   }
 
   public void menuOpen() {
@@ -167,7 +173,7 @@ public class mainController implements Initializable {
     mapMenu.setPrefWidth(200);
     serviceMenu.setMaxWidth(200);
     serviceMenu.setPrefWidth(200);
-    mapButton.setText("Map");
+    mapButton.setText("Info");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
     outButton.setText("Exit");
@@ -190,6 +196,8 @@ public class mainController implements Initializable {
     securityButton.setText("Security");
     sanitationButton.setText("Sanitation");
     maintenanceButton.setText("Maintenance");
+    queueButton.setText("Queue");
+    employeeButton.setText("Employee");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -251,6 +259,14 @@ public class mainController implements Initializable {
 
   public void changeToSetting() throws IOException {
     changeTo("views/settings.fxml");
+  }
+
+  public void changeToQueue() throws IOException {
+    changeTo("views/requestListPage.fxml");
+  }
+
+  public void changeToEmployee() throws IOException {
+    changeTo("views/employee/employeePage.fxml");
   }
 
   public void changeToSecurity() throws IOException {
