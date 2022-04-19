@@ -8,14 +8,9 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.observers.AlertObserver;
-import edu.wpi.cs3733.D22.teamF.observers.FloorObservable;
-import edu.wpi.cs3733.D22.teamF.observers.FloorWatchManager;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -49,7 +44,7 @@ public class mapPageController implements Initializable {
 
   @FXML ImageView mapHolder;
 
-  @FXML TableView<Location> table;
+  @FXML public TableView<Location> table;
 
   @FXML TableColumn<Location, String> Floor;
   @FXML TableColumn<Location, String> Building;
@@ -61,7 +56,6 @@ public class mapPageController implements Initializable {
 
   @FXML JFXSlider zoomSlider;
 
-  @FXML JFXButton alertButton;
   @FXML JFXButton showIconButton;
 
   @FXML JFXButton patientRoomButton;
@@ -100,15 +94,6 @@ public class mapPageController implements Initializable {
   @FXML JFXButton loadButton;
   @FXML JFXButton tableButton;
   @FXML JFXButton historyButton;
-
-  @FXML JFXNodesList alertNodeList = new JFXNodesList();
-  @FXML JFXButton alertButton1;
-  @FXML JFXButton alertButton2;
-  @FXML JFXButton alertButton3;
-  @FXML JFXButton alertButton4;
-  @FXML JFXButton alertButton5;
-  @FXML JFXButton alertButtonL1;
-  @FXML JFXButton alertButtonL2;
 
   Image F1 =
       new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("Map/FloorMap/Floor1.jpg")));
@@ -150,26 +135,6 @@ public class mapPageController implements Initializable {
     setUpNode();
     changeToF1();
     iniSlider();
-
-    List<JFXButton> alertbtnList = new ArrayList<>();
-    alertbtnList.add(alertButtonL2);
-    alertbtnList.add(alertButtonL1);
-    alertbtnList.add(alertButton1);
-    alertbtnList.add(alertButton2);
-    alertbtnList.add(alertButton3);
-    alertbtnList.add(alertButton4);
-    alertbtnList.add(alertButton5);
-    alertbtnList.add(alertButton);
-
-    AlertObserver.getInstance().setAlertNotifications(alertbtnList);
-    FloorWatchManager.getInstance();
-    FloorWatchManager.getInstance();
-    try {
-      FloorObservable.getInstance().setState();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    // AlertObserver.getInstance().updateButtons();
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */
@@ -464,10 +429,8 @@ public class mapPageController implements Initializable {
   public void setUpNode() {
     floorNodeList.setSpacing(10);
     menuNodeList.setSpacing(10);
-    alertNodeList.setSpacing(10);
     menuNodeList.setRotate(180);
     floorNodeList.setRotate(180);
-    alertNodeList.setRotate(180);
     AGlobalMethods.setCircleButton(openFloorMenu, 55);
     openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     AGlobalMethods.setCircleButton(changeToF5, 40);
@@ -502,21 +465,5 @@ public class mapPageController implements Initializable {
     AGlobalMethods.setCircleButton(historyButton, 40);
     historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
-    AGlobalMethods.setCircleButton(alertButton, 55);
-    alertButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton1, 40);
-    alertButton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton2, 40);
-    alertButton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton3, 40);
-    alertButton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton4, 40);
-    alertButton4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton5, 40);
-    alertButton5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButtonL1, 40);
-    alertButtonL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButtonL2, 40);
-    alertButtonL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
   }
 }
