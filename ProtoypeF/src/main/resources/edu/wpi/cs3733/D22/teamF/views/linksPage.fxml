@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -17,9 +16,9 @@
    <children>
       <BorderPane prefHeight="660.0" prefWidth="1220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Pane prefHeight="97.0" prefWidth="1220.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
+            <HBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" layoutX="-1.0" layoutY="17.0" prefHeight="64.0" prefWidth="1220.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #123090;" HBox.hgrow="ALWAYS">
                      <children>
                         <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
@@ -34,16 +33,16 @@
                      </children>
                   </HBox>
                </children>
-            </Pane>
+            </HBox>
          </top>
          <center>
             <HBox prefWidth="1220.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox fx:id="websiteVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="265.0" style="-fx-background-color: #123090;">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <VBox.margin>
-                              <Insets bottom="15.0" />
+                              <Insets bottom="15.0" top="-11.0" />
                            </VBox.margin>
                            <children>
                               <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true">
@@ -61,15 +60,15 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <StackPane prefHeight="165.0" prefWidth="211.0">
+                        <StackPane prefHeight="163.0" prefWidth="278.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="192.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="230.0" stroke="BLACK" strokeType="INSIDE" width="245.0" />
                               <ImageView fitHeight="109.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/updatedIcon.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="171.0" fitWidth="261.0" opacity="0.32" pickOnBounds="true">
+                              <ImageView fitHeight="221.0" fitWidth="244.0" opacity="0.32" pickOnBounds="true">
                                  <image>
                                     <Image url="@../BWHupdated.jpg" />
                                  </image>
@@ -79,10 +78,10 @@
                               </ImageView>
                            </children>
                            <padding>
-                              <Insets bottom="20.0" />
+                              <Insets bottom="10.0" />
                            </padding>
                         </StackPane>
-                        <ImageView fitHeight="205.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="109.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../QR_Codes/BW_QR_Code.png" />
                            </image>
@@ -96,10 +95,10 @@
                            </font></Label>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="-3.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="loginVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0">
+                  <VBox fx:id="loginVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER" prefHeight="80.0" prefWidth="265.0" style="-fx-background-color: #123090;">
                            <VBox.margin>
@@ -121,25 +120,25 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <StackPane prefHeight="165.0" prefWidth="211.0">
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="192.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
-                              <ImageView fitHeight="105.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="299.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                              <ImageView fitHeight="273.0" fitWidth="201.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Images/updatedIcon.png" />
+                                    <Image url="@../Images/loginImageBWH.jpg" />
                                  </image>
                               </ImageView>
                            </children>
                            <padding>
-                              <Insets bottom="20.0" />
+                              <Insets bottom="10.0" />
                            </padding>
                         </StackPane>
-                        <ImageView fitHeight="205.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="158.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
                            </image>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </ImageView>
                         <Label text="LOGIN">
