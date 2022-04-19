@@ -21,7 +21,7 @@
       <Pane prefHeight="821.0" prefWidth="635.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
             <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="40.0" prefHeight="71.0" prefWidth="616.0">
                <children>
                   <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="540.0" text="Equipment Request" textFill="WHITE">
@@ -50,7 +50,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox1" layoutX="153.0" layoutY="499.0" prefHeight="56.0" prefWidth="374.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="183.0" layoutY="515.0" prefHeight="56.0" prefWidth="252.0" style="-fx-background-color: #123090;">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
@@ -58,11 +58,6 @@
                      </font>
                   </JFXButton>
                   <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#resetFunction" prefHeight="68.0" prefWidth="127.0" ripplerFill="#f5bc4b" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="68.0" prefWidth="134.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
