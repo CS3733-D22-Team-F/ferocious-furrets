@@ -109,7 +109,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    System.out.println(statement);
+    //    System.out.println(statement);
     stm.close();
   }
   /**

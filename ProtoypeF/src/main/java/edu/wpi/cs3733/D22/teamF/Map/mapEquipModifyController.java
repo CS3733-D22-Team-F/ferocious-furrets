@@ -139,7 +139,7 @@ public class mapEquipModifyController implements Initializable {
 
   public void onRoomChange() {
     String selectFloor = floors.get(room.indexOf(nodeBox.getValue()));
-    System.out.println(selectFloor);
+    //    System.out.println(selectFloor);
     if (selectFloor.equals("1")) {
       changeToF1();
     } else if (selectFloor.equals("2")) {

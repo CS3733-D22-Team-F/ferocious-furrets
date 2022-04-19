@@ -78,11 +78,6 @@ public class mainController implements Initializable {
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
-    // settingsButton.setMa
-    //    v1.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    //    v3.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    //    v5.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    //    serviceMenu.maxHeightProperty().bind(mainPane.heightProperty());
 
     maxScreenCallback =
         new ChangeListener<Boolean>() {

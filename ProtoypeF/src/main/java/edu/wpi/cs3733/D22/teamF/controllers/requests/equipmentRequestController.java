@@ -266,11 +266,11 @@ public class equipmentRequestController extends PageController
 
     while (equipRequest.next()) {
       currentEquipDelReqID = equipRequest.getString("reqID");
-      System.out.println(currentEquipDelReqID);
+      //      System.out.println(currentEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new equipmentDeliveryRequest(
                   equipRequest.getString("reqID"),
