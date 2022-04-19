@@ -1,57 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox fx:id="creditVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.linksPageController">
+<AnchorPane prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.linksPageController">
    <children>
-      <AnchorPane prefHeight="662.0" prefWidth="1220.0">
+      <Pane prefHeight="97.0" prefWidth="1220.0" style="-fx-background-color: #123090;">
          <children>
-            <VBox prefHeight="80.0" prefWidth="1220.0" style="-fx-background-color: #123090;">
-               <children>
-                  <Label prefHeight="38.0" prefWidth="292.0" text="Helpful Links" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Regular" size="36.0" />
-                     </font>
-                     <padding>
-                        <Insets left="60.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
-            <ImageView fitHeight="281.0" fitWidth="260.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="494.0" layoutY="28.0" prefHeight="42.0" prefWidth="232.0" text="RESOURCES" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Regular" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox alignment="CENTER" layoutX="55.0" layoutY="175.0">
+         <children>
+            <Label text="WANT TO LEARN MORE ABOUT US?" />
+            <ImageView fitHeight="205.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../QR_Codes/BW_QR_Code.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="260.0" fitWidth="318.0" layoutX="305.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="260.0" fitWidth="292.0" layoutX="610.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <Label text="VISIT OUR WEBSITE" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="590.0" layoutY="167.0">
+         <children>
+            <Label text="HEALTH &amp; SAFETY" />
+            <ImageView fitHeight="211.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../QR_Codes/COVID19Info_QR.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="260.0" fitWidth="300.0" layoutX="915.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <Label text="COVID-19 " />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="854.0" layoutY="180.0">
+         <children>
+            <Label text="INTERESTED IN JOINING US?" />
+            <ImageView fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
                </image>
             </ImageView>
+            <Label text="SIGN UP HERE" />
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </AnchorPane>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="304.0" layoutY="163.0">
+         <children>
+            <Label text="AN EXISTING USER?" />
+            <ImageView fitHeight="219.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
+               </image>
+            </ImageView>
+            <Label text="LOGIN" />
+         </children>
+      </VBox>
    </children>
-</VBox>
+</AnchorPane>
