@@ -309,7 +309,7 @@ public class mainController implements Initializable {
 
   public void changeToSecurity() throws IOException {
     // TODO add your page name before ".fxml"
-    // changeTo("views/.fxml");
+    changeTo("views/securityPage.fxml");
   }
 
   public void changeToPhysical() throws IOException {
