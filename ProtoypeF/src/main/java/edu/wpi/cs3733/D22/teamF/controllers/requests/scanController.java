@@ -92,42 +92,6 @@ public class scanController extends PageController implements Initializable, IRe
     }
   }
 
-  public String generateReqID(int requestListLength, String scanType, String nodeID) {
-    String reqAbb = "SR";
-    String sAb = "";
-    if (scanType.equals("CAT")) {
-      sAb = "C";
-    } else if (scanType.equals("xray")) {
-      sAb = "X";
-    } else if (scanType.equals("MRI")) {
-      sAb = "M";
-    }
-    return reqAbb + sAb + (requestListLength + 1) + nodeID;
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null); // Status Choice Box
-  }
-
-  /**
-   * shows the queue scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  void showSceneQueue(ActionEvent event) throws IOException {
-    switchScene("labRequestQueue.fxml");
-  }
-
   /**
    * Use Try/Catch when call this function submits a medical request using user inputs
    *
@@ -143,10 +107,10 @@ public class scanController extends PageController implements Initializable, IRe
     String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
     if (nodeField.getValue().toString().equals("")
-        || employeeIDField.getValue().toString().equals("")
-        || userField.getValue().toString().equals("")
-        || typeChoice.getValue().equals("")
-        || statusChoice.getValue().equals("")) {
+            || employeeIDField.getValue().toString().equals("")
+            || userField.getValue().toString().equals("")
+            || typeChoice.getValue().equals("")
+            || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
     } else {
       RequestSystem req = new RequestSystem("Scan");
@@ -168,6 +132,129 @@ public class scanController extends PageController implements Initializable, IRe
     }
 
     startTable();
+  }
+
+  public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet scanRequestTable =
+            DatabaseManager.getScanRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<scanRequest> secReqs = new ArrayList<>();
+    scanRequest er;
+    String currentEquipDelReqID;
+
+    while (scanRequestTable.next()) {
+      currentEquipDelReqID = scanRequestTable.getString("reqID");
+      System.out.println(currentEquipDelReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
+          System.out.println("matched :)");
+          er =
+                  new scanRequest(
+                          scanRequestTable.getString("reqID"),
+                          servRequest.getString("nodeID"),
+                          servRequest.getString("assignedEmployeeID"),
+                          servRequest.getString("requesterEmployeeID"),
+                          servRequest.getString("status"),
+                          scanRequestTable.getString(
+                                  "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    scanRequestTable.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+            .forEach(
+                    (scanRequest) -> {
+                      treeRoot.getChildren().add(new TreeItem<>(scanRequest));
+                    });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<scanRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<scanRequest, String> scanTypeCol = new TreeTableColumn<>("Equipment ID:");
+    scanTypeCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getScanType()));
+
+    TreeTableColumn<scanRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<scanRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<scanRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableView<scanRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+            .getColumns()
+            .setAll(nodeIDCol, scanTypeCol, assignedToCol, requestedByCol, statusCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    scanTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null); // Status Choice Box
+  }
+
+  /* helper */
+  public String generateReqID(int requestListLength, String scanType, String nodeID) {
+    String reqAbb = "SR";
+    String sAb = "";
+    if (scanType.equals("CAT")) {
+      sAb = "C";
+    } else if (scanType.equals("xray")) {
+      sAb = "X";
+    } else if (scanType.equals("MRI")) {
+      sAb = "M";
+    }
+    return reqAbb + sAb + (requestListLength + 1) + nodeID;
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
+  /**
+   * shows the queue scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  void showSceneQueue(ActionEvent event) throws IOException {
+    switchScene("labRequestQueue.fxml");
   }
 
   public void resolveRequest() throws SQLException {
@@ -195,91 +282,6 @@ public class scanController extends PageController implements Initializable, IRe
     // StageManager.getInstance().setLandingScreen();
   }
 
-  public void startTable() throws SQLException, IOException {
-
-    clearTable();
-
-    ResultSet scanRequestTable =
-        DatabaseManager.getScanRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
-    ResultSet servRequest;
-    ArrayList<scanRequest> secReqs = new ArrayList<>();
-    scanRequest er;
-    String currentEquipDelReqID;
-
-    while (scanRequestTable.next()) {
-      currentEquipDelReqID = scanRequestTable.getString("reqID");
-      System.out.println(currentEquipDelReqID);
-      servRequest = DatabaseManager.getRequestDAO().get();
-      while (servRequest.next()) {
-        if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
-          System.out.println("matched :)");
-          er =
-              new scanRequest(
-                  scanRequestTable.getString("reqID"),
-                  servRequest.getString("nodeID"),
-                  servRequest.getString("assignedEmployeeID"),
-                  servRequest.getString("requesterEmployeeID"),
-                  servRequest.getString("status"),
-                  scanRequestTable.getString(
-                      "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
-          // CORRECT TOO)
-          secReqs.add(er);
-          servRequest.close();
-          break;
-        }
-      }
-    }
-
-    scanRequestTable.close();
-
-    treeRoot.setExpanded(true);
-    secReqs.stream()
-        .forEach(
-            (scanRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(scanRequest));
-            });
-    final Scene scene = new Scene(new Group(), 400, 400);
-
-    TreeTableColumn<scanRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
-
-    TreeTableColumn<scanRequest, String> scanTypeCol = new TreeTableColumn<>("Equipment ID:");
-    scanTypeCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getScanType()));
-
-    TreeTableColumn<scanRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<scanRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<scanRequest, String> statusCol = new TreeTableColumn<>("Status:");
-    statusCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
-
-    TreeTableView<scanRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView
-        .getColumns()
-        .setAll(nodeIDCol, scanTypeCol, assignedToCol, requestedByCol, statusCol);
-    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    tablePane.minHeightProperty().bind(masterPane.heightProperty());
-    tablePane.getChildren().add(treeTableView);
-    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    scanTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
-    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-  }
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());

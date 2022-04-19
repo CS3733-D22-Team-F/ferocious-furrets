@@ -38,6 +38,9 @@ public class physicalTherapyController extends PageController
   private String durationTimeS;
   private String notesS;
 
+  TreeItem<physicalTherapyRequest> treeRoot =
+          new TreeItem<>(new physicalTherapyRequest(typeChoiceS, durationTimeS, notesS));
+
   /**
    * Called to initialize a controller after its root element has been completely processed.
    *
@@ -77,9 +80,6 @@ public class physicalTherapyController extends PageController
       e.printStackTrace();
     }
   }
-
-  TreeItem<physicalTherapyRequest> treeRoot =
-      new TreeItem<>(new physicalTherapyRequest(typeChoiceS, durationTimeS, notesS));
 
   public void startTable() throws SQLException {
 
@@ -133,11 +133,6 @@ public class physicalTherapyController extends PageController
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
-  /** clears the table in the request page */
-  public void clearTable() {
-    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
-  }
-
   @Override
   public void submit() throws SQLException {
     if (nodeField.getValue().toString().equals("")
@@ -177,6 +172,8 @@ public class physicalTherapyController extends PageController
     notes.clear();
   }
 
+  /* helper */
+
   public String generateReqID() throws SQLException {
     String nNodeType = typeChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
@@ -189,6 +186,11 @@ public class physicalTherapyController extends PageController
 
     String nID = "f" + nNodeType + reqNum;
     return nID;
+  }
+
+  /** clears the table in the request page */
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 
   /**

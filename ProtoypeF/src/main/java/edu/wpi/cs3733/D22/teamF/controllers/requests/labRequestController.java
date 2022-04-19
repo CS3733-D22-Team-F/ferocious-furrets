@@ -145,6 +145,92 @@ public class labRequestController extends PageController
     startTable();
   }
 
+  public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet labRequestTables =
+            DatabaseManager.getLabRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<labRequest> secReqs = new ArrayList<labRequest>();
+    labRequest er;
+    String currentLabReqID;
+
+    while (labRequestTables.next()) {
+      currentLabReqID = labRequestTables.getString("reqID");
+      System.out.println(currentLabReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentLabReqID)) {
+          System.out.println("matched :)");
+          er =
+                  new labRequest(
+                          labRequestTables.getString("reqID"),
+                          servRequest.getString("nodeID"),
+                          servRequest.getString("assignedEmployeeID"),
+                          servRequest.getString("requesterEmployeeID"),
+                          servRequest.getString("status"),
+                          labRequestTables.getString(
+                                  "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    labRequestTables.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+            .forEach(
+                    (labRequest) -> {
+                      treeRoot.getChildren().add(new TreeItem<>(labRequest));
+                    });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<labRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<labRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<labRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<labRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableColumn<labRequest, String> sampleTypeCol = new TreeTableColumn<>("Sample Type: ");
+    sampleTypeCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getSampleType()));
+
+    TreeTableView<labRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+            .getColumns()
+            .setAll(nodeIDCol, assignedToCol, requestedByCol, statusCol, sampleTypeCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    sampleTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
   @FXML
   public void reset() {
     nodeField.valueProperty().setValue(null);
@@ -198,93 +284,8 @@ public class labRequestController extends PageController
     return null;
   }
 
-  public void startTable() throws SQLException, IOException {
-
-    clearTable();
-
-    ResultSet labRequestTables =
-        DatabaseManager.getLabRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
-    ResultSet servRequest;
-    ArrayList<labRequest> secReqs = new ArrayList<labRequest>();
-    labRequest er;
-    String currentLabReqID;
-
-    while (labRequestTables.next()) {
-      currentLabReqID = labRequestTables.getString("reqID");
-      System.out.println(currentLabReqID);
-      servRequest = DatabaseManager.getRequestDAO().get();
-      while (servRequest.next()) {
-        if (servRequest.getString("reqID").equals(currentLabReqID)) {
-          System.out.println("matched :)");
-          er =
-              new labRequest(
-                  labRequestTables.getString("reqID"),
-                  servRequest.getString("nodeID"),
-                  servRequest.getString("assignedEmployeeID"),
-                  servRequest.getString("requesterEmployeeID"),
-                  servRequest.getString("status"),
-                  labRequestTables.getString(
-                      "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
-          // CORRECT TOO)
-          secReqs.add(er);
-          servRequest.close();
-          break;
-        }
-      }
-    }
-
-    labRequestTables.close();
-
-    treeRoot.setExpanded(true);
-    secReqs.stream()
-        .forEach(
-            (labRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(labRequest));
-            });
-    final Scene scene = new Scene(new Group(), 400, 400);
-
-    TreeTableColumn<labRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
-
-    TreeTableColumn<labRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<labRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<labRequest, String> statusCol = new TreeTableColumn<>("Status:");
-    statusCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
-
-    TreeTableColumn<labRequest, String> sampleTypeCol = new TreeTableColumn<>("Sample Type: ");
-    sampleTypeCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getSampleType()));
-
-    TreeTableView<labRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView
-        .getColumns()
-        .setAll(nodeIDCol, assignedToCol, requestedByCol, statusCol, sampleTypeCol);
-    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    tablePane.minHeightProperty().bind(masterPane.heightProperty());
-    tablePane.getChildren().add(treeTableView);
-    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    sampleTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
-    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-  }
-
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
+
 }

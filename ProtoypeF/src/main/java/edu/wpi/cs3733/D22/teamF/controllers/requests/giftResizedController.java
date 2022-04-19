@@ -64,44 +64,6 @@ public class giftResizedController extends PageController
       new TreeItem<>(
           new giftDeliveryRequest(requestID, nodeIDO, assignedEmpID, requesterEmpID, status, gift));
 
-  /**
-   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
-   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
-   *
-   * @return giftDeliveryRequest
-   */
-  public void submit() throws SQLException, IOException {
-    RequestSystem req = new RequestSystem("Gift");
-    ArrayList<String> fields = new ArrayList<String>();
-    fields.add(generateReqID());
-    fields.add(nodeIDFinder(nodeID.getValue().toString()));
-    fields.add(employeeIDFinder(assigned.getValue().toString()));
-    fields.add(employeeIDFinder(employeeID.getValue().toString()));
-    fields.add(statusChoice.getValue().toString());
-    if (giftChoice.getValue().toString().length() > 16)
-      fields.add(giftChoice.getValue().toString().substring(0, 15));
-    else fields.add(giftChoice.getValue().toString());
-    req.placeRequest(fields);
-
-    reset();
-
-    startTable();
-  }
-
-  @Override
-  public void reset() {
-    assigned.valueProperty().setValue(null);
-    employeeID.valueProperty().setValue(null);
-    nodeID.valueProperty().setValue(null);
-    statusChoice.valueProperty().set(null);
-    giftChoice.valueProperty().set(null);
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
@@ -157,6 +119,131 @@ public class giftResizedController extends PageController
   }
 
   /**
+   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
+   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
+   *
+   * @return giftDeliveryRequest
+   */
+  public void submit() throws SQLException, IOException {
+    RequestSystem req = new RequestSystem("Gift");
+    ArrayList<String> fields = new ArrayList<String>();
+    fields.add(generateReqID());
+    fields.add(nodeIDFinder(nodeID.getValue().toString()));
+    fields.add(employeeIDFinder(assigned.getValue().toString()));
+    fields.add(employeeIDFinder(employeeID.getValue().toString()));
+    fields.add(statusChoice.getValue().toString());
+    if (giftChoice.getValue().toString().length() > 16)
+      fields.add(giftChoice.getValue().toString().substring(0, 15));
+    else fields.add(giftChoice.getValue().toString());
+    req.placeRequest(fields);
+
+    reset();
+
+    startTable();
+  }
+
+  @Override
+  public void reset() {
+    assigned.valueProperty().setValue(null);
+    employeeID.valueProperty().setValue(null);
+    nodeID.valueProperty().setValue(null);
+    statusChoice.valueProperty().set(null);
+    giftChoice.valueProperty().set(null);
+  }
+
+  public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet giftRequestTable = DatabaseManager.getGiftDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<giftDeliveryRequest> secReqs = new ArrayList<giftDeliveryRequest>();
+    giftDeliveryRequest er;
+    String currentGiftReqID;
+
+    while (giftRequestTable.next()) {
+      currentGiftReqID = giftRequestTable.getString("reqID");
+      System.out.println(currentGiftReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentGiftReqID)) {
+          //          System.out.println("matched :)");
+          er =
+                  new giftDeliveryRequest(
+                          giftRequestTable.getString("reqID"),
+                          servRequest.getString("nodeID"),
+                          servRequest.getString("assignedEmployeeID"),
+                          servRequest.getString("requesterEmployeeID"),
+                          servRequest.getString("status"),
+                          giftRequestTable.getString(
+                                  "gift")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    giftRequestTable.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+            .forEach(
+                    (giftDeliveryRequest) -> {
+                      treeRoot.getChildren().add(new TreeItem<>(giftDeliveryRequest));
+                    });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<giftDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<giftDeliveryRequest, String> giftCol = new TreeTableColumn<>("Gift:");
+    giftCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getGift()));
+
+    TreeTableColumn<giftDeliveryRequest, String> assignedToCol =
+            new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<giftDeliveryRequest, String> requestedByCol =
+            new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<giftDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableView<giftDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(nodeIDCol, giftCol, assignedToCol, requestedByCol, statusCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  /* helper */
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
+  /**
    * shows the queue scene
    *
    * @param event
@@ -187,91 +274,6 @@ public class giftResizedController extends PageController
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setLandingScreen();
-  }
-
-  public void startTable() throws SQLException, IOException {
-
-    clearTable();
-
-    ResultSet giftRequestTable = DatabaseManager.getGiftDAO().get(); // CHANGE THIS TO CURRENT DAO
-    ResultSet servRequest;
-    ArrayList<giftDeliveryRequest> secReqs = new ArrayList<giftDeliveryRequest>();
-    giftDeliveryRequest er;
-    String currentGiftReqID;
-
-    while (giftRequestTable.next()) {
-      currentGiftReqID = giftRequestTable.getString("reqID");
-      System.out.println(currentGiftReqID);
-      servRequest = DatabaseManager.getRequestDAO().get();
-      while (servRequest.next()) {
-        if (servRequest.getString("reqID").equals(currentGiftReqID)) {
-          //          System.out.println("matched :)");
-          er =
-              new giftDeliveryRequest(
-                  giftRequestTable.getString("reqID"),
-                  servRequest.getString("nodeID"),
-                  servRequest.getString("assignedEmployeeID"),
-                  servRequest.getString("requesterEmployeeID"),
-                  servRequest.getString("status"),
-                  giftRequestTable.getString(
-                      "gift")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
-          // CORRECT TOO)
-          secReqs.add(er);
-          servRequest.close();
-          break;
-        }
-      }
-    }
-
-    giftRequestTable.close();
-
-    treeRoot.setExpanded(true);
-    secReqs.stream()
-        .forEach(
-            (giftDeliveryRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(giftDeliveryRequest));
-            });
-    final Scene scene = new Scene(new Group(), 400, 400);
-
-    TreeTableColumn<giftDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
-
-    TreeTableColumn<giftDeliveryRequest, String> giftCol = new TreeTableColumn<>("Gift:");
-    giftCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getGift()));
-
-    TreeTableColumn<giftDeliveryRequest, String> assignedToCol =
-        new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<giftDeliveryRequest, String> requestedByCol =
-        new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<giftDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
-    statusCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
-
-    TreeTableView<giftDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(nodeIDCol, giftCol, assignedToCol, requestedByCol, statusCol);
-    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    tablePane.minHeightProperty().bind(masterPane.heightProperty());
-    tablePane.getChildren().add(treeTableView);
-    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
-    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
   public void clearTable() {
