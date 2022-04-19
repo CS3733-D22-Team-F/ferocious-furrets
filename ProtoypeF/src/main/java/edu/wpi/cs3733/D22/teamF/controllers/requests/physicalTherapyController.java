@@ -83,6 +83,8 @@ public class physicalTherapyController extends PageController
 
   public void startTable() throws SQLException {
 
+    clearTable();
+
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM PTREQUEST");
     ArrayList<physicalTherapyRequest> secReqs = new ArrayList<physicalTherapyRequest>();
     physicalTherapyRequest sr;
@@ -131,6 +133,11 @@ public class physicalTherapyController extends PageController
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
+  /** clears the table in the request page */
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
   @Override
   public void submit() throws SQLException {
     if (nodeField.getValue().toString().equals("")
@@ -155,6 +162,19 @@ public class physicalTherapyController extends PageController
       req.placeRequest(fields);
     }
     reset();
+
+    startTable();
+  }
+
+  @Override
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null); // Status Choice Box
+    durationTime.clear();
+    notes.clear();
   }
 
   public String generateReqID() throws SQLException {
@@ -169,17 +189,6 @@ public class physicalTherapyController extends PageController
 
     String nID = "f" + nNodeType + reqNum;
     return nID;
-  }
-
-  @Override
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null); // Status Choice Box
-    durationTime.clear();
-    notes.clear();
   }
 
   /**
