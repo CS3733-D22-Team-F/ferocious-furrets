@@ -19,7 +19,7 @@
             </Label>
          </children>
       </Pane>
-      <VBox alignment="CENTER" layoutX="55.0" layoutY="175.0">
+      <VBox fx:id="websiteVBox" alignment="CENTER" layoutX="55.0" layoutY="175.0">
          <children>
             <Label text="WANT TO LEARN MORE ABOUT US?" />
             <ImageView fitHeight="205.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
@@ -30,7 +30,18 @@
             <Label text="VISIT OUR WEBSITE" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="590.0" layoutY="167.0">
+      <VBox fx:id="loginVBox" alignment="CENTER" layoutX="304.0" layoutY="163.0">
+         <children>
+            <Label text="AN EXISTING USER?" />
+            <ImageView fitHeight="219.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
+               </image>
+            </ImageView>
+            <Label text="LOGIN" />
+         </children>
+      </VBox>
+      <VBox fx:id="covidVBox" alignment="CENTER" layoutX="590.0" layoutY="167.0">
          <children>
             <Label text="HEALTH &amp; SAFETY" />
             <ImageView fitHeight="211.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
@@ -41,26 +52,15 @@
             <Label text="COVID-19 " />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="854.0" layoutY="180.0">
+      <VBox fx:id="signUpVBox" alignment="CENTER" layoutX="854.0" layoutY="180.0">
          <children>
             <Label text="INTERESTED IN JOINING US?" />
-            <ImageView fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="" fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
                </image>
             </ImageView>
             <Label text="SIGN UP HERE" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="304.0" layoutY="163.0">
-         <children>
-            <Label text="AN EXISTING USER?" />
-            <ImageView fitHeight="219.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
-               </image>
-            </ImageView>
-            <Label text="LOGIN" />
          </children>
       </VBox>
    </children>

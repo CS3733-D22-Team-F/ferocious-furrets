@@ -14,7 +14,10 @@ public class linksPageController implements Initializable {
   @FXML ImageView staffDirectoryQR;
   @FXML ImageView hrQR;
 
-  @FXML VBox qrCodes;
+  @FXML VBox websiteVBox;
+  @FXML VBox loginVBox;
+  @FXML VBox covidVBox;
+  @FXML VBox signUpVBox;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
