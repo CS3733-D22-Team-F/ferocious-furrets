@@ -16,8 +16,14 @@ public class FloorObservable {
   private final Connection connection = DatabaseManager.getConn();
   private List<equipment> equip;
 
-  public FloorObservable() {
+  private static FloorObservable m_floorObservable = new FloorObservable();
+
+  private FloorObservable() {
     observers = new PropertyChangeSupport(this);
+  }
+
+  public static FloorObservable getInstance() {
+    return m_floorObservable;
   }
 
   /**

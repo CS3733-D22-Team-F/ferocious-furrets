@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -18,8 +17,6 @@ public class DashboardController implements Initializable {
   List<Label> inUseLabels = new ArrayList<>();
 
   static Floor currentFloor = Floor.FL3;
-  DashboardObserver allFloorsObserver;
-  List<DashboardObserver> floorObservers = new ArrayList<>();
 
   @FXML ComboBox layoutAlerts;
   @FXML TextField floorSelect;
@@ -53,8 +50,9 @@ public class DashboardController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    FloorObservable allFloorData = new FloorObservable();
+    FloorObservable.getInstance();
 
+    /*
     DashboardObserver ll2Observer = new DashboardObserver(Floor.LL2);
     floorObservers.add(ll2Observer);
     DashboardObserver ll1Observer = new DashboardObserver(Floor.LL1);
@@ -67,8 +65,12 @@ public class DashboardController implements Initializable {
     floorObservers.add(f3Observer);
     DashboardObserver f4Observer = new DashboardObserver(Floor.FL4);
     floorObservers.add(f4Observer);
+
+    // made into alert just for ease of test
     DashboardObserver f5Observer = new DashboardObserver(Floor.FL5);
+    f5Observer.addPropertyChangeListener(AlertObserver.getInstance());
     floorObservers.add(f5Observer);
+     */
 
     cleanLabels.add(cBed);
     cleanLabels.add(cInfusionPump);
@@ -90,17 +92,23 @@ public class DashboardController implements Initializable {
     inUseLabels.add(iRecliner);
     inUseLabels.add(iXRay);
 
+    /*
     for (DashboardObserver observer : floorObservers) {
       observer.setLabels(cleanLabels, dirtyLabels, podLabels, inUseLabels);
-      allFloorData.addPropertyChangeListener(observer);
+      FloorObservable.getInstance().addPropertyChangeListener(observer);
     }
 
     try {
-      allFloorData.setState();
+      FloorObservable.getInstance().setState();
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
+     */
     // currentFloor = Floor.FL3;
+
+    FloorWatchManager.getInstance()
+        .setLabelsToUpdate(cleanLabels, dirtyLabels, podLabels, inUseLabels);
     setLabels();
     setAlerts();
   }
@@ -130,7 +138,7 @@ public class DashboardController implements Initializable {
 
   public void setAlerts() {
     layoutAlerts.getItems().clear();
-    List<List<Alert>> allFloorAlerts = DashboardObserver.getAllFloorAlerts();
+    List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
 
     for (List<Alert> floorAlert : allFloorAlerts)
       for (Alert inFloorAlert : floorAlert) layoutAlerts.getItems().add(inFloorAlert.getMessage());
@@ -144,6 +152,7 @@ public class DashboardController implements Initializable {
   /** takes all labels and applies appropriate amount based current observed floor */
   public void setLabels() {
 
+    List<DashboardObserver> floorObservers = FloorWatchManager.getInstance().getAllFloorObservers();
     System.out.println(currentFloor);
     System.out.println(
         "Current Observer Floor"
@@ -169,7 +178,8 @@ public class DashboardController implements Initializable {
     for (int alert = 0; alert < currentAlerts.size(); alert++)
       System.out.println(currentAlerts.get(alert).getMessage());
 
-    this.floorObservers.get(currentFloor.toInt()).updateLabels();
+    floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
+    AlertObserver.getInstance().setFloorAlertCount();
   }
 }

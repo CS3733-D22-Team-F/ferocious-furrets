@@ -6,7 +6,7 @@ import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.sql.SQLException;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;
@@ -15,14 +15,17 @@ import javafx.scene.control.Label;
  * An observer attaches to each floor of the hospital & updates based on any change from the
  * database
  */
-public class DashboardObserver implements PropertyChangeListener {
+class DashboardObserver implements PropertyChangeListener {
+  private PropertyChangeSupport alertSystem = new PropertyChangeSupport(this);
+  private List<PropertyChangeListener> observerList = new ArrayList<>();
+
   private List<equipment> rawListEquip = new ArrayList<equipment>();
   private List<equipment> listOfMedEquip = new ArrayList<>(); // list
 
   private Floor currFloor; // the floor the observer watches
   private List<Alert> floorAlerts = new ArrayList<>();
-
   private static List<List<Alert>> allFloorAlerts = new ArrayList<List<Alert>>();
+
   private List<equipment> cleanList = new ArrayList<>();
   private List<equipment> dirtyList = new ArrayList<>();
   private List<equipment> podList = new ArrayList<>();
@@ -53,10 +56,7 @@ public class DashboardObserver implements PropertyChangeListener {
   private List<Label> plabels = new ArrayList<>();
   private List<Label> ilabels = new ArrayList<>();
 
-  public DashboardObserver() throws SQLException {
-    //    currFloor = setFloor;
-    // List<equipment> rawListEquip = DatabaseManager.getMedEquipDAO().getAllEquipment();
-  }
+  public DashboardObserver() {}
 
   public DashboardObserver(Floor floorToSet) {
     this.currFloor = floorToSet;
@@ -162,11 +162,38 @@ public class DashboardObserver implements PropertyChangeListener {
 
   public void updateAllAlerts() {
     checkAlerts();
+    List<List<Alert>> pastAllAlerts = getAllFloorAlerts();
+
     if (!(allFloorAlerts.size() == 7)) allFloorAlerts.add(floorAlerts);
     else {
       allFloorAlerts.clear();
       allFloorAlerts.add(floorAlerts);
     }
+    // alertSystem.hasListeners("allFloorAlerts");
+    if (alertSystem.hasListeners("allFloorAlerts")) {
+      alertSystem.firePropertyChange("allFloorAlerts", 0, 12);
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+      System.out.println("SHOULD FIRE");
+    }
+  }
+
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    this.alertSystem.addPropertyChangeListener(listener);
+    observerList.add(listener);
+  }
+
+  public void removePropertyChangeListener(PropertyChangeListener listener) {
+    this.alertSystem.removePropertyChangeListener(listener);
   }
 
   /**
@@ -176,7 +203,6 @@ public class DashboardObserver implements PropertyChangeListener {
    */
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    rawListEquip.clear();
     rawListEquip = (List<equipment>) evt.getNewValue();
 
     System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
@@ -345,15 +371,23 @@ public class DashboardObserver implements PropertyChangeListener {
   // TODO counter for alerts
   public void checkAlerts() {
     floorAlerts.clear();
-    String formatString = currFloor.toFloorString() + ": ";
+    String formatString = currFloor.toFloorString();
 
     if (dInfusionPumpCount.size() >= 10)
-      floorAlerts.add(new Alert(this.currFloor, formatString + "10 & more dirty infusion pumps"));
+      floorAlerts.add(
+          new Alert(
+              this.currFloor,
+              dInfusionPumpCount.size() + " dirty infusion pumps on floor " + formatString + "!"));
 
     if (cInfusionPumpCount.size() <= 5)
-      floorAlerts.add(new Alert(this.currFloor, formatString + " 5 & less clean infusion pumps"));
+      floorAlerts.add(
+          new Alert(
+              this.currFloor,
+              cInfusionPumpCount.size() + " clean infusion pumps on floor " + formatString + "!"));
 
     if (dBedCount.size() >= 6)
-      floorAlerts.add(new Alert(this.currFloor, formatString + " 6 & more Beds to be cleaned"));
+      floorAlerts.add(
+          new Alert(
+              this.currFloor, dBedCount.size() + " dirty beds on floor " + formatString + "!"));
   }
 }
