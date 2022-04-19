@@ -211,11 +211,11 @@ public class labRequestController extends PageController
 
     while (labRequestTables.next()) {
       currentLabReqID = labRequestTables.getString("reqID");
-      System.out.println(currentLabReqID);
+      //      System.out.println(currentLabReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentLabReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new labRequest(
                   labRequestTables.getString("reqID"),

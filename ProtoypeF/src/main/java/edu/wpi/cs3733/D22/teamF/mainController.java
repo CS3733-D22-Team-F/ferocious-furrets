@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
@@ -18,6 +19,7 @@ import javafx.scene.SubScene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
+import javafx.scene.transform.Transform;
 import javafx.stage.Screen;
 import lombok.SneakyThrows;
 
@@ -62,46 +64,98 @@ public class mainController implements Initializable {
   @FXML VBox v5;
   @FXML VBox v6;
 
+  ChangeListener<Boolean> maxScreenCallback;
+  ObservableList<Transform> baseTransforms;
+
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
+    baseTransforms = pageHolder.getTransforms();
     menu.setSidePane(homeMenu);
     menuClose();
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
-    // settingsButton.setMa
-    v1.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    v3.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    v5.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
-    serviceMenu.maxHeightProperty().bind(mainPane.heightProperty());
-    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-    SceneManager.getInstance()
-        .getStage()
-        .fullScreenProperty()
-        .addListener(
-            new ChangeListener<Boolean>() {
-              @Override
-              public void changed(
-                  ObservableValue<? extends Boolean> observable,
-                  Boolean oldValue,
-                  Boolean newValue) {
-                double newHeight = screenBounds.getHeight() / pageHolder.getHeight();
-                double newWidth = screenBounds.getWidth() / pageHolder.getWidth();
-                if (newValue) {
-                  System.out.println("W: " + newWidth + " H: " + newHeight);
-                  pageHolder.getTransforms().add(new Scale(newWidth, newHeight));
-                } else {
 
-                  pageHolder.getTransforms().add(new Scale(1 / newWidth, 1 / newHeight));
-                }
-              }
-            });
+    maxScreenCallback =
+        new ChangeListener<Boolean>() {
+          @Override
+          public void changed(
+              ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            applyResize(newValue);
+          }
+        };
+    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
+    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
+
+    // TODO: make this work
+    //    SceneManager.getInstance()
+    //        .getStage()
+    //        .widthProperty()
+    //        .addListener(
+    //            new ChangeListener<Number>() {
+    //              @Override
+    //              public void changed(
+    //                  ObservableValue<? extends Number> observable, Number oldValue, Number
+    // newValue) {
+    //                applyResize((double) newValue,
+    // SceneManager.getInstance().getStage().getHeight());
+    //              }
+    //            });
+    //    SceneManager.getInstance()
+    //        .getStage()
+    //        .heightProperty()
+    //        .addListener(
+    //            new ChangeListener<Number>() {
+    //              @Override
+    //              public void changed(
+    //                  ObservableValue<? extends Number> observable, Number oldValue, Number
+    // newValue) {
+    //                applyResize(SceneManager.getInstance().getStage().getWidth(), (double)
+    // newValue);
+    //              }
+    //            });
     //    v2.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v4.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v6.prefHeightProperty().bind(menu.heightProperty().divide(11));
+  }
+
+  private void applyResize(boolean newValue) {
+    pageHolder.getTransforms().setAll(baseTransforms);
+    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+    if (newValue) {
+      double maxWidth = screenBounds.getWidth();
+      double maxHeight = screenBounds.getHeight();
+      double contentWidth = SceneManager.getInstance().getStage().widthProperty().get();
+      double contentHeight = SceneManager.getInstance().getStage().heightProperty().get();
+      double widthRatio = maxWidth / contentWidth;
+      double heightRatio = maxHeight / contentHeight;
+      double preservedAspectRatio = Math.min(widthRatio, heightRatio);
+      pageHolder
+          .getTransforms()
+          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
+
+    } else {
+      pageHolder.getTransforms().add(new Scale(1, 1));
+    }
+  }
+
+  private void applyResize(double width, double height) {
+    // TODO: Make this work
+    pageHolder.getTransforms().setAll(baseTransforms);
+
+    double maxWidth = width;
+    double maxHeight = height;
+    double contentWidth = SceneManager.getInstance().getStage().widthProperty().get();
+    double contentHeight = SceneManager.getInstance().getStage().heightProperty().get();
+    double widthRatio = maxWidth / contentWidth;
+    double heightRatio = maxHeight / contentHeight;
+    double preservedAspectRatio = Math.min(widthRatio, heightRatio);
+    pageHolder
+        .getTransforms()
+        .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
   }
 
   public void menuClose() {

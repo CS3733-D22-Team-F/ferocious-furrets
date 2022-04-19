@@ -201,11 +201,11 @@ public class medicineController extends PageController
 
     while (medicineReq.next()) {
       currentMedEquipDelReqID = medicineReq.getString("reqID");
-      System.out.println(currentMedEquipDelReqID);
+      //      System.out.println(currentMedEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentMedEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new medicineDeliveryRequest(
                   medicineReq.getString("reqID"),

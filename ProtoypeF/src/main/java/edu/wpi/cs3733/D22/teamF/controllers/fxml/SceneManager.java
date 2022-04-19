@@ -53,10 +53,10 @@ public class SceneManager {
       // alt enter while hover over/cursor in red
       scene = new SubScene(fxmlLoader.load(), 1200, 720);
       h_map.put(filename, scene); // Hashes the filename path into a scene object
-      System.out.println("Loading Scene: " + filename);
+      //      System.out.println("Loading Scene: " + filename);
     } else {
       scene = h_map.get(filename);
-      System.out.println("Load: " + filename + " from hash map");
+      //      System.out.println("Load: " + filename + " from hash map");
     }
     currentScene = filename;
     return scene;
@@ -71,7 +71,7 @@ public class SceneManager {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println("Loading Scene: " + path);
+    //    System.out.println("Loading Scene: " + path);
   }
 
   public Stage getStage() {
