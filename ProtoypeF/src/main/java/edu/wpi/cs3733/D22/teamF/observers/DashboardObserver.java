@@ -171,18 +171,7 @@ class DashboardObserver implements PropertyChangeListener {
     }
     // alertSystem.hasListeners("allFloorAlerts");
     if (alertSystem.hasListeners("allFloorAlerts")) {
-      alertSystem.firePropertyChange("allFloorAlerts", 0, 12);
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
-      System.out.println("SHOULD FIRE");
+      alertSystem.firePropertyChange("allFloorAlerts", false, true);
       System.out.println("SHOULD FIRE");
     }
   }
