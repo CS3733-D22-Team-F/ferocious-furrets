@@ -144,6 +144,7 @@ public class DatabaseManager {
     dropTableIfExist("securityRequest");
     dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
+    dropTableIfExist("facilitiesRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
     dropTableIfExist("GIFTREQUEST");
@@ -189,6 +190,9 @@ public class DatabaseManager {
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
+    System.out.println("Locations table updated to csv :)");
+    System.out.println("MedEquip table updated to csv :)");
+    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
     System.out.println("Backed up to CSV :)");
   }
 

@@ -1,25 +1,17 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.Fapp;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.Request;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -33,7 +25,6 @@ import javafx.stage.Stage;
  * @see Initializable
  */
 public class requestListController extends PageController implements Initializable {
-
 
   public static String selectedID = "";
   public static String selectedType = "";
@@ -72,22 +63,20 @@ public class requestListController extends PageController implements Initializab
   }
 
   void onChangePress() throws IOException {
-    //TODO replace "new" items with defined items
+    // TODO replace "new" items with defined items
     TreeTableView<Request> table = new TreeTableView<>();
     TreeItem<Request> selectedItem = table.getSelectionModel().getSelectedItem();
     selectedID = selectedItem.getValue().getReqID();
     selectedType = selectedItem.getValue().getReqType();
     popUpModifyReq();
-    //requestListController.selectedID;
-    //requestListController.selectedType;
+    // requestListController.selectedID;
+    // requestListController.selectedType;
   }
-
-
 
   void popUpModifyReq() throws IOException {
     Parent root =
-            FXMLLoader.load(
-                    Objects.requireNonNull(Fapp.class.getResource("Map/mapEquipModifyPage.fxml")));
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("Map/mapEquipModifyPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
