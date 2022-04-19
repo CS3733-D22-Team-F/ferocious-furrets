@@ -114,7 +114,18 @@ public class equipmentDeliveryDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(cmd1);
   }
 
-  public void update(ArrayList<String> fields) throws SQLException {}
+  public void update(ArrayList<String> fields) throws SQLException {
+    String servCmd =
+        String.format(
+            "UPDATE SERVICEREQUEST SET NODEID = '%s', ASSIGNEDEMPLOYEEID = '%s', REQUESTEREMPLOYEEID = '%s', STATUS = '%s' WHERE REQID = '%s'",
+            fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(0));
+    String cmd =
+        String.format(
+            "UPDATE EQUIPMENTDELIVERYREQUEST SET EQUIPID = '%s' WHERE REQID = '%s'",
+            fields.get(5), fields.get(0));
+    DatabaseManager.runStatement(servCmd);
+    DatabaseManager.runStatement(cmd);
+  }
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
