@@ -221,7 +221,7 @@ public class maintenancePageController extends PageController
             new ReadOnlyStringWrapper(param.getValue().getValue().getEquipID()));
 
     TreeTableColumn<maintenanceSR, String> maintenanceTypeCol =
-        new TreeTableColumn<>("Equipment ID:");
+        new TreeTableColumn<>("Maintenance Type:");
     maintenanceTypeCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<maintenanceSR, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getMaintenanceType()));
