@@ -95,6 +95,8 @@ public class audioVisualController extends PageController
 
       reset();
     }
+
+    startTable();
   }
 
   public void resolveRequest() throws SQLException {
@@ -169,6 +171,8 @@ public class audioVisualController extends PageController
 
   public void startTable() throws SQLException {
 
+    clearTable();
+
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM audioVisualRequest");
     ArrayList<audioVisualRequest> avReqs = new ArrayList<audioVisualRequest>();
     audioVisualRequest avr;
@@ -211,6 +215,11 @@ public class audioVisualController extends PageController
     objectTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  /** clears the table in the request page */
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 
   /**
