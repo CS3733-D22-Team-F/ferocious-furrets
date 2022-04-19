@@ -47,10 +47,10 @@ FRETL00201,1590,3070,1,Tower,RETL,Au Bon Pain,ABP
 FSERV00101,3218,1551,1,Tower,SERV,Shattuck Street Lobby ATM,Lobby ATM
 FSERV00201,1718,2199,1,Tower,SERV,Tower Medical Cashier,Tower Cashier
 FSERV00301,2230,2747,1,Tower,SERV,Kessler Library,Kessler Library
-FSERV00401,2098,1927,1,Tower,DEPT,Spiritual Care Office,SCO
+FSERV00401,2180,2248,1,Tower,DEPT,Spiritual Care Office,SCO
 FSERV00501,1878,3407,1,Tower,SERV,75 Lobby Valet Cashier,Valet Cashier
 FSTAI00101,3650,1483,1,Tower,STAI,Lobby Shattuck Street Stairs,Stairway F00101
-FSTAI00201,2218,1239,1,Tower,STAI,Tower Stairway 1,Tower Stairs 1
+FSTAI00201,2208,1248,1,Tower,STAI,Tower Stairway 1,Tower Stairs 1
 FSTAI00301,3150,3055,1,Tower,STAI,Lobby Escalator,Lobby Escalator
 WELEV00L01,2682,1767,1,Tower,ELEV,Elevator L Floor 1,Elevator L1
 WELEV00M01,2810,3379,1,Tower,ELEV,Elevator M Floor 1,Elevator M1
@@ -118,80 +118,80 @@ CHALL009L2,2437,1475,L2,Tower,HALL,Hallway 9 Floor L2,Hallway C009L2
 CHALL010L2,4100,1460,L2,Tower,HALL,Hallway 10 Floor L2,Hallway C010L2
 WELEV00LL2,2680,1770,L2,Tower,ELEV,Elevator L Floor L2,Elevator LL2
 WELEV00ML2,2825,3375,L2,Tower,ELEV,Elevator M Floor L2,Elevator ML2
-fSTOR001L1,2190,1480,L1,Tower,STOR,OR Bed Park,OR Bed Park
+fSTOR001L1,2171,1550,L1,Tower,STOR,OR Bed Park,OR Bed Park
 fSTOR00101,1425,1770,1,Tower,STOR,West Plaza,West Plaza
 fSTOR00103,1610,1123,3,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
 fSTOR00203,1610,2439,3,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
 fSTOR00303,2204,2223,3,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
 fSTOR00403,2213,1304,3,Tower,STOR,Bed and Recliner Storage B,Bed and Recliner Storage B
 fSTOR00503,1673,1763,3,Tower,STOR,Dirty Equipment Storage,Dirty Equipment Storage
-fPATI00103,1976,1033,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00203,1913,846,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00303,1788,763,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00403,1539,722,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00503,1456,763,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00603,1248,929,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00703,1248,1012,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00803,1248,1282,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00903,1310,1386,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01003,1560,1531,3,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01103,1539,1967,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01203,1310,2091,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01303,1289,2174,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01403,1248,2423,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01503,1248,2548,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01603,1435,2734,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01703,1560,2734,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01803,1788,2714,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01903,1872,2672,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI02003,1976,2444,3,Tower,PATI,Patient Bed Pod C,Patient Bed C
+fPATI00103,1976,1033,3,Tower,PATI,Patient Bed Room 331,Patient Bed B
+fPATI00203,1913,846,3,Tower,PATI,Patient Bed Room 332,Patient Bed B
+fPATI00303,1732,739,3,Tower,PATI,Patient Bed Room 333,Patient Bed B
+fPATI00403,1539,722,3,Tower,PATI,Patient Bed Room 334,Patient Bed B
+fPATI00503,1377,795,3,Tower,PATI,Patient Bed Room 335,Patient Bed B
+fPATI00603,1248,929,3,Tower,PATI,Patient Bed Room 336,Patient Bed B
+fPATI00703,1192,1106,3,Tower,PATI,Patient Bed Room 337,Patient Bed B
+fPATI00803,1248,1282,3,Tower,PATI,Patient Bed Room 338,Patient Bed B
+fPATI00903,1322,1470,3,Tower,PATI,Patient Bed Room 339,Patient Bed B
+fPATI01003,1504,1540,3,Tower,PATI,Patient Bed Room 340,Patient Bed B
+fPATI01103,1506,2047,3,Tower,PATI,Patient Bed Room 351,Patient Bed C
+fPATI01203,1328,2138,3,Tower,PATI,Patient Bed Room 352,Patient Bed C
+fPATI01303,1210,2344,3,Tower,PATI,Patient Bed Room 353,Patient Bed C
+fPATI01403,1178,2522,3,Tower,PATI,Patient Bed Room 354,Patient Bed C
+fPATI01503,1261,2685,3,Tower,PATI,Patient Bed Room 355,Patient Bed C
+fPATI01603,1384,2814,3,Tower,PATI,Patient Bed Room 356,Patient Bed C
+fPATI01703,1550,2866,3,Tower,PATI,Patient Bed Room 357,Patient Bed C
+fPATI01803,1723,2851,3,Tower,PATI,Patient Bed Room 358,Patient Bed C
+fPATI01903,1904,2733,3,Tower,PATI,Patient Bed Room 359,Patient Bed C
+fPATI02003,2008,2557,3,Tower,PATI,Patient Bed Room 360,Patient Bed C
 fSTOR00104,1610,1123,4,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
 fSTOR00204,1610,2439,4,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
 fSTOR00304,2204,2223,4,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
 fSTOR00404,2213,1304,4,Tower,STOR,Bed and Recliner Storage B,Bed and Recliner Storage B
 fSTOR00504,1673,1763,4,Tower,STOR,Dirty Equipment Storage,Dirty Equipment Storage
-fPATI00104,1976,1033,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00204,1913,846,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00304,1788,763,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00404,1539,722,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00504,1456,763,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00604,1248,929,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00704,1248,1012,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00804,1248,1282,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00904,1310,1386,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01004,1560,1531,4,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01104,1539,1967,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01204,1310,2091,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01304,1289,2174,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01404,1248,2423,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01504,1248,2548,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01604,1435,2734,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01704,1560,2734,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01804,1788,2714,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01904,1872,2672,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI02004,1976,2444,4,Tower,PATI,Patient Bed Pod C,Patient Bed C
+fPATI00104,1976,1033,4,Tower,PATI,Patient Bed Room 431,Patient Bed B
+fPATI00204,1913,846,4,Tower,PATI,Patient Bed Room 432,Patient Bed B
+fPATI00304,1788,763,4,Tower,PATI,Patient Bed Room 433,Patient Bed B
+fPATI00404,1539,722,4,Tower,PATI,Patient Bed Room 434,Patient Bed B
+fPATI00504,1395,772,4,Tower,PATI,Patient Bed Room 435,Patient Bed B
+fPATI00604,1248,929,4,Tower,PATI,Patient Bed Room 436,Patient Bed B
+fPATI00704,1206,1116,4,Tower,PATI,Patient Bed Room 437,Patient Bed B
+fPATI00804,1248,1282,4,Tower,PATI,Patient Bed Room 438,Patient Bed B
+fPATI00904,1337,1442,4,Tower,PATI,Patient Bed Room 439,Patient Bed B
+fPATI01004,1504,1531,4,Tower,PATI,Patient Bed Room 440,Patient Bed B
+fPATI01104,1478,2023,4,Tower,PATI,Patient Bed Room 451,Patient Bed C
+fPATI01204,1319,2166,4,Tower,PATI,Patient Bed Room 452,Patient Bed C
+fPATI01304,1205,2302,4,Tower,PATI,Patient Bed Room 453,Patient Bed C
+fPATI01404,1197,2536,4,Tower,PATI,Patient Bed Room 454,Patient Bed C
+fPATI01504,1266,2657,4,Tower,PATI,Patient Bed Room 455,Patient Bed C
+fPATI01604,1402,2819,4,Tower,PATI,Patient Bed Room 456,Patient Bed C
+fPATI01704,1532,2881,4,Tower,PATI,Patient Bed Room 457,Patient Bed C
+fPATI01804,1755,2851,4,Tower,PATI,Patient Bed Room 458,Patient Bed C
+fPATI01904,1899,2757,4,Tower,PATI,Patient Bed Room 459,Patient Bed C
+fPATI02004,1989,2557,4,Tower,PATI,Patient Bed Room 460,Patient Bed C
 fSTOR00105,1610,1123,5,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
 fSTOR00205,1610,2439,5,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
 fSTOR00305,2204,2223,5,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
 fSTOR00405,2213,1304,5,Tower,STOR,Bed and Recliner Storage B,Bed and Recliner Storage B
 fSTOR00505,1673,1763,5,Tower,STOR,Dirty Equipment Storage,Dirty Equipment Storage
-fPATI00105,1976,1033,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00205,1913,846,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00305,1788,763,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00405,1539,722,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00505,1456,763,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00605,1248,929,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00705,1248,1012,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00805,1248,1282,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI00905,1310,1386,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01005,1560,1531,5,Tower,PATI,Patient Bed Pod B,Patient Bed B
-fPATI01105,1539,1967,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01205,1310,2091,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01305,1289,2174,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01405,1248,2423,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01505,1248,2548,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01605,1435,2734,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01705,1560,2734,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01805,1788,2714,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI01905,1872,2672,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
-fPATI02005,1976,2444,5,Tower,PATI,Patient Bed Pod C,Patient Bed C
+fPATI00105,1976,1033,5,Tower,PATI,Patient Bed Room 531,Patient Bed B
+fPATI00205,1913,846,5,Tower,PATI,Patient Bed Room 532,Patient Bed B
+fPATI00305,1788,763,5,Tower,PATI,Patient Bed Room 533,Patient Bed B
+fPATI00405,1539,722,5,Tower,PATI,Patient Bed Room 534,Patient Bed B
+fPATI00505,1395,786,5,Tower,PATI,Patient Bed Room 535,Patient Bed B
+fPATI00605,1248,929,5,Tower,PATI,Patient Bed Room 536,Patient Bed B
+fPATI00705,1183,1078,5,Tower,PATI,Patient Bed Room 37,Patient Bed B
+fPATI00805,1211,1319,5,Tower,PATI,Patient Bed Room 538,Patient Bed B
+fPATI00905,1323,1428,5,Tower,PATI,Patient Bed Room 539,Patient Bed B
+fPATI01005,1560,1531,5,Tower,PATI,Patient Bed Room 540,Patient Bed B
+fPATI01105,1506,2076,5,Tower,PATI,Patient Bed Room 551,Patient Bed C
+fPATI01205,1333,2171,5,Tower,PATI,Patient Bed Room 552,Patient Bed C
+fPATI01305,1256,2287,5,Tower,PATI,Patient Bed Room 553,Patient Bed C
+fPATI01405,1229,2503,5,Tower,PATI,Patient Bed Room 554,Patient Bed C
+fPATI01505,1261,2647,5,Tower,PATI,Patient Bed Room 555,Patient Bed C
+fPATI01605,1402,2805,5,Tower,PATI,Patient Bed Room 556,Patient Bed C
+fPATI01705,1536,2852,5,Tower,PATI,Patient Bed Room 557,Patient Bed C
+fPATI01805,1760,2837,5,Tower,PATI,Patient Bed Room 558,Patient Bed C
+fPATI01905,1927,2747,5,Tower,PATI,Patient Bed Room 559,Patient Bed C
+fPATI02005,2022,2553,5,Tower,PATI,Patient Bed Room 560,Patient Bed C

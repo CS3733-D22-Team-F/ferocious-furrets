@@ -208,9 +208,9 @@ public abstract class PageController {
     ArrayList<Object> locations = new ArrayList<>();
     ResultSet r = null;
     try {
-      r = DatabaseManager.runQuery("SELECT SHORTNAME FROM LOCATIONS");
+      r = DatabaseManager.runQuery("SELECT LONGNAME FROM LOCATIONS");
       while (r.next()) {
-        String name = r.getString("SHORTNAME");
+        String name = r.getString("LONGNAME");
         locations.add(name);
       }
       r.close();
@@ -240,7 +240,7 @@ public abstract class PageController {
 
   public String nodeIDFinder(String name) throws SQLException {
     String nodeID = "";
-    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE SHORTNAME = '%s'", name);
+    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE LONGNAME = '%s'", name);
     ResultSet rset = DatabaseManager.runQuery(cmd);
     if (rset.next()) {
       nodeID = rset.getString("NODEID");

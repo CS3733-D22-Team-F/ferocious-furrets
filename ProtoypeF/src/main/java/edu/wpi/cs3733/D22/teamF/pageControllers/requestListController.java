@@ -29,9 +29,7 @@ public class requestListController extends PageController implements Initializab
    * @param resources ResourceBundle
    */
   @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
-  }
+  public void initialize(URL location, ResourceBundle resources) {}
 
   @Override
   public ContextMenu makeContextMenu() {

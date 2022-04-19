@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.entities.request;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.maintenanceSR;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.physicalTherapyRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
@@ -50,8 +51,14 @@ public class RequestSystem {
       case "Equipment":
         request = new equipmentDeliveryRequest();
         break;
+      case "Maintenance":
+        request = new maintenanceSR();
+        break;
       case "Audio/Visual":
         request = new audioVisualRequest();
+        break;
+      case "Facilities":
+        request = new facilitiesRequest();
         break;
       case "Security":
         request = new securityRequest();

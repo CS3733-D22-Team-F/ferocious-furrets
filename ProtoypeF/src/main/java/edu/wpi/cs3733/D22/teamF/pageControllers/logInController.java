@@ -24,6 +24,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +41,11 @@ public class logInController extends returnHomePage implements Initializable {
   @FXML private PasswordField passwordField;
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
+  @FXML private VBox loginVBox;
+  @FXML private ImageView backgroundImage;
+  @FXML private BorderPane masterPane;
+  @FXML private Pane imagePane;
+  @FXML private AnchorPane imageAnchor;
 
   private Parent root;
   private Scene scene;
@@ -135,5 +145,9 @@ public class logInController extends returnHomePage implements Initializable {
     databaseDrop.add("Client-Server");
     databaseChooser.getItems().addAll(databaseDrop);
     databaseChooser.setValue("Embedded");
+
+    backgroundImage.setManaged(false);
+    backgroundImage.fitWidthProperty().bind(imageAnchor.widthProperty());
+    backgroundImage.fitHeightProperty().bind(imageAnchor.heightProperty());
   }
 }
