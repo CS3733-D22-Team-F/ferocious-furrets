@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/** ARCHIVED, NOW HANDLED THROUGH TEAM F MEDICINE REQUEST API */
 public class medicineController extends PageController
     implements Initializable, IRequestController {
   private Stage stage;
