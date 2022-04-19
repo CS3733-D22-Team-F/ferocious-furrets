@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,7 +17,7 @@
          <children>
             <Pane prefHeight="103.0" prefWidth="658.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="78.0" layoutX="-3.0" stroke="#123090" strokeType="INSIDE" width="664.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="78.0" stroke="#123090" strokeType="INSIDE" width="664.0" />
                   <Label layoutX="215.0" layoutY="24.0" text="Current List" textFill="WHITE">
                      <font>
                         <Font name="Times New Roman" size="48.0" />
@@ -28,30 +25,12 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="64.0" prefWidth="664.0">
+            <Pane prefHeight="64.0" prefWidth="664.0" />
+            <Pane fx:id="tablePane" prefHeight="535.0" prefWidth="664.0">
                <children>
-                  <JFXTextArea editable="false" layoutX="447.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="              Status " unFocusColor="#4240a8">
-                     <font>
-                        <Font name="Serif Italic" size="24.0" />
-                     </font>
-                  </JFXTextArea>
-                  <JFXTextArea editable="false" layoutX="236.0" layoutY="-1.0" prefHeight="65.0" prefWidth="217.0" text="         Assigned " unFocusColor="#4240a8">
-                     <font>
-                        <Font name="Serif Italic" size="24.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </JFXTextArea>
-                  <JFXTextArea editable="false" layoutY="-1.0" prefHeight="64.0" prefWidth="242.0" text="   Request Type " unFocusColor="#4240a8">
-                     <font>
-                        <Font name="Serif Italic" size="24.0" />
-                     </font>
-                  </JFXTextArea>
+                  <JFXTreeTableView fx:id="requestList" prefHeight="491.0" prefWidth="664.0" />
                </children>
             </Pane>
-            <JFXBadge prefHeight="23.0" prefWidth="664.0" />
-            <JFXListView fx:id="requestList" prefHeight="406.0" prefWidth="664.0" style="-fx-border-color: navy;" />
          </children>
       </VBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="897.0" layoutY="507.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
