@@ -15,7 +15,7 @@ shadowJar {
 
 repositories {
     flatDir {
-        dirs '/APIJARs'
+        dirs 'APIJARs'
     }
     mavenCentral()
     maven {

@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.maintenanceSRDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -34,7 +35,9 @@ public class DatabaseManager {
   private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
   private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
   private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
+  private static final maintenanceSRDAOImpl maintenanceDAO = new maintenanceSRDAOImpl();
   private static final physicalTherapyDAOImpl ptDAO = new physicalTherapyDAOImpl();
+  private static final facilitiesDAOImpl facilitiesDAO = new facilitiesDAOImpl();
   private static final securityDAOImpl securityDAO = new securityDAOImpl();
 
   private static DatabaseManager DatabaseManager;
@@ -86,7 +89,9 @@ public class DatabaseManager {
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
+    maintenanceDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/request/maintenanceSR.csv");
     ptDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
+    facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     return Helper.dbMan;
   }
@@ -141,12 +146,14 @@ public class DatabaseManager {
     dropTableIfExist("securityRequest");
     dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
+    dropTableIfExist("facilitiesRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
     dropTableIfExist("GIFTREQUEST");
     dropTableIfExist("MEALREQUEST");
     dropTableIfExist("MEDICINEREQUEST");
     dropTableIfExist("EquipmentDeliveryRequest");
+    dropTableIfExist("MaintenanceRequest");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
@@ -185,9 +192,11 @@ public class DatabaseManager {
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
+    facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
+    System.out.println("Backed up to CSV :)");
   }
 
   /**
@@ -253,6 +262,14 @@ public class DatabaseManager {
 
   public static audioVisualDAOImpl getAudioVisDAO() {
     return audioVisualDAO;
+  }
+
+  public static maintenanceSRDAOImpl getMaintenanceDAO() {
+    return maintenanceDAO;
+  }
+
+  public static facilitiesDAOImpl getFacilitiesDAO() {
+    return facilitiesDAO;
   }
 
   public static physicalTherapyDAOImpl getPTDAO() {
