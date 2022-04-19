@@ -21,6 +21,11 @@ public class linksPageController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    //    websiteVBox.maxHeightProperty().bind(websiteVBox.heightProperty());
+    //    loginVBox.maxHeightProperty().bind(loginVBox.heightProperty());
+    //    covidVBox.maxHeightProperty().bind(covidVBox.heightProperty());
+    //    signUpVBox.maxHeightProperty().bind(signUpVBox.heightProperty());
+
     //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
 
   }
