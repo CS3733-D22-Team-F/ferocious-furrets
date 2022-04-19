@@ -74,12 +74,12 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="348.0" promptText="Status" unFocusColor="WHITE">
+                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="337.0" promptText="Scan Type" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="46.0" prefWidth="337.0" promptText="Scan Type" unFocusColor="WHITE">
+                  <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="348.0" promptText="Status" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
@@ -103,6 +103,11 @@
                         <Font size="27.0" />
                      </font>
                   </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Scan Type:" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
                   <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Status:" textFill="WHITE">
                      <font>
                         <Font size="27.0" />
@@ -110,11 +115,6 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="306.0" text="Scan Type:" textFill="WHITE">
-                     <font>
-                        <Font size="27.0" />
-                     </font>
                   </Label>
                </children>
             </VBox>
