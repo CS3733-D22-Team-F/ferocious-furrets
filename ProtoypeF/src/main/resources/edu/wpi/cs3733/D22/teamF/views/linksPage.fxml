@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -11,67 +13,80 @@
 
 <AnchorPane prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.linksPageController">
    <children>
-      <Pane prefHeight="97.0" prefWidth="1220.0" style="-fx-background-color: #123090;">
-         <children>
-            <HBox alignment="CENTER" layoutX="383.0" layoutY="17.0" prefHeight="64.0" prefWidth="454.0" spacing="10.0">
+      <BorderPane prefHeight="660.0" prefWidth="1220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="97.0" prefWidth="1220.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Regular" size="36.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../BWHlogo-new.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" layoutX="-1.0" layoutY="17.0" prefHeight="64.0" prefWidth="1220.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="SansSerif Regular" size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../BWHlogo-new.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="websiteVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="WANT TO LEARN MORE ABOUT US?" />
+                        <ImageView fitHeight="205.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/BW_QR_Code.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="VISIT OUR WEBSITE" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="loginVBox" alignment="CENTER" prefHeight="563.0" prefWidth="315.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="AN EXISTING USER?" />
+                        <ImageView fitHeight="219.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="LOGIN" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="covidVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="HEALTH &amp; SAFETY" />
+                        <ImageView fitHeight="211.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/COVID19Info_QR.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="COVID-19 " />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="signUpVBox" alignment="CENTER" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="INTERESTED IN JOINING US?" />
+                        <ImageView fx:id="" fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="SIGN UP HERE" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
                </children>
             </HBox>
-         </children>
-      </Pane>
-      <VBox fx:id="websiteVBox" alignment="CENTER" layoutX="55.0" layoutY="175.0">
-         <children>
-            <Label text="WANT TO LEARN MORE ABOUT US?" />
-            <ImageView fitHeight="205.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/BW_QR_Code.png" />
-               </image>
-            </ImageView>
-            <Label text="VISIT OUR WEBSITE" />
-         </children>
-      </VBox>
-      <VBox fx:id="loginVBox" alignment="CENTER" layoutX="304.0" layoutY="163.0">
-         <children>
-            <Label text="AN EXISTING USER?" />
-            <ImageView fitHeight="219.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
-               </image>
-            </ImageView>
-            <Label text="LOGIN" />
-         </children>
-      </VBox>
-      <VBox fx:id="covidVBox" alignment="CENTER" layoutX="590.0" layoutY="167.0">
-         <children>
-            <Label text="HEALTH &amp; SAFETY" />
-            <ImageView fitHeight="211.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/COVID19Info_QR.png" />
-               </image>
-            </ImageView>
-            <Label text="COVID-19 " />
-         </children>
-      </VBox>
-      <VBox fx:id="signUpVBox" alignment="CENTER" layoutX="854.0" layoutY="180.0">
-         <children>
-            <Label text="INTERESTED IN JOINING US?" />
-            <ImageView fx:id="" fitHeight="202.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
-               </image>
-            </ImageView>
-            <Label text="SIGN UP HERE" />
-         </children>
-      </VBox>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>
