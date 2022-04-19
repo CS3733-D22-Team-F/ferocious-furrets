@@ -45,17 +45,23 @@ public class requestListController extends PageController implements Initializab
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
+    try {
+      startTable();
+      System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   TreeItem<requestTree> treeRoot =
       new TreeItem<>(new requestTree(reqID, nodeID, assignedEmpID, requesterEmpID, status));
 
-  public void populateList() throws SQLException {
+  public void startTable() throws SQLException, IOException {
 
     clearTable();
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM ServiceRequest");
+    ResultSet rset =
+        DatabaseManager.getRequestDAO().get(); // .runQuery("SELECT * FROM ServiceRequest");
     ArrayList<requestTree> reqs = new ArrayList<requestTree>();
     requestTree rt;
 
@@ -89,7 +95,7 @@ public class requestListController extends PageController implements Initializab
             new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<requestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
-    nodeIDColumn.setCellValueFactory(
+    assignedEmpIDColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
