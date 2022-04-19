@@ -34,6 +34,7 @@ public class DatabaseManager {
   private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
   private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
   private static final physicalTherapyDAOImpl ptDAO = new physicalTherapyDAOImpl();
+  private static final securityDAOImpl securityDAO = new securityDAOImpl();
 
   private static DatabaseManager DatabaseManager;
 
@@ -84,6 +85,7 @@ public class DatabaseManager {
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     ptDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
+    securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     return Helper.dbMan;
   }
 
@@ -109,7 +111,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    System.out.println(statement);
+    //    System.out.println(statement);
     stm.close();
   }
   /**
@@ -134,6 +136,7 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
+    dropTableIfExist("securityRequest");
     dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
     dropTableIfExist("ScanRequest");
@@ -177,6 +180,7 @@ public class DatabaseManager {
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
     ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
+    securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");
     System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
@@ -249,6 +253,10 @@ public class DatabaseManager {
 
   public static physicalTherapyDAOImpl getPTDAO() {
     return ptDAO;
+  }
+
+  public static securityDAOImpl getSecurityDAO() {
+    return securityDAO;
   }
 
   /** helper */

@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class medicineDeliveryRequest extends DeliveryRequest {
 
   private String medicine;
+  private String RxDoctor;
+  private String Dosage;
+  private String totalAmount;
+  private String pharmacyAddress;
 
   public medicineDeliveryRequest() {
     db = new Repository("Medicine");
@@ -18,9 +22,37 @@ public class medicineDeliveryRequest extends DeliveryRequest {
       String assignedEmployeeID,
       String requesterEmployeeID,
       String status,
-      String medicine) {
+      String medicine,
+      String RxDoctor,
+      String dosage,
+      String totalAmount,
+      String pharmacyAddress) {
     super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
     this.medicine = medicine;
+    this.RxDoctor = RxDoctor;
+    this.Dosage = dosage;
+    this.totalAmount = totalAmount;
+    this.pharmacyAddress = pharmacyAddress;
+  }
+
+  public String getMedicine() {
+    return medicine;
+  }
+
+  public String getRxDoctor() {
+    return RxDoctor;
+  }
+
+  public String getDosage() {
+    return Dosage;
+  }
+
+  public String getTotalAmount() {
+    return totalAmount;
+  }
+
+  public String getPharmacyAddress() {
+    return pharmacyAddress;
   }
 
   @Override
