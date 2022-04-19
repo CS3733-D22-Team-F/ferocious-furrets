@@ -107,10 +107,10 @@ public class scanController extends PageController implements Initializable, IRe
     String scanType = typeChoice.getValue().toString();
     // If any of the field is missing, pop up a notice
     if (nodeField.getValue().toString().equals("")
-            || employeeIDField.getValue().toString().equals("")
-            || userField.getValue().toString().equals("")
-            || typeChoice.getValue().equals("")
-            || statusChoice.getValue().equals("")) {
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
+        || typeChoice.getValue().equals("")
+        || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
     } else {
       RequestSystem req = new RequestSystem("Scan");
@@ -139,7 +139,7 @@ public class scanController extends PageController implements Initializable, IRe
     clearTable();
 
     ResultSet scanRequestTable =
-            DatabaseManager.getScanRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
+        DatabaseManager.getScanRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<scanRequest> secReqs = new ArrayList<>();
     scanRequest er;
@@ -153,14 +153,14 @@ public class scanController extends PageController implements Initializable, IRe
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
           System.out.println("matched :)");
           er =
-                  new scanRequest(
-                          scanRequestTable.getString("reqID"),
-                          servRequest.getString("nodeID"),
-                          servRequest.getString("assignedEmployeeID"),
-                          servRequest.getString("requesterEmployeeID"),
-                          servRequest.getString("status"),
-                          scanRequestTable.getString(
-                                  "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+              new scanRequest(
+                  scanRequestTable.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  scanRequestTable.getString(
+                      "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
           // CORRECT TOO)
           secReqs.add(er);
           servRequest.close();
@@ -173,41 +173,41 @@ public class scanController extends PageController implements Initializable, IRe
 
     treeRoot.setExpanded(true);
     secReqs.stream()
-            .forEach(
-                    (scanRequest) -> {
-                      treeRoot.getChildren().add(new TreeItem<>(scanRequest));
-                    });
+        .forEach(
+            (scanRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(scanRequest));
+            });
     final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<scanRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
     nodeIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<scanRequest, String> scanTypeCol = new TreeTableColumn<>("Equipment ID:");
     scanTypeCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getScanType()));
+        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getScanType()));
 
     TreeTableColumn<scanRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
     assignedToCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     TreeTableColumn<scanRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
     requestedByCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
 
     TreeTableColumn<scanRequest, String> statusCol = new TreeTableColumn<>("Status:");
     statusCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<scanRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableView<scanRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
-            .getColumns()
-            .setAll(nodeIDCol, scanTypeCol, assignedToCol, requestedByCol, statusCol);
+        .getColumns()
+        .setAll(nodeIDCol, scanTypeCol, assignedToCol, requestedByCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -281,7 +281,6 @@ public class scanController extends PageController implements Initializable, IRe
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setLandingScreen();
   }
-
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());

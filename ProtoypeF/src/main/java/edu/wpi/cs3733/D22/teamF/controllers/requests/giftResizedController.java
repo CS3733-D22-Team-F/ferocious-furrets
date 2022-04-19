@@ -169,14 +169,14 @@ public class giftResizedController extends PageController
         if (servRequest.getString("reqID").equals(currentGiftReqID)) {
           //          System.out.println("matched :)");
           er =
-                  new giftDeliveryRequest(
-                          giftRequestTable.getString("reqID"),
-                          servRequest.getString("nodeID"),
-                          servRequest.getString("assignedEmployeeID"),
-                          servRequest.getString("requesterEmployeeID"),
-                          servRequest.getString("status"),
-                          giftRequestTable.getString(
-                                  "gift")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+              new giftDeliveryRequest(
+                  giftRequestTable.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  giftRequestTable.getString(
+                      "gift")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
           // CORRECT TOO)
           secReqs.add(er);
           servRequest.close();
@@ -189,38 +189,38 @@ public class giftResizedController extends PageController
 
     treeRoot.setExpanded(true);
     secReqs.stream()
-            .forEach(
-                    (giftDeliveryRequest) -> {
-                      treeRoot.getChildren().add(new TreeItem<>(giftDeliveryRequest));
-                    });
+        .forEach(
+            (giftDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(giftDeliveryRequest));
+            });
     final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<giftDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
     nodeIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<giftDeliveryRequest, String> giftCol = new TreeTableColumn<>("Gift:");
     giftCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getGift()));
+        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getGift()));
 
     TreeTableColumn<giftDeliveryRequest, String> assignedToCol =
-            new TreeTableColumn<>("Assigned To:");
+        new TreeTableColumn<>("Assigned To:");
     assignedToCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     TreeTableColumn<giftDeliveryRequest, String> requestedByCol =
-            new TreeTableColumn<>("Requested By:");
+        new TreeTableColumn<>("Requested By:");
     requestedByCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
 
     TreeTableColumn<giftDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
     statusCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<giftDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableView<giftDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(nodeIDCol, giftCol, assignedToCol, requestedByCol, statusCol);

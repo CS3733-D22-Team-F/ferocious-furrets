@@ -39,7 +39,7 @@ public class physicalTherapyController extends PageController
   private String notesS;
 
   TreeItem<physicalTherapyRequest> treeRoot =
-          new TreeItem<>(new physicalTherapyRequest(typeChoiceS, durationTimeS, notesS));
+      new TreeItem<>(new physicalTherapyRequest(typeChoiceS, durationTimeS, notesS));
 
   /**
    * Called to initialize a controller after its root element has been completely processed.

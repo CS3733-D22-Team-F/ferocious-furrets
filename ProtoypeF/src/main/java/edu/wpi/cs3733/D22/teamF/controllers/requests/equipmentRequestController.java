@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -186,7 +185,7 @@ public class equipmentRequestController extends PageController
     clearTable();
 
     ResultSet equipRequest =
-            DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
+        DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<equipmentDeliveryRequest> secReqs = new ArrayList<equipmentDeliveryRequest>();
     equipmentDeliveryRequest er;
@@ -200,14 +199,14 @@ public class equipmentRequestController extends PageController
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
           System.out.println("matched :)");
           er =
-                  new equipmentDeliveryRequest(
-                          equipRequest.getString("reqID"),
-                          servRequest.getString("nodeID"),
-                          servRequest.getString("assignedEmployeeID"),
-                          servRequest.getString("requesterEmployeeID"),
-                          servRequest.getString("status"),
-                          equipRequest.getString(
-                                  "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+              new equipmentDeliveryRequest(
+                  equipRequest.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  equipRequest.getString(
+                      "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
           // CORRECT TOO)
           secReqs.add(er);
           servRequest.close();
@@ -220,45 +219,45 @@ public class equipmentRequestController extends PageController
 
     treeRoot.setExpanded(true);
     secReqs.stream()
-            .forEach(
-                    (equipmentDeliveryRequest) -> {
-                      treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
-                    });
+        .forEach(
+            (equipmentDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
+            });
     final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<equipmentDeliveryRequest, String> nodeIDCol =
-            new TreeTableColumn<>("Location:");
+        new TreeTableColumn<>("Location:");
     nodeIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<equipmentDeliveryRequest, String> equipmentIDCol =
-            new TreeTableColumn<>("Equipment ID:");
+        new TreeTableColumn<>("Equipment ID:");
     equipmentIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
 
     TreeTableColumn<equipmentDeliveryRequest, String> assignedToCol =
-            new TreeTableColumn<>("Assigned To:");
+        new TreeTableColumn<>("Assigned To:");
     assignedToCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     TreeTableColumn<equipmentDeliveryRequest, String> requestedByCol =
-            new TreeTableColumn<>("Requested By:");
+        new TreeTableColumn<>("Requested By:");
     requestedByCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
 
     TreeTableColumn<equipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
     statusCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableView<equipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
-            .getColumns()
-            .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
+        .getColumns()
+        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -332,12 +331,6 @@ public class equipmentRequestController extends PageController
     String reqAbb = "ER";
 
     return reqAbb + equipID + (requestListLength + 1) + nodeID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-    System.out.println(treeRoot.getChildren().size());
   }
 
   @Override

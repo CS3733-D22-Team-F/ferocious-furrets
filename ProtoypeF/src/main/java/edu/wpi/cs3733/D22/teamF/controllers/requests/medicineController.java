@@ -76,7 +76,6 @@ public class medicineController extends PageController
               totalAmountO,
               pharmacyAddressO));
 
-
   /**
    * inits
    *
@@ -188,17 +187,17 @@ public class medicineController extends PageController
         if (servRequest.getString("reqID").equals(currentMedEquipDelReqID)) {
           System.out.println("matched :)");
           er =
-                  new medicineDeliveryRequest(
-                          medicineReq.getString("reqID"),
-                          servRequest.getString("nodeID"),
-                          servRequest.getString("assignedEmployeeID"),
-                          servRequest.getString("requesterEmployeeID"),
-                          servRequest.getString("status"),
-                          medicineReq.getString("medicine"),
-                          medicineReq.getString("RxDoctor"),
-                          medicineReq.getString("dosage"),
-                          medicineReq.getString("totalAmount"),
-                          medicineReq.getString("pharmacyAddress"));
+              new medicineDeliveryRequest(
+                  medicineReq.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  medicineReq.getString("medicine"),
+                  medicineReq.getString("RxDoctor"),
+                  medicineReq.getString("dosage"),
+                  medicineReq.getString("totalAmount"),
+                  medicineReq.getString("pharmacyAddress"));
           secReqs.add(er);
           servRequest.close();
           break;
@@ -209,76 +208,76 @@ public class medicineController extends PageController
 
     treeRoot.setExpanded(true);
     secReqs.stream()
-            .forEach(
-                    (medicineDeliveryRequest) -> {
-                      treeRoot.getChildren().add(new TreeItem<>(medicineDeliveryRequest));
-                    });
+        .forEach(
+            (medicineDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(medicineDeliveryRequest));
+            });
     final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<medicineDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
     nodeIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<medicineDeliveryRequest, String> assignedToCol =
-            new TreeTableColumn<>("Assigned To:");
+        new TreeTableColumn<>("Assigned To:");
     assignedToCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     TreeTableColumn<medicineDeliveryRequest, String> requestedByCol =
-            new TreeTableColumn<>("Requested By:");
+        new TreeTableColumn<>("Requested By:");
     requestedByCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
 
     TreeTableColumn<medicineDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
     statusCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableColumn<medicineDeliveryRequest, String> medicineCol =
-            new TreeTableColumn<>("Medicine: ");
+        new TreeTableColumn<>("Medicine: ");
     medicineCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getMedicine()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getMedicine()));
 
     TreeTableColumn<medicineDeliveryRequest, String> RxDoctorCol =
-            new TreeTableColumn<>("RxDoctor: ");
+        new TreeTableColumn<>("RxDoctor: ");
     RxDoctorCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getRxDoctor()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRxDoctor()));
 
     TreeTableColumn<medicineDeliveryRequest, String> DosageCol = new TreeTableColumn<>("Dosage: ");
     DosageCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getDosage()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getDosage()));
 
     TreeTableColumn<medicineDeliveryRequest, String> totalAmountCol =
-            new TreeTableColumn<>("Total Amount: ");
+        new TreeTableColumn<>("Total Amount: ");
     totalAmountCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getTotalAmount()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getTotalAmount()));
 
     TreeTableColumn<medicineDeliveryRequest, String> pharmaryAddressCol =
-            new TreeTableColumn<>("Pharmacy Address: ");
+        new TreeTableColumn<>("Pharmacy Address: ");
     pharmaryAddressCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getPharmacyAddress()));
+        (TreeTableColumn.CellDataFeatures<medicineDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getPharmacyAddress()));
 
     TreeTableView<medicineDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
-            .getColumns()
-            .setAll(
-                    nodeIDCol,
-                    assignedToCol,
-                    requestedByCol,
-                    statusCol,
-                    medicineCol,
-                    RxDoctorCol,
-                    DosageCol,
-                    totalAmountCol,
-                    pharmaryAddressCol);
+        .getColumns()
+        .setAll(
+            nodeIDCol,
+            assignedToCol,
+            requestedByCol,
+            statusCol,
+            medicineCol,
+            RxDoctorCol,
+            DosageCol,
+            totalAmountCol,
+            pharmaryAddressCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -316,7 +315,6 @@ public class medicineController extends PageController
     String nID = "f" + nNodeType + reqNum;
     return nID;
   }
-
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());

@@ -7,14 +7,12 @@ import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.audioVisualRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -58,7 +56,7 @@ public class audioVisualController extends PageController
   private String accessObject;
 
   TreeItem<audioVisualRequest> treeRoot =
-          new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
+      new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
 
   /**
    * inits
@@ -148,7 +146,6 @@ public class audioVisualController extends PageController
     typeChoice.valueProperty().setValue("");
     objectChoice.valueProperty().setValue("");
   }
-
 
   public void startTable() throws SQLException {
 
@@ -250,7 +247,6 @@ public class audioVisualController extends PageController
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
-
 
   /**
    * Method to create a class specifics context menu
