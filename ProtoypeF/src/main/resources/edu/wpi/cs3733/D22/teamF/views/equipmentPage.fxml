@@ -149,6 +149,20 @@
                   </HBox>
                </children>
             </VBox>
+            <HBox fx:id="leftHBox21" layoutX="188.0" layoutY="651.0">
+               <children>
+                  <TextField fx:id="filterEmployee" prefWidth="194.0" promptText="Employee Name">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </TextField>
+                  <JFXButton fx:id="filterButton" buttonType="RAISED" onAction="#f" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Filter" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </left>
