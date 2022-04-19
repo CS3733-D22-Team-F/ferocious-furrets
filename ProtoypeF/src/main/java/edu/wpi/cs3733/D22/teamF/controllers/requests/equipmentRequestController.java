@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -123,15 +122,6 @@ public class equipmentRequestController extends PageController
   }
 
   @FXML
-  void resetFunction() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null);
-  }
-
-  @FXML
   public void submit() throws SQLException, IOException {
 
     String newReqID;
@@ -178,80 +168,17 @@ public class equipmentRequestController extends PageController
     startTable();
   }
 
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0];
-    String first = employeeName[1];
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Equipment");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  public String getAvailableEquipment() throws SQLException {
-    ResultSet rset =
-        DatabaseManager.runQuery(
-            "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
-                + typeChoice.getValue().toString()
-                + "'");
-    String eID = "";
-    if (!rset.next()) {
-
-    } else {
-      eID = rset.getString("equipID");
-    }
-    return eID;
-  }
-
-  public String generateReqID() throws SQLException, IOException {
-    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.getRequestDAO().get();
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
+  @FXML
+  void resetFunction() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null);
   }
 
   @Override
   public void reset() {}
-
-  // TODO make a interaface for all controllers
-  public String generateReqID(int requestListLength, String equipID, String nodeID) {
-    String reqAbb = "ER";
-
-    return reqAbb + equipID + (requestListLength + 1) + nodeID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-    System.out.println(treeRoot.getChildren().size());
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
 
   public void startTable() throws SQLException, IOException {
 
@@ -266,11 +193,11 @@ public class equipmentRequestController extends PageController
 
     while (equipRequest.next()) {
       currentEquipDelReqID = equipRequest.getString("reqID");
-      System.out.println(currentEquipDelReqID);
+      //      System.out.println(currentEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new equipmentDeliveryRequest(
                   equipRequest.getString("reqID"),
@@ -341,6 +268,74 @@ public class equipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  /* Helpers */
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0];
+    String first = employeeName[1];
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Equipment");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String getAvailableEquipment() throws SQLException {
+    ResultSet rset =
+        DatabaseManager.runQuery(
+            "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
+                + typeChoice.getValue().toString()
+                + "'");
+    String eID = "";
+    if (!rset.next()) {
+
+    } else {
+      eID = rset.getString("equipID");
+    }
+    return eID;
+  }
+
+  public String generateReqID() throws SQLException, IOException {
+    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.getRequestDAO().get();
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
+  }
+
+  // TODO make a interaface for all controllers
+  public String generateReqID(int requestListLength, String equipID, String nodeID) {
+    String reqAbb = "ER";
+
+    return reqAbb + equipID + (requestListLength + 1) + nodeID;
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 
   public void clearTable() {

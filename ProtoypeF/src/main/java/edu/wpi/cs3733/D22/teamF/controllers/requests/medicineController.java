@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/** ARCHIVED, NOW HANDLED THROUGH TEAM F MEDICINE REQUEST API */
 public class medicineController extends PageController
     implements Initializable, IRequestController {
   private Stage stage;
@@ -76,79 +77,6 @@ public class medicineController extends PageController
               totalAmountO,
               pharmacyAddressO));
 
-  @FXML
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeOfMed.clear();
-    statusChoice.valueProperty().setValue(null);
-    // typeChoice.valueProperty().setValue(null);
-    prescribingDoctor.clear();
-    dosage.clear();
-    units.valueProperty().setValue(null);
-    units2.valueProperty().setValue(null);
-    totalAmount.clear();
-    pharmacyAddress.clear();
-  }
-
-  @FXML
-  public void submit() throws SQLException, IOException {
-    ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getValue().toString().equals("")
-        || employeeIDField.getValue().toString().equals("")
-        || userField.getValue().toString().equals("")
-        || typeOfMed.getText().equals("")
-        || statusChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
-    } else {
-      requestList.clear();
-      // requestList.add("Medicine Request for: " + typeChoice.getValue());
-      requestList.add("Assigned Doctor: " + userField.getValue().toString());
-      requestList.add("Status: " + statusChoice.getValue());
-      serviceRequestStorage.addToArrayList(requestList);
-      RequestSystem req = new RequestSystem("Medicine");
-      ArrayList<String> fields = new ArrayList<String>();
-      fields.add(generateReqID());
-      fields.add(nodeIDFinder(nodeField.getValue().toString()));
-      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
-      fields.add(employeeIDFinder(userField.getValue().toString()));
-      fields.add(statusChoice.getValue().toString());
-      fields.add(typeOfMed.getText());
-      fields.add(prescribingDoctor.getText());
-      String catDosage = dosage.getText() + units.getValue().toString();
-      fields.add(catDosage);
-      String catTotalAmount = totalAmount.getText() + units.getValue().toString();
-      fields.add(catTotalAmount);
-      fields.add(pharmacyAddress.getText());
-      req.placeRequest(fields);
-
-      reset();
-    }
-
-    startTable();
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Medicine");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  public String generateReqID() throws SQLException {
-    String nNodeType = typeOfMed.getText().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
-
   /**
    * inits
    *
@@ -189,6 +117,59 @@ public class medicineController extends PageController
     }
   }
 
+  @FXML
+  public void submit() throws SQLException, IOException {
+    ArrayList<Object> requestList = new ArrayList<>();
+    if (nodeField.getValue().toString().equals("")
+        || employeeIDField.getValue().toString().equals("")
+        || userField.getValue().toString().equals("")
+        || typeOfMed.getText().equals("")
+        || statusChoice.getValue().equals("")) {
+      System.out.println("There are still blank field");
+    } else {
+      requestList.clear();
+      // requestList.add("Medicine Request for: " + typeChoice.getValue());
+      requestList.add("Assigned Doctor: " + userField.getValue().toString());
+      requestList.add("Status: " + statusChoice.getValue());
+      serviceRequestStorage.addToArrayList(requestList);
+      RequestSystem req = new RequestSystem("Medicine");
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(generateReqID());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
+      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
+      fields.add(employeeIDFinder(userField.getValue().toString()));
+      fields.add(statusChoice.getValue().toString());
+      fields.add(typeOfMed.getText());
+      fields.add(prescribingDoctor.getText());
+      String catDosage = dosage.getText() + units.getValue().toString();
+      fields.add(catDosage);
+      String catTotalAmount = totalAmount.getText() + units.getValue().toString();
+      fields.add(catTotalAmount);
+      fields.add(pharmacyAddress.getText());
+      req.placeRequest(fields);
+
+      reset();
+    }
+
+    startTable();
+  }
+
+  @FXML
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeOfMed.clear();
+    statusChoice.valueProperty().setValue(null);
+    // typeChoice.valueProperty().setValue(null);
+    prescribingDoctor.clear();
+    dosage.clear();
+    units.valueProperty().setValue(null);
+    units2.valueProperty().setValue(null);
+    totalAmount.clear();
+    pharmacyAddress.clear();
+  }
+
   public void startTable() throws SQLException, IOException {
 
     clearTable();
@@ -201,11 +182,11 @@ public class medicineController extends PageController
 
     while (medicineReq.next()) {
       currentMedEquipDelReqID = medicineReq.getString("reqID");
-      System.out.println(currentMedEquipDelReqID);
+      //      System.out.println(currentMedEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentMedEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new medicineDeliveryRequest(
                   medicineReq.getString("reqID"),
@@ -312,6 +293,28 @@ public class medicineController extends PageController
     totalAmountCol.minWidthProperty().bind(tablePane.widthProperty().divide(9));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(9));
+  }
+
+  /* helper */
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Medicine");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeOfMed.getText().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
   }
 
   public void clearTable() {

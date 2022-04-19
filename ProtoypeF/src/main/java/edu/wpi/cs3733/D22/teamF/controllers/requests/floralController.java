@@ -10,6 +10,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 
 public class floralController extends PageController implements Initializable, IRequestController {
+
+  /**
+   * Called to initialize a controller after its root element has been completely processed.
+   *
+   * @param location The location used to resolve relative paths for the root object, or {@code
+   *     null} if the location is not known.
+   * @param resources The resources used to localize the root object, or {@code null} if
+   */
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {}
+
   @Override
   public void submit() {}
 
@@ -27,6 +38,8 @@ public class floralController extends PageController implements Initializable, I
   /** clears the table in the request page */
   public void clearTable() {}
 
+  /* helpers function */
+
   /**
    * generates a reqID based on fields in the request page
    *
@@ -36,16 +49,6 @@ public class floralController extends PageController implements Initializable, I
   public String generateReqID() throws SQLException, IOException {
     return null;
   }
-
-  /**
-   * Called to initialize a controller after its root element has been completely processed.
-   *
-   * @param location The location used to resolve relative paths for the root object, or {@code
-   *     null} if the location is not known.
-   * @param resources The resources used to localize the root object, or {@code null} if
-   */
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {}
 
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setHome();

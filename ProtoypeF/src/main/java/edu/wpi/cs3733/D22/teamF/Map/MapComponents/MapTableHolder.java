@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -257,12 +258,13 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllMedicine() throws SQLException {
     ArrayList<Location> medi = new ArrayList<>();
     // medicine requests
-    ResultSet medicineReqs = DatabaseManager.getMedicineDAO().get();
+    Statement stm = DatabaseManager.getConn().createStatement();
+    ResultSet medicineReqs = stm.executeQuery("SELECT * FROM MEDICINEREQUEST");
     while (medicineReqs.next()) {
       String reqID = medicineReqs.getString("reqID");
       ResultSet reqInfo =
           DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+              String.format("SELECT * FROM MEDICINEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;

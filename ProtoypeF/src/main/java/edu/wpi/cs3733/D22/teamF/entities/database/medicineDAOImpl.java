@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/** ARCHIVED, MEDICINEREQUEST TABLE NOW HANDLED THROUGH TEAM F MEDICINE REQUEST API */
 public class medicineDAOImpl implements IRequestDAO {
 
   public void initTable(File file) throws SQLException, IOException {

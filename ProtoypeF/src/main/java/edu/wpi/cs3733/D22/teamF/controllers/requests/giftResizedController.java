@@ -64,44 +64,6 @@ public class giftResizedController extends PageController
       new TreeItem<>(
           new giftDeliveryRequest(requestID, nodeIDO, assignedEmpID, requesterEmpID, status, gift));
 
-  /**
-   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
-   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
-   *
-   * @return giftDeliveryRequest
-   */
-  public void submit() throws SQLException, IOException {
-    RequestSystem req = new RequestSystem("Gift");
-    ArrayList<String> fields = new ArrayList<String>();
-    fields.add(generateReqID());
-    fields.add(nodeIDFinder(nodeID.getValue().toString()));
-    fields.add(employeeIDFinder(assigned.getValue().toString()));
-    fields.add(employeeIDFinder(employeeID.getValue().toString()));
-    fields.add(statusChoice.getValue().toString());
-    if (giftChoice.getValue().toString().length() > 16)
-      fields.add(giftChoice.getValue().toString().substring(0, 15));
-    else fields.add(giftChoice.getValue().toString());
-    req.placeRequest(fields);
-
-    reset();
-
-    startTable();
-  }
-
-  @Override
-  public void reset() {
-    assigned.valueProperty().setValue(null);
-    employeeID.valueProperty().setValue(null);
-    nodeID.valueProperty().setValue(null);
-    statusChoice.valueProperty().set(null);
-    giftChoice.valueProperty().set(null);
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
@@ -157,36 +119,36 @@ public class giftResizedController extends PageController
   }
 
   /**
-   * shows the queue scene
+   * submit the Arraylist that contains the items and doctor Return formula: ['Service Type',
+   * 'Service1', 'Service2',..., 'Patient Name', 'Room Number', 'Doctor Name']
    *
-   * @param event
-   * @throws IOException
+   * @return giftDeliveryRequest
    */
-  public void showQueueScene(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
+  public void submit() throws SQLException, IOException {
+    RequestSystem req = new RequestSystem("Gift");
+    ArrayList<String> fields = new ArrayList<String>();
+    fields.add(generateReqID());
+    fields.add(nodeIDFinder(nodeID.getValue().toString()));
+    fields.add(employeeIDFinder(assigned.getValue().toString()));
+    fields.add(employeeIDFinder(employeeID.getValue().toString()));
+    fields.add(statusChoice.getValue().toString());
+    if (giftChoice.getValue().toString().length() > 16)
+      fields.add(giftChoice.getValue().toString().substring(0, 15));
+    else fields.add(giftChoice.getValue().toString());
+    req.placeRequest(fields);
+
+    reset();
+
+    startTable();
   }
 
-  public String generateReqID() throws SQLException {
-    String nNodeType = giftChoice.getValue().toString().substring(0, 3);
-    int reqNum = 0;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    if (reqNum == 0) {
-      reqNum = 1;
-    }
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
+  @Override
+  public void reset() {
+    assigned.valueProperty().setValue(null);
+    employeeID.valueProperty().setValue(null);
+    nodeID.valueProperty().setValue(null);
+    statusChoice.valueProperty().set(null);
+    giftChoice.valueProperty().set(null);
   }
 
   public void startTable() throws SQLException, IOException {
@@ -201,7 +163,7 @@ public class giftResizedController extends PageController
 
     while (giftRequestTable.next()) {
       currentGiftReqID = giftRequestTable.getString("reqID");
-      System.out.println(currentGiftReqID);
+      //      System.out.println(currentGiftReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentGiftReqID)) {
@@ -272,6 +234,46 @@ public class giftResizedController extends PageController
     giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  /* helper */
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
+  /**
+   * shows the queue scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  public void showQueueScene(ActionEvent event) throws IOException {
+    // StageManager.getInstance().setDisplay("giftRequestQueue.fxml");
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = giftChoice.getValue().toString().substring(0, 3);
+    int reqNum = 0;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    if (reqNum == 0) {
+      reqNum = 1;
+    }
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    // StageManager.getInstance().setLandingScreen();
   }
 
   public void clearTable() {
