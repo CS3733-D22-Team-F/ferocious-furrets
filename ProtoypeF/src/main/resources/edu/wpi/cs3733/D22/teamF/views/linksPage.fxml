@@ -45,7 +45,7 @@
                               <Insets bottom="20.0" />
                            </VBox.margin>
                            <children>
-                              <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true">
+                              <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font name="SansSerif Regular" size="18.0" />
                                  </font>
@@ -53,7 +53,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
                                     <Image url="@../Images/learnIcon.png" />
                                  </image>
@@ -105,7 +105,7 @@
                               <Insets top="-20.0" />
                            </VBox.margin>
                            <children>
-                              <Label prefHeight="54.0" prefWidth="168.0" text="AN EXISTING USER?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label prefHeight="54.0" prefWidth="168.0" text="AN EXISTING USER?" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font name="SansSerif Regular" size="18.0" />
                                  </font>
@@ -113,7 +113,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
                                     <Image url="@../Images/existingUser.png" />
                                  </image>
@@ -155,7 +155,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <children>
-                              <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font name="SansSerif Regular" size="18.0" />
                                  </font>
@@ -163,7 +163,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
                                     <Image url="@../Images/updatedHealthSafety.png" />
                                  </image>
@@ -208,7 +208,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <children>
-                              <Label prefHeight="54.0" prefWidth="168.0" text="INTERESTED JOINING US?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label prefHeight="54.0" prefWidth="168.0" text="INTERESTED JOINING US?" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font name="SansSerif Regular" size="18.0" />
                                  </font>
@@ -216,19 +216,22 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
-                                    <Image url="@../Images/updatedHealthSafety.png" />
+                                    <Image url="@../Images/joinUsIcon.png" />
                                  </image>
                               </ImageView>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
                         <StackPane prefHeight="230.0" prefWidth="277.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
-                              <ImageView fitHeight="272.0" fitWidth="183.0" pickOnBounds="true">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="253.0" />
+                              <ImageView fitHeight="286.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/signUpBwh.jpg" />
+                                    <Image url="@../Images/simple-sign-up-form-with-blue-background.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -251,7 +254,7 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
                      </HBox.margin>
                   </VBox>
                </children>
