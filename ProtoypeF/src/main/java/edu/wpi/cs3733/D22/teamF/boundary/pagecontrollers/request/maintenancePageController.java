@@ -107,7 +107,7 @@ public class maintenancePageController extends PageController
    * @throws SQLException
    * @throws IOException
    */
-  public void submit() throws SQLException, IOException {
+  public void submit() {
 
     String newReqID;
     String newNodeID;
@@ -129,23 +129,41 @@ public class maintenancePageController extends PageController
       RequestSystem req = new RequestSystem("Maintenance");
       ArrayList<String> fields = new ArrayList<>();
 
-      fields.add(0, generateReqID());
-      fields.add(1, nodeIDFinder(locationBox.getValue().toString()));
-      fields.add(2, employeeIDFinder(assignedEmployeeBox.getValue().toString()));
-      fields.add(3, employeeIDFinder(requestedEmployeeBox.getValue().toString()));
-      fields.add(4, statusBox.getValue().toString());
-      fields.add(5, getAvailableEquipment());
-      fields.add(6, maintenanceBox.getValue().toString());
-      req.placeRequest(fields);
-
+      try {
+        fields.add(0, generateReqID());
+        fields.add(1, nodeIDFinder(locationBox.getValue().toString()));
+        fields.add(2, employeeIDFinder(assignedEmployeeBox.getValue().toString()));
+        fields.add(3, employeeIDFinder(requestedEmployeeBox.getValue().toString()));
+        fields.add(4, statusBox.getValue().toString());
+        fields.add(5, getAvailableEquipment());
+        fields.add(6, maintenanceBox.getValue().toString());
+        req.placeRequest(fields);
+        startTable();
+      } catch (SQLException | IOException e) {
+        e.printStackTrace();
+      }
       reset();
     }
-
-    startTable();
   }
 
   /** clears the fields in the request page */
   public void reset() {}
+
+  /* resolve request */
+  public void resolve() {
+    if (!reqIDField.getText().equals("")) {
+      RequestSystem req = new RequestSystem("Maintenance");
+      try {
+        req.resolveRequest(reqIDField.getText());
+        startTable();
+      } catch (SQLException | IOException e) {
+        e.printStackTrace();
+      }
+      reqIDField.clear();
+    } else {
+      System.out.println("Fields are blank"); // error message on screen?
+    }
+  }
 
   /**
    * Starts the table in the request page
@@ -299,12 +317,6 @@ public class maintenancePageController extends PageController
     }
     rset.close();
     return empID;
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem(""); // TODO edit this
-    req.resolveRequest(reqIDField.getText());
-    reqIDField.clear();
   }
 
   public String getAvailableEquipment() throws SQLException {

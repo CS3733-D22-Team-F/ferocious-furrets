@@ -169,7 +169,7 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </TextField>
-                  <JFXButton fx:id="resolveButton" prefHeight="44.0" prefWidth="123.0" text="Resolve" textFill="WHITE">
+                  <JFXButton fx:id="resolveButton" onAction="#resolve" prefHeight="44.0" prefWidth="123.0" text="Resolve" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="22.0" />
                      </font>
