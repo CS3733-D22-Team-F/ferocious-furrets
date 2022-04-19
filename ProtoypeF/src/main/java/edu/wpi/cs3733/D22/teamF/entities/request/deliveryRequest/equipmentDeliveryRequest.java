@@ -46,6 +46,10 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
         reqID, requestedEquipmentID, nodeID, assignedEmpID, requesterEmpID, status);
   }
 
+  public String getreqID() {
+    return reqID;
+  }
+
   public String getRequestedEquipmentID() {
     return requestedEquipmentID;
   }

@@ -124,7 +124,6 @@ public class audioVisualController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
     rectangle1.heightProperty().bind(masterPane.heightProperty());
@@ -182,6 +181,7 @@ public class audioVisualController extends PageController
               rset.getString("accessObject"));
       avReqs.add(avr);
     }
+    rset.close();
 
     treeRoot.setExpanded(true);
     avReqs.stream()

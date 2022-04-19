@@ -23,6 +23,10 @@ public class giftDeliveryRequest extends DeliveryRequest {
     this.gift = gift;
   }
 
+  public String getGift() {
+    return gift;
+  }
+
   public void place(ArrayList<String> fields) throws SQLException {
     db.addRequest(fields);
   }

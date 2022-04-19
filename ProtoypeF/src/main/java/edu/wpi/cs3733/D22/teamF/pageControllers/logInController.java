@@ -47,7 +47,6 @@ public class logInController extends returnHomePage implements Initializable {
   @FXML private Pane imagePane;
   @FXML private AnchorPane imageAnchor;
 
-  private Stage stage;
   private Parent root;
   private Scene scene;
 
@@ -118,16 +117,16 @@ public class logInController extends returnHomePage implements Initializable {
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
       Scene scene = null;
+      Stage stage = SceneManager.getInstance().getStage();
       try {
         scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+        popUpLabel.setVisible(false);
       } catch (IOException e) {
         e.printStackTrace();
+        System.out.println("ERROR: In login controller");
       }
-      Stage stage = SceneManager.getInstance().getStage();
-      SceneManager.getInstance().setStage(stage);
-      stage.setScene(scene);
-      stage.show();
-      popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
     }

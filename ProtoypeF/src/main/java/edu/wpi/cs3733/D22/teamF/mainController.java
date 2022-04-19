@@ -9,16 +9,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
+import javafx.stage.Screen;
 import lombok.SneakyThrows;
 
 public class mainController implements Initializable {
 
   @FXML StackPane pageHolder;
+  @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
   @FXML VBox homeMenu;
   @FXML VBox mapMenu;
@@ -70,6 +76,29 @@ public class mainController implements Initializable {
     v1.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
     v3.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
     v5.prefHeightProperty().bind(menu.heightProperty().divide(10).multiply(8));
+    serviceMenu.maxHeightProperty().bind(mainPane.heightProperty());
+    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+    SceneManager.getInstance()
+        .getStage()
+        .fullScreenProperty()
+        .addListener(
+            new ChangeListener<Boolean>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends Boolean> observable,
+                  Boolean oldValue,
+                  Boolean newValue) {
+                double newHeight = screenBounds.getHeight() / pageHolder.getHeight();
+                double newWidth = screenBounds.getWidth() / pageHolder.getWidth();
+                if (newValue) {
+                  System.out.println("W: " + newWidth + " H: " + newHeight);
+                  pageHolder.getTransforms().add(new Scale(newWidth, newHeight));
+                } else {
+
+                  pageHolder.getTransforms().add(new Scale(1 / newWidth, 1 / newHeight));
+                }
+              }
+            });
     //    v2.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v4.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v6.prefHeightProperty().bind(menu.heightProperty().divide(11));
