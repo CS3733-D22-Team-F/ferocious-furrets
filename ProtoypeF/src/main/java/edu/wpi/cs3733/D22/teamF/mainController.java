@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
@@ -255,7 +254,7 @@ public class mainController implements Initializable {
     //    } catch (SQLException e) {
     //      e.printStackTrace();
     //    }
-    MedicineRequest.run(0, 0, 0, 0, "combobox.css", "FDEPT00301");
+    MedicineRequest.run(0, 0, 0, 0, "stylesheets/RequestPages.css", "FDEPT00301");
   }
 
   public void changeToDashboard() throws IOException {

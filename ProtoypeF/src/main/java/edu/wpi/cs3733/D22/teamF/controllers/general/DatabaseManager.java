@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import edu.wpi.cs3733.D22.teamF.MedicineRequest;
+import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -78,9 +78,8 @@ public class DatabaseManager {
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    MedicineRequest.initializeDatabase(
-        "/edu/wpi/cs3733/D22/teamF/csv/medicine.csv",
-        "/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
+    // medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.initializeDatabase("/apiCSV/medicine.csv", "/apiCSV/employees.csv");
     giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
@@ -112,7 +111,7 @@ public class DatabaseManager {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    System.out.println(statement);
+    // System.out.println(statement);
     stm.close();
   }
   /**
@@ -176,6 +175,8 @@ public class DatabaseManager {
     labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.backUpDatabase(
+        "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
