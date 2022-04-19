@@ -26,6 +26,5 @@ public class linksPageController implements Initializable {
     loginVBox.maxHeightProperty().bind(loginVBox.heightProperty());
     covidVBox.maxHeightProperty().bind(covidVBox.heightProperty());
     signUpVBox.maxHeightProperty().bind(signUpVBox.heightProperty());
-
   }
 }

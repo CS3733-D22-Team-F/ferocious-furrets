@@ -18,7 +18,7 @@
          <top>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #123090;" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #3e8cd0;" HBox.hgrow="ALWAYS">
                      <children>
                         <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
@@ -176,7 +176,7 @@
                         <StackPane prefHeight="230.0" prefWidth="277.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
-                              <ImageView fitHeight="255.0" fitWidth="188.0" pickOnBounds="true">
+                              <ImageView fitHeight="255.0" fitWidth="231.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Images/hsIcon.jpg" />
                                  </image>
