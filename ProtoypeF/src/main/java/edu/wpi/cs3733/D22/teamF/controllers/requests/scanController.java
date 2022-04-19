@@ -133,7 +133,7 @@ public class scanController extends PageController implements Initializable, IRe
    *
    * @return MedicalRequest object
    */
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     ArrayList<Object> requestList = new ArrayList<>();
     //    String reqID =
     //        generateReqID(
@@ -166,6 +166,8 @@ public class scanController extends PageController implements Initializable, IRe
       serviceRequestStorage.addToArrayList(requestList);
       this.reset();
     }
+
+    startTable();
   }
 
   public void resolveRequest() throws SQLException {
@@ -194,6 +196,9 @@ public class scanController extends PageController implements Initializable, IRe
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet scanRequestTable =
         DatabaseManager.getScanRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
@@ -207,7 +212,7 @@ public class scanController extends PageController implements Initializable, IRe
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new scanRequest(
                   scanRequestTable.getString("reqID"),
@@ -274,5 +279,9 @@ public class scanController extends PageController implements Initializable, IRe
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

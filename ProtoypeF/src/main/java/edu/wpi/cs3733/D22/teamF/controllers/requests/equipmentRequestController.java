@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -71,13 +69,6 @@ public class equipmentRequestController extends PageController
       new TreeItem<>(
           new equipmentDeliveryRequest(
               requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> locationCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> assignedCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> requestedCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> statusCol;
-  //  @FXML private TableColumn<equipmentDeliveryRequest, String> equipCol;
-
-  ObservableList<equipmentDeliveryRequest> currentTableRows = FXCollections.observableArrayList();
 
   public equipmentRequestController() {}
 
@@ -124,92 +115,6 @@ public class equipmentRequestController extends PageController
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
 
-    //    String currentReqIDM;
-    //    String currentReqIDO;
-    //    String currentEquipID;
-    //    String currentNodeID;
-    //    String currentAssignedEmployeeID;
-    //    String currentRequesterEmployeeID;
-    //    String currentStatus;
-    //
-    //    locationCol.setCellValueFactory(
-    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("nodeID"));
-    //    assignedCol.setCellValueFactory(
-    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("assignedEmpID"));
-    //    requestedCol.setCellValueFactory(
-    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("requesterEmpID"));
-    //    statusCol.setCellValueFactory(
-    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("status"));
-    //    equipCol.setCellValueFactory(
-    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("requestedEquipmentID"));
-    //
-    //    table.setItems(currentTableRows);
-    //
-    //    ArrayList<String> currentFields = new ArrayList<>(); // array list of all equipment
-    //
-    //    //    System.out.println("hello");
-    //
-    //    try {
-    //
-    //      // get from database
-    //      ResultSet EquipmentRequest = DatabaseManager.getMedEquipDelReqDAO().get();
-    //
-    //      while (EquipmentRequest.next()) {
-    //
-    //        ResultSet ServiceRequest = DatabaseManager.getRequestDAO().get();
-    //
-    //        currentReqIDM = EquipmentRequest.getString("reqID");
-    //        //        System.out.println(currentReqIDM);
-    //
-    //        while (ServiceRequest.next()) {
-    //
-    //          currentReqIDO = ServiceRequest.getString("reqID");
-    //
-    //          //          System.out.println(currentReqIDO);
-    //
-    //          if (currentReqIDO.equals(currentReqIDM)) {
-    //
-    //            System.out.println("they are equal :)");
-    //
-    //            //            currentEquipID = EquipmentRequest.getString("equipID");
-    //            //            currentNodeID = ServiceRequest.getString("nodeID");
-    //            //            currentAssignedEmployeeID =
-    //            // ServiceRequest.getString("assignedEmployeeID");
-    //            //            currentRequesterEmployeeID =
-    //            // ServiceRequest.getString("requesterEmployeeID");
-    //            //            currentStatus = ServiceRequest.getString("status");
-    //
-    //            currentFields.add(0, currentReqIDO);
-    //            currentFields.add(1, ServiceRequest.getString("nodeID"));
-    //            currentFields.add(2, ServiceRequest.getString("assignedEmployeeID"));
-    //            currentFields.add(3, ServiceRequest.getString("requesterEmployeeID"));
-    //            currentFields.add(4, ServiceRequest.getString("status"));
-    //            currentFields.add(5, EquipmentRequest.getString("equipID"));
-    //
-    //            updateTableFromFields(currentFields);
-    //
-    //            //            System.out.println(currentReqIDO);
-    //            //            System.out.println(currentNodeID);
-    //
-    //            //            currentEquipmentRequestList.add(
-    //            //                new equipmentDeliveryRequest(
-    //            //                    currentReqIDO,
-    //            //                    currentNodeID,
-    //            //                    currentAssignedEmployeeID,
-    //            //                    currentRequesterEmployeeID,
-    //            //                    currentStatus,
-    //            //                    currentEquipID));
-    //          } else {
-    //            //            System.out.println(currentReqIDM);
-    //            //            System.out.println(currentReqIDO);
-    //          }
-    //        }
-    //        ServiceRequest.close();
-    //      }
-    //      EquipmentRequest.close();
-    //    } catch (SQLException | IOException e) {
-    //      e.printStackTrace();
-    //    }
     try {
       startTable();
     } catch (SQLException | IOException e) {
@@ -267,32 +172,10 @@ public class equipmentRequestController extends PageController
       fields.add(5, newEquipID);
       req.placeRequest(fields);
 
-      //      currentRows.add(
-      //          new equipmentDeliveryRequest(
-      //              newReqID,
-      //              newNodeID,
-      //              newAssignedEmployee,
-      //              newRequestedEmployee,
-      //              newStatus,
-      //              newEquipID));
-
-      updateTableFromFields(fields); // deprecated?
-
-      //      startTable(); // should update table? no
-
       resetFunction();
     }
-  }
 
-  public void updateTableFromFields(ArrayList<String> fields) {
-    currentTableRows.add(
-        new equipmentDeliveryRequest(
-            fields.get(0), // req id
-            fields.get(1), // node id
-            fields.get(2), // assigned emp id
-            fields.get(3), // requester emp id
-            fields.get(4), // status
-            fields.get(5))); // equip id
+    startTable();
   }
 
   public String employeeIDFinder(String name) throws SQLException {
@@ -339,7 +222,7 @@ public class equipmentRequestController extends PageController
     String nNodeType = typeChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
-    ResultSet rset = DatabaseManager.getMedEquipDelReqDAO().get();
+    ResultSet rset = DatabaseManager.getRequestDAO().get();
     while (rset.next()) {
       reqNum++;
     }
@@ -362,6 +245,7 @@ public class equipmentRequestController extends PageController
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setLandingScreen();
+    System.out.println(treeRoot.getChildren().size());
   }
 
   @Override
@@ -370,6 +254,9 @@ public class equipmentRequestController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet equipRequest =
         DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
@@ -379,11 +266,11 @@ public class equipmentRequestController extends PageController
 
     while (equipRequest.next()) {
       currentEquipDelReqID = equipRequest.getString("reqID");
-      System.out.println(currentEquipDelReqID);
+      //      System.out.println(currentEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new equipmentDeliveryRequest(
                   equipRequest.getString("reqID"),
@@ -454,5 +341,9 @@ public class equipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

@@ -93,7 +93,7 @@ public class medicineController extends PageController
   }
 
   @FXML
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
@@ -125,6 +125,8 @@ public class medicineController extends PageController
 
       reset();
     }
+
+    startTable();
   }
 
   public void resolveRequest() throws SQLException {
@@ -188,6 +190,9 @@ public class medicineController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet medicineReq = DatabaseManager.getMedicineDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<medicineDeliveryRequest> secReqs = new ArrayList<medicineDeliveryRequest>();
@@ -196,11 +201,11 @@ public class medicineController extends PageController
 
     while (medicineReq.next()) {
       currentMedEquipDelReqID = medicineReq.getString("reqID");
-      System.out.println(currentMedEquipDelReqID);
+      //      System.out.println(currentMedEquipDelReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentMedEquipDelReqID)) {
-          System.out.println("matched :)");
+          //          System.out.println("matched :)");
           er =
               new medicineDeliveryRequest(
                   medicineReq.getString("reqID"),
@@ -307,6 +312,10 @@ public class medicineController extends PageController
     totalAmountCol.minWidthProperty().bind(tablePane.widthProperty().divide(9));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(9));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 
   @FXML

@@ -130,6 +130,17 @@ public class mealsController extends PageController implements Initializable, IR
     dinnerChoice.valueProperty().setValue("Choose Dinner Food");
   }
 
+  /**
+   * Starts the table in the request page
+   *
+   * @throws SQLException
+   * @throws IOException
+   */
+  public void startTable() throws SQLException, IOException {}
+
+  /** clears the table in the request page */
+  public void clearTable() {}
+
   public void submit() throws SQLException {
     ArrayList<String> foodList = new ArrayList<>();
 

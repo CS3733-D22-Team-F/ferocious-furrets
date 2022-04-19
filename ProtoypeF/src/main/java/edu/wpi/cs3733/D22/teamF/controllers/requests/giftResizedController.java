@@ -70,7 +70,7 @@ public class giftResizedController extends PageController
    *
    * @return giftDeliveryRequest
    */
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     RequestSystem req = new RequestSystem("Gift");
     ArrayList<String> fields = new ArrayList<String>();
     fields.add(generateReqID());
@@ -84,6 +84,8 @@ public class giftResizedController extends PageController
     req.placeRequest(fields);
 
     reset();
+
+    startTable();
   }
 
   @Override
@@ -102,23 +104,22 @@ public class giftResizedController extends PageController
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
-    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    rectangle2.widthProperty().bind(masterPane.widthProperty().add(15).divide(2));
-    logo.xProperty().bind(rectangle2.widthProperty().subtract(600));
-    employeeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    employeeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    nodeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    nodeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    assigned.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    assigned.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    giftChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    rectangle1.heightProperty().bind(masterPane.heightProperty());
+    //    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
+    //    rectangle2.widthProperty().bind(masterPane.widthProperty().add(15).divide(2));
+    //    logo.xProperty().bind(rectangle2.widthProperty().subtract(600));
+    //    employeeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    employeeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    nodeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    nodeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    assigned.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    assigned.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    giftChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
+    //    leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
     //    backgroundIMG.maxWidth(736);
     //    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     //    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -189,6 +190,9 @@ public class giftResizedController extends PageController
   }
 
   public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
     ResultSet giftRequestTable = DatabaseManager.getGiftDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<giftDeliveryRequest> secReqs = new ArrayList<giftDeliveryRequest>();
@@ -197,7 +201,7 @@ public class giftResizedController extends PageController
 
     while (giftRequestTable.next()) {
       currentGiftReqID = giftRequestTable.getString("reqID");
-      System.out.println(currentGiftReqID);
+      //      System.out.println(currentGiftReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentGiftReqID)) {
@@ -268,5 +272,9 @@ public class giftResizedController extends PageController
     giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

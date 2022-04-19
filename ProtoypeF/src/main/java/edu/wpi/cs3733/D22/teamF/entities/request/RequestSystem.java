@@ -56,6 +56,9 @@ public class RequestSystem {
       case "Facilities":
         request = new facilitiesRequest();
         break;
+      case "Security":
+        request = new securityRequest();
+        break;
       default:
         break;
     }
