@@ -1,0 +1,2 @@
+reqID,nodeID, assignedEmployee, requestedEmployee, status, medicine,RxDoctor,dosage,totalAmount,pharmacyAddress
+Tyl1,FSTAI00201,1,3,done,Tylenol,Dr Downey,1mg,10mg,CVS
