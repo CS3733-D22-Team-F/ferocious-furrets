@@ -8,9 +8,14 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
+import edu.wpi.cs3733.D22.teamF.observers.AlertObserver;
+import edu.wpi.cs3733.D22.teamF.observers.FloorObservable;
+import edu.wpi.cs3733.D22.teamF.observers.FloorWatchManager;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -145,6 +150,25 @@ public class mapPageController implements Initializable {
     setUpNode();
     changeToF1();
     iniSlider();
+
+    // alert buttons code
+    List<JFXButton> alertbtnList = new ArrayList<>();
+    alertbtnList.add(alertButtonL2);
+    alertbtnList.add(alertButtonL1);
+    alertbtnList.add(alertButton1);
+    alertbtnList.add(alertButton2);
+    alertbtnList.add(alertButton3);
+    alertbtnList.add(alertButton4);
+    alertbtnList.add(alertButton5);
+    alertbtnList.add(alertButton);
+
+    AlertObserver.getInstance().setAlertNotifications(alertbtnList);
+    FloorWatchManager.getInstance(); // instantiation
+    try {
+      FloorObservable.getInstance().setState();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */

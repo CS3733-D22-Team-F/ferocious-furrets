@@ -343,9 +343,9 @@ public class mainController implements Initializable {
     changeTo("views/physicalTherapyPage.fxml");
   }
 
-  public void changeToSanitation() throws IOException {
+  public void changeToFacilities() throws IOException {
     // TODO add your page name before ".fxml"
-    // changeTo("views/.fxml");
+    changeTo("views/facilitiesPage.fxml");
   }
 
   public void changeToMaintenance() throws IOException {

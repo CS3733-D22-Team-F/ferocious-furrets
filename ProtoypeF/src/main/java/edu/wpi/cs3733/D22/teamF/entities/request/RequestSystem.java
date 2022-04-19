@@ -57,6 +57,9 @@ public class RequestSystem {
       case "Audio/Visual":
         request = new audioVisualRequest();
         break;
+      case "Facilities":
+        request = new facilitiesRequest();
+        break;
       case "Security":
         request = new securityRequest();
         break;
