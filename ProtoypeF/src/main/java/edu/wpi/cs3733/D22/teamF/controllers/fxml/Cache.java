@@ -33,7 +33,7 @@ public class Cache {
     } else {
       dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
     }
-    System.out.println(dbType);
+    //    System.out.println(dbType);
     DatabaseManager.switchConnection(dbType);
   }
 

@@ -150,11 +150,11 @@ public class dashboardController implements Initializable {
         typeEquip.add(m);
       }
     }
-    System.out.println(typeEquip.size());
+    //    System.out.println(typeEquip.size());
     for (equipment m : typeEquip) {
       equipText += m.getEquipType() + " " + m.getEquipID() + ", ";
     }
-    System.out.println(equipText);
+    //    System.out.println(equipText);
     return equipText;
   }
 

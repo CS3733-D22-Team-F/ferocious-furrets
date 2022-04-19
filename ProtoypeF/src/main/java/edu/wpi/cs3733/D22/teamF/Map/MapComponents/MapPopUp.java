@@ -69,7 +69,14 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpSave() throws IOException {
-    // StageManager.getInstance().setDisplayAndWaitMap("mapBackUpPage.fxml");
+    Parent root =
+        FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("Map/mapBackUpPage.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
   }
 
   /**

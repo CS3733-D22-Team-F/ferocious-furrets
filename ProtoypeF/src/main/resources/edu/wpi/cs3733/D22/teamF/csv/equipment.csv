@@ -6,7 +6,7 @@ equipID,equipType,nodeID,status
 5,Bed,fPATI00503,unavailable
 6,Bed,fSTOR00503,unavailable
 7,Bed,fPATI00703,unavailable
-8,Bed,fPATI00803,available
+8,Bed,fPATI00803,unavailable
 9,Bed,fPATI00903,available
 10,Bed,fPATI01003,available
 11,Bed,fPATI01103,available

@@ -11,13 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** ARCHIVED, MEDICINEREQUEST TABLE NOW HANDLED THROUGH TEAM F MEDICINE REQUEST API */
-public class medicineDAOImpl implements IRequestDAO {
+public class securityDAOImpl implements IRequestDAO {
 
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("MedicineRequest");
+    DatabaseManager.dropTableIfExist("securityRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE MedicineRequest (reqID varchar(16), medicine varChar(16), RxDoctor varchar(32), dosage varchar(16), totalAmount varchar(16), pharmacyAddress varchar(128), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
+        "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -27,9 +26,9 @@ public class medicineDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("medicineRequest");
+    DatabaseManager.dropTableIfExist("securityRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE MedicineRequest (reqID varchar(16), medicine varChar(16), RxDoctor varchar(32), dosage varchar(16), totalAmount varchar(16), pharmacyAddress varchar(128), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
+        "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
@@ -42,32 +41,23 @@ public class medicineDAOImpl implements IRequestDAO {
     ArrayList<String> fields = new ArrayList<>();
     String[] currentLineSplit = currentLine.split(",");
     String reqID = currentLineSplit[0];
-    String medicine = currentLineSplit[1];
-    String rxDoc = currentLineSplit[2];
-    String dosage = currentLineSplit[3];
-    String totalAmount = currentLineSplit[4];
-    String pharmAdd = currentLineSplit[5];
+    String needs = currentLineSplit[1];
+    String urgency = currentLineSplit[2];
 
     fields.add(0, reqID);
-    fields.add(1, medicine);
-    fields.add(2, rxDoc);
-    fields.add(3, dosage);
-    fields.add(4, totalAmount);
-    fields.add(5, pharmAdd);
+    fields.add(1, needs);
+    fields.add(2, urgency);
 
     return fields;
   }
 
   public void add(ArrayList<String> fields) throws SQLException {
-    ArrayList<String> MedicineRequestFields = new ArrayList<>();
+    ArrayList<String> securityRequestFields = new ArrayList<>();
     ArrayList<String> RequestFields = new ArrayList<>();
 
-    MedicineRequestFields.add(0, fields.get(0)); // request id
-    MedicineRequestFields.add(1, fields.get(5)); // medicine type
-    MedicineRequestFields.add(2, fields.get(6)); // prescribing doctor
-    MedicineRequestFields.add(3, fields.get(7)); // dosage
-    MedicineRequestFields.add(4, fields.get(8)); // total amount
-    MedicineRequestFields.add(5, fields.get(9)); // pharmacy address
+    securityRequestFields.add(0, fields.get(0)); // request id
+    securityRequestFields.add(1, fields.get(5)); // needs
+    securityRequestFields.add(2, fields.get(6)); // urgency
 
     RequestFields.add(0, fields.get(0)); // request ID
     RequestFields.add(1, fields.get(1)); // node ID
@@ -76,20 +66,17 @@ public class medicineDAOImpl implements IRequestDAO {
     RequestFields.add(4, fields.get(4)); // status
 
     DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(RequestFields));
-    DatabaseManager.runStatement(generateInsertStatement(MedicineRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(securityRequestFields));
   }
 
   public void addInit(ArrayList<String> fields) throws SQLException {
-    ArrayList<String> medicineRequestFields = new ArrayList<>();
+    ArrayList<String> securityRequestFields = new ArrayList<>();
 
-    medicineRequestFields.add(0, fields.get(0)); // request id
-    medicineRequestFields.add(1, fields.get(1)); // medicine type
-    medicineRequestFields.add(2, fields.get(2)); // prescribing doctor
-    medicineRequestFields.add(3, fields.get(3)); // dosage
-    medicineRequestFields.add(4, fields.get(4)); // total amount
-    medicineRequestFields.add(5, fields.get(5)); // pharmacy address
+    securityRequestFields.add(0, fields.get(0)); // request id
+    securityRequestFields.add(1, fields.get(1)); // needs
+    securityRequestFields.add(2, fields.get(2)); // urgency
 
-    DatabaseManager.runStatement(generateInsertStatement(medicineRequestFields));
+    DatabaseManager.runStatement(generateInsertStatement(securityRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
@@ -104,30 +91,27 @@ public class medicineDAOImpl implements IRequestDAO {
   public void update(ArrayList<String> fields) {}
 
   public ResultSet get() throws SQLException {
-    return DatabaseManager.runQuery("SELECT * FROM MEDICINEREQUEST");
+    return DatabaseManager.runQuery("SELECT * FROM securityRequest");
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO MedicineRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
-        fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(5));
+        "INSERT INTO securityRequest VALUES ('%s', '%s', '%s')",
+        fields.get(0), fields.get(1), fields.get(2));
   }
 
   public void backUpToCSV(String fileDir) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
-    toAdd.add("reqID,medicine,RxDoctor,dosage,totalAmount,pharmacyAddress");
+    toAdd.add("reqID,needs,urgency");
 
     while (currentRow.next()) {
       toAdd.add(
           String.format(
-              "%s,%s,%s,%s,%s,%s",
+              "%s,%s,%s",
               currentRow.getString("reqID"),
-              currentRow.getString("medicine"),
-              currentRow.getString("RxDoctor"),
-              currentRow.getString("dosage"),
-              currentRow.getString("totalAmount"),
-              currentRow.getString("pharmacyAddress")));
+              currentRow.getString("needs"),
+              currentRow.getString("urgency")));
     }
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
@@ -136,18 +120,15 @@ public class medicineDAOImpl implements IRequestDAO {
   public void backUpToCSV(File file) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
-    toAdd.add("reqID,medicine,RxDoctor,dosage,totalAmount,pharmacyAddress");
+    toAdd.add("reqID,needs,urgency");
 
     while (currentRow.next()) {
       toAdd.add(
           String.format(
-              "%s,%s,%s,%s,%s,%s",
+              "%s,%s,%s",
               currentRow.getString("reqID"),
-              currentRow.getString("medicine"),
-              currentRow.getString("RxDoctor"),
-              currentRow.getString("dosage"),
-              currentRow.getString("totalAmount"),
-              currentRow.getString("pharmacyAddress")));
+              currentRow.getString("needs"),
+              currentRow.getString("urgency")));
     }
 
     CSVWriter.writeAll(file, toAdd);

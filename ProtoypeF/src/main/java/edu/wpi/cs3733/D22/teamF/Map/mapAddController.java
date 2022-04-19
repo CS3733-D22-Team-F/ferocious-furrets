@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.coordTempHolder;
 import java.io.IOException;
@@ -120,8 +121,7 @@ public class mapAddController implements Initializable {
    */
   public void popUpTracker() throws IOException {
     Parent root =
-        FXMLLoader.load(
-            Objects.requireNonNull(getClass().getResource("views/Map/mapTrackerPage.fxml")));
+        FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("Map/mapTrackerPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
