@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
+import edu.wpi.cs3733.D22.teamF.MedicineRequest;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
 import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
@@ -76,7 +77,9 @@ public class DatabaseManager {
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.initializeDatabase(
+        "/edu/wpi/cs3733/D22/teamF/csv/medicine.csv",
+        "/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");

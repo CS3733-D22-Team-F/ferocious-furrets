@@ -139,14 +139,14 @@ public class mainController implements Initializable {
     //    SubScene scene = SceneManager.getInstance().setScene("views/medicinePage.fxml");
     //    pageHolder.getChildren().clear();
     //    pageHolder.getChildren().addAll(scene);
-    try {
-      //user needs to create csv files first
-      MedicineRequest.initializeDatabase(
-          "/edu/wpi/cs3733/D22/teamF/apiCSV/medicine.csv",
-          "/edu/wpi/cs3733/D22/teamF/apiCSV/employees.csv");
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    //    try {
+    //      //user needs to create csv files first
+    //      MedicineRequest.initializeDatabase(
+    //          "/edu/wpi/cs3733/D22/teamF/apiCSV/medicine.csv",
+    //          "/edu/wpi/cs3733/D22/teamF/apiCSV/employees.csv");
+    //    } catch (SQLException e) {
+    //      e.printStackTrace();
+    //    }
     MedicineRequest.run(0, 0, 0, 0, "combobox.css", "FDEPT00301");
   }
 
