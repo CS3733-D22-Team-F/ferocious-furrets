@@ -1,79 +1,63 @@
 /*** variable declarations***/
 @import url(vars.css);
-/**
-W? works too well and is problematic
-W for works
-L for doesn't work
-**/
-/*W Title fxID must be this*/
+
+{
+    f-blue: #123090;
+    f-gold: #f3ba48;
+    f-white: #ffffff;
+}
+
+#TextTitleWhite {
+    -fx-font-family: Serif;
+    -fx-font-size: 64px;
+    -fx-text-fill: f-white;
+}
+
 #TextTitle {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
     -fx-text-fill: f-blue;
 }
+
 #TextTitle2 {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
     -fx-text-fill: f-blue;
 }
+
 #TextTitle3 {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
     -fx-text-fill: f-blue;
 }
-/*W all textfields*/
-.text-field{
+
+.text-field {
     -fx-font-family: Serif;
-    /*transparent grey*/
     -fx-prompt-text-fill: rgba(128, 128, 128, 0.64);
-    -fx-text-fill: black;
+    -fx-text-fill: #000000;
     -fx-font-size: 24px;
 }
-/*** W? works too well applying to all menu-bars/menus as well***/
-/*.label {
-    -fx-font-family: Serif;
-    -fx-font-size: 24px;
-    -fx-text-fill: f-blue;
-}*/
-/***L for menu bar ***/
-.menu-bar .label
-{
-    -fx-font-family: Serif;
-    -fx-font-size: 5px;
--fx-text-fill: f-blue;
-    -fx-background-color: white;
-}
-/***L for menus of menu bars ***/
-.menu{
-    -fx-font-family: Serif;
-    -fx-font-size: 18px;
-    -fx-tick-label-fill: f-blue;
-    -fx-text-fill: f-blue;
-    -fx-background-color: white;
-}
-/***L for all button ripples ***/
-.menu-item .Label {
+
+.menu-bar .label {
     -fx-font-family: Serif;
     -fx-font-size: 18px;
     -fx-text-fill: f-blue;
-    -fx-background-color: white;
 }
-/***L for all button ripples ***/
-.button{
-    -fx-background-color: white;
-    -fx-text-fill: f-blue;
+
+.button {
+    -fx-background-color: f-blue;
+    -fx-text-fill: f-white;
     -fx-font-family: Serif;
     -fx-font-size: 24px;
 }
-/***L for all button ripples ***/
-/*.jfx-rippler.jfx-button {
-    -jfx-rippler-fill: gold;
-}*/
-/***L for all combo boxes ***/
-.combo-box{
+
+.jfx-rippler.jfx-button {
+    -jfx-rippler-fill: f-gold;
+}
+
+.combo-box {
     -fx-background-color: white;
-    /*-fx-font-family: Serif;*/
+    -fx-font-family: Serif;
     -fx-text-fill: f-blue;
-    /*-fx-font-size: 24px;*/
-    -jfx-focus-color: f-gold;
+    -fx-font-size: 24px;
 }

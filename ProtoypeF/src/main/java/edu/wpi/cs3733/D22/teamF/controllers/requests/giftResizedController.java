@@ -201,7 +201,7 @@ public class giftResizedController extends PageController
 
     while (giftRequestTable.next()) {
       currentGiftReqID = giftRequestTable.getString("reqID");
-      System.out.println(currentGiftReqID);
+      //      System.out.println(currentGiftReqID);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentGiftReqID)) {
