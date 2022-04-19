@@ -70,16 +70,16 @@ public class mainController implements Initializable {
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //    Thread shutDownHook =
-    //        new Thread(
-    //            () -> {
-    //              try {
-    //                exit();
-    //              } catch (SQLException | IOException e) {
-    //                e.printStackTrace();
-    //              }
-    //            });
-    //    Runtime.getRuntime().addShutdownHook(shutDownHook);
+//    Thread shutDownHook =
+//        new Thread(
+//            () -> {
+//              try {
+//                exit();
+//              } catch (SQLException | IOException e) {
+//                e.printStackTrace();
+//              }
+//            });
+//    Runtime.getRuntime().addShutdownHook(shutDownHook);
     mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
     baseTransforms = pageHolder.getTransforms();
@@ -252,7 +252,7 @@ public class mainController implements Initializable {
     homeButton2.setText("Home");
     physicalButton.setText("Phy. Therapy");
     securityButton.setText("Security");
-    sanitationButton.setText("Facilities");
+    sanitationButton.setText("Sanitation");
     maintenanceButton.setText("Maintenance");
   }
 
@@ -326,8 +326,9 @@ public class mainController implements Initializable {
     changeTo("views/physicalTherapyPage.fxml");
   }
 
-  public void changeToFacilities() throws IOException {
-    changeTo("views/facilitiesPage.fxml");
+  public void changeToSanitation() throws IOException {
+    // TODO add your page name before ".fxml"
+    // changeTo("views/.fxml");
   }
 
   public void changeToMaintenance() throws IOException {
