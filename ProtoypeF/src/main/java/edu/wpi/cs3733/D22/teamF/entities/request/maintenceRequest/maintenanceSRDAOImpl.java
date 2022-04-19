@@ -15,7 +15,7 @@ import java.util.List;
 public class maintenanceSRDAOImpl implements IRequestDAO {
 
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("scanRequest");
+    DatabaseManager.dropTableIfExist("MaintenanceRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE MaintenanceRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), maintenanceType varchar(16), "
             + "Foreign Key (reqID) references SERVICEREQUEST(reqID), FOREIGN KEY (equipID) references MedicalEquipment)");
@@ -28,7 +28,7 @@ public class maintenanceSRDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("scanRequest");
+    DatabaseManager.dropTableIfExist("MaintenanceRequest");
     DatabaseManager.runStatement(
         "CREATE TABLE MaintenanceRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), maintenanceType varchar(16), "
             + "Foreign Key (reqID) references SERVICEREQUEST(reqID), FOREIGN KEY (equipID) references MedicalEquipment)");
