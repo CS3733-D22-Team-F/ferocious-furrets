@@ -36,9 +36,9 @@
             </HBox>
          </top>
          <center>
-            <HBox prefWidth="1220.0" BorderPane.alignment="CENTER">
+            <HBox prefWidth="1220.0" BorderPane.alignment="TOP_CENTER">
                <children>
-                  <VBox fx:id="websiteVBox" alignment="CENTER" prefHeight="553.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="websiteVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="NEVER">
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <VBox.margin>
@@ -57,6 +57,9 @@
                                  <image>
                                     <Image url="@../Images/learnIcon.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                               </ImageView>
                            </children>
                         </HBox>
@@ -72,9 +75,6 @@
                                  <image>
                                     <Image url="@../BWHupdated.jpg" />
                                  </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="15.0" top="15.0" />
-                                 </StackPane.margin>
                               </ImageView>
                            </children>
                            <padding>
@@ -98,7 +98,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="loginVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="loginVBox" alignment="CENTER" maxHeight="560.0" prefHeight="560.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <VBox.margin>
@@ -148,10 +148,10 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets top="23.0" />
+                        <Insets top="30.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="covidVBox" alignment="CENTER" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="covidVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <children>
@@ -176,7 +176,7 @@
                         <StackPane prefHeight="230.0" prefWidth="277.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
-                              <ImageView fitHeight="255.0" fitWidth="231.0" pickOnBounds="true">
+                              <ImageView fitHeight="228.0" fitWidth="231.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Images/hsIcon.jpg" />
                                  </image>
@@ -201,10 +201,10 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="signUpVBox" alignment="CENTER" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="signUpVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
                            <children>
@@ -254,7 +254,7 @@
                         </Label>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
                </children>

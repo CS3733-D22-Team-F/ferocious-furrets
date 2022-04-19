@@ -50,7 +50,7 @@ FSERV00301,2230,2747,1,Tower,SERV,Kessler Library,Kessler Library
 FSERV00401,2180,2248,1,Tower,DEPT,Spiritual Care Office,SCO
 FSERV00501,1878,3407,1,Tower,SERV,75 Lobby Valet Cashier,Valet Cashier
 FSTAI00101,3650,1483,1,Tower,STAI,Lobby Shattuck Street Stairs,Stairway F00101
-FSTAI00201,2218,1239,1,Tower,STAI,Tower Stairway 1,Tower Stairs 1
+FSTAI00201,2208,1248,1,Tower,STAI,Tower Stairway 1,Tower Stairs 1
 FSTAI00301,3150,3055,1,Tower,STAI,Lobby Escalator,Lobby Escalator
 WELEV00L01,2682,1767,1,Tower,ELEV,Elevator L Floor 1,Elevator L1
 WELEV00M01,2810,3379,1,Tower,ELEV,Elevator M Floor 1,Elevator M1
