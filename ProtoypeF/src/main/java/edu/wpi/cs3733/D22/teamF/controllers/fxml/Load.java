@@ -17,7 +17,7 @@ public class Load extends Task<Void> {
     Cache.startDB(useEmbedded);
     Cache.updateDBCache();
     // DatabaseManager.switchConnection(DatabaseInitializer.getConnType());
-    Cache.loadViews();
+    //    Cache.loadViews();
     Cache.loadIcons();
     return null;
   }

@@ -26,10 +26,9 @@ public class Fapp extends Application {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    Stage stage = new Stage();
-    SceneManager.getInstance().setStage(stage);
-    stage.setScene(scene);
-    stage.show();
+    SceneManager.getInstance().setStage(primaryStage);
+    primaryStage.setScene(scene);
+    primaryStage.show();
   }
 
   @Override
