@@ -31,7 +31,7 @@
                     <children>
                         <VBox fx:id="labelVBox" prefHeight="297.0" prefWidth="239.0">
                             <children>
-                                <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="239.0" text="Node ID:" textFill="WHITE">
+                                <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="239.0" text="Location:" textFill="WHITE">
                                     <font>
                                         <Font name="Serif Regular" size="24.0" />
                                     </font>
@@ -53,7 +53,7 @@
                                         <Insets top="20.0" />
                                     </padding>
                                 </Label>
-                                <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="268.0" text="Request Employee:" textFill="WHITE">
+                                <Label alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="268.0" text="Requesting Employee:" textFill="WHITE">
                                     <font>
                                         <Font name="Serif Regular" size="24.0" />
                                     </font>
