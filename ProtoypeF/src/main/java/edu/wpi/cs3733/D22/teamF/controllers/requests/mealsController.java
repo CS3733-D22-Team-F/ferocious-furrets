@@ -51,7 +51,6 @@ public class mealsController extends PageController implements Initializable, IR
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     ArrayList<Object> breakfast = new ArrayList<>();
     breakfast.add("French Toast");

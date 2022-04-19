@@ -61,7 +61,6 @@ public class scanController extends PageController implements Initializable, IRe
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -90,42 +89,6 @@ public class scanController extends PageController implements Initializable, IRe
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
-  }
-
-  public String generateReqID(int requestListLength, String scanType, String nodeID) {
-    String reqAbb = "SR";
-    String sAb = "";
-    if (scanType.equals("CAT")) {
-      sAb = "C";
-    } else if (scanType.equals("xray")) {
-      sAb = "X";
-    } else if (scanType.equals("MRI")) {
-      sAb = "M";
-    }
-    return reqAbb + sAb + (requestListLength + 1) + nodeID;
-  }
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
-  public void reset() {
-    nodeField.valueProperty().setValue(null);
-    employeeIDField.valueProperty().setValue(null);
-    userField.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue(null);
-    statusChoice.valueProperty().setValue(null); // Status Choice Box
-  }
-
-  /**
-   * shows the queue scene
-   *
-   * @param event
-   * @throws IOException
-   */
-  void showSceneQueue(ActionEvent event) throws IOException {
-    switchScene("labRequestQueue.fxml");
   }
 
   /**
@@ -168,31 +131,6 @@ public class scanController extends PageController implements Initializable, IRe
     }
 
     startTable();
-  }
-
-  public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Scan");
-    req.resolveRequest(reqID.getText());
-    reqID.clear();
-  }
-
-  public String generateReqID() throws SQLException {
-    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
-    int reqNum = 1;
-
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
-    while (rset.next()) {
-      reqNum++;
-    }
-    rset.close();
-
-    String nID = "f" + nNodeType + reqNum;
-    return nID;
-  }
-
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
   }
 
   public void startTable() throws SQLException, IOException {
@@ -279,6 +217,68 @@ public class scanController extends PageController implements Initializable, IRe
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void reset() {
+    nodeField.valueProperty().setValue(null);
+    employeeIDField.valueProperty().setValue(null);
+    userField.valueProperty().setValue(null);
+    typeChoice.valueProperty().setValue(null);
+    statusChoice.valueProperty().setValue(null); // Status Choice Box
+  }
+
+  /* helper */
+  public String generateReqID(int requestListLength, String scanType, String nodeID) {
+    String reqAbb = "SR";
+    String sAb = "";
+    if (scanType.equals("CAT")) {
+      sAb = "C";
+    } else if (scanType.equals("xray")) {
+      sAb = "X";
+    } else if (scanType.equals("MRI")) {
+      sAb = "M";
+    }
+    return reqAbb + sAb + (requestListLength + 1) + nodeID;
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
+  }
+
+  /**
+   * shows the queue scene
+   *
+   * @param event
+   * @throws IOException
+   */
+  void showSceneQueue(ActionEvent event) throws IOException {
+    switchScene("labRequestQueue.fxml");
+  }
+
+  public void resolveRequest() throws SQLException {
+    RequestSystem req = new RequestSystem("Scan");
+    req.resolveRequest(reqID.getText());
+    reqID.clear();
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = typeChoice.getValue().toString().substring(0, 3);
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
+  }
+
+  @FXML
+  void switchToHome(ActionEvent event) throws IOException {
+    // StageManager.getInstance().setLandingScreen();
   }
 
   public void clearTable() {

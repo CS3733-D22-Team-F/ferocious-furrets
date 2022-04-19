@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -59,11 +58,10 @@ public class mapBackUpController implements Initializable {
   /**
    * calls method to back up CSV file upon clicking of button
    *
-   * @param event
    * @throws SQLException
    * @throws IOException
    */
-  public void backUp(ActionEvent event) throws SQLException, IOException {
+  public void backUp() throws SQLException, IOException {
 
     if (idField.getText() != null) {
       try {

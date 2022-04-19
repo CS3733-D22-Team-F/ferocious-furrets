@@ -15,7 +15,7 @@ shadowJar {
 
 repositories {
     flatDir {
-        dirs 'C:\\Users\\radcl\\IdeaProjects\\TeamFMedicineServiceRequestAPI\\build\\libs'
+        dirs 'APIJARs'
     }
     mavenCentral()
     maven {

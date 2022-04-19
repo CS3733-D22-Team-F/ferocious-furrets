@@ -21,7 +21,7 @@
       <Pane prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="146.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
             <HBox layoutX="15.0" layoutY="36.0" prefHeight="100.0" prefWidth="610.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
@@ -36,7 +36,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="65.0" layoutY="583.0" prefHeight="53.0" prefWidth="492.0">
+            <HBox layoutX="117.0" layoutY="582.0" prefHeight="53.0" prefWidth="356.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
@@ -48,32 +48,27 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#switchToHome" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Return" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
                </children>
             </HBox>
             <VBox layoutX="260.0" layoutY="180.0" prefHeight="265.0" prefWidth="354.0">
                <children>
-                  <JFXComboBox fx:id="nodeField" prefHeight="47.0" prefWidth="388.0" promptText="Location" />
-                  <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee">
+                  <JFXComboBox fx:id="nodeField" prefHeight="47.0" prefWidth="388.0" promptText="Location" style="-fx-background-color: white;" />
+                  <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets top="6.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee">
+                  <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" unFocusColor="WHITE">
+                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" unFocusColor="WHITE">
+                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
