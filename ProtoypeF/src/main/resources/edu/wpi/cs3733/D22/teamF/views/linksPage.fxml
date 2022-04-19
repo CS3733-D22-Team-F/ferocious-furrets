@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -12,11 +13,20 @@
    <children>
       <Pane prefHeight="97.0" prefWidth="1220.0" style="-fx-background-color: #123090;">
          <children>
-            <Label layoutX="494.0" layoutY="28.0" prefHeight="42.0" prefWidth="232.0" text="RESOURCES" textFill="WHITE">
-               <font>
-                  <Font name="SansSerif Regular" size="36.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" layoutX="383.0" layoutY="17.0" prefHeight="64.0" prefWidth="454.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Regular" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../BWHlogo-new.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </Pane>
       <VBox fx:id="websiteVBox" alignment="CENTER" layoutX="55.0" layoutY="175.0">
