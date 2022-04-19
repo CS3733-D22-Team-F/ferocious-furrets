@@ -44,6 +44,25 @@ public class MapLocationModifier {
     return null;
   }
 
+  public static void modifyLocation(
+      String nID, String type, String x, String y, String floor, String longName, String shortName)
+      throws SQLException {
+    if (type.length() > 4) {
+      type = type.substring(0, 4);
+    }
+    Location l =
+        new Location(
+            nID,
+            (int) Double.parseDouble(x),
+            (int) Double.parseDouble(y),
+            floor,
+            "Tower",
+            type,
+            longName,
+            shortName);
+    DatabaseManager.getLocationDAO().updateLocation(nID, l);
+  }
+
   /**
    * adds a location taking in a location object
    *

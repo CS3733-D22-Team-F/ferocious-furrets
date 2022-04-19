@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,7 +37,6 @@ public class logInController extends returnHomePage implements Initializable {
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
 
-  private Stage stage = new Stage();
   private Parent root;
   private Scene scene;
 
@@ -62,7 +62,13 @@ public class logInController extends returnHomePage implements Initializable {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn() throws SQLException, IOException {
+  private void logIn(ActionEvent event) throws SQLException, IOException {
+
+    //    FXMLLoader settingLoader = new
+    // FXMLLoader(getClass().getResource("views/settingsPage.fxml"));
+    //    settingController aSettingController = settingLoader.getController();
+    //    aSettingController.myFunction(usernameField.getText());
+
     boolean success = false;
     UserType userType = new UserType();
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
@@ -92,25 +98,33 @@ public class logInController extends returnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
+      System.out.println(databaseChooser.getValue().toString());
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
+
+      System.out.println(embedded);
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new cachePageController(embedded));
       Scene scene = null;
+      Stage stage = SceneManager.getInstance().getStage();
       try {
         scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+        popUpLabel.setVisible(false);
       } catch (IOException e) {
         e.printStackTrace();
+        System.out.println("ERROR: In login controller");
       }
-      Stage stage = SceneManager.getInstance().getStage();
-      SceneManager.getInstance().setStage(stage);
-      stage.setScene(scene);
-      stage.show();
-      popUpLabel.setVisible(false);
     } else {
       popUpLabel.setVisible(true);
     }
+    //        if (databaseChooser.getValue().toString().equals("Client-Server")) {
+    //          dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+    //        } else {
+    //          dbType = DatabaseInitializer.ConnType.EMBEDDED;
+    //        }
   }
 
   @Override

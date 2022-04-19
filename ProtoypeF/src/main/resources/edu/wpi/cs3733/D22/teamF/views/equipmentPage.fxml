@@ -2,9 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,22 +16,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="721.0" prefWidth="1345.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
-   <right>
-      <ImageView fx:id="backgroundIMG" fitHeight="821.0" fitWidth="755.0" pickOnBounds="true" BorderPane.alignment="TOP_RIGHT">
-         <image>
-            <Image url="@../Images/patientBed.jpeg" />
-         </image>
-      </ImageView>
-   </right>
+<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.equipmentRequestController">
    <left>
-      <Pane prefHeight="821.0" prefWidth="684.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="821.0" prefWidth="635.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="823.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="684.0" />
-            <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="40.0" prefHeight="71.0" prefWidth="660.0">
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="40.0" prefHeight="71.0" prefWidth="616.0">
                <children>
-                  <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="592.0" text="Equipment Request" textFill="WHITE">
+                  <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="540.0" text="Equipment Request" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
@@ -157,4 +152,15 @@
          </children>
       </Pane>
    </left>
+   <right>
+      <Pane fx:id="tablePane" prefHeight="721.0" prefWidth="644.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView fx:id="table">
+               <columnResizePolicy>
+                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </JFXTreeTableView>
+         </children>
+      </Pane>
+   </right>
 </BorderPane>

@@ -17,6 +17,9 @@ public class Repository {
       case "Meal":
         db = DatabaseManager.getMealDAO();
         break;
+      case "PT":
+        db = DatabaseManager.getPTDAO();
+        break;
       case "Gift":
         db = DatabaseManager.getGiftDAO();
         break;

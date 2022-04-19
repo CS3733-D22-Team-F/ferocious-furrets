@@ -15,7 +15,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
   public void initTable(File file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("audioVisualRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), objectType varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -27,7 +27,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
   public void initTable(String file) throws SQLException, IOException {
     DatabaseManager.dropTableIfExist("audioVisualRequest");
     DatabaseManager.runStatement(
-        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+        "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), objectType varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
@@ -41,6 +41,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
 
     audioVisualRequest.add(0, fields.get(0)); // request id
     audioVisualRequest.add(1, fields.get(1)); // accessibility device
+    audioVisualRequest.add(2, fields.get(2)); // device type
     DatabaseManager.runStatement(generateInsertStatement(audioVisualRequest));
   }
 
@@ -50,6 +51,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
 
     audioVisualRequest.add(0, fields.get(0)); // request id
     audioVisualRequest.add(1, fields.get(5)); // accessibility device
+    audioVisualRequest.add(2, fields.get(6)); // device type
 
     serviceRequestFields.add(0, fields.get(0)); // request ID
     serviceRequestFields.add(1, fields.get(1)); // node iD
@@ -82,27 +84,33 @@ public class audioVisualDAOImpl implements IRequestDAO {
     String[] currentLineSplit = currentLine.split(",");
     String reqID = currentLineSplit[0];
     String type = currentLineSplit[1];
+    String object = currentLineSplit[2];
 
     fields.add(reqID);
     fields.add(type);
+    fields.add(object);
 
     return fields;
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
-        "INSERT INTO audioVisualRequest VALUES ('%s', '%s')", fields.get(0), fields.get(1));
+        "INSERT INTO audioVisualRequest VALUES ('%s', '%s', '%s')",
+        fields.get(0), fields.get(1), fields.get(2));
   }
 
   public void backUpToCSV(String filename) throws SQLException, IOException {
     ArrayList<String> toAdd = new ArrayList<>();
     ResultSet currentRow = get();
-    toAdd.add("reqID,accessObject");
+    toAdd.add("reqID,accessObject,objectType");
 
     while (currentRow.next()) {
       toAdd.add(
           String.format(
-              "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
+              "%s,%s,%s",
+              currentRow.getString("reqID"),
+              currentRow.getString("accessObject"),
+              currentRow.getString("objectType")));
     }
 
     CSVWriter.writeAllToDir(filename, toAdd);
@@ -116,7 +124,10 @@ public class audioVisualDAOImpl implements IRequestDAO {
     while (currentRow.next()) {
       toAdd.add(
           String.format(
-              "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
+              "%s,%s,%s",
+              currentRow.getString("reqID"),
+              currentRow.getString("accessObject"),
+              currentRow.getString("accessObject")));
     }
 
     CSVWriter.writeAll(file, toAdd);

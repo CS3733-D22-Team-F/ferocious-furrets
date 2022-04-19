@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -12,15 +13,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -47,11 +51,24 @@ public class equipmentRequestController extends PageController
   @FXML private HBox leftHBox1;
   @FXML private HBox leftHBox2;
   @FXML private HBox leftHBox3;
-  @FXML private ImageView backgroundIMG;
   @FXML private ImageView logo;
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
+  @FXML private TreeTableView table;
+  @FXML private Pane tablePane;
+
+  private String requestID;
+  private String nodeID;
+  private String assignedEmpID;
+  private String requesterEmpID;
+  private String status;
+  private String requestedEquipmentID;
+
+  private TreeItem<equipmentDeliveryRequest> treeRoot =
+      new TreeItem<>(
+          new equipmentDeliveryRequest(
+              requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
 
   public equipmentRequestController() {}
 
@@ -61,7 +78,6 @@ public class equipmentRequestController extends PageController
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
@@ -77,8 +93,6 @@ public class equipmentRequestController extends PageController
     leftHBox3.maxWidthProperty().bind(rectangle1.widthProperty().subtract(15));
     leftVBox.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
     leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
-    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
-    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");
@@ -100,6 +114,98 @@ public class equipmentRequestController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    //    String currentReqIDM;
+    //    String currentReqIDO;
+    //    String currentEquipID;
+    //    String currentNodeID;
+    //    String currentAssignedEmployeeID;
+    //    String currentRequesterEmployeeID;
+    //    String currentStatus;
+    //
+    //    locationCol.setCellValueFactory(
+    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("nodeID"));
+    //    assignedCol.setCellValueFactory(
+    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("assignedEmpID"));
+    //    requestedCol.setCellValueFactory(
+    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("requesterEmpID"));
+    //    statusCol.setCellValueFactory(
+    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("status"));
+    //    equipCol.setCellValueFactory(
+    //        new PropertyValueFactory<equipmentDeliveryRequest, String>("requestedEquipmentID"));
+    //
+    //    table.setItems(currentTableRows);
+    //
+    //    ArrayList<String> currentFields = new ArrayList<>(); // array list of all equipment
+    //
+    //    //    System.out.println("hello");
+    //
+    //    try {
+    //
+    //      // get from database
+    //      ResultSet EquipmentRequest = DatabaseManager.getMedEquipDelReqDAO().get();
+    //
+    //      while (EquipmentRequest.next()) {
+    //
+    //        ResultSet ServiceRequest = DatabaseManager.getRequestDAO().get();
+    //
+    //        currentReqIDM = EquipmentRequest.getString("reqID");
+    //        //        System.out.println(currentReqIDM);
+    //
+    //        while (ServiceRequest.next()) {
+    //
+    //          currentReqIDO = ServiceRequest.getString("reqID");
+    //
+    //          //          System.out.println(currentReqIDO);
+    //
+    //          if (currentReqIDO.equals(currentReqIDM)) {
+    //
+    //            System.out.println("they are equal :)");
+    //
+    //            //            currentEquipID = EquipmentRequest.getString("equipID");
+    //            //            currentNodeID = ServiceRequest.getString("nodeID");
+    //            //            currentAssignedEmployeeID =
+    //            // ServiceRequest.getString("assignedEmployeeID");
+    //            //            currentRequesterEmployeeID =
+    //            // ServiceRequest.getString("requesterEmployeeID");
+    //            //            currentStatus = ServiceRequest.getString("status");
+    //
+    //            currentFields.add(0, currentReqIDO);
+    //            currentFields.add(1, ServiceRequest.getString("nodeID"));
+    //            currentFields.add(2, ServiceRequest.getString("assignedEmployeeID"));
+    //            currentFields.add(3, ServiceRequest.getString("requesterEmployeeID"));
+    //            currentFields.add(4, ServiceRequest.getString("status"));
+    //            currentFields.add(5, EquipmentRequest.getString("equipID"));
+    //
+    //            updateTableFromFields(currentFields);
+    //
+    //            //            System.out.println(currentReqIDO);
+    //            //            System.out.println(currentNodeID);
+    //
+    //            //            currentEquipmentRequestList.add(
+    //            //                new equipmentDeliveryRequest(
+    //            //                    currentReqIDO,
+    //            //                    currentNodeID,
+    //            //                    currentAssignedEmployeeID,
+    //            //                    currentRequesterEmployeeID,
+    //            //                    currentStatus,
+    //            //                    currentEquipID));
+    //          } else {
+    //            //            System.out.println(currentReqIDM);
+    //            //            System.out.println(currentReqIDO);
+    //          }
+    //        }
+    //        ServiceRequest.close();
+    //      }
+    //      EquipmentRequest.close();
+    //    } catch (SQLException | IOException e) {
+    //      e.printStackTrace();
+    //    }
+    try {
+      startTable();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -112,7 +218,14 @@ public class equipmentRequestController extends PageController
   }
 
   @FXML
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
+
+    String newReqID;
+    String newNodeID;
+    String newAssignedEmployee;
+    String newRequestedEmployee;
+    String newStatus;
+    String newEquipID;
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
@@ -130,16 +243,25 @@ public class equipmentRequestController extends PageController
 
       RequestSystem req = new RequestSystem("Equipment");
       ArrayList<String> fields = new ArrayList<String>();
-      fields.add(generateReqID());
-      fields.add(nodeIDFinder(nodeField.getValue().toString()));
-      fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
-      fields.add(employeeIDFinder(userField.getValue().toString()));
-      fields.add(statusChoice.getValue().toString());
-      fields.add(getAvailableEquipment());
+
+      newReqID = generateReqID();
+      fields.add(0, newReqID);
+      newNodeID = nodeIDFinder(nodeField.getValue().toString());
+      fields.add(1, newNodeID);
+      newAssignedEmployee = employeeIDFinder(employeeIDField.getValue().toString());
+      fields.add(2, newAssignedEmployee);
+      newRequestedEmployee = employeeIDFinder(userField.getValue().toString());
+      fields.add(3, newRequestedEmployee);
+      newStatus = statusChoice.getValue().toString();
+      fields.add(4, newStatus);
+      newEquipID = getAvailableEquipment();
+      fields.add(5, newEquipID);
       req.placeRequest(fields);
 
       resetFunction();
     }
+
+    startTable();
   }
 
   public String employeeIDFinder(String name) throws SQLException {
@@ -182,11 +304,11 @@ public class equipmentRequestController extends PageController
     return eID;
   }
 
-  public String generateReqID() throws SQLException {
+  public String generateReqID() throws SQLException, IOException {
     String nNodeType = typeChoice.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    ResultSet rset = DatabaseManager.getRequestDAO().get();
     while (rset.next()) {
       reqNum++;
     }
@@ -209,10 +331,105 @@ public class equipmentRequestController extends PageController
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setLandingScreen();
+    System.out.println(treeRoot.getChildren().size());
   }
 
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet equipRequest =
+        DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<equipmentDeliveryRequest> secReqs = new ArrayList<equipmentDeliveryRequest>();
+    equipmentDeliveryRequest er;
+    String currentEquipDelReqID;
+
+    while (equipRequest.next()) {
+      currentEquipDelReqID = equipRequest.getString("reqID");
+      System.out.println(currentEquipDelReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
+          System.out.println("matched :)");
+          er =
+              new equipmentDeliveryRequest(
+                  equipRequest.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  equipRequest.getString(
+                      "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    equipRequest.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (equipmentDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<equipmentDeliveryRequest, String> nodeIDCol =
+        new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> equipmentIDCol =
+        new TreeTableColumn<>("Equipment ID:");
+    equipmentIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> requestedByCol =
+        new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableView<equipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+        .getColumns()
+        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

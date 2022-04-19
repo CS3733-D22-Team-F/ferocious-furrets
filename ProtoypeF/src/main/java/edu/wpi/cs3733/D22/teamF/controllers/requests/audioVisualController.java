@@ -1,8 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.audioVisualRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -11,18 +13,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -33,7 +34,6 @@ public class audioVisualController extends PageController
   private Parent root;
 
   @FXML private BorderPane masterPane;
-  @FXML private ImageView backgroundIMG;
   @FXML private JFXComboBox nodeField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
@@ -47,9 +47,15 @@ public class audioVisualController extends PageController
   @FXML private HBox bottomHBox;
   @FXML private Rectangle rectangle1;
   @FXML private Rectangle rectangle2;
+  @FXML private JFXTreeTableView treeTable;
+  @FXML private Pane tablePane;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
+
+  private String requestID;
+  private String objectType;
+  private String accessObject;
 
   @FXML
   public void reset() {
@@ -84,6 +90,7 @@ public class audioVisualController extends PageController
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
       fields.add(objectChoice.getValue().toString().substring(0, 3));
+      fields.add(typeChoice.getValue().toString());
       req.placeRequest(fields);
 
       reset();
@@ -117,10 +124,7 @@ public class audioVisualController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
-    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
-    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
     rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
     rectangle1.heightProperty().bind(masterPane.heightProperty());
     rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
@@ -152,6 +156,61 @@ public class audioVisualController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    try {
+      startTable();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  TreeItem<audioVisualRequest> treeRoot =
+      new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
+
+  public void startTable() throws SQLException {
+
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM audioVisualRequest");
+    ArrayList<audioVisualRequest> avReqs = new ArrayList<audioVisualRequest>();
+    audioVisualRequest avr;
+
+    while (rset.next()) {
+      avr =
+          new audioVisualRequest(
+              rset.getString("reqID"),
+              rset.getString("objectType"),
+              rset.getString("accessObject"));
+      avReqs.add(avr);
+    }
+    rset.close();
+
+    treeRoot.setExpanded(true);
+    avReqs.stream()
+        .forEach(
+            (audioVisualRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(audioVisualRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<audioVisualRequest, String> objectTypeColumn =
+        new TreeTableColumn<>("Object Type");
+    objectTypeColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<audioVisualRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getObjectType()));
+    TreeTableColumn<audioVisualRequest, String> accessObjectColumn =
+        new TreeTableColumn<>("Access Object");
+    accessObjectColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<audioVisualRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAccessObject()));
+
+    TreeTableView<audioVisualRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(objectTypeColumn, accessObjectColumn);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    accessObjectColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    objectTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
   /**

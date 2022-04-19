@@ -16,7 +16,8 @@ public class Load extends Task<Void> {
   protected Void call() throws IOException, SQLException {
     Cache.startDB(useEmbedded);
     Cache.updateDBCache();
-    Cache.loadViews();
+    // DatabaseManager.switchConnection(DatabaseInitializer.getConnType());
+    //    Cache.loadViews();
     Cache.loadIcons();
     return null;
   }

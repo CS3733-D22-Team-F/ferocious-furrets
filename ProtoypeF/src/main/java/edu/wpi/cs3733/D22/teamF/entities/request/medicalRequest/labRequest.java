@@ -19,8 +19,9 @@ public class labRequest extends MedicalRequest {
       String assignedEmpID,
       String reqEmpID,
       String status,
-      String type) {
-    super(reqID, nodeID, assignedEmpID, reqEmpID, status, type);
+      String sampleType) {
+    super(reqID, nodeID, assignedEmpID, reqEmpID, status, "Lab");
+    this.sampleType = sampleType;
   }
 
   @Override

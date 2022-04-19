@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.io.IOException;
@@ -11,14 +12,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 /**
  * lab request controller
@@ -31,12 +33,31 @@ public class labRequestController extends PageController
   @FXML JFXComboBox nodeField;
   @FXML JFXComboBox employeeIDField;
   @FXML JFXComboBox userField;
-  @FXML private AnchorPane masterPane;
+  @FXML private BorderPane masterPane;
   @FXML TextField reqID;
   @FXML Button resolve;
 
   @FXML ComboBox typeChoice; // Lab Type Choice Box
   @FXML ComboBox statusChoice; // Status Choice Box
+  //  @FXML TableView<labRequest> table;
+  //  @FXML TableColumn<labRequest, String> locationCol;
+  //  @FXML TableColumn<labRequest, String> assignedCol;
+  //  @FXML TableColumn<labRequest, String> requestedCol;
+  //  @FXML TableColumn<labRequest, String> statusCol;
+  //  @FXML TableColumn<labRequest, String> equipCol;
+  @FXML TreeTableView table;
+  @FXML Pane tablePane;
+
+  private String requestID;
+  private String nodeID;
+  private String assignedEmpID;
+  private String requesterEmpID;
+  private String status;
+  private String sampleType;
+
+  TreeItem<labRequest> treeRoot =
+      new TreeItem<>(
+          new labRequest(requestID, nodeID, assignedEmpID, requesterEmpID, status, sampleType));
 
   /**
    * inits
@@ -46,7 +67,6 @@ public class labRequestController extends PageController
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -69,6 +89,12 @@ public class labRequestController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
+
+    try {
+      startTable();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   // Use Try/Catch when call this function
@@ -78,7 +104,7 @@ public class labRequestController extends PageController
    *
    * @return labRequest object
    */
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
     ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
@@ -115,6 +141,8 @@ public class labRequestController extends PageController
       serviceRequestStorage.addToArrayList(requestList);
     }
     reset();
+
+    startTable();
   }
 
   @FXML
@@ -168,5 +196,95 @@ public class labRequestController extends PageController
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  public void startTable() throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet labRequestTables =
+        DatabaseManager.getLabRequestDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<labRequest> secReqs = new ArrayList<labRequest>();
+    labRequest er;
+    String currentLabReqID;
+
+    while (labRequestTables.next()) {
+      currentLabReqID = labRequestTables.getString("reqID");
+      System.out.println(currentLabReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentLabReqID)) {
+          System.out.println("matched :)");
+          er =
+              new labRequest(
+                  labRequestTables.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  labRequestTables.getString(
+                      "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    labRequestTables.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (labRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(labRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<labRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<labRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<labRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<labRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableColumn<labRequest, String> sampleTypeCol = new TreeTableColumn<>("Sample Type: ");
+    sampleTypeCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<labRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getSampleType()));
+
+    TreeTableView<labRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+        .getColumns()
+        .setAll(nodeIDCol, assignedToCol, requestedByCol, statusCol, sampleTypeCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    sampleTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 }

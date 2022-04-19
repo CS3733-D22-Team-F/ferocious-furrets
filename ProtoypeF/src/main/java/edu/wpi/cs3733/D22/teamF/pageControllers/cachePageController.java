@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import edu.wpi.cs3733.D22.teamF.Fapp;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Load;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
@@ -30,10 +31,13 @@ public class cachePageController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     statusLabel.setText(randomFact());
     statusLabel.setTextAlignment(TextAlignment.CENTER);
+    // Task<Void> loader = new Load();
+    System.out.println(useEmbedded.get());
     Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {
           try {
+            Cache.loadViews();
             Stage stage = SceneManager.getInstance().getStage();
             Scene scene =
                 new Scene(FXMLLoader.load(Fapp.class.getResource("views/pageHolder.fxml")));
