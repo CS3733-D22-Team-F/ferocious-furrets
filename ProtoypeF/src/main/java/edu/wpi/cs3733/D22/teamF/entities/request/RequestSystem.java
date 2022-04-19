@@ -53,6 +53,9 @@ public class RequestSystem {
       case "Audio/Visual":
         request = new audioVisualRequest();
         break;
+      case "Security":
+        request = new securityRequest();
+        break;
       default:
         break;
     }
