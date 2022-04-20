@@ -60,6 +60,7 @@ public class mainController implements Initializable {
   @FXML JFXButton homeButton2;
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
+  @FXML JFXButton landingButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -88,6 +89,12 @@ public class mainController implements Initializable {
     serviceMenu.setVisible(false);
     baseTransforms = pageHolder.getTransforms();
     menu.setSidePane(homeMenu);
+    homeMenu.setMaxWidth(200);
+    homeMenu.setPrefWidth(200);
+    mapMenu.setMaxWidth(200);
+    mapMenu.setPrefWidth(200);
+    serviceMenu.setMaxWidth(200);
+    serviceMenu.setPrefWidth(200);
     menuClose();
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
@@ -172,12 +179,10 @@ public class mainController implements Initializable {
         .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
   }
 
-  public void menuClose() {
+  public void menuClose() throws InterruptedException {
     menu.close();
     menu.setPrefWidth(50);
-    homeMenu.setPrefWidth(50);
-    mapMenu.setPrefWidth(50);
-    serviceMenu.setPrefWidth(50);
+    onClose();
     mapButton.setGraphic(MapIconModifier.getIcon("infoMenu"));
     mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
@@ -228,17 +233,15 @@ public class mainController implements Initializable {
     employeeButton.setText("");
     queueButton.setGraphic(MapIconModifier.getIcon("queueMenu"));
     queueButton.setText("");
+    linksButton.setGraphic(MapIconModifier.getIcon("linkMenu"));
+    linksButton.setText("");
+    landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
+    landingButton.setText("");
   }
 
-  public void menuOpen() {
-    menu.open();
+  public void menuOpen() throws InterruptedException {
     menu.setMaxWidth(200);
-    homeMenu.setMaxWidth(200);
-    homeMenu.setPrefWidth(200);
-    mapMenu.setMaxWidth(200);
-    mapMenu.setPrefWidth(200);
-    serviceMenu.setMaxWidth(200);
-    serviceMenu.setPrefWidth(200);
+    menu.open();
     mapButton.setText("Info");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
@@ -264,6 +267,8 @@ public class mainController implements Initializable {
     maintenanceButton.setText("Maintenance");
     queueButton.setText("Queue");
     employeeButton.setText("Employee");
+    linksButton.setText("Helpful Links");
+    landingButton.setText("Landing");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -289,10 +294,6 @@ public class mainController implements Initializable {
     homeMenu.setVisible(false);
     serviceMenu.setVisible(true);
     mapMenu.setVisible(false);
-  }
-
-  public void changeToRequestList() throws IOException {
-    changeTo("views/requestListPage.fxml");
   }
 
   public void changeToLinksPage() throws IOException {
@@ -344,7 +345,6 @@ public class mainController implements Initializable {
   }
 
   public void changeToSecurity() throws IOException {
-    // TODO add your page name before ".fxml"
     changeTo("views/securityPage.fxml");
   }
 
@@ -353,13 +353,15 @@ public class mainController implements Initializable {
   }
 
   public void changeToFacilities() throws IOException {
-    // TODO add your page name before ".fxml"
     changeTo("views/facilitiesPage.fxml");
   }
 
   public void changeToMaintenance() throws IOException {
-    // TODO add your page name before ".fxml"
     changeTo("views/request/maintenanceRequestPage.fxml");
+  }
+
+  public void changeToLanding() throws IOException {
+    changeTo("views/landingPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {
@@ -371,5 +373,20 @@ public class mainController implements Initializable {
   public void exit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
     System.exit(0);
+  }
+
+  public void onClose() {
+    homeMenu.setPrefWidth(50);
+    mapMenu.setPrefWidth(50);
+    serviceMenu.setPrefWidth(50);
+  }
+
+  public void onOpen() {
+    homeMenu.setMaxWidth(200);
+    homeMenu.setPrefWidth(200);
+    mapMenu.setMaxWidth(200);
+    mapMenu.setPrefWidth(200);
+    serviceMenu.setMaxWidth(200);
+    serviceMenu.setPrefWidth(200);
   }
 }
