@@ -1,4 +1,5 @@
 reqID,type
-fMRI2,MRI
-fMRI15,MRI
-fxra28,xray
+fMRI5,MRI
+fxra6,xray
+fCAT7,CAT
+fCAT8,CAT

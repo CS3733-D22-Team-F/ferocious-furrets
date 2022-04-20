@@ -21,8 +21,8 @@
       <Pane prefHeight="821.0" prefWidth="635.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" layoutX="-2.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="40.0" prefHeight="71.0" prefWidth="616.0">
+            <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" layoutX="-2.0" layoutY="-14.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+            <HBox fx:id="leftHBox3" layoutX="12.0" layoutY="28.0" prefHeight="71.0" prefWidth="616.0">
                <children>
                   <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="540.0" text="Equipment Request" textFill="WHITE">
                      <font>
@@ -50,7 +50,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="183.0" layoutY="515.0" prefHeight="56.0" prefWidth="252.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="190.0" layoutY="515.0" prefHeight="56.0" prefWidth="252.0" style="-fx-background-color: #123090;">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
@@ -68,7 +68,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Location:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="258.0" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -85,7 +85,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="258.0" text="Assigned Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="258.0" text="Assigned Employee: " textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -102,7 +102,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Request Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="258.0" text="Request Employee: " textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -115,7 +115,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Equipment Type: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="258.0" text="Equipment Type:" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -128,7 +128,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="258.0" text="Status: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="258.0" text="Status:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -164,7 +164,7 @@
    <right>
       <Pane fx:id="tablePane" prefHeight="721.0" prefWidth="644.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView fx:id="table">
+            <JFXTreeTableView fx:id="table" prefHeight="723.0" prefWidth="649.0">
                <columnResizePolicy>
                   <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>

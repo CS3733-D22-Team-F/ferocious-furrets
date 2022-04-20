@@ -143,6 +143,8 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
+    dropTableIfExist("MAINTENANCEREQUEST");
+    dropTableIfExist("FACILITIESREQUEST");
     dropTableIfExist("securityRequest");
     dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
