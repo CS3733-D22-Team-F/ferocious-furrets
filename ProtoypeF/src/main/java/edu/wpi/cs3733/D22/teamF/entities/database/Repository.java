@@ -53,6 +53,9 @@ public class Repository {
       case "Security":
         db = DatabaseManager.getSecurityDAO();
         break;
+      case "ExternalPatient":
+        db = DatabaseManager.getExtPatDAO();
+        break;
       default:
         break;
     }

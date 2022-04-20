@@ -101,8 +101,8 @@ public class mainController implements Initializable {
             applyResize(newValue);
           }
         };
-    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
-    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
+    //    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
+    //    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
 
     // TODO: make this work
     //    SceneManager.getInstance()
@@ -315,6 +315,10 @@ public class mainController implements Initializable {
     changeTo("views/audioVisualPage.fxml");
   }
 
+  public void changeToExtPatient() throws IOException {
+    changeTo("views/extPatDeliveryPage.fxml");
+  }
+
   public void changeToGift() throws IOException {
     changeTo("views/giftPageResized.fxml");
   }
@@ -360,6 +364,10 @@ public class mainController implements Initializable {
   public void changeToMaintenance() throws IOException {
     // TODO add your page name before ".fxml"
     changeTo("views/request/maintenanceRequestPage.fxml");
+  }
+
+  public void goToTransport() throws IOException {
+    changeTo("views/extPatDeliveryPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {
