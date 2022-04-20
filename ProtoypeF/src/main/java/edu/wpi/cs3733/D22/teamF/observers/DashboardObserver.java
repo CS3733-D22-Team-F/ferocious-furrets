@@ -179,7 +179,7 @@ class DashboardObserver implements PropertyChangeListener {
     // alertSystem.hasListeners("allFloorAlerts");
     if (alertSystem.hasListeners("allFloorAlerts")) {
       alertSystem.firePropertyChange("allFloorAlerts", false, true);
-      System.out.println("SHOULD FIRE");
+//      System.out.println("SHOULD FIRE");
     }
   }
 
@@ -417,23 +417,17 @@ class DashboardObserver implements PropertyChangeListener {
 
     if (dInfusionReqNeeded) {
       // search for service request for the dirty equipment storage area from the request ID saved
-      System.out.println(dInfusionReqNeeded + "HI");
       ResultSet dirtyInfusionList =
           DatabaseManager.runQuery(
               "SELECT * FROM FACILITIESREQUEST WHERE accessObject = 'Infusion Pumps to West Plaza'");
       if (dirtyInfusionList == null
           || dirtyInfusionList.next() == false) { // if does not already exist in completed request
 
-        System.out.println("list is null or empty");
 
         ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "INF", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
         //        fController.startTable();
       } else {
-        System.out.println("Hi lol");
-        while (dirtyInfusionList.next()) {
-          System.out.println(dirtyInfusionList.getString("reqID"));
-        }
         dirtyInfusionList.close();
       }
     }
@@ -499,7 +493,7 @@ class DashboardObserver implements PropertyChangeListener {
     fields.add(requesterEmployeeID);
     fields.add(status);
     fields.add(accessObject);
-    System.out.println(fields);
+//    System.out.println(fields);
     return fields;
   }
 }
