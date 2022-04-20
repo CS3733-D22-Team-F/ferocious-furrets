@@ -43,7 +43,7 @@ public class securityRequest extends DeliveryRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
   }
 
@@ -56,5 +56,9 @@ public class securityRequest extends DeliveryRequest {
 
   public String getNeeds() {
     return this.needs;
+  }
+
+  public String getReqType(){
+    return "Security";
   }
 }

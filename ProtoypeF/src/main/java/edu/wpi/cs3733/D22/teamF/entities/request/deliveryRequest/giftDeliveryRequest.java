@@ -35,8 +35,12 @@ public class giftDeliveryRequest extends DeliveryRequest {
     db.deleteRequest(reqID);
   }
 
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
+  }
+
+  public String getReqType(){
+    return "Gift";
   }
 
   public void cancel(String reqID) {}

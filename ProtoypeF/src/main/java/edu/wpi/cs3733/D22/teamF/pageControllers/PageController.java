@@ -240,7 +240,7 @@ public abstract class PageController {
 
   public String nodeIDFinder(String name) throws SQLException {
     String nodeID = "";
-    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE SHORTNAME = '%s'", name);
+    String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE LONGNAME = '%s'", name);
     ResultSet rset = DatabaseManager.runQuery(cmd);
     if (rset.next()) {
       nodeID = rset.getString("NODEID");

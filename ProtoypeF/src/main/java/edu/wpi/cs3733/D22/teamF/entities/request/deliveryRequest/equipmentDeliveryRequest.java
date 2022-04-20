@@ -68,9 +68,13 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
     db.deleteRequest(reqID);
   }
 
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
   }
 
   public void cancel(String reqID) {}
+
+  public String getReqType(){
+    return "Equipment";
+  }
 }

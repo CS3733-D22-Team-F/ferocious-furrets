@@ -33,14 +33,8 @@ public class RequestSystem {
       case "Gift":
         request = new giftDeliveryRequest();
         break;
-      case "Floral":
-        request = new floralDeliveryRequest();
-        break;
       case "Medicine":
         request = new medicineDeliveryRequest();
-        break;
-      case "Patient":
-        request = new patientDeliveryRequest();
         break;
       case "Lab":
         request = new labRequest();
@@ -93,7 +87,7 @@ public class RequestSystem {
    *
    * @param fields ArrayLiss</String>
    */
-  public void modifyRequest(ArrayList<String> fields) {
+  public void modifyRequest(ArrayList<String> fields) throws SQLException {
     request.modify(fields);
   }
 

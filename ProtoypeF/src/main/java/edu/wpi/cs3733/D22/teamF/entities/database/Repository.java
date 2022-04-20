@@ -63,7 +63,7 @@ public class Repository {
     db.delete(reqID);
   }
 
-  public void updateRequest(ArrayList<String> fields) {
-    // db.update(req);
+  public void updateRequest(ArrayList<String> fields) throws SQLException {
+    db.update(fields);
   }
 }

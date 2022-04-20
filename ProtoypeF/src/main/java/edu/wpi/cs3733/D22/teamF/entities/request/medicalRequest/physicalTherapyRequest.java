@@ -45,7 +45,7 @@ public class physicalTherapyRequest extends MedicalRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
   }
 
@@ -75,4 +75,9 @@ public class physicalTherapyRequest extends MedicalRequest {
   public void setNotes(String note) {
     this.notes = note;
   }
+
+  public String getReqType(){
+    return "PT";
+  }
+
 }

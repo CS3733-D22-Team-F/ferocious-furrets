@@ -66,8 +66,12 @@ public class medicineDeliveryRequest extends DeliveryRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
+  }
+
+  public String getReqType(){
+    return "Medicine";
   }
 
   @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -114,7 +115,7 @@
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="205.0" spacing="20.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="346.0" text="NodeID:" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="346.0" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="18.0" />
                            </font>
@@ -126,11 +127,11 @@
                   </VBox>
                   <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
                      <children>
-                        <TextField fx:id="nodeIDField">
+                        <JFXComboBox fx:id="nodeIDField" prefHeight="26.0" prefWidth="220.0" style="-fx-background-color: white;">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
-                        </TextField>
+                        </JFXComboBox>
                      </children>
                   </VBox>
                </children>
@@ -151,11 +152,11 @@
                   </VBox>
                   <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
                      <children>
-                        <TextField fx:id="AssignedEmpIDField" prefWidth="174.0">
+                        <JFXComboBox fx:id="assignedEmpIDField" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: white;">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
-                        </TextField>
+                        </JFXComboBox>
                      </children>
                   </VBox>
                </children>
@@ -176,11 +177,11 @@
                   </VBox>
                   <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
                      <children>
-                        <TextField fx:id="requestedEmpIDField" prefWidth="174.0">
+                        <JFXComboBox fx:id="requestedEmpIDField" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: white;">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
-                        </TextField>
+                        </JFXComboBox>
                      </children>
                   </VBox>
                </children>
@@ -203,7 +204,7 @@
                      <children>
                         <TextField fx:id="statusField" prefWidth="174.0">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
@@ -228,7 +229,7 @@
                      <children>
                         <TextField fx:id="ExtraField1" prefWidth="174.0">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
@@ -253,7 +254,7 @@
                      <children>
                         <TextField fx:id="ExtraField2" prefWidth="174.0">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
@@ -278,7 +279,7 @@
                      <children>
                         <TextField fx:id="ExtraField3" prefWidth="174.0">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
