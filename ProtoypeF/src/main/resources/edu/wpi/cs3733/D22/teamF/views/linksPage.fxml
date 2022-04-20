@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.linksPageController">
+   <children>
+      <BorderPane prefHeight="660.0" prefWidth="1220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #3e8cd0;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="SansSerif Regular" size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../BWHlogo-new.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <HBox prefWidth="1220.0" BorderPane.alignment="TOP_CENTER">
+               <children>
+                  <VBox fx:id="websiteVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="NEVER">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../Images/learnIcon.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="163.0" prefWidth="278.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="230.0" stroke="BLACK" strokeType="INSIDE" width="245.0" />
+                              <ImageView fitHeight="109.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/updatedIcon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="221.0" fitWidth="244.0" opacity="0.32" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../BWHupdated.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/BW_QR_Code.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="VISIT OUR WEBSITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font></Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="loginVBox" alignment="CENTER" maxHeight="560.0" prefHeight="560.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <VBox.margin>
+                              <Insets top="-20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label prefHeight="67.0" prefWidth="179.0" text="LOOKING FOR EMPLOYEE RESOURCES?" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../Images/existingUser.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
+                              <ImageView fitHeight="255.0" fitWidth="188.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/loginImageBWH.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="20.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/BW_Employee_Portal_QR.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="LOGIN" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="covidVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../Images/updatedHealthSafety.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" stroke="BLACK" strokeType="INSIDE" width="236.0" />
+                              <ImageView fitHeight="228.0" fitWidth="231.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/hsIcon.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/COVID19Info_QR.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="COVID-19 ">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="signUpVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                           <children>
+                              <Label prefHeight="61.0" prefWidth="184.0" text="CREATE A PATIENT ACCOUNT" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="61.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../Images/joinUsIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <StackPane prefHeight="230.0" prefWidth="277.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="253.0" stroke="BLACK" strokeType="INSIDE" width="242.0" />
+                              <ImageView fitHeight="242.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/simple-sign-up-form-with-blue-background.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" top="20.0" />
+                           </padding>
+                        </StackPane>
+                        <ImageView fx:id="" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../QR_Codes/Patient_Portal_SignUpQR.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="SIGN UP HERE">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

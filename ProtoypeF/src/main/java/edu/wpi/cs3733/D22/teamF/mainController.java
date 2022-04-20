@@ -34,6 +34,7 @@ public class mainController implements Initializable {
   @FXML VBox serviceMenu;
   @FXML JFXButton mapButton;
   @FXML JFXButton serviceButton;
+  @FXML JFXButton linksButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
   @FXML JFXButton settingsButton1;
@@ -294,6 +295,10 @@ public class mainController implements Initializable {
     changeTo("views/requestListPage.fxml");
   }
 
+  public void changeToLinksPage() throws IOException {
+    changeTo("views/linksPage.fxml");
+  }
+
   public void changeToLab() throws IOException {
     changeTo("views/labRequestPage.fxml");
   }
@@ -340,7 +345,7 @@ public class mainController implements Initializable {
 
   public void changeToSecurity() throws IOException {
     // TODO add your page name before ".fxml"
-    // changeTo("views/.fxml");
+    changeTo("views/securityPage.fxml");
   }
 
   public void changeToPhysical() throws IOException {

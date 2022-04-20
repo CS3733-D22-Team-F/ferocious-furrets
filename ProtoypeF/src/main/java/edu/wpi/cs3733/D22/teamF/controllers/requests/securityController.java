@@ -123,7 +123,6 @@ public class securityController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
