@@ -47,6 +47,7 @@ public class externalPatientController extends PageController
   @FXML private Rectangle rectangle2;
   @FXML private JFXTreeTableView treeTable;
   @FXML private Pane tablePane;
+  @FXML private JFXComboBox nodeField;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -94,6 +95,8 @@ public class externalPatientController extends PageController
     methodField.getItems().addAll(methodType);
     methodField.setValue("");
 
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
@@ -126,7 +129,7 @@ public class externalPatientController extends PageController
       RequestSystem req = new RequestSystem("ExternalPatient");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
-      fields.add(patientField.getText());
+      fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
@@ -207,7 +210,8 @@ public class externalPatientController extends PageController
   }
 
   public String generateReqID() throws SQLException {
-    String nameAb = patientField.getText().substring(0, 3);
+
+    String nameAb = nodeIDFinder(nodeField.getValue().toString()).substring(0, 3);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");

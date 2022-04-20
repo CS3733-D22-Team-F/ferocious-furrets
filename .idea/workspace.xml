@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="conner service request">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="fixed null point exceptions and aligned labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Fapp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/Fapp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/fxml/Cache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/externalPatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/externalPatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/mainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,9 +270,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [runShadow]" />
+        <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle.ProtoypeF [startShadowScripts]" />
         <item itemvalue="Gradle.ProtoypeF [run]" />
-        <item itemvalue="Gradle.ProtoypeF [build]" />
         <item itemvalue="Gradle.ProtoypeF [clean]" />
       </list>
     </recent_temporary>
@@ -503,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650424242970</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed null point exceptions and aligned labels">
+      <created>1650432178207</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1650432178207</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added CSS style sheet for login page (hover effect for the buttons)" />
     <MESSAGE value="added login menu bar to exit application" />
     <MESSAGE value="Fixed Scan page bug" />
     <MESSAGE value="Fixed bug for runStatement in DatabaseManager closing Statement object." />
@@ -558,7 +560,8 @@
     <MESSAGE value="Added JFXTreeTableView to physicalTherapy request" />
     <MESSAGE value="Fixed csv key errors and medicine controller bug" />
     <MESSAGE value="conner service request" />
-    <option name="LAST_COMMIT_MESSAGE" value="conner service request" />
+    <MESSAGE value="fixed null point exceptions and aligned labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed null point exceptions and aligned labels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
