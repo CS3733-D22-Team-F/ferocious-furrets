@@ -20,13 +20,13 @@
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="635.0" />
-                <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="359.0" text="Facilities" textFill="WHITE">
+                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="640.0" />
+                <Label layoutX="29.0" layoutY="36.0" prefHeight="80.0" prefWidth="359.0" text="Facilities" textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="49.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="461.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="462.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../BWHlogo-new.png" />
                     </image>

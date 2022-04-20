@@ -21,7 +21,7 @@
       <Pane prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="730.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Pane prefHeight="115.0" prefWidth="640.0" style="-fx-background-color: #4169E1#4169E1;">
+            <Pane prefHeight="130.0" prefWidth="640.0" style="-fx-background-color: #4169e1;">
                <children>
                   <Label contentDisplay="TOP" layoutX="61.0" layoutY="22.0" prefHeight="71.0" prefWidth="382.0" text="Scan Requests" textFill="WHITE">
                      <font>

@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -19,8 +21,8 @@
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="635.0" />
-                <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="531.0" text="Physical Therapy Request" textFill="WHITE">
+                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="640.0" />
+                <Label layoutX="24.0" layoutY="36.0" prefHeight="80.0" prefWidth="531.0" text="Physical Therapy Request" textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="49.0" />
                     </font>
@@ -196,6 +198,11 @@
         </HBox>
     </children>
 </VBox>
+            <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="542.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../BWHlogo-new.png" />
+               </image>
+            </ImageView>
         </children>
         </Pane>
         </left>
