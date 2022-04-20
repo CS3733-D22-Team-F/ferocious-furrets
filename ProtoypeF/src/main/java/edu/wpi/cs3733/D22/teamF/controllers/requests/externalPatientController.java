@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.extPatientDeliveryRequest;
@@ -110,6 +111,10 @@ public class externalPatientController extends PageController
 
   @FXML
   public void submit() throws SQLException {
+
+    // Adds alert for empty fields for ext-patient request
+    AGlobalMethods.showAlert("Empty Field(s)", submitButton);
+
     ArrayList<Object> requestList = new ArrayList<>();
     if (addressField.getText().equals("")
         || employeeIDField.getValue().toString().equals("")
