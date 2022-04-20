@@ -59,4 +59,9 @@ public class FloorWatchManager {
     for (DashboardObserver observer : allFloorObservers)
       observer.setLabels(cleanLabels, dirtyLabels, podLabels, inUseLabels);
   }
+
+  public void setEquipCountLabels(List<Label> countLabels) {
+    for (int counter = 0; counter < countLabels.size(); counter++)
+      allFloorObservers.get(counter).setTotalCountLabels(countLabels.get(counter));
+  }
 }

@@ -31,6 +31,8 @@ class DashboardObserver implements PropertyChangeListener {
   private List<Alert> floorAlerts = new ArrayList<>();
   private static List<List<Alert>> allFloorAlerts = new ArrayList<List<Alert>>();
 
+  private int floorEquipmentCount = 0;
+  private Label totalFloorCount;
   private List<equipment> cleanList = new ArrayList<>();
   private List<equipment> dirtyList = new ArrayList<>();
   private List<equipment> podList = new ArrayList<>();
@@ -133,6 +135,10 @@ class DashboardObserver implements PropertyChangeListener {
     this.ilabels = iLabels;
   }
 
+  public void setTotalCountLabels(Label countlabel) {
+    this.totalFloorCount = countlabel;
+  }
+
   public void updateLabels() {
     if (SceneManager.getInstance().getCurrentScene().equals("views/dashboardPage.fxml")) {
       if (!clabels.isEmpty()) {
@@ -161,6 +167,10 @@ class DashboardObserver implements PropertyChangeListener {
         ilabels.get(1).setText(String.valueOf(iInfusionPumpCount.size()));
         ilabels.get(2).setText(String.valueOf(iRecliner.size()));
         ilabels.get(3).setText(String.valueOf(iXRay.size()));
+      }
+
+      if (totalFloorCount != null) {
+        totalFloorCount.setText(String.valueOf(floorEquipmentCount));
       }
     }
   }
