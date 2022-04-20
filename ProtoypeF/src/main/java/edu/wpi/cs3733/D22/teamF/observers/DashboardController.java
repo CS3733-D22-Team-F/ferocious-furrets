@@ -165,18 +165,18 @@ public class DashboardController implements Initializable {
     setFloor(currentFloor.next());
     System.out.println(currentFloor + " for labels");
     // allFloorsObserver.setFloor(currentFloor);
-    System.out.println(currentFloor.toInt());
+    //    System.out.println(currentFloor.toInt());
     setLabels();
-    System.out.println("Next observer");
+    // System.out.println("Next observer");
   }
 
   /** Increases the value of the current floor by 1 */
   public void prevFloor() {
     setFloor(currentFloor.prev());
-    System.out.println(currentFloor + " for labels");
+    //    System.out.println(currentFloor + " for labels");
     // allFloorsObserver.setFloor(currentFloor);
     setLabels();
-    System.out.println("Prev observer");
+    //    System.out.println("Prev observer");
   }
 
   public void setAlerts() {

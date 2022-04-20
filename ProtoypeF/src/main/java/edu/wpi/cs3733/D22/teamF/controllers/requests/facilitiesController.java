@@ -138,7 +138,7 @@ public class facilitiesController extends PageController
     if (requestType.getValue().toString().length() > 16)
       fields.add(requestType.getValue().toString().substring(0, 15));
     else fields.add(requestType.getValue().toString());
-    System.out.println(fields);
+    //    System.out.println(fields);
     req.placeRequest(fields);
 
     startTable();
@@ -168,7 +168,7 @@ public class facilitiesController extends PageController
 
     while (facilitiesRequestList.next()) {
       currentFacilityReq = facilitiesRequestList.getString("reqID");
-      System.out.println(currentFacilityReq);
+      //      System.out.println(currentFacilityReq);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentFacilityReq)) {
