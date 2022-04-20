@@ -198,7 +198,6 @@ public class DatabaseManager {
     ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
-
     extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
 
     System.out.println("Locations table updated to csv :)");

@@ -43,10 +43,16 @@ public class audioVisualRequest extends DeliveryRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {}
+  public void modify(ArrayList<String> fields) throws SQLException {
+    db.updateRequest(fields);
+  }
 
   @Override
   public void cancel(String reqID) {}
+
+  public String getReqType() {
+    return "Audio/Visual";
+  }
 
   public String getAccessObject() {
     return this.accessObject;

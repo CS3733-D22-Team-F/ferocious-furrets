@@ -71,9 +71,7 @@ public abstract class Request implements IRequest {
     this.status = status;
   }
 
-  public String getReqType() {
-    return reqType;
-  }
+  public abstract String getReqType();
 
   public void setReqType(String reqType) {
     this.reqType = reqType;

@@ -72,4 +72,9 @@ public class requestTree extends Request {
   public void setStatus(String status) {
     this.status = status;
   }
+
+  @Override
+  public String getReqType() {
+    return "Request";
+  }
 }

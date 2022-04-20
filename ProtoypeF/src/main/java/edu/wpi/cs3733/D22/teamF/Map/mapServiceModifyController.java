@@ -1,22 +1,30 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.locTempHolder;
+import edu.wpi.cs3733.D22.teamF.boundary.pagecontrollers.request.modifyRequestPageController;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class mapServiceModifyController implements Initializable {
 
   @FXML private Button cancel;
+  @FXML private JFXButton modifyRequest;
 
   @FXML private Label currentNode;
 
@@ -43,6 +51,7 @@ public class mapServiceModifyController implements Initializable {
     ResultSet rset =
         DatabaseManager.runQuery("SELECT * FROM MEDICINEREQUEST WHERE REQID = '" + reqID + "'");
     if (rset.next()) isMedicine = true;
+    rset.close();
     if (isMedicine) {
       cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(
@@ -54,5 +63,21 @@ public class mapServiceModifyController implements Initializable {
     DatabaseManager.runStatement(cmd);
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
+  }
+
+  public void modify() throws SQLException, IOException {
+    StringProperty reqType = new SimpleStringProperty((locTempHolder.getLocation().getNodeType()));
+    StringProperty reqID = new SimpleStringProperty(locTempHolder.getLocation().getLongName());
+
+    FXMLLoader fxmlLoader =
+        new FXMLLoader(Fapp.class.getResource("views/request/modifyRequestPage.fxml"));
+    fxmlLoader.setControllerFactory(e -> new modifyRequestPageController(reqType, reqID));
+
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(fxmlLoader.load());
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
   }
 }

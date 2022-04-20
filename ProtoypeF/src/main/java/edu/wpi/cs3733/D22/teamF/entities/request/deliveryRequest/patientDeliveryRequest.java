@@ -17,7 +17,13 @@ public class patientDeliveryRequest extends DeliveryRequest {
   public void resolve(String reqID) {}
 
   @Override
-  public void modify(ArrayList<String> fields) {}
+  public void modify(ArrayList<String> fields) throws SQLException {
+    db.updateRequest(fields);
+  }
+
+  public String getReqType() {
+    return "Patient";
+  }
 
   @Override
   public void cancel(String reqID) {}

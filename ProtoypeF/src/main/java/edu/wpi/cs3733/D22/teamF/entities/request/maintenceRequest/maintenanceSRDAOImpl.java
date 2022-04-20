@@ -97,7 +97,22 @@ public class maintenanceSRDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(cmd);
   }
 
-  public void update(ArrayList<String> fields) throws SQLException {}
+  public void update(ArrayList<String> fields) throws SQLException {
+    String servCmd =
+        String.format(
+            "UPDATE SERVICEREQUEST SET NODEID = '%s', ASSIGNEDEMPLOYEEID = '%s', REQUESTEREMPLOYEEID = '%s', STATUS = '%s' WHERE REQID = '%s'",
+            fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(0));
+    String cmd =
+        String.format(
+            "UPDATE MAINTENANCEREQUEST SET EQUIPID = '%s', MAINTENANCETYPE = '%s' WHERE REQID = '%s'",
+            fields.get(5), fields.get(6), fields.get(0));
+    try {
+      DatabaseManager.runStatement(servCmd);
+      DatabaseManager.runStatement(cmd);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 
   public String generateInsertStatement(ArrayList<String> fields) {
     return String.format(
