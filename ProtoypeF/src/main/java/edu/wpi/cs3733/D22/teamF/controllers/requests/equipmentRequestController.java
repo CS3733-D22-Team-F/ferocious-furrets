@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
@@ -139,7 +140,7 @@ public class equipmentRequestController extends PageController
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
+//      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("Equipment Request of type: " + typeChoice.getValue().toString());

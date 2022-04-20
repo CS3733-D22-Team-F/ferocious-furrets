@@ -2,9 +2,10 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.audioVisualRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.extPatientDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
 import java.net.URL;
@@ -25,21 +26,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class audioVisualController extends PageController
+public class externalPatientController extends PageController
     implements Initializable, IRequestController {
   private Stage stage;
   private Scene scene;
   private Parent root;
 
   @FXML private BorderPane masterPane;
-  @FXML private JFXComboBox nodeField;
+  @FXML private TextField patientField;
   @FXML private JFXComboBox employeeIDField;
   @FXML private JFXComboBox userField;
   @FXML private ComboBox statusChoice;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private ComboBox typeChoice;
-  @FXML private ComboBox objectChoice;
+  @FXML private TextField addressField;
+  @FXML private ComboBox methodField;
   @FXML private HBox topHBox;
   @FXML private HBox middleHBox;
   @FXML private HBox bottomHBox;
@@ -47,16 +48,19 @@ public class audioVisualController extends PageController
   @FXML private Rectangle rectangle2;
   @FXML private JFXTreeTableView treeTable;
   @FXML private Pane tablePane;
+  @FXML private JFXComboBox nodeField;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
 
   private String requestID;
-  private String objectType;
-  private String accessObject;
 
-  TreeItem<audioVisualRequest> treeRoot =
-      new TreeItem<>(new audioVisualRequest(requestID, objectType, accessObject));
+  private String address;
+
+  private String method;
+
+  TreeItem<extPatientDeliveryRequest> treeRoot =
+      new TreeItem<>(new extPatientDeliveryRequest(requestID, address, method));
 
   /**
    * inits
@@ -69,33 +73,34 @@ public class audioVisualController extends PageController
     rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
     rectangle1.heightProperty().bind(masterPane.heightProperty());
     rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
+    topHBox.maxWidthProperty().bind(rectangle1.widthProperty());
     middleHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(400));
     middleHBox.maxWidthProperty().bind(rectangle1.widthProperty());
     bottomHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
     bottomHBox.maxWidthProperty().bind(rectangle1.widthProperty());
 
     ArrayList<Object> statusDrop = new ArrayList<>();
-    ArrayList<Object> accessibilityType = new ArrayList<>();
+    ArrayList<Object> methodType = new ArrayList<>();
+
     statusDrop.add("");
     statusDrop.add("Processing");
     statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
     statusChoice.setValue("");
-    accessibilityType.add("Deaf/Hard of Hearing");
-    accessibilityType.add("Blind/Visually Impaired");
-    typeChoice.getItems().addAll(accessibilityType);
-    typeChoice.setValue("");
-    objectChoice.getItems().add("");
-    objectChoice.setValue("");
+    methodType.add("Helicopter");
+    methodType.add("Plane");
+    methodType.add("Ambulance");
+    methodType.add("Personal Transport");
+    methodField.getItems().addAll(methodType);
+    methodField.setValue("");
 
+    ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
     employeeIDField.setValue("");
     userField.setValue("");
-
-    ArrayList<Object> locations = locationNames();
-    nodeField.getItems().addAll(locations);
 
     try {
       startTable();
@@ -106,28 +111,30 @@ public class audioVisualController extends PageController
 
   @FXML
   public void submit() throws SQLException {
+
     ArrayList<Object> requestList = new ArrayList<>();
-    if (nodeField.getValue().toString().equals("")
+    if (addressField.getText().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
-        || objectChoice.getValue().equals("")) {
-      //      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
+        || methodField.getValue().equals("")
+        || addressField.getText().equals("")) {
+      // Adds alert for empty fields for ext-patient request
+//      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
-      requestList.add("Audio/Visual Request for: " + objectChoice.getValue());
-      // requestList.add("Assigned Doctor: " + userField.getText());
+      requestList.add("External Patient Transport Request for: " + addressField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
-      RequestSystem req = new RequestSystem("Audio/Visual");
+      RequestSystem req = new RequestSystem("ExternalPatient");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
       fields.add(nodeIDFinder(nodeField.getValue().toString()));
       fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
       fields.add(employeeIDFinder(userField.getValue().toString()));
       fields.add(statusChoice.getValue().toString());
-      fields.add(objectChoice.getValue().toString().substring(0, 3));
-      fields.add(typeChoice.getValue().toString());
+      fields.add(addressField.getText());
+      fields.add(methodField.getValue().toString());
       req.placeRequest(fields);
 
       reset();
@@ -138,98 +145,70 @@ public class audioVisualController extends PageController
 
   @FXML
   public void reset() {
-    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
-    typeChoice.valueProperty().setValue("");
-    objectChoice.valueProperty().setValue("");
+    addressField.setText("");
+    methodField.valueProperty().setValue("");
   }
 
   public void startTable() throws SQLException {
 
     clearTable();
 
-    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM audioVisualRequest");
-    ArrayList<audioVisualRequest> avReqs = new ArrayList<audioVisualRequest>();
-    audioVisualRequest avr;
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM externalPatientRequest");
+    ArrayList<extPatientDeliveryRequest> externalPatientReqs =
+        new ArrayList<extPatientDeliveryRequest>();
+    extPatientDeliveryRequest avr;
 
     while (rset.next()) {
       avr =
-          new audioVisualRequest(
-              rset.getString("reqID"),
-              rset.getString("objectType"),
-              rset.getString("accessObject"));
-      avReqs.add(avr);
+          new extPatientDeliveryRequest(
+              rset.getString("reqID"), rset.getString("address"), rset.getString("method"));
+      externalPatientReqs.add(avr);
     }
     rset.close();
 
     treeRoot.setExpanded(true);
-    avReqs.stream()
+    externalPatientReqs.stream()
         .forEach(
-            (audioVisualRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(audioVisualRequest));
+            (extPatientDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(extPatientDeliveryRequest));
             });
     final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<audioVisualRequest, String> objectTypeColumn =
-        new TreeTableColumn<>("Object Type");
-    objectTypeColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<audioVisualRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getObjectType()));
-    TreeTableColumn<audioVisualRequest, String> accessObjectColumn =
-        new TreeTableColumn<>("Access Object");
-    accessObjectColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<audioVisualRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAccessObject()));
+    TreeTableColumn<extPatientDeliveryRequest, String> methodColumn =
+        new TreeTableColumn<>("Delivery Method");
+    methodColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<extPatientDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getMethod()));
 
-    TreeTableView<audioVisualRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(objectTypeColumn, accessObjectColumn);
+    TreeTableColumn<extPatientDeliveryRequest, String> addressColumn =
+        new TreeTableColumn<>("Address");
+    addressColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<extPatientDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAddress()));
+
+    TreeTableView<extPatientDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(methodColumn, addressColumn);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
-    accessObjectColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
-    objectTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    addressColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    methodColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
-  /* helper functions */
-
-  /**
-   * Fills the objectChoiceBox with the correct options based on whether the typeChoice is for
-   * Deaf/Hard of Hearing objects or Blind/Visually Impaired objects
-   */
-  @FXML
-  void fillObjectChoiceBox() {
-    if (typeChoice.getValue().equals("Deaf/Hard of Hearing")) {
-      ArrayList<Object> AccessibilityObjects = new ArrayList<>();
-      AccessibilityObjects.add("H&M - Headset + Microphone");
-      AccessibilityObjects.add("WIP - Written Info Pamphlets");
-      AccessibilityObjects.add("CMT - Computer Transcriber");
-      objectChoice.getItems().clear();
-      objectChoice.getItems().addAll(AccessibilityObjects);
-    } else if (typeChoice.getValue().equals("Blind/Visually Impaired")) {
-      ArrayList<Object> AccessibilityObjects = new ArrayList<>();
-      AccessibilityObjects.add("LPP - Large Print Info Pamphlets");
-      AccessibilityObjects.add("BIP - Braille Info Pamphlets");
-      AccessibilityObjects.add("CAN - Cane");
-      objectChoice.getItems().clear();
-      objectChoice.getItems().addAll(AccessibilityObjects);
-    } else {
-      objectChoice.getItems().clear();
-      objectChoice.getItems().add("");
-    }
-  }
-
   public void resolveRequest() throws SQLException {
-    RequestSystem req = new RequestSystem("Audio/Visual");
+    RequestSystem req = new RequestSystem("");
     req.resolveRequest(reqID.getText());
     reqID.clear();
   }
 
   public String generateReqID() throws SQLException {
-    String nNodeType = objectChoice.getValue().toString().substring(0, 3);
+
+    String nameAb = nodeIDFinder(nodeField.getValue().toString()).substring(0, 3);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
@@ -238,7 +217,7 @@ public class audioVisualController extends PageController
     }
     rset.close();
 
-    String nID = "f" + nNodeType + reqNum;
+    String nID = "OUT" + nameAb + reqNum;
     return nID;
   }
 
