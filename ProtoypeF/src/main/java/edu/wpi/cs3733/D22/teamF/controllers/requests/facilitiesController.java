@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +28,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 // import javax.swing.text.html.ImageView;
 
@@ -68,6 +71,23 @@ public class facilitiesController extends PageController
           new facilitiesRequest(
               requestID, nodeIDO, assignedEmpID, requesterEmpID, status, accessObject));
 
+  Timeline timeline =
+      new Timeline(
+          new KeyFrame(
+              Duration.seconds(1),
+              event -> {
+                try {
+                  startTable();
+                } catch (SQLException e) {
+                  e.printStackTrace();
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+              }));
+
+  /** Default facilitiesController constructor */
+  public facilitiesController() {}
+
   public void initialize(URL location, ResourceBundle resources) {
     // this.makeMenuBar(masterPane);
 
@@ -101,6 +121,9 @@ public class facilitiesController extends PageController
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
+
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
   }
 
   /** @return facilitiesRequest */
@@ -115,7 +138,7 @@ public class facilitiesController extends PageController
     if (requestType.getValue().toString().length() > 16)
       fields.add(requestType.getValue().toString().substring(0, 15));
     else fields.add(requestType.getValue().toString());
-    System.out.println(fields);
+    //    System.out.println(fields);
     req.placeRequest(fields);
 
     startTable();
@@ -145,7 +168,7 @@ public class facilitiesController extends PageController
 
     while (facilitiesRequestList.next()) {
       currentFacilityReq = facilitiesRequestList.getString("reqID");
-      System.out.println(currentFacilityReq);
+      //      System.out.println(currentFacilityReq);
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentFacilityReq)) {

@@ -49,7 +49,7 @@ public class AlertObserver implements PropertyChangeListener {
       fl4Count = allFloorAlerts.get(5).size();
       fl5Count = allFloorAlerts.get(6).size();
       totalAlertCount = ll1Count + ll2Count + fl5Count + fl4Count + fl3Count + fl2Count + fl1Count;
-      System.out.println("Floor Alert Counts");
+      // System.out.println("Floor Alert Counts");
     }
   }
 

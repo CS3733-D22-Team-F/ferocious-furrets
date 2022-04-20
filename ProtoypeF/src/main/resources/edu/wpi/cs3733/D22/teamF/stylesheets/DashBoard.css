@@ -1,0 +1,37 @@
+/*** variable declarations***/
+{
+/*Our Colors */
+    f-blue: #123090;
+    f-gold: #f3ba48;
+}
+
+#upArrow{
+    -fx-text-fill: white;
+    -fx-background-color: #123090;
+}
+
+#downArrow{
+    -fx-text-fill: white;
+    -fx-background-color: #123090;
+}
+
+#facadeButton{
+    -fx-background-color: f-blue;
+    -fx-text-fill: white;
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
+    -fx-padding: 10px;
+}
+
+.button{
+    -fx-background-color: f-blue;
+    -fx-text-fill: white;
+    -fx-font-family: Serif;
+    -fx-font-size: 15px;
+    -fx-wrap-text: true ;
+    -fx-max-width: 154px;
+    -fx-start-margin: 20px;
+    -fx-end-margin: 20px;
+    -fx-padding: 10px;
+    /**-jfx-rippler-fill: pink;**/
+}

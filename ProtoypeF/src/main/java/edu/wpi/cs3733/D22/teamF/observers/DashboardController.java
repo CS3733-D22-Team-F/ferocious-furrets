@@ -1,24 +1,35 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 public class DashboardController implements Initializable {
+  @FXML Label clock;
+
   List<Label> cleanLabels = new ArrayList<>();
   List<Label> dirtyLabels = new ArrayList<>();
   List<Label> podLabels = new ArrayList<>();
   List<Label> inUseLabels = new ArrayList<>();
+  List<Label> equipCountLabels = new ArrayList<>();
 
   static Floor currentFloor = Floor.FL3;
 
-  @FXML ComboBox layoutAlerts;
+  @FXML BorderPane masterPane;
+  @FXML JFXNodesList layoutAlerts;
   @FXML TextField floorSelect;
 
   @FXML Label cBed;
@@ -41,6 +52,25 @@ public class DashboardController implements Initializable {
   @FXML Label iRecliner;
   @FXML Label iInfusionPump;
 
+  //  @FXML Label ll2Count;
+  //  @FXML Label ll1Count;
+  //  @FXML Label fl1Count;
+  //  @FXML Label fl2Count;
+  //  @FXML Label fl3Count;
+  //  @FXML Label fl4Count;
+  //  @FXML Label fl5Count;
+
+  Time clockWork = new Time(DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalTime.now()));
+  Timeline timeline =
+      new Timeline(
+          new KeyFrame(
+              Duration.seconds(1),
+              event -> {
+                clockWork.onSecondPass();
+                clock.setText(clockWork.getCurrentTime());
+                setLabels();
+              }));
+
   /**
    * Initializes the DashboardController to be used with the corresponding FXML
    *
@@ -50,6 +80,9 @@ public class DashboardController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    clock.setText(clockWork.getCurrentTime());
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
     FloorObservable.getInstance();
 
     /*
@@ -92,6 +125,14 @@ public class DashboardController implements Initializable {
     inUseLabels.add(iRecliner);
     inUseLabels.add(iXRay);
 
+    //    equipCountLabels.add(ll2Count);
+    //    equipCountLabels.add(ll1Count);
+    //    equipCountLabels.add(fl1Count);
+    //    equipCountLabels.add(fl2Count);
+    //    equipCountLabels.add(fl3Count);
+    //    equipCountLabels.add(fl4Count);
+    //    equipCountLabels.add(fl5Count);
+
     /*
     for (DashboardObserver observer : floorObservers) {
       observer.setLabels(cleanLabels, dirtyLabels, podLabels, inUseLabels);
@@ -109,6 +150,7 @@ public class DashboardController implements Initializable {
 
     FloorWatchManager.getInstance()
         .setLabelsToUpdate(cleanLabels, dirtyLabels, podLabels, inUseLabels);
+    FloorWatchManager.getInstance().setEquipCountLabels(equipCountLabels);
     setLabels();
     setAlerts();
   }
@@ -119,29 +161,36 @@ public class DashboardController implements Initializable {
 
   /** Increases the value of the current floor by 1 */
   public void nextFloor() {
+
     setFloor(currentFloor.next());
     System.out.println(currentFloor + " for labels");
     // allFloorsObserver.setFloor(currentFloor);
-    System.out.println(currentFloor.toInt());
+    //    System.out.println(currentFloor.toInt());
     setLabels();
-    System.out.println("Next observer");
+    // System.out.println("Next observer");
   }
 
   /** Increases the value of the current floor by 1 */
   public void prevFloor() {
     setFloor(currentFloor.prev());
-    System.out.println(currentFloor + " for labels");
+    //    System.out.println(currentFloor + " for labels");
     // allFloorsObserver.setFloor(currentFloor);
     setLabels();
-    System.out.println("Prev observer");
+    //    System.out.println("Prev observer");
   }
 
   public void setAlerts() {
-    layoutAlerts.getItems().clear();
+
+    layoutAlerts.getChildren().removeAll();
+
     List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
 
     for (List<Alert> floorAlert : allFloorAlerts)
-      for (Alert inFloorAlert : floorAlert) layoutAlerts.getItems().add(inFloorAlert.getMessage());
+      for (Alert inFloorAlert : floorAlert) {
+        JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
+        layoutAlerts.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
+      }
   }
 
   public void readFloorInput() {
