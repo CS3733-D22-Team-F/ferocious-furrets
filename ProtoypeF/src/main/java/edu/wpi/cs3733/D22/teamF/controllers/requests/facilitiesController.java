@@ -67,6 +67,9 @@ public class facilitiesController extends PageController
     reset();
   }
 
+  /** Default facilitiesController constructor */
+  public facilitiesController() {}
+
   @Override
   public void reset() {
     assigned.valueProperty().setValue(null);

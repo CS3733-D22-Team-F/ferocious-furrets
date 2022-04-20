@@ -2,11 +2,16 @@ package edu.wpi.cs3733.D22.teamF.observers;
 
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.controllers.requests.facilitiesController;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;
@@ -160,7 +165,7 @@ class DashboardObserver implements PropertyChangeListener {
     }
   }
 
-  public void updateAllAlerts() {
+  public void updateAllAlerts() throws SQLException {
     checkAlerts();
     List<List<Alert>> pastAllAlerts = getAllFloorAlerts();
 
@@ -202,7 +207,11 @@ class DashboardObserver implements PropertyChangeListener {
         this.currFloor.toFloorString() + " :observer filtered list: " + listOfMedEquip.size());
     this.updateLabels();
 
-    updateAllAlerts();
+    try {
+      updateAllAlerts();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -358,25 +367,139 @@ class DashboardObserver implements PropertyChangeListener {
    * @return list of alerts
    */
   // TODO counter for alerts
-  public void checkAlerts() {
+  public void checkAlerts() throws SQLException {
     floorAlerts.clear();
     String formatString = currFloor.toFloorString();
+    boolean needsInfusionAlert = false;
+    boolean needsBedAlert = false;
 
-    if (dInfusionPumpCount.size() >= 10)
+    if (dInfusionPumpCount.size() >= 10) {
+      needsInfusionAlert = true;
+      System.out.println(
+          "Needs infusion pump alert"); /////////////////////////////////////////////////////////////
       floorAlerts.add(
           new Alert(
               this.currFloor,
               dInfusionPumpCount.size() + " dirty infusion pumps on floor " + formatString + "!"));
-
-    if (cInfusionPumpCount.size() <= 5)
+    }
+    if (cInfusionPumpCount.size() <= 5) {
       floorAlerts.add(
           new Alert(
               this.currFloor,
               cInfusionPumpCount.size() + " clean infusion pumps on floor " + formatString + "!"));
+    }
+    if (dBedCount.size() >= 6) {
+      needsBedAlert = true;
+      System.out.println(
+          "Needs infusion pump alert"); /////////////////////////////////////////////////////////////
 
-    if (dBedCount.size() >= 6)
       floorAlerts.add(
           new Alert(
               this.currFloor, dBedCount.size() + " dirty beds on floor " + formatString + "!"));
+    }
+    if (needsInfusionAlert || needsBedAlert) {
+      int floor = 0;
+      if (currFloor.toInt() == 4) floor = 3;
+      else if (currFloor.toInt() == 5) floor = 4;
+      else if (currFloor.toInt() == 6) floor = 5;
+      createDashboardServiceRequests(floor, needsInfusionAlert, needsBedAlert);
+    }
+  }
+
+  public boolean createDashboardServiceRequests(
+      int floor, boolean dInfusionReqNeeded, boolean dBedReqNeeded) throws SQLException {
+    System.out.println(
+        "Got into service request test"); /////////////////////////////////////////////////////////////
+
+    facilitiesController fController = new facilitiesController();
+    RequestSystem facilitiesReqSystem = new RequestSystem("Facilities");
+    boolean requestsUpToDate = false;
+    boolean dirtyInfusionRequestExists = false;
+    boolean dirtyBedsRequestExists = false;
+    String dirtyEquipNodeID = "fSTOR0050" + floor;
+
+    if (dInfusionReqNeeded) {
+      // search for service request for the dirty equipment storage area from the request ID saved
+
+      ResultSet dirtyInfusionList =
+          DatabaseManager.runQuery(
+              "SELECT * FROM FACILITIESREQUEST WHERE (nodeID = "
+                  + dirtyEquipNodeID
+                  + ") AND (accessObject = 'Clean Beds to OR Park')");
+      if (dirtyInfusionList == null) { // if does not already exist in completed request
+        System.out.println(
+            "Needs clean infusion pumps request"); /////////////////////////////////////////////////////////////
+
+        ArrayList<String> reqArrayString =
+            generateFacilitiesRequest(fController, "Infusion", floor);
+        facilitiesReqSystem.placeRequest(reqArrayString);
+      }
+    }
+    if (dBedReqNeeded) {
+      // search for service request for the dirty equipment storage area from the request ID saved
+      ResultSet dirtyBedList =
+          DatabaseManager.runQuery(
+              "SELECT * FROM FACILITIESREQUEST WHERE (nodeID = "
+                  + dirtyEquipNodeID
+                  + ") AND (accessObject = 'Infusion Pumps to West Plaza')");
+      if (dirtyBedList
+          == null) { // if request at the dirty bed park with infusion pump specification does not
+        // already exist
+        System.out.println(
+            "Needs clean beds request"); /////////////////////////////////////////////////////////////
+
+        ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "Bed", floor);
+        facilitiesReqSystem.placeRequest(reqArrayString);
+      }
+    }
+
+    return requestsUpToDate;
+  }
+
+  private ArrayList<String> generateFacilitiesRequest(
+      facilitiesController fController, String infusionOrBed, int floor) throws SQLException {
+    System.out.println(
+        "Got into generate request"); /////////////////////////////////////////////////////////////
+
+    // TODO generate reqID
+    String nNodeType = infusionOrBed;
+    int reqNum = 0;
+    ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+    if (reqNum == 0) {
+      reqNum = 1;
+    }
+    String reqID = "f" + nNodeType + reqNum;
+
+    // TODO generate nodeID from the dirty storage area depending on the floor (3,4,5)
+    String nodeID = "fSTOR0050" + Integer.toString(floor);
+
+    // TODO assignedEmployeeID = General Facilities
+    String assignedEmployeeID = fController.employeeIDFinder("Facilities,General");
+
+    // TODO requesterEmployeeID = General Facilities
+    String requesterEmployeeID = fController.employeeIDFinder("Facilities,General");
+
+    // TODO status = processing
+    String status = "Processing";
+    // TODO accessObject
+    String accessObject = "";
+    if (infusionOrBed.equals("Bed")) {
+      accessObject = "Clean Beds to OR Park";
+    } else if (infusionOrBed.equals("Infusion")) {
+      accessObject = "Infusion Pumps to West Plaza";
+    }
+
+    ArrayList<String> fields = new ArrayList<>();
+    fields.add(reqID);
+    fields.add(nodeID);
+    fields.add(assignedEmployeeID);
+    fields.add(requesterEmployeeID);
+    fields.add(status);
+    fields.add(accessObject);
+    return fields;
   }
 }
