@@ -44,8 +44,12 @@ public class maintenanceSR extends Request implements IRequest {
     db.deleteRequest(reqID);
   }
 
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
+  }
+
+  public String getReqType() {
+    return "Maintenance";
   }
 
   public void cancel(String reqID) {}

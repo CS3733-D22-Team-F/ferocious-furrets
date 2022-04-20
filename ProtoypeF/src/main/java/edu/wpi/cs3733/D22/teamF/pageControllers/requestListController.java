@@ -2,21 +2,29 @@ package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.requestTree;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * controller for request list
@@ -25,6 +33,9 @@ import javafx.scene.layout.Pane;
  */
 public class requestListController extends PageController implements Initializable {
 
+  public static String selectedID = "";
+  public static String selectedType = "";
+  //  @FXML ListView requestList;
   @FXML JFXTreeTableView requestList;
   @FXML Pane tablePane;
   @FXML private AnchorPane masterPane;
@@ -161,7 +172,10 @@ public class requestListController extends PageController implements Initializab
     clearTable();
 
     ResultSet rset =
-        DatabaseManager.getRequestDAO().get(); // .runQuery("SELECT * FROM ServiceRequest");
+        DatabaseManager.runQuery(
+            "SELECT * FROM ServiceRequest WHERE UPPER(status) = 'PROCESSING'"); // .runQuery("SELECT
+    // * FROM
+    // ServiceRequest");
     ArrayList<requestTree> reqs = new ArrayList<requestTree>();
     requestTree rt;
 
@@ -175,7 +189,7 @@ public class requestListController extends PageController implements Initializab
               rset.getString("status"));
       reqs.add(rt);
     }
-
+    rset.close();
     treeRoot.setExpanded(true);
     reqs.stream()
         .forEach(
@@ -187,19 +201,20 @@ public class requestListController extends PageController implements Initializab
     TreeTableColumn<requestTree, String> reqIDColumn = new TreeTableColumn<>("Request ID");
     reqIDColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
-          System.out.println("req ID: " + param.getValue().getValue().getReqID());
           return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
         });
 
     TreeTableColumn<requestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
     nodeIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
     TreeTableColumn<requestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableView<requestTree> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
@@ -268,5 +283,28 @@ public class requestListController extends PageController implements Initializab
   @FXML
   void switchToHome(ActionEvent event) throws IOException {
     // StageManager.getInstance().setHome();
+  }
+
+  void onChangePress() throws IOException {
+    // TODO replace "new" items with defined items
+    TreeTableView<Request> table = new TreeTableView<>();
+    TreeItem<Request> selectedItem = table.getSelectionModel().getSelectedItem();
+    selectedID = selectedItem.getValue().getReqID();
+    selectedType = selectedItem.getValue().getReqType();
+    popUpModifyReq();
+    // requestListController.selectedID;
+    // requestListController.selectedType;
+  }
+
+  void popUpModifyReq() throws IOException {
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("Map/mapEquipModifyPage.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
   }
 }

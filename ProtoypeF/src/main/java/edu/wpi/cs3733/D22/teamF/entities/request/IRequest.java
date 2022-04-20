@@ -13,7 +13,7 @@ public interface IRequest {
 
   public void resolve(String reqID) throws SQLException;
 
-  public void modify(ArrayList<String> fields);
+  public void modify(ArrayList<String> fields) throws SQLException;
 
   public void cancel(String reqID);
 }

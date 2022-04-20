@@ -12,6 +12,11 @@ public class facilitiesRequest extends DeliveryRequest {
     db = new Repository("Facilities");
   }
 
+  @Override
+  public String getReqType() {
+    return "Facilities";
+  }
+
   public facilitiesRequest(
       String reqID,
       String nodeID,
@@ -34,7 +39,7 @@ public class facilitiesRequest extends DeliveryRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {
+  public void modify(ArrayList<String> fields) throws SQLException {
     db.updateRequest(fields);
   }
 

@@ -38,7 +38,9 @@ public class scanRequest extends MedicalRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {}
+  public void modify(ArrayList<String> fields) throws SQLException {
+    db.updateRequest(fields);
+  }
 
   @Override
   public void cancel(String reqID) {}
@@ -76,5 +78,9 @@ public class scanRequest extends MedicalRequest {
    */
   public void setScanType(String newScanType) {
     this.scanType = newScanType;
+  }
+
+  public String getReqType() {
+    return "Scan";
   }
 }

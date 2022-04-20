@@ -85,7 +85,21 @@ public class scanDAOImpl implements IRequestDAO {
     DatabaseManager.runStatement(cmd);
   }
 
-  public void update(ArrayList<String> fields) {}
+  public void update(ArrayList<String> fields) {
+    String servCmd =
+        String.format(
+            "UPDATE SERVICEREQUEST SET NODEID = '%s', ASSIGNEDEMPLOYEEID = '%s', REQUESTEREMPLOYEEID = '%s', STATUS = '%s' WHERE REQID = '%s'",
+            fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(0));
+    String cmd =
+        String.format(
+            "UPDATE SCANREQUEST SET TYPE = '%s' WHERE REQID = '%s'", fields.get(5), fields.get(0));
+    try {
+      DatabaseManager.runStatement(servCmd);
+      DatabaseManager.runStatement(cmd);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 
   public ResultSet get() throws SQLException {
 

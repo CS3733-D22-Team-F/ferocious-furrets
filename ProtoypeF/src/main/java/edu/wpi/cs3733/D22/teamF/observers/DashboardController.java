@@ -153,26 +153,26 @@ public class DashboardController implements Initializable {
   public void setLabels() {
 
     List<DashboardObserver> floorObservers = FloorWatchManager.getInstance().getAllFloorObservers();
-    System.out.println(currentFloor);
-    System.out.println(
-        "Current Observer Floor"
-            + floorObservers.get(currentFloor.toInt()).getFloor().toFloorString());
-    System.out.println(
-        currentFloor.toFloorString()
-            + " clean List:"
-            + floorObservers.get(currentFloor.toInt()).getCleanList().size());
-    System.out.println(
-        currentFloor.toFloorString()
-            + " dirty List:"
-            + floorObservers.get(currentFloor.toInt()).getDirtyList().size());
-    System.out.println(
-        currentFloor.toFloorString()
-            + " pod List:"
-            + floorObservers.get(currentFloor.toInt()).getPodList().size());
-    System.out.println(
-        currentFloor.toFloorString()
-            + " in-use List:"
-            + floorObservers.get(currentFloor.toInt()).getInUse().size());
+    //    System.out.println(currentFloor);
+    //    System.out.println(
+    //        "Current Observer Floor"
+    //            + floorObservers.get(currentFloor.toInt()).getFloor().toFloorString());
+    //    System.out.println(
+    //        currentFloor.toFloorString()
+    //            + " clean List:"
+    //            + floorObservers.get(currentFloor.toInt()).getCleanList().size());
+    //    System.out.println(
+    //        currentFloor.toFloorString()
+    //            + " dirty List:"
+    //            + floorObservers.get(currentFloor.toInt()).getDirtyList().size());
+    //    System.out.println(
+    //        currentFloor.toFloorString()
+    //            + " pod List:"
+    //            + floorObservers.get(currentFloor.toInt()).getPodList().size());
+    //    System.out.println(
+    //        currentFloor.toFloorString()
+    //            + " in-use List:"
+    //            + floorObservers.get(currentFloor.toInt()).getInUse().size());
 
     List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
     for (int alert = 0; alert < currentAlerts.size(); alert++)

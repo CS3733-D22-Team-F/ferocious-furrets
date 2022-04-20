@@ -35,7 +35,9 @@ public class labRequest extends MedicalRequest {
   }
 
   @Override
-  public void modify(ArrayList<String> fields) {}
+  public void modify(ArrayList<String> fields) throws SQLException {
+    db.updateRequest(fields);
+  }
 
   @Override
   public void cancel(String reqID) {}
@@ -99,5 +101,9 @@ public class labRequest extends MedicalRequest {
     return String.format(
         "INSERT INTO labRequest VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
         reqID, nodeID, assignedID, requestedID, status, type);
+  }
+
+  public String getReqType() {
+    return "Lab";
   }
 }
