@@ -411,6 +411,34 @@ public class MapIconModifier {
                   Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/clean.png")));
           break;
         }
+      case "infoMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/info.png")));
+          break;
+        }
+      case "backMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/back.png")));
+          break;
+        }
+      case "queueMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/queue.png")));
+          break;
+        }
+      case "employeeMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/employee.png")));
+          break;
+        }
     }
     ImageView imageView = new ImageView(image);
     imageView.setFitHeight(20);
