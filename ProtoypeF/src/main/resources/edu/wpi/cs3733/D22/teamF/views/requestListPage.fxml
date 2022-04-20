@@ -2,10 +2,13 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -13,7 +16,7 @@
 
 <AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.requestListController">
    <children>
-      <VBox layoutX="74.0" layoutY="66.0" prefHeight="567.0" prefWidth="664.0">
+      <VBox layoutX="74.0" layoutY="25.0" prefHeight="677.0" prefWidth="664.0" spacing="10.0">
          <children>
             <Pane prefHeight="103.0" prefWidth="664.0">
                <children>
@@ -25,9 +28,18 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="tablePane" prefHeight="496.0" prefWidth="664.0">
+            <HBox prefHeight="21.0" prefWidth="664.0" spacing="15.0">
                <children>
-                  <JFXTreeTableView fx:id="requestList" prefHeight="491.0" prefWidth="664.0" />
+                  <JFXButton fx:id="filterButton" onAction="#f" text="Search Employee:" />
+                  <TextField fx:id="filterEmployee" prefHeight="44.0" prefWidth="431.0" />
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <Pane fx:id="tablePane" prefHeight="450.0" prefWidth="664.0">
+               <children>
+                  <JFXTreeTableView fx:id="requestList" layoutY="2.0" prefHeight="437.0" prefWidth="664.0" />
                </children>
             </Pane>
          </children>
