@@ -60,6 +60,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="requestListButton" buttonType="RAISED" onAction="#changeToRequestList" prefHeight="51.333333333333336" prefWidth="286.0" text="Request List" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
                   <JFXButton fx:id="queueButton" buttonType="RAISED" onAction="#changeToQueue" prefHeight="30.0" prefWidth="286.0" text="Service Queue" textFill="WHITE">
                      <font>
                         <Font size="24.0" />

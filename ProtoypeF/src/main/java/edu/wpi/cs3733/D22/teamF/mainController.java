@@ -291,6 +291,10 @@ public class mainController implements Initializable {
     mapMenu.setVisible(false);
   }
 
+  public void changeToRequestList() throws IOException {
+    changeTo("views/requestListPage.fxml");
+  }
+
   public void changeToLinksPage() throws IOException {
     changeTo("views/linksPage.fxml");
   }
