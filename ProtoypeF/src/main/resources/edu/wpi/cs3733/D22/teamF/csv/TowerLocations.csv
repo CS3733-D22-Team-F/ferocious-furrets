@@ -44,7 +44,6 @@ FLABS00101,2818,3023,1,Tower,LABS,Obstetrics Admitting,Obs Admitting
 FREST00101,3770,1975,1,Tower,REST,Bathroom 75 Lobby,Bathroom Lobby
 FRETL00101,3302,1411,1,Tower,RETL,Lobby Vending Machine,VM Lobby
 FRETL00201,1590,3070,1,Tower,RETL,Au Bon Pain,ABP
-FSERV00101,3218,1551,1,Tower,SERV,Shattuck Street Lobby ATM,Lobby ATM
 FSERV00201,1718,2199,1,Tower,SERV,Tower Medical Cashier,Tower Cashier
 FSERV00301,2230,2747,1,Tower,SERV,Kessler Library,Kessler Library
 FSERV00401,2180,2248,1,Tower,DEPT,Spiritual Care Office,SCO
@@ -195,3 +194,4 @@ fPATI01705,1536,2852,5,Tower,PATI,Patient Bed Room 557,Patient Bed C
 fPATI01805,1760,2837,5,Tower,PATI,Patient Bed Room 558,Patient Bed C
 fPATI01905,1927,2747,5,Tower,PATI,Patient Bed Room 559,Patient Bed C
 fPATI02005,2022,2553,5,Tower,PATI,Patient Bed Room 560,Patient Bed C
+fPATI00101,4202,2051,1,Tower,PATI,Carter,Carter

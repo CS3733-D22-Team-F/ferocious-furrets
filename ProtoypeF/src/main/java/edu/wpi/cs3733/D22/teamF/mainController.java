@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
@@ -27,8 +28,10 @@ import lombok.SneakyThrows;
 public class mainController implements Initializable {
 
   @FXML StackPane pageHolder;
+  @FXML AnchorPane holdingAnchor;
   @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
+  @FXML VBox menuBar;
   @FXML VBox homeMenu;
   @FXML VBox mapMenu;
   @FXML VBox serviceMenu;
@@ -88,6 +91,7 @@ public class mainController implements Initializable {
     serviceMenu.setVisible(false);
     baseTransforms = pageHolder.getTransforms();
     menu.setSidePane(homeMenu);
+    onOpen();
     menuClose();
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
@@ -137,6 +141,7 @@ public class mainController implements Initializable {
   }
 
   private void applyResize(boolean newValue) {
+    //    pageHolder.getTransforms().setAll(baseTransforms);
     pageHolder.getTransforms().setAll(baseTransforms);
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     if (newValue) {
@@ -150,6 +155,9 @@ public class mainController implements Initializable {
       pageHolder
           .getTransforms()
           .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
+      //      pageHolder
+      //          .getTransforms()
+      //          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
 
     } else {
       pageHolder.getTransforms().add(new Scale(1, 1));
@@ -172,7 +180,7 @@ public class mainController implements Initializable {
         .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
   }
 
-  public void menuClose() {
+  public void menuClose() throws InterruptedException {
     menu.close();
     menu.setPrefWidth(50);
     homeMenu.setPrefWidth(50);
@@ -233,12 +241,6 @@ public class mainController implements Initializable {
   public void menuOpen() {
     menu.open();
     menu.setMaxWidth(200);
-    homeMenu.setMaxWidth(200);
-    homeMenu.setPrefWidth(200);
-    mapMenu.setMaxWidth(200);
-    mapMenu.setPrefWidth(200);
-    serviceMenu.setMaxWidth(200);
-    serviceMenu.setPrefWidth(200);
     mapButton.setText("Info");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
@@ -367,5 +369,18 @@ public class mainController implements Initializable {
   public void exit() throws SQLException, IOException {
     DatabaseManager.backUpDatabaseToCSV();
     System.exit(0);
+  }
+
+  public void onOpen() {
+    homeMenu.setMaxWidth(200);
+    mapMenu.setMaxWidth(200);
+    serviceMenu.setMaxWidth(200);
+    homeMenu.setPrefWidth(200);
+    mapMenu.setPrefWidth(200);
+    serviceMenu.setPrefWidth(200);
+  }
+
+  public void onClose() {
+    menu.setMaxWidth(50);
   }
 }
