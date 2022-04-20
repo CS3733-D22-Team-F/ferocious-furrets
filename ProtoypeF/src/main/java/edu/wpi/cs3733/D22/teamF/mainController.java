@@ -17,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
@@ -28,7 +27,7 @@ import lombok.SneakyThrows;
 public class mainController implements Initializable {
 
   @FXML StackPane pageHolder;
-  @FXML AnchorPane holdingAnchor;
+  @FXML StackPane stackHolder;
   @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
   @FXML VBox menuBar;
@@ -72,7 +71,8 @@ public class mainController implements Initializable {
   @FXML VBox v6;
 
   ChangeListener<Boolean> maxScreenCallback;
-  ObservableList<Transform> baseTransforms;
+  ObservableList<Transform> baseTransformsScene;
+  ObservableList<Transform> baseTransformsMenu;
 
   @SneakyThrows
   @Override
@@ -89,7 +89,8 @@ public class mainController implements Initializable {
     Runtime.getRuntime().addShutdownHook(shutDownHook);
     mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
-    baseTransforms = pageHolder.getTransforms();
+    baseTransformsScene = pageHolder.getTransforms();
+    baseTransformsMenu = stackHolder.getTransforms();
     menu.setSidePane(homeMenu);
     onOpen();
     menuClose();
@@ -142,31 +143,33 @@ public class mainController implements Initializable {
 
   private void applyResize(boolean newValue) {
     //    pageHolder.getTransforms().setAll(baseTransforms);
-    pageHolder.getTransforms().setAll(baseTransforms);
+    //    menu.getTransforms().setAll(baseTransformsScene);
+    stackHolder.getTransforms().setAll(baseTransformsMenu);
+    homeMenu.getTransforms().setAll(baseTransformsMenu);
+    mapMenu.getTransforms().setAll(baseTransformsMenu);
+    serviceMenu.getTransforms().setAll(baseTransformsMenu);
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     if (newValue) {
-      double maxWidth = screenBounds.getWidth();
+      double maxWidth = screenBounds.getWidth() - 30;
       double maxHeight = screenBounds.getHeight();
-      double contentWidth = SceneManager.getInstance().getStage().widthProperty().get();
-      double contentHeight = SceneManager.getInstance().getStage().heightProperty().get();
+      double contentWidth = stackHolder.getWidth();
+      double contentHeight = stackHolder.getHeight();
       double widthRatio = maxWidth / contentWidth;
       double heightRatio = maxHeight / contentHeight;
       double preservedAspectRatio = Math.min(widthRatio, heightRatio);
-      pageHolder
+      //      menu.getTransforms().add(new Scale(1, (float) preservedAspectRatio));
+      stackHolder
           .getTransforms()
-          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
-      //      pageHolder
-      //          .getTransforms()
-      //          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
+          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio * 1.15));
 
     } else {
-      pageHolder.getTransforms().add(new Scale(1, 1));
+      stackHolder.getTransforms().add(new Scale(1, 1));
     }
   }
 
   private void applyResize(double width, double height) {
     // TODO: Make this work
-    pageHolder.getTransforms().setAll(baseTransforms);
+    pageHolder.getTransforms().setAll(baseTransformsScene);
 
     double maxWidth = width;
     double maxHeight = height;

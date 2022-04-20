@@ -28,7 +28,7 @@ FHALL01901,2454,2440,1,Tower,HALL,Tower Hallway 11,Hallway F01901
 FHALL02001,2200,2562,1,Tower,HALL,Tower Hallway 12,Hallway F02001
 FHALL02101,2461,2550,1,Tower,HALL,Tower Hallway Entrance,Tower Entrance 2
 FHALL02201,2500,3179,1,Tower,HALL,Hallway Lobby Entrance,Entrance Hallway
-FHALL02301,2790,3200,1,Tower,HALL,Lobby Hallway 1,Hallway F02301
+FHALL02301,2790,3199,1,Tower,HALL,Lobby Hallway 1,Hallway F02301
 FHALL02401,3250,3200,1,Tower,HALL,Lobby Hallway 2,Hallway F02401
 FHALL02501,3318,3062,1,Tower,HALL,Lobby Hallway 3,Hallway F02501
 FHALL02601,3539,2990,1,Tower,HALL,Lobby Hallway 4,Hallway F02601
@@ -37,7 +37,7 @@ FHALL02801,3400,3188,1,Tower,HALL,Lobby Entrance Hallway,HallwayF02801
 FHALL02901,2190,3188,1,Tower,HALL,75 Lobby,75 Lobby
 FHALL03001,1975,3047,1,Tower,HALL,Lobby Hallway 5,Hallway F02701
 FHALL03101,3554,1928,1,Tower,HALL,Lobby Hallway 6,Hallway F02801
-FHALL03201,2450,2155,1,Tower,HALL,Tower Hallway 13,Hallway F03201
+FHALL03201,2432,2113,1,Tower,HALL,Tower Hallway 13,Hallway F03201
 FHALL03301,3714,3123,1,Tower,HALL,Emergency Hallway,Hallway F03301
 FINFO00101,2214,3007,1,Tower,INFO,75 Lobby Information Desk,Lobby Info Desk
 FLABS00101,2818,3023,1,Tower,LABS,Obstetrics Admitting,Obs Admitting
@@ -56,7 +56,7 @@ WELEV00M01,2810,3379,1,Tower,ELEV,Elevator M Floor 1,Elevator M1
 HBATH00102,1866,2051,2,Tower,BATH,Bathroom 1 Tower Floor 2,Bathroom 0102
 HDEPT00102,3706,3391,2,Tower,DEPT,Endoscopy,Endoscopy
 HHALL00102,2974,1771,2,Tower,HALL,Hallway Connector 1 Floor 2,Hallway H00102
-HHALL00202,3290,1727,2,Tower,HALL,Hallway Connector 2 Floor 2,Hallway H00202
+HHALL00202,3364,1741,2,Tower,HALL,Hallway Connector 2 Floor 2,Hallway H00202
 HHALL00402,2950,2191,2,Tower,HALL,Hallway Connector 4 Floor 2,Hallway H00402
 HHALL00502,2766,2239,2,Tower,HALL,Hallway Connector 5 Floor 2,Hallway H00502
 HHALL00602,2550,2487,2,Tower,HALL,Hallway Connector 6 Floor 2,Hallway H00602
