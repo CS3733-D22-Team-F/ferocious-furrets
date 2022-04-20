@@ -139,7 +139,7 @@ public class equipmentRequestController extends PageController
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
-      System.out.println("There are still blank field");
+      //      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("Equipment Request of type: " + typeChoice.getValue().toString());
