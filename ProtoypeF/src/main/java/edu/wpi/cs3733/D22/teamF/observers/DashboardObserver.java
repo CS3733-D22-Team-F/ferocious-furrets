@@ -104,12 +104,13 @@ class DashboardObserver implements PropertyChangeListener {
     listOfMedEquip.clear();
     for (equipment eq : rawListEquip) {
       String equipFloor = eq.getNodeID().substring(8);
-      System.out.println(
-          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
+      //      System.out.println(
+      //          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
 
       if (equipFloor.equals(currFloor.toFloorString())) {
-        System.out.println(
-            currFloor.toFloorString() + "Adding to medEquipList, size:  " + listOfMedEquip.size());
+        //        System.out.println(
+        //            currFloor.toFloorString() + "Adding to medEquipList, size:  " +
+        // listOfMedEquip.size());
         listOfMedEquip.add(eq);
       }
     }

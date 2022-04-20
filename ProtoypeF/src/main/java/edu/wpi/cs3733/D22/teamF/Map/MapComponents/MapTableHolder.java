@@ -132,6 +132,7 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllReq() throws SQLException, IOException {
     ArrayList<Location> reqList = new ArrayList<>();
     reqList.addAll(getAllPT());
+    reqList.addAll(getAllPatientTransports());
     reqList.addAll(getAllFacilities());
     reqList.addAll(getAllSecurity());
     reqList.addAll(getAllAudioVis());
@@ -568,5 +569,43 @@ public class MapTableHolder {
     }
     facilReqs.close();
     return facil;
+  }
+
+  /**
+   * @return
+   * @throws SQLException
+   * @throws IOException
+   */
+  public static ArrayList<Location> getAllPatientTransports() throws SQLException, IOException {
+    ArrayList<Location> pats = new ArrayList<>();
+    // equipment delivery requests
+    ResultSet patReqs = DatabaseManager.getExtPatDAO().get();
+    while (patReqs.next()) {
+      String reqID = patReqs.getString("reqID");
+      ResultSet reqInfo =
+          DatabaseManager.runQuery(
+              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+      String status = "";
+      String nodeID = "";
+      int x = -1;
+      int y = -1;
+      String floor = "";
+      String type = "ExternalPatient";
+      if (reqInfo.next()) {
+        status = reqInfo.getString("status");
+        nodeID = reqInfo.getString("nodeID");
+      }
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
+      }
+      pats.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
+    }
+    patReqs.close();
+    return pats;
   }
 }

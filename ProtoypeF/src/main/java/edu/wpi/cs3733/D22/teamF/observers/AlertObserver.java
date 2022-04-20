@@ -25,7 +25,7 @@ public class AlertObserver implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent evt) {
     allFloorAlerts = DashboardObserver.getAllFloorAlerts();
     setFloorAlertCount();
-    System.out.println("AlertObserver found new alerts");
+    //    System.out.println("AlertObserver found new alerts");
     updateButtons();
   }
 
@@ -70,13 +70,13 @@ public class AlertObserver implements PropertyChangeListener {
       buttonsToUpdate.get(6).setText(fl5Count + "  LL5");
       buttonsToUpdate.get(7).setText(totalAlertCount + " Alerts");
 
-      System.out.println(ll2Count);
-      System.out.println(ll1Count);
-      System.out.println(fl1Count);
-      System.out.println(fl2Count);
-      System.out.println(fl3Count);
-      System.out.println(fl4Count);
-      System.out.println(fl5Count);
+      //      System.out.println(ll2Count);
+      //      System.out.println(ll1Count);
+      //      System.out.println(fl1Count);
+      //      System.out.println(fl2Count);
+      //      System.out.println(fl3Count);
+      //      System.out.println(fl4Count);
+      //      System.out.println(fl5Count);
     }
   }
 }

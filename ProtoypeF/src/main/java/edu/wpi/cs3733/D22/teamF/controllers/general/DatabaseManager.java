@@ -158,11 +158,11 @@ public class DatabaseManager {
     dropTableIfExist("MEDICINEREQUEST");
     dropTableIfExist("EquipmentDeliveryRequest");
     dropTableIfExist("MaintenanceRequest");
+    dropTableIfExist("externalPatientRequest");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
     dropTableIfExist("Locations");
-    dropTableIfExist("externalPatientRequest");
   }
 
   public static void dropTableIfExist(String droppingTable) throws SQLException {
@@ -198,7 +198,6 @@ public class DatabaseManager {
     ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
-
     extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
 
     System.out.println("Locations table updated to csv :)");

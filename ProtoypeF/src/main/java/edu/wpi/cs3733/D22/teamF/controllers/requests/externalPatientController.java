@@ -205,7 +205,7 @@ public class externalPatientController extends PageController
 
   public String generateReqID() throws SQLException {
 
-    String nameAb = nodeIDFinder(nodeField.getValue().toString()).substring(0, 3);
+    String nameAb = methodField.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
@@ -214,7 +214,7 @@ public class externalPatientController extends PageController
     }
     rset.close();
 
-    String nID = "OUT" + nameAb + reqNum;
+    String nID = "f" + nameAb + reqNum;
     return nID;
   }
 

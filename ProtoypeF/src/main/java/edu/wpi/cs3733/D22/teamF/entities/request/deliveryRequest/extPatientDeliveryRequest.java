@@ -13,6 +13,11 @@ public class extPatientDeliveryRequest extends DeliveryRequest {
     db = new Repository("ExternalPatient");
   }
 
+  @Override
+  public String getReqType() {
+    return "ExternalPatient";
+  }
+
   /**
    * @param reqID
    * @param nodeID OUT

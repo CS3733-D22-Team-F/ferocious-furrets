@@ -48,7 +48,7 @@ public class Cache {
                 "Map/mapLocModifyPage.fxml",
                 "Map/mapEquipModifyPage.fxml",
                 "medicinePage.fxml",
-                "externalPatientPage.fxml"));
+                "externalPatientPage.fxml",
                 "medicinePage.fxml",
                 "Map/mapEquipModifyPage.fxml",
                 "views/request/modifyRequestPage.fxml"));
