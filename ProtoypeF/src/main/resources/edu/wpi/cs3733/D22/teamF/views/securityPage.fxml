@@ -19,14 +19,14 @@
     <left>
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="137.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="635.0" />
-                <Label layoutX="28.0" layoutY="30.0" prefHeight="80.0" prefWidth="359.0" text="Security Request" textFill="WHITE">
+                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="627.0" />
+                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="635.0" />
+                <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="359.0" text="Security Request" textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="49.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="461.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="461.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../BWHlogo-new.png" />
                     </image>
@@ -34,7 +34,7 @@
                         <Rectangle2D minX="50.0" width="500.0" />
                     </viewport>
                 </ImageView>
-                <VBox layoutX="-6.0" layoutY="174.0" prefHeight="466.0" prefWidth="587.0">
+                <VBox layoutX="24.0" layoutY="203.0" prefHeight="453.0" prefWidth="553.0">
                     <children>
                         <HBox fx:id="infoHBox" prefHeight="355.0" prefWidth="572.0">
                             <children>
@@ -162,14 +162,14 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <HBox fx:id="leftHbox" prefHeight="62.0" prefWidth="422.0">
+                        <HBox fx:id="leftHbox" prefHeight="62.0" prefWidth="388.0">
                             <children>
                                 <JFXButton fx:id="submitButton" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#submit" prefHeight="62.0" prefWidth="172.0" ripplerFill="#f2ba49" text="Submit" textFill="WHITE">
                                     <font>
                                         <Font name="Serif Regular" size="24.0" />
                                     </font>
                                     <HBox.margin>
-                                        <Insets left="160.0" />
+                                        <Insets left="85.0" />
                                     </HBox.margin>
                                 </JFXButton>
                                 <JFXButton fx:id="resetButton" buttonType="RAISED" prefHeight="62.0" prefWidth="191.0" ripplerFill="#f2ba49" text="Reset" textFill="WHITE">
@@ -187,11 +187,11 @@
             </children>
         </Pane>
     </left>
-    <center>
-        <Pane fx:id="tablePane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <JFXTreeTableView prefHeight="721.0" prefWidth="716.0" />
-            </children>
-        </Pane>
-    </center>
+   <center>
+      <Pane fx:id="tablePane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTreeTableView layoutX="-4.0" prefHeight="721.0" prefWidth="720.0" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
