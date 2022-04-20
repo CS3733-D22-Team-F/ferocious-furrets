@@ -366,6 +366,10 @@ public class mainController implements Initializable {
     changeTo("views/request/maintenanceRequestPage.fxml");
   }
 
+  public void goToTransport() throws IOException {
+    changeTo("views/extPatDeliveryPage.fxml");
+  }
+
   public void changeTo(String path) throws IOException {
     SubScene scene = SceneManager.getInstance().setScene(path);
     pageHolder.getChildren().clear();
