@@ -114,7 +114,6 @@ public class audioVisualController extends PageController
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
         || objectChoice.getValue().equals("")) {
-      System.out.println("There are still blank fields");
     } else {
       requestList.clear();
       requestList.add("Audio/Visual Request for: " + objectChoice.getValue());
