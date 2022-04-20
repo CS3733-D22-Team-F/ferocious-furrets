@@ -92,6 +92,7 @@ public class securityController extends PageController
       req.placeRequest(fields);
 
       reset();
+      startTable();
     }
   }
 
