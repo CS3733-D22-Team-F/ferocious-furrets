@@ -1,14 +1,18 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Paint;
 
 public class DashboardController implements Initializable {
   List<Label> cleanLabels = new ArrayList<>();
@@ -18,7 +22,8 @@ public class DashboardController implements Initializable {
 
   static Floor currentFloor = Floor.FL3;
 
-  @FXML ComboBox layoutAlerts;
+  @FXML BorderPane masterPane;
+  @FXML JFXNodesList layoutAlerts;
   @FXML TextField floorSelect;
 
   @FXML Label cBed;
@@ -137,11 +142,20 @@ public class DashboardController implements Initializable {
   }
 
   public void setAlerts() {
-    layoutAlerts.getItems().clear();
+
+    layoutAlerts.getChildren().removeAll();
+
     List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
 
     for (List<Alert> floorAlert : allFloorAlerts)
-      for (Alert inFloorAlert : floorAlert) layoutAlerts.getItems().add(inFloorAlert.getMessage());
+      for (Alert inFloorAlert : floorAlert) {
+        JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+        newAlert.setPrefWidth(layoutAlerts.getPrefWidth());
+        newAlert.setPrefHeight(layoutAlerts.getPrefHeight());
+        newAlert.setBackground(layoutAlerts.getBackground());
+        newAlert.setTextFill(Paint.valueOf("white"));
+        layoutAlerts.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
+      }
   }
 
   public void readFloorInput() {
