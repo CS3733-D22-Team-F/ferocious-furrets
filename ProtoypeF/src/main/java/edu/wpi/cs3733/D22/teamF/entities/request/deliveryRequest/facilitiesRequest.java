@@ -40,4 +40,8 @@ public class facilitiesRequest extends DeliveryRequest {
 
   @Override
   public void cancel(String reqID) {}
+
+  public String getAccessObject() {
+    return accessObject;
+  }
 }

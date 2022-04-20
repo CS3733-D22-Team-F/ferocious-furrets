@@ -61,7 +61,6 @@ public class scanController extends PageController implements Initializable, IRe
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");

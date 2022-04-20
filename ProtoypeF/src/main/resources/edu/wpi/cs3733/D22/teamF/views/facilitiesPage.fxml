@@ -179,7 +179,7 @@
 <right>
       <Pane fx:id="tablePane" BorderPane.alignment="CENTER">
          <children>
-      <JFXTreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="718.0" />
+      <JFXTreeTableView fx:id="table" prefHeight="721.0" prefWidth="718.0" />
          </children>
       </Pane>
 </right>
