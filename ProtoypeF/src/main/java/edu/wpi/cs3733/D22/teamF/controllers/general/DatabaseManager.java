@@ -199,7 +199,7 @@ public class DatabaseManager {
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
 
-    extPatDAO.backUpToCSV("/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
+    extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
 
     System.out.println("Locations table updated to csv :)");
     System.out.println("MedEquip table updated to csv :)");

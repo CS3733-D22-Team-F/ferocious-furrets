@@ -58,10 +58,8 @@ public class externalPatientController extends PageController
 
   private String method;
 
-  private String patientName;
-
   TreeItem<extPatientDeliveryRequest> treeRoot =
-      new TreeItem<>(new extPatientDeliveryRequest(requestID, address, method, patientName));
+      new TreeItem<>(new extPatientDeliveryRequest(requestID, address, method));
 
   /**
    * inits
@@ -123,7 +121,6 @@ public class externalPatientController extends PageController
     } else {
       requestList.clear();
       requestList.add("External Patient Transport Request for: " + addressField.getText());
-      // requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       serviceRequestStorage.addToArrayList(requestList);
       RequestSystem req = new RequestSystem("ExternalPatient");
@@ -145,7 +142,6 @@ public class externalPatientController extends PageController
 
   @FXML
   public void reset() {
-    patientField.setText("");
     employeeIDField.valueProperty().setValue(null);
     userField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
@@ -165,10 +161,7 @@ public class externalPatientController extends PageController
     while (rset.next()) {
       avr =
           new extPatientDeliveryRequest(
-              rset.getString("reqID"),
-              rset.getString("address"),
-              rset.getString("method"),
-              rset.getString("patientName"));
+              rset.getString("reqID"), rset.getString("address"), rset.getString("method"));
       externalPatientReqs.add(avr);
     }
     rset.close();
@@ -182,12 +175,13 @@ public class externalPatientController extends PageController
     final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<extPatientDeliveryRequest, String> methodColumn =
-        new TreeTableColumn<>("Object Type");
+        new TreeTableColumn<>("Delivery Method");
     methodColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<extPatientDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getMethod()));
+
     TreeTableColumn<extPatientDeliveryRequest, String> addressColumn =
-        new TreeTableColumn<>("Access Object");
+        new TreeTableColumn<>("Address");
     addressColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<extPatientDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getAddress()));

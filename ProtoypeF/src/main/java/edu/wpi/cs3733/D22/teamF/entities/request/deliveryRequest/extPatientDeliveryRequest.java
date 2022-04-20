@@ -8,7 +8,6 @@ public class extPatientDeliveryRequest extends DeliveryRequest {
 
   private String address;
   private String method;
-  private String patientName;
 
   public extPatientDeliveryRequest() {
     db = new Repository("ExternalPatient");
@@ -30,29 +29,17 @@ public class extPatientDeliveryRequest extends DeliveryRequest {
       String requesterEmployeeID,
       String status,
       String address,
-      String method,
-      String patientName) {
+      String method) {
     super(reqID, "OUT", assignedEmployeeID, requesterEmployeeID, status);
-
     this.address = address;
     this.method = method;
   }
 
-  public extPatientDeliveryRequest(
-      String reqID, String address, String method, String patientName) {
+  public extPatientDeliveryRequest(String reqID, String address, String method) {
     // super(reqID, "OUT", assignedEmployeeID, requesterEmployeeID, status);
     this.reqID = reqID;
     this.address = address;
     this.method = method;
-    this.patientName = patientName;
-  }
-
-  public String getPatientName() {
-    return patientName;
-  }
-
-  public void setPatientName(String patientName) {
-    this.patientName = patientName;
   }
 
   public String getAddress() {
