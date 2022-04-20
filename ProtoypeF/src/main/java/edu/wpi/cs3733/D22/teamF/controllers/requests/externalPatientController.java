@@ -122,7 +122,6 @@ public class externalPatientController extends PageController
         || statusChoice.getValue().equals("")
         || methodField.getValue().equals("")
         || addressField.getText().equals("")) {
-      System.out.println("There are still blank fields");
     } else {
       requestList.clear();
       requestList.add("External Patient Transport Request for: " + addressField.getText());
