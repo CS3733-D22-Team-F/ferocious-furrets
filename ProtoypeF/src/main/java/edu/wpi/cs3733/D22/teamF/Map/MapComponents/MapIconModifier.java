@@ -574,13 +574,13 @@ public class MapIconModifier {
    */
   public static void addIcon(TableView<Location> table, AnchorPane iconPane, Location location)
       throws FileNotFoundException, SQLException {
-    if (!location.getShortName().equals("done")) {
+    if (!location.getShortName().equalsIgnoreCase("done")) {
       JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
       newButton.setPrefSize(20, 20);
       newButton.setMinSize(20, 20);
       newButton.setMaxSize(20, 20);
-      if (UserType.getUserType().equals("admin")) {
-        if (getLocType(location).equals("location")) {
+      if (UserType.getUserType().equalsIgnoreCase("admin")) {
+        if (getLocType(location).equalsIgnoreCase("location")) {
           final Delta dragDelta = new Delta();
           newButton.setOnMouseClicked(
               e -> {
@@ -647,8 +647,8 @@ public class MapIconModifier {
                   newButton.setLayoutY(e.getSceneY() + dragDelta.y);
                 }
               });
-        } else if (getLocType(location).equals("service")
-            && !location.getShortName().equals("done")) {
+        } else if (getLocType(location).equalsIgnoreCase("service")
+            && !location.getShortName().equalsIgnoreCase("done")) {
           newButton.setOnAction(
               e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
@@ -665,7 +665,7 @@ public class MapIconModifier {
                   }
                 }
               });
-        } else if (getLocType(location).equals("equipment")) {
+        } else if (getLocType(location).equalsIgnoreCase("Equipment")) {
           final Delta dragDelta = new Delta();
           newButton.setOnMouseClicked(
               e -> {
@@ -703,7 +703,7 @@ public class MapIconModifier {
                   for (Location l : list) {
                     if (calculateDistance(l, loc) < currentDis
                         && l.getFloor().equals(loc.getFloor())
-                        && getLocType(l).equals("location")) {
+                        && getLocType(l).equalsIgnoreCase("location")) {
                       nearLoc = l;
                       currentDis = calculateDistance(l, loc);
                     }
@@ -751,13 +751,17 @@ public class MapIconModifier {
         || location.getNodeType().equals("Recliner")
         || location.getNodeType().equals("Xray")) {
       return "equipment";
-    } else if (location.getNodeType().equals("audio&visual")
-        || location.getNodeType().equals("equip")
-        || location.getNodeType().equals("gift")
-        || location.getNodeType().equals("lab")
-        || location.getNodeType().equals("meal")
-        || location.getNodeType().equals("medicine")
-        || location.getNodeType().equals("scan")) {
+    } else if (location.getNodeType().equals("Audio/Visual")
+        || location.getNodeType().equals("Equipment")
+        || location.getNodeType().equals("Gift")
+        || location.getNodeType().equals("Lab")
+        || location.getNodeType().equals("Meal")
+        || location.getNodeType().equals("Medicine")
+        || location.getNodeType().equals("Maintenance")
+        || location.getNodeType().equals("Security")
+        || location.getNodeType().equals("Facilities")
+        || location.getNodeType().equals("ExternalPatient")
+        || location.getNodeType().equals("Scan")) {
       return "service";
     } else {
       return "location";

@@ -36,7 +36,7 @@ public class mealDeliveryRequest extends DeliveryRequest {
     db.updateRequest(fields);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Meal";
   }
 

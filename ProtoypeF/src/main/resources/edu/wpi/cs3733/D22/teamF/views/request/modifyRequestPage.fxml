@@ -202,11 +202,11 @@
                   </VBox>
                   <VBox prefHeight="257.0" prefWidth="216.0" spacing="22.0">
                      <children>
-                        <TextField fx:id="statusField" prefWidth="174.0">
+                        <JFXComboBox fx:id="statusField" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: white;">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
-                        </TextField>
+                        </JFXComboBox>
                      </children>
                   </VBox>
                </children>

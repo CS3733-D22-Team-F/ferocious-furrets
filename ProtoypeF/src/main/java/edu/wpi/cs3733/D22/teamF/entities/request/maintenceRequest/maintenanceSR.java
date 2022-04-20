@@ -48,8 +48,9 @@ public class maintenanceSR extends Request implements IRequest {
     db.updateRequest(fields);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Maintenance";
   }
+
   public void cancel(String reqID) {}
 }

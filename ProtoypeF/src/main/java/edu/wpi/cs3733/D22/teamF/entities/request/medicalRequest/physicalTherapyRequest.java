@@ -76,8 +76,7 @@ public class physicalTherapyRequest extends MedicalRequest {
     this.notes = note;
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "PT";
   }
-
 }

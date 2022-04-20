@@ -70,7 +70,7 @@ public class medicineDeliveryRequest extends DeliveryRequest {
     db.updateRequest(fields);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Medicine";
   }
 

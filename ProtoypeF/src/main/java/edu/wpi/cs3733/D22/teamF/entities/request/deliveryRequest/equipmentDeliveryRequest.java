@@ -74,7 +74,7 @@ public class equipmentDeliveryRequest extends DeliveryRequest {
 
   public void cancel(String reqID) {}
 
-  public String getReqType(){
+  public String getReqType() {
     return "Equipment";
   }
 }

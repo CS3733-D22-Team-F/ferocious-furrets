@@ -39,7 +39,7 @@ public class giftDeliveryRequest extends DeliveryRequest {
     db.updateRequest(fields);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Gift";
   }
 

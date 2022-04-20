@@ -103,8 +103,7 @@ public class labRequest extends MedicalRequest {
         reqID, nodeID, assignedID, requestedID, status, type);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Lab";
   }
-
 }

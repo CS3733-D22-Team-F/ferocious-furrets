@@ -58,7 +58,7 @@ public class securityRequest extends DeliveryRequest {
     return this.needs;
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Security";
   }
 }

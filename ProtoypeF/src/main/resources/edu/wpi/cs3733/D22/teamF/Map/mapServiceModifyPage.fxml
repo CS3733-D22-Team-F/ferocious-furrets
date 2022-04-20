@@ -8,7 +8,7 @@
 
 <VBox alignment="CENTER" prefHeight="170.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapServiceModifyController">
    <children>
-      <Label prefHeight="35.0" prefWidth="68.0" text="Current: ">
+      <Label prefHeight="27.0" prefWidth="78.0" text="Current: ">
          <font>
             <Font size="18.0" />
          </font>
@@ -28,6 +28,7 @@
          </padding>
       </Label>
       <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="95.0" ripplerFill="#182c9e" text="Mark As Done" />
+      <JFXButton fx:id="modifyRequest" onAction="#modify" prefHeight="34.0" prefWidth="118.0" ripplerFill="#182c9e" text="Modify Request" />
       <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="99.0" ripplerFill="RED" text="Close" />
    </children>
 </VBox>

@@ -208,9 +208,9 @@ public abstract class PageController {
     ArrayList<Object> locations = new ArrayList<>();
     ResultSet r = null;
     try {
-      r = DatabaseManager.runQuery("SELECT SHORTNAME FROM LOCATIONS");
+      r = DatabaseManager.runQuery("SELECT LONGNAME FROM LOCATIONS");
       while (r.next()) {
-        String name = r.getString("SHORTNAME");
+        String name = r.getString("LONGNAME");
         locations.add(name);
       }
       r.close();

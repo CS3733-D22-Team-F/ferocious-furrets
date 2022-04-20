@@ -80,7 +80,7 @@ public class scanRequest extends MedicalRequest {
     this.scanType = newScanType;
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Scan";
   }
 }

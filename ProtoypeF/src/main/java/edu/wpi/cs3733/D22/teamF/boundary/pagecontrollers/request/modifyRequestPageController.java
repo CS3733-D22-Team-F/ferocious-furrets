@@ -1,17 +1,15 @@
 package edu.wpi.cs3733.D22.teamF.boundary.pagecontrollers.request;
 
 import com.jfoenix.controls.JFXComboBox;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
+import edu.wpi.cs3733.D22.teamF.pageControllers.requestListController;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import edu.wpi.cs3733.D22.teamF.pageControllers.requestListController;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
@@ -22,7 +20,7 @@ public class modifyRequestPageController extends PageController implements Initi
 
   @FXML TextField requestTypeField;
   @FXML TextField requestIDField;
-  @FXML TextField statusField;
+  @FXML JFXComboBox statusField;
   @FXML TextField ExtraField1;
   @FXML TextField ExtraField2;
   @FXML TextField ExtraField3;
@@ -34,9 +32,21 @@ public class modifyRequestPageController extends PageController implements Initi
   @FXML Label ExtraField2Label;
   @FXML Label ExtraField3Label;
 
+  private StringProperty reqTypeField;
+  private StringProperty reqIDField;
 
   String reqID;
   String reqType;
+
+  public modifyRequestPageController(StringProperty reqTypeField, StringProperty reqIDField) {
+    this.reqTypeField = reqTypeField;
+    System.out.println(reqTypeField.get());
+    this.reqIDField = reqIDField;
+    System.out.println(reqIDField.get());
+  }
+
+  public modifyRequestPageController() {}
+
   /**
    * Called to initialize a controller after its root element has been completely processed.
    *
@@ -48,18 +58,29 @@ public class modifyRequestPageController extends PageController implements Initi
 
     // TODO Get all the requestFields including requestType from previous scene......
     // TODO show, hide, edit ExtraField1-3 based on the requestTypeField
-    this.reqID = requestListController.selectedID;
-    this.reqType = requestListController.selectedType;
+    if (reqTypeField.get() == null || reqIDField.get() == null) {
+      System.out.println("Ya fucked it kid");
+      this.reqID = requestListController.selectedID;
+      this.reqType = requestListController.selectedType;
+    } else {
+      this.reqID = reqIDField.get();
+      System.out.println(reqID);
+      this.reqType = reqTypeField.get();
+      System.out.println();
+    }
 
     requestIDField.setText(reqID);
     requestTypeField.setText(reqType);
+    ArrayList<String> statusChoices = new ArrayList<>();
+    statusChoices.add("Processing");
+    statusChoices.add("Done");
+    statusField.getItems().addAll(statusChoices);
 
     setUpField();
 
     nodeIDField.getItems().addAll(locationNames());
     assignedEmpIDField.getItems().addAll(employeeNames());
     requestedEmpIDField.getItems().addAll(employeeNames());
-
   }
 
   /**
@@ -79,7 +100,7 @@ public class modifyRequestPageController extends PageController implements Initi
     fields.add(assignedID);
     String requestedID = employeeIDFinder(requestedEmpIDField.getValue().toString());
     fields.add(requestedID);
-    String status = statusField.getText();
+    String status = statusField.getValue().toString();
     fields.add(status);
     String extraField1 = ExtraField1.getText();
     fields.add(extraField1);
@@ -88,13 +109,15 @@ public class modifyRequestPageController extends PageController implements Initi
     String extraField3 = ExtraField3.getText();
     fields.add(extraField3);
     req.modifyRequest(fields);
+    reset();
+    nodeIDField.getScene().getWindow().hide();
   }
 
   /** clears the fields in the request page */
   public void reset() {
     assignedEmpIDField.valueProperty().setValue(null);
     requestedEmpIDField.valueProperty().setValue(null);
-    statusField.clear();
+    statusField.valueProperty().setValue(null);
     ExtraField1.clear();
     ExtraField2.clear();
     ExtraField3.clear();
@@ -119,69 +142,69 @@ public class modifyRequestPageController extends PageController implements Initi
     }
   }
 
-  void setUpField(){
-    switch (reqType){
-      case("Meal"):
+  void setUpField() {
+    switch (reqType) {
+      case ("Meal"):
         ExtraField1Label.setText("Meal:");
         ExtraField2Label.setVisible(false);
         ExtraField2.setVisible(false);
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("PT"):
+      case ("PT"):
         ExtraField1Label.setText("Type:");
         ExtraField2Label.setText("Duration:");
         ExtraField3Label.setText("Notes:");
         break;
-      case("Gift"):
+      case ("Gift"):
         ExtraField1Label.setText("Gift:");
         ExtraField2Label.setVisible(false);
         ExtraField2.setVisible(false);
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Medicine"):
+      case ("Medicine"):
         break;
-      case("Lab"):
+      case ("Lab"):
         ExtraField1Label.setText("Type:");
         ExtraField2Label.setVisible(false);
         ExtraField2.setVisible(false);
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Scan"):
+      case ("Scan"):
         ExtraField1Label.setText("Type:");
         ExtraField2Label.setVisible(false);
         ExtraField2.setVisible(false);
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Equipment"):
+      case ("Equipment"):
         ExtraField1Label.setText("Equipment ID:");
         ExtraField2Label.setVisible(false);
         ExtraField2.setVisible(false);
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Maintenance"):
+      case ("Maintenance"):
         ExtraField1Label.setText("Equipment ID:");
         ExtraField2Label.setText("Maintenance Type:");
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Audio/Visual"):
+      case ("Audio/Visual"):
         ExtraField1Label.setText("Access Object:");
         ExtraField2Label.setText("Object Type:");
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("Security"):
+      case ("Security"):
         ExtraField1Label.setText("Needs:");
         ExtraField2Label.setText("Urgency:");
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
-      case("ExternalPatient"):
+      case ("ExternalPatient"):
         break;
     }
   }

@@ -50,7 +50,7 @@ public class audioVisualRequest extends DeliveryRequest {
   @Override
   public void cancel(String reqID) {}
 
-  public String getReqType(){
+  public String getReqType() {
     return "Audio/Visual";
   }
 

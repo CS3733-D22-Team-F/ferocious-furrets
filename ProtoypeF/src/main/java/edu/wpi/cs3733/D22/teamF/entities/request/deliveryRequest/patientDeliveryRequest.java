@@ -21,7 +21,7 @@ public class patientDeliveryRequest extends DeliveryRequest {
     db.updateRequest(fields);
   }
 
-  public String getReqType(){
+  public String getReqType() {
     return "Patient";
   }
 
