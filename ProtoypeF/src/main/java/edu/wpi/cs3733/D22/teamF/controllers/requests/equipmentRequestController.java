@@ -134,7 +134,6 @@ public class equipmentRequestController extends PageController
     String newStatus;
     String newEquipID;
 
-
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")

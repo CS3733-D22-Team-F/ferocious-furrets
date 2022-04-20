@@ -107,7 +107,7 @@ public class audioVisualController extends PageController
 
   @FXML
   public void submit() throws SQLException {
-;
+    ;
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
