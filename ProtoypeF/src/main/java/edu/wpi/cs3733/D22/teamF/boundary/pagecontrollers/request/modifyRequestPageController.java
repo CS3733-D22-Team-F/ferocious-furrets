@@ -204,7 +204,17 @@ public class modifyRequestPageController extends PageController implements Initi
         ExtraField3Label.setVisible(false);
         ExtraField3.setVisible(false);
         break;
+      case("Facilities"):
+        ExtraField1Label.setText("Access Object:");
+        ExtraField2Label.setVisible(false);
+        ExtraField2.setVisible(false);
+        ExtraField3Label.setVisible(false);
+        ExtraField3.setVisible(false);
+        break;
       case ("ExternalPatient"):
+        break;
+      default:
+        System.out.println("Invalid Type");
         break;
     }
   }

@@ -1,11 +1,10 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXTreeTableView;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.requestTree;
 import edu.wpi.cs3733.D22.teamF.Fapp;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.Request;
-import edu.wpi.cs3733.D22.teamF.serviceRequestStorage;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.requestTree;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -18,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -36,7 +34,7 @@ public class requestListController extends PageController implements Initializab
 
   public static String selectedID = "";
   public static String selectedType = "";
-  @FXML ListView requestList;
+  //  @FXML ListView requestList;
   @FXML JFXTreeTableView requestList;
   @FXML Pane tablePane;
   @FXML private AnchorPane masterPane;

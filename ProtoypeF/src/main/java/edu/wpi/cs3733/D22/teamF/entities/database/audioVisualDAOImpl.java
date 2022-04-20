@@ -76,7 +76,7 @@ public class audioVisualDAOImpl implements IRequestDAO {
   public void update(ArrayList<String> fields) {
     String cmd =
         String.format(
-            "UPDATE AUDIOVISUAL SET ACCESSOBJECT = '%s', OBJECTTYPE = '%s' WHERE REQID = '%s'",
+            "UPDATE AUDIOVISUALREQUEST SET ACCESSOBJECT = '%s', OBJECTTYPE = '%s' WHERE REQID = '%s'",
             fields.get(5), fields.get(6), fields.get(0));
     String servCmd =
         String.format(

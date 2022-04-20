@@ -132,6 +132,7 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllReq() throws SQLException, IOException {
     ArrayList<Location> reqList = new ArrayList<>();
     reqList.addAll(getAllPT());
+    reqList.addAll(getAllFacilities());
     reqList.addAll(getAllSecurity());
     reqList.addAll(getAllAudioVis());
     reqList.addAll(getAllMaintenance());
@@ -214,18 +215,7 @@ public class MapTableHolder {
         System.out.println(nodeID);
       }
       Location node = Cache.getLocation(nodeID);
-      //      String cmd = String.format("SELECT * FROM LOCATIONS WHERE NODEID = '%s'", nodeID);
-      //      ResultSet rset = DatabaseManager.runQuery(cmd);
-      //      if (rset.next()) {
-      //        x = Integer.parseInt(rset.getString("XCOORD"));
-      //        System.out.println(x);
-      //        y = Integer.parseInt(rset.getString("YCOORD"));
-      //        System.out.println(y);
-      //        floor = rset.getString("FLOOR");
-      //        System.out.println(floor);
-      //      } else {
-      //        System.out.println("Location not found");
-      //      }
+
       try {
         x = node.getXcoord();
         y = node.getYcoord();
@@ -540,5 +530,43 @@ public class MapTableHolder {
     }
     secReqs.close();
     return sec;
+  }
+
+  /**
+   * @return
+   * @throws SQLException
+   * @throws IOException
+   */
+  public static ArrayList<Location> getAllFacilities() throws SQLException, IOException {
+    ArrayList<Location> facil = new ArrayList<>();
+    // equipment delivery requests
+    ResultSet facilReqs = DatabaseManager.getFacilitiesDAO().get();
+    while (facilReqs.next()) {
+      String reqID = facilReqs.getString("reqID");
+      ResultSet reqInfo =
+          DatabaseManager.runQuery(
+              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+      String status = "";
+      String nodeID = "";
+      int x = -1;
+      int y = -1;
+      String floor = "";
+      String type = "Facilities";
+      if (reqInfo.next()) {
+        status = reqInfo.getString("status");
+        nodeID = reqInfo.getString("nodeID");
+      }
+      Location node = Cache.getLocation(nodeID);
+      try {
+        x = node.getXcoord();
+        y = node.getYcoord();
+        floor = node.getFloor();
+      } catch (NullPointerException e) {
+        System.out.println("Error couldn't get node: " + nodeID);
+      }
+      facil.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
+    }
+    facilReqs.close();
+    return facil;
   }
 }
