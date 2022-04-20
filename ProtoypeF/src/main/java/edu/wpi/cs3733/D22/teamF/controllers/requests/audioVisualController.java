@@ -107,13 +107,14 @@ public class audioVisualController extends PageController
 
   @FXML
   public void submit() throws SQLException {
-    AGlobalMethods.showAlert("Empty Field(s)", submitButton);
+;
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
         || objectChoice.getValue().equals("")) {
+      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("Audio/Visual Request for: " + objectChoice.getValue());

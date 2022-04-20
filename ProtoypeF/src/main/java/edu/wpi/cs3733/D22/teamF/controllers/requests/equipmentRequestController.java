@@ -134,7 +134,6 @@ public class equipmentRequestController extends PageController
     String newStatus;
     String newEquipID;
 
-    AGlobalMethods.showAlert("Empty Field(s)", submitButton);
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
@@ -142,6 +141,7 @@ public class equipmentRequestController extends PageController
         || userField.getValue().toString().equals("")
         || typeChoice.getValue().equals("")
         || statusChoice.getValue().equals("")) {
+      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("Equipment Request of type: " + typeChoice.getValue().toString());
