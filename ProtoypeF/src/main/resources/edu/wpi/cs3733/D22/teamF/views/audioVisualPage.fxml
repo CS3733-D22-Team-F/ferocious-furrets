@@ -18,19 +18,23 @@
    <left>
       <Pane prefHeight="819.0" prefWidth="744.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" fill="#123090" height="597.0" layoutX="-4.0" layoutY="124.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="750.0" />
-            <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="126.0" layoutX="-4.0" layoutY="-1.0" smooth="false" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="750.0" />
-            <Label contentDisplay="TOP" layoutX="6.0" layoutY="25.0" prefHeight="93.0" prefWidth="630.0" text="Audio/Visual Request" textFill="WHITE">
-               <font>
-                  <Font name="Serif Regular" size="64.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="logo" fitHeight="90.0" fitWidth="99.0" layoutX="640.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../BWHlogo-new.png" />
-               </image>
-            </ImageView>
-            <HBox fx:id="bottomHBox" layoutX="209.0" layoutY="606.0" prefHeight="59.0" prefWidth="263.0">
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="597.0" layoutX="-4.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+            <HBox fx:id="topHBox" layoutX="5.0" layoutY="18.0" prefHeight="100.0" prefWidth="732.0" spacing="50.0">
+               <children>
+                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="logo" fitHeight="90.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../BWHlogo-new.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="bottomHBox" layoutX="210.0" layoutY="638.0" prefHeight="59.0" prefWidth="421.0">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                      <font>

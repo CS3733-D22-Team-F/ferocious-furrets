@@ -119,7 +119,7 @@ CHALL010L2,4100,1460,L2,Tower,HALL,Hallway 10 Floor L2,Hallway C010L2
 WELEV00LL2,2680,1770,L2,Tower,ELEV,Elevator L Floor L2,Elevator LL2
 WELEV00ML2,2825,3375,L2,Tower,ELEV,Elevator M Floor L2,Elevator ML2
 fSTOR001L1,2171,1550,L1,Tower,STOR,OR Bed Park,OR Bed Park
-fSTOR00101,1425,1770,1,Tower,STOR,West Plaza,West Plaza
+fSTOR00101,806,1712,1,Tower,STOR,West Plaza,West Plaza
 fSTOR00103,1610,1123,3,Tower,STOR,Clean Equipment Storage B,Clean Equipment Storage
 fSTOR00203,1610,2439,3,Tower,STOR,Clean Equipment Storage C,Clean Equipment Storage
 fSTOR00303,2204,2223,3,Tower,STOR,Bed and Recliner Storage A,Bed and Recliner Storage A
@@ -195,3 +195,4 @@ fPATI01705,1536,2852,5,Tower,PATI,Patient Bed Room 557,Patient Bed C
 fPATI01805,1760,2837,5,Tower,PATI,Patient Bed Room 558,Patient Bed C
 fPATI01905,1927,2747,5,Tower,PATI,Patient Bed Room 559,Patient Bed C
 fPATI02005,2022,2553,5,Tower,PATI,Patient Bed Room 560,Patient Bed C
+fPATI00101,914,574,1,Tower,PATI,DFGHJKL,ghjkl

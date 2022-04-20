@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers.employee;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.employees.*;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
@@ -9,12 +10,16 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -23,6 +28,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class employeePageController extends PageController implements Initializable {
 
@@ -76,17 +83,38 @@ public class employeePageController extends PageController implements Initializa
 
   @FXML
   private void addEmployee(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setDisplayAndWait("employee/addEmployee.fxml");
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/addEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
   }
 
   @FXML
   private void modifyEmployee(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setDisplayAndWait("employee/modifyEmployee.fxml");
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/modifyEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
   }
 
   @FXML
   private void deleteEmployee(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setDisplayAndWait("employee/deleteEmployee.fxml");
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/deleteEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
   }
 
   public void submit() throws SQLException {}

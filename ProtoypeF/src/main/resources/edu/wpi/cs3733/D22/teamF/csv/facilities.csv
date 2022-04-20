@@ -1,3 +1,6 @@
 reqID,accessObject
 fGEN23,General Waste R
 fREP24,Repair Request
+fGEN33,General Waste R
+fHAZ46,Hazardous Waste
+fHAZ57,Hazardous Waste
