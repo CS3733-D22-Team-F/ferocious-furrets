@@ -171,9 +171,9 @@ class DashboardObserver implements PropertyChangeListener {
         ilabels.get(3).setText(String.valueOf(iXRay.size()));
       }
 
-      if (totalFloorCount != null) {
-        totalFloorCount.setText(String.valueOf(floorEquipmentCount));
-      }
+      // if (totalFloorCount != null) {
+      //    totalFloorCount.setText(String.valueOf(floorEquipmentCount));
+      // }
     }
   }
 
@@ -189,7 +189,7 @@ class DashboardObserver implements PropertyChangeListener {
     // alertSystem.hasListeners("allFloorAlerts");
     if (alertSystem.hasListeners("allFloorAlerts")) {
       alertSystem.firePropertyChange("allFloorAlerts", false, true);
-//      System.out.println("SHOULD FIRE");
+      //      System.out.println("SHOULD FIRE");
     }
   }
 
@@ -433,7 +433,6 @@ class DashboardObserver implements PropertyChangeListener {
       if (dirtyInfusionList == null
           || dirtyInfusionList.next() == false) { // if does not already exist in completed request
 
-
         ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "INF", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
         //        fController.startTable();
@@ -503,7 +502,7 @@ class DashboardObserver implements PropertyChangeListener {
     fields.add(requesterEmployeeID);
     fields.add(status);
     fields.add(accessObject);
-//    System.out.println(fields);
+    //    System.out.println(fields);
     return fields;
   }
 }

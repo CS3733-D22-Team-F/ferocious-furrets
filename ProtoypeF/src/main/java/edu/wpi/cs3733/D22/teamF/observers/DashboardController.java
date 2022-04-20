@@ -52,13 +52,13 @@ public class DashboardController implements Initializable {
   @FXML Label iRecliner;
   @FXML Label iInfusionPump;
 
-  @FXML Label ll2Count;
-  @FXML Label ll1Count;
-  @FXML Label fl1Count;
-  @FXML Label fl2Count;
-  @FXML Label fl3Count;
-  @FXML Label fl4Count;
-  @FXML Label fl5Count;
+  //  @FXML Label ll2Count;
+  //  @FXML Label ll1Count;
+  //  @FXML Label fl1Count;
+  //  @FXML Label fl2Count;
+  //  @FXML Label fl3Count;
+  //  @FXML Label fl4Count;
+  //  @FXML Label fl5Count;
 
   Time clockWork = new Time(DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalTime.now()));
   Timeline timeline =
@@ -68,7 +68,6 @@ public class DashboardController implements Initializable {
               event -> {
                 clockWork.onSecondPass();
                 clock.setText(clockWork.getCurrentTime());
-                setAlerts();
                 setLabels();
               }));
 
@@ -126,13 +125,13 @@ public class DashboardController implements Initializable {
     inUseLabels.add(iRecliner);
     inUseLabels.add(iXRay);
 
-    equipCountLabels.add(ll2Count);
-    equipCountLabels.add(ll1Count);
-    equipCountLabels.add(fl1Count);
-    equipCountLabels.add(fl2Count);
-    equipCountLabels.add(fl3Count);
-    equipCountLabels.add(fl4Count);
-    equipCountLabels.add(fl5Count);
+    //    equipCountLabels.add(ll2Count);
+    //    equipCountLabels.add(ll1Count);
+    //    equipCountLabels.add(fl1Count);
+    //    equipCountLabels.add(fl2Count);
+    //    equipCountLabels.add(fl3Count);
+    //    equipCountLabels.add(fl4Count);
+    //    equipCountLabels.add(fl5Count);
 
     /*
     for (DashboardObserver observer : floorObservers) {
