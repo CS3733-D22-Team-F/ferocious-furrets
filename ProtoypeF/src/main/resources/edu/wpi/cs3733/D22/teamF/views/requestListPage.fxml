@@ -16,34 +16,6 @@
 
 <AnchorPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.requestListController">
    <children>
-      <VBox layoutX="74.0" layoutY="25.0" prefHeight="677.0" prefWidth="664.0" spacing="10.0">
-         <children>
-            <Pane prefHeight="103.0" prefWidth="664.0">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="86.0" stroke="#123090" strokeType="INSIDE" width="664.0" />
-                  <Label layoutX="215.0" layoutY="24.0" text="Current List" textFill="WHITE">
-                     <font>
-                        <Font name="Times New Roman" size="48.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <HBox prefHeight="21.0" prefWidth="664.0" spacing="15.0">
-               <children>
-                  <JFXButton fx:id="filterButton" onAction="#f" text="Search Employee:" />
-                  <TextField fx:id="filterEmployee" prefHeight="44.0" prefWidth="431.0" />
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-            <Pane fx:id="tablePane" prefHeight="450.0" prefWidth="664.0">
-               <children>
-                  <JFXTreeTableView fx:id="requestList" layoutY="2.0" prefHeight="437.0" prefWidth="664.0" />
-               </children>
-            </Pane>
-         </children>
-      </VBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="897.0" layoutY="507.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
       <JFXButton fx:id="myBackButton" buttonType="RAISED" layoutX="896.0" layoutY="507.0" onAction="#switchToHome" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" text="Home" textFill="#123090">
          <font>
@@ -60,5 +32,32 @@
             <Image url="@../Images/TasksPeople.png" />
          </image>
       </ImageView>
+      <VBox layoutX="73.0" layoutY="25.0" prefHeight="639.0" prefWidth="667.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #123090;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="667.0" text="Current List" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="664.0" spacing="15.0">
+               <children>
+                  <JFXButton fx:id="filterButton" onAction="#f" text="Search Employee:" />
+                  <TextField fx:id="filterEmployee" prefHeight="44.0" prefWidth="431.0" />
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <Pane fx:id="tablePane" prefHeight="486.0" prefWidth="667.0">
+               <children>
+                  <JFXTreeTableView fx:id="requestList" prefHeight="485.0" prefWidth="664.0" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
