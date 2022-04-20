@@ -22,7 +22,7 @@ public class Fapp extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException, SQLException {
-    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/extPatDeliveryPage.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
     Cache.startDB(true);
     UserType.setUserType("admin");
     Scene scene = null;
