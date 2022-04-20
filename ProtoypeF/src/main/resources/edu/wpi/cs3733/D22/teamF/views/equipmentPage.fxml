@@ -5,7 +5,6 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -36,20 +35,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox2" layoutX="189.0" layoutY="599.0">
-               <children>
-                  <TextField fx:id="reqID" prefWidth="194.0" promptText="Request ID">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </TextField>
-                  <JFXButton fx:id="resolveReq" buttonType="RAISED" onAction="#resolveRequest" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Resolve" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </HBox>
+            <HBox fx:id="leftHBox2" layoutX="189.0" layoutY="599.0" />
             <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="190.0" layoutY="515.0" prefHeight="56.0" prefWidth="252.0" style="-fx-background-color: #123090;">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="57.0" prefWidth="118.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
@@ -85,7 +71,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="258.0" text="Assigned Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="258.0" text="Assigned Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -102,7 +88,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Request Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Request Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -115,12 +101,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Equipment Type: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="258.0" text="Equipment Type: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" minWidth="-Infinity" prefHeight="62.0" prefWidth="299.0" promptText="Equipment Type" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -136,7 +122,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" labelFloat="true" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="statusChoice" focusColor="WHITE" prefHeight="62.0" prefWidth="298.0" promptText="Status" unFocusColor="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -144,20 +130,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox fx:id="leftHBox21" layoutX="188.0" layoutY="651.0">
-               <children>
-                  <TextField fx:id="filterEmployee" prefWidth="194.0" promptText="Employee Name">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </TextField>
-                  <JFXButton fx:id="filterButton" buttonType="RAISED" onAction="#f" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Filter" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </HBox>
+            <HBox fx:id="leftHBox21" layoutX="188.0" layoutY="651.0" />
          </children>
       </Pane>
    </left>

@@ -308,7 +308,7 @@
                   </Label>
                </children>
             </VBox>
-            <Rectangle fill="#3e8cd0" height="141.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="513.0" />
+            <Rectangle fill="ROYALBLUE" height="141.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="513.0" />
             <Label layoutX="64.0" layoutY="64.0" text="Meals Page" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="64.0" />

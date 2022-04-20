@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.deleteEmployeePopUpController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="315.0" layoutY="85.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
@@ -21,11 +20,11 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="89.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-      <HBox layoutX="138.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
+      <HBox layoutX="72.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
          <children>
             <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="290.0" text="Delete Employee" textFill="WHITE">
                <font>
-                  <Font name="Serif Regular" size="30.0" />
+                  <Font name="Serif Regular" size="36.0" />
                </font>
                <HBox.margin>
                   <Insets left="70.0" top="20.0" />

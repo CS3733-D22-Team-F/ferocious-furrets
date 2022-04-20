@@ -14,13 +14,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.modifyEmployeePopUpController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="89.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="315.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-        <HBox layoutX="132.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
+        <Rectangle fill="ROYALBLUE" height="89.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+        <Rectangle fill="#123090" height="315.0" layoutY="86.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+        <HBox layoutX="73.0" layoutY="6.0" prefHeight="77.0" prefWidth="455.0">
             <children>
                 <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="290.0" text="Modify Employee" textFill="WHITE">
                     <font>
-                        <Font name="SansSerif Regular" size="30.0" />
+                        <Font name="Serif Regular" size="36.0" />
                     </font>
                     <HBox.margin>
                         <Insets left="70.0" top="20.0" />
@@ -42,7 +42,7 @@
                     <children>
                         <Label prefHeight="27.0" prefWidth="144.0" text="EmployeeID:" textFill="WHITE">
                             <font>
-                                <Font name="SansSerif Regular" size="24.0" />
+                                <Font name="Serif Regular" size="24.0" />
                             </font>
                             <VBox.margin>
                                 <Insets top="15.0" />
@@ -50,17 +50,17 @@
                         </Label>
                         <Label prefHeight="27.0" prefWidth="129.0" text="First Name:" textFill="WHITE">
                             <font>
-                                <Font name="SansSerif Regular" size="24.0" />
+                                <Font name="Serif Regular" size="24.0" />
                             </font>
                         </Label>
                         <Label prefHeight="27.0" prefWidth="127.0" text="Last Name:" textFill="WHITE">
                             <font>
-                                <Font name="SansSerif Regular" size="24.0" />
+                                <Font name="Serif Regular" size="24.0" />
                             </font>
                         </Label>
                         <Label prefHeight="27.0" prefWidth="81.0" text="Salary:" textFill="WHITE">
                             <font>
-                                <Font name="SansSerif Regular" size="24.0" />
+                                <Font name="Serif Regular" size="24.0" />
                             </font>
                         </Label>
                     </children>
@@ -83,12 +83,12 @@
             <children>
                 <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#modify" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                     </font>
                 </JFXButton>
                 <JFXButton fx:id="backButton" buttonType="RAISED" onAction="#back" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Return" textFill="WHITE">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                     </font>
                     <HBox.margin>
                         <Insets left="10.0" />
@@ -96,7 +96,7 @@
                 </JFXButton>
                 <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="46.0" prefWidth="110.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="Serif Regular" size="24.0" />
                     </font>
                     <HBox.margin>
                         <Insets left="10.0" />
