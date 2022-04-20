@@ -10,6 +10,7 @@ import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -111,12 +112,13 @@ class DashboardObserver implements PropertyChangeListener {
     listOfMedEquip.clear();
     for (equipment eq : rawListEquip) {
       String equipFloor = eq.getNodeID().substring(8);
-      System.out.println(
-          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
+      //      System.out.println(
+      //          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
 
       if (equipFloor.equals(currFloor.toFloorString())) {
-        System.out.println(
-            currFloor.toFloorString() + "Adding to medEquipList, size:  " + listOfMedEquip.size());
+        //        System.out.println(
+        //            currFloor.toFloorString() + "Adding to medEquipList, size:  " +
+        // listOfMedEquip.size());
         listOfMedEquip.add(eq);
       }
     }
@@ -175,7 +177,7 @@ class DashboardObserver implements PropertyChangeListener {
     }
   }
 
-  public void updateAllAlerts() throws SQLException {
+  public void updateAllAlerts() throws SQLException, IOException {
     checkAlerts();
     List<List<Alert>> pastAllAlerts = getAllFloorAlerts();
 
@@ -187,7 +189,7 @@ class DashboardObserver implements PropertyChangeListener {
     // alertSystem.hasListeners("allFloorAlerts");
     if (alertSystem.hasListeners("allFloorAlerts")) {
       alertSystem.firePropertyChange("allFloorAlerts", false, true);
-      System.out.println("SHOULD FIRE");
+//      System.out.println("SHOULD FIRE");
     }
   }
 
@@ -209,17 +211,18 @@ class DashboardObserver implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent evt) {
     rawListEquip = (List<equipment>) evt.getNewValue();
 
-    System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
-    System.out.println("Raw list amount in observers: " + rawListEquip.size());
+    //    System.out.println(this.currFloor.toFloorString() + " :observer recieved event");
+    //    System.out.println("Raw list amount in observers: " + rawListEquip.size());
 
     this.setFloorFilter();
-    System.out.println(
-        this.currFloor.toFloorString() + " :observer filtered list: " + listOfMedEquip.size());
+    //    System.out.println(
+    //        this.currFloor.toFloorString() + " :observer filtered list: " +
+    // listOfMedEquip.size());
     this.updateLabels();
 
     try {
       updateAllAlerts();
-    } catch (SQLException e) {
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -377,7 +380,7 @@ class DashboardObserver implements PropertyChangeListener {
    * @return list of alerts
    */
   // TODO counter for alerts
-  public void checkAlerts() throws SQLException {
+  public void checkAlerts() throws SQLException, IOException {
     floorAlerts.clear();
     String formatString = currFloor.toFloorString();
     boolean needsInfusionAlert = false;
@@ -385,8 +388,6 @@ class DashboardObserver implements PropertyChangeListener {
 
     if (dInfusionPumpCount.size() >= 10) {
       needsInfusionAlert = true;
-      System.out.println(
-          "Needs infusion pump alert"); /////////////////////////////////////////////////////////////
       floorAlerts.add(
           new Alert(
               this.currFloor,
@@ -400,9 +401,6 @@ class DashboardObserver implements PropertyChangeListener {
     }
     if (dBedCount.size() >= 6) {
       needsBedAlert = true;
-      System.out.println(
-          "Needs infusion pump alert"); /////////////////////////////////////////////////////////////
-
       floorAlerts.add(
           new Alert(
               this.currFloor, dBedCount.size() + " dirty beds on floor " + formatString + "!"));
@@ -416,63 +414,58 @@ class DashboardObserver implements PropertyChangeListener {
     }
   }
 
-  public boolean createDashboardServiceRequests(
-      int floor, boolean dInfusionReqNeeded, boolean dBedReqNeeded) throws SQLException {
-    System.out.println(
-        "Got into service request test"); /////////////////////////////////////////////////////////////
+  public void createDashboardServiceRequests(
+      int floor, boolean dInfusionReqNeeded, boolean dBedReqNeeded)
+      throws SQLException, IOException {
 
     facilitiesController fController = new facilitiesController();
     RequestSystem facilitiesReqSystem = new RequestSystem("Facilities");
     boolean requestsUpToDate = false;
     boolean dirtyInfusionRequestExists = false;
     boolean dirtyBedsRequestExists = false;
-    String dirtyEquipNodeID = "fSTOR0050" + floor;
+    String dirtyEquipNodeID = "FSTOR0050" + floor;
 
     if (dInfusionReqNeeded) {
       // search for service request for the dirty equipment storage area from the request ID saved
-
       ResultSet dirtyInfusionList =
           DatabaseManager.runQuery(
-              "SELECT * FROM FACILITIESREQUEST WHERE (nodeID = "
-                  + dirtyEquipNodeID
-                  + ") AND (accessObject = 'Clean Beds to OR Park')");
-      if (dirtyInfusionList == null) { // if does not already exist in completed request
-        System.out.println(
-            "Needs clean infusion pumps request"); /////////////////////////////////////////////////////////////
+              "SELECT * FROM FACILITIESREQUEST WHERE accessObject = 'Infusion Pumps to West Plaza'");
+      if (dirtyInfusionList == null
+          || dirtyInfusionList.next() == false) { // if does not already exist in completed request
 
-        ArrayList<String> reqArrayString =
-            generateFacilitiesRequest(fController, "Infusion", floor);
+
+        ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "INF", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
+        //        fController.startTable();
+      } else {
+        dirtyInfusionList.close();
       }
     }
     if (dBedReqNeeded) {
       // search for service request for the dirty equipment storage area from the request ID saved
       ResultSet dirtyBedList =
           DatabaseManager.runQuery(
-              "SELECT * FROM FACILITIESREQUEST WHERE (nodeID = "
-                  + dirtyEquipNodeID
-                  + ") AND (accessObject = 'Infusion Pumps to West Plaza')");
-      if (dirtyBedList
-          == null) { // if request at the dirty bed park with infusion pump specification does not
+              "SELECT * FROM FACILITIESREQUEST WHERE accessObject = 'Clean Beds to OR Park'");
+      if (dirtyBedList == null
+          || dirtyBedList.next()
+              == false) { // if request at the dirty bed park with infusion pump specification does
+        // not
         // already exist
-        System.out.println(
-            "Needs clean beds request"); /////////////////////////////////////////////////////////////
 
-        ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "Bed", floor);
+        ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "BED", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
+        //        fController.startTable();
+      } else {
+        dirtyBedList.close();
       }
     }
-
-    return requestsUpToDate;
   }
 
   private ArrayList<String> generateFacilitiesRequest(
       facilitiesController fController, String infusionOrBed, int floor) throws SQLException {
-    System.out.println(
-        "Got into generate request"); /////////////////////////////////////////////////////////////
 
     // TODO generate reqID
-    String nNodeType = infusionOrBed;
+    String nNodeType = infusionOrBed.substring(0, 3);
     int reqNum = 0;
     ResultSet rset = DatabaseManager.runQuery("SELECT * FROM SERVICEREQUEST");
     while (rset.next()) {
@@ -485,7 +478,7 @@ class DashboardObserver implements PropertyChangeListener {
     String reqID = "f" + nNodeType + reqNum;
 
     // TODO generate nodeID from the dirty storage area depending on the floor (3,4,5)
-    String nodeID = "fSTOR0050" + Integer.toString(floor);
+    String nodeID = "FSTOR0050" + Integer.toString(floor);
 
     // TODO assignedEmployeeID = General Facilities
     String assignedEmployeeID = fController.employeeIDFinder("Facilities,General");
@@ -497,9 +490,9 @@ class DashboardObserver implements PropertyChangeListener {
     String status = "Processing";
     // TODO accessObject
     String accessObject = "";
-    if (infusionOrBed.equals("Bed")) {
+    if (infusionOrBed.equals("BED")) {
       accessObject = "Clean Beds to OR Park";
-    } else if (infusionOrBed.equals("Infusion")) {
+    } else if (infusionOrBed.equals("INF")) {
       accessObject = "Infusion Pumps to West Plaza";
     }
 
@@ -510,6 +503,7 @@ class DashboardObserver implements PropertyChangeListener {
     fields.add(requesterEmployeeID);
     fields.add(status);
     fields.add(accessObject);
+//    System.out.println(fields);
     return fields;
   }
 }

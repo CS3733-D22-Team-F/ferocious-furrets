@@ -55,7 +55,8 @@ public class RequestDAOImpl implements IRequestDAO {
   }
 
   public ResultSet get() throws SQLException, IOException {
-    return DatabaseManager.runQuery("SELECT * FROM ServiceRequest");
+    return DatabaseManager.runQuery(
+        "SELECT * FROM ServiceRequest WHERE UPPER(status) = 'PROCESSING'");
   }
 
   public void add(ArrayList<String> fields) throws SQLException {

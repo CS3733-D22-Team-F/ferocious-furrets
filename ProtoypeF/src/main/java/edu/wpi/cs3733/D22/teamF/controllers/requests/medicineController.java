@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -36,8 +37,8 @@ public class medicineController extends PageController
   @FXML private JFXComboBox userField;
   @FXML private TextField typeOfMed;
   @FXML private ComboBox statusChoice;
-  @FXML private Button resetButton;
-  @FXML private Button submitButton;
+  @FXML private JFXButton resetButton;
+  @FXML private JFXButton submitButton;
   @FXML private TextField prescribingDoctor;
   @FXML private TextField dosage;
   @FXML private ComboBox units;

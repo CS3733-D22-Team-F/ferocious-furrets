@@ -56,6 +56,8 @@ public class equipmentRequestController extends PageController
   @FXML private Button submitButton;
   @FXML private TreeTableView table;
   @FXML private Pane tablePane;
+  @FXML private JFXButton filterButton;
+  @FXML private TextField filterEmployee;
 
   private String requestID;
   private String nodeID;
@@ -197,6 +199,101 @@ public class equipmentRequestController extends PageController
       servRequest = DatabaseManager.getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
+          //          System.out.println("matched :)");
+          er =
+              new equipmentDeliveryRequest(
+                  equipRequest.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  equipRequest.getString(
+                      "equipID")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
+          // CORRECT TOO)
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    equipRequest.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (equipmentDeliveryRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<equipmentDeliveryRequest, String> nodeIDCol =
+        new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> equipmentIDCol =
+        new TreeTableColumn<>("Equipment ID:");
+    equipmentIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> requestedByCol =
+        new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<equipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<equipmentDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableView<equipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+        .getColumns()
+        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void f() throws SQLException, IOException {
+    startFilteredTable(filterEmployee.getText());
+  }
+
+  public void startFilteredTable(String empName) throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet equipRequest =
+        DatabaseManager.getMedEquipDelReqDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<equipmentDeliveryRequest> secReqs = new ArrayList<equipmentDeliveryRequest>();
+    equipmentDeliveryRequest er;
+    String currentEquipDelReqID;
+
+    while (equipRequest.next()) {
+      currentEquipDelReqID = equipRequest.getString("reqID");
+      //      System.out.println(currentEquipDelReqID);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentEquipDelReqID)
+            && servRequest.getString("assignedEmployeeID").equals(empName)) {
           //          System.out.println("matched :)");
           er =
               new equipmentDeliveryRequest(

@@ -2,8 +2,10 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.facilitiesRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
@@ -12,16 +14,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TextField;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 // import javax.swing.text.html.ImageView;
 
@@ -49,48 +56,38 @@ public class facilitiesController extends PageController
 
   @FXML HBox leftHbox;
 
-  /** @return facilitiesRequest */
-  public void submit() throws SQLException {
-    RequestSystem req = new RequestSystem("Facilities");
-    ArrayList<String> fields = new ArrayList<String>();
-    fields.add(generateReqID());
-    fields.add(nodeIDFinder(nodeID.getValue().toString()));
-    fields.add(employeeIDFinder(assigned.getValue().toString()));
-    fields.add(employeeIDFinder(employeeID.getValue().toString()));
-    fields.add(statusChoice.getValue().toString());
-    if (requestType.getValue().toString().length() > 16)
-      fields.add(requestType.getValue().toString().substring(0, 15));
-    else fields.add(requestType.getValue().toString());
-    System.out.println(fields);
-    req.placeRequest(fields);
+  @FXML Pane tablePane;
+  @FXML JFXTreeTableView table;
 
-    reset();
-  }
+  private String requestID;
+  private String nodeIDO;
+  private String assignedEmpID;
+  private String requesterEmpID;
+  private String status;
+  private String accessObject;
+
+  private TreeItem<facilitiesRequest> treeRoot =
+      new TreeItem<>(
+          new facilitiesRequest(
+              requestID, nodeIDO, assignedEmpID, requesterEmpID, status, accessObject));
+
+  Timeline timeline =
+      new Timeline(
+          new KeyFrame(
+              Duration.seconds(1),
+              event -> {
+                try {
+                  startTable();
+                } catch (SQLException e) {
+                  e.printStackTrace();
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+              }));
 
   /** Default facilitiesController constructor */
   public facilitiesController() {}
 
-  @Override
-  public void reset() {
-    assigned.valueProperty().setValue(null);
-    employeeID.valueProperty().setValue(null);
-    nodeID.valueProperty().setValue(null);
-    statusChoice.valueProperty().set(null);
-    requestType.valueProperty().set(null);
-  }
-
-  @Override
-  public void startTable() throws SQLException, IOException {}
-
-  @Override
-  public void clearTable() {}
-
-  @Override
-  public ContextMenu makeContextMenu() {
-    return null;
-  }
-
-  @Override
   public void initialize(URL location, ResourceBundle resources) {
     // this.makeMenuBar(masterPane);
 
@@ -118,6 +115,139 @@ public class facilitiesController extends PageController
 
     ArrayList<Object> locations = locationNames();
     nodeID.getItems().addAll(locations);
+
+    try {
+      startTable();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
+
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
+  }
+
+  /** @return facilitiesRequest */
+  public void submit() throws SQLException, IOException {
+    RequestSystem req = new RequestSystem("Facilities");
+    ArrayList<String> fields = new ArrayList<String>();
+    fields.add(generateReqID());
+    fields.add(nodeIDFinder(nodeID.getValue().toString()));
+    fields.add(employeeIDFinder(assigned.getValue().toString()));
+    fields.add(employeeIDFinder(employeeID.getValue().toString()));
+    fields.add(statusChoice.getValue().toString());
+    if (requestType.getValue().toString().length() > 16)
+      fields.add(requestType.getValue().toString().substring(0, 15));
+    else fields.add(requestType.getValue().toString());
+    System.out.println(fields);
+    req.placeRequest(fields);
+
+    startTable();
+
+    reset();
+  }
+
+  @Override
+  public void reset() {
+    assigned.valueProperty().setValue(null);
+    employeeID.valueProperty().setValue(null);
+    nodeID.valueProperty().setValue(null);
+    statusChoice.valueProperty().set(null);
+    requestType.valueProperty().set(null);
+  }
+
+  @Override
+  public void startTable() throws SQLException, IOException {
+    clearTable();
+
+    ResultSet facilitiesRequestList =
+        DatabaseManager.getFacilitiesDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<facilitiesRequest> secReqs = new ArrayList<>();
+    facilitiesRequest er;
+    String currentFacilityReq;
+
+    while (facilitiesRequestList.next()) {
+      currentFacilityReq = facilitiesRequestList.getString("reqID");
+      System.out.println(currentFacilityReq);
+      servRequest = DatabaseManager.getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentFacilityReq)) {
+          er =
+              new facilitiesRequest(
+                  facilitiesRequestList.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  facilitiesRequestList.getString("accessObject"));
+          secReqs.add(er);
+          servRequest.close();
+          break;
+        }
+      }
+    }
+
+    facilitiesRequestList.close();
+
+    treeRoot.setExpanded(true);
+    secReqs.stream()
+        .forEach(
+            (facilitiesRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(facilitiesRequest));
+            });
+    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<facilitiesRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<facilitiesRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<facilitiesRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To:");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<facilitiesRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableColumn<facilitiesRequest, String> requestedByCol =
+        new TreeTableColumn<>("Requested By:");
+    requestedByCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<facilitiesRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+
+    TreeTableColumn<facilitiesRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<facilitiesRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
+    TreeTableColumn<facilitiesRequest, String> accessObjectCol =
+        new TreeTableColumn<>("accessObject:");
+    accessObjectCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<facilitiesRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAccessObject()));
+
+    TreeTableView<facilitiesRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView
+        .getColumns()
+        .setAll(nodeIDCol, accessObjectCol, assignedToCol, requestedByCol, statusCol);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    accessObjectCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
+
+  public void clearTable() {
+    treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  @Override
+  public ContextMenu makeContextMenu() {
+    return null;
   }
 
   /**

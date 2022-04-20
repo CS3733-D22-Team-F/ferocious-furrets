@@ -48,7 +48,7 @@ public class giftResizedController extends PageController
   @FXML Pane tablePane;
 
   @FXML JFXButton submitButton;
-  @FXML JFXButton homeButton;
+  @FXML JFXButton resetButton;
   @FXML JFXButton queueButton;
 
   @FXML HBox leftHbox;

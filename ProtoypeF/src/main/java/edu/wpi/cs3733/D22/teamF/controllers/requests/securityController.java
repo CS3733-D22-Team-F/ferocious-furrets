@@ -92,6 +92,7 @@ public class securityController extends PageController
       req.placeRequest(fields);
 
       reset();
+      startTable();
     }
   }
 
@@ -123,7 +124,6 @@ public class securityController extends PageController
    * @param resources ResourceBundle
    */
   public void initialize(URL location, ResourceBundle resources) {
-    this.makeMenuBar(masterPane);
 
     masterPane.setMinHeight(500);
     masterPane.setMinWidth(500);
