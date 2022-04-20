@@ -19,13 +19,13 @@
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="637.0" />
-                <Label layoutX="28.0" layoutY="66.0" prefHeight="80.0" prefWidth="531.0" text="Physical Therapy Request" textFill="WHITE">
+                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+                <Label layoutX="28.0" layoutY="57.0" prefHeight="80.0" prefWidth="531.0" text="Physical Therapy Request" textFill="WHITE">
                     <font>
                         <Font name="Serif Regular" size="49.0" />
                     </font>
                 </Label>
-                <VBox layoutX="24.0" layoutY="203.0" prefHeight="498.0" prefWidth="553.0">
+                <VBox layoutX="28.0" layoutY="156.0" prefHeight="498.0" prefWidth="553.0">
                     <children>
                     <HBox fx:id="infoHBox" prefHeight="434.0" prefWidth="554.0">
                     <children>
