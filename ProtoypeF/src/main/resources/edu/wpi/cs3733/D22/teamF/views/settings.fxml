@@ -24,7 +24,7 @@
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="635.0" text="System" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="SansSerif Regular" size="48.0" />
+                              <Font name="Serif Regular" size="48.0" />
                            </font>
                            <padding>
                               <Insets top="35.0" />
@@ -57,7 +57,7 @@
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="635.0" text="Profile" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="SansSerif Regular" size="48.0" />
+                              <Font name="Serif Regular" size="48.0" />
                            </font>
                            <padding>
                               <Insets top="35.0" />

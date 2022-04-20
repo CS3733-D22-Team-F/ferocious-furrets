@@ -1,6 +1,6 @@
 equipID,equipType,nodeID,status
 1,Bed,fPATI00103,unavailable
-2,Bed,fPATI00203,available
+2,Bed,fPATI00203,unavailable
 3,Bed,fPATI00303,available
 4,Bed,fPATI00403,available
 5,Bed,fPATI00503,available
@@ -23,7 +23,7 @@ equipID,equipType,nodeID,status
 22,Infusion Pump,fSTOR00503,unavailable
 23,Infusion Pump,fSTOR00203,unavailable
 24,Infusion Pump,fSTOR00203,unavailable
-25,Infusion Pump,fSTOR00203,available
+25,Infusion Pump,fSTOR00203,unavailable
 26,Infusion Pump,fSTOR00203,available
 27,Infusion Pump,fSTOR00203,available
 28,Infusion Pump,fSTOR00203,available

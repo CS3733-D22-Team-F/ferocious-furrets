@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -22,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
 import javafx.scene.transform.Transform;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 import lombok.SneakyThrows;
 
 public class mainController implements Initializable {
@@ -74,6 +77,18 @@ public class mainController implements Initializable {
   ChangeListener<Boolean> maxScreenCallback;
   ObservableList<Transform> baseTransformsScene;
   ObservableList<Transform> baseTransformsMenu;
+
+  Timeline timeline =
+      new Timeline(
+          new KeyFrame(
+              Duration.seconds(10),
+              event -> {
+                try {
+                  DatabaseManager.backUpDatabaseToCSV();
+                } catch (SQLException | IOException e) {
+                  e.printStackTrace();
+                }
+              }));
 
   @SneakyThrows
   @Override
@@ -140,6 +155,8 @@ public class mainController implements Initializable {
     //    v2.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v4.prefHeightProperty().bind(menu.heightProperty().divide(11));
     //    v6.prefHeightProperty().bind(menu.heightProperty().divide(11));
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
   }
 
   private void applyResize(boolean newValue) {

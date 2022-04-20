@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.requestTree;
@@ -34,6 +35,8 @@ public class requestListController extends PageController implements Initializab
   private String assignedEmpID;
   private String requesterEmpID;
   private String status;
+  @FXML private JFXButton filterButton;
+  @FXML private TextField filterEmployee;
 
   /**
    * inits
@@ -45,7 +48,6 @@ public class requestListController extends PageController implements Initializab
   public void initialize(URL location, ResourceBundle resources) {
     try {
       startTable();
-      // System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
@@ -53,6 +55,106 @@ public class requestListController extends PageController implements Initializab
 
   TreeItem<requestTree> treeRoot =
       new TreeItem<>(new requestTree(reqID, nodeID, assignedEmpID, requesterEmpID, status));
+
+  public String employeeIDFinder(String name) throws SQLException {
+    String empID = "";
+    String[] employeeName = name.split(",");
+    String last = employeeName[0].trim();
+    String first = employeeName[1].trim();
+    last = last.strip();
+    first = first.strip();
+    String cmd =
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
+    ResultSet rset = DatabaseManager.runQuery(cmd);
+    if (rset.next()) {
+      empID = rset.getString("EMPLOYEEID");
+    }
+    rset.close();
+    return empID;
+  }
+
+  public void f() throws SQLException, IOException {
+    if (filterEmployee.getText().equals("ALL")) {
+      startTable();
+      return;
+    }
+    startFilteredTable(filterEmployee.getText());
+  }
+
+  public void startFilteredTable(String employeeName) throws SQLException, IOException {
+
+    clearTable();
+
+    ResultSet rset = DatabaseManager.getRequestDAO().get();
+    employeeName = filterEmployee.getText();
+    System.out.println(employeeName);
+
+    ArrayList<requestTree> reqs = new ArrayList<requestTree>();
+    requestTree rt;
+    String empID = employeeIDFinder(employeeName);
+
+    String cmd =
+        String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
+    ResultSet filteredReq = DatabaseManager.runQuery(cmd);
+
+    //    while(employee.next()){
+    //      currentEmployeeFirstName = employee.getString("FIRSTNAME");
+    //      currentEmployeeLastName = employee.getString("LASTNAME");
+    //      if(currentEmployeeFirstName.contains(employeeName) ||
+    // currentEmployeeLastName.contains(employeeName)){
+    //        ArrayList<String>rset.getString("assignedEmployeeID");
+    //      }
+    //    }
+
+    while (filteredReq.next()) {
+      rt =
+          new requestTree(
+              filteredReq.getString("reqID"),
+              filteredReq.getString("nodeID"),
+              filteredReq.getString("assignedEmployeeID"),
+              filteredReq.getString("requesterEmployeeID"),
+              filteredReq.getString("status"));
+      reqs.add(rt);
+    }
+
+    filteredReq.close();
+
+    treeRoot.setExpanded(true);
+    reqs.stream()
+        .forEach(
+            (requestTree) -> {
+              treeRoot.getChildren().add(new TreeItem<>(requestTree));
+            });
+    // final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<requestTree, String> reqIDColumn = new TreeTableColumn<>("Request ID");
+    reqIDColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<requestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
+    nodeIDColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+
+    TreeTableColumn<requestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
+    assignedEmpIDColumn.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+
+    TreeTableView<requestTree> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    tablePane.minHeightProperty().bind(masterPane.heightProperty());
+    tablePane.getChildren().add(treeTableView);
+    reqIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    nodeIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    assignedEmpIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
+    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+  }
 
   public void startTable() throws SQLException, IOException {
 
