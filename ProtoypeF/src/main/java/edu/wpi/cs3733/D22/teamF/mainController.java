@@ -106,8 +106,8 @@ public class mainController implements Initializable {
             applyResize(newValue);
           }
         };
-    //    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
-    //    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
+    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
+    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
 
     // TODO: make this work
     //    SceneManager.getInstance()

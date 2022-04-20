@@ -145,6 +145,7 @@ public class DatabaseManager {
   public static void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
+    dropTableIfExist("externalPatientRequest");
     dropTableIfExist("MAINTENANCEREQUEST");
     dropTableIfExist("FACILITIESREQUEST");
     dropTableIfExist("securityRequest");
@@ -162,7 +163,6 @@ public class DatabaseManager {
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
     dropTableIfExist("Locations");
-    dropTableIfExist("externalPatientRequest");
   }
 
   public static void dropTableIfExist(String droppingTable) throws SQLException {
