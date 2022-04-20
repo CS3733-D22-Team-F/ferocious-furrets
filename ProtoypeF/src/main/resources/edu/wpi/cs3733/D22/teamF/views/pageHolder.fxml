@@ -68,6 +68,16 @@
                                                 <Font size="24.0" />
                                              </font>
                                           </JFXButton>
+                                          <JFXButton fx:id="linksButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToLinks" prefHeight="45.0" prefWidth="286.0" text="Helpful Links" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="landingButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToLanding" prefHeight="45.0" prefWidth="286.0" text="Landing" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
                                        </children>
                                     </VBox>
                                     <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">

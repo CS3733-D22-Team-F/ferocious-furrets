@@ -62,6 +62,7 @@ public class mainController implements Initializable {
   @FXML JFXButton homeButton2;
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
+  @FXML JFXButton landingButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -94,7 +95,7 @@ public class mainController implements Initializable {
     menu.setSidePane(homeMenu);
     onOpen();
     menuClose();
-    SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
+    SubScene scene = SceneManager.getInstance().setScene("views/dashboardPage.fxml");
     pageHolder.getChildren().clear();
     pageHolder.getChildren().addAll(scene);
 
@@ -106,8 +107,8 @@ public class mainController implements Initializable {
             applyResize(newValue);
           }
         };
-    //    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
-    //    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
+        SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
+        SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
 
     // TODO: make this work
     //    SceneManager.getInstance()
@@ -239,6 +240,10 @@ public class mainController implements Initializable {
     employeeButton.setText("");
     queueButton.setGraphic(MapIconModifier.getIcon("queueMenu"));
     queueButton.setText("");
+    linksButton.setGraphic(MapIconModifier.getIcon("linkMenu"));
+    linksButton.setText("");
+    landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
+    landingButton.setText("");
   }
 
   public void menuOpen() {
@@ -269,6 +274,8 @@ public class mainController implements Initializable {
     maintenanceButton.setText("Maintenance");
     queueButton.setText("Queue");
     employeeButton.setText("Employee");
+    linksButton.setText("Helpful Links");
+    landingButton.setText("Landing");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -296,7 +303,7 @@ public class mainController implements Initializable {
     mapMenu.setVisible(false);
   }
 
-  public void changeToLinksPage() throws IOException {
+  public void changeToLinks() throws IOException {
     changeTo("views/linksPage.fxml");
   }
 
@@ -355,6 +362,10 @@ public class mainController implements Initializable {
 
   public void changeToPhysical() throws IOException {
     changeTo("views/physicalTherapyPage.fxml");
+  }
+
+  public void changeToLanding() throws IOException {
+    changeTo("views/landingPage.fxml");
   }
 
   public void changeToFacilities() throws IOException {
