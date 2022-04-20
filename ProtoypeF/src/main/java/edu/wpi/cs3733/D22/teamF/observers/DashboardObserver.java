@@ -413,7 +413,7 @@ class DashboardObserver implements PropertyChangeListener {
     boolean requestsUpToDate = false;
     boolean dirtyInfusionRequestExists = false;
     boolean dirtyBedsRequestExists = false;
-    String dirtyEquipNodeID = "fSTOR0050" + floor;
+    String dirtyEquipNodeID = "FSTOR0050" + floor;
 
     if (dInfusionReqNeeded) {
       // search for service request for the dirty equipment storage area from the request ID saved
@@ -430,7 +430,7 @@ class DashboardObserver implements PropertyChangeListener {
         facilitiesReqSystem.placeRequest(reqArrayString);
         //        fController.startTable();
       } else {
-        System.out.println("Fuck");
+        System.out.println("Hi lol");
         while (dirtyInfusionList.next()) {
           System.out.println(dirtyInfusionList.getString("reqID"));
         }
@@ -474,7 +474,7 @@ class DashboardObserver implements PropertyChangeListener {
     String reqID = "f" + nNodeType + reqNum;
 
     // TODO generate nodeID from the dirty storage area depending on the floor (3,4,5)
-    String nodeID = "fSTOR0050" + Integer.toString(floor);
+    String nodeID = "FSTOR0050" + Integer.toString(floor);
 
     // TODO assignedEmployeeID = General Facilities
     String assignedEmployeeID = fController.employeeIDFinder("Facilities,General");
