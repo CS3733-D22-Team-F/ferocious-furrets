@@ -51,7 +51,7 @@ public class SceneManager {
     if (!h_map.containsKey(filename)) {
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(filename));
       // alt enter while hover over/cursor in red
-      scene = new SubScene(fxmlLoader.load(), 1200, 720);
+      scene = new SubScene(fxmlLoader.load(), 1220, 660);
       h_map.put(filename, scene); // Hashes the filename path into a scene object
       //      System.out.println("Loading Scene: " + filename);
     } else {
@@ -66,7 +66,7 @@ public class SceneManager {
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(path));
     // alt enter while hover over/cursor in red
     try {
-      SubScene scene = new SubScene(fxmlLoader.load(), 1200, 720);
+      SubScene scene = new SubScene(fxmlLoader.load(), 1220, 660);
       h_map.put(path, scene); // Hashes the filename path into a scene object
     } catch (IOException e) {
       e.printStackTrace();

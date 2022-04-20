@@ -1,9 +1,4 @@
 reqID,nodeID,assEmpID,reqEmpID,status
-fblo1,FDEPT00301,1,2,Done
-fMRI2,FDEPT00301,3,4,Done
-fInf3,FDEPT00301,5,6,Done
-fAnt4,FDEPT00301,7,8,Done
-fInf6,FDEPT00301,1,2,Done
 fBee6,FDEPT00301,1,2,Processing
 fBee7,FDEPT00301,1,2,Processing
 fAlb8,FDEPT00301,1,2,Processing
@@ -12,12 +7,10 @@ fBee10,FDEPT00301,1,5,Processing
 fInf11,FDEPT00301,2,7,Processing
 fTEA11,FDEPT00301,3,6,Processing
 fTEA12,FDEPT00301,2,9,Processing
-fblo14,FDEPT00301,4,5,Done
 fMRI15,FDEPT00301,8,7,Processing
 fQui16,FDEPT00301,2,6,Processing
 fInf17,FDEPT00301,2,10,Processing
 fWIP18,FDEPT00501,1,2,Processing
-fLPP19,FDEPT00501,1,2,Done
 fH&M20,FDEPT00401,3,7,Processing
 fCMT21,FDEPT00301,3,7,Processing
 fBIP22,FDEPT00301,1,2,Processing
@@ -25,10 +18,7 @@ fCAN23,FDEPT00301,1,2,Processing
 fEle24,FDEPT00301,1,2,Processing
 fStr25,FHALL00201,8,7,Processing
 fBPR26,FDEPT00401,2,1,Processing
-fBlo27,FDEPT00401,4,6,done
-fxra28,FDEPT00401,5,7,done
 fBed29,FDEPT00301,10,8,Processing
-fOme30,FDEPT00401,3,9,Done
 fWIP31,FDEPT00301,10,9,Processing
 fGWS31,FDEPT00301,8,9,Processing
 fHea33,FDEPT00401,9,6,Processing

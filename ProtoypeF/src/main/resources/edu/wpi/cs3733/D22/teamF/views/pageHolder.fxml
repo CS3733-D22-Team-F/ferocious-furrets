@@ -6,17 +6,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" prefHeight="720.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mainController">
+<StackPane fx:id="mainPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.mainController">
    <children>
-      <VBox fx:id="menuBar" prefHeight="770.0" prefWidth="1394.0">
+      <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
          <children>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+            <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="54.0" prefWidth="1260.0" style="-fx-background-color: #123090;">
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" text="Brigham And Women's Hospital" textFill="WHITE">
                      <font>
@@ -30,191 +30,196 @@
                   </ImageView>
                </children>
             </HBox>
-            <Pane>
-               <children>
-                  <StackPane fx:id="pageHolder" layoutX="40.0" prefHeight="660.0" prefWidth="1220.0" />
-                  <JFXDrawer fx:id="menu" alignment="TOP_CENTER" defaultDrawerSize="200.0" miniDrawerSize="50.0" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="660.0" prefWidth="200.0" resizeContent="true" style="-fx-background-color: #4169E1;" />
-               </children>
-            </Pane>
-         </children>
-      </VBox>
-      <VBox fx:id="homeMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="50.0" style="-fx-background-color: #4169E1;">
-         <children>
-            <VBox fx:id="v1" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <JFXButton fx:id="mapButton" buttonType="RAISED" onAction="#changeToMapMenu" prefHeight="30.0" prefWidth="215.0" text="Map" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="serviceButton" buttonType="RAISED" onAction="#changeToServiceMenu" prefHeight="30.0" prefWidth="286.0" text="Service" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="queueButton" buttonType="RAISED" onAction="#changeToQueue" prefHeight="30.0" prefWidth="286.0" text="Service Queue" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="employeeButton" buttonType="RAISED" onAction="#changeToEmployee" prefHeight="30.0" prefWidth="286.0" text="Employee" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="linksButton" buttonType="RAISED" onAction="#changeToLinksPage" prefHeight="30.0" prefWidth="286.0" text="Helpful Links" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="landingButton" buttonType="RAISED" onAction="#changeToLanding" prefHeight="30.0" prefWidth="286.0" text="Landing" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children></VBox>
-            <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <JFXButton fx:id="settingsButton" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="outButton" buttonType="RAISED" onAction="#exit" prefHeight="30.0" prefWidth="201.0" text="Exit" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <VBox fx:id="mapMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="50.0" style="-fx-background-color: #4169E1;">
-         <children>
-            <VBox fx:id="v3" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <JFXButton fx:id="homeButton1" buttonType="RAISED" onAction="#changeToHomeMenu" prefHeight="30.0" prefWidth="215.0" text="Home" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="mapViewButton" buttonType="RAISED" onAction="#changeToMap" prefHeight="30.0" prefWidth="215.0" text="Map" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="dashboardButton" buttonType="RAISED" onAction="#changeToDashboard" prefHeight="23.0" prefWidth="200.0" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-            <VBox fx:id="v4" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <JFXButton fx:id="settingsButton1" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="outButton1" buttonType="RAISED" onAction="#exit" prefHeight="30.0" prefWidth="201.0" text="Exit" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <VBox fx:id="serviceMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
-         <children>
-            <VBox fx:id="v5" prefHeight="200.0" prefWidth="0.0">
-               <children>
-                  <JFXButton fx:id="homeButton2" buttonType="RAISED" onAction="#changeToHomeMenu" prefHeight="30.0" prefWidth="215.0" text="Home" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="labButton" buttonType="RAISED" onAction="#changeToLab" prefHeight="30.0" prefWidth="215.0" text="Lab" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="scanButton" buttonType="RAISED" onAction="#changeToScan" prefHeight="30.0" prefWidth="286.0" text="Scan" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="equipmentButton" buttonType="RAISED" onAction="#changeToEquipment" prefHeight="30.0" prefWidth="239.0" text="Equipment" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="medicineButton" buttonType="RAISED" onAction="#changeToMedicine" prefHeight="30.0" prefWidth="201.0" text="Medicine" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="mealButton" buttonType="RAISED" onAction="#changeToMeal" prefHeight="30.0" prefWidth="201.0" text="Meals" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="audioButton" buttonType="RAISED" onAction="#changeToAudio" prefHeight="30.0" prefWidth="201.0" text="Audio/Visual" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="giftButton" buttonType="RAISED" onAction="#changeToGift" prefHeight="30.0" prefWidth="201.0" text="Gifts" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="physicalButton" buttonType="RAISED" onAction="#changeToPhysical" prefHeight="30.0" prefWidth="201.0" text="Phy. Therapy" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="securityButton" buttonType="RAISED" onAction="#changeToSecurity" prefHeight="30.0" prefWidth="201.0" text="Security" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="sanitationButton" buttonType="RAISED" onAction="#changeToFacilities" prefHeight="30.0" prefWidth="201.0" text="Sanitation" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="maintenanceButton" buttonType="RAISED" onAction="#changeToMaintenance" prefHeight="30.0" prefWidth="201.0" text="Maintenance" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-            <VBox fx:id="v6" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <JFXButton fx:id="settingsButton2" buttonType="RAISED" onAction="#changeToSetting" prefHeight="30.0" prefWidth="239.0" text="Settings" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="outButton2" buttonType="RAISED" onAction="#exit" prefHeight="30.0" prefWidth="201.0" text="Exit" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
+            <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <left>
+                  <StackPane fx:id="stackHolder" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" BorderPane.alignment="TOP_LEFT">
+                     <children>
+                        <StackPane fx:id="pageHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="723.0" prefWidth="1220.0" StackPane.alignment="TOP_LEFT">
+                           <StackPane.margin>
+                              <Insets left="30.0" />
+                           </StackPane.margin>
+                        </StackPane>
+                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="660.0" prefWidth="198.0" resizeContent="true" StackPane.alignment="TOP_LEFT">
+                           <children>
+                              <VBox fx:id="homeMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                                 <children>
+                                    <VBox fx:id="v1" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="mapButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToMapMenu" prefHeight="45.0" prefWidth="215.0" text="Map" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="serviceButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToServiceMenu" prefHeight="45.0" prefWidth="286.0" text="Service" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="queueButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToQueue" prefHeight="45.0" prefWidth="286.0" text="Service Queue" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="employeeButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToEmployee" prefHeight="45.0" prefWidth="286.0" text="Employee" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="settingsButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToSetting" prefHeight="45.0" prefWidth="239.0" text="Settings" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </JFXButton>
+                                          <JFXButton fx:id="outButton" buttonType="RAISED" minHeight="-Infinity" onAction="#exit" prefHeight="45.0" prefWidth="201.0" text="Exit" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="mapMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                                 <children>
+                                    <VBox fx:id="v3" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="homeButton1" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToHomeMenu" prefHeight="45.0" prefWidth="215.0" text="Home" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="mapViewButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToMap" prefHeight="45.0" prefWidth="215.0" text="Map" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="dashboardButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToDashboard" prefHeight="45.0" prefWidth="200.0" text="Dashboard" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="v4" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="settingsButton1" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToSetting" prefHeight="45.0" prefWidth="239.0" text="Settings" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </JFXButton>
+                                          <JFXButton fx:id="outButton1" buttonType="RAISED" minHeight="-Infinity" onAction="#exit" prefHeight="45.0" prefWidth="201.0" text="Exit" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="serviceMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                                 <children>
+                                    <VBox fx:id="v5" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="homeButton2" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToHomeMenu" prefHeight="45.0" prefWidth="215.0" text="Home" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="labButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToLab" prefHeight="45.0" prefWidth="215.0" text="Lab" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="scanButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToScan" prefHeight="45.0" prefWidth="286.0" text="Scan" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="equipmentButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToEquipment" prefHeight="45.0" prefWidth="239.0" text="Equipment" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="medicineButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToMedicine" prefHeight="45.0" prefWidth="201.0" text="Medicine" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="mealButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToMeal" prefHeight="45.0" prefWidth="201.0" text="Meals" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="audioButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToAudio" prefHeight="45.0" prefWidth="201.0" text="Audio/Visual" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="giftButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToGift" prefHeight="45.0" prefWidth="201.0" text="Gifts" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="physicalButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToPhysical" prefHeight="45.0" prefWidth="201.0" text="Phy. Therapy" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="securityButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToSecurity" prefHeight="45.0" prefWidth="201.0" text="Security" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="sanitationButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToFacilities" prefHeight="45.0" prefWidth="201.0" text="Sanitation" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="maintenanceButton" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToMaintenance" prefHeight="45.0" prefWidth="201.0" text="Maintenance" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="v6" prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="settingsButton2" buttonType="RAISED" minHeight="-Infinity" onAction="#changeToSetting" prefHeight="45.0" prefWidth="239.0" text="Settings" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </JFXButton>
+                                          <JFXButton fx:id="outButton2" buttonType="RAISED" minHeight="-Infinity" onAction="#exit" prefHeight="45.0" prefWidth="201.0" text="Exit" textFill="WHITE">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </JFXDrawer>
+                     </children>
+                  </StackPane>
+               </left>
+            </BorderPane>
          </children>
       </VBox>
    </children>

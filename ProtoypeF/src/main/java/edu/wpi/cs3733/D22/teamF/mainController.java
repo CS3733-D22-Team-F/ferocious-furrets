@@ -27,8 +27,10 @@ import lombok.SneakyThrows;
 public class mainController implements Initializable {
 
   @FXML StackPane pageHolder;
+  @FXML StackPane stackHolder;
   @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
+  @FXML VBox menuBar;
   @FXML VBox homeMenu;
   @FXML VBox mapMenu;
   @FXML VBox serviceMenu;
@@ -60,7 +62,6 @@ public class mainController implements Initializable {
   @FXML JFXButton homeButton2;
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
-  @FXML JFXButton landingButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -70,7 +71,8 @@ public class mainController implements Initializable {
   @FXML VBox v6;
 
   ChangeListener<Boolean> maxScreenCallback;
-  ObservableList<Transform> baseTransforms;
+  ObservableList<Transform> baseTransformsScene;
+  ObservableList<Transform> baseTransformsMenu;
 
   @SneakyThrows
   @Override
@@ -87,14 +89,10 @@ public class mainController implements Initializable {
     Runtime.getRuntime().addShutdownHook(shutDownHook);
     mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
-    baseTransforms = pageHolder.getTransforms();
+    baseTransformsScene = pageHolder.getTransforms();
+    baseTransformsMenu = stackHolder.getTransforms();
     menu.setSidePane(homeMenu);
-    homeMenu.setMaxWidth(200);
-    homeMenu.setPrefWidth(200);
-    mapMenu.setMaxWidth(200);
-    mapMenu.setPrefWidth(200);
-    serviceMenu.setMaxWidth(200);
-    serviceMenu.setPrefWidth(200);
+    onOpen();
     menuClose();
     SubScene scene = SceneManager.getInstance().setScene("views/mapPage.fxml");
     pageHolder.getChildren().clear();
@@ -144,28 +142,34 @@ public class mainController implements Initializable {
   }
 
   private void applyResize(boolean newValue) {
-    pageHolder.getTransforms().setAll(baseTransforms);
+    //    pageHolder.getTransforms().setAll(baseTransforms);
+    //    menu.getTransforms().setAll(baseTransformsScene);
+    stackHolder.getTransforms().setAll(baseTransformsMenu);
+    homeMenu.getTransforms().setAll(baseTransformsMenu);
+    mapMenu.getTransforms().setAll(baseTransformsMenu);
+    serviceMenu.getTransforms().setAll(baseTransformsMenu);
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     if (newValue) {
-      double maxWidth = screenBounds.getWidth();
+      double maxWidth = screenBounds.getWidth() - 30;
       double maxHeight = screenBounds.getHeight();
-      double contentWidth = SceneManager.getInstance().getStage().widthProperty().get();
-      double contentHeight = SceneManager.getInstance().getStage().heightProperty().get();
+      double contentWidth = stackHolder.getWidth();
+      double contentHeight = stackHolder.getHeight();
       double widthRatio = maxWidth / contentWidth;
       double heightRatio = maxHeight / contentHeight;
       double preservedAspectRatio = Math.min(widthRatio, heightRatio);
-      pageHolder
+      //      menu.getTransforms().add(new Scale(1, (float) preservedAspectRatio));
+      stackHolder
           .getTransforms()
-          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
+          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio * 1.15));
 
     } else {
-      pageHolder.getTransforms().add(new Scale(1, 1));
+      stackHolder.getTransforms().add(new Scale(1, 1));
     }
   }
 
   private void applyResize(double width, double height) {
     // TODO: Make this work
-    pageHolder.getTransforms().setAll(baseTransforms);
+    pageHolder.getTransforms().setAll(baseTransformsScene);
 
     double maxWidth = width;
     double maxHeight = height;
@@ -182,7 +186,9 @@ public class mainController implements Initializable {
   public void menuClose() throws InterruptedException {
     menu.close();
     menu.setPrefWidth(50);
-    onClose();
+    homeMenu.setPrefWidth(50);
+    mapMenu.setPrefWidth(50);
+    serviceMenu.setPrefWidth(50);
     mapButton.setGraphic(MapIconModifier.getIcon("infoMenu"));
     mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
@@ -233,15 +239,11 @@ public class mainController implements Initializable {
     employeeButton.setText("");
     queueButton.setGraphic(MapIconModifier.getIcon("queueMenu"));
     queueButton.setText("");
-    linksButton.setGraphic(MapIconModifier.getIcon("linkMenu"));
-    linksButton.setText("");
-    landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
-    landingButton.setText("");
   }
 
-  public void menuOpen() throws InterruptedException {
-    menu.setMaxWidth(200);
+  public void menuOpen() {
     menu.open();
+    menu.setMaxWidth(200);
     mapButton.setText("Info");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
@@ -267,8 +269,6 @@ public class mainController implements Initializable {
     maintenanceButton.setText("Maintenance");
     queueButton.setText("Queue");
     employeeButton.setText("Employee");
-    linksButton.setText("Helpful Links");
-    landingButton.setText("Landing");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -345,6 +345,7 @@ public class mainController implements Initializable {
   }
 
   public void changeToSecurity() throws IOException {
+    // TODO add your page name before ".fxml"
     changeTo("views/securityPage.fxml");
   }
 
@@ -353,15 +354,13 @@ public class mainController implements Initializable {
   }
 
   public void changeToFacilities() throws IOException {
+    // TODO add your page name before ".fxml"
     changeTo("views/facilitiesPage.fxml");
   }
 
   public void changeToMaintenance() throws IOException {
+    // TODO add your page name before ".fxml"
     changeTo("views/request/maintenanceRequestPage.fxml");
-  }
-
-  public void changeToLanding() throws IOException {
-    changeTo("views/landingPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {
@@ -375,18 +374,16 @@ public class mainController implements Initializable {
     System.exit(0);
   }
 
-  public void onClose() {
-    homeMenu.setPrefWidth(50);
-    mapMenu.setPrefWidth(50);
-    serviceMenu.setPrefWidth(50);
-  }
-
   public void onOpen() {
     homeMenu.setMaxWidth(200);
-    homeMenu.setPrefWidth(200);
     mapMenu.setMaxWidth(200);
-    mapMenu.setPrefWidth(200);
     serviceMenu.setMaxWidth(200);
+    homeMenu.setPrefWidth(200);
+    mapMenu.setPrefWidth(200);
     serviceMenu.setPrefWidth(200);
+  }
+
+  public void onClose() {
+    menu.setMaxWidth(50);
   }
 }
