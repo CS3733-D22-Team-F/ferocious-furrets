@@ -101,8 +101,8 @@ public class mainController implements Initializable {
             applyResize(newValue);
           }
         };
-    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
-    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
+    //    SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
+    //    SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
 
     // TODO: make this work
     //    SceneManager.getInstance()
@@ -314,6 +314,7 @@ public class mainController implements Initializable {
   public void changeToAudio() throws IOException {
     changeTo("views/audioVisualPage.fxml");
   }
+
   public void changeToExtPatient() throws IOException {
     changeTo("views/extPatDeliveryPage.fxml");
   }

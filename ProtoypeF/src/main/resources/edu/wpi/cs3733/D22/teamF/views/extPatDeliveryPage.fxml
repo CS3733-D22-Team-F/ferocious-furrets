@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -22,7 +23,7 @@
             <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
             <HBox fx:id="topHBox" layoutX="5.0" layoutY="18.0" prefHeight="100.0" prefWidth="732.0" spacing="50.0">
                <children>
-                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
+                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text=" Ext. Patient Delivery" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
@@ -34,7 +35,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="bottomHBox" layoutX="210.0" layoutY="638.0" prefHeight="59.0" prefWidth="421.0">
+            <HBox fx:id="bottomHBox" layoutX="210.0" layoutY="638.0" prefHeight="59.0" prefWidth="284.0">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
                      <font>
@@ -52,36 +53,40 @@
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="130.0" text="Location: " textFill="WHITE">
+                        <VBox alignment="TOP_RIGHT" spacing="25.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="130.0" text="Location: " textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="-10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="132.0" text=" Address: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="132.0" text="Category: " textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="40.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="240.0" text="Accessibility Device: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="240.0" text="Transportation Method: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -98,37 +103,40 @@
                            </VBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
                   </VBox>
-                  <VBox prefHeight="401.0" prefWidth="288.0">
+                  <VBox prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
-                        <JFXComboBox fx:id="nodeField" prefHeight="54.0" prefWidth="287.0" promptText="Location">
+                        <JFXComboBox fx:id="nodeField" prefHeight="54.0" prefWidth="287.0" promptText=" Location">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" promptText="Assigned Employee">
+                        <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" promptText=" Assigned Employee">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" promptText="Requested Employee">
+                        <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" promptText=" Requested Employee">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0" promptText="Category">
+                        <TextField fx:id="addressField" prefHeight="49.0">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <JFXComboBox fx:id="methodField" prefHeight="49.0" prefWidth="541.0" promptText=" Method">
+                           <VBox.margin>
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="objectChoice" prefHeight="49.0" prefWidth="541.0" promptText="Accessibility Device">
+                        <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0" promptText=" Status">
                            <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
-                        </JFXComboBox>
-                        <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0" promptText="Status">
-                           <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </JFXComboBox>
                      </children>
@@ -141,7 +149,7 @@
    <center>
       <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="536.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView prefHeight="720.0" prefWidth="536.0" />
+            <JFXTreeTableView fx:id="treeTable" prefHeight="720.0" prefWidth="536.0" />
          </children>
       </Pane>
    </center>

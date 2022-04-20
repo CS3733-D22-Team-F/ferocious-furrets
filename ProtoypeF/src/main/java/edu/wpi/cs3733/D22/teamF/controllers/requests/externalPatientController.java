@@ -52,8 +52,11 @@ public class externalPatientController extends PageController
   @FXML private Button resolveReq;
 
   private String requestID;
+
   private String address;
+
   private String method;
+
   private String patientName;
 
   TreeItem<extPatientDeliveryRequest> treeRoot =
