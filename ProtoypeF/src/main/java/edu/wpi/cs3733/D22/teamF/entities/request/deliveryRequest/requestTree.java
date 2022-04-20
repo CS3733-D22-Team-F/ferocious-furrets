@@ -6,12 +6,6 @@ import java.util.ArrayList;
 
 public class requestTree extends Request {
 
-  private String reqID;
-  private String nodeID;
-  private String assignedEmpID;
-  private String requesterEmpID;
-  private String status;
-
   public requestTree(
       String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
     super(reqID, nodeID, assignedEmpID, requesterEmpID, status);

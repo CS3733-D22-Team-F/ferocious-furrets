@@ -13,8 +13,6 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -47,7 +45,7 @@ public class requestListController extends PageController implements Initializab
   public void initialize(URL location, ResourceBundle resources) {
     try {
       startTable();
-      System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+      // System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
@@ -82,12 +80,14 @@ public class requestListController extends PageController implements Initializab
             (requestTree) -> {
               treeRoot.getChildren().add(new TreeItem<>(requestTree));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
+    // final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<requestTree, String> reqIDColumn = new TreeTableColumn<>("Request ID");
     reqIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
+          System.out.println("req ID: " + param.getValue().getValue().getReqID());
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
+        });
 
     TreeTableColumn<requestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
     nodeIDColumn.setCellValueFactory(
