@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="724.0" prefWidth="1245.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="724.0" prefWidth="1245.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
    <center>
       <StackPane prefHeight="770.0" prefWidth="1220.0">
          <children>
@@ -88,6 +87,11 @@
                            </font>
                         </Label>
                         <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Map: Azu" textFill="WHITE">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" onMouseClicked="#openCredit" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Credit Page" textFill="WHITE">
                            <font>
                               <Font size="32.0" />
                            </font>
