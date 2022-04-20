@@ -51,6 +51,7 @@ public class mapServiceModifyController implements Initializable {
     ResultSet rset =
         DatabaseManager.runQuery("SELECT * FROM MEDICINEREQUEST WHERE REQID = '" + reqID + "'");
     if (rset.next()) isMedicine = true;
+    rset.close();
     if (isMedicine) {
       cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(

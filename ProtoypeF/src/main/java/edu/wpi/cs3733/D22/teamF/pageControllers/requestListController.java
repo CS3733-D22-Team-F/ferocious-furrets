@@ -56,7 +56,6 @@ public class requestListController extends PageController implements Initializab
   public void initialize(URL location, ResourceBundle resources) {
     try {
       startTable();
-      // System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
@@ -70,7 +69,10 @@ public class requestListController extends PageController implements Initializab
     clearTable();
 
     ResultSet rset =
-        DatabaseManager.getRequestDAO().get(); // .runQuery("SELECT * FROM ServiceRequest");
+        DatabaseManager.runQuery(
+            "SELECT * FROM ServiceRequest WHERE UPPER(status) = 'PROCESSING'"); // .runQuery("SELECT
+    // * FROM
+    // ServiceRequest");
     ArrayList<requestTree> reqs = new ArrayList<requestTree>();
     requestTree rt;
 
@@ -84,7 +86,7 @@ public class requestListController extends PageController implements Initializab
               rset.getString("status"));
       reqs.add(rt);
     }
-
+    rset.close();
     treeRoot.setExpanded(true);
     reqs.stream()
         .forEach(
@@ -96,19 +98,20 @@ public class requestListController extends PageController implements Initializab
     TreeTableColumn<requestTree, String> reqIDColumn = new TreeTableColumn<>("Request ID");
     reqIDColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
-          System.out.println("req ID: " + param.getValue().getValue().getReqID());
           return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
         });
 
     TreeTableColumn<requestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
     nodeIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
     TreeTableColumn<requestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableView<requestTree> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
