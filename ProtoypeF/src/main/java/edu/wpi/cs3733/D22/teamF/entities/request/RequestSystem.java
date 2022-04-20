@@ -63,6 +63,9 @@ public class RequestSystem {
       case "Security":
         request = new securityRequest();
         break;
+      case "ExternalPatient":
+        request = new extPatientDeliveryRequest();
+        break;
       default:
         break;
     }

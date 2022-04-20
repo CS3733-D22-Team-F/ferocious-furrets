@@ -47,7 +47,8 @@ public class Cache {
                 "Map/mapServiceModifyPage.fxml",
                 "Map/mapLocModifyPage.fxml",
                 "Map/mapEquipModifyPage.fxml",
-                "medicinePage.fxml"));
+                "medicinePage.fxml",
+                "externalPatientPage.fxml"));
 
     Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF", Scanners.values());
     Set<String> fxmlPaths = reflections.get(Resources.with(".*\\.fxml"));

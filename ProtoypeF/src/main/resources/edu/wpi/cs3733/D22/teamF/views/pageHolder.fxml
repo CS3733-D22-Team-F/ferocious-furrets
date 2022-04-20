@@ -205,6 +205,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#goToTransport" prefHeight="30.0" prefWidth="201.0" text="Ext. Patient Transport" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
             <VBox fx:id="v6" prefHeight="200.0" prefWidth="200.0">
