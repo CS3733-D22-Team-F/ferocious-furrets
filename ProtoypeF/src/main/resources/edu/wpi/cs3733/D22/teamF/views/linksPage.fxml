@@ -20,9 +20,9 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #3e8cd0;" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Label prefHeight="71.0" prefWidth="669.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="SansSerif Regular" size="36.0" />
+                              <Font name="Serif Regular" size="64.0" />
                            </font>
                         </Label>
                         <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -47,7 +47,7 @@
                            <children>
                               <Label prefHeight="54.0" prefWidth="168.0" text="WANT TO LEARN MORE ABOUT US?" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="SansSerif Regular" size="18.0" />
+                                    <Font name="Serif Regular" size="18.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets right="10.0" />
@@ -91,7 +91,7 @@
                         </ImageView>
                         <Label text="VISIT OUR WEBSITE" VBox.vgrow="ALWAYS">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Serif Regular" size="18.0" />
                            </font></Label>
                      </children>
                      <HBox.margin>
@@ -107,7 +107,7 @@
                            <children>
                               <Label prefHeight="67.0" prefWidth="179.0" text="LOOKING FOR EMPLOYEE RESOURCES?" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="SansSerif Regular" size="18.0" />
+                                    <Font name="Serif Regular" size="18.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets right="10.0" />
@@ -143,7 +143,7 @@
                         </ImageView>
                         <Label text="LOGIN" VBox.vgrow="ALWAYS">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Serif Regular" size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -157,7 +157,7 @@
                            <children>
                               <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="SansSerif Regular" size="18.0" />
+                                    <Font name="Serif Regular" size="18.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets right="10.0" />
@@ -196,7 +196,7 @@
                         </ImageView>
                         <Label text="COVID-19 ">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Serif Regular" size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -210,7 +210,7 @@
                            <children>
                               <Label prefHeight="61.0" prefWidth="184.0" text="CREATE A PATIENT ACCOUNT" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font name="SansSerif Regular" size="18.0" />
+                                    <Font name="Serif Regular" size="18.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets right="10.0" />
@@ -249,7 +249,7 @@
                         </ImageView>
                         <Label text="SIGN UP HERE">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Serif Regular" size="18.0" />
                            </font>
                         </Label>
                      </children>
