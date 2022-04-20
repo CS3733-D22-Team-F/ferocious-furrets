@@ -24,4 +24,16 @@ fGEN23,FEXIT00101,7,3,Processing
 fREP24,FHALL00501,10,10,Processing
 fInf24,FEXIT00201,2,1,Processing
 fX-R25,FHALL00301,5,3,Processing
-
+fBlo26,FDEPT00501,5,10,Processing
+fxra27,FDEPT00501,6,9,Processing
+fCor28,FDEPT00601,5,9,Processing
+fMea29,FDEPT00401,5,10,Processing
+fChi30,FEXIT00201,5,10,Processing
+fLPP31,FEXIT00101,5,7,Processing
+fTEA31,FDEPT00401,5,1,Processing
+fBPR33,FEXIT00301,5,8,Processing
+fGEN33,FDEPT00601,5,9,Processing
+fX-R35,FEXIT00101,5,5,Processing
+fRec36,FDEPT00601,5,5,Processing
+fX-R37,FHALL00501,5,5,Processing
+fBed38,FHALL01101,5,5,Processing

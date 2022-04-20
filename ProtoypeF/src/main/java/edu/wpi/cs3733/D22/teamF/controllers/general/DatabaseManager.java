@@ -158,11 +158,11 @@ public class DatabaseManager {
     dropTableIfExist("MEDICINEREQUEST");
     dropTableIfExist("EquipmentDeliveryRequest");
     dropTableIfExist("MaintenanceRequest");
+    dropTableIfExist("externalPatientRequest");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
     dropTableIfExist("Locations");
-    dropTableIfExist("externalPatientRequest");
   }
 
   public static void dropTableIfExist(String droppingTable) throws SQLException {

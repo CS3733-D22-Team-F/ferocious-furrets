@@ -43,11 +43,11 @@
                         </Group>
                      </content>
                   </ScrollPane>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="810.0">
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="816.0">
                      <children>
                         <JFXNodesList fx:id="menuNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0">
                            <children>
-                              <JFXButton fx:id="openMenu" maxHeight="26.0" minHeight="20.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #123090;" textFill="WHITE">
+                              <JFXButton fx:id="openMenu" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: #123090;" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
@@ -55,28 +55,23 @@
                               <JFXButton fx:id="addButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpAdd" prefHeight="20.0" style="-fx-background-color: #123090;" text="ADD" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="saveButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpSave" prefHeight="20.0" style="-fx-background-color: #123090;" text="SAVE" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="loadButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpReset" prefHeight="20.0" style="-fx-background-color: #123090;" text="LOAD" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="tableButton" maxHeight="20.0" minHeight="20.0" onAction="#openFullTable" prefHeight="20.0" style="-fx-background-color: #123090;" text="TABLE" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="historyButton" maxHeight="20.0" minHeight="20.0" onAction="#openHistory" prefHeight="20.0" style="-fx-background-color: #123090;" text="HISTORY" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                            </children>
                            <HBox.margin>
                               <Insets right="30.0" />
@@ -84,7 +79,7 @@
                         </JFXNodesList>
                         <JFXNodesList fx:id="floorNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="50.0">
                            <children>
-                              <JFXButton fx:id="openFloorMenu" maxHeight="24.0" maxWidth="68.0" minHeight="20.0" minWidth="50.0" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
+                              <JFXButton fx:id="openFloorMenu" maxHeight="20.0" maxWidth="50.0" minHeight="20.0" minWidth="50.0" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
@@ -92,44 +87,37 @@
                               <JFXButton fx:id="changeToF5" maxHeight="20.0" minHeight="20.0" onAction="#changeToF5" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F5" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToF4" maxHeight="20.0" minHeight="20.0" onAction="#changeToF4" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F4" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToF3" maxHeight="20.0" minHeight="20.0" onAction="#changeToF3" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F3" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToF2" maxHeight="20.0" minHeight="20.0" onAction="#changeToF2" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F2" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToF1" maxHeight="20.0" minHeight="20.0" onAction="#changeToF1" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F1" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToL1" maxHeight="20.0" minHeight="20.0" onAction="#changeToL1" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L1" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                               <JFXButton fx:id="changeToL2" maxHeight="20.0" minHeight="20.0" onAction="#changeToL2" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L2" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
+                                 </font></JFXButton>
                            </children>
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
                         </JFXNodesList>
-                        <JFXButton fx:id="showIconButton" buttonType="RAISED" maxHeight="28.0" minHeight="15.0" onAction="#showIcon" prefHeight="20.0" prefWidth="95.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
+                        <JFXButton fx:id="showIconButton" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" onAction="#showIcon" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -139,7 +127,7 @@
                         </JFXButton>
                         <JFXNodesList fx:id="alertNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="50.0">
                            <children>
-                              <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="31.0" minHeight="20.0" prefHeight="25.0" prefWidth="90.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alert: 0" textFill="WHITE">
+                              <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alert: 0" textFill="WHITE">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
@@ -181,7 +169,7 @@
                               </JFXButton>
                            </children>
                         </JFXNodesList>
-                        <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="20.0" prefWidth="163.0" />
+                        <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="20.0" prefWidth="150.0" />
                      </children>
                   </HBox>
                </children>

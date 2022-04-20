@@ -20,8 +20,8 @@
    <left>
       <Pane prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fill="#123090" height="720.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
-            <Rectangle fill="ROYALBLUE" height="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
             <HBox layoutX="15.0" layoutY="36.0" prefHeight="100.0" prefWidth="610.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="522.0" text="Laboratory Request" textFill="WHITE">
@@ -63,7 +63,7 @@
                         <Insets top="7.0" />
                      </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" style="-fx-background-color: white;" unFocusColor="WHITE">
+                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" labelFloat="true" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
