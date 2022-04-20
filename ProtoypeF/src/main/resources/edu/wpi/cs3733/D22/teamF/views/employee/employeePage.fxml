@@ -19,13 +19,13 @@
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="670.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <Rectangle fx:id="lowerRect" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="675.0" />
-            <Rectangle fx:id="upperRect" arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="169.0" layoutX="-8.0" layoutY="-2.0" stroke="#3e8cd0" strokeType="INSIDE" width="681.0" />
-            <Label fx:id="employeeTitle" layoutX="74.0" layoutY="51.0" prefHeight="80.0" prefWidth="287.0" text="Employees" textFill="WHITE">
+            <Rectangle fx:id="upperRect" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
+            <Label fx:id="employeeTitle" layoutX="133.0" layoutY="62.0" prefHeight="80.0" prefWidth="321.0" text="Employees" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="64.0" />
                </font>
             </Label>
-            <ImageView fx:id="logo" fitHeight="110.0" fitWidth="116.0" layoutX="516.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="88.0" fitWidth="94.0" layoutX="493.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../BWHlogo-new.png" />
                </image>
