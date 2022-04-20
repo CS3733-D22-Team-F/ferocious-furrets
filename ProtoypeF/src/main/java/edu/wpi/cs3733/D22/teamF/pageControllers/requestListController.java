@@ -48,7 +48,6 @@ public class requestListController extends PageController implements Initializab
   public void initialize(URL location, ResourceBundle resources) {
     try {
       startTable();
-      // System.out.println("Help me please \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
@@ -91,7 +90,6 @@ public class requestListController extends PageController implements Initializab
     ArrayList<requestTree> reqs = new ArrayList<requestTree>();
     requestTree rt;
     String empID = employeeIDFinder(employeeName);
-    System.out.println("Fuck " + empID + "\n\n\n");
 
     String cmd =
         String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
@@ -114,7 +112,6 @@ public class requestListController extends PageController implements Initializab
               filteredReq.getString("assignedEmployeeID"),
               filteredReq.getString("requesterEmployeeID"),
               filteredReq.getString("status"));
-      System.out.println("duck" + filteredReq.getString("assignedEmployeeID"));
       reqs.add(rt);
     }
 
@@ -130,10 +127,8 @@ public class requestListController extends PageController implements Initializab
 
     TreeTableColumn<requestTree, String> reqIDColumn = new TreeTableColumn<>("Request ID");
     reqIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<requestTree, String> param) -> {
-          System.out.println("req ID: " + param.getValue().getValue().getReqID());
-          return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
-        });
+        (TreeTableColumn.CellDataFeatures<requestTree, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
 
     TreeTableColumn<requestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
     nodeIDColumn.setCellValueFactory(
