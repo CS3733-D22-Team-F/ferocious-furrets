@@ -314,6 +314,9 @@ public class mainController implements Initializable {
   public void changeToAudio() throws IOException {
     changeTo("views/audioVisualPage.fxml");
   }
+  public void changeToExtPatient() throws IOException {
+    changeTo("views/extPatDeliveryPage.fxml");
+  }
 
   public void changeToGift() throws IOException {
     changeTo("views/giftPageResized.fxml");
