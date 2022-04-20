@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
-import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.audioVisualRequest;
@@ -107,14 +106,13 @@ public class audioVisualController extends PageController
 
   @FXML
   public void submit() throws SQLException {
-    ;
     ArrayList<Object> requestList = new ArrayList<>();
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
         || statusChoice.getValue().equals("")
         || objectChoice.getValue().equals("")) {
-      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
+      //      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("Audio/Visual Request for: " + objectChoice.getValue());

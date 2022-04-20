@@ -120,7 +120,7 @@ public class externalPatientController extends PageController
         || methodField.getValue().equals("")
         || addressField.getText().equals("")) {
       // Adds alert for empty fields for ext-patient request
-      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
+//      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
       requestList.clear();
       requestList.add("External Patient Transport Request for: " + addressField.getText());
