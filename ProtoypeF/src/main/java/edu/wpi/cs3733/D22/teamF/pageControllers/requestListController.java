@@ -76,6 +76,10 @@ public class requestListController extends PageController implements Initializab
   }
 
   public void f() throws SQLException, IOException {
+    if (filterEmployee.getText().equals("ALL")) {
+      startTable();
+      return;
+    }
     startFilteredTable(filterEmployee.getText());
   }
 
