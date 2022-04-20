@@ -1,242 +1,320 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXNodesList?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
-   <top>
-      <AnchorPane prefHeight="102.0" prefWidth="1280.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
+   <left>
+      <Pane prefHeight="660.0" prefWidth="292.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="116.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-            <HBox layoutX="5.0" layoutY="-24.0" prefHeight="75.0" prefWidth="1270.0">
-               <children>
-                  <Label prefHeight="111.0" prefWidth="519.0" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Regular" size="96.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="400.0" top="20.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="112.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="150.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e8cd0" height="135.0" layoutX="-6.0" layoutY="-13.0" stroke="TRANSPARENT" strokeType="INSIDE" width="430.0" />
+            <Label contentDisplay="TOP" layoutY="30.0" prefHeight="71.0" prefWidth="296.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="64.0" />
+               </font>
+            </Label>
          </children>
-      </AnchorPane>
-   </top>
+      </Pane>
+   </left>
    <center>
-      <AnchorPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <HBox layoutX="70.0" layoutY="22.0" prefHeight="221.0" prefWidth="880.0" spacing="50.0">
+            <HBox layoutX="4.0" layoutY="78.0" prefHeight="241.0" prefWidth="701.0" spacing="10.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="222.0" prefWidth="137.0" spacing="15.0">
+                  <VBox prefHeight="221.0" prefWidth="67.0" spacing="20.0">
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#nextFloor" ripplerFill="#f3ba48" text="Up" textFill="#123090">
+                        <Polygon fill="#3e8cd0" points="-42.666656494140625, 25.333328247070312, 38.000030517578125, 25.333328247070312, -0.666656494140625, -30.666671752929688" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <TextField fx:id="floorSelect" prefHeight="71.0" prefWidth="59.0" promptText="Floor">
                            <font>
-                              <Font name="SansSerif Regular" size="30.0" />
-                           </font>
-                        </JFXButton>
-                        <TextField fx:id="floorSelect" prefHeight="53.0" prefWidth="120.0">
-                           <font>
-                              <Font size="25.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
                         </TextField>
-                        <JFXButton buttonType="RAISED" onAction="#prevFloor" text="Down" textFill="#123090">
-                           <font>
-                              <Font name="SansSerif Regular" size="30.0" />
-                           </font>
-                        </JFXButton>
+                        <Polygon fill="#3e8cd0" points="-44.666656494140625, 25.33331298828125, 37.000030517578125, 25.33331298828125, -2.999969482421875, 83.33334350585938" stroke="TRANSPARENT" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="204.0" prefWidth="585.0" spacing="10.0">
+                  <HBox prefHeight="217.0" prefWidth="508.0" spacing="15.0">
                      <children>
-                        <HBox spacing="115.0">
+                        <VBox prefHeight="205.0" prefWidth="141.0" spacing="15.0">
                            <children>
-                              <Label text="Clean:" textFill="#123090">
+                              <Label prefHeight="28.0" prefWidth="137.0" text="Clean" textFill="#123090">
                                  <font>
-                                    <Font name="SansSerif Regular" size="30.0" />
+                                    <Font name="Serif Regular" size="36.0" />
                                  </font>
                               </Label>
-                              <Label text="Pod:" textFill="#123090">
-                                 <font>
-                                    <Font name="SansSerif Regular" size="30.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Dirty:" textFill="#123090">
-                                 <font>
-                                    <Font name="SansSerif Regular" size="30.0" />
-                                 </font>
-                              </Label>
-                              <Label text="In-Use:" textFill="#123090">
-                                 <font>
-                                    <Font name="SansSerif Regular" size="30.0" />
-                                 </font>
-                              </Label>
+                              <HBox prefHeight="177.0" prefWidth="135.0" spacing="5.0">
+                                 <children>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="cBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="cInfusionPump" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="cRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="cXRay" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox prefHeight="210.0" prefWidth="535.0" spacing="20.0">
+                        </VBox>
+                        <Line endX="97.0" startX="97.0" startY="211.13111877441406" stroke="#123090" strokeWidth="3.0" />
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="205.0" prefWidth="141.0" spacing="15.0">
                            <children>
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
+                              <Label prefHeight="28.0" prefWidth="137.0" text="Pods" textFill="#123090">
+                                 <font>
+                                    <Font name="Serif Regular" size="36.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="177.0" prefWidth="135.0" spacing="5.0">
                                  <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cInfusionPump" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children></VBox>
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="pBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="pInfusionPump" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="pRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="pXRay" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="pBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="pInfusionPump" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="pRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="pXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="dBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="dInfusionPump" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="dRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="dXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="150.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="iBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="iInfusionPump" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="184.0" prefWidth="62.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="iRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="iXRay" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" />
-                                 </children>
-                              </VBox>
+                              </HBox>
                            </children>
-                        </HBox>
+                        </VBox>
+                        <Line endX="97.0" startX="97.0" startY="211.13111877441406" stroke="#123090" strokeWidth="3.0" />
+                        <VBox layoutX="169.0" layoutY="10.0" prefHeight="205.0" prefWidth="141.0" spacing="15.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="137.0" text="Dirty" textFill="#123090">
+                                 <font>
+                                    <Font name="Serif Regular" size="36.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="177.0" prefWidth="135.0" spacing="5.0">
+                                 <children>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="dBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="dInfusionPump" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="dRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="dXRay" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Line endX="97.0" startX="97.0" startY="211.13111877441406" stroke="#123090" strokeWidth="3.0" />
+                        <VBox layoutX="329.0" layoutY="10.0" prefHeight="205.0" prefWidth="141.0" spacing="15.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="137.0" text="In-use" textFill="#123090">
+                                 <font>
+                                    <Font name="Serif Regular" size="36.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="177.0" prefWidth="135.0" spacing="5.0">
+                                 <children>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/PTBD%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="iBed" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/IPMP%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="iInfusionPump" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="194.0" prefWidth="61.0" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/RECL%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="iRecliner" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Map/Icons/EquipmentIcons/XRAY%20Icon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="iXRay" layoutX="10.0" layoutY="79.0" prefHeight="28.0" prefWidth="66.0" textAlignment="CENTER" textFill="#123090">
+                                             <font>
+                                                <Font name="Serif Regular" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </HBox>
-            <TableView layoutX="27.0" layoutY="309.0" prefHeight="162.0" prefWidth="910.0">
-               <columns>
-                  <TableColumn minWidth="26.4000244140625" prefWidth="130.4000244140625" text="Number:" />
-                  <TableColumn minWidth="103.76409912109375" prefWidth="131.199951171875" text="Type:" />
-               </columns>
-            </TableView>
-            <JFXComboBox fx:id="layoutAlerts" layoutX="957.0" layoutY="14.0" prefHeight="50.0" prefWidth="218.0" promptText="                   Alerts" />
+            <JFXButton layoutX="16.0" layoutY="84.0" onAction="#nextFloor" prefHeight="54.0" prefWidth="56.0" ripplerFill="TRANSPARENT" text="&quot;&quot;" textFill="#3e8cd0" />
+            <JFXButton layoutX="16.0" layoutY="246.0" onAction="#prevFloor" prefHeight="44.0" prefWidth="56.0" ripplerFill="TRANSPARENT" text="&quot;&quot;" textFill="#3e8cd0" />
          </children>
-      </AnchorPane>
+      </Pane>
    </center>
+   <right>
+      <Pane prefHeight="660.0" prefWidth="223.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXNodesList fx:id="layoutAlerts" layoutX="24.0" layoutY="94.0" maxHeight="78.0" minHeight="20.0" prefHeight="56.0" prefWidth="154.0">
+               <children>
+                  <JFXButton buttonType="RAISED" maxHeight="76.0" minHeight="20.0" prefHeight="57.0" prefWidth="154.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alerts" textFill="WHITE">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </JFXNodesList>
+         </children>
+      </Pane>
+   </right>
 </BorderPane>
