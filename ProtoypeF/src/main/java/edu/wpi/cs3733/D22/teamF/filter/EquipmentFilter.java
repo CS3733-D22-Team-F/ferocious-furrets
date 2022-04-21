@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class EquipmentFilter implements IFilter{
     private String equipToFilter = "";
+    private String filterForLoc = "";
 
-    public EquipmentFilter(String filterBy) {
+    public EquipmentFilter(String filterBy, String filterFor) {
         this.equipToFilter = filterBy;
+        this.filterForLoc = filterFor;
     }
 
     @Override
