@@ -4,8 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
+import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -39,6 +39,11 @@ public class RequestListController extends PageController implements Initializab
   @FXML JFXTreeTableView requestList;
   @FXML Pane tablePane;
   @FXML private AnchorPane masterPane;
+  @FXML private JFXButton reportButton;
+
+  TreeTableView<RequestTree> treeTableView = new TreeTableView<>();
+
+  private String selectedRequestIDForReport;
 
   private String employee;
   private String nodeID;
@@ -155,7 +160,7 @@ public class RequestListController extends PageController implements Initializab
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
-    TreeTableView<RequestTree> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
@@ -217,8 +222,10 @@ public class RequestListController extends PageController implements Initializab
           return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
         });
 
-    TreeTableView<RequestTree> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -288,8 +295,8 @@ public class RequestListController extends PageController implements Initializab
 
   void onChangePress() throws IOException {
     // TODO replace "new" items with defined items
-    TreeTableView<Request> table = new TreeTableView<>();
-    TreeItem<Request> selectedItem = table.getSelectionModel().getSelectedItem();
+    TreeTableView<RequestTree> table = requestList;
+    TreeItem<RequestTree> selectedItem = table.getSelectionModel().getSelectedItem();
     selectedID = selectedItem.getValue().getReqID();
     selectedType = selectedItem.getValue().getReqType();
     popUpModifyReq();
@@ -307,5 +314,28 @@ public class RequestListController extends PageController implements Initializab
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
+  }
+
+  public void generateReport() {
+    TreeItem<RequestTree> req = treeTableView.getSelectionModel().getSelectedItem();
+    if (req != null) {
+      RequestTree request = req.getValue();
+      System.out.println(request.getReqID());
+
+      GenerateReport rep =
+          new GenerateReport(
+              request.getReqID(),
+              request.getReqType(),
+              request.getNodeID(),
+              request.getAssignedEmpID(),
+              request.getRequesterEmpID(),
+              request.getStatus());
+      try {
+        rep.generateGenericServiceRequestReport("src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx");
+      } catch (Throwable e) {
+        System.out.println("Report failed");
+        e.printStackTrace();
+      }
+    }
   }
 }

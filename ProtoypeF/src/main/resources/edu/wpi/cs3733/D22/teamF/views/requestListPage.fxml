@@ -62,5 +62,10 @@
             </Pane>
          </children>
       </VBox>
+      <JFXButton fx:id="reportButton" buttonType="RAISED" layoutX="896.0" layoutY="604.0" onAction="#generateReport" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" text="Generate Report" textFill="#123090">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

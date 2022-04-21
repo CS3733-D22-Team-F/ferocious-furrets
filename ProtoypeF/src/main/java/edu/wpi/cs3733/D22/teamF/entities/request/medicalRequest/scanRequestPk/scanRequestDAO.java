@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * ARCHIVED
- * Interface for methods of the scanRequestDAOImpl
+ * ARCHIVED Interface for methods of the scanRequestDAOImpl
  *
  * @author Will Huang
  */
