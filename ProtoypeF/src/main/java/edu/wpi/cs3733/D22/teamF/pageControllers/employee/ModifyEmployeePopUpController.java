@@ -14,7 +14,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class modifyEmployeePopUpController extends PageController implements Initializable {
+public class ModifyEmployeePopUpController extends PageController implements Initializable {
 
   @FXML JFXButton submitButton;
   @FXML JFXButton backButton;
@@ -38,7 +38,7 @@ public class modifyEmployeePopUpController extends PageController implements Ini
           String.format(
               "UPDATE EMPLOYEE SET FIRSTNAME = '%s', LASTNAME = '%s', SALARY = '%s' WHERE EMPLOYEEID = '%s'",
               newEmployee.get(1), newEmployee.get(2), newEmployee.get(3), newEmployee.get(0));
-      DatabaseManager.runStatement(cmd);
+      DatabaseManager.getInstance().runStatement(cmd);
       // DatabaseManager.getEmployeeDAO().add(newEmployee);
 
     } else {

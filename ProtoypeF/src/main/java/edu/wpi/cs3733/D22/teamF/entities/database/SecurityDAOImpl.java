@@ -11,12 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class securityDAOImpl implements IRequestDAO {
+public class SecurityDAOImpl implements IRequestDAO {
 
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("securityRequest");
-    DatabaseManager.runStatement(
-        "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
+    DatabaseManager.getInstance().dropTableIfExist("securityRequest");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -26,9 +27,10 @@ public class securityDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("securityRequest");
-    DatabaseManager.runStatement(
-        "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
+    DatabaseManager.getInstance().dropTableIfExist("securityRequest");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE securityRequest (reqID varchar(16), needs varChar(32), urgency varchar(32), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
@@ -65,8 +67,9 @@ public class securityDAOImpl implements IRequestDAO {
     RequestFields.add(3, fields.get(3)); // requester emp id
     RequestFields.add(4, fields.get(4)); // status
 
-    DatabaseManager.runStatement(RequestDAOImpl.generateInsertStatementForService(RequestFields));
-    DatabaseManager.runStatement(generateInsertStatement(securityRequestFields));
+    DatabaseManager.getInstance()
+        .runStatement(RequestDAOImpl.generateInsertStatementForService(RequestFields));
+    DatabaseManager.getInstance().runStatement(generateInsertStatement(securityRequestFields));
   }
 
   public void addInit(ArrayList<String> fields) throws SQLException {
@@ -76,7 +79,7 @@ public class securityDAOImpl implements IRequestDAO {
     securityRequestFields.add(1, fields.get(1)); // needs
     securityRequestFields.add(2, fields.get(2)); // urgency
 
-    DatabaseManager.runStatement(generateInsertStatement(securityRequestFields));
+    DatabaseManager.getInstance().runStatement(generateInsertStatement(securityRequestFields));
   }
 
   public void delete(String reqID) throws SQLException {
@@ -85,7 +88,7 @@ public class securityDAOImpl implements IRequestDAO {
     //    DatabaseManager.runStatement(
     //        String.format("DELETE FROM MedicineRequest WHERE reqID = '%s'", reqID));
     String cmd = "UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '" + reqID + "'";
-    DatabaseManager.runStatement(cmd);
+    DatabaseManager.getInstance().runStatement(cmd);
   }
 
   public void update(ArrayList<String> fields) {
@@ -98,15 +101,15 @@ public class securityDAOImpl implements IRequestDAO {
             "UPDATE SECURITYREQUEST SET NEEDS = '%s', URGENCY = '%s' WHERE REQID = '%s'",
             fields.get(5), fields.get(6), fields.get(0));
     try {
-      DatabaseManager.runStatement(servCmd);
-      DatabaseManager.runStatement(cmd);
+      DatabaseManager.getInstance().runStatement(servCmd);
+      DatabaseManager.getInstance().runStatement(cmd);
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
 
   public ResultSet get() throws SQLException {
-    return DatabaseManager.runQuery("SELECT * FROM securityRequest");
+    return DatabaseManager.getInstance().runQuery("SELECT * FROM securityRequest");
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {
