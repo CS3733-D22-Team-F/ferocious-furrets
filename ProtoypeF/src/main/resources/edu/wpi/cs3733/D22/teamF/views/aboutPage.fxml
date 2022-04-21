@@ -282,7 +282,7 @@
                         </HBox>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="owen" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="owen" onMouseClicked="#owenCredit" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Owen-modified.png" />
                                  </image>
