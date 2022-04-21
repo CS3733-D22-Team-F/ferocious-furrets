@@ -144,7 +144,7 @@
                         </HBox>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="will" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="will" onMouseClicked="#willCredit" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
                                  </image>

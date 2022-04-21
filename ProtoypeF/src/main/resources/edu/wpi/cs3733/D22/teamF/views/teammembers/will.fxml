@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.teammemberControllers.willController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #123090;">
+            <children>
+                <Label text="Will Huang" textFill="WHITE">
+                    <font>
+                        <Font name="SansSerif Regular" size="24.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                </Label>
+                <ImageView fitHeight="184.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
+                    </image>
+                </ImageView>
+                <Label text="Quote: &quot;You are never too old to set another goal or to dream a new dream.&quot; - Malala Yousafzai" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="SansSerif Regular" size="22.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="2.0" />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
