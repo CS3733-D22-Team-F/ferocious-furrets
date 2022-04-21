@@ -179,7 +179,7 @@
                      <children>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="connor" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="connor" onMouseClicked="#connorCredit" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Conner-modified.png" />
                                  </image>
