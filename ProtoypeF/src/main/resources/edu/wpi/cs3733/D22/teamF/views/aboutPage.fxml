@@ -94,7 +94,7 @@
                         </HBox>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="nikola" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="nikola" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#nikolaCredit" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Nickola-modified.png" />
                                  </image>
