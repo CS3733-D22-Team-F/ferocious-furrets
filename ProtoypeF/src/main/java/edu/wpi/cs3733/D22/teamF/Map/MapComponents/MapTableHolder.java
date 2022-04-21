@@ -3,7 +3,7 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipment;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.Equipment;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class MapTableHolder {
    * @return ArrayList </Location>
    * @throws SQLException
    */
-  public static ArrayList<Location> equipToLocation(ArrayList<equipment> medList)
+  public static ArrayList<Location> equipToLocation(ArrayList<Equipment> medList)
       throws SQLException {
     ArrayList<Location> returnList = new ArrayList<>();
     int x = -1;
@@ -34,7 +34,7 @@ public class MapTableHolder {
     String specificID = "";
     String equipID = "";
     String status = "";
-    for (equipment med : medList) {
+    for (Equipment med : medList) {
       Location fetchedNode = Cache.getLocation(med.getNodeID());
 
       try {
@@ -81,9 +81,10 @@ public class MapTableHolder {
    * @throws SQLException
    */
   public static void loadTable(TableView<Location> table) throws SQLException, IOException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<Equipment> eList = DatabaseManager.getInstance().getMedEquipDAO().getAllEquipment();
     ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
-    ArrayList<Location> oldLocs = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
+    ArrayList<Location> oldLocs =
+        DatabaseManager.getInstance().getLocationDAO().getAllLocationsFromDB();
     oldLocs.addAll(eLocations);
     ArrayList<Location> rList = new ArrayList<>(getAllReq());
     oldLocs.addAll(rList);
@@ -106,11 +107,11 @@ public class MapTableHolder {
    */
   public static void displayMap(TableView<Location> table, AnchorPane iconPane)
       throws SQLException, IOException {
-    ArrayList<equipment> eList = DatabaseManager.getMedEquipDAO().getAllEquipment();
+    ArrayList<Equipment> eList = DatabaseManager.getInstance().getMedEquipDAO().getAllEquipment();
     ArrayList<Location> nLocations = null;
     ArrayList<Location> eLocations = null;
     try {
-      nLocations = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
+      nLocations = DatabaseManager.getInstance().getLocationDAO().getAllLocationsFromDB();
       eLocations = MapTableHolder.equipToLocation(eList);
     } catch (SQLException e) {
       e.printStackTrace();
@@ -153,12 +154,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllScan() throws SQLException {
     ArrayList<Location> scans = new ArrayList<>();
     // scan requests
-    ResultSet scanReqs = DatabaseManager.getScanRequestDAO().get();
+    ResultSet scanReqs = DatabaseManager.getInstance().getScanRequestDAO().get();
     while (scanReqs.next()) {
       String reqID = scanReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -196,13 +197,13 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllLab() throws SQLException {
     ArrayList<Location> labs = new ArrayList<>();
     // lab requests
-    ResultSet labReqs = DatabaseManager.getLabRequestDAO().get();
+    ResultSet labReqs = DatabaseManager.getInstance().getLabRequestDAO().get();
     while (labReqs.next()) {
       String reqID = labReqs.getString("reqID");
       System.out.println(reqID);
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -237,12 +238,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllGift() throws SQLException {
     ArrayList<Location> gifts = new ArrayList<>();
     // gift requests
-    ResultSet giftReqs = DatabaseManager.getGiftDAO().get();
+    ResultSet giftReqs = DatabaseManager.getInstance().getGiftDAO().get();
     while (giftReqs.next()) {
       String reqID = giftReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -274,13 +275,13 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllMedicine() throws SQLException {
     ArrayList<Location> medi = new ArrayList<>();
     // medicine requests
-    Statement stm = DatabaseManager.getConn().createStatement();
+    Statement stm = DatabaseManager.getInstance().getDatabaseConnection().createStatement();
     ResultSet medicineReqs = stm.executeQuery("SELECT * FROM MEDICINEREQUEST");
     while (medicineReqs.next()) {
       String reqID = medicineReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM MEDICINEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM MEDICINEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -313,12 +314,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllEquipDeli() throws SQLException, IOException {
     ArrayList<Location> equip = new ArrayList<>();
     // equipment delivery requests
-    ResultSet equipReqs = DatabaseManager.getMedEquipDelReqDAO().get();
+    ResultSet equipReqs = DatabaseManager.getInstance().getMedEquipDelReqDAO().get();
     while (equipReqs.next()) {
       String reqID = equipReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -351,12 +352,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllPT() throws SQLException, IOException {
     ArrayList<Location> pt = new ArrayList<>();
     // equipment delivery requests
-    ResultSet ptReqs = DatabaseManager.getPTDAO().get();
+    ResultSet ptReqs = DatabaseManager.getInstance().getPTDAO().get();
     while (ptReqs.next()) {
       String reqID = ptReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -389,12 +390,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllMeal() throws SQLException, IOException {
     ArrayList<Location> meals = new ArrayList<>();
     // equipment delivery requests
-    ResultSet mealReqs = DatabaseManager.getMealDAO().get();
+    ResultSet mealReqs = DatabaseManager.getInstance().getMealDAO().get();
     while (mealReqs.next()) {
       String reqID = mealReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -427,12 +428,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllMaintenance() throws SQLException, IOException {
     ArrayList<Location> maint = new ArrayList<>();
     // equipment delivery requests
-    ResultSet maintReqs = DatabaseManager.getMaintenanceDAO().get();
+    ResultSet maintReqs = DatabaseManager.getInstance().getMaintenanceDAO().get();
     while (maintReqs.next()) {
       String reqID = maintReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -465,12 +466,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllAudioVis() throws SQLException, IOException {
     ArrayList<Location> audiovis = new ArrayList<>();
     // equipment delivery requests
-    ResultSet audvisReqs = DatabaseManager.getAudioVisDAO().get();
+    ResultSet audvisReqs = DatabaseManager.getInstance().getAudioVisDAO().get();
     while (audvisReqs.next()) {
       String reqID = audvisReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -503,12 +504,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllSecurity() throws SQLException, IOException {
     ArrayList<Location> sec = new ArrayList<>();
     // equipment delivery requests
-    ResultSet secReqs = DatabaseManager.getSecurityDAO().get();
+    ResultSet secReqs = DatabaseManager.getInstance().getSecurityDAO().get();
     while (secReqs.next()) {
       String reqID = secReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -541,12 +542,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllFacilities() throws SQLException, IOException {
     ArrayList<Location> facil = new ArrayList<>();
     // equipment delivery requests
-    ResultSet facilReqs = DatabaseManager.getFacilitiesDAO().get();
+    ResultSet facilReqs = DatabaseManager.getInstance().getFacilitiesDAO().get();
     while (facilReqs.next()) {
       String reqID = facilReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;
@@ -579,12 +580,12 @@ public class MapTableHolder {
   public static ArrayList<Location> getAllPatientTransports() throws SQLException, IOException {
     ArrayList<Location> pats = new ArrayList<>();
     // equipment delivery requests
-    ResultSet patReqs = DatabaseManager.getExtPatDAO().get();
+    ResultSet patReqs = DatabaseManager.getInstance().getExtPatDAO().get();
     while (patReqs.next()) {
       String reqID = patReqs.getString("reqID");
       ResultSet reqInfo =
-          DatabaseManager.runQuery(
-              String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
+          DatabaseManager.getInstance()
+              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
       String status = "";
       String nodeID = "";
       int x = -1;

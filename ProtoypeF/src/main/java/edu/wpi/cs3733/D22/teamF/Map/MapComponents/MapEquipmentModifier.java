@@ -13,7 +13,7 @@ public class MapEquipmentModifier {
         String.format(
             "UPDATE MEDICALEQUIPMENT SET nodeID = '%s', status = '%s' WHERE EQUIPID = '%s'",
             nodeID, status, equipID);
-    DatabaseManager.runStatement(cmd);
+    DatabaseManager.getInstance().runStatement(cmd);
     // FloorObservable call
     try {
       FloorObservable.getInstance().setState();
@@ -24,8 +24,8 @@ public class MapEquipmentModifier {
 
   public static void deleteEquipment() throws SQLException {
     // mapUserHistory.userHistory.add(new MapOperation("delete", location));
-    Location l = locTempHolder.getLocation();
+    Location l = LocTempHolder.getLocation();
     MapIconModifier.deleteIcon(l);
-    DatabaseManager.getMedEquipDAO().deleteMedEquip(l.getShortName());
+    DatabaseManager.getInstance().getMedEquipDAO().deleteMedEquip(l.getShortName());
   }
 }

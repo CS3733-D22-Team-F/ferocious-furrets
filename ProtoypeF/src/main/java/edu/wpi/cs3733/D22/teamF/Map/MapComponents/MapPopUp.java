@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import edu.wpi.cs3733.D22.teamF.Fapp;
-import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -86,8 +85,8 @@ public class MapPopUp {
    * @throws IOException
    */
   public static void popUpReset(TableView<Location> table, AnchorPane iconPane) throws IOException {
-    locTempHolder.setLocationTable(table);
-    locTempHolder.setPassIconPane(iconPane);
+    LocTempHolder.setLocationTable(table);
+    LocTempHolder.setPassIconPane(iconPane);
     Parent root =
         FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("Map/mapResetPage.fxml")));
     Stage popupwindow = new Stage();
@@ -100,9 +99,9 @@ public class MapPopUp {
   public static void popUpLocModify(
       TableView<Location> table, AnchorPane iconPane, Location location)
       throws IOException, SQLException {
-    locTempHolder.setLocation(location);
-    locTempHolder.setLocationTable(table);
-    locTempHolder.setPassIconPane(iconPane);
+    LocTempHolder.setLocation(location);
+    LocTempHolder.setLocationTable(table);
+    LocTempHolder.setPassIconPane(iconPane);
     Parent root =
         FXMLLoader.load(
             Objects.requireNonNull(Fapp.class.getResource("Map/mapLocModifyPage.fxml")));
@@ -116,9 +115,9 @@ public class MapPopUp {
 
   public static void popUpDone(TableView<Location> table, AnchorPane iconPane, Location location)
       throws IOException, SQLException {
-    locTempHolder.setLocation(location);
-    locTempHolder.setLocationTable(table);
-    locTempHolder.setPassIconPane(iconPane);
+    LocTempHolder.setLocation(location);
+    LocTempHolder.setLocationTable(table);
+    LocTempHolder.setPassIconPane(iconPane);
     Parent root =
         FXMLLoader.load(
             Objects.requireNonNull(Fapp.class.getResource("Map/mapServiceModifyPage.fxml")));
@@ -133,9 +132,9 @@ public class MapPopUp {
   public static void popUpEquipModify(
       TableView<Location> table, AnchorPane iconPane, Location location)
       throws IOException, SQLException {
-    locTempHolder.setLocation(location);
-    locTempHolder.setLocationTable(table);
-    locTempHolder.setPassIconPane(iconPane);
+    LocTempHolder.setLocation(location);
+    LocTempHolder.setLocationTable(table);
+    LocTempHolder.setPassIconPane(iconPane);
     Parent root =
         FXMLLoader.load(
             Objects.requireNonNull(Fapp.class.getResource("Map/mapEquipModifyPage.fxml")));

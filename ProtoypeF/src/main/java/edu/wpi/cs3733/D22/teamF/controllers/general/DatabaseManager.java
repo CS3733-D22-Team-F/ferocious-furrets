@@ -2,11 +2,11 @@ package edu.wpi.cs3733.D22.teamF.controllers.general;
 
 import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.entities.database.*;
+import edu.wpi.cs3733.D22.teamF.entities.database.MaintenanceSRDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.equipmentDAOImpl;
+import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.EquipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
-import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.maintenanceSRDAOImpl;
 import java.io.IOException;
 import java.sql.*;
 
@@ -16,39 +16,143 @@ import java.sql.*;
  * connection is made to the database
  *
  * @see LocationsDAOImpl
- * @see edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer
  */
 public class DatabaseManager {
 
-  private static Connection conn; // = DatabaseInitializer.getConnection().getDbConnection();
-  private static final RequestDAOImpl RequestDAO = new RequestDAOImpl();
-  private static final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
-  private static final equipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
-      new equipmentDeliveryDAOImpl();
-  private static final equipmentDAOImpl medicalEquipmentDAO = new equipmentDAOImpl();
-  private static final labDAOImpl labRequestDAO = new labDAOImpl();
-  private static final scanDAOImpl scanRequestDAO = new scanDAOImpl();
-  private static final floralDAOImpl floralDAO = new floralDAOImpl();
-  private static final giftDAOImpl giftDAO = new giftDAOImpl();
-  private static final mealDAOImpl mealDAO = new mealDAOImpl();
-  private static final patientDAOImpl patientDAO = new patientDAOImpl();
-  private static final medicineDAOImpl medicineDAO = new medicineDAOImpl();
-  private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-  private static final audioVisualDAOImpl audioVisualDAO = new audioVisualDAOImpl();
-  private static final maintenanceSRDAOImpl maintenanceDAO = new maintenanceSRDAOImpl();
-  private static final physicalTherapyDAOImpl ptDAO = new physicalTherapyDAOImpl();
-  private static final facilitiesDAOImpl facilitiesDAO = new facilitiesDAOImpl();
-  private static final securityDAOImpl securityDAO = new securityDAOImpl();
-  private static final extPatientDAOImpl extPatDAO = new extPatientDAOImpl();
+  /** Add DAOImplementation objects here */
+  private final RequestDAOImpl RequestDAO = new RequestDAOImpl();
 
-  private static DatabaseManager DatabaseManager;
+  private final LocationsDAOImpl locationsDAO = new LocationsDAOImpl();
+  private final EquipmentDeliveryDAOImpl medicalEquipmentDeliveryRequestDAO =
+      new EquipmentDeliveryDAOImpl();
+  private final EquipmentDAOImpl medicalEquipmentDAO = new EquipmentDAOImpl();
+  private final LabDAOImpl labRequestDAO = new LabDAOImpl();
+  private final ScanDAOImpl scanRequestDAO = new ScanDAOImpl();
+  private final FloralDAOImpl floralDAO = new FloralDAOImpl();
+  private final GiftDAOImpl giftDAO = new GiftDAOImpl();
+  private final MealDAOImpl mealDAO = new MealDAOImpl();
+  private final PatientDAOImpl patientDAO = new PatientDAOImpl();
+  private final MedicineDAOImpl medicineDAO = new MedicineDAOImpl();
+  private final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+  private final AudioVisualDAOImpl audioVisualDAO = new AudioVisualDAOImpl();
+  private final MaintenanceSRDAOImpl maintenanceDAO = new MaintenanceSRDAOImpl();
+  private final PhysicalTherapyDAOImpl ptDAO = new PhysicalTherapyDAOImpl();
+  private final FacilitiesDAOImpl facilitiesDAO = new FacilitiesDAOImpl();
+  private final SecurityDAOImpl securityDAO = new SecurityDAOImpl();
+  private final ExtPatientDAOImpl extPatDAO = new ExtPatientDAOImpl();
 
-  enum connType {
-    embedded,
-    clientserver
+  /** DatabaseManager variables */
+  private ConnType connType = ConnType.EMBEDDED;
+
+  protected String defaultUR = "jdbc:derby://localhost:1527/csDB;create=true";
+  private Connection dbConnection;
+
+  /** Singleton instance of Database Manager */
+  private static DatabaseManager databaseManager;
+
+  private DatabaseManager() {
+    connectDatabase(connType);
   }
 
-  private DatabaseManager() {}
+  public static DatabaseManager getInstance() {
+    if (databaseManager == null) {
+      databaseManager = new DatabaseManager();
+    }
+    return databaseManager;
+  }
+
+  /**
+   * Connects to the database returns null object if connection failed
+   *
+   * @return Connection object
+   * @param type
+   */
+  private void connectDatabase(ConnType type) {
+    System.out.println("Connecting to Database Type:" + type.toString());
+    if (type == ConnType.EMBEDDED) {
+      dbConnection = connectEmbedded();
+    } else {
+      dbConnection = connectRemote(defaultUR);
+
+      if (dbConnection == null) {
+        System.out.println("Connecting to Embedded Instead");
+        dbConnection = connectEmbedded();
+      }
+    }
+  }
+
+  /**
+   * Connects to the database returns null object if connection failed
+   *
+   * @return Connection object
+   */
+  private Connection connectDatabase(ConnType type, String url) {
+    System.out.println("Connecting to Database Type:" + type.toString());
+    dbConnection = null;
+    if (type == ConnType.EMBEDDED) {
+      dbConnection = connectEmbedded();
+    } else {
+      dbConnection = connectRemote(url);
+
+      if (dbConnection == null) {
+        System.out.println("Connecting to Embedded Instead");
+        dbConnection = connectEmbedded();
+      }
+    }
+    return dbConnection;
+  }
+
+  private Connection connectRemote(String url) {
+    Connection tempConn = null;
+
+    System.out.println("Attempting Connection to Remote: " + url);
+    try {
+      Class.forName("org.apache.derby.jdbc.ClientDriver");
+
+      System.out.println("Remote Driver Registered");
+
+      tempConn = DriverManager.getConnection(url); // CONNECT TO DATABASE
+    } catch (ClassNotFoundException | SQLException e) {
+      System.out.println("Embedded Driver not Found");
+      e.printStackTrace();
+    }
+    if (tempConn != null) {
+      System.out.println("Derby Remote Connection Established");
+    } else {
+      System.out.println("Derby Remote Connection Failed");
+    }
+    return tempConn;
+  }
+
+  private Connection connectEmbedded() {
+    Connection tempConn = null;
+
+    System.out.println("Attempting Connection to Embedded");
+    try {
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+
+      System.out.println("Embedded Driver Registered");
+      tempConn = null;
+
+      tempConn = DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO DATABASE
+      assert (tempConn != null);
+
+    } catch (ClassNotFoundException e) {
+      System.out.println("Remote Driver not Found");
+      e.printStackTrace();
+    } catch (SQLException e) {
+      System.out.println("Embedded Connection Failed");
+      System.out.println("You done ****ed up your project");
+      e.printStackTrace();
+      return null;
+    }
+    if (tempConn != null) {
+      System.out.println("Derby Embedded Connection Established");
+    } else {
+      System.out.println("Derby Embedded Connection Failed");
+    }
+    return tempConn;
+  }
 
   /**
    * first backs up the current database to csvs then makes a new DatabaseInitializer object with a
@@ -59,13 +163,12 @@ public class DatabaseManager {
    * @throws SQLException
    * @throws IOException
    */
-  public static Connection switchConnection(DatabaseInitializer.ConnType type)
-      throws SQLException, IOException {
-    // backUpDatabaseToCSV();
-    DatabaseInitializer.switchConnection(type);
-    conn = DatabaseInitializer.getConnection().getDbConnection();
-    DatabaseManager dbMan = initializeDatabaseManager();
-    return conn;
+  public void switchConnection(ConnType type) throws SQLException, IOException {
+    connType = type;
+    connectDatabase(connType);
+    System.out.println("Set Connection To Type: " + connType.toString());
+    System.out.println(dbConnection.getMetaData().getConnection().toString());
+    initializeDatabaseManager();
   }
 
   /**
@@ -75,7 +178,7 @@ public class DatabaseManager {
    * @throws SQLException
    * @throws IOException
    */
-  public static DatabaseManager initializeDatabaseManager() throws SQLException, IOException {
+  public void initializeDatabaseManager() throws SQLException, IOException {
 
     dropAllTables();
     employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
@@ -95,7 +198,6 @@ public class DatabaseManager {
     facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     extPatDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
-    return Helper.dbMan;
   }
 
   /**
@@ -103,8 +205,8 @@ public class DatabaseManager {
    *
    * @return Connection
    */
-  public static Connection getConn() {
-    return conn;
+  public Connection getDatabaseConnection() {
+    return dbConnection;
   }
   /**
    * Runs SQL statement
@@ -112,8 +214,8 @@ public class DatabaseManager {
    * @param statement statement to run
    * @throws SQLException if there is an error with the statement (santax, etc)
    */
-  public static void runStatement(String statement) throws SQLException {
-    Statement stm = conn.createStatement();
+  public void runStatement(String statement) throws SQLException {
+    Statement stm = dbConnection.createStatement();
     // System.out.println("SQL: " + statement);
     try {
       stm.execute(statement);
@@ -130,8 +232,8 @@ public class DatabaseManager {
    * @return return the rset containing the query
    * @throws SQLException when there is a sql problem
    */
-  public static ResultSet runQuery(String query) throws SQLException {
-    Statement stm = conn.createStatement();
+  public ResultSet runQuery(String query) throws SQLException {
+    Statement stm = dbConnection.createStatement();
     // System.out.println("SQL: " + query);
     try {
       return stm.executeQuery(query);
@@ -142,7 +244,7 @@ public class DatabaseManager {
     return null;
   }
 
-  public static void dropAllTables() throws SQLException {
+  public void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
     dropTableIfExist("externalPatientRequest");
@@ -166,8 +268,11 @@ public class DatabaseManager {
     dropTableIfExist("Locations");
   }
 
-  public static void dropTableIfExist(String droppingTable) throws SQLException {
-    if (conn.getMetaData().getTables(null, null, droppingTable.toUpperCase(), null).next()) {
+  public void dropTableIfExist(String droppingTable) throws SQLException {
+    if (dbConnection
+        .getMetaData()
+        .getTables(null, null, droppingTable.toUpperCase(), null)
+        .next()) {
       runStatement("DROP TABLE " + droppingTable);
       //      System.out.println("Dropping " + droppingTable + " table!");
     } else {
@@ -181,7 +286,7 @@ public class DatabaseManager {
    * @throws SQLException
    * @throws IOException
    */
-  public static void backUpDatabaseToCSV() throws SQLException, IOException {
+  public void backUpDatabaseToCSV() throws SQLException, IOException {
     locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     medicalEquipmentDAO.backUpToCSV(
         "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
@@ -212,11 +317,11 @@ public class DatabaseManager {
    *
    * @return LocationsDAOImpl
    */
-  public static LocationsDAOImpl getLocationDAO() {
+  public LocationsDAOImpl getLocationDAO() {
     return locationsDAO;
   }
 
-  public static RequestDAOImpl getRequestDAO() {
+  public RequestDAOImpl getRequestDAO() {
     return RequestDAO;
   }
   /**
@@ -224,7 +329,7 @@ public class DatabaseManager {
    *
    * @return MedDelReqDAOImpl
    */
-  public static equipmentDeliveryDAOImpl getMedEquipDelReqDAO() {
+  public EquipmentDeliveryDAOImpl getMedEquipDelReqDAO() {
     return medicalEquipmentDeliveryRequestDAO;
   }
   /**
@@ -232,72 +337,63 @@ public class DatabaseManager {
    *
    * @return medEquipImpl DAO object
    */
-  public static equipmentDAOImpl getMedEquipDAO() {
+  public EquipmentDAOImpl getMedEquipDAO() {
     return medicalEquipmentDAO;
   }
   /** gets the LabRequestDAO */
-  public static labDAOImpl getLabRequestDAO() {
+  public LabDAOImpl getLabRequestDAO() {
     return labRequestDAO;
   }
   /** gets the scanRequestDAO */
-  public static scanDAOImpl getScanRequestDAO() {
+  public ScanDAOImpl getScanRequestDAO() {
     return scanRequestDAO;
   }
 
-  public static mealDAOImpl getMealDAO() {
+  public MealDAOImpl getMealDAO() {
     return mealDAO;
   }
 
-  public static floralDAOImpl getFloralDAO() {
+  public FloralDAOImpl getFloralDAO() {
     return floralDAO;
   }
 
-  public static giftDAOImpl getGiftDAO() {
+  public GiftDAOImpl getGiftDAO() {
     return giftDAO;
   }
 
-  public static medicineDAOImpl getMedicineDAO() {
+  public MedicineDAOImpl getMedicineDAO() {
     return medicineDAO;
   }
 
-  public static EmployeeDAOImpl getEmployeeDAO() {
+  public EmployeeDAOImpl getEmployeeDAO() {
     return employeeDAO;
   }
 
-  public static patientDAOImpl getPatientDAO() {
+  public PatientDAOImpl getPatientDAO() {
     return patientDAO;
   }
 
-  public static audioVisualDAOImpl getAudioVisDAO() {
+  public AudioVisualDAOImpl getAudioVisDAO() {
     return audioVisualDAO;
   }
 
-  public static maintenanceSRDAOImpl getMaintenanceDAO() {
+  public MaintenanceSRDAOImpl getMaintenanceDAO() {
     return maintenanceDAO;
   }
 
-  public static facilitiesDAOImpl getFacilitiesDAO() {
+  public FacilitiesDAOImpl getFacilitiesDAO() {
     return facilitiesDAO;
   }
 
-  public static physicalTherapyDAOImpl getPTDAO() {
+  public PhysicalTherapyDAOImpl getPTDAO() {
     return ptDAO;
   }
 
-  public static securityDAOImpl getSecurityDAO() {
+  public SecurityDAOImpl getSecurityDAO() {
     return securityDAO;
   }
 
-  public static extPatientDAOImpl getExtPatDAO() {
+  public ExtPatientDAOImpl getExtPatDAO() {
     return extPatDAO;
-  }
-
-  /** helper */
-  private static class Helper {
-    private static final DatabaseManager dbMan = new DatabaseManager();
-  }
-  /** helper but singleton */
-  private static class SingletonHelper {
-    private static final DatabaseManager DatabaseManager = new DatabaseManager();
   }
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Test;
 
 public class DAOTester {
-  Connection conn = DatabaseManager.getConn();
+  Connection conn = DatabaseManager.getInstance().getDatabaseConnection();
 
   /**
    * Checks that the DAO can get data in the form of an Array List from the DB

@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.addEmployeePopUpController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.employee.AddEmployeePopUpController">
    <children>
       <Rectangle fill="ROYALBLUE" height="89.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
       <Rectangle fill="#123090" height="315.0" layoutY="86.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />

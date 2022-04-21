@@ -5,7 +5,7 @@ import static org.reflections.scanners.Scanners.Resources;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
+import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import java.io.*;
 import java.sql.SQLException;
@@ -27,14 +27,14 @@ public class Cache {
   }
 
   public static void startDB(boolean embedded) throws SQLException, IOException {
-    DatabaseInitializer.ConnType dbType;
+    ConnType dbType;
     if (embedded) {
-      dbType = DatabaseInitializer.ConnType.EMBEDDED;
+      dbType = ConnType.EMBEDDED;
     } else {
-      dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
+      dbType = ConnType.CLIENTSERVER;
     }
     //    System.out.println(dbType);
-    DatabaseManager.switchConnection(dbType);
+    DatabaseManager.getInstance().switchConnection(dbType);
   }
 
   public static void loadViews() {
@@ -134,12 +134,12 @@ public class Cache {
   public static void updateDBCache(DBType type) throws SQLException {
     switch (type) {
       case DBT_LOC:
-        locationsCache = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
+        locationsCache = DatabaseManager.getInstance().getLocationDAO().getAllLocationsFromDB();
         isLocationsUpdated = true;
         buildMaps(DBType.DBT_LOC);
       case DBT_ALL:
       default:
-        locationsCache = DatabaseManager.getLocationDAO().getAllLocationsFromDB();
+        locationsCache = DatabaseManager.getInstance().getLocationDAO().getAllLocationsFromDB();
         isLocationsUpdated = true;
         buildMaps(DBType.DBT_ALL);
     }

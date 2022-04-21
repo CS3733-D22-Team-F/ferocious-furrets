@@ -46,9 +46,10 @@ public class LocationsDAOImpl implements LocationDAO {
   public void initTable(String Filepath) throws SQLException, IOException {
     Cache.clearLocations();
     ArrayList<Location> locations = new ArrayList<>();
-    DatabaseManager.dropTableIfExist("Locations");
-    DatabaseManager.runStatement(
-        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
+    DatabaseManager.getInstance().dropTableIfExist("Locations");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
 
     List<String> lines = CSVReader.readResourceFilepath(Filepath);
     for (String currentLine : lines) {
@@ -58,7 +59,7 @@ public class LocationsDAOImpl implements LocationDAO {
     }
 
     for (Location currentLocation : locations) {
-      DatabaseManager.runStatement(currentLocation.generateInsertStatement());
+      DatabaseManager.getInstance().runStatement(currentLocation.generateInsertStatement());
     }
     Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
@@ -72,9 +73,10 @@ public class LocationsDAOImpl implements LocationDAO {
   public void initTable(File file) throws SQLException, IOException {
     Cache.clearLocations();
     ArrayList<Location> locations = new ArrayList<>();
-    DatabaseManager.dropTableIfExist("Locations");
-    DatabaseManager.runStatement(
-        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
+    DatabaseManager.getInstance().dropTableIfExist("Locations");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -84,7 +86,7 @@ public class LocationsDAOImpl implements LocationDAO {
     }
 
     for (Location currentLocation : locations) {
-      DatabaseManager.runStatement(currentLocation.generateInsertStatement());
+      DatabaseManager.getInstance().runStatement(currentLocation.generateInsertStatement());
     }
     Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
@@ -171,7 +173,7 @@ public class LocationsDAOImpl implements LocationDAO {
    * @see Location
    */
   public ArrayList<Location> getAllLocationsFromDB() throws SQLException {
-    Statement stm = DatabaseManager.getConn().createStatement();
+    Statement stm = DatabaseManager.getInstance().getDatabaseConnection().createStatement();
     String q = "SELECT * FROM LOCATIONS";
     ResultSet rset = stm.executeQuery(q);
     ArrayList<Location> allLocations = locationsFromRSET(rset);
@@ -189,7 +191,7 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void addLocation(Location newLocation) throws SQLException {
     Cache.addLocation(newLocation);
-    DatabaseManager.runStatement(newLocation.generateInsertStatement());
+    DatabaseManager.getInstance().runStatement(newLocation.generateInsertStatement());
   }
 
   /**
@@ -201,7 +203,8 @@ public class LocationsDAOImpl implements LocationDAO {
    */
   public void deleteLocation(String nID) throws SQLException {
     Cache.remLocation(nID);
-    DatabaseManager.runStatement(String.format("DELETE FROM Locations WHERE nodeID = '%s'", nID));
+    DatabaseManager.getInstance()
+        .runStatement(String.format("DELETE FROM Locations WHERE nodeID = '%s'", nID));
   }
 
   /**
@@ -223,7 +226,7 @@ public class LocationsDAOImpl implements LocationDAO {
             updatedLocation.getLongName(),
             updatedLocation.getShortName(),
             oldNodeID);
-    DatabaseManager.runStatement(cmd);
+    DatabaseManager.getInstance().runStatement(cmd);
     Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
 

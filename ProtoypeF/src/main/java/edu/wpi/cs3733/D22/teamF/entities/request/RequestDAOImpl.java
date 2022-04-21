@@ -29,10 +29,11 @@ public class RequestDAOImpl implements IRequestDAO {
    * @throws IOException
    */
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("SERVICEREQUEST");
-    DatabaseManager.runStatement(
-        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
-            + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
+    DatabaseManager.getInstance().dropTableIfExist("SERVICEREQUEST");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
+                + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
 
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
@@ -42,10 +43,11 @@ public class RequestDAOImpl implements IRequestDAO {
   }
 
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("ServiceRequest");
-    DatabaseManager.runStatement(
-        "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
-            + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
+    DatabaseManager.getInstance().dropTableIfExist("ServiceRequest");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
+                + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -55,28 +57,29 @@ public class RequestDAOImpl implements IRequestDAO {
   }
 
   public ResultSet get() throws SQLException, IOException {
-    return DatabaseManager.runQuery("SELECT * FROM ServiceRequest");
+    return DatabaseManager.getInstance().runQuery("SELECT * FROM ServiceRequest");
   }
 
   public ResultSet getProcessing() throws SQLException, IOException {
-    return DatabaseManager.runQuery(
-        "SELECT * FROM ServiceRequest WHERE UPPER(status) = 'PROCESSING'");
+    return DatabaseManager.getInstance()
+        .runQuery("SELECT * FROM ServiceRequest WHERE UPPER(status) = 'PROCESSING'");
   }
 
   public void add(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(generateInsertStatementForService(fields));
+    DatabaseManager.getInstance().runStatement(generateInsertStatementForService(fields));
   }
 
   public void delete(String reqID) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
+    DatabaseManager.getInstance()
+        .runStatement(String.format("DELETE FROM ServiceRequest WHERE reqID = '%s'", reqID));
   }
 
   public void update(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format(
-            "UPDATE ServiceRequest SET nodeID = '%s', assignedEmployeeID = '%s', requesterEmployeeID = '%s', status = '%s' WHERE reqID = '%s'",
-            fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(0)));
+    DatabaseManager.getInstance()
+        .runStatement(
+            String.format(
+                "UPDATE ServiceRequest SET nodeID = '%s', assignedEmployeeID = '%s', requesterEmployeeID = '%s', status = '%s' WHERE reqID = '%s'",
+                fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(0)));
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {

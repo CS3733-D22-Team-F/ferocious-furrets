@@ -1,18 +1,18 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.entities.database.DatabaseInitializer;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.sql.SQLException;
 import org.junit.jupiter.api.*;
 
 // TODO ADD Private method testing?
 public class HandlerTester {
-  DatabaseInitializer handler = DatabaseInitializer.getConnection();
 
   /** Check whether the handler can connect to the database */
   @Test
   public void testConnection() {
-    //    assertNotNull(handler.connectDatabase());
-
+    assertNotNull(DatabaseManager.getInstance().getDatabaseConnection());
   }
 
   /**

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="724.0" prefWidth="1245.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.landingPageController">
+<BorderPane prefHeight="724.0" prefWidth="1245.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.LandingPageController">
    <center>
       <StackPane prefHeight="770.0" prefWidth="1220.0">
          <children>

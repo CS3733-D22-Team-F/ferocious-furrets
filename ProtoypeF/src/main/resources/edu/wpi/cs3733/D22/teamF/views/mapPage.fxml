@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane cache="true" cacheHint="SPEED" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapPageController">
+<AnchorPane cache="true" cacheHint="SPEED" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapPageController">
    <children>
       <HBox prefHeight="660.0" prefWidth="1220.0">
          <children>

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.externalPatientController">
+<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
    <left>
       <Pane prefHeight="819.0" prefWidth="744.0" BorderPane.alignment="CENTER">
          <children>

@@ -19,9 +19,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(File file) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("Employee");
-    DatabaseManager.runStatement(
-        "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    DatabaseManager.getInstance().dropTableIfExist("Employee");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -38,9 +39,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.dropTableIfExist("Employee");
-    DatabaseManager.runStatement(
-        "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    DatabaseManager.getInstance().dropTableIfExist("Employee");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
 
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
@@ -74,7 +76,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public ResultSet get() throws SQLException, IOException {
-    return DatabaseManager.runQuery("SELECT * FROM Employee");
+    return DatabaseManager.getInstance().runQuery("SELECT * FROM Employee");
   }
 
   /**
@@ -88,10 +90,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     String firstName = fields.get(1);
     String lastName = fields.get(2);
     String salary = fields.get(3);
-    DatabaseManager.runStatement(
-        String.format(
-            "INSERT INTO Employee VALUES ('%s', '%s', '%s', '%s')",
-            employeeID, firstName, lastName, salary));
+    DatabaseManager.getInstance()
+        .runStatement(
+            String.format(
+                "INSERT INTO Employee VALUES ('%s', '%s', '%s', '%s')",
+                employeeID, firstName, lastName, salary));
   }
 
   /**
@@ -101,15 +104,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws SQLException
    */
   public void delete(String empID) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format("DELETE FROM Employee WHERE employeeID = '%s'", empID));
+    DatabaseManager.getInstance()
+        .runStatement(String.format("DELETE FROM Employee WHERE employeeID = '%s'", empID));
   }
 
   public void update(ArrayList<String> fields) throws SQLException {
-    DatabaseManager.runStatement(
-        String.format(
-            "UPDATE EMPLOYEE SET FIRSTNAME = '%s', LASTNAME = '%s', SALARY = '%s' WHERE EMPLOYEEID = '%s'",
-            fields.get(1), fields.get(2), fields.get(3), fields.get(0)));
+    DatabaseManager.getInstance()
+        .runStatement(
+            String.format(
+                "UPDATE EMPLOYEE SET FIRSTNAME = '%s', LASTNAME = '%s', SALARY = '%s' WHERE EMPLOYEEID = '%s'",
+                fields.get(1), fields.get(2), fields.get(3), fields.get(0)));
   }
 
   public String generateInsertStatement(ArrayList<String> fields) {

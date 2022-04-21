@@ -1,24 +1,26 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequestPk;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.ScanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * ARCHIVED
  * Implentation of scanRequestDAO interface
  *
  * @author Will Huang
  */
 public class scanRequestDAOImpl implements scanRequestDAO {
 
-  ArrayList<scanRequest> currentScanRequests = new ArrayList<>();
+  ArrayList<ScanRequest> currentScanRequests = new ArrayList<>();
 
   public void initScanRequestTable() throws SQLException {
     // TODO implement read from CSV if needed
-    DatabaseManager.dropTableIfExist("scanRequest");
-    DatabaseManager.runStatement(
-        "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), reqType varChar(16), medicalType varChar(16), scanType varChar(16))");
+    DatabaseManager.getInstance().dropTableIfExist("scanRequest");
+    DatabaseManager.getInstance()
+        .runStatement(
+            "CREATE TABLE scanRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), reqType varChar(16), medicalType varChar(16), scanType varChar(16))");
   }
 
   /**
@@ -27,7 +29,7 @@ public class scanRequestDAOImpl implements scanRequestDAO {
    * @return returns an arrayList of all scanRequest objects
    * @throws SQLException throws sql exception if there is a problem getting the request objects
    */
-  public ArrayList<scanRequest> getAllRequests() {
+  public ArrayList<ScanRequest> getAllRequests() {
     return currentScanRequests;
   }
 
@@ -65,11 +67,11 @@ public class scanRequestDAOImpl implements scanRequestDAO {
    *
    * @param deletedScanRequest takes in object wanting to delete
    */
-  public void removeRequest(scanRequest deletedScanRequest) throws SQLException {
-    for (scanRequest currentScanRequest : currentScanRequests) {
+  public void removeRequest(ScanRequest deletedScanRequest) throws SQLException {
+    for (ScanRequest currentScanRequest : currentScanRequests) {
       if (currentScanRequest.getReqID().equals(deletedScanRequest.getReqID())) {
-        DatabaseManager.runStatement(
-            "DELETE FROM scanRequest WHERE reqID = " + deletedScanRequest.getReqID());
+        DatabaseManager.getInstance()
+            .runStatement("DELETE FROM scanRequest WHERE reqID = " + deletedScanRequest.getReqID());
         currentScanRequests.remove(currentScanRequest);
         System.out.println(
             "Successfully deleted scanRequest from database where reqID = "
@@ -92,7 +94,7 @@ public class scanRequestDAOImpl implements scanRequestDAO {
    * @throws SQLException throws exception with something wrong with sql
    */
   public void updateRequest(
-      scanRequest updatingScanRequest,
+      ScanRequest updatingScanRequest,
       String reqID,
       String nodeID,
       String assignedEmpID,
@@ -100,17 +102,18 @@ public class scanRequestDAOImpl implements scanRequestDAO {
       String status,
       String scanType)
       throws SQLException {
-    for (scanRequest currentScanRequest : currentScanRequests) {
+    for (ScanRequest currentScanRequest : currentScanRequests) {
       if (currentScanRequest.getReqID().equals(updatingScanRequest.getReqID())) {
-        DatabaseManager.runStatement(
-            String.format(
-                "UPDATE scanRequest SET reqID = %s, nodeID = %s, assignedEmployeeID = %s, requesterEmployeeID = %s, status = %s, scanType = %s",
-                currentScanRequest.getReqID(),
-                currentScanRequest.getNodeID(),
-                currentScanRequest.getAssignedEmpID(),
-                currentScanRequest.getRequesterEmpID(),
-                currentScanRequest.getStatus(),
-                currentScanRequest.getScanType()));
+        DatabaseManager.getInstance()
+            .runStatement(
+                String.format(
+                    "UPDATE scanRequest SET reqID = %s, nodeID = %s, assignedEmployeeID = %s, requesterEmployeeID = %s, status = %s, scanType = %s",
+                    currentScanRequest.getReqID(),
+                    currentScanRequest.getNodeID(),
+                    currentScanRequest.getAssignedEmpID(),
+                    currentScanRequest.getRequesterEmpID(),
+                    currentScanRequest.getStatus(),
+                    currentScanRequest.getScanType()));
       }
     }
   }

@@ -15,46 +15,46 @@ public class Repository {
   public Repository(String reqType) {
     switch (reqType) {
       case "Meal":
-        db = DatabaseManager.getMealDAO();
+        db = DatabaseManager.getInstance().getMealDAO();
         break;
       case "PT":
-        db = DatabaseManager.getPTDAO();
+        db = DatabaseManager.getInstance().getPTDAO();
         break;
       case "Gift":
-        db = DatabaseManager.getGiftDAO();
+        db = DatabaseManager.getInstance().getGiftDAO();
         break;
       case "Floral":
-        db = DatabaseManager.getFloralDAO();
+        db = DatabaseManager.getInstance().getFloralDAO();
         break;
       case "Medicine":
-        db = DatabaseManager.getMedicineDAO();
+        db = DatabaseManager.getInstance().getMedicineDAO();
         break;
       case "Patient":
-        db = DatabaseManager.getPatientDAO();
+        db = DatabaseManager.getInstance().getPatientDAO();
         break;
       case "Lab":
-        db = DatabaseManager.getLabRequestDAO();
+        db = DatabaseManager.getInstance().getLabRequestDAO();
         break;
       case "Scan":
-        db = DatabaseManager.getScanRequestDAO();
+        db = DatabaseManager.getInstance().getScanRequestDAO();
         break;
       case "Equipment":
-        db = DatabaseManager.getMedEquipDelReqDAO();
+        db = DatabaseManager.getInstance().getMedEquipDelReqDAO();
         break;
       case "Maintenance":
-        db = DatabaseManager.getMaintenanceDAO();
+        db = DatabaseManager.getInstance().getMaintenanceDAO();
         break;
       case "AudioVisual":
-        db = DatabaseManager.getAudioVisDAO();
+        db = DatabaseManager.getInstance().getAudioVisDAO();
         break;
       case "Facilities":
-        db = DatabaseManager.getFacilitiesDAO();
+        db = DatabaseManager.getInstance().getFacilitiesDAO();
         break;
       case "Security":
-        db = DatabaseManager.getSecurityDAO();
+        db = DatabaseManager.getInstance().getSecurityDAO();
         break;
       case "ExternalPatient":
-        db = DatabaseManager.getExtPatDAO();
+        db = DatabaseManager.getInstance().getExtPatDAO();
         break;
       default:
         break;

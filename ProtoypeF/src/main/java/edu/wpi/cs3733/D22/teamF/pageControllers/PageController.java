@@ -208,7 +208,7 @@ public abstract class PageController {
     ArrayList<Object> locations = new ArrayList<>();
     ResultSet r = null;
     try {
-      r = DatabaseManager.runQuery("SELECT LONGNAME FROM LOCATIONS");
+      r = DatabaseManager.getInstance().runQuery("SELECT LONGNAME FROM LOCATIONS");
       while (r.next()) {
         String name = r.getString("LONGNAME");
         locations.add(name);
@@ -224,7 +224,7 @@ public abstract class PageController {
     ArrayList<Object> employees = new ArrayList<>();
     ResultSet rset = null;
     try {
-      rset = DatabaseManager.runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
+      rset = DatabaseManager.getInstance().runQuery("SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE");
       while (rset.next()) {
         String first = rset.getString("FIRSTNAME");
         String last = rset.getString("LASTNAME");
@@ -241,7 +241,7 @@ public abstract class PageController {
   public String nodeIDFinder(String name) throws SQLException {
     String nodeID = "";
     String cmd = String.format("SELECT NODEID FROM LOCATIONS WHERE LONGNAME = '%s'", name);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
     if (rset.next()) {
       nodeID = rset.getString("NODEID");
     }
@@ -260,7 +260,7 @@ public abstract class PageController {
         String.format(
             "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
             first, last);
-    ResultSet rset = DatabaseManager.runQuery(cmd);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
     if (rset.next()) {
       empID = rset.getString("EMPLOYEEID");
     }

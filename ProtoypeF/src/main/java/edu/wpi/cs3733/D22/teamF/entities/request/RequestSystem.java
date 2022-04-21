@@ -1,11 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.entities.request;
 
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.*;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.maintenanceSR;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.physicalTherapyRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.EquipmentDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.maintenceRequest.MaintenanceRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.LabRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.PhysicalTherapyRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.ScanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -25,40 +25,40 @@ public class RequestSystem {
   public RequestSystem(String reqType) {
     switch (reqType) {
       case "Meal":
-        request = new mealDeliveryRequest();
+        request = new MealDeliveryRequest();
         break;
       case "PT":
-        request = new physicalTherapyRequest();
+        request = new PhysicalTherapyRequest();
         break;
       case "Gift":
-        request = new giftDeliveryRequest();
+        request = new GiftDeliveryRequest();
         break;
       case "Medicine":
-        request = new medicineDeliveryRequest();
+        request = new MedicineDeliveryRequest();
         break;
       case "Lab":
-        request = new labRequest();
+        request = new LabRequest();
         break;
       case "Scan":
-        request = new scanRequest();
+        request = new ScanRequest();
         break;
       case "Equipment":
-        request = new equipmentDeliveryRequest();
+        request = new EquipmentDeliveryRequest();
         break;
       case "Maintenance":
-        request = new maintenanceSR();
+        request = new MaintenanceRequest();
         break;
       case "Audio/Visual":
-        request = new audioVisualRequest();
+        request = new AudioVisualRequest();
         break;
       case "Facilities":
-        request = new facilitiesRequest();
+        request = new FacilitiesRequest();
         break;
       case "Security":
-        request = new securityRequest();
+        request = new SecurityRequest();
         break;
       case "ExternalPatient":
-        request = new extPatientDeliveryRequest();
+        request = new ExtPatientDeliveryRequest();
         break;
       default:
         break;

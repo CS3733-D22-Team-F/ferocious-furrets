@@ -35,8 +35,8 @@ public class MapLocationModifier {
               type.substring(0, 4),
               longName,
               shortName);
-      DatabaseManager.getLocationDAO().addLocation(l);
-      mapUserHistory.userHistory.add(new MapOperation("add", l));
+      DatabaseManager.getInstance().getLocationDAO().addLocation(l);
+      MapUserHistory.userHistory.add(new MapOperation("add", l));
       return l;
     } catch (Exception e) {
       e.printStackTrace();
@@ -60,7 +60,7 @@ public class MapLocationModifier {
             type,
             longName,
             shortName);
-    DatabaseManager.getLocationDAO().updateLocation(nID, l);
+    DatabaseManager.getInstance().getLocationDAO().updateLocation(nID, l);
   }
 
   /**
@@ -70,16 +70,16 @@ public class MapLocationModifier {
    * @throws SQLException
    */
   public static Location addLocation(Location location) throws SQLException {
-    mapUserHistory.userHistory.add(new MapOperation("add", location));
-    DatabaseManager.getLocationDAO().addLocation(location);
-    mapUserHistory.userHistory.add(new MapOperation("add", location));
+    MapUserHistory.userHistory.add(new MapOperation("add", location));
+    DatabaseManager.getInstance().getLocationDAO().addLocation(location);
+    MapUserHistory.userHistory.add(new MapOperation("add", location));
     return location;
   }
 
   public static void deleteLocation(Location location) throws SQLException {
-    mapUserHistory.userHistory.add(new MapOperation("delete", location));
+    MapUserHistory.userHistory.add(new MapOperation("delete", location));
     MapIconModifier.deleteIcon(location);
-    DatabaseManager.getLocationDAO().deleteLocation(location.getNodeID());
+    DatabaseManager.getInstance().getLocationDAO().deleteLocation(location.getNodeID());
   }
 
   /**
@@ -101,12 +101,13 @@ public class MapLocationModifier {
     String rNum;
 
     ResultSet rset =
-        DatabaseManager.runQuery(
-            "SELECT * FROM Locations WHERE nodeType = '"
-                + nNodeType
-                + "' AND floor = '"
-                + nFloor
-                + "'");
+        DatabaseManager.getInstance()
+            .runQuery(
+                "SELECT * FROM Locations WHERE nodeType = '"
+                    + nNodeType
+                    + "' AND floor = '"
+                    + nFloor
+                    + "'");
     while (rset.next()) {
       roomNum++;
     }

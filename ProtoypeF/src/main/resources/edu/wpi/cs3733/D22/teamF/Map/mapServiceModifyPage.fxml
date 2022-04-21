@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="170.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.mapServiceModifyController">
+<VBox alignment="CENTER" prefHeight="170.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapServiceModifyController">
    <children>
       <Label prefHeight="27.0" prefWidth="78.0" text="Current: ">
          <font>

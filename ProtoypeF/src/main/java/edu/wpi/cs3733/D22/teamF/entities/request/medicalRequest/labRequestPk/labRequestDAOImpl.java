@@ -7,24 +7,25 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequestPk;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.equipmentDeliveryRequest;
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.EquipmentDeliveryRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.LabRequest;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 
 /**
+ * ARCHIVED
  * Implementation of the labRequestDAO Interface
  *
  * @see labRequestDAO
  */
 public class labRequestDAOImpl implements labRequestDAO {
 
-  private final ArrayList<labRequest> requests = new ArrayList<>();
-  private final ArrayList<labRequest> updatedRequests = new ArrayList<labRequest>();
+  private final ArrayList<LabRequest> requests = new ArrayList<>();
+  private final ArrayList<LabRequest> updatedRequests = new ArrayList<LabRequest>();
   private final ArrayList<String> reqIDs = new ArrayList<String>();
-  Connection conn = DatabaseManager.getConn();
+  Connection conn = DatabaseManager.getInstance().getDatabaseConnection();
 
   /** Constructor */
   public labRequestDAOImpl() {}
@@ -61,8 +62,8 @@ public class labRequestDAOImpl implements labRequestDAO {
       String medicalType = data[6];
       String sampleType = data[7];
 
-      labRequest l =
-          new labRequest(
+      LabRequest l =
+          new LabRequest(
               reqID,
               nodeID,
               assignedEmpID,
@@ -87,7 +88,7 @@ public class labRequestDAOImpl implements labRequestDAO {
         // TODO update the foreign key constraints for employee and nodeID
         // TODO update status constraint when status is decided
         "CREATE TABLE labRequest (reqID varchar(16) PRIMARY KEY,nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), reqType varChar(16), medicalType varChar(16), sampleType varChar(16))"); // FOREIGN KEY (employeeID) REFERENCES Employee(EmployeeID))
-    for (labRequest currentReq : requests) {
+    for (LabRequest currentReq : requests) {
       // System.out.println(currentReq.generateInsertStatement());
       stm.execute(currentReq.generateInsertStatement());
     }
@@ -97,7 +98,7 @@ public class labRequestDAOImpl implements labRequestDAO {
    * @return ArrayList </labRequest>
    * @throws SQLException
    */
-  public ArrayList<labRequest> getAllRequests() throws SQLException {
+  public ArrayList<LabRequest> getAllRequests() throws SQLException {
     updateDatabase();
     return requests;
   }
@@ -123,9 +124,9 @@ public class labRequestDAOImpl implements labRequestDAO {
       String medicalType,
       String sampleType)
       throws SQLException {
-    Statement stm = DatabaseManager.getConn().createStatement();
+    Statement stm = DatabaseManager.getInstance().getDatabaseConnection().createStatement();
     requests.add(
-        new labRequest(
+        new LabRequest(
             reqID, nodeID, assignedEmpID, requesterEmpID, status, "Medical", "Lab", sampleType));
     reqIDs.add(reqID);
     String add =
@@ -156,8 +157,8 @@ public class labRequestDAOImpl implements labRequestDAO {
    * @param deletedObject labRequest
    * @throws SQLException
    */
-  public void deleteRequest(labRequest deletedObject) throws SQLException {
-    for (labRequest currentReq : requests) {
+  public void deleteRequest(LabRequest deletedObject) throws SQLException {
+    for (LabRequest currentReq : requests) {
       if (deletedObject.equals(currentReq)) {
         requests.remove(currentReq);
         System.out.println("found and removed :)");
@@ -180,7 +181,7 @@ public class labRequestDAOImpl implements labRequestDAO {
    * @throws SQLException
    */
   public void updateRequest(
-      labRequest updatingRequest,
+      LabRequest updatingRequest,
       String reqID,
       String nodeID,
       String assignedEmpID,
@@ -190,10 +191,10 @@ public class labRequestDAOImpl implements labRequestDAO {
       String medicalType,
       String sampleType)
       throws SQLException {
-    labRequest newReq =
-        new labRequest(
+    LabRequest newReq =
+        new LabRequest(
             reqID, nodeID, assignedEmpID, requesterEmpID, status, "Medical", "Lab", sampleType);
-    for (labRequest currentReq : requests) {
+    for (LabRequest currentReq : requests) {
       if (updatingRequest.getReqID().equals(currentReq.getReqID())) {
         requests.remove(currentReq);
         requests.add(newReq);
@@ -217,15 +218,15 @@ public class labRequestDAOImpl implements labRequestDAO {
     String q = "SELECT * FROM labRequest";
     ResultSet rset = stm.executeQuery(q);
     while (rset.next()) {
-      for (labRequest currentReq : requests) {
+      for (LabRequest currentReq : requests) {
         // some sort of checker.....
       }
     }
     rset.close();
   }
 
-  public ArrayList<equipmentDeliveryRequest> requestsFromRSET(ResultSet rset) throws SQLException {
-    ArrayList<equipmentDeliveryRequest> reqs = new ArrayList<equipmentDeliveryRequest>();
+  public ArrayList<EquipmentDeliveryRequest> requestsFromRSET(ResultSet rset) throws SQLException {
+    ArrayList<EquipmentDeliveryRequest> reqs = new ArrayList<EquipmentDeliveryRequest>();
     while (rset.next()) {
       String reqID = rset.getString("reqID");
       String equipmentID = rset.getString("equipmentID");
@@ -263,15 +264,15 @@ public class labRequestDAOImpl implements labRequestDAO {
 
     try {
       ResultSet r;
-      r = stm.executeQuery("SELECT * FROM medicalEquipmentDeliveryRequest");
+      r = stm.executeQuery("SELECT * FROM EquipmentDeliveryRequest");
 
-      ArrayList<equipmentDeliveryRequest> allReqs = requestsFromRSET(r);
+      ArrayList<EquipmentDeliveryRequest> allReqs = requestsFromRSET(r);
 
       r.close();
       File newCSV = new File(csvName);
       FileWriter fw = new FileWriter(csvName);
       fw.write("reqID, equipID, nodeID, assEmpID, reqEmpID, status\n");
-      for (equipmentDeliveryRequest l : allReqs) {
+      for (EquipmentDeliveryRequest l : allReqs) {
         fw.write(
             l.getReqID()
                 + ","

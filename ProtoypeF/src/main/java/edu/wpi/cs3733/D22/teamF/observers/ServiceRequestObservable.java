@@ -1,17 +1,14 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceRequestObservable {
 
   private PropertyChangeSupport observers;
-  private final Connection connection = DatabaseManager.getConn();
   private List<Request> serviceRequests;
 
   private static ServiceRequestObservable m_serviceRequestObservable =

@@ -1,10 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequestPk;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.scanRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.ScanRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * ARCHIVED
  * Interface for methods of the scanRequestDAOImpl
  *
  * @author Will Huang
@@ -17,7 +18,7 @@ public interface scanRequestDAO {
    * @return returns an arrayList of all scanRequest objects
    * @throws SQLException throws sql exception if there is a problem getting the request objects
    */
-  ArrayList<scanRequest> getAllRequests();
+  ArrayList<ScanRequest> getAllRequests();
 
   /**
    * Add a new scan request object and adds it to the arrayList and sql table
@@ -43,7 +44,7 @@ public interface scanRequestDAO {
    *
    * @param deletedScanRequest takes in object wanting to delete
    */
-  void removeRequest(scanRequest deletedScanRequest) throws SQLException;
+  void removeRequest(ScanRequest deletedScanRequest) throws SQLException;
 
   /**
    * Updates a request to the following fields
@@ -58,7 +59,7 @@ public interface scanRequestDAO {
    * @throws SQLException throws exception with something wrong with sql
    */
   void updateRequest(
-      scanRequest updatingScanRequest,
+      ScanRequest updatingScanRequest,
       String reqID,
       String nodeID,
       String assignedEmpID,

@@ -6,18 +6,18 @@
  */
 package edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequestPk;
 
-import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.labRequest;
+import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.LabRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * ARCHIVED
  * Interface for the LabRequestDAO class to handle the labRequest DB necessary function
  *
  * @version 1.0
- * @see labRequestPk
  */
 public interface labRequestDAO {
-  ArrayList<labRequest> getAllRequests() throws SQLException;
+  ArrayList<LabRequest> getAllRequests() throws SQLException;
 
   /**
    * @param reqID request ID
@@ -47,7 +47,7 @@ public interface labRequestDAO {
    * @param deletedObject labRequest
    * @throws SQLException
    */
-  void deleteRequest(labRequest deletedObject) throws SQLException;
+  void deleteRequest(LabRequest deletedObject) throws SQLException;
 
   /**
    * @param updatingRequest labRequest to update
@@ -62,7 +62,7 @@ public interface labRequestDAO {
    * @throws SQLException
    */
   void updateRequest(
-      labRequest updatingRequest,
+      LabRequest updatingRequest,
       String reqID,
       String nodeID,
       String assignedEmpID,
