@@ -42,12 +42,44 @@ public class SettingController implements Initializable {
   }
 
   @FXML
-  public void creditButton(ActionEvent event) throws IOException {
+  public void aboutButton(ActionEvent event) throws IOException {
 
     Parent root = null;
     try {
       root =
           FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/aboutPage.fxml")));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Stage popupwindow = new Stage();
+    popupwindow.setTitle("About Page");
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+
+    //    SceneManager.getInstance().setScene("views/aboutPage.fxml");
+    //    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/aboutPage.fxml"));
+    //    Scene scene = null;
+    //    try {
+    //      scene = new Scene(fxmlLoader.load());
+    //    } catch (IOException e) {
+    //      e.printStackTrace();
+    //    }
+    //    Stage stage = SceneManager.getInstance().getStage();
+    //    SceneManager.getInstance().setStage(stage);
+    //    stage.setScene(scene);
+    //    stage.show();
+  }
+
+  @FXML
+  public void creditButton(ActionEvent event) throws IOException {
+
+    Parent root = null;
+    try {
+      root =
+              FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/credits.fxml")));
     } catch (IOException e) {
       e.printStackTrace();
     }

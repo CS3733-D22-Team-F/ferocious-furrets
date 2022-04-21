@@ -70,19 +70,6 @@ public class AboutPageController implements Initializable {
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.showAndWait();
 
-            //            FXMLLoader fxmlLoader =
-            //                new
-            // FXMLLoader(Fapp.class.getResource("views/teammembers/raffi.fxml"));
-            //            Scene scene = null;
-            //            try {
-            //              scene = new Scene(fxmlLoader.load());
-            //            } catch (IOException e) {
-            //              e.printStackTrace();
-            //            }
-            //            Stage stage = SceneManager.getInstance().getStage();
-            //            SceneManager.getInstance().setStage(stage);
-            //            stage.setScene(scene);
-            //            stage.show();
           }
         });
   }
