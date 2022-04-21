@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -23,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -317,6 +319,13 @@ public class RequestListController extends PageController implements Initializab
   }
 
   public void generateReport() {
+
+    // TODO Format Word template
+    FileChooser fChoose = new FileChooser();
+    fChoose.setTitle("Save to:");
+    Stage stage = (Stage) tablePane.getScene().getWindow();
+    File file = fChoose.showSaveDialog(stage);
+    String filepath = file.getPath() + ".docx";
     TreeItem<RequestTree> req = treeTableView.getSelectionModel().getSelectedItem();
     if (req != null) {
       RequestTree request = req.getValue();
@@ -331,7 +340,7 @@ public class RequestListController extends PageController implements Initializab
               request.getRequesterEmpID(),
               request.getStatus());
       try {
-        rep.generateGenericServiceRequestReport("src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx");
+        rep.generateGenericServiceRequestReport(filepath);
       } catch (Throwable e) {
         System.out.println("Report failed");
         e.printStackTrace();

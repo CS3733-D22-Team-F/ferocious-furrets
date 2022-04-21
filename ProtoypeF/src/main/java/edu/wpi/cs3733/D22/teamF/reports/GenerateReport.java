@@ -41,17 +41,17 @@ public class GenerateReport {
     boolean save = true;
 
     WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(srcDoc));
+    org.docx4j.model.datastorage.migration.VariablePrepare.prepare(wordMLPackage);
     MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
     LocalDate date = java.time.LocalDate.now();
     String requestDate = date.toString();
 
-    String docReport =
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx";
+    String docReport = "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx";
 
     HashMap<String, String> mappings = new HashMap<>();
 
-    mappings.put("reqID", reqID);
+    mappings.put("request", reqID);
     mappings.put("type", requestTypeFinder());
     mappings.put("date", requestDate);
     mappings.put("location", nodeIDFinder(nodeID));
@@ -64,8 +64,9 @@ public class GenerateReport {
     wordMLPackage.save(new java.io.File(reportFilepath));
   }
 
-  /** Helper methods to convert nodeID, and employee IDs to names
-   * Method to set request type given a request ID
+  /**
+   * Helper methods to convert nodeID, and employee IDs to names Method to set request type given a
+   * request ID
    */
   public String nodeIDFinder(String nodeID) throws SQLException {
     String name = "";
