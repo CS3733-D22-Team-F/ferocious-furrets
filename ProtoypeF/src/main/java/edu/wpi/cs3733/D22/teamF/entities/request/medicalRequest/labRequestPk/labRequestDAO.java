@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * ARCHIVED
- * Interface for the LabRequestDAO class to handle the labRequest DB necessary function
+ * ARCHIVED Interface for the LabRequestDAO class to handle the labRequest DB necessary function
  *
  * @version 1.0
  */
