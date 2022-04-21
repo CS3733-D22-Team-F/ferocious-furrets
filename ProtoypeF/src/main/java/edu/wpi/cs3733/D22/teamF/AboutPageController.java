@@ -141,6 +141,8 @@ public class AboutPageController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     raffi.setPickOnBounds(true);
+    carter.setPickOnBounds(true);
+    nikola.setPickOnBounds(true);
 
     //    bannerAnchor.maxWidthProperty().bind(creditPane.maxHeightProperty());
     //    creditVbox.layoutXProperty().bind(creditPane.maxWidthProperty());
