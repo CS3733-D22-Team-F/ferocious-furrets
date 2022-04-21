@@ -86,6 +86,46 @@ public class aboutPageController implements Initializable {
         });
   }
 
+  @FXML
+  public void carterCredit() {
+    carter.setOnMouseClicked(
+        new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+
+            Parent root = null;
+            try {
+              root =
+                  FXMLLoader.load(
+                      Objects.requireNonNull(
+                          Fapp.class.getResource("views/teammembers/carter.fxml")));
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+            Stage popupwindow = new Stage();
+            popupwindow.initModality(Modality.APPLICATION_MODAL);
+            Scene scene1 = new Scene(root);
+            popupwindow.setScene(scene1);
+            popupwindow.initModality(Modality.APPLICATION_MODAL);
+            popupwindow.showAndWait();
+
+            //            FXMLLoader fxmlLoader =
+            //                new
+            // FXMLLoader(Fapp.class.getResource("views/teammembers/raffi.fxml"));
+            //            Scene scene = null;
+            //            try {
+            //              scene = new Scene(fxmlLoader.load());
+            //            } catch (IOException e) {
+            //              e.printStackTrace();
+            //            }
+            //            Stage stage = SceneManager.getInstance().getStage();
+            //            SceneManager.getInstance().setStage(stage);
+            //            stage.setScene(scene);
+            //            stage.show();
+          }
+        });
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     raffi.setPickOnBounds(true);
