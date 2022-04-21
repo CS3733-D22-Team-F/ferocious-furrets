@@ -78,13 +78,12 @@ public class SettingController implements Initializable {
 
     Parent root = null;
     try {
-      root =
-              FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/credits.fxml")));
+      root = FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/credits.fxml")));
     } catch (IOException e) {
       e.printStackTrace();
     }
     Stage popupwindow = new Stage();
-    popupwindow.setTitle("About Page");
+    popupwindow.setTitle("Credit Page");
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);

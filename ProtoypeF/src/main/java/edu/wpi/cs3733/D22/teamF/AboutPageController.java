@@ -69,7 +69,6 @@ public class AboutPageController implements Initializable {
             popupwindow.setScene(scene1);
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.showAndWait();
-
           }
         });
   }
