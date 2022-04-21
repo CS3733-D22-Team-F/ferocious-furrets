@@ -42,9 +42,6 @@ public class SettingController implements Initializable {
   }
 
   @FXML
-  public void furretCredit() {}
-
-  @FXML
   public void creditButton(ActionEvent event) throws IOException {
 
     Parent root = null;
@@ -78,8 +75,8 @@ public class SettingController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     userFromLogin.setText(UserType.getUserType());
-    themeSetLabel.setVisible(false);
-    themeSetCombo.setVisible(false);
+    //    themeSetLabel.setVisible(false);
+    //    themeSetCombo.setVisible(false);
     //    furretImage.setPickOnBounds(true);
     //    furretImage.setOnMouseClicked(
     //        new EventHandler<MouseEvent>() {
