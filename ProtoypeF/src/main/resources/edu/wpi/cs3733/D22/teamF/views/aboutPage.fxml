@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.AboutPageController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.AboutPageController">
    <children>
       <AnchorPane fx:id="bannerAnchor" prefHeight="354.0" prefWidth="602.0">
          <children>
@@ -22,21 +25,33 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="602.0" style="-fx-background-color: #123090;">
+            <VBox alignment="CENTER">
                <children>
-                  <Label prefHeight="47.0" prefWidth="630.0" text="MEET THE TEAM | FEROCIOUS FURRETS" textFill="WHITE">
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="602.0" style="-fx-background-color: #123090;">
+                     <children>
+                        <Label prefHeight="47.0" prefWidth="630.0" text="MEET THE TEAM | FEROCIOUS FURRETS" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="60.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label text="(Double-Click On Developer's Image For More Info)">
                      <font>
-                        <Font name="SansSerif Regular" size="24.0" />
+                        <Font name="SansSerif Regular" size="12.0" />
                      </font>
-                     <padding>
-                        <Insets left="60.0" />
-                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="5.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <HBox layoutY="80.0" prefHeight="314.0" prefWidth="600.0">
+            <HBox layoutY="80.0" prefHeight="322.0" prefWidth="600.0">
                <children>
-                  <VBox prefHeight="324.0" prefWidth="303.0">
+                  <VBox prefHeight="277.0" prefWidth="303.0">
                      <children>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
@@ -172,7 +187,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="50.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
                   <VBox prefHeight="334.0" prefWidth="298.0">
@@ -307,7 +322,7 @@
                         </HBox>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="40.0" />
+                        <Insets bottom="40.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
                </children>
@@ -348,9 +363,9 @@
             <Insets bottom="-20.0" top="-5.0" />
          </VBox.margin>
       </HBox>
-      <Label prefHeight="71.0" prefWidth="600.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes" textAlignment="CENTER" wrapText="true">
+      <Label prefHeight="52.0" prefWidth="600.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes" textAlignment="CENTER" wrapText="true">
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets top="21.0" />
          </VBox.margin>
          <font>
             <Font name="SansSerif Regular" size="16.0" />
