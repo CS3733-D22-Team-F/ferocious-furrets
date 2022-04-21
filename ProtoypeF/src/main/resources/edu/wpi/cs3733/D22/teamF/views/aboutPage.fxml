@@ -322,7 +322,7 @@
       </AnchorPane>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="291.0">
          <children>
-            <ImageView fx:id="azu" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="azu" onMouseClicked="#azuCredit" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Cropped-Edits/Azu-modified.png" />
                </image>

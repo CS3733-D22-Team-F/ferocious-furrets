@@ -320,6 +320,32 @@ public class AboutPageController implements Initializable {
             });
   }
 
+  @FXML
+  public void azuCredit() {
+    azu.setOnMouseClicked(
+            new EventHandler<MouseEvent>() {
+              @Override
+              public void handle(MouseEvent event) {
+
+                Parent root = null;
+                try {
+                  root =
+                          FXMLLoader.load(
+                                  Objects.requireNonNull(
+                                          Fapp.class.getResource("views/teammembers/azu.fxml")));
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+                Stage popupwindow = new Stage();
+                popupwindow.initModality(Modality.APPLICATION_MODAL);
+                Scene scene1 = new Scene(root);
+                popupwindow.setScene(scene1);
+                popupwindow.initModality(Modality.APPLICATION_MODAL);
+                popupwindow.showAndWait();
+              }
+            });
+  }
+
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
