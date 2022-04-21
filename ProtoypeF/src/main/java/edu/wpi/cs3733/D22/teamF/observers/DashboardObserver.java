@@ -7,6 +7,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.Equipment;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.filter.FloorFilter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -110,6 +111,10 @@ class DashboardObserver implements PropertyChangeListener {
    */
   public void setFloorFilter() {
     listOfMedEquip.clear();
+
+    FloorFilter floorFilter = new FloorFilter(currFloor);
+    listOfMedEquip = floorFilter.apply(rawListEquip);
+    /*
     for (Equipment eq : rawListEquip) {
       String equipFloor = eq.getNodeID().substring(8);
       //      System.out.println(
@@ -122,6 +127,8 @@ class DashboardObserver implements PropertyChangeListener {
         listOfMedEquip.add(eq);
       }
     }
+    *
+     */
     // System.out.println(listOfMedEquip.toString());
     cleanList = filterInClean();
     dirtyList = filterInDirty();
