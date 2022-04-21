@@ -5,343 +5,359 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="creditPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="bannerAnchor" prefHeight="354.0" prefWidth="602.0">
          <children>
-            <AnchorPane fx:id="bannerAnchor" prefHeight="452.0" prefWidth="602.0">
+            <HBox layoutY="80.0" prefHeight="258.0" prefWidth="373.0">
                <children>
-                  <HBox layoutY="80.0" prefHeight="258.0" prefWidth="373.0">
-                     <children>
-                        <ImageView fitHeight="321.0" fitWidth="258.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../furretimage.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="175.0" right="50.0" top="20.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <VBox prefHeight="80.0" prefWidth="602.0" style="-fx-background-color: #123090;">
-                     <children>
-                        <Label prefHeight="37.0" prefWidth="583.0" text="MEET THE TEAM | FEROCIOUS FURRETS" textFill="WHITE">
-                           <font>
-                              <Font name="SansSerif Regular" size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets left="60.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <HBox layoutY="80.0" prefHeight="370.0" prefWidth="600.0">
-                     <children>
-                        <VBox prefHeight="310.0" prefWidth="340.0">
-                           <children>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Nickola-modified.png" />
-                                       </image>
-                                    </ImageView>
-                                    <VBox prefHeight="35.0" prefWidth="187.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="187.0" text="Nikola Grozdani (Scrum Master)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Landing Page, Login Page, Lab Request" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Will Huang (Assistant-Lead Back-End)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Evans%20Headshot-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="202.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="202.0" text="Evans Owusu (Full Time Front- End)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Meals Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Azu-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="255.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="282.0" text="Azu | Shiming De - Assistant-Lead Front-End" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Map Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Conner-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="307.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="293.0" text="Connor McKevitt (Documentation Analyst)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Undetermined Request Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <padding>
-                              <Insets left="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <VBox prefHeight="310.0" prefWidth="282.0">
-                           <children>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Carter%20Bullock-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Gifts Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="12.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Raffi%20Alexander%20Photo-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Raffi Alexander" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Disability Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Owen-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Owen Radcliffe" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Service Request" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/John-modified%20(1).png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="John Petra (Product Manager)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Equipment &amp; Scan Page" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/Cole-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Enter A Service Request" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="60.0" prefWidth="291.0">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Cropped-Edits/JACK%20HANLON-modified.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" left="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <VBox prefHeight="45.0" prefWidth="212.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="15.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="215.0" text="Jack Hanlon (Team Lead)" />
-                                          <Label prefHeight="16.0" prefWidth="187.0" text="- Sanitation Service Request" wrapText="true">
-                                             <font>
-                                                <Font size="9.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
+                  <ImageView fitHeight="321.0" fitWidth="258.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../furretimage.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="175.0" right="50.0" top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </AnchorPane>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="602.0" style="-fx-background-color: #123090;">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="630.0" text="MEET THE TEAM | FEROCIOUS FURRETS" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Regular" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox layoutY="80.0" prefHeight="314.0" prefWidth="600.0">
+               <children>
+                  <VBox prefHeight="324.0" prefWidth="303.0">
+                     <children>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="raffi" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Raffi%20Alexander%20Photo-modified.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="214.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="221.0" text="Raffi Alexander (Full Time Front-End)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Audio Visual Service Request" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="carter" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Carter%20Bullock-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Gifts Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="nikola" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Nickola-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="202.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="202.0" text="Nikola Grozdani (Scrum Master)" />
+                                    <Label prefHeight="29.0" prefWidth="183.0" text="- Landing Page, Login Page, About Page, Lab Request" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="jack" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/JACK%20HANLON-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="255.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="282.0" text="Jack Hanlon (Team Lead)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Security Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="will" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Will%20Prof%20Headshot-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="307.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="293.0" text="Will Huang (Assistant-Lead Back-End)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="334.0" prefWidth="298.0">
+                     <children>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="connor" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Conner-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Connorr McKevitt (Doc. Analyst)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- External Patient Transportation " wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="evans" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Evans%20Headshot-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Evans Owusu (Full Time Front-End)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Meals Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="cole" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Cole-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Facilities Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="john" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/John-modified%20(1).png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="212.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="John Petrarca (Product Manager)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Equipment &amp; Scan Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="60.0" prefWidth="291.0">
+                           <children>
+                              <ImageView fx:id="owen" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Cropped-Edits/Owen-modified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="45.0" prefWidth="252.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="251.0" text="Owen Radcliffe (Assistant-Lead Full Stack)" />
+                                    <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Service Request" wrapText="true">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="40.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="-60.0" />
+               </padding>
+            </HBox>
          </children>
-      </VBox>
-   </center>
-</BorderPane>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </AnchorPane>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="291.0">
+         <children>
+            <ImageView fx:id="azu" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Cropped-Edits/Azu-modified.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="45.0" prefWidth="242.0">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <children>
+                  <Label prefHeight="17.0" prefWidth="266.0" text="Azu | Shiming De (Assistant-Lead Front-End)" />
+                  <Label prefHeight="16.0" prefWidth="187.0" text="- Map" wrapText="true">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="-20.0" top="-5.0" />
+         </VBox.margin>
+      </HBox>
+      <Label prefHeight="71.0" prefWidth="600.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes" textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+         <font>
+            <Font name="SansSerif Regular" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>
