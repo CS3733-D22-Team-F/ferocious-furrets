@@ -63,6 +63,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Raffi Alexander");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -103,6 +104,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Carter Bullock");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -129,6 +131,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Nikola Grozdani");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -155,6 +158,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Jack Hanlon");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -181,6 +185,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Will Huang");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -207,6 +212,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Connor McKevitt");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -233,6 +239,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Evans Owusu");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -259,6 +266,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Cole Parks");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -285,6 +293,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("John Petrarca");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -311,6 +320,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Owen Radcliffe");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);
@@ -336,6 +346,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
+            popupwindow.setTitle("Shiming De (Azu)");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);

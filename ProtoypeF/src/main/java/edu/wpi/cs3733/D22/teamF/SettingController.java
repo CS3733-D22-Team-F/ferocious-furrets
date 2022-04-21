@@ -52,6 +52,7 @@ public class SettingController implements Initializable {
       e.printStackTrace();
     }
     Stage popupwindow = new Stage();
+    popupwindow.setTitle("About Page");
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
