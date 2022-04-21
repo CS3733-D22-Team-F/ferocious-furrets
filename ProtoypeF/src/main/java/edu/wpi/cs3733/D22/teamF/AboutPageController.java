@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class aboutPageController implements Initializable {
+public class AboutPageController implements Initializable {
 
   @FXML VBox creditVbox;
   @FXML BorderPane creditPane;
