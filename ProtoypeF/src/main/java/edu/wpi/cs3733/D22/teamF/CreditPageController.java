@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.value.ChangeListener;
@@ -105,18 +106,38 @@ public class CreditPageController implements Initializable {
                       public boolean test(TreeItem<CreditAPI> creditAPITreeItem) {
                         Boolean flag =
                             creditAPITreeItem
-                                .getValue()
-                                .apiIncorporated
-                                .getValue()
-                                .contains(newValue) || creditAPITreeItem
+                                    .getValue()
+                                    .apiIncorporated
+                                    .getValue()
+                                    .toLowerCase(Locale.ROOT)
+                                    .contains(newValue.toLowerCase(Locale.ROOT))
+                                || creditAPITreeItem
+                                    .getValue()
+                                    .apiIncorporated
+                                    .getValue()
+                                    .contains(newValue)
+                                || creditAPITreeItem
                                     .getValue()
                                     .apiVersion
                                     .getValue()
-                                    .contains(newValue) || creditAPITreeItem
+                                    .contains(newValue)
+                                || creditAPITreeItem
+                                    .getValue()
+                                    .apiVersion
+                                    .getValue()
+                                    .toLowerCase(Locale.ROOT)
+                                    .contains(newValue.toLowerCase(Locale.ROOT))
+                                || creditAPITreeItem
                                     .getValue()
                                     .apiCreator
                                     .getValue()
-                                    .contains(newValue);
+                                    .contains(newValue)
+                                || creditAPITreeItem
+                                    .getValue()
+                                    .apiCreator
+                                    .getValue()
+                                    .toLowerCase(Locale.ROOT)
+                                    .contains(newValue.toLowerCase(Locale.ROOT));
                         return flag;
                       }
                     });
