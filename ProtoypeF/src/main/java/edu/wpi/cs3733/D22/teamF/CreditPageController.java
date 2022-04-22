@@ -14,7 +14,11 @@ public class CreditPageController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     TreeTableColumn apis = new TreeTableColumn<>("API Incorporated");
+    apis.setPrefWidth(150);
     TreeTableColumn versions = new TreeTableColumn<>("API Version");
-    table.getColumns().addAll(apis, versions);
+    versions.setPrefWidth(150);
+    TreeTableColumn creators = new TreeTableColumn<>("API Creator");
+    creators.setPrefWidth(150);
+    table.getColumns().addAll(apis, versions, creators);
   }
 }
