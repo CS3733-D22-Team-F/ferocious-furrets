@@ -6,6 +6,8 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -90,6 +92,27 @@ public class CreditPageController implements Initializable {
     table.setRoot(root);
     table.setShowRoot(false);
 
-//    input.textProperty()
+    input
+        .textProperty()
+        .addListener(
+            new ChangeListener<String>() {
+              @Override
+              public void changed(
+                  ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                table.setPredicate(
+                    new Predicate<TreeItem<CreditAPI>>() {
+                      @Override
+                      public boolean test(TreeItem<CreditAPI> creditAPITreeItem) {
+                        Boolean flag =
+                            creditAPITreeItem
+                                .getValue()
+                                .apiIncorporated
+                                .getValue()
+                                .contains(newValue);
+                        return flag;
+                      }
+                    });
+              }
+            });
   }
 }
