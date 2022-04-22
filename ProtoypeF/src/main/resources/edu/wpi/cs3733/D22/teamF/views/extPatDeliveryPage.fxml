@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
+<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
    <left>
-      <Pane prefHeight="819.0" prefWidth="744.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="597.0" layoutX="-4.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <HBox fx:id="topHBox" layoutX="5.0" layoutY="18.0" prefHeight="100.0" prefWidth="732.0" spacing="50.0">
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="640.0" />
+            <HBox fx:id="topHBox" layoutY="30.0" prefHeight="100.0" prefWidth="640.0" spacing="50.0">
                <children>
-                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text="Patient Delivery" textFill="WHITE">
+                  <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="552.0" text="Patient Delivery" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
                   </Label>
+                  <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" />
                </children>
             </HBox>
             <HBox fx:id="bottomHBox" layoutX="210.0" layoutY="638.0" prefHeight="59.0" prefWidth="284.0">
