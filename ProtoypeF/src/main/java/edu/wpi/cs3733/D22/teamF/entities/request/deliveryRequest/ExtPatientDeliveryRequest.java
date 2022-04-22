@@ -35,7 +35,7 @@ public class ExtPatientDeliveryRequest extends DeliveryRequest {
       String status,
       String address,
       String method) {
-    super(reqID, "OUT", assignedEmployeeID, requesterEmployeeID, status);
+    super(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status);
     this.address = address;
     this.method = method;
   }

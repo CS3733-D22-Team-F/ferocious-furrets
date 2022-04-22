@@ -5,8 +5,10 @@ import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.ServiceRequestStorage;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.AudioVisualRequest;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.ExtPatientDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +17,6 @@ import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -105,11 +106,13 @@ public class ExternalPatientController extends PageController
       startTable();
     } catch (SQLException e) {
       e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
   @FXML
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
 
     ArrayList<Object> requestList = new ArrayList<>();
     if (addressField.getText().equals("")
@@ -151,30 +154,79 @@ public class ExternalPatientController extends PageController
     methodField.valueProperty().setValue("");
   }
 
-  public void startTable() throws SQLException {
+  public void startTable() throws SQLException, IOException {
 
     clearTable();
 
-    ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT * FROM externalPatientRequest");
-    ArrayList<ExtPatientDeliveryRequest> externalPatientReqs =
-        new ArrayList<ExtPatientDeliveryRequest>();
-    ExtPatientDeliveryRequest avr;
+    ResultSet eptReqTable =
+        DatabaseManager.getInstance().getExtPatDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
+    ArrayList<ExtPatientDeliveryRequest> eptReqs = new ArrayList<ExtPatientDeliveryRequest>();
+    ExtPatientDeliveryRequest ept;
+    String currentLabReqID;
 
-    while (rset.next()) {
-      avr =
-          new ExtPatientDeliveryRequest(
-              rset.getString("reqID"), rset.getString("address"), rset.getString("method"));
-      externalPatientReqs.add(avr);
+    while (eptReqTable.next()) {
+      currentLabReqID = eptReqTable.getString("reqID");
+      //      System.out.println(currentLabReqID);
+      servRequest = DatabaseManager.getInstance().getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentLabReqID)) {
+          //          System.out.println("matched :)");
+          ept =
+              new ExtPatientDeliveryRequest(
+                  eptReqTable.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  eptReqTable.getString("address"),
+                  eptReqTable.getString("method"));
+          eptReqs.add(ept);
+          servRequest.close();
+          break;
+        }
+      }
     }
-    rset.close();
 
     treeRoot.setExpanded(true);
-    externalPatientReqs.stream()
+    eptReqs.stream()
         .forEach(
-            (extPatientDeliveryRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(extPatientDeliveryRequest));
+            (AudioVisualRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(AudioVisualRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<ExtPatientDeliveryRequest, String> reqIDCol =
+        new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<ExtPatientDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<ExtPatientDeliveryRequest, String> nodeIDCol =
+        new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<ExtPatientDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    TreeTableColumn<ExtPatientDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<ExtPatientDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<ExtPatientDeliveryRequest, String> methodColumn =
         new TreeTableColumn<>("Delivery Method");
@@ -188,13 +240,24 @@ public class ExternalPatientController extends PageController
         (TreeTableColumn.CellDataFeatures<ExtPatientDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getAddress()));
 
+    TreeTableColumn<ExtPatientDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<ExtPatientDeliveryRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
     TreeTableView<ExtPatientDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(methodColumn, addressColumn);
+    treeTableView
+        .getColumns()
+        .setAll(reqIDCol, nodeIDCol, assignedToCol, methodColumn, addressColumn, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
-    addressColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
-    methodColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    methodColumn.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    addressColumn.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
@@ -232,5 +295,35 @@ public class ExternalPatientController extends PageController
    */
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

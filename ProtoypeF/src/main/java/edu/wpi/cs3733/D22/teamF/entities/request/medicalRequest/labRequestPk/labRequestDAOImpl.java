@@ -15,8 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * ARCHIVED
- * Implementation of the labRequestDAO Interface
+ * ARCHIVED Implementation of the labRequestDAO Interface
  *
  * @see labRequestDAO
  */

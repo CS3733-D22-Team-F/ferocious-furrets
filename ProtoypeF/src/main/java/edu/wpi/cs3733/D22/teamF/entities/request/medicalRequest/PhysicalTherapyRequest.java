@@ -53,7 +53,7 @@ public class PhysicalTherapyRequest extends MedicalRequest {
   public void cancel(String reqID) {}
 
   public String getTreatmentType() {
-    return treatmentType;
+    return this.treatmentType;
   }
 
   public void setTreatmentType(String treatmentType) {
