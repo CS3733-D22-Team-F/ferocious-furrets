@@ -1,5 +1,11 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import org.junit.jupiter.api.*;
 
@@ -9,7 +15,7 @@ public class HandlerTester {
   /** Check whether the handler can connect to the database */
   @Test
   public void testConnection() {
-    // assertNotNull(DatabaseManager.getInstance().getDatabaseConnection());
+    assertNotNull(DatabaseManager.getInstance().getDatabaseConnection());
   }
 
   /**
@@ -18,9 +24,10 @@ public class HandlerTester {
    * @throws SQLException
    */
   @Test
-  public void checkValidConnections() throws SQLException {
-    //    Connection conn = handler.connectDatabase();
-    //    assertTrue(conn.isValid(100));
+  public void checkValidConnections() throws SQLException, IOException {
+    DatabaseManager.getInstance().switchConnection(ConnType.EMBEDDED);
+    Connection conn = DatabaseManager.getInstance().getDatabaseConnection();
+    assertTrue(conn.isValid(100));
   }
 
   /**
@@ -29,12 +36,13 @@ public class HandlerTester {
    * @throws SQLException
    */
   @Test
-  public void checkClose() throws SQLException {
-    //    Connection conn = handler.connectDatabase();
-    //
-    //    assertTrue(conn.isValid(100));
-    //
-    //    conn.close();
-    //    assertFalse(conn.isValid(100));
+  public void checkClose() throws SQLException, IOException {
+    DatabaseManager.getInstance().switchConnection(ConnType.EMBEDDED);
+    Connection conn = DatabaseManager.getInstance().getDatabaseConnection();
+
+    assertTrue(conn.isValid(100));
+
+    conn.close();
+    assertFalse(conn.isValid(100));
   }
 }
