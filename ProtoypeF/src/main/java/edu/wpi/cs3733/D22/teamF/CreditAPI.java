@@ -1,37 +1,18 @@
 package edu.wpi.cs3733.D22.teamF;
 
-public class CreditAPI {
-    String apiIncorporated;
-    String apiVersion;
-    String apiCreator;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class CreditAPI extends RecursiveTreeObject<CreditAPI> {
+    StringProperty apiIncorporated;
+    StringProperty apiVersion;
+    StringProperty apiCreator;
 
     public CreditAPI(String apiIncorporated, String apiVersion, String apiCreator) {
-        this.apiIncorporated = apiIncorporated;
-        this.apiVersion = apiVersion;
-        this.apiCreator = apiCreator;
+        this.apiIncorporated = new SimpleStringProperty(apiIncorporated);
+        this.apiVersion = new SimpleStringProperty(apiVersion);
+        this.apiCreator = new SimpleStringProperty(apiCreator);
     }
 
-    public String getApiIncorporated() {
-        return apiIncorporated;
-    }
-
-    public void setApiIncorporated(String apiIncorporated) {
-        this.apiIncorporated = apiIncorporated;
-    }
-
-    public String getApiVersion() {
-        return apiVersion;
-    }
-
-    public void setApiVersion(String apiVersion) {
-        this.apiVersion = apiVersion;
-    }
-
-    public String getApiCreator() {
-        return apiCreator;
-    }
-
-    public void setApiCreator(String apiCreator) {
-        this.apiCreator = apiCreator;
-    }
 }
