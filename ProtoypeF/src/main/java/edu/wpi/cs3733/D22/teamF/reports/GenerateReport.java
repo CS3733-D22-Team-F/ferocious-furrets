@@ -1,9 +1,12 @@
 package edu.wpi.cs3733.D22.teamF.reports;
 
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
@@ -44,8 +47,13 @@ public class GenerateReport {
     org.docx4j.model.datastorage.migration.VariablePrepare.prepare(wordMLPackage);
     MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
+    // get date
     LocalDate date = java.time.LocalDate.now();
     String requestDate = date.toString();
+
+    // get current time
+    LocalDateTime time = java.time.LocalDateTime.now();
+    String timeOfReport = time.format(DateTimeFormatter.ISO_TIME);
 
     String docReport = "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx";
 
@@ -58,6 +66,8 @@ public class GenerateReport {
     mappings.put("assigned", employeeIDFinder(assignedEmployee));
     mappings.put("requested", employeeIDFinder(requestedEmployee));
     mappings.put("status", status);
+    mappings.put("user", UserType.getUserType());
+    mappings.put("time", timeOfReport);
 
     documentPart.variableReplace(mappings);
 

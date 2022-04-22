@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import com.jfoenix.animation.alert.JFXAlertAnimation;
+import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -19,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -341,10 +345,23 @@ public class RequestListController extends PageController implements Initializab
               request.getStatus());
       try {
         rep.generateGenericServiceRequestReport(filepath);
+        showAlert("Report created!", tablePane);
       } catch (Throwable e) {
         System.out.println("Report failed");
+        showAlert("Failed to create report!", tablePane);
         e.printStackTrace();
       }
     }
+  }
+
+  public void showAlert(String info, Node random) {
+    JFXDialogLayout layout = new JFXDialogLayout();
+    layout.setBody(new Label(info));
+    JFXAlert<Void> alert = new JFXAlert<>(random.getScene().getWindow());
+    alert.setOverlayClose(true);
+    alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
+    alert.setContent(layout);
+    alert.initModality(Modality.NONE);
+    alert.showAndWait();
   }
 }
