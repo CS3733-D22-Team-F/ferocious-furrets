@@ -29,6 +29,4 @@ public class DAOTester {
     assertNotNull(dao.getAllLocationsFromDB());
     System.out.println(dao.getAllLocationsFromDB().get(2).getLongName());
   }
-
-
 }
