@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,17 +16,29 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
     <left>
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="630.0" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="629.0" />
-                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
-                <Label layoutX="28.0" layoutY="57.0" prefHeight="80.0" prefWidth="531.0" text="Physical Therapy Request" textFill="WHITE">
-                    <font>
-                        <Font name="Serif Regular" size="49.0" />
-                    </font>
-                </Label>
+                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="116.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+            <HBox layoutX="35.0" layoutY="34.0" prefHeight="94.0" prefWidth="596.0">
+               <children>
+                      <Label prefHeight="80.0" prefWidth="531.0" text="Physical Therapy" textFill="WHITE">
+                          <font>
+                              <Font name="Serif Regular" size="49.0" />
+                          </font>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                      </Label>
+                  <ImageView fitHeight="79.0" fitWidth="78.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../BWHlogo-new.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
                 <VBox layoutX="28.0" layoutY="156.0" prefHeight="498.0" prefWidth="553.0">
                     <children>
                     <HBox fx:id="infoHBox" prefHeight="434.0" prefWidth="554.0">
@@ -202,7 +216,7 @@
 <right>
       <Pane fx:id="tablePane" BorderPane.alignment="CENTER">
          <children>
-      <JFXTreeTableView fx:id="treeTable" prefHeight="721.0" prefWidth="718.0" />
+      <JFXTreeTableView fx:id="treeTable" prefHeight="720.0" prefWidth="651.0" />
          </children>
       </Pane>
 </right>
