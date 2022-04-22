@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -38,7 +37,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="117.0" layoutY="481.0" prefHeight="53.0" prefWidth="356.0">
+            <HBox layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="356.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
