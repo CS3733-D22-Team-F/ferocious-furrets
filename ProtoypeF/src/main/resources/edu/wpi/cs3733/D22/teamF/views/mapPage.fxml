@@ -303,7 +303,7 @@
                               </Label>
                               <JFXTextArea fx:id="locationField" style="-fx-border-color: #123090;">
                                  <font>
-                                    <Font name="Serif Regular" size="14.0" />
+                                    <Font name="Serif Regular" size="24.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />

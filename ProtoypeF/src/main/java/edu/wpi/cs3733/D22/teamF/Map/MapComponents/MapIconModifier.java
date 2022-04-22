@@ -54,7 +54,7 @@ public class MapIconModifier {
     Image image =
         new Image(
             Objects.requireNonNull(
-                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
+                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/Service.png")));
     switch (type) {
       case "PATI":
         {
@@ -198,62 +198,6 @@ public class MapIconModifier {
               new Image(
                   Objects.requireNonNull(
                       Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/XRAY Icon.png")));
-          break;
-        }
-      case "audio&visual":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/AudioVisualIcon.png")));
-          break;
-        }
-      case "equip":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/EquipmentIcon.png")));
-          break;
-        }
-      case "gift":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/GiftIcon.png")));
-          break;
-        }
-      case "lab":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/LabIcon.png")));
-          break;
-        }
-      case "meal":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MealIcon.png")));
-          break;
-        }
-      case "medical":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MedicineIcon.png")));
-          break;
-        }
-      case "scan":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/ScanIcon.png")));
           break;
         }
       case "add":
@@ -700,12 +644,23 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
+                System.out.println(i + "123");
+                table.scrollTo(i);
+                table.getSelectionModel().select(i);
                 newButton.setCursor(Cursor.HAND);
                 infoBox.setVisible(true);
                 try {
                   for (String s : MapTableHolder.getAllLocOnNID(location)) {
                     locationArea.setText(locationArea.getText() + "\n" + s);
                   }
+                  locationArea.setText(locationArea.getText().trim());
                 } catch (SQLException | IOException ex) {
                   ex.printStackTrace();
                 }
@@ -746,6 +701,7 @@ public class MapIconModifier {
                   for (String s : MapTableHolder.getAllLocOnNID(location)) {
                     locationArea.setText(locationArea.getText() + "\n" + s);
                   }
+                  locationArea.setText(locationArea.getText().trim());
                 } catch (SQLException | IOException ex) {
                   ex.printStackTrace();
                 }
@@ -832,6 +788,7 @@ public class MapIconModifier {
                   for (String s : MapTableHolder.getAllLocOnNID(location)) {
                     locationArea.setText(locationArea.getText() + "\n" + s);
                   }
+                  locationArea.setText(locationArea.getText().trim());
                 } catch (SQLException | IOException ex) {
                   ex.printStackTrace();
                 }
