@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Refactored project to follow naming conventions and combine DatabaseManager and DatabaseInitializer to a single Singleton class">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="renam">
       <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/ConnType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/deprecated-list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labQueueController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labQueueController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labRequestController.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/Documentation/Javadoc/edu/wpi/furious_furrets/class-use/labRequestController.html" afterDir="false" />
@@ -194,11 +192,7 @@
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/test/java/edu/wpi/cs3733/D22/teamF/DAOTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/test/java/edu/wpi/cs3733/D22/teamF/DAOTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/test/java/edu/wpi/cs3733/D22/teamF/HandlerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/test/java/edu/wpi/cs3733/D22/teamF/HandlerTester.java" afterDir="false" />
     </list>
-    <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="">
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/scanDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/ScanDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/securityDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/SecurityDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/employee/modifyEmployeePopUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/employee/ModifyEmployeePopUpController.java" afterDir="false" />
-    </list>
+    <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,40 +269,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/employee/ModifyEmployeePopUpController.java">
-      <ranges>
-        <range start1="16" end1="17" start2="16" end2="17" changelist="26af7afb-bd1c-4c1f-9061-6249aaad0143" />
-        <range start1="40" end1="41" start2="40" end2="41" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/ScanDAOImpl.java">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="7" changelist="26af7afb-bd1c-4c1f-9061-6249aaad0143" />
-        <range start1="14" end1="15" start2="14" end2="15" changelist="26af7afb-bd1c-4c1f-9061-6249aaad0143" />
-        <range start1="17" end1="20" start2="17" end2="21" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="29" end1="32" start2="30" end2="34" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="64" end1="67" start2="66" end2="69" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="75" end1="76" start2="77" end2="78" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="84" end1="85" start2="86" end2="87" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="96" end1="98" start2="98" end2="100" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="105" end1="106" start2="107" end2="108" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="139" end1="140" start2="141" end2="142" changelist="26af7afb-bd1c-4c1f-9061-6249aaad0143" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/entities/database/SecurityDAOImpl.java">
-      <ranges>
-        <range start1="13" end1="14" start2="13" end2="14" changelist="26af7afb-bd1c-4c1f-9061-6249aaad0143" />
-        <range start1="16" end1="19" start2="16" end2="20" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="28" end1="31" start2="29" end2="33" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="67" end1="69" start2="69" end2="72" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="78" end1="79" start2="81" end2="82" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="87" end1="88" start2="90" end2="91" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="100" end1="102" start2="103" end2="105" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-        <range start1="108" end1="109" start2="111" end2="112" changelist="aae91997-02d2-4820-bbd6-eecb3e257de2" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -808,7 +768,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed open ResultSet bug" />
     <MESSAGE value="Icons appear at correct location on click to add" />
     <MESSAGE value="Modify location, still need to autofill fields in window with previous values." />
     <MESSAGE value="Fixed map tracker bug with floor numbers" />
@@ -833,7 +792,8 @@
     <MESSAGE value="added alert to audioVisualController" />
     <MESSAGE value="rm sysout audio" />
     <MESSAGE value="Refactored project to follow naming conventions and combine DatabaseManager and DatabaseInitializer to a single Singleton class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored project to follow naming conventions and combine DatabaseManager and DatabaseInitializer to a single Singleton class" />
+    <MESSAGE value="renam" />
+    <option name="LAST_COMMIT_MESSAGE" value="renam" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
