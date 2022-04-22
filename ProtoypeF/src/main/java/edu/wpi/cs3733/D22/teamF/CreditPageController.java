@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
@@ -22,6 +23,7 @@ public class CreditPageController implements Initializable {
   private String apiIncorp;
   private String apiVersion;
   private String apiCreator;
+  @FXML private TextField input;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -87,5 +89,7 @@ public class CreditPageController implements Initializable {
     table.getColumns().setAll(deptName, ageCol, nameCol);
     table.setRoot(root);
     table.setShowRoot(false);
+
+//    input.textProperty()
   }
 }
