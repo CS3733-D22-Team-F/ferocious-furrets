@@ -21,7 +21,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <TextField fx:id="input" alignment="TOP_LEFT" prefHeight="25.0" prefWidth="140.0" promptText="Filter">
+            <TextField fx:id="input" alignment="TOP_LEFT" prefHeight="25.0" prefWidth="140.0" promptText="Search any api field">
                <font>
                   <Font name="SansSerif Regular" size="13.0" />
                </font>
