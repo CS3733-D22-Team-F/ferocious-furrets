@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * ARCHIVED
- * Implentation of scanRequestDAO interface
+ * ARCHIVED Implentation of scanRequestDAO interface
  *
  * @author Will Huang
  */
