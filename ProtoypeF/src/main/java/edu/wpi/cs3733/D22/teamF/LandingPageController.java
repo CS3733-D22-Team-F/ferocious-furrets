@@ -52,7 +52,7 @@ public class LandingPageController implements Initializable {
     Parent root = null;
     try {
       root =
-          FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/creditsPage.fxml")));
+          FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("views/aboutPage.fxml")));
     } catch (IOException e) {
       e.printStackTrace();
     }
