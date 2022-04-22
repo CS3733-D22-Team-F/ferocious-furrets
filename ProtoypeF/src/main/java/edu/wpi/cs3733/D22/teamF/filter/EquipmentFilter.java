@@ -26,10 +26,7 @@ public class EquipmentFilter implements IFilter {
     List<Equipment> filterEquip = new ArrayList<>();
     for (Equipment eq : rawFloors) {
       if (eq.getEquipType().equals(equipToFilter)) {
-        if (filterEquip.equals("Bed")) {
-          System.out.println("Check");
-          filterEquip.add(eq);
-        }
+        filterEquip.add(eq);
       }
     }
     return filterEquip;

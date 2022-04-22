@@ -22,7 +22,7 @@ public class LocationFilter implements IFilter {
     for (Equipment eq : rawList) {
       Location loc = Cache.getLocation(eq.getNodeID());
 
-      if (loc.getNodeType().equals("PATI")) filteredList.add(eq);
+      if (loc.getNodeType().equals(filterBy)) filteredList.add(eq);
       else if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith(filterBy))
         filteredList.add(eq);
       //    for (Equipment eq : rawList) {

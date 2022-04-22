@@ -1,10 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController;
-import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.Equipment;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.filter.EquipmentFilter;
@@ -115,22 +113,7 @@ class DashboardObserver implements PropertyChangeListener {
     listOfMedEquip.clear();
     FloorFilter floorFilter = new FloorFilter(currFloor);
     listOfMedEquip = floorFilter.apply(rawListEquip);
-    /*
-    for (Equipment eq : rawListEquip) {
-      String equipFloor = eq.getNodeID().substring(8);
-      //      System.out.println(
-      //          currFloor.toFloorString() + " is currFloor." + equipFloor + " is equipFloor");
 
-      if (equipFloor.equals(currFloor.toFloorString())) {
-        //        System.out.println(
-        //            currFloor.toFloorString() + "Adding to medEquipList, size:  " +
-        // listOfMedEquip.size());
-        listOfMedEquip.add(eq);
-      }
-    }
-    *
-     */
-    // System.out.println(listOfMedEquip.toString());
     LocationFilter cleanFilter = new LocationFilter("Clean");
     LocationFilter dirtyFilter = new LocationFilter("Dirty");
     LocationFilter podFilter = new LocationFilter("PATI");
@@ -140,7 +123,6 @@ class DashboardObserver implements PropertyChangeListener {
     dirtyList = dirtyFilter.filterLocType(listOfMedEquip);
     podList = podFilter.filterLocType(listOfMedEquip);
     List<Equipment> copyList = listOfMedEquip;
-    // inUseList = filterInUse(cleanList, dirtyList, podList);
     inUseList = inUseFilter.filterInUse(copyList, cleanList, dirtyList, podList);
 
     EquipmentFilter bedFilter = new EquipmentFilter("Bed");
@@ -167,11 +149,6 @@ class DashboardObserver implements PropertyChangeListener {
     iRecliner = reclinerFilter.apply(inUseList);
     iInfusionPumpCount = infusionFilter.apply(inUseList);
     iXRay = xrayFilter.apply(inUseList);
-
-    //    cleanList = filterInClean();
-    //    dirtyList = filterInDirty();
-    //    podList = filterInPod();
-    //    inUseList = filterInUse(cleanList, dirtyList, podList);
   }
 
   public void setLabels(
@@ -215,10 +192,6 @@ class DashboardObserver implements PropertyChangeListener {
         ilabels.get(2).setText(String.valueOf(iRecliner.size()));
         ilabels.get(3).setText(String.valueOf(iXRay.size()));
       }
-
-      // if (totalFloorCount != null) {
-      //    totalFloorCount.setText(String.valueOf(floorEquipmentCount));
-      // }
     }
   }
 
@@ -277,147 +250,6 @@ class DashboardObserver implements PropertyChangeListener {
    *
    * @return a list of clean equip for floor
    */
-  private List<Equipment> filterInClean() {
-
-    List<Equipment> cleanEquip = new ArrayList<>();
-    for (Equipment eq : listOfMedEquip) {
-      Location loc = Cache.getLocation(eq.getNodeID());
-      if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Clean")) {
-        cleanEquip.add(eq);
-      }
-    }
-
-    cBedCount = filterBeds(cleanEquip);
-    cInfusionPumpCount = filterInfusionPump(cleanEquip);
-    cRecliner = filterRecliner(cleanEquip);
-    cXRay = filterXRay(cleanEquip);
-    return cleanEquip;
-  }
-
-  /**
-   * filters floor list for dirty equipment
-   *
-   * @return
-   */
-  private List<Equipment> filterInDirty() {
-    List<Equipment> dirtyEquip = new ArrayList<>();
-    for (Equipment eq : listOfMedEquip) {
-      Location loc = Cache.getLocation(eq.getNodeID());
-      if (loc.getNodeType().equals("STOR") && loc.getLongName().startsWith("Dirty")) {
-        dirtyEquip.add(eq);
-      }
-    }
-    dBedCount = filterBeds(dirtyEquip);
-    dInfusionPumpCount = filterInfusionPump(dirtyEquip);
-    dRecliner = filterRecliner(dirtyEquip);
-    dXRay = filterXRay(dirtyEquip);
-    return dirtyEquip;
-  }
-
-  /**
-   * filters floor list for equipment in pods
-   *
-   * @return a list of equipment in pods
-   */
-  private List<Equipment> filterInPod() {
-    List<Equipment> podEquip = new ArrayList<>();
-    for (Equipment eq : listOfMedEquip) {
-      Location loc = Cache.getLocation(eq.getNodeID());
-      if (loc.getNodeType().equals("PATI")) {
-        podEquip.add(eq);
-      }
-    }
-
-    pBedCount = filterBeds(podEquip);
-    pInfusionPumpCount = filterInfusionPump(podEquip);
-    pRecliner = filterRecliner(podEquip);
-    pXRay = filterXRay(podEquip);
-    return podEquip;
-  }
-
-  /**
-   * filters floor list for equipment in use
-   *
-   * @return a list of in use equipment
-   */
-  private List<Equipment> filterInUse(
-      List<Equipment> list1, List<Equipment> list2, List<Equipment> list3) {
-
-    List<Equipment> allOtherEquip = new ArrayList<>();
-    allOtherEquip.addAll(list1);
-    allOtherEquip.addAll(list2);
-    allOtherEquip.addAll(list3);
-    List<Equipment> inUseEquip = new ArrayList<>();
-    for (Equipment eq : listOfMedEquip) {
-      if (!allOtherEquip.contains(eq)) {
-        inUseEquip.add(eq);
-      }
-    }
-
-    iBedCount = filterBeds(inUseEquip);
-    iInfusionPumpCount = filterInfusionPump(inUseEquip);
-    iRecliner = filterRecliner(inUseEquip);
-    iXRay = filterXRay(inUseEquip);
-    return inUseEquip;
-  }
-
-  private List<Equipment> filterBeds(List<Equipment> equip) {
-    List<Equipment> bedList = new ArrayList<>();
-    for (Equipment eq : equip) {
-      if (eq.getEquipType().equals("Bed")) {
-        bedList.add(eq);
-      }
-    }
-    return bedList;
-  }
-
-  /**
-   * Takes in the list of equipment on the floor and returns only Infusion Pumps
-   *
-   * @param equip
-   * @return
-   */
-  private List<Equipment> filterInfusionPump(List<Equipment> equip) {
-    List<Equipment> pumpList = new ArrayList<>();
-    for (Equipment eq : equip) {
-      if (eq.getEquipType().equals("Infusion Pump")) {
-        pumpList.add(eq);
-      }
-    }
-    return pumpList;
-  }
-
-  /**
-   * Takes in the list of equipment on the floor and returns only Recliners
-   *
-   * @param equip
-   * @return
-   */
-  private List<Equipment> filterRecliner(List<Equipment> equip) {
-    List<Equipment> reclinerList = new ArrayList<>();
-    for (Equipment eq : equip) {
-      if (eq.getEquipType().equals("Recliner")) {
-        reclinerList.add(eq);
-      }
-    }
-    return reclinerList;
-  }
-
-  /**
-   * Takes in the list of equipment on the floor and returns only XRays
-   *
-   * @param equip
-   * @return
-   */
-  private List<Equipment> filterXRay(List<Equipment> equip) {
-    List<Equipment> xrayList = new ArrayList<>();
-    for (Equipment eq : equip) {
-      if (eq.getEquipType().equals("Xray")) {
-        xrayList.add(eq);
-      }
-    }
-    return xrayList;
-  }
 
   /**
    * gets list of all alerts for a floor
