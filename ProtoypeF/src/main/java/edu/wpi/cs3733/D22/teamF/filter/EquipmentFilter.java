@@ -7,14 +7,9 @@ import java.util.List;
 
 public class EquipmentFilter implements IFilter {
   private String equipToFilter = "";
-  private List<Equipment> rawList = new ArrayList<>();
 
   public EquipmentFilter(String equipToFilter) {
     this.equipToFilter = equipToFilter;
-  }
-
-  public void setFiltration(String filterByEquip) {
-    this.equipToFilter = filterByEquip;
   }
 
   @Override
