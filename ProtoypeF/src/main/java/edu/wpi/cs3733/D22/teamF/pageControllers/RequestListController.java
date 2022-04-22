@@ -9,6 +9,7 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
+import edu.wpi.cs3733.D22.teamF.reports.PDFConverter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.docx4j.openpackaging.exceptions.Docx4JException;
 
 /**
  * controller for request list
@@ -349,6 +351,20 @@ public class RequestListController extends PageController implements Initializab
       } catch (Throwable e) {
         System.out.println("Report failed");
         showAlert("Failed to create report!", tablePane);
+        e.printStackTrace();
+      }
+      PDFConverter pdfConverter =
+          new PDFConverter(
+              filepath,
+              "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReportPDF.pdf");
+      try {
+        pdfConverter.convertToPDF();
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (Docx4JException e) {
+        showAlert(
+            "Sorry, this feature is not currently available on systems without MS Word:(",
+            tablePane);
         e.printStackTrace();
       }
     }
