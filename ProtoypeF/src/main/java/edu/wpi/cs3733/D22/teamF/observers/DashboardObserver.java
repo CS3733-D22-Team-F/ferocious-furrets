@@ -7,7 +7,9 @@ import edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.Equipment;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.filter.EquipmentFilter;
 import edu.wpi.cs3733.D22.teamF.filter.FloorFilter;
+import edu.wpi.cs3733.D22.teamF.filter.LocationFilter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -111,7 +113,6 @@ class DashboardObserver implements PropertyChangeListener {
    */
   public void setFloorFilter() {
     listOfMedEquip.clear();
-
     FloorFilter floorFilter = new FloorFilter(currFloor);
     listOfMedEquip = floorFilter.apply(rawListEquip);
     /*
@@ -130,10 +131,47 @@ class DashboardObserver implements PropertyChangeListener {
     *
      */
     // System.out.println(listOfMedEquip.toString());
-    cleanList = filterInClean();
-    dirtyList = filterInDirty();
-    podList = filterInPod();
-    inUseList = filterInUse(cleanList, dirtyList, podList);
+    LocationFilter cleanFilter = new LocationFilter("Clean");
+    LocationFilter dirtyFilter = new LocationFilter("Dirty");
+    LocationFilter podFilter = new LocationFilter("PATI");
+    LocationFilter inUseFilter = new LocationFilter("INUSE");
+
+    cleanList = cleanFilter.filterLocType(listOfMedEquip);
+    dirtyList = dirtyFilter.filterLocType(listOfMedEquip);
+    podList = podFilter.filterLocType(listOfMedEquip);
+    List<Equipment> copyList = listOfMedEquip;
+    // inUseList = filterInUse(cleanList, dirtyList, podList);
+    inUseList = inUseFilter.filterInUse(copyList, cleanList, dirtyList, podList);
+
+    EquipmentFilter bedFilter = new EquipmentFilter("Bed");
+    EquipmentFilter reclinerFilter = new EquipmentFilter("Recliner");
+    EquipmentFilter infusionFilter = new EquipmentFilter("Infusion Pump");
+    EquipmentFilter xrayFilter = new EquipmentFilter("Xray");
+
+    cBedCount = bedFilter.apply(cleanList);
+    cRecliner = reclinerFilter.apply(cleanList);
+    cInfusionPumpCount = infusionFilter.apply(cleanList);
+    cXRay = xrayFilter.apply(cleanList);
+
+    dBedCount = bedFilter.apply(dirtyList);
+    dRecliner = reclinerFilter.apply(dirtyList);
+    dInfusionPumpCount = infusionFilter.apply(dirtyList);
+    dXRay = xrayFilter.apply(dirtyList);
+
+    pBedCount = bedFilter.apply(podList);
+    pRecliner = reclinerFilter.apply(podList);
+    pInfusionPumpCount = infusionFilter.apply(podList);
+    pXRay = xrayFilter.apply(podList);
+
+    iBedCount = bedFilter.apply(inUseList);
+    iRecliner = reclinerFilter.apply(inUseList);
+    iInfusionPumpCount = infusionFilter.apply(inUseList);
+    iXRay = xrayFilter.apply(inUseList);
+
+    //    cleanList = filterInClean();
+    //    dirtyList = filterInDirty();
+    //    podList = filterInPod();
+    //    inUseList = filterInUse(cleanList, dirtyList, podList);
   }
 
   public void setLabels(

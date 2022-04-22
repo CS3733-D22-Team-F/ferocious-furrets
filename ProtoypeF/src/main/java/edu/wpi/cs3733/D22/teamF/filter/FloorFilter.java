@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FloorFilter implements IFilter {
-  Floor floorToFilter;
+  private Floor floorToFilter;
 
   public FloorFilter(Floor filterBy) {
     this.floorToFilter = filterBy;

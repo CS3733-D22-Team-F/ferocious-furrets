@@ -5,5 +5,5 @@ import java.util.ArrayList;
 
 public interface IFilter {
 
-    public ArrayList<Object> apply(ResultSet rSet);
+  public ArrayList<Object> apply(ResultSet rSet);
 }
