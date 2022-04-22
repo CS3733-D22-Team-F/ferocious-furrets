@@ -108,7 +108,15 @@ public class CreditPageController implements Initializable {
                                 .getValue()
                                 .apiIncorporated
                                 .getValue()
-                                .contains(newValue);
+                                .contains(newValue) || creditAPITreeItem
+                                    .getValue()
+                                    .apiVersion
+                                    .getValue()
+                                    .contains(newValue) || creditAPITreeItem
+                                    .getValue()
+                                    .apiCreator
+                                    .getValue()
+                                    .contains(newValue);
                         return flag;
                       }
                     });
