@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.Map;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
@@ -63,6 +64,8 @@ public class MapPageController implements Initializable {
 
   @FXML JFXButton alertButton;
   @FXML JFXButton showIconButton;
+  @FXML VBox infoBox;
+  @FXML JFXTextArea locationField;
 
   @FXML JFXButton patientRoomButton;
   @FXML JFXButton storageButton;
@@ -141,7 +144,7 @@ public class MapPageController implements Initializable {
     longName.setCellValueFactory(new PropertyValueFactory<Location, String>("longName"));
 
     try {
-      MapTableHolder.loadMap(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
@@ -341,7 +344,7 @@ public class MapPageController implements Initializable {
     } else {
       MapTableHolder.wipeMap();
       MapPopUp.popUpReset(table, iconPane);
-      MapTableHolder.loadMap(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
     }
   }
 
@@ -351,8 +354,8 @@ public class MapPageController implements Initializable {
       Alert error = new Alert(Alert.AlertType.ERROR);
       error.show();
     } else {
-      MapPopUp.popUpAdd();
-      MapTableHolder.loadMap(table, iconPane);
+      MapPopUp.popUpAdd(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
     }
   }
 
@@ -363,7 +366,7 @@ public class MapPageController implements Initializable {
       error.show();
     } else {
       MapPopUp.popUpSave();
-      MapTableHolder.loadMap(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
     }
   }
 
@@ -374,14 +377,14 @@ public class MapPageController implements Initializable {
       error.show();
     } else {
       MapPopUp.openHistory();
-      MapTableHolder.loadMap(table, iconPane);
+      MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
     }
   }
 
   @FXML
   void openFullTable() throws SQLException, IOException {
     MapPopUp.openFullTable();
-    MapTableHolder.loadMap(table, iconPane);
+    MapTableHolder.loadMap(table, iconPane, infoBox, locationField);
   }
   // START show functions
   public void showPatient() {

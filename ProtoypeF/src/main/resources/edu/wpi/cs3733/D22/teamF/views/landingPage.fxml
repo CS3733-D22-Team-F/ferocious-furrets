@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,79 +23,121 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="660.0" prefWidth="610.0" spacing="15.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Security: Jack" textFill="WHITE">
+                        <Label fx:id="security" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Security: Jack" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Meal: Evans" textFill="WHITE">
+                        <Label fx:id="meal" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Meal: Evans" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Gift: Carter" textFill="WHITE">
+                        <Label fx:id="gift" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Gift: Carter" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Phy. Therapy: Owen" textFill="WHITE">
+                        <Label fx:id="therapy" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Phy. Therapy: Owen" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Lab: Nikola" textFill="WHITE">
+                        <Label fx:id="lab" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Lab: Nikola" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Scan: Azu" textFill="WHITE">
+                        <Label fx:id="scan" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Scan: Azu" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Facility: Cole" textFill="WHITE">
+                        <Label fx:id="facility" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Facility: Cole" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="680.0" prefWidth="610.0" spacing="15.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Equipment: Nikola" textFill="WHITE">
+                        <Label fx:id="equipment" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Equipment: Nikola" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Audio/Visual: Raffi" textFill="WHITE">
+                        <Label fx:id="audio" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Audio/Visual: Raffi" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Ext. Patient: Corner" textFill="WHITE">
+                        <Label fx:id="patient" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Ext. Patient: Corner" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Medicine: John" textFill="WHITE">
+                        <Label fx:id="medicine" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Medicine: John" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Matainence: Will" textFill="WHITE">
+                        <Label fx:id="maintenance" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Maintenance: Will" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Map: Azu" textFill="WHITE">
+                        <Label fx:id="map" graphicTextGap="10.0" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Map: Azu" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
-                        <Label alignment="CENTER" onMouseClicked="#openCredit" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Credit Page" textFill="WHITE">
+                        <Label graphicTextGap="10.0" onMouseClicked="#openCredit" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #123090;" text="Credit Page" textFill="WHITE">
                            <font>
-                              <Font size="32.0" />
+                              <Font name="Serif Regular" size="24.0" />
                            </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
                         </Label>
                      </children>
                   </VBox>
