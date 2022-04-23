@@ -101,13 +101,13 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="nameField" />
                      </children>
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <JFXButton buttonType="RAISED" prefHeight="40.0" text="Save">
+                  <JFXButton buttonType="RAISED" onAction="#saveCSS" prefHeight="40.0" text="Save">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>

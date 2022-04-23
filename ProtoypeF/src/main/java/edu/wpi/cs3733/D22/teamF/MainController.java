@@ -31,6 +31,7 @@ public class MainController implements Initializable {
   @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
   @FXML JFXDrawer title;
+  @FXML VBox allBox;
   @FXML VBox titleBox;
   @FXML VBox homeMenu;
   @FXML VBox serviceMenu;
@@ -197,6 +198,7 @@ public class MainController implements Initializable {
     menu.setPrefWidth(50);
     title.close();
     title.setPrefWidth(50);
+    allBox.setPrefWidth(50);
     titleBox.setPrefWidth(50);
     homeMenu.setPrefWidth(50);
     serviceMenu.setPrefWidth(50);
@@ -251,6 +253,8 @@ public class MainController implements Initializable {
     menu.open();
     title.setMaxWidth(1270);
     title.open();
+    allBox.setPrefWidth(1270);
+    allBox.setMaxWidth(1270);
     titleButton.setText("Brigham And Women's Hospital");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
@@ -392,11 +396,12 @@ public class MainController implements Initializable {
 
   public void onOpenTitle() {
     titleBox.setPrefWidth(1270);
-    titleBox.setPrefWidth(1270);
+    titleBox.setMaxWidth(1270);
   }
 
   public void onClose() {
     menu.setMaxWidth(50);
+    allBox.setMaxWidth(50);
     onCloseTitle();
   }
 
