@@ -41,9 +41,10 @@ public class CreditPageController implements Initializable {
     //    creators.setPrefWidth(150);
     //    table.getColumns().addAll(apis, versions, creators);
 
-    JFXTreeTableColumn<CreditAPI, String> APIIncorporated = new JFXTreeTableColumn<>("API Incorporated");
-      APIIncorporated.setPrefWidth(150);
-      APIIncorporated.setCellValueFactory(
+    JFXTreeTableColumn<CreditAPI, String> APIIncorporated =
+        new JFXTreeTableColumn<>("API Incorporated");
+    APIIncorporated.setPrefWidth(150);
+    APIIncorporated.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
@@ -54,8 +55,8 @@ public class CreditPageController implements Initializable {
         });
 
     JFXTreeTableColumn<CreditAPI, String> APIVersion = new JFXTreeTableColumn<>("API Version");
-      APIVersion.setPrefWidth(150);
-      APIVersion.setCellValueFactory(
+    APIVersion.setPrefWidth(150);
+    APIVersion.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
@@ -66,8 +67,8 @@ public class CreditPageController implements Initializable {
         });
 
     JFXTreeTableColumn<CreditAPI, String> APICreator = new JFXTreeTableColumn<>("API Creator");
-      APICreator.setPrefWidth(150);
-      APICreator.setCellValueFactory(
+    APICreator.setPrefWidth(150);
+    APICreator.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
