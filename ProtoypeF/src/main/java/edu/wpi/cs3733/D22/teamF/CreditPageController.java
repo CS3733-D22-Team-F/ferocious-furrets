@@ -19,6 +19,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
+/** Controller for the credit page */
 public class CreditPageController implements Initializable {
 
   @FXML private JFXTreeTableView<CreditAPI> table;

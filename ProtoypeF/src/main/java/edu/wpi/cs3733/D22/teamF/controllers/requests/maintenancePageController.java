@@ -21,7 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class maintenancePageController extends PageController
-        implements Initializable, IRequestController {
+    implements Initializable, IRequestController {
 
   @FXML JFXComboBox locationBox;
   @FXML JFXComboBox assignedEmployeeBox;
@@ -49,9 +49,9 @@ public class maintenancePageController extends PageController
   private String maintenanceType;
 
   private TreeItem<MaintenanceRequest> treeRoot =
-          new TreeItem<>(
-                  new MaintenanceRequest(
-                          requestID, nodeID, assignedEmpID, requesterEmpID, status, equipID, maintenanceType));
+      new TreeItem<>(
+          new MaintenanceRequest(
+              requestID, nodeID, assignedEmpID, requesterEmpID, status, equipID, maintenanceType));
 
   /**
    * Called to initialize a controller after its root element has been completely processed.
@@ -113,11 +113,11 @@ public class maintenancePageController extends PageController
     String newMaintanenceType;
 
     if (locationBox.getValue().toString().equals("")
-            || assignedEmployeeBox.getValue().toString().equals("")
-            || requestedEmployeeBox.getValue().toString().equals("")
-            || statusBox.getValue().equals("")
-            || equipmentBox.getValue().equals("")
-            || maintenanceBox.getValue().equals("")) {
+        || assignedEmployeeBox.getValue().toString().equals("")
+        || requestedEmployeeBox.getValue().toString().equals("")
+        || statusBox.getValue().equals("")
+        || equipmentBox.getValue().equals("")
+        || maintenanceBox.getValue().equals("")) {
       System.out.println("There are still blank fields"); // popup? error message?
     } else {
 
@@ -170,7 +170,7 @@ public class maintenancePageController extends PageController
     clearTable();
 
     ResultSet maintenanceRequestList =
-            DatabaseManager.getInstance().getMaintenanceDAO().get(); // CHANGE THIS TO CURRENT DAO
+        DatabaseManager.getInstance().getMaintenanceDAO().get(); // CHANGE THIS TO CURRENT DAO
     ResultSet servRequest;
     ArrayList<MaintenanceRequest> secReqs = new ArrayList<>();
     MaintenanceRequest er;
@@ -183,14 +183,14 @@ public class maintenancePageController extends PageController
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {
           er =
-                  new MaintenanceRequest(
-                          maintenanceRequestList.getString("reqID"),
-                          servRequest.getString("nodeID"),
-                          servRequest.getString("assignedEmployeeID"),
-                          servRequest.getString("requesterEmployeeID"),
-                          servRequest.getString("status"),
-                          maintenanceRequestList.getString("equipID"),
-                          maintenanceRequestList.getString("maintenanceType"));
+              new MaintenanceRequest(
+                  maintenanceRequestList.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  maintenanceRequestList.getString("equipID"),
+                  maintenanceRequestList.getString("maintenanceType"));
           secReqs.add(er);
           servRequest.close();
           break;
@@ -202,64 +202,64 @@ public class maintenancePageController extends PageController
 
     treeRoot.setExpanded(true);
     secReqs.stream()
-            .forEach(
-                    (MaintenanceRequest) -> {
-                      treeRoot.getChildren().add(new TreeItem<>(MaintenanceRequest));
-                    });
+        .forEach(
+            (MaintenanceRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(MaintenanceRequest));
+            });
 
     TreeTableColumn<MaintenanceRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
     reqIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
 
     TreeTableColumn<MaintenanceRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
     nodeIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
-              try {
-                return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
-              } catch (SQLException e) {
-                e.printStackTrace();
-              }
-              return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
-            });
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
     TreeTableColumn<MaintenanceRequest, String> assignedToCol =
-            new TreeTableColumn<>("Assigned To");
+        new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
-              try {
-                return new ReadOnlyStringWrapper(
-                        empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
-                                + " "
-                                + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
-              } catch (SQLException e) {
-                e.printStackTrace();
-              }
-              return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
-            });
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<MaintenanceRequest, String> equipmentIDCol =
-            new TreeTableColumn<>("Equipment ID");
+        new TreeTableColumn<>("Equipment ID");
     equipmentIDCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getEquipID()));
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getEquipID()));
 
     TreeTableColumn<MaintenanceRequest, String> maintenanceTypeCol =
-            new TreeTableColumn<>("Maintenance Type");
+        new TreeTableColumn<>("Maintenance Type");
     maintenanceTypeCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getMaintenanceType()));
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getMaintenanceType()));
 
     TreeTableColumn<MaintenanceRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
-            (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-                    new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
     ;
 
     TreeTableView<MaintenanceRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
-            .getColumns()
-            .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, maintenanceTypeCol, statusCol);
+        .getColumns()
+        .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, maintenanceTypeCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -315,9 +315,9 @@ public class maintenancePageController extends PageController
     last = last.strip();
     first = first.strip();
     String cmd =
-            String.format(
-                    "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-                    first, last);
+        String.format(
+            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+            first, last);
     ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
     if (rset.next()) {
       empID = rset.getString("EMPLOYEEID");
@@ -328,11 +328,11 @@ public class maintenancePageController extends PageController
 
   public String getAvailableEquipment() throws SQLException {
     ResultSet rset =
-            DatabaseManager.getInstance()
-                    .runQuery(
-                            "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
-                                    + equipmentBox.getValue().toString()
-                                    + "'");
+        DatabaseManager.getInstance()
+            .runQuery(
+                "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
+                    + equipmentBox.getValue().toString()
+                    + "'");
     String eID = "";
     if (!rset.next()) {
       System.out.println("No Available Equipment"); // TODO Make popup?

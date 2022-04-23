@@ -48,6 +48,7 @@ public class LandingPageController implements Initializable {
     map.setGraphic(MapIconModifier.getIcon("mapMenu"));
   }
 
+  /** opens the credit page */
   public void openCredit() {
     Parent root = null;
     try {
