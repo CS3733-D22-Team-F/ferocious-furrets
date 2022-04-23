@@ -1,72 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1284.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.SettingController">
+<VBox prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.SettingController">
    <children>
-      <AnchorPane prefHeight="136.0" prefWidth="645.0" style="-fx-background-color: #123090;">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" style="-fx-background-color: #4169E1;" text="Setting" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Serif Regular" size="48.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="600.0" prefWidth="1220.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="41.0" prefHeight="35.0" prefWidth="635.0" text="Profile" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="323.0" AnchorPane.rightAnchor="326.0" AnchorPane.topAnchor="41.0">
-               <font>
-                  <Font name="Serif Regular" size="48.0" />
-               </font>
-            </Label>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </AnchorPane>
-      <VBox alignment="CENTER" prefHeight="585.0" prefWidth="1284.0" spacing="30.0">
-         <children>
-            <ImageView fitHeight="171.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../loginpfp.png" />
-               </image>
-            </ImageView>
-            <HBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0">
                <children>
-                  <Label text="Current User:">
+                  <Label prefHeight="40.0" text="Preset Theme">
                      <font>
-                        <Font name="SansSerif Regular" size="36.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label fx:id="userFromLogin" prefHeight="44.0" prefWidth="196.0">
+                  <JFXComboBox prefHeight="40.0" prefWidth="257.0">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="610.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="40.0" text="Apply">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" prefHeight="40.0" text="Default">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Customise Theme:">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="75.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Label prefHeight="40.0" text="Text Color: ">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="40.0" text="Background Color: ">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="40.0" text="Title Color: ">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="pickerBox" prefHeight="200.0" prefWidth="100.0" spacing="15.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="40.0" text="Name: ">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton buttonType="RAISED" prefHeight="40.0" text="Save">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Line endY="530.0" startY="70.0" stroke="#13328f48" strokeWidth="2.0">
+               <HBox.margin>
+                  <Insets top="70.0" />
+               </HBox.margin>
+            </Line>
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label fx:id="userFromLogin" alignment="CENTER" prefHeight="44.0" prefWidth="421.0">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ImageView fitHeight="171.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../loginpfp.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="logoutButton" buttonType="RAISED" onAction="#logoutSwitch" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="Logout" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
-                  </Label>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="About Page" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="Credits" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
                </children>
-            </HBox>
-            <JFXButton fx:id="logoutButton" buttonType="RAISED" onAction="#logoutSwitch" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: #123090;" text="Logout" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="77.0" prefWidth="258.0" style="-fx-background-color: #123090;" text="About Page" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="77.0" prefWidth="258.0" style="-fx-background-color: #123090;" text="Credits" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </JFXButton>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </VBox>
