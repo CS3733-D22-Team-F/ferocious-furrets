@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.FullLocationController">
+<AnchorPane prefHeight="720.0" prefWidth="800.0" style="-fx-background-color: #154487;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.FullLocationController">
    <children>
       <TableView fx:id="table" prefHeight="720.0" prefWidth="800.0">
          <columns>
@@ -19,6 +18,5 @@
             <TableColumn fx:id="shortName" prefWidth="101.5877685546875" text="shortName" />
          </columns>
       </TableView>
-      <JFXButton fx:id="cancel" layoutX="835.0" layoutY="630.0" onAction="#cancel" prefHeight="58.0" prefWidth="139.0" ripplerFill="RED" style="-fx-background-color: aliceblue;" text="Close Page" textFill="RED" />
    </children>
 </AnchorPane>
