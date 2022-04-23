@@ -30,7 +30,8 @@ public class MainController implements Initializable {
   @FXML StackPane stackHolder;
   @FXML StackPane mainPane;
   @FXML JFXDrawer menu;
-  @FXML VBox menuBar;
+  @FXML JFXDrawer title;
+  @FXML VBox titleBox;
   @FXML VBox homeMenu;
   @FXML VBox serviceMenu;
   @FXML JFXButton serviceButton;
@@ -56,6 +57,7 @@ public class MainController implements Initializable {
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
   @FXML JFXButton patientButton;
+  @FXML JFXButton titleButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -80,6 +82,10 @@ public class MainController implements Initializable {
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    // SceneManager.getInstance().getStage().getScene().getStylesheets().clear();
+    //    SceneManager.getInstance().getStage().getScene().getStylesheets().remove();
+    //    SceneManager.getInstance().getStage().getScene().getStylesheets().add();
+
     Thread shutDownHook =
         new Thread(
             () -> {
@@ -189,6 +195,9 @@ public class MainController implements Initializable {
   public void menuClose() throws InterruptedException {
     menu.close();
     menu.setPrefWidth(50);
+    title.close();
+    title.setPrefWidth(50);
+    titleBox.setPrefWidth(50);
     homeMenu.setPrefWidth(50);
     serviceMenu.setPrefWidth(50);
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
@@ -240,6 +249,9 @@ public class MainController implements Initializable {
   public void menuOpen() {
     menu.setMaxWidth(200);
     menu.open();
+    title.setMaxWidth(1270);
+    title.open();
+    titleButton.setText("Brigham And Women's Hospital");
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
     outButton.setText("Exit");
@@ -375,9 +387,22 @@ public class MainController implements Initializable {
     serviceMenu.setMaxWidth(200);
     homeMenu.setPrefWidth(200);
     serviceMenu.setPrefWidth(200);
+    onOpenTitle();
+  }
+
+  public void onOpenTitle() {
+    titleBox.setPrefWidth(1270);
+    titleBox.setPrefWidth(1270);
   }
 
   public void onClose() {
     menu.setMaxWidth(50);
+    onCloseTitle();
+  }
+
+  public void onCloseTitle() {
+    titleButton.setGraphic(MapIconModifier.getIcon("logo"));
+    titleButton.setText("");
+    title.setMaxWidth(50);
   }
 }

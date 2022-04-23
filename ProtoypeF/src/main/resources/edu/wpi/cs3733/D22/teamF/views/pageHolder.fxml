@@ -3,83 +3,74 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="mainPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.MainController">
+<StackPane fx:id="mainPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.MainController">
    <children>
-      <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
-         <children>
-            <VBox fx:id="titleBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+      <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0">
+         <left>
+            <StackPane fx:id="stackHolder" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1270.0" text="Brigham And Women's Hospital" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="48.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../BWHlogo-new.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-               </children>
-            </VBox>
-            <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" VBox.vgrow="NEVER">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <left>
-                  <StackPane fx:id="stackHolder" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" BorderPane.alignment="TOP_LEFT">
+                  <StackPane fx:id="pageHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="723.0" prefWidth="1220.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </StackPane>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <StackPane fx:id="pageHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="723.0" prefWidth="1220.0" StackPane.alignment="TOP_LEFT">
-                           <StackPane.margin>
-                              <Insets left="30.0" />
-                           </StackPane.margin>
-                        </StackPane>
-                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="660.0" prefWidth="198.0" resizeContent="true" StackPane.alignment="TOP_LEFT">
+                        <JFXDrawer fx:id="title" defaultDrawerSize="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="40.0" prefWidth="1270.0" resizeContent="true">
                            <children>
-                              <VBox fx:id="homeMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="titleBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+                                 <children>
+                                    <JFXButton fx:id="titleButton" alignment="CENTER" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" prefHeight="40.0" prefWidth="1270.0" text="Brigham and Women's Hospital" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </JFXDrawer>
+                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="620.0" prefWidth="198.0" resizeContent="true">
+                           <children>
+                              <VBox fx:id="homeMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
                                  <children>
                                     <VBox fx:id="v1" prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <JFXButton fx:id="mapViewButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMap" prefHeight="45.0" prefWidth="286.0" text="Map" textFill="WHITE">
+                                          <JFXButton fx:id="mapViewButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMap" prefHeight="40.0" prefWidth="286.0" text="Map" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="dashboardButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToDashboard" prefHeight="45.0" prefWidth="286.0" text="Dashboard" textFill="WHITE">
+                                          <JFXButton fx:id="dashboardButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToDashboard" prefHeight="40.0" prefWidth="286.0" text="Dashboard" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="serviceButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToServiceMenu" prefHeight="45.0" prefWidth="286.0" text="Service" textFill="WHITE">
+                                          <JFXButton fx:id="serviceButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToServiceMenu" prefHeight="40.0" prefWidth="286.0" text="Service" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="queueButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToQueue" prefHeight="45.0" prefWidth="286.0" text="Service Queue" textFill="WHITE">
+                                          <JFXButton fx:id="queueButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToQueue" prefHeight="40.0" prefWidth="286.0" text="Service Queue" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="employeeButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToEmployee" prefHeight="45.0" prefWidth="286.0" text="Employee" textFill="WHITE">
+                                          <JFXButton fx:id="employeeButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToEmployee" prefHeight="40.0" prefWidth="286.0" text="Employee" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="linksButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLinks" prefHeight="45.0" prefWidth="286.0" text="Links" textFill="WHITE">
+                                          <JFXButton fx:id="linksButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLinks" prefHeight="40.0" prefWidth="286.0" text="Links" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="landingButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLanding" prefHeight="45.0" prefWidth="286.0" text="Landing" textFill="WHITE">
+                                          <JFXButton fx:id="landingButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLanding" prefHeight="40.0" prefWidth="286.0" text="Landing" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
@@ -88,7 +79,7 @@
                                     </VBox>
                                     <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <JFXButton fx:id="settingsButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToSetting" prefHeight="45.0" prefWidth="239.0" text="Settings" textFill="WHITE">
+                                          <JFXButton fx:id="settingsButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToSetting" prefHeight="40.0" prefWidth="239.0" text="Settings" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
@@ -96,7 +87,7 @@
                                                 <Insets />
                                              </VBox.margin>
                                           </JFXButton>
-                                          <JFXButton fx:id="outButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#exit" prefHeight="45.0" prefWidth="201.0" text="Exit" textFill="WHITE">
+                                          <JFXButton fx:id="outButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#exit" prefHeight="40.0" prefWidth="201.0" text="Exit" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
@@ -105,71 +96,71 @@
                                     </VBox>
                                  </children>
                               </VBox>
-                              <VBox fx:id="serviceMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="serviceMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
                                  <children>
                                     <VBox fx:id="v5" prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <JFXButton fx:id="homeButton2" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToHomeMenu" prefHeight="45.0" prefWidth="215.0" text="Home" textFill="WHITE">
+                                          <JFXButton fx:id="homeButton2" alignment="TOP_LEFT" buttonType="RAISED" defaultButton="true" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToHomeMenu" prefHeight="40.0" prefWidth="215.0" text="Home" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="labButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLab" prefHeight="45.0" prefWidth="215.0" text="Lab" textFill="WHITE">
+                                          <JFXButton fx:id="labButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToLab" prefHeight="40.0" prefWidth="215.0" text="Lab" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="scanButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToScan" prefHeight="45.0" prefWidth="286.0" text="Scan" textFill="WHITE">
+                                          <JFXButton fx:id="scanButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToScan" prefHeight="40.0" prefWidth="286.0" text="Scan" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="equipmentButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToEquipment" prefHeight="45.0" prefWidth="239.0" text="Equipment" textFill="WHITE">
+                                          <JFXButton fx:id="equipmentButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToEquipment" prefHeight="40.0" prefWidth="239.0" text="Equipment" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="medicineButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMedicine" prefHeight="43.0" prefWidth="201.0" text="Medicine" textFill="WHITE">
+                                          <JFXButton fx:id="medicineButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMedicine" prefHeight="40.0" prefWidth="201.0" text="Medicine" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="mealButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMeal" prefHeight="43.0" prefWidth="201.0" text="Meals" textFill="WHITE">
+                                          <JFXButton fx:id="mealButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMeal" prefHeight="40.0" prefWidth="201.0" text="Meals" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="audioButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToAudio" prefHeight="43.0" prefWidth="201.0" text="Audio/Visual" textFill="WHITE">
+                                          <JFXButton fx:id="audioButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToAudio" prefHeight="40.0" prefWidth="201.0" text="Audio/Visual" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="giftButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToGift" prefHeight="43.0" prefWidth="201.0" text="Gifts" textFill="WHITE">
+                                          <JFXButton fx:id="giftButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToGift" prefHeight="40.0" prefWidth="201.0" text="Gifts" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="physicalButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToPhysical" prefHeight="43.0" prefWidth="201.0" text="Phy. Therapy" textFill="WHITE">
+                                          <JFXButton fx:id="physicalButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToPhysical" prefHeight="40.0" prefWidth="201.0" text="Phy. Therapy" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="securityButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToSecurity" prefHeight="43.0" prefWidth="201.0" text="Security" textFill="WHITE">
+                                          <JFXButton fx:id="securityButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToSecurity" prefHeight="40.0" prefWidth="201.0" text="Security" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="sanitationButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToFacilities" prefHeight="43.0" prefWidth="201.0" text="Sanitation" textFill="WHITE">
+                                          <JFXButton fx:id="sanitationButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToFacilities" prefHeight="40.0" prefWidth="201.0" text="Sanitation" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="maintenanceButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMaintenance" prefHeight="43.0" prefWidth="201.0" text="Maintenance" textFill="WHITE">
+                                          <JFXButton fx:id="maintenanceButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToMaintenance" prefHeight="40.0" prefWidth="201.0" text="Maintenance" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="43.0" prefWidth="201.0" text="Pt. Transport" textFill="WHITE">
+                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="40.0" prefWidth="201.0" text="Pt. Transport" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
@@ -181,10 +172,10 @@
                            </children>
                         </JFXDrawer>
                      </children>
-                  </StackPane>
-               </left>
-            </BorderPane>
-         </children>
-      </VBox>
+                  </VBox>
+               </children>
+            </StackPane>
+         </left>
+      </BorderPane>
    </children>
 </StackPane>

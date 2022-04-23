@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,6 +27,11 @@ public class SettingController implements Initializable {
   @FXML private ImageView furretImage;
   @FXML private Label userFromLogin;
   @FXML private JFXButton logoutButton;
+
+  @FXML VBox pickerBox;
+  JFXColorPicker textPicker;
+  JFXColorPicker backPicker;
+  JFXColorPicker titlePicker;
 
   @FXML
   public void logoutSwitch() {
@@ -58,19 +65,6 @@ public class SettingController implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
-
-    //    SceneManager.getInstance().setScene("views/aboutPage.fxml");
-    //    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/aboutPage.fxml"));
-    //    Scene scene = null;
-    //    try {
-    //      scene = new Scene(fxmlLoader.load());
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    }
-    //    Stage stage = SceneManager.getInstance().getStage();
-    //    SceneManager.getInstance().setStage(stage);
-    //    stage.setScene(scene);
-    //    stage.show();
   }
 
   @FXML
@@ -89,50 +83,16 @@ public class SettingController implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
-
-    //    SceneManager.getInstance().setScene("views/aboutPage.fxml");
-    //    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/aboutPage.fxml"));
-    //    Scene scene = null;
-    //    try {
-    //      scene = new Scene(fxmlLoader.load());
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    }
-    //    Stage stage = SceneManager.getInstance().getStage();
-    //    SceneManager.getInstance().setStage(stage);
-    //    stage.setScene(scene);
-    //    stage.show();
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    userFromLogin.setText(UserType.getUserType());
-    //    themeSetLabel.setVisible(false);
-    //    themeSetCombo.setVisible(false);
-    //    furretImage.setPickOnBounds(true);
-    //    furretImage.setOnMouseClicked(
-    //        new EventHandler<MouseEvent>() {
-    //          @Override
-    //          public void handle(MouseEvent event) {
-    //            Parent root = null;
-    //            try {
-    //              root =
-    //                  FXMLLoader.load(
-    //                      Objects.requireNonNull(Fapp.class.getResource("views/aboutPage.fxml")));
-    //            } catch (IOException e) {
-    //              e.printStackTrace();
-    //            }
-    //            Stage popupwindow = new Stage();
-    //            popupwindow.initModality(Modality.APPLICATION_MODAL);
-    //            Scene scene1 = new Scene(root);
-    //            popupwindow.setScene(scene1);
-    //            popupwindow.initModality(Modality.APPLICATION_MODAL);
-    //            // popupwindow.showAndWait();
-    //          }
-    //        });
+    textPicker = new JFXColorPicker();
+    backPicker = new JFXColorPicker();
+    titlePicker = new JFXColorPicker();
+    pickerBox.getChildren().add(textPicker);
+    pickerBox.getChildren().add(backPicker);
+    pickerBox.getChildren().add(titlePicker);
+    userFromLogin.setText("Current User: " + UserType.getUserType());
   }
-
-  //  public void myFunction(String text) {
-  //    userFromLogin.setText(text);
-  //  }
 }
