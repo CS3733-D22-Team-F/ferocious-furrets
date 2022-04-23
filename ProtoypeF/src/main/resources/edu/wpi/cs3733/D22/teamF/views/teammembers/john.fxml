@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.teammemberControllers.johnController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #123090;">
+            <children>
+                <Label text="John Petrarca" textFill="WHITE">
+                    <font>
+                        <Font name="SansSerif Regular" size="24.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                </Label>
+                <ImageView fitHeight="184.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Cropped-Edits/John-modified%20(1).png" />
+                    </image>
+                </ImageView>
+                <Label text="Quote: &quot;Success usually comes to those who are too busy looking for it.&quot; - Henry David Thoreau" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="SansSerif Regular" size="22.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXNodesList?>
 <?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
@@ -14,6 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -45,181 +47,272 @@
                   </ScrollPane>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="816.0">
                      <children>
-                        <JFXNodesList fx:id="menuNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0">
+                        <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
-                              <JFXButton fx:id="openMenu" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: #123090;" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="addButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpAdd" prefHeight="20.0" style="-fx-background-color: #123090;" text="ADD" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="saveButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpSave" prefHeight="20.0" style="-fx-background-color: #123090;" text="SAVE" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="loadButton" maxHeight="20.0" minHeight="20.0" onAction="#popUpReset" prefHeight="20.0" style="-fx-background-color: #123090;" text="LOAD" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="tableButton" maxHeight="20.0" minHeight="20.0" onAction="#openFullTable" prefHeight="20.0" style="-fx-background-color: #123090;" text="TABLE" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="historyButton" maxHeight="20.0" minHeight="20.0" onAction="#openHistory" prefHeight="20.0" style="-fx-background-color: #123090;" text="HISTORY" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
+                              <JFXNodesList fx:id="menuNodeList" maxHeight="31.0" minHeight="30.0" prefHeight="31.0" prefWidth="80.0">
+                                 <children>
+                                    <JFXButton fx:id="openMenu" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #123090;" text="Menu" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="addButton" maxHeight="30.0" minHeight="30.0" onAction="#popUpAdd" prefHeight="30.0" style="-fx-background-color: #123090;" text="ADD" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="saveButton" maxHeight="30.0" minHeight="30.0" onAction="#popUpSave" prefHeight="30.0" style="-fx-background-color: #123090;" text="SAVE" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="loadButton" maxHeight="30.0" minHeight="30.0" onAction="#popUpReset" prefHeight="30.0" style="-fx-background-color: #123090;" text="LOAD" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="tableButton" maxHeight="30.0" minHeight="30.0" onAction="#openFullTable" prefHeight="30.0" style="-fx-background-color: #123090;" text="TABLE" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="historyButton" maxHeight="30.0" minHeight="30.0" onAction="#openHistory" prefHeight="30.0" style="-fx-background-color: #123090;" text="HISTORY" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </JFXNodesList>
                            </children>
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets right="15.0" />
                            </HBox.margin>
-                        </JFXNodesList>
-                        <JFXNodesList fx:id="floorNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="50.0">
+                        </VBox>
+                        <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
-                              <JFXButton fx:id="openFloorMenu" maxHeight="20.0" maxWidth="50.0" minHeight="20.0" minWidth="50.0" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="Change" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="changeToF5" maxHeight="20.0" minHeight="20.0" onAction="#changeToF5" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F5" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToF4" maxHeight="20.0" minHeight="20.0" onAction="#changeToF4" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F4" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToF3" maxHeight="20.0" minHeight="20.0" onAction="#changeToF3" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F3" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToF2" maxHeight="20.0" minHeight="20.0" onAction="#changeToF2" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F2" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToF1" maxHeight="20.0" minHeight="20.0" onAction="#changeToF1" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F1" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToL1" maxHeight="20.0" minHeight="20.0" onAction="#changeToL1" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L1" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
-                              <JFXButton fx:id="changeToL2" maxHeight="20.0" minHeight="20.0" onAction="#changeToL2" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L2" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font></JFXButton>
+                              <JFXNodesList fx:id="floorNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0">
+                                 <children>
+                                    <JFXButton fx:id="openFloorMenu" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #123090;" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToF5" maxHeight="30.0" minHeight="30.0" onAction="#changeToF5" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F5" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToF4" maxHeight="30.0" minHeight="30.0" onAction="#changeToF4" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F4" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToF3" maxHeight="30.0" minHeight="30.0" onAction="#changeToF3" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F3" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToF2" maxHeight="30.0" minHeight="30.0" onAction="#changeToF2" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F2" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToF1" maxHeight="30.0" minHeight="30.0" onAction="#changeToF1" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="F1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToL1" maxHeight="30.0" minHeight="30.0" onAction="#changeToL1" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="changeToL2" maxHeight="30.0" minHeight="30.0" onAction="#changeToL2" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #123090;" text="L2" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </JFXNodesList>
                            </children>
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets right="15.0" />
                            </HBox.margin>
-                        </JFXNodesList>
-                        <JFXButton fx:id="showIconButton" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" onAction="#showIcon" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="ALL ICON" textFill="WHITE">
-                           <font>
-                              <Font size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="30.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <JFXNodesList fx:id="alertNodeList" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="50.0">
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alert: 0" textFill="WHITE">
+                              <JFXButton fx:id="showIconButton" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" onAction="#showIcon" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="All Icon" textFill="WHITE">
                                  <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButton1" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F1: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButton2" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F2: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButton3" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F3: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButton4" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F4:" textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButton5" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F5: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButtonL1" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="L1: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="alertButtonL2" buttonType="RAISED" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="L2: " textFill="WHITE">
-                                 <font>
-                                    <Font size="12.0" />
+                                    <Font name="Serif Regular" size="12.0" />
                                  </font>
                               </JFXButton>
                            </children>
-                        </JFXNodesList>
-                        <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="20.0" prefWidth="150.0" />
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton fx:id="helpButton" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Help" textFill="WHITE">
+                                 <font>
+                                    <Font name="Serif Regular" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXNodesList fx:id="alertNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0">
+                                 <children>
+                                    <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alert: 0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButton1" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F1: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButton2" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F2: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButton3" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F3: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButton4" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F4:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButton5" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="F5: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButtonL1" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="L1: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="alertButtonL2" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="L2: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </JFXNodesList>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="30.0" prefWidth="150.0" />
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
             </VBox>
             <VBox prefHeight="720.0" prefWidth="410.0">
                <children>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="281.0" prefWidth="358.0" style="-fx-background-color: white;">
+                  <StackPane>
                      <children>
-                        <Label layoutX="102.0" layoutY="2.0" text="Patient" />
-                        <Label layoutX="105.0" layoutY="16.0" text="Room" />
-                        <Label layoutX="100.0" layoutY="39.0" text="Storage" />
-                        <Label layoutX="108.0" layoutY="62.0" text="Dirty" />
-                        <Label layoutX="92.0" layoutY="77.0" text="Equipment" />
-                        <Label layoutX="99.0" layoutY="99.0" text="Hallway" />
-                        <Label layoutX="99.0" layoutY="129.0" text="Elevator" />
-                        <Label layoutX="42.0" layoutY="159.0" text="Restroom" />
-                        <Label layoutX="197.0" layoutY="9.0" text="Staircase" />
-                        <Label layoutX="188.0" layoutY="38.0" text="Department" />
-                        <Label layoutX="208.0" layoutY="69.0" text="Labs" />
-                        <Label layoutX="189.0" layoutY="98.0" text="Information" />
-                        <Label layoutX="189.0" layoutY="129.0" text="Conference" />
-                        <Label layoutX="133.0" layoutY="159.0" text="Exit/Entrance" />
-                        <Label layoutX="305.0" layoutY="8.0" text="Retail" />
-                        <Label layoutX="298.0" layoutY="38.0" text="Services" />
-                        <Label layoutX="301.0" layoutY="62.0" text="Patient" />
-                        <Label layoutX="310.0" layoutY="77.0" text="Bed" />
-                        <Label layoutX="304.0" layoutY="99.0" text="X-Ray" />
-                        <Label layoutX="299.0" layoutY="120.0" text="Infusion" />
-                        <Label layoutX="304.0" layoutY="137.0" text="Pump" />
-                        <Label layoutX="246.0" layoutY="159.0" text="Recliner" />
-                        <JFXButton fx:id="storageButton" layoutX="58.0" layoutY="33.0" onAction="#showStorage" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="dirtyButton" layoutX="58.0" layoutY="63.0" onAction="#showDirty" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="patientRoomButton" layoutX="58.0" layoutY="3.0" onAction="#showPatient" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="hallwayButton" layoutX="58.0" layoutY="93.0" onAction="#showHallway" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="elevButton" layoutX="58.0" layoutY="123.0" onAction="#showElev" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="restroomButton" layoutX="5.0" layoutY="153.0" onAction="#showRestroom" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="stairButton" layoutX="156.0" layoutY="3.0" onAction="#showStair" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="departmentButton" layoutX="156.0" layoutY="33.0" onAction="#showDepartment" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="labButton" layoutX="156.0" layoutY="63.0" onAction="#showLab" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="informationButton" layoutX="156.0" layoutY="93.0" onAction="#showInformation" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="conferenceButton" layoutX="156.0" layoutY="123.0" onAction="#showConference" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="exitButton" layoutX="103.0" layoutY="153.0" onAction="#showExit" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="retailButton" layoutX="269.0" layoutY="3.0" onAction="#showRetail" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="serviceButton" layoutX="269.0" layoutY="33.0" onAction="#showService" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="bedButton" layoutX="269.0" layoutY="63.0" onAction="#showBad" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton layoutX="269.0" layoutY="93.0" onAction="#showXray" prefHeight="25.0" prefWidth="25.0" text=" " fx:id="xrayButton" />
-                        <JFXButton fx:id="pumpButton" layoutX="269.0" layoutY="123.0" onAction="#showPump" prefHeight="25.0" prefWidth="25.0" text=" " />
-                        <JFXButton fx:id="reclinerButton" layoutX="216.0" layoutY="153.0" onAction="#showRecliner" prefHeight="25.0" prefWidth="25.0" text=" " />
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <VBox prefHeight="162.0" prefWidth="30.0">
+                                 <children>
+                                    <JFXButton fx:id="storageButton" onAction="#showStorage" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="dirtyButton" onAction="#showDirty" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="patientRoomButton" onAction="#showPatient" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="hallwayButton" onAction="#showHallway" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="elevButton" onAction="#showElev" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="restroomButton" onAction="#showRestroom" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="156.0" prefWidth="135.0" spacing="12.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="75.0" text="Patient Room&#10;" />
+                                    <Label alignment="CENTER" text="Storage" />
+                                    <Label alignment="CENTER" text="Dirty Equipment&#10;" />
+                                    <Label alignment="CENTER" text="Hallway" />
+                                    <Label alignment="CENTER" text="Elevator" />
+                                    <Label alignment="CENTER" text="Restroom" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="162.0" prefWidth="30.0">
+                                 <children>
+                                    <JFXButton fx:id="stairButton" onAction="#showStair" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="departmentButton" onAction="#showDepartment" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="labButton" onAction="#showLab" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="informationButton" onAction="#showInformation" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="conferenceButton" onAction="#showConference" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="exitButton" onAction="#showExit" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="156.0" prefWidth="110.0" spacing="12.0">
+                                 <children>
+                                    <Label alignment="CENTER" text="Staircase" />
+                                    <Label alignment="CENTER" text="Department" />
+                                    <Label alignment="CENTER" text="Labs" />
+                                    <Label alignment="CENTER" text="Information" />
+                                    <Label alignment="CENTER" text="Conference" />
+                                    <Label alignment="CENTER" text="Exit/Entrance" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="30.0">
+                                 <children>
+                                    <JFXButton fx:id="retailButton" onAction="#showRetail" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="serviceButton" onAction="#showService" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="bedButton" onAction="#showBad" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton onAction="#showXray" prefHeight="25.0" prefWidth="25.0" text=" " fx:id="xrayButton" />
+                                    <JFXButton fx:id="pumpButton" onAction="#showPump" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                    <JFXButton fx:id="reclinerButton" onAction="#showRecliner" prefHeight="25.0" prefWidth="25.0" text=" " />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="156.0" prefWidth="122.0" spacing="12.0">
+                                 <children>
+                                    <Label alignment="CENTER" text="Retail" />
+                                    <Label alignment="CENTER" text="Services" />
+                                    <Label alignment="CENTER" text="Patient Bed" />
+                                    <Label alignment="CENTER" text="X-Ray" />
+                                    <Label alignment="CENTER" prefHeight="19.0" prefWidth="81.0" text="Infusion Pump" />
+                                    <Label alignment="CENTER" text="Recliner" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="infoBox" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label text="Locations:">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXTextArea fx:id="locationField" style="-fx-border-color: #123090;">
+                                 <font>
+                                    <Font name="Serif Regular" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                 </VBox.margin>
+                              </JFXTextArea>
+                           </children>
+                        </VBox>
                      </children>
-                  </AnchorPane>
+                  </StackPane>
                   <TableView fx:id="table" prefHeight="630.0" prefWidth="385.0">
                      <columns>
                         <TableColumn fx:id="Building" prefWidth="63.9998779296875" text="Building" />

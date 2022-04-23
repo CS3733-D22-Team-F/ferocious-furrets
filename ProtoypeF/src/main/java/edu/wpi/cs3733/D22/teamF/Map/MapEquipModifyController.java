@@ -90,11 +90,20 @@ public class MapEquipModifyController implements Initializable {
       statusLabel.setText("unavailable");
     }
     for (Location lo : locations) {
-      x.add(lo.getXcoord());
-      y.add(lo.getYcoord());
-      floors.add(lo.getFloor());
-      node.add(lo.getNodeID());
-      room.add(lo.getLongName());
+      if (lo.getNodeType().equals("PATI")
+          || lo.getNodeType().equals("STOR")
+          || lo.getNodeType().equals("DIRT")
+          || lo.getNodeType().equals("HALL")
+          || lo.getNodeType().equals("DEPT")
+          || lo.getNodeType().equals("LABS")
+          || lo.getNodeType().equals("SERV")
+          || lo.getNodeType().equals("ELEV")) {
+        x.add(lo.getXcoord());
+        y.add(lo.getYcoord());
+        floors.add(lo.getFloor());
+        node.add(lo.getNodeID());
+        room.add(lo.getLongName());
+      }
     }
     nodeBox.getItems().addAll(room);
     nodeBox.setValue(room.get(0));

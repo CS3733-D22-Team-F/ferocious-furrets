@@ -32,21 +32,13 @@ public class MainController implements Initializable {
   @FXML JFXDrawer menu;
   @FXML VBox menuBar;
   @FXML VBox homeMenu;
-  @FXML VBox mapMenu;
   @FXML VBox serviceMenu;
-  @FXML JFXButton mapButton;
   @FXML JFXButton serviceButton;
   @FXML JFXButton linksButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
-  @FXML JFXButton settingsButton1;
-  @FXML JFXButton outButton1;
-  @FXML JFXButton settingsButton2;
-  @FXML JFXButton outButton2;
-
   @FXML JFXButton mapViewButton;
   @FXML JFXButton dashboardButton;
-  @FXML JFXButton homeButton1;
 
   @FXML JFXButton labButton;
   @FXML JFXButton scanButton;
@@ -63,13 +55,11 @@ public class MainController implements Initializable {
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
+  @FXML JFXButton patientButton;
 
   @FXML VBox v1;
   @FXML VBox v2;
-  @FXML VBox v3;
-  @FXML VBox v4;
   @FXML VBox v5;
-  @FXML VBox v6;
 
   ChangeListener<Boolean> maxScreenCallback;
   ObservableList<Transform> baseTransformsScene;
@@ -100,7 +90,6 @@ public class MainController implements Initializable {
               }
             });
     Runtime.getRuntime().addShutdownHook(shutDownHook);
-    mapMenu.setVisible(false);
     serviceMenu.setVisible(false);
     baseTransformsScene = pageHolder.getTransforms();
     baseTransformsMenu = stackHolder.getTransforms();
@@ -161,7 +150,6 @@ public class MainController implements Initializable {
     //    menu.getTransforms().setAll(baseTransformsScene);
     stackHolder.getTransforms().setAll(baseTransformsMenu);
     homeMenu.getTransforms().setAll(baseTransformsMenu);
-    mapMenu.getTransforms().setAll(baseTransformsMenu);
     serviceMenu.getTransforms().setAll(baseTransformsMenu);
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     if (newValue) {
@@ -202,30 +190,17 @@ public class MainController implements Initializable {
     menu.close();
     menu.setPrefWidth(50);
     homeMenu.setPrefWidth(50);
-    mapMenu.setPrefWidth(50);
     serviceMenu.setPrefWidth(50);
-    mapButton.setGraphic(MapIconModifier.getIcon("infoMenu"));
-    mapButton.setText("");
     serviceButton.setGraphic(MapIconModifier.getIcon("serviceMenu"));
     serviceButton.setText("");
     settingsButton.setGraphic(MapIconModifier.getIcon("settingsMenu"));
     settingsButton.setText("");
     outButton.setGraphic(MapIconModifier.getIcon("outMenu"));
     outButton.setText("");
-    settingsButton1.setGraphic(MapIconModifier.getIcon("settingsMenu"));
-    settingsButton1.setText("");
-    outButton1.setGraphic(MapIconModifier.getIcon("outMenu"));
-    outButton1.setText("");
-    settingsButton2.setGraphic(MapIconModifier.getIcon("settingsMenu"));
-    settingsButton2.setText("");
-    outButton2.setGraphic(MapIconModifier.getIcon("outMenu"));
-    outButton2.setText("");
     mapViewButton.setGraphic(MapIconModifier.getIcon("mapMenu"));
     mapViewButton.setText("");
     dashboardButton.setGraphic(MapIconModifier.getIcon("dashboardMenu"));
     dashboardButton.setText("");
-    homeButton1.setGraphic(MapIconModifier.getIcon("backMenu"));
-    homeButton1.setText("");
     labButton.setGraphic(MapIconModifier.getIcon("labMenu"));
     labButton.setText("");
     scanButton.setGraphic(MapIconModifier.getIcon("scanMenu"));
@@ -258,22 +233,18 @@ public class MainController implements Initializable {
     linksButton.setText("");
     landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
     landingButton.setText("");
+    patientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
+    patientButton.setText("");
   }
 
   public void menuOpen() {
-    menu.open();
     menu.setMaxWidth(200);
-    mapButton.setText("Info");
+    menu.open();
     serviceButton.setText("Service");
     settingsButton.setText("Settings");
     outButton.setText("Exit");
-    settingsButton1.setText("Settings");
-    outButton1.setText("Exit");
-    settingsButton2.setText("Settings");
-    outButton2.setText("Exit");
     mapViewButton.setText("Map View");
     dashboardButton.setText("Dashboard");
-    homeButton1.setText("Home");
     labButton.setText("Lab");
     scanButton.setText("Scan");
     equipmentButton.setText("Equipment");
@@ -288,22 +259,15 @@ public class MainController implements Initializable {
     maintenanceButton.setText("Maintenance");
     queueButton.setText("Queue");
     employeeButton.setText("Employee");
-    linksButton.setText("Helpful Links");
+    linksButton.setText("Links");
     landingButton.setText("Landing");
+    patientButton.setText("Pt. Transport");
   }
 
   public void changeToHomeMenu() throws IOException {
     menu.setSidePane(homeMenu);
     homeMenu.setVisible(true);
     serviceMenu.setVisible(false);
-    mapMenu.setVisible(false);
-  }
-
-  public void changeToMapMenu() throws IOException {
-    menu.setSidePane(mapMenu);
-    homeMenu.setVisible(false);
-    serviceMenu.setVisible(false);
-    mapMenu.setVisible(true);
   }
 
   public void changeToMap() throws IOException {
@@ -314,7 +278,6 @@ public class MainController implements Initializable {
     menu.setSidePane(serviceMenu);
     homeMenu.setVisible(false);
     serviceMenu.setVisible(true);
-    mapMenu.setVisible(false);
   }
 
   public void changeToLinks() throws IOException {
@@ -409,10 +372,8 @@ public class MainController implements Initializable {
 
   public void onOpen() {
     homeMenu.setMaxWidth(200);
-    mapMenu.setMaxWidth(200);
     serviceMenu.setMaxWidth(200);
     homeMenu.setPrefWidth(200);
-    mapMenu.setPrefWidth(200);
     serviceMenu.setPrefWidth(200);
   }
 
