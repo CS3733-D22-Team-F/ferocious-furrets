@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Functionality to save report as a pdf">
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/ReportSaveController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/reportSavePage.fxml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Wrote functionality to create Microsoft Word report for a service request">
+      <change afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/reports/PDFConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/RequestListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/RequestListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/test.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
     </list>
     <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +115,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FoodPriceObserver" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -128,9 +128,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="D:\Documents\IntelliJ\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\csv" />
       <recent name="D:\Documents\IntelliJ\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
+      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
@@ -320,7 +320,7 @@
       <workItem from="1650421939175" duration="2873000" />
       <workItem from="1650445658005" duration="1244000" />
       <workItem from="1650635026318" duration="11000" />
-      <workItem from="1650638529247" duration="3926000" />
+      <workItem from="1650638529247" duration="1092000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -588,14 +588,7 @@
       <option name="project" value="LOCAL" />
       <updated>1650589374195</updated>
     </task>
-    <task id="LOCAL-00039" summary="Functionality to save report as a pdf">
-      <created>1650639869153</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1650639869153</updated>
-    </task>
-    <option name="localTasksCounter" value="40" />
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,6 +618,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed map tracker bug with floor numbers" />
     <MESSAGE value="Updated service request csvs" />
     <MESSAGE value="Updated med equip csv" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
@@ -649,8 +643,7 @@
     <MESSAGE value="Functionality to create barebone service request report by selecting a request on the request list table and clicking &quot;Generate Report&quot;" />
     <MESSAGE value="Added watermark to report and FileChooser system for saving reports" />
     <MESSAGE value="Wrote functionality to create Microsoft Word report for a service request" />
-    <MESSAGE value="Functionality to save report as a pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="Functionality to save report as a pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrote functionality to create Microsoft Word report for a service request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -326,11 +326,12 @@ public class RequestListController extends PageController implements Initializab
 
   public void generateReport() {
 
+    // TODO Format Word template
     FileChooser fChoose = new FileChooser();
     fChoose.setTitle("Save to:");
     Stage stage = (Stage) tablePane.getScene().getWindow();
     File file = fChoose.showSaveDialog(stage);
-    String filepath = file.getPath();
+    String filepath = file.getPath() + ".docx";
     TreeItem<RequestTree> req = treeTableView.getSelectionModel().getSelectedItem();
     if (req != null) {
       RequestTree request = req.getValue();
