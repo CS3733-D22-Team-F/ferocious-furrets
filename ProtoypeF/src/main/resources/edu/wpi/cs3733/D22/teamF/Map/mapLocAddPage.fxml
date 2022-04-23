@@ -15,18 +15,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="500.0" minWidth="886.0" prefHeight="500.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapLocModifyController">
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="500.0" minWidth="886.0" prefHeight="500.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapLocAddController">
    <children>
       <HBox prefHeight="500.0" prefWidth="923.0">
          <children>
             <VBox prefHeight="508.0" prefWidth="260.0" style="-fx-background-color: #123090;">
                <children>
-                  <Label alignment="CENTER" prefHeight="74.0" prefWidth="260.0" style="-fx-background-color: #4169E1;" text="Modify Location" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="74.0" prefWidth="260.0" style="-fx-background-color: #4169E1;" text="Create Location" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="32.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="35.0" prefWidth="156.0" text="Current: " textFill="WHITE">
+                  <Label prefHeight="35.0" prefWidth="156.0" text="Type:" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -37,18 +37,10 @@
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin>
+                  <JFXComboBox fx:id="nodeBox" focusColor="#282828" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <padding>
                         <Insets left="5.0" right="5.0" />
                      </padding>
-                  </Label>
-                  <JFXComboBox fx:id="nodeBox" focusColor="#282828" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: white;" unFocusColor="WHITE">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" />
                      </VBox.margin>
@@ -68,6 +60,9 @@
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" />
                      </VBox.margin>
@@ -90,10 +85,6 @@
                   <HBox prefHeight="49.0" prefWidth="200.0">
                      <children>
                         <JFXButton fx:id="cancel" buttonType="RAISED" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font></JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font></JFXButton>

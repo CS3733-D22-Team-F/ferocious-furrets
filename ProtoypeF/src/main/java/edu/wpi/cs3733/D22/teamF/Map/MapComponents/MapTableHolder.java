@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -14,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /** object for a holder for the map tables */
 public class MapTableHolder {
@@ -69,11 +71,12 @@ public class MapTableHolder {
    * @param iconPane
    * @throws SQLException
    */
-  public static void loadMap(TableView<Location> table, AnchorPane iconPane)
+  public static void loadMap(
+      TableView<Location> table, AnchorPane iconPane, VBox infoBox, JFXTextArea locationField)
       throws SQLException, IOException {
     wipeMap();
     loadTable(table);
-    displayMap(table, iconPane);
+    displayMap(table, iconPane, infoBox, locationField);
   }
 
   /**
@@ -105,7 +108,8 @@ public class MapTableHolder {
    * @param iconPane
    * @throws SQLException
    */
-  public static void displayMap(TableView<Location> table, AnchorPane iconPane)
+  public static void displayMap(
+      TableView<Location> table, AnchorPane iconPane, VBox infoBox, JFXTextArea locationField)
       throws SQLException, IOException {
     ArrayList<Equipment> eList = DatabaseManager.getInstance().getMedEquipDAO().getAllEquipment();
     ArrayList<Location> nLocations = null;
@@ -121,7 +125,7 @@ public class MapTableHolder {
     MapIconModifier.locationIconList.clear();
     for (Location lo : nLocations) {
       try {
-        MapIconModifier.addIcon(table, iconPane, lo);
+        MapIconModifier.addIcon(table, iconPane, lo, infoBox, locationField);
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       }
@@ -608,5 +612,31 @@ public class MapTableHolder {
     }
     patReqs.close();
     return pats;
+  }
+
+  public static ArrayList<String> getAllLocOnNID(Location existLocation)
+      throws SQLException, IOException {
+    ArrayList<Equipment> eList = DatabaseManager.getInstance().getMedEquipDAO().getAllEquipment();
+    ArrayList<Location> eLocations = MapTableHolder.equipToLocation(eList);
+    ArrayList<Location> oldLocs =
+        DatabaseManager.getInstance().getLocationDAO().getAllLocationsFromDB();
+    oldLocs.addAll(eLocations);
+    ArrayList<Location> rList = new ArrayList<>(getAllReq());
+    oldLocs.addAll(rList);
+    ArrayList<String> output = new ArrayList<>();
+    for (Location lo : oldLocs) {
+      if (lo.getNodeID().equals(existLocation.getNodeID())) {
+        String temp;
+        if (MapIconModifier.getLocType(lo).equals("location")) {
+          temp = lo.getLongName();
+        } else if (MapIconModifier.getLocType(lo).equals("service")) {
+          temp = lo.getNodeType() + " - " + lo.getLongName();
+        } else {
+          temp = lo.getLongName();
+        }
+        output.add(temp);
+      }
+    }
+    return output;
   }
 }

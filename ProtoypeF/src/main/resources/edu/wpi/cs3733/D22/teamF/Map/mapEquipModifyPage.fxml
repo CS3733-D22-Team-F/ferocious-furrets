@@ -4,64 +4,132 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="500.0" minWidth="1000.0" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapEquipModifyController">
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="500.0" minWidth="887.0" prefHeight="500.0" prefWidth="888.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapEquipModifyController">
    <children>
-      <AnchorPane fx:id="iconPane" prefHeight="500.0" prefWidth="700.0">
+      <HBox prefHeight="500.0" prefWidth="887.0">
          <children>
-            <ImageView fx:id="mapHolder" fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </AnchorPane>
-      <VBox layoutX="725.0" layoutY="-3.0" prefHeight="509.0" prefWidth="260.0">
-         <children>
-            <Label prefHeight="35.0" prefWidth="156.0" text="Current: ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="156.0" text="Equipment:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <JFXComboBox fx:id="nodeBox" onAction="#onRoomChange" prefHeight="26.0" prefWidth="289.0" />
-            <Label prefHeight="35.0" prefWidth="156.0" text="Status:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="statusLabel" prefHeight="23.0" prefWidth="392.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <HBox prefHeight="39.0" prefWidth="260.0">
+            <VBox prefHeight="500.0" prefWidth="260.0" style="-fx-background-color: #123090;">
                <children>
-                  <JFXButton fx:id="cleanButton" disable="true" onAction="#toClean" prefHeight="46.0" prefWidth="130.0" text="Mark Clean" underline="true" />
-                  <JFXButton fx:id="dirtyButton" disable="true" onAction="#toDirty" prefHeight="64.0" prefWidth="130.0" text="Mark Dirty" underline="true" />
+                  <Label alignment="CENTER" prefHeight="74.0" prefWidth="260.0" style="-fx-background-color: #4169E1;" text="Modify Equipment" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="156.0" text="Current: " textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="156.0" text="Equipment:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="nodeBox" focusColor="#282828" onAction="#onRoomChange" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: white;" unFocusColor="WHITE">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <Label prefHeight="35.0" prefWidth="156.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="statusLabel" prefHeight="23.0" prefWidth="392.0" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="39.0" prefWidth="260.0">
+                     <children>
+                        <JFXButton fx:id="cleanButton" disable="true" onAction="#toClean" prefHeight="46.0" prefWidth="262.0" text="Mark Clean" textFill="WHITE" underline="true">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="39.0" prefWidth="260.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <children>
+                        <JFXButton fx:id="dirtyButton" disable="true" onAction="#toDirty" prefHeight="45.0" prefWidth="253.0" text="Mark Dirty" textFill="WHITE" underline="true">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="39.0" prefWidth="260.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <children>
+                        <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font></JFXButton>
+                        <JFXButton onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font></JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="39.0" prefWidth="260.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <children>
+                        <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font></JFXButton>
+                        <JFXButton onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font></JFXButton>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="122.0" ripplerFill="RED" text="Cancel" />
-            <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Submit" />
-            <JFXButton onAction="#delete" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Delete" />
-            <JFXButton onAction="#reset" prefHeight="49.0" prefWidth="122.0" ripplerFill="#182c9e" text="Reset" />
+            </VBox>
+            <AnchorPane fx:id="iconPane" prefHeight="500.0" prefWidth="627.0">
+               <children>
+                  <ImageView fx:id="mapHolder" fitHeight="500.0" fitWidth="685.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@FloorMap/Floor1.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>
