@@ -696,6 +696,13 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
                 infoBox.setVisible(true);
                 try {
                   for (String s : MapTableHolder.getAllLocOnNID(location)) {
@@ -782,6 +789,13 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
                 newButton.setCursor(Cursor.HAND);
                 infoBox.setVisible(true);
                 try {
