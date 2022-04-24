@@ -85,7 +85,7 @@ public class MainController implements Initializable {
         new Thread(
             () -> {
               try {
-                exit();
+                DatabaseManager.getInstance().backUpDatabaseToCSV();
               } catch (SQLException | IOException e) {
                 e.printStackTrace();
               }
