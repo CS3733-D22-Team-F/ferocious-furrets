@@ -69,15 +69,6 @@ public class ExternalPatientController extends PageController
    */
   public void initialize(URL location, ResourceBundle resources) {
 
-    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2));
-    topHBox.maxWidthProperty().bind(rectangle1.widthProperty());
-    middleHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(400));
-    middleHBox.maxWidthProperty().bind(rectangle1.widthProperty());
-    bottomHBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
-    bottomHBox.maxWidthProperty().bind(rectangle1.widthProperty());
-
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> methodType = new ArrayList<>();
 

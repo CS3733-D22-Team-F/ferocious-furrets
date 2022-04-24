@@ -44,21 +44,21 @@
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
                   <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
                </children>
             </HBox>
             <HBox fx:id="middleHBox" layoutX="17.0" layoutY="143.0" prefHeight="410.0" prefWidth="588.0">
                <children>
-                  <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0" spacing="30.0">
+                  <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="130.0" text="Location: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="130.0" text="Location: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -66,7 +66,7 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -74,20 +74,12 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="132.0" text="Category: " textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="240.0" text="Accessibility Device: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="132.0" text="Category: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -95,7 +87,15 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="110.0" text="Status: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="240.0" text="Accessibility Device: " textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="110.0" text="Status: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -105,7 +105,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox prefHeight="387.0" prefWidth="288.0" spacing="30.0">
+                  <VBox prefHeight="387.0" prefWidth="288.0" spacing="10.0">
                      <children>
                         <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="287.0" promptText="Location">
                            <VBox.margin>
