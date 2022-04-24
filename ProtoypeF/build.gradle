@@ -6,6 +6,7 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc6"
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
+
 }
 mainClassName = 'edu.wpi.cs3733.D22.teamF.Main'
 
@@ -44,6 +45,7 @@ dependencies {
 
             'org.slf4j:slf4j-api:1.7.36',
             'org.slf4j:slf4j-simple:1.7.36',
+            'io.github.palexdev:materialfx:11.13.5'
     )
 
     implementation name : 'edu.wpi.cs3733.D22.teamF'

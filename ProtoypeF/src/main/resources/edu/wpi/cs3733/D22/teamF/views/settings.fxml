@@ -31,14 +31,14 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXComboBox prefHeight="40.0" prefWidth="257.0">
+                  <JFXComboBox fx:id="choiceBox" prefHeight="40.0" prefWidth="257.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </JFXComboBox>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="610.0">
                      <children>
-                        <JFXButton buttonType="RAISED" prefHeight="40.0" text="Apply">
+                        <JFXButton buttonType="RAISED" onAction="#applyCSS" prefHeight="40.0" text="Apply">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>

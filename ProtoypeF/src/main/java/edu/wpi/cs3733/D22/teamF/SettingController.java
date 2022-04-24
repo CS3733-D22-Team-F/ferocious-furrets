@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF;
 
 import static org.reflections.scanners.Scanners.Resources;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
@@ -12,9 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +20,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,17 +27,25 @@ import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
 public class SettingController implements Initializable {
-  @FXML private Label themeSetLabel;
-  @FXML private JFXComboBox themeSetCombo;
-  @FXML private ImageView furretImage;
   @FXML private Label userFromLogin;
-  @FXML private JFXButton logoutButton;
-
+  @FXML JFXComboBox<String> choiceBox;
   @FXML VBox pickerBox;
   @FXML TextField nameField;
   JFXColorPicker textPicker;
   JFXColorPicker backPicker;
   JFXColorPicker titlePicker;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    textPicker = new JFXColorPicker();
+    backPicker = new JFXColorPicker();
+    titlePicker = new JFXColorPicker();
+    pickerBox.getChildren().add(textPicker);
+    pickerBox.getChildren().add(backPicker);
+    pickerBox.getChildren().add(titlePicker);
+    userFromLogin.setText("Current User: " + UserType.getUserType());
+    loadCSS();
+  }
 
   @FXML
   public void logoutSwitch() {
@@ -95,26 +99,17 @@ public class SettingController implements Initializable {
     popupwindow.showAndWait();
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    textPicker = new JFXColorPicker();
-    backPicker = new JFXColorPicker();
-    titlePicker = new JFXColorPicker();
-    pickerBox.getChildren().add(textPicker);
-    pickerBox.getChildren().add(backPicker);
-    pickerBox.getChildren().add(titlePicker);
-    userFromLogin.setText("Current User: " + UserType.getUserType());
-  }
-
   public void saveCSS() throws IOException, URISyntaxException {
     String name = nameField.getText();
     String textColor = textPicker.getValue().toString().substring(2, 8);
     String backColor = backPicker.getValue().toString().substring(2, 8);
     String titleColor = titlePicker.getValue().toString().substring(2, 8);
 
-    File myObj = new File(name + ".css");
+    File myObj =
+        new File("src/main/resources/edu/wpi/cs3733/D22/teamF/stylesheets/" + name + ".css");
     myObj.createNewFile();
     FileWriter writer = new FileWriter(myObj);
+    writer.flush();
     writer.write(
         String.format(
             "/*** variable declarations***/\n"
@@ -204,21 +199,45 @@ public class SettingController implements Initializable {
                 + "    -fx-font-size: 24px;\n"
                 + "}",
             titleColor, backColor, textColor));
+    writer.flush();
     writer.close();
+    choiceBox.getItems().add("stylesheets/" + name + ".css");
   }
 
   public void loadCSS() {
-    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF", Scanners.values());
-    Set<String> fxmlPaths = reflections.get(Resources.with(".*\\.css"));
+    ArrayList<String> exceptions =
+        new ArrayList<>(
+            List.of(
+                "stylesheets/combobox.css",
+                "stylesheets/DashBoard.css",
+                "stylesheets/vars.css",
+                "stylesheets/RequestPages.css"));
 
-    for (String path : fxmlPaths) {
+    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF", Scanners.values());
+    Set<String> cssPaths = reflections.get(Resources.with(".*\\.css"));
+    ArrayList<String> s = new ArrayList<>();
+    for (String path : cssPaths) {
       path = path.substring(25); // Strip "edu/wpi/cs3733/D22/teamF/"
+      if (exceptions.contains(path)) continue; // Skip pages that can't be cached
+
       try {
-        SceneManager.getInstance().loadViews(path);
+        s.add(path);
       } catch (Exception e) {
         System.out.println("Loading Error: " + path);
         e.printStackTrace();
       }
     }
+    choiceBox.getItems().clear();
+    choiceBox.getItems().addAll(s);
+  }
+
+  public void applyCSS() {
+    String name = choiceBox.getValue();
+    SceneManager.getInstance().getStage().getScene().getStylesheets().clear();
+    SceneManager.getInstance()
+        .getStage()
+        .getScene()
+        .getStylesheets()
+        .add(Fapp.class.getResource(name).toExternalForm());
   }
 }

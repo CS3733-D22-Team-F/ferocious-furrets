@@ -45,7 +45,7 @@
                         </Group>
                      </content>
                   </ScrollPane>
-                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="816.0">
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="816.0" style="-fx-background-color: #4169E1;">
                      <children>
                         <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
@@ -214,9 +214,9 @@
                               <Insets right="15.0" />
                            </HBox.margin>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="30.0" prefWidth="152.0">
                            <children>
-                              <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="30.0" prefWidth="150.0" />
+                              <JFXSlider fx:id="zoomSlider" min="-50.0" prefHeight="30.0" prefWidth="112.0" />
                            </children>
                         </VBox>
                      </children>
