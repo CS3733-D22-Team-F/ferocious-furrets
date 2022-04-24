@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/** Controller for the settings page */
 public class SettingController implements Initializable {
   @FXML private Label themeSetLabel;
   @FXML private JFXComboBox themeSetCombo;
@@ -26,6 +27,7 @@ public class SettingController implements Initializable {
   @FXML private Label userFromLogin;
   @FXML private JFXButton logoutButton;
 
+  /** Switch for logging out of the current user */
   @FXML
   public void logoutSwitch() {
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
@@ -41,6 +43,12 @@ public class SettingController implements Initializable {
     stage.show();
   }
 
+  /**
+   * pulls of the about page
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void aboutButton(ActionEvent event) throws IOException {
 
@@ -73,6 +81,12 @@ public class SettingController implements Initializable {
     //    stage.show();
   }
 
+  /**
+   * pulles up the credit page
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   public void creditButton(ActionEvent event) throws IOException {
 

@@ -21,7 +21,7 @@ public abstract class MedicalRequest extends Request implements IRequest {
   public MedicalRequest() {}
 
   public String getMedicalType() {
-    return medicalType;
+    return this.medicalType;
   }
 
   public void setMedicalType(String medicalType) {

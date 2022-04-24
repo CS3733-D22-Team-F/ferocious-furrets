@@ -63,19 +63,19 @@
                                     <Image url="@../Cropped-Edits/Raffi%20Alexander%20Photo-modified.png" />
                                  </image>
                               </ImageView>
-                              <VBox prefHeight="45.0" prefWidth="214.0">
+                              <VBox prefHeight="45.0" prefWidth="232.0">
                                  <HBox.margin>
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="221.0" text="Raffi Alexander (Full Time Front-End)">
                                        <font>
-                                          <Font name="SansSerif Regular" size="12.0" />
+                                          <Font name="SansSerif Regular" size="13.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Audio Visual Service Request" wrapText="true">
                                        <font>
-                                          <Font name="SansSerif Regular" size="10.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -100,7 +100,7 @@
                                     <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Gifts Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -125,7 +125,7 @@
                                     <Label prefHeight="17.0" prefWidth="202.0" text="Nikola Grozdani (Scrum Master)" />
                                     <Label prefHeight="29.0" prefWidth="183.0" text="- Landing Page, Login Page, About Page, Lab Request" textAlignment="CENTER" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -150,7 +150,7 @@
                                     <Label prefHeight="17.0" prefWidth="282.0" text="Jack Hanlon (Team Lead)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Security Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -175,7 +175,7 @@
                                     <Label prefHeight="17.0" prefWidth="293.0" text="Will Huang (Assistant-Lead Back-End)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -194,7 +194,7 @@
                      <children>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="connor" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#connorCredit" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="conner" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#connorCredit" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Conner-modified.png" />
                                  </image>
@@ -207,10 +207,10 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Connorr McKevitt (Doc. Analyst)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Conner McKevitt (Doc. Analyst)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- External Patient Transportation " wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -238,7 +238,7 @@
                                     <Label prefHeight="17.0" prefWidth="215.0" text="Evans Owusu (Full Time Front-End)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Meals Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -263,7 +263,7 @@
                                     <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Facilities Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -288,7 +288,7 @@
                                     <Label prefHeight="17.0" prefWidth="215.0" text="John Petrarca (Product Manager)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Equipment &amp; Scan Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -313,7 +313,7 @@
                                     <Label prefHeight="17.0" prefWidth="251.0" text="Owen Radcliffe (Assistant-Lead Full Stack)" />
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Service Request" wrapText="true">
                                        <font>
-                                          <Font size="9.0" />
+                                          <Font size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -353,7 +353,7 @@
                   <Label prefHeight="17.0" prefWidth="266.0" text="Azu | Shiming De (Assistant-Lead Front-End)" />
                   <Label prefHeight="16.0" prefWidth="187.0" text="- Map" wrapText="true">
                      <font>
-                        <Font size="9.0" />
+                        <Font size="11.0" />
                      </font>
                   </Label>
                </children>

@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.medicalRequest.PhysicalTherapyRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +15,6 @@ import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -76,39 +75,89 @@ public class PhysicalTherapyController extends PageController
 
     try {
       startTable();
-    } catch (SQLException e) {
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
   }
 
-  public void startTable() throws SQLException {
+  public void startTable() throws SQLException, IOException {
 
     clearTable();
 
-    ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT * FROM PTREQUEST");
+    ResultSet ptRequestTables =
+        DatabaseManager.getInstance().getPTDAO().get(); // CHANGE THIS TO CURRENT DAO
+    ResultSet servRequest;
     ArrayList<PhysicalTherapyRequest> secReqs = new ArrayList<PhysicalTherapyRequest>();
-    PhysicalTherapyRequest sr;
+    PhysicalTherapyRequest ptr;
+    String currentLabReqID;
 
-    while (rset.next()) {
-      sr =
-          new PhysicalTherapyRequest(
-              rset.getString("TYPE"), rset.getString("DURATION"), rset.getString("NOTES"));
-      secReqs.add(sr);
+    while (ptRequestTables.next()) {
+      currentLabReqID = ptRequestTables.getString("reqID");
+      //      System.out.println(currentLabReqID);
+      servRequest = DatabaseManager.getInstance().getRequestDAO().get();
+      while (servRequest.next()) {
+        if (servRequest.getString("reqID").equals(currentLabReqID)) {
+          //          System.out.println("matched :)");
+          ptr =
+              new PhysicalTherapyRequest(
+                  ptRequestTables.getString("reqID"),
+                  servRequest.getString("nodeID"),
+                  servRequest.getString("assignedEmployeeID"),
+                  servRequest.getString("requesterEmployeeID"),
+                  servRequest.getString("status"),
+                  ptRequestTables.getString("type"),
+                  ptRequestTables.getString("duration"),
+                  ptRequestTables.getString("notes"));
+          secReqs.add(ptr);
+          servRequest.close();
+          break;
+        }
+      }
     }
 
     treeRoot.setExpanded(true);
     secReqs.stream()
         .forEach(
-            (physicalTherapyRequest) -> {
-              treeRoot.getChildren().add(new TreeItem<>(physicalTherapyRequest));
+            (PhysicalTherapyRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(PhysicalTherapyRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
+
+    TreeTableColumn<PhysicalTherapyRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<PhysicalTherapyRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    TreeTableColumn<PhysicalTherapyRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<PhysicalTherapyRequest, String> therapyTypeColumn =
-        new TreeTableColumn<>("Therapy Time");
+        new TreeTableColumn<>("Therapy Type");
     therapyTypeColumn.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getTreatmentType()));
+            new ReadOnlyStringWrapper(param.getValue().getValue().getMedicalType()));
 
     TreeTableColumn<PhysicalTherapyRequest, String> durationColumn =
         new TreeTableColumn<>("Duration");
@@ -121,20 +170,38 @@ public class PhysicalTherapyController extends PageController
         (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getNotes()));
 
+    TreeTableColumn<PhysicalTherapyRequest, String> statusCol = new TreeTableColumn<>("Status");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<PhysicalTherapyRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+
     TreeTableView<PhysicalTherapyRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(therapyTypeColumn, durationColumn, notesColumn);
+    treeTableView
+        .getColumns()
+        .setAll(
+            reqIDCol,
+            nodeIDCol,
+            assignedToCol,
+            therapyTypeColumn,
+            durationColumn,
+            notesColumn,
+            statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
-    therapyTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(4));
-    durationColumn.minWidthProperty().bind(tablePane.widthProperty().divide(4));
-    notesColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    therapyTypeColumn.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    durationColumn.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    notesColumn.minWidthProperty().bind(tablePane.widthProperty().divide(7));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(7));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
 
   @Override
-  public void submit() throws SQLException {
+  public void submit() throws SQLException, IOException {
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
         || userField.getValue().toString().equals("")
@@ -201,5 +268,35 @@ public class PhysicalTherapyController extends PageController
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

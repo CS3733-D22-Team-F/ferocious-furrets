@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXDrawer;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/** Menu Controller for the service requests */
 public class ServiceMenu extends MainMenu {
 
   public ServiceMenu(
@@ -11,6 +12,7 @@ public class ServiceMenu extends MainMenu {
     super(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
   }
 
+  /** Changes to the service request side bar */
   @Override
   void changeTo() {
     menu.setSidePane(serviceMenu);
