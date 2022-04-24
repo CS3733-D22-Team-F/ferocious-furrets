@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -387,7 +386,7 @@ public class EquipmentRequestController extends PageController
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
-    TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
         .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, statusCol);
