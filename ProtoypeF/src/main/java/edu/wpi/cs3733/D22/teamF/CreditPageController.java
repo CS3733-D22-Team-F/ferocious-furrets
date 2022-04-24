@@ -19,6 +19,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
+/** Controller for the credit page */
 public class CreditPageController implements Initializable {
 
   @FXML private JFXTreeTableView<CreditAPI> table;
@@ -41,9 +42,10 @@ public class CreditPageController implements Initializable {
     //    creators.setPrefWidth(150);
     //    table.getColumns().addAll(apis, versions, creators);
 
-    JFXTreeTableColumn<CreditAPI, String> deptName = new JFXTreeTableColumn<>("API Incorporated");
-    deptName.setPrefWidth(150);
-    deptName.setCellValueFactory(
+    JFXTreeTableColumn<CreditAPI, String> APIIncorporated =
+        new JFXTreeTableColumn<>("API Incorporated");
+    APIIncorporated.setPrefWidth(150);
+    APIIncorporated.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
@@ -53,9 +55,9 @@ public class CreditPageController implements Initializable {
           }
         });
 
-    JFXTreeTableColumn<CreditAPI, String> ageCol = new JFXTreeTableColumn<>("API Version");
-    ageCol.setPrefWidth(150);
-    ageCol.setCellValueFactory(
+    JFXTreeTableColumn<CreditAPI, String> APIVersion = new JFXTreeTableColumn<>("API Version");
+    APIVersion.setPrefWidth(150);
+    APIVersion.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
@@ -65,9 +67,9 @@ public class CreditPageController implements Initializable {
           }
         });
 
-    JFXTreeTableColumn<CreditAPI, String> nameCol = new JFXTreeTableColumn<>("API Creator");
-    nameCol.setPrefWidth(150);
-    nameCol.setCellValueFactory(
+    JFXTreeTableColumn<CreditAPI, String> APICreator = new JFXTreeTableColumn<>("API Creator");
+    APICreator.setPrefWidth(150);
+    APICreator.setCellValueFactory(
         new Callback<
             TreeTableColumn.CellDataFeatures<CreditAPI, String>, ObservableValue<String>>() {
           @Override
@@ -89,7 +91,7 @@ public class CreditPageController implements Initializable {
 
     final TreeItem<CreditAPI> root =
         new RecursiveTreeItem<CreditAPI>(credits, RecursiveTreeObject::getChildren);
-    table.getColumns().setAll(deptName, ageCol, nameCol);
+    table.getColumns().setAll(APIIncorporated, APIVersion, APICreator);
     table.setRoot(root);
     table.setShowRoot(false);
 

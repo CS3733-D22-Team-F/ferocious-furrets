@@ -16,8 +16,6 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -70,10 +68,10 @@ public class ScanController extends PageController implements Initializable, IRe
     statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
     temp1.add("CAT");
-    temp1.add("xray");
+    temp1.add("XRAY");
     temp1.add("MRI");
     typeChoice.getItems().addAll(temp1);
-    typeChoice.setValue("CAT");
+    typeChoice.setValue("");
 
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
@@ -176,27 +174,37 @@ public class ScanController extends PageController implements Initializable, IRe
             (scanRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(scanRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<ScanRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    TreeTableColumn<ScanRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
     nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
-    TreeTableColumn<ScanRequest, String> scanTypeCol = new TreeTableColumn<>("Equipment ID:");
+    TreeTableColumn<ScanRequest, String> scanTypeCol =
+        new TreeTableColumn<>("Scan Type/Equipment:");
     scanTypeCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getScanType()));
 
-    TreeTableColumn<ScanRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
+    TreeTableColumn<ScanRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<ScanRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
+        (TreeTableColumn.CellDataFeatures<ScanRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<ScanRequest, String> statusCol = new TreeTableColumn<>("Status:");
     statusCol.setCellValueFactory(
@@ -204,17 +212,14 @@ public class ScanController extends PageController implements Initializable, IRe
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableView<ScanRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView
-        .getColumns()
-        .setAll(nodeIDCol, scanTypeCol, assignedToCol, requestedByCol, statusCol);
+    treeTableView.getColumns().setAll(nodeIDCol, scanTypeCol, assignedToCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
-    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    scanTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(4));
+    scanTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(4));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(4));
+    statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(4));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
   }
@@ -228,17 +233,17 @@ public class ScanController extends PageController implements Initializable, IRe
   }
 
   /* helper */
-  public String generateReqID(int requestListLength, String scanType, String nodeID) {
-    String reqAbb = "SR";
-    String sAb = "";
-    if (scanType.equals("CAT")) {
-      sAb = "C";
-    } else if (scanType.equals("xray")) {
-      sAb = "X";
-    } else if (scanType.equals("MRI")) {
-      sAb = "M";
+  public String generateReqID(int requestListLength, String scanType, String nodeID)
+      throws SQLException, IOException {
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
+    while (rset.next()) {
+      reqNum++;
     }
-    return reqAbb + sAb + (requestListLength + 1) + nodeID;
+    rset.close();
+
+    return "f" + typeChoice.getValue().toString() + reqNum;
   }
 
   @Override
@@ -276,12 +281,37 @@ public class ScanController extends PageController implements Initializable, IRe
     return nID;
   }
 
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-  }
-
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

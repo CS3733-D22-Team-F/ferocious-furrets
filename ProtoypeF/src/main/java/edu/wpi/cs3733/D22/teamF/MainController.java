@@ -24,6 +24,7 @@ import javafx.scene.transform.Transform;
 import javafx.stage.Screen;
 import lombok.SneakyThrows;
 
+/** Controller for the main menu sidebar */
 public class MainController implements Initializable {
 
   @FXML StackPane pageHolder;
@@ -152,6 +153,11 @@ public class MainController implements Initializable {
     //    timeline.play();
   }
 
+  /**
+   * resizes the menu, takes in a boolean if true resizes
+   *
+   * @param newValue boolean
+   */
   private void applyResize(boolean newValue) {
     //    pageHolder.getTransforms().setAll(baseTransforms);
     //    menu.getTransforms().setAll(baseTransformsScene);
@@ -177,6 +183,12 @@ public class MainController implements Initializable {
     }
   }
 
+  /**
+   * Resizes taking in width and height doubles
+   *
+   * @param width double
+   * @param height double
+   */
   private void applyResize(double width, double height) {
     // TODO: Make this work
     pageHolder.getTransforms().setAll(baseTransformsScene);

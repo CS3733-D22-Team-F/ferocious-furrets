@@ -33,6 +33,13 @@ public class AGlobalMethods {
         FX_TEXT_FILL_WHITE + ";" + FX_BACKGROUND_BLUE);
   }
 
+  /**
+   * Shows an alert
+   *
+   * @param info String info to show on the alert
+   * @param random Node node to get the scene and window from for the alert //TODO rename random to
+   *     something that actually makes sense
+   */
   public static void showAlert(String info, Node random) {
     JFXDialogLayout layout = new JFXDialogLayout();
     layout.setBody(new Label(info));

@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
-/** its pronounces Fapp not fap */
+/** its pronounced Fapp not fap */
 @Slf4j
 public class Fapp extends Application {
 
@@ -20,6 +20,13 @@ public class Fapp extends Application {
     log.info("Starting Up");
   }
 
+  /**
+   * can't stop, won't stop. except for on May 3rd when we'll stop and never start again
+   *
+   * @param primaryStage
+   * @throws IOException
+   * @throws SQLException
+   */
   @Override
   public void start(Stage primaryStage) throws IOException, SQLException {
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
