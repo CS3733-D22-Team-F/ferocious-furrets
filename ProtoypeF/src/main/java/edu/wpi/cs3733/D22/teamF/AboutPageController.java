@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -116,6 +117,12 @@ public class AboutPageController implements Initializable {
             } catch (IOException e) {
               e.printStackTrace();
             }
+
+            AudioPlayer.getInstance()
+                .setAudioInputStream(
+                    "C:\\Users\\cmmck\\IdeaProjects\\ferocious-furrets\\ProtoypeF\\src\\main\\resources\\Flyysoulja - I'm An Island Boy ft. Kodiyakredd (Official Music Video).wav");
+            AudioPlayer.getInstance().playFrom(45000);
+
             Stage popupwindow = new Stage();
             popupwindow.setTitle("Nikola Grozdani");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -123,6 +130,7 @@ public class AboutPageController implements Initializable {
             popupwindow.setScene(scene1);
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.showAndWait();
+            AudioPlayer.getInstance().stop();
           }
         });
   }
