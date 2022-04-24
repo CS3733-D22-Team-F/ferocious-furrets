@@ -389,7 +389,7 @@ public class MainController implements Initializable {
 
   public void changeToMaintenance() throws IOException {
     // TODO add your page name before ".fxml"
-    changeTo("views/request/maintenanceRequestPage.fxml");
+    changeTo("views/maintenanceRequestPage.fxml");
   }
 
   public void goToTransport() throws IOException {

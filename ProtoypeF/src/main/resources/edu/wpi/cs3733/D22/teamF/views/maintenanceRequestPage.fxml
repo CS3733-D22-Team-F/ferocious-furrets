@@ -44,7 +44,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox fx:id="leftVBox" layoutX="1.0" layoutY="149.0" prefHeight="283.0" prefWidth="610.0" spacing="10.0" stylesheets="@../../stylesheets/combobox.css">
+            <VBox fx:id="leftVBox" layoutX="1.0" layoutY="149.0" prefHeight="283.0" prefWidth="610.0" spacing="10.0" stylesheets="@../stylesheets/combobox.css">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -157,7 +157,7 @@
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset Fields" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
