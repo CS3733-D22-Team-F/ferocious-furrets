@@ -40,7 +40,7 @@ public abstract class Request implements IRequest {
   public Request() {}
 
   public String getAssignedEmpID() {
-    return assignedEmpID;
+    return this.assignedEmpID;
   }
 
   public void setAssignedEmpID(String assignedEmpID) {
@@ -56,15 +56,15 @@ public abstract class Request implements IRequest {
   }
 
   public String getNodeID() {
-    return nodeID;
+    return this.nodeID;
   }
 
   public void setNodeID(String NodeID) {
-    this.nodeID = nodeID;
+    this.nodeID = NodeID;
   }
 
   public String getStatus() {
-    return status;
+    return this.status;
   }
 
   public void setStatus(String status) {

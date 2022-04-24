@@ -4,6 +4,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/** Credits? IDK im just a simple backend developer */
 public class CreditAPI extends RecursiveTreeObject<CreditAPI> {
   StringProperty apiIncorporated;
   StringProperty apiVersion;

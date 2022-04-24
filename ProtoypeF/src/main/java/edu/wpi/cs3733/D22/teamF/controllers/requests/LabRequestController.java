@@ -69,23 +69,17 @@ public class LabRequestController extends PageController
   public void initialize(URL location, ResourceBundle resources) {
 
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("");
     temp.add("Processing");
     temp.add("Done");
     statusChoice.getItems().addAll(temp);
-    statusChoice.setValue("");
     ArrayList<Object> temp1 = new ArrayList<>();
-    temp1.add("");
     temp1.add("Blood");
     temp1.add("Urine");
     typeChoice.getItems().addAll(temp1);
-    typeChoice.setValue("");
 
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);
-    employeeIDField.setValue("");
-    userField.setValue("");
 
     ArrayList<Object> locations = locationNames();
     nodeField.getItems().addAll(locations);
@@ -105,10 +99,7 @@ public class LabRequestController extends PageController
    * @return labRequest object
    */
   public void submit() throws SQLException, IOException {
-    ArrayList<Object> returnList = new ArrayList<>(); // List will be returned
-    ArrayList<String> serviceList = new ArrayList<>(); // List will show in label
     ArrayList<Object> requestList = new ArrayList<>();
-    String sampleType = null;
     // Alert is made if any of the fields are empty
     if (nodeField.getValue().toString().equals("")
         || employeeIDField.getValue().toString().equals("")
@@ -117,14 +108,6 @@ public class LabRequestController extends PageController
         || statusChoice.getValue().equals("")) {
       System.out.println("There are still blank fields");
     } else {
-
-      if (typeChoice.getValue().equals("blood")) {
-        sampleType = "Blood";
-      } else {
-        sampleType = "Urine";
-      }
-      // int curLabReqSize = DatabaseManager.getLabRequestDAO().getAllRequests().size();
-      // String reqID = generateReqID(curLabReqSize, sampleType, nodeField.getText());
       RequestSystem req = new RequestSystem("Lab");
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(generateReqID());
@@ -136,7 +119,6 @@ public class LabRequestController extends PageController
       req.placeRequest(fields);
       requestList.clear();
       requestList.add("Lab Request of type: " + typeChoice.getValue().toString());
-      // requestList.add("Assigned Doctor: " + userField.getText());
       requestList.add("Status: " + statusChoice.getValue());
       ServiceRequestStorage.addToArrayList(requestList);
     }
@@ -170,9 +152,7 @@ public class LabRequestController extends PageController
                   servRequest.getString("assignedEmployeeID"),
                   servRequest.getString("requesterEmployeeID"),
                   servRequest.getString("status"),
-                  labRequestTables.getString(
-                      "type")); // ADD YOU UNIQUE FIELD TO THIS (MAKE SURE OBJECT PARAMETERS ARE
-          // CORRECT TOO)
+                  labRequestTables.getString("type"));
           secReqs.add(er);
           servRequest.close();
           break;
@@ -190,42 +170,55 @@ public class LabRequestController extends PageController
             });
     final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<LabRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    TreeTableColumn<LabRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<LabRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
     nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
-    TreeTableColumn<LabRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To:");
+    TreeTableColumn<LabRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
+        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
-    TreeTableColumn<LabRequest, String> requestedByCol = new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<LabRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    TreeTableColumn<LabRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
-    TreeTableColumn<LabRequest, String> sampleTypeCol = new TreeTableColumn<>("Sample Type: ");
+    TreeTableColumn<LabRequest, String> sampleTypeCol = new TreeTableColumn<>("Sample Type");
     sampleTypeCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<LabRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getSampleType()));
 
     TreeTableView<LabRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView
-        .getColumns()
-        .setAll(nodeIDCol, assignedToCol, requestedByCol, statusCol, sampleTypeCol);
+    treeTableView.getColumns().setAll(reqIDCol, nodeIDCol, assignedToCol, sampleTypeCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     sampleTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -286,5 +279,35 @@ public class LabRequestController extends PageController
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

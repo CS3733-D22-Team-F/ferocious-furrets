@@ -16,8 +16,6 @@ import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -74,11 +72,9 @@ public class maintenancePageController extends PageController
     requestedEmployeeBox.setValue("");
 
     ArrayList<Object> statusDrop = new ArrayList<>();
-    statusDrop.add("");
     statusDrop.add("Processing");
     statusDrop.add("Done");
     statusBox.getItems().addAll(statusDrop);
-    statusBox.setValue("");
 
     ArrayList<Object> equipmentType = new ArrayList<>();
     equipmentType.add("Bed");
@@ -207,62 +203,71 @@ public class maintenancePageController extends PageController
     treeRoot.setExpanded(true);
     secReqs.stream()
         .forEach(
-            (maintenanceSR) -> {
-              treeRoot.getChildren().add(new TreeItem<>(maintenanceSR));
+            (MaintenanceRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(MaintenanceRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<MaintenanceRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
+    TreeTableColumn<MaintenanceRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<MaintenanceRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
     TreeTableColumn<MaintenanceRequest, String> assignedToCol =
-        new TreeTableColumn<>("Assigned To:");
+        new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<MaintenanceRequest, String> requestedByCol =
-        new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<MaintenanceRequest, String> statusCol = new TreeTableColumn<>("Status:");
-    statusCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<MaintenanceRequest, String> equipmentIDCol =
-        new TreeTableColumn<>("Equipment ID:");
+        new TreeTableColumn<>("Equipment ID");
     equipmentIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getEquipID()));
 
     TreeTableColumn<MaintenanceRequest, String> maintenanceTypeCol =
-        new TreeTableColumn<>("Maintenance Type:");
+        new TreeTableColumn<>("Maintenance Type");
     maintenanceTypeCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getMaintenanceType()));
 
+    TreeTableColumn<MaintenanceRequest, String> statusCol = new TreeTableColumn<>("Status");
+    statusCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<MaintenanceRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+    ;
+
     TreeTableView<MaintenanceRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
-        .setAll(
-            nodeIDCol,
-            equipmentIDCol,
-            maintenanceTypeCol,
-            assignedToCol,
-            requestedByCol,
-            statusCol);
+        .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, maintenanceTypeCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
+    maintenanceTypeCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(6));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -336,5 +341,35 @@ public class maintenancePageController extends PageController
     }
     rset.close();
     return eID;
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }
