@@ -30,6 +30,8 @@ javafx {
 
 
 dependencies {
+    compile fileTree(dir: 'APIJARs', include: ['*.jar'])
+
     implementation(
             'com.github.afester.javafx:FranzXaver:0.1',
             'org.reflections:reflections:0.10.2',
