@@ -70,7 +70,7 @@
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="221.0" text="Raffi Alexander (Full Time Front-End)">
                                        <font>
-                                          <Font name="SansSerif Regular" size="13.0" />
+                                          <Font name="SansSerif Regular" size="12.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Audio Visual Service Request" wrapText="true">
@@ -97,17 +97,20 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Carter Bullock (Project Manager)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Gifts Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="60.0" prefWidth="291.0">
+                        <HBox prefHeight="67.0" prefWidth="293.0">
                            <children>
                               <ImageView fx:id="nikola" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#nikolaCredit" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -122,10 +125,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="202.0" text="Nikola Grozdani (Scrum Master)" />
-                                    <Label prefHeight="29.0" prefWidth="183.0" text="- Landing Page, Login Page, About Page, Lab Request" textAlignment="CENTER" wrapText="true">
+                                    <Label prefHeight="17.0" prefWidth="202.0" text="Nikola Grozdani (Scrum Master)">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
+                                    <Label prefHeight="37.0" prefWidth="147.0" text="- Landing Page, Login Page, About Page, Lab Request" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -147,10 +153,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="282.0" text="Jack Hanlon (Team Lead)" />
+                                    <Label prefHeight="17.0" prefWidth="282.0" text="Jack Hanlon (Team Lead)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Security Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -172,10 +181,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="293.0" text="Will Huang (Assistant-Lead Back-End)" />
+                                    <Label prefHeight="17.0" prefWidth="293.0" text="Will Huang (Assistant-Lead Back-End)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Maintenance Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -207,10 +219,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Connorr McKevitt (Doc. Analyst)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Connor McKevitt (Doc. Analyst)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- External Patient Transportation " wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -235,10 +250,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Evans Owusu (Full Time Front-End)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Evans Owusu (Full Time Front-End)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Meals Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -260,10 +278,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Cole Parks (Full Time Back-End)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Facilities Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -285,10 +306,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="John Petrarca (Product Manager)" />
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="John Petrarca (Product Manager)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Equipment &amp; Scan Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -310,10 +334,13 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="251.0" text="Owen Radcliffe (Assistant-Lead Full Stack)" />
+                                    <Label prefHeight="17.0" prefWidth="251.0" text="Owen Radcliffe (Assistant-Lead Full Stack)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="12.0" />
+                                       </font></Label>
                                     <Label prefHeight="16.0" prefWidth="187.0" text="- Physical Therapy Service Request" wrapText="true">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="SansSerif Regular" size="11.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -350,10 +377,13 @@
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
                <children>
-                  <Label prefHeight="17.0" prefWidth="266.0" text="Azu | Shiming De (Assistant-Lead Front-End)" />
+                  <Label prefHeight="17.0" prefWidth="266.0" text="Azu | Shiming De (Assistant-Lead Front-End)">
+                     <font>
+                        <Font name="SansSerif Regular" size="12.0" />
+                     </font></Label>
                   <Label prefHeight="16.0" prefWidth="187.0" text="- Map" wrapText="true">
                      <font>
-                        <Font size="11.0" />
+                        <Font name="SansSerif Regular" size="11.0" />
                      </font>
                   </Label>
                </children>
