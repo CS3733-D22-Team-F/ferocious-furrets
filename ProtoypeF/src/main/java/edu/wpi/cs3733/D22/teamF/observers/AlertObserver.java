@@ -25,7 +25,6 @@ public class AlertObserver implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent evt) {
     allFloorAlerts = DashboardObserver.getAllFloorAlerts();
     setFloorAlertCount();
-    //    System.out.println("AlertObserver found new alerts");
     updateButtons();
   }
 
@@ -49,7 +48,6 @@ public class AlertObserver implements PropertyChangeListener {
       fl4Count = allFloorAlerts.get(5).size();
       fl5Count = allFloorAlerts.get(6).size();
       totalAlertCount = ll1Count + ll2Count + fl5Count + fl4Count + fl3Count + fl2Count + fl1Count;
-      // System.out.println("Floor Alert Counts");
     }
   }
 
@@ -60,7 +58,6 @@ public class AlertObserver implements PropertyChangeListener {
   public void updateButtons() {
     if (!buttonsToUpdate.isEmpty()
         && SceneManager.getInstance().getCurrentScene().equals("views/mapPage.fxml")) {
-      System.out.println("Floor Alert Counts");
       buttonsToUpdate.get(0).setText(ll2Count + "  LL2");
       buttonsToUpdate.get(1).setText(ll1Count + "  LL1");
       buttonsToUpdate.get(2).setText(fl1Count + "  FL1");
@@ -69,14 +66,6 @@ public class AlertObserver implements PropertyChangeListener {
       buttonsToUpdate.get(5).setText(fl4Count + "  LL4");
       buttonsToUpdate.get(6).setText(fl5Count + "  LL5");
       buttonsToUpdate.get(7).setText(totalAlertCount + " Alerts");
-
-      //      System.out.println(ll2Count);
-      //      System.out.println(ll1Count);
-      //      System.out.println(fl1Count);
-      //      System.out.println(fl2Count);
-      //      System.out.println(fl3Count);
-      //      System.out.println(fl4Count);
-      //      System.out.println(fl5Count);
     }
   }
 }

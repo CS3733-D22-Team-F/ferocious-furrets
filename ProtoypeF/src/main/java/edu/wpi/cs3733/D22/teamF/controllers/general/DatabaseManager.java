@@ -295,7 +295,7 @@ public class DatabaseManager {
     giftDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
     labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
-    medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    // medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
     MedicineRequest.backUpDatabase(
         "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
     scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
@@ -305,11 +305,7 @@ public class DatabaseManager {
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
-
-    System.out.println("Locations table updated to csv :)");
-    System.out.println("MedEquip table updated to csv :)");
-    System.out.println("MedicalEquipmentDeliveryRequest table updated to csv :)");
-    System.out.println("Backed up to CSV :)");
+    System.out.println("Files backed up");
   }
 
   /**

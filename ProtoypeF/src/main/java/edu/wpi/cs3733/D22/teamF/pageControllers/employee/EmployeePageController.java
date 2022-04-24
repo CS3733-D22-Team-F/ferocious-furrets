@@ -68,7 +68,6 @@ public class EmployeePageController extends PageController implements Initializa
         String first = rset.getString("FIRSTNAME");
         String last = rset.getString("LASTNAME");
         String salary = rset.getString("SALARY");
-        System.out.println(empID + first + last + salary);
         Employee emp = new Employee(empID, first, last, salary);
         employees.add(emp);
       }

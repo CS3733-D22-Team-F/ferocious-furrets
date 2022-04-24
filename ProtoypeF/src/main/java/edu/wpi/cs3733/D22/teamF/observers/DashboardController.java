@@ -163,7 +163,6 @@ public class DashboardController implements Initializable {
   public void nextFloor() {
 
     setFloor(currentFloor.next());
-    System.out.println(currentFloor + " for labels");
     // allFloorsObserver.setFloor(currentFloor);
     //    System.out.println(currentFloor.toInt());
     setLabels();
@@ -225,9 +224,9 @@ public class DashboardController implements Initializable {
 
     List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
     for (int alert = 0; alert < currentAlerts.size(); alert++)
-      System.out.println(currentAlerts.get(alert).getMessage());
+      //      System.out.println(currentAlerts.get(alert).getMessage());
 
-    floorObservers.get(currentFloor.toInt()).updateLabels();
+      floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
     AlertObserver.getInstance().setFloorAlertCount();
   }
