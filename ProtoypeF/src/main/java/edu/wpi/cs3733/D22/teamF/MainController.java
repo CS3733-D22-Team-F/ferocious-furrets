@@ -2,8 +2,6 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
-import edu.wpi.cs3733.D22.teamC.TeamCAPI;
-import edu.wpi.cs3733.D22.teamC.controller.service_request.facility_maintenance.ServiceExceptionAPI;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
@@ -366,20 +364,20 @@ public class MainController implements Initializable {
 
   public void changeToMaintenance() throws IOException {
     // TODO add your page name before ".fxml"
-    // changeTo("views/request/maintenanceRequestPage.fxml");
-    TeamCAPI maintenanceAPI = new TeamCAPI();
-    try {
-      maintenanceAPI.run(
-          0,
-          0,
-          0,
-          0,
-          "edu/wpi/cs3733/D22/teamF/stylesheets/RequestPages.css",
-          "FSTAI00201",
-          "FSTAI00201");
-    } catch (ServiceExceptionAPI e) {
-      e.printStackTrace();
-    }
+    changeTo("views/request/maintenanceRequestPage.fxml");
+    //    TeamCAPI maintenanceAPI = new TeamCAPI();
+    //    try {
+    //      maintenanceAPI.run(
+    //          0,
+    //          0,
+    //          0,
+    //          0,
+    //          "edu/wpi/cs3733/D22/teamF/stylesheets/RequestPages.css",
+    //          "FSTAI00201",
+    //          "FSTAI00201");
+    //    } catch (ServiceExceptionAPI e) {
+    //      e.printStackTrace();
+    //    }
   }
 
   public void goToTransport() throws IOException {
