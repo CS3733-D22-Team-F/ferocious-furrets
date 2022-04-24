@@ -74,6 +74,45 @@ public class GenerateReport {
     wordMLPackage.save(new java.io.File(reportFilepath));
   }
 
+  public void generateEquipmentServiceRequestReport(String reportFilepath, String equipmentID)
+      throws Throwable {
+    String srcDoc =
+        "src/main/resources/edu/wpi/cs3733/D22/teamF/ReportTemplates/EquipmentRequest_Template.docx";
+
+    boolean save = true;
+
+    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(srcDoc));
+    org.docx4j.model.datastorage.migration.VariablePrepare.prepare(wordMLPackage);
+    MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+
+    // get date
+    LocalDate date = java.time.LocalDate.now();
+    String requestDate = date.toString();
+
+    // get current time
+    LocalDateTime time = java.time.LocalDateTime.now();
+    String timeOfReport = time.format(DateTimeFormatter.ISO_TIME);
+
+    String docReport = "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReport.docx";
+
+    HashMap<String, String> mappings = new HashMap<>();
+
+    mappings.put("request", reqID);
+    mappings.put("type", requestTypeFinder());
+    mappings.put("date", requestDate);
+    mappings.put("location", nodeIDFinder(nodeID));
+    mappings.put("assigned", employeeIDFinder(assignedEmployee));
+    mappings.put("requested", employeeIDFinder(requestedEmployee));
+    mappings.put("equipment", equipmentTypeFinder(equipmentID));
+    mappings.put("status", status);
+    mappings.put("user", UserType.getUserType());
+    mappings.put("time", timeOfReport);
+
+    documentPart.variableReplace(mappings);
+
+    wordMLPackage.save(new java.io.File(reportFilepath));
+  }
+
   /**
    * Helper methods to convert nodeID, and employee IDs to names Method to set request type given a
    * request ID
@@ -102,6 +141,18 @@ public class GenerateReport {
     return employeeName;
   }
 
+  public String equipmentTypeFinder(String equipID) throws SQLException {
+    String equipmentType = "";
+    String cmd =
+        String.format("SELECT EQUIPTYPE FROM MEDICALEQUIPMENT WHERE EQUIPID = '%s'", equipID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    if (rset.next()) {
+      equipmentType = rset.getString("EQUIPTYPE");
+    }
+    rset.close();
+    return equipmentType;
+  }
+
   public String requestTypeFinder() throws SQLException {
     String requestType = "";
 
@@ -112,6 +163,14 @@ public class GenerateReport {
       return requestType;
     }
     rset5.close();
+
+    cmd = String.format("SELECT * FROM EQUIPMENTDELIVERYREQUEST WHERE REQID = '%s'", reqID);
+    ResultSet rset12 = DatabaseManager.getInstance().runQuery(cmd);
+    if (rset12.next()) {
+      requestType = "Equipment Delivery Request";
+      return requestType;
+    }
+    rset12.close();
 
     cmd = String.format("SELECT * FROM SCANREQUEST WHERE REQID = '%s'", reqID);
     ResultSet rset10 = DatabaseManager.getInstance().runQuery(cmd);

@@ -78,7 +78,7 @@ public abstract class Request implements IRequest {
   }
 
   public String getReqID() {
-    return null;
+    return this.reqID;
   }
 
   public void setReqID(String reqID) {

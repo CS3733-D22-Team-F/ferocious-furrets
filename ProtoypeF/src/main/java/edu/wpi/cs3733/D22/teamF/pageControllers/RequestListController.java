@@ -1,9 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
-import com.jfoenix.animation.alert.JFXAlertAnimation;
-import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -23,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -113,7 +109,6 @@ public class RequestListController extends PageController implements Initializab
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
     employeeName = filterEmployee.getText();
-    System.out.println(employeeName);
 
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
@@ -327,15 +322,19 @@ public class RequestListController extends PageController implements Initializab
   public void generateReport() {
 
     // TODO Format Word template
+    if (treeTableView.getSelectionModel().getSelectedItem() == null) {
+      showAlert("Please select a request from the table!", masterPane);
+      return;
+    }
     FileChooser fChoose = new FileChooser();
     fChoose.setTitle("Save to:");
     Stage stage = (Stage) tablePane.getScene().getWindow();
     File file = fChoose.showSaveDialog(stage);
     String filepath = file.getPath() + ".docx";
+
     TreeItem<RequestTree> req = treeTableView.getSelectionModel().getSelectedItem();
     if (req != null) {
       RequestTree request = req.getValue();
-      System.out.println(request.getReqID());
 
       GenerateReport rep =
           new GenerateReport(
@@ -353,10 +352,7 @@ public class RequestListController extends PageController implements Initializab
         showAlert("Failed to create report!", tablePane);
         e.printStackTrace();
       }
-      PDFConverter pdfConverter =
-          new PDFConverter(
-              filepath,
-              "src/main/resources/edu/wpi/cs3733/D22/teamF/Reports/RequestsReportPDF.pdf");
+      PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
       try {
         pdfConverter.convertToPDF();
       } catch (IOException e) {
@@ -368,16 +364,5 @@ public class RequestListController extends PageController implements Initializab
         e.printStackTrace();
       }
     }
-  }
-
-  public void showAlert(String info, Node random) {
-    JFXDialogLayout layout = new JFXDialogLayout();
-    layout.setBody(new Label(info));
-    JFXAlert<Void> alert = new JFXAlert<>(random.getScene().getWindow());
-    alert.setOverlayClose(true);
-    alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
-    alert.setContent(layout);
-    alert.initModality(Modality.NONE);
-    alert.showAndWait();
   }
 }
