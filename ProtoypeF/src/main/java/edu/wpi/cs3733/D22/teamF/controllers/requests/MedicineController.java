@@ -14,10 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -215,12 +213,17 @@ public class MedicineController extends PageController
             (medicineDeliveryRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(medicineDeliveryRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<MedicineDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
+    TreeTableColumn<MedicineDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
     nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<MedicineDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+        (TreeTableColumn.CellDataFeatures<MedicineDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
 
     TreeTableColumn<MedicineDeliveryRequest, String> assignedToCol =
         new TreeTableColumn<>("Assigned To:");
@@ -323,13 +326,18 @@ public class MedicineController extends PageController
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
   }
 
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-  }
-
   @Override
   public ContextMenu makeContextMenu() {
     return null;
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
   }
 }

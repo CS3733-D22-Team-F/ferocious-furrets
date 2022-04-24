@@ -17,6 +17,11 @@ public class ScanRequest extends MedicalRequest {
     db = new Repository("Scan");
   }
 
+  @Override
+  public String getReqType() {
+    return null;
+  }
+
   public ScanRequest(
       String reqID,
       String nodeID,
@@ -69,7 +74,7 @@ public class ScanRequest extends MedicalRequest {
    * @return returns a String Scantype
    */
   public String getScanType() {
-    return scanType;
+    return this.medicalType;
   }
   /**
    * Sets the current scan type of the object the param
@@ -78,9 +83,5 @@ public class ScanRequest extends MedicalRequest {
    */
   public void setScanType(String newScanType) {
     this.scanType = newScanType;
-  }
-
-  public String getReqType() {
-    return "Scan";
   }
 }

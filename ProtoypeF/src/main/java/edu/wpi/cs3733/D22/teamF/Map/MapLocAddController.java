@@ -14,14 +14,15 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MapLocModifyController implements Initializable {
+public class MapLocAddController implements Initializable {
 
   String floor = "1";
 
@@ -35,7 +36,6 @@ public class MapLocModifyController implements Initializable {
 
   @FXML private JFXButton selectedIcon;
 
-  @FXML private Label currentNode;
   @FXML private String xValue;
   @FXML private String yValue;
   @FXML private String floorValue;
@@ -62,7 +62,6 @@ public class MapLocModifyController implements Initializable {
     xValue = "";
     yValue = "";
     floorValue = "";
-    currentNode.setText(LocTempHolder.getLocation().getLongName());
     changeToF1();
     ArrayList<String> temp = new ArrayList<>();
     temp.add("PATI - Patient Room");
@@ -120,8 +119,7 @@ public class MapLocModifyController implements Initializable {
         if (longField.getText().length() > 128) {
           shortName = longField.getText().substring(0, 127);
         }
-        MapLocationModifier.modifyLocation(
-            LocTempHolder.getLocation().getNodeID(),
+        MapLocationModifier.addLocation(
             nodeBox.getValue(),
             ((Double.parseDouble(xValue) / 630) * 4450) + "",
             ((Double.parseDouble(yValue) / 500) * 3550) + "",

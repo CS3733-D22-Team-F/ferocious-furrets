@@ -237,4 +237,8 @@ public class Location extends RecursiveTreeObject<Location> {
         "INSERT INTO Locations VALUES ('%s',%s,%s,'%s','%s','%s','%s','%s')",
         nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName);
   }
+
+  public boolean equals(Location lo) {
+    return lo.getNodeID().equals(this.getNodeID()) && lo.getLongName().equals(longName);
+  }
 }

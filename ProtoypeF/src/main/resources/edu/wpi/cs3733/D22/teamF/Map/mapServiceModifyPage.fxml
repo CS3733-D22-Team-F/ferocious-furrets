@@ -6,19 +6,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="170.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapServiceModifyController">
+<VBox alignment="CENTER" prefHeight="298.0" prefWidth="351.0" style="-fx-background-color: #123090;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapServiceModifyController">
    <children>
-      <Label prefHeight="27.0" prefWidth="78.0" text="Current: ">
+      <Label alignment="CENTER" prefHeight="100.0" prefWidth="351.0" style="-fx-background-color: #4169e1;" text="Service Modify" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Serif Regular" size="36.0" />
+         </font>
+      </Label>
+      <Label prefHeight="27.0" prefWidth="337.0" text="Current: " textFill="WHITE">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
          </font>
          <VBox.margin>
             <Insets left="15.0" />
          </VBox.margin>
       </Label>
-      <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0">
+      <Label fx:id="currentNode" prefHeight="23.0" prefWidth="392.0" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Serif Regular" size="24.0" />
          </font>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -27,8 +32,17 @@
             <Insets left="15.0" />
          </padding>
       </Label>
-      <JFXButton onAction="#submit" prefHeight="49.0" prefWidth="95.0" ripplerFill="#182c9e" text="Mark As Done" />
-      <JFXButton fx:id="modifyRequest" onAction="#modify" prefHeight="34.0" prefWidth="118.0" ripplerFill="#182c9e" text="Modify Request" />
-      <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="49.0" prefWidth="99.0" ripplerFill="RED" text="Close" />
+      <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="45.0" prefWidth="190.0" ripplerFill="#182c9e" text="Mark As Done" textFill="WHITE">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="modifyRequest" buttonType="RAISED" onAction="#modify" prefHeight="45.0" prefWidth="209.0" ripplerFill="#182c9e" text="Modify Request" textFill="WHITE">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="cancel" buttonType="RAISED" onAction="#cancel" prefHeight="49.0" prefWidth="99.0" ripplerFill="RED" text="Close" textFill="WHITE">
+         <font>
+            <Font name="Serif Regular" size="24.0" />
+         </font></JFXButton>
    </children>
 </VBox>

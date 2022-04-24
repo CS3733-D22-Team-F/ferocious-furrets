@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -211,33 +210,46 @@ public class EquipmentRequestController extends PageController
             (equipmentDeliveryRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<EquipmentDeliveryRequest, String> nodeIDCol =
-        new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
+    TreeTableColumn<EquipmentDeliveryRequest, String> reqIDCol =
+        new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<EquipmentDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    TreeTableColumn<EquipmentDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<EquipmentDeliveryRequest, String> equipmentIDCol =
-        new TreeTableColumn<>("Equipment ID:");
+        new TreeTableColumn<>("Equipment ID");
     equipmentIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
 
-    TreeTableColumn<EquipmentDeliveryRequest, String> assignedToCol =
-        new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<EquipmentDeliveryRequest, String> requestedByCol =
-        new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<EquipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    TreeTableColumn<EquipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
@@ -245,14 +257,14 @@ public class EquipmentRequestController extends PageController
     TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
-        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
+        .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -306,33 +318,46 @@ public class EquipmentRequestController extends PageController
             (equipmentDeliveryRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(equipmentDeliveryRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<EquipmentDeliveryRequest, String> nodeIDCol =
-        new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
+    TreeTableColumn<EquipmentDeliveryRequest, String> reqIDCol =
+        new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+
+    TreeTableColumn<EquipmentDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    TreeTableColumn<EquipmentDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
 
     TreeTableColumn<EquipmentDeliveryRequest, String> equipmentIDCol =
-        new TreeTableColumn<>("Equipment ID:");
+        new TreeTableColumn<>("Equipment ID");
     equipmentIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getRequestedEquipmentID()));
 
-    TreeTableColumn<EquipmentDeliveryRequest, String> assignedToCol =
-        new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<EquipmentDeliveryRequest, String> requestedByCol =
-        new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<EquipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    TreeTableColumn<EquipmentDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
@@ -340,14 +365,14 @@ public class EquipmentRequestController extends PageController
     TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
-        .setAll(nodeIDCol, equipmentIDCol, assignedToCol, requestedByCol, statusCol);
+        .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    equipmentIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -424,5 +449,35 @@ public class EquipmentRequestController extends PageController
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }
