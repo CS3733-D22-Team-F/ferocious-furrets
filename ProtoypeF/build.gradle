@@ -43,6 +43,7 @@ dependencies {
             'org.apache.derby:derby:10.15.2.0',
             'org.apache.derby:derbyclient:10.15.2.0',
             'org.apache.derby:derbytools:10.15.2.0',
+            'io.github.palexdev.materialfx:materialfx-11.13.5-all',
 
             'org.slf4j:slf4j-api:1.7.36',
             'org.slf4j:slf4j-simple:1.7.36',
