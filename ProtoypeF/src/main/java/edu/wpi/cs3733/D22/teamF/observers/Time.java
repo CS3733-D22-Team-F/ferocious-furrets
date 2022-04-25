@@ -12,7 +12,17 @@ public class Time {
   }
 
   public String getCurrentTime() {
-    return hour + ":" + minute + ":" + second;
+    String timeString = "";
+    if (hour < 10) timeString += "0" + hour;
+    else timeString += hour;
+
+    if (minute < 10) timeString += ":0" + minute;
+    else timeString += ":" + minute;
+
+    if (second < 10) timeString += ":0" + second;
+    else timeString += ":" + second;
+
+    return timeString;
   }
 
   public Time(String currentTime) {

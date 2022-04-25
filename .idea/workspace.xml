@@ -4,9 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="working service conner">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Refactored project to follow naming conventions and combine DatabaseManager and DatabaseInitializer to a single Singleton class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/apiCSV/medicine.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/apiCSV/medicine.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/audioVisualPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/audioVisualPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/equipmentPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/equipmentPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/facilitiesPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/facilitiesPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftPageResized.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/giftPageResized.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/labRequestPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/maintenanceRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/maintenanceRequestPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mealPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/pageHolder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/pageHolder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/physicalTherapyPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/physicalTherapyPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/scanPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/scanPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/securityPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/securityPage.fxml" afterDir="false" />
     </list>
     <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +124,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ElbonianArabicConverter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -113,17 +133,18 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45632184" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Documents\IntelliJ\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="D:\Documents\IntelliJ\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\csv" />
+      <recent name="D:\Documents\IntelliJ\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF" />
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\APIJARs" />
       <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\Map\FloorMap" />
       <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
@@ -308,6 +329,7 @@
       <workItem from="1649991096807" duration="3522000" />
       <workItem from="1650421939175" duration="2873000" />
       <workItem from="1650445658005" duration="1244000" />
+      <workItem from="1650582655355" duration="24641000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -616,7 +638,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/AudioVisualController.java</url>
-          <line>109</line>
+          <line>105</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

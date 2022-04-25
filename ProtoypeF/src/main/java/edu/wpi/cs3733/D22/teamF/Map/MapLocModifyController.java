@@ -1,10 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.LocTempHolder;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapLocationModifier;
-import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class MapLocModifyController implements Initializable {
 
   String floor = "1";
 
-  @FXML ChoiceBox<String> nodeBox;
+  @FXML JFXComboBox<String> nodeBox;
 
   @FXML private AnchorPane iconPane;
 
@@ -119,27 +120,21 @@ public class MapLocModifyController implements Initializable {
         if (longField.getText().length() > 128) {
           shortName = longField.getText().substring(0, 127);
         }
-        MapLocationModifier.addLocation(
+        MapLocationModifier.modifyLocation(
+            LocTempHolder.getLocation().getNodeID(),
             nodeBox.getValue(),
             ((Double.parseDouble(xValue) / 630) * 4450) + "",
             ((Double.parseDouble(yValue) / 500) * 3550) + "",
             floorValue,
             longField.getText(),
             shortName);
-        MapLocationModifier.deleteLocation(LocTempHolder.getLocation());
-        MapTableHolder.loadMap(LocTempHolder.getLocationTable(), LocTempHolder.getPassIconPane());
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.close();
       } catch (Exception e) {
         e.printStackTrace();
       }
     } else {
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Alert");
-      alert.setHeaderText("Blank Field");
-      String s = "At least one required field is missing!";
-      alert.setContentText(s);
-      alert.show();
+      AGlobalMethods.showAlert("At least one required field is missing!", cancel);
     }
   }
 

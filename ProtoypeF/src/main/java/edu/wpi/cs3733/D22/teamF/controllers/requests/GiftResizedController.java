@@ -16,8 +16,6 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -33,7 +31,6 @@ public class GiftResizedController extends PageController
   @FXML Rectangle rectangle1;
   @FXML Rectangle rectangle2;
   @FXML BorderPane masterPane;
-  @FXML Pane leftPane;
   @FXML ImageView logo;
   //  @FXML ImageView backgroundIMG;
 
@@ -66,25 +63,6 @@ public class GiftResizedController extends PageController
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-
-    masterPane.setMinHeight(500);
-    masterPane.setMinWidth(500);
-    //    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    //    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    //    rectangle2.widthProperty().bind(masterPane.widthProperty().add(15).divide(2));
-    //    logo.xProperty().bind(rectangle2.widthProperty().subtract(600));
-    //    employeeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    employeeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    nodeID.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    nodeID.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    assigned.minWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    assigned.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    statusChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    giftChoice.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    leftHbox.maxWidthProperty().bind(rectangle1.widthProperty().subtract(100));
-    //    backgroundIMG.maxWidth(736);
-    //    backgroundIMG.fitHeightProperty().bind(masterPane.heightProperty());
-    //    backgroundIMG.fitWidthProperty().bind(masterPane.widthProperty().divide(2));
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -194,43 +172,56 @@ public class GiftResizedController extends PageController
             (giftDeliveryRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(giftDeliveryRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
-    TreeTableColumn<GiftDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location:");
-    nodeIDCol.setCellValueFactory(
+    TreeTableColumn<GiftDeliveryRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
+    reqIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
 
-    TreeTableColumn<GiftDeliveryRequest, String> giftCol = new TreeTableColumn<>("Gift:");
+    TreeTableColumn<GiftDeliveryRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    TreeTableColumn<GiftDeliveryRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
+    assignedToCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                    + " "
+                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+        });
+
+    TreeTableColumn<GiftDeliveryRequest, String> giftCol = new TreeTableColumn<>("Gift");
     giftCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getGift()));
 
-    TreeTableColumn<GiftDeliveryRequest, String> assignedToCol =
-        new TreeTableColumn<>("Assigned To:");
-    assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
-
-    TreeTableColumn<GiftDeliveryRequest, String> requestedByCol =
-        new TreeTableColumn<>("Requested By:");
-    requestedByCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getRequesterEmpID()));
-
-    TreeTableColumn<GiftDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status:");
+    TreeTableColumn<GiftDeliveryRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
     TreeTableView<GiftDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(nodeIDCol, giftCol, assignedToCol, requestedByCol, statusCol);
+    treeTableView.getColumns().setAll(reqIDCol, nodeIDCol, assignedToCol, giftCol, statusCol);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
+    reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    requestedByCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     giftCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
@@ -256,7 +247,7 @@ public class GiftResizedController extends PageController
 
   public String generateReqID() throws SQLException {
     String nNodeType = giftChoice.getValue().toString().substring(0, 3);
-    int reqNum = 0;
+    int reqNum = 1;
 
     ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT * FROM SERVICEREQUEST");
     while (rset.next()) {
@@ -264,20 +255,41 @@ public class GiftResizedController extends PageController
     }
     rset.close();
 
-    if (reqNum == 0) {
-      reqNum = 1;
-    }
-
     String nID = "f" + nNodeType + reqNum;
     return nID;
   }
 
-  @FXML
-  void switchToHome(ActionEvent event) throws IOException {
-    // StageManager.getInstance().setLandingScreen();
-  }
-
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

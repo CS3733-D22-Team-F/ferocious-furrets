@@ -28,6 +28,10 @@ public class MealDeliveryRequest extends DeliveryRequest {
     db.addRequest(fields);
   }
 
+  public String getMeal() {
+    return this.meal;
+  }
+
   @Override
   public void resolve(String reqID) {}
 

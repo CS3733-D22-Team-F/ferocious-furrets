@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 
 import afester.javafx.svg.SvgLoader;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /** for dealing with modifying icons on the map */
 public class MapIconModifier {
@@ -52,7 +54,7 @@ public class MapIconModifier {
     Image image =
         new Image(
             Objects.requireNonNull(
-                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/PATI Icon.png")));
+                Fapp.class.getResourceAsStream("Map/Icons/MapIcons/Service.png")));
     switch (type) {
       case "PATI":
         {
@@ -196,62 +198,6 @@ public class MapIconModifier {
               new Image(
                   Objects.requireNonNull(
                       Fapp.class.getResourceAsStream("Map/Icons/EquipmentIcons/XRAY Icon.png")));
-          break;
-        }
-      case "audio&visual":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/AudioVisualIcon.png")));
-          break;
-        }
-      case "equip":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/EquipmentIcon.png")));
-          break;
-        }
-      case "gift":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/GiftIcon.png")));
-          break;
-        }
-      case "lab":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/LabIcon.png")));
-          break;
-        }
-      case "meal":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MealIcon.png")));
-          break;
-        }
-      case "medical":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/MedicineIcon.png")));
-          break;
-        }
-      case "scan":
-        {
-          image =
-              new Image(
-                  Objects.requireNonNull(
-                      Fapp.class.getResourceAsStream("Map/Icons/ServiceIcon/ScanIcon.png")));
           break;
         }
       case "add":
@@ -452,6 +398,13 @@ public class MapIconModifier {
               new Image(Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/api.png")));
           break;
         }
+      case "patientMenu":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/patient.png")));
+          break;
+        }
     }
     ImageView imageView = new ImageView(image);
     imageView.setFitHeight(20);
@@ -484,14 +437,14 @@ public class MapIconModifier {
    * @param showIconButton JFXButton
    */
   public static void showIcon(JFXButton showIconButton) {
-    if (showIconButton.getText().equals("ALL ICON")) {
+    if (showIconButton.getText().equals("All Icon")) {
       showFloorIcon(MapLocationModifier.currentFloor);
-      showIconButton.setText("HIDE ICON");
+      showIconButton.setText("Hide Icon");
       showIconButton.setStyle("-fx-background-color: red");
-    } else if (showIconButton.getText().equals("HIDE ICON")) {
+    } else if (showIconButton.getText().equals("Hide Icon")) {
       showFloorIcon("99");
-      showIconButton.setText("ALL ICON");
-      showIconButton.setStyle("-fx-background-color: #062558");
+      showIconButton.setText("All Icon");
+      showIconButton.setStyle("-fx-background-color: #123090");
     }
   }
 
@@ -613,7 +566,12 @@ public class MapIconModifier {
    * @param location
    * @throws FileNotFoundException
    */
-  public static void addIcon(TableView<Location> table, AnchorPane iconPane, Location location)
+  public static void addIcon(
+      TableView<Location> table,
+      AnchorPane iconPane,
+      Location location,
+      VBox infoBox,
+      JFXTextArea locationArea)
       throws FileNotFoundException, SQLException {
     if (!location.getShortName().equalsIgnoreCase("done")) {
       JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
@@ -634,7 +592,7 @@ public class MapIconModifier {
                             .get(0);
                     try {
                       MapPopUp.popUpLocModify(table, iconPane, lo);
-                      MapTableHolder.loadMap(table, iconPane);
+                      MapTableHolder.loadMap(table, iconPane, infoBox, locationArea);
                     } catch (IOException | SQLException ex) {
                       ex.printStackTrace();
                     }
@@ -669,7 +627,7 @@ public class MapIconModifier {
                         loc.getFloor(),
                         loc.getLongName(),
                         loc.getShortName());
-                    MapTableHolder.loadMap(table, iconPane);
+                    MapTableHolder.loadMap(table, iconPane, infoBox, locationArea);
                   } catch (SQLException ex) {
                     ex.printStackTrace();
                   } catch (IOException ex) {
@@ -677,16 +635,45 @@ public class MapIconModifier {
                   }
                 }
               });
-          newButton.setOnMouseEntered(
-              e -> {
-                newButton.setCursor(Cursor.HAND);
-              });
           newButton.setOnMouseDragged(
               e -> {
                 if (e.getButton() == MouseButton.PRIMARY) {
                   newButton.setLayoutX(e.getSceneX() + dragDelta.x);
                   newButton.setLayoutY(e.getSceneY() + dragDelta.y);
                 }
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
+                table.scrollTo(i);
+                table.getSelectionModel().select(i);
+                newButton.setCursor(Cursor.HAND);
+                infoBox.setVisible(true);
+                try {
+                  for (String s : MapTableHolder.getAllLocOnNID(location)) {
+                    locationArea.setText(locationArea.getText() + "\n" + s);
+                  }
+                  locationArea.setText(locationArea.getText().trim());
+                } catch (SQLException | IOException ex) {
+                  ex.printStackTrace();
+                }
+              });
+          newButton.setOnMouseExited(
+              e -> {
+                locationArea.clear();
+                infoBox.setVisible(false);
+              });
+          newButton.setOnScroll(
+              e -> {
+                locationArea
+                    .scrollTopProperty()
+                    .set(locationArea.scrollTopProperty().get() + 1 * e.getDeltaY());
               });
         } else if (getLocType(location).equalsIgnoreCase("service")
             && !location.getShortName().equalsIgnoreCase("done")) {
@@ -700,11 +687,41 @@ public class MapIconModifier {
                           .get(0);
                   try {
                     MapPopUp.popUpDone(table, iconPane, lo);
-                    MapTableHolder.loadMap(table, iconPane);
+                    MapTableHolder.loadMap(table, iconPane, infoBox, locationArea);
                   } catch (IOException | SQLException ex) {
                     ex.printStackTrace();
                   }
                 }
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
+                infoBox.setVisible(true);
+                try {
+                  for (String s : MapTableHolder.getAllLocOnNID(location)) {
+                    locationArea.setText(locationArea.getText() + "\n" + s);
+                  }
+                  locationArea.setText(locationArea.getText().trim());
+                } catch (SQLException | IOException ex) {
+                  ex.printStackTrace();
+                }
+              });
+          newButton.setOnMouseExited(
+              e -> {
+                locationArea.clear();
+                infoBox.setVisible(false);
+              });
+          newButton.setOnScroll(
+              e -> {
+                locationArea
+                    .scrollTopProperty()
+                    .set(locationArea.scrollTopProperty().get() + 1 * e.getDeltaY());
               });
         } else if (getLocType(location).equalsIgnoreCase("Equipment")) {
           final Delta dragDelta = new Delta();
@@ -719,7 +736,7 @@ public class MapIconModifier {
                             .get(0);
                     try {
                       MapPopUp.popUpEquipModify(table, iconPane, lo);
-                      MapTableHolder.loadMap(table, iconPane);
+                      MapTableHolder.loadMap(table, iconPane, infoBox, locationArea);
                     } catch (IOException | SQLException ex) {
                       ex.printStackTrace();
                     }
@@ -756,15 +773,11 @@ public class MapIconModifier {
                     ex.printStackTrace();
                   }
                   try {
-                    MapTableHolder.loadMap(table, iconPane);
+                    MapTableHolder.loadMap(table, iconPane, infoBox, locationArea);
                   } catch (SQLException | IOException ex) {
                     ex.printStackTrace();
                   }
                 }
-              });
-          newButton.setOnMouseEntered(
-              e -> {
-                newButton.setCursor(Cursor.HAND);
               });
           newButton.setOnMouseDragged(
               e -> {
@@ -772,6 +785,37 @@ public class MapIconModifier {
                   newButton.setLayoutX(e.getSceneX() + dragDelta.x);
                   newButton.setLayoutY(e.getSceneY() + dragDelta.y);
                 }
+              });
+          newButton.setOnMouseEntered(
+              e -> {
+                int i = 0;
+                ArrayList<Location> loList = new ArrayList<>(table.getItems());
+                for (Location lo : loList) {
+                  if (lo.equals(location)) {
+                    i = loList.indexOf(lo);
+                  }
+                }
+                newButton.setCursor(Cursor.HAND);
+                infoBox.setVisible(true);
+                try {
+                  for (String s : MapTableHolder.getAllLocOnNID(location)) {
+                    locationArea.setText(locationArea.getText() + "\n" + s);
+                  }
+                  locationArea.setText(locationArea.getText().trim());
+                } catch (SQLException | IOException ex) {
+                  ex.printStackTrace();
+                }
+              });
+          newButton.setOnMouseExited(
+              e -> {
+                locationArea.clear();
+                infoBox.setVisible(false);
+              });
+          newButton.setOnScroll(
+              e -> {
+                locationArea
+                    .scrollTopProperty()
+                    .set(locationArea.scrollTopProperty().get() + 1 * e.getDeltaY());
               });
         }
       }

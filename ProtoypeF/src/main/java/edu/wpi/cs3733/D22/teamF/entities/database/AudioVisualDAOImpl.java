@@ -16,7 +16,7 @@ public class AudioVisualDAOImpl implements IRequestDAO {
     DatabaseManager.getInstance().dropTableIfExist("audioVisualRequest");
     DatabaseManager.getInstance()
         .runStatement(
-            "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), objectType varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+            "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(64), objectType varChar(64), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -29,7 +29,7 @@ public class AudioVisualDAOImpl implements IRequestDAO {
     DatabaseManager.getInstance().dropTableIfExist("audioVisualRequest");
     DatabaseManager.getInstance()
         .runStatement(
-            "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(32), objectType varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+            "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(64), objectType varChar(64), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
