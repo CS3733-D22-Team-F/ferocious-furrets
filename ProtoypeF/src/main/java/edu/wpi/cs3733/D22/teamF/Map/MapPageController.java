@@ -47,6 +47,7 @@ public class MapPageController implements Initializable {
   private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
   private double scaleValue = 1;
   private double zoomIntensity = 0.02;
+  public static boolean inButton = false;
 
   @FXML ImageView mapHolder;
 
@@ -276,35 +277,38 @@ public class MapPageController implements Initializable {
   }
 
   private void onScroll(double wheelDelta, Point2D mousePoint) {
-    double zoomFactor = Math.exp(wheelDelta * zoomIntensity);
+    if (!inButton) {
+      double zoomFactor = Math.exp(wheelDelta * zoomIntensity);
 
-    Bounds innerBounds = mapGroup.getLayoutBounds();
-    Bounds viewportBounds = scrollPane.getViewportBounds();
+      Bounds innerBounds = mapGroup.getLayoutBounds();
+      Bounds viewportBounds = scrollPane.getViewportBounds();
 
-    // calculate pixel offsets from [0, 1] range
-    double valX = scrollPane.getHvalue() * (innerBounds.getWidth() - viewportBounds.getWidth());
-    double valY = scrollPane.getVvalue() * (innerBounds.getHeight() - viewportBounds.getHeight());
+      // calculate pixel offsets from [0, 1] range
+      double valX = scrollPane.getHvalue() * (innerBounds.getWidth() - viewportBounds.getWidth());
+      double valY = scrollPane.getVvalue() * (innerBounds.getHeight() - viewportBounds.getHeight());
 
-    scaleValue = scaleValue * zoomFactor;
-    updateScale();
-    scrollPane.layout(); // refresh ScrollPane scroll positions & target bounds
+      scaleValue = scaleValue * zoomFactor;
+      updateScale();
+      scrollPane.layout(); // refresh ScrollPane scroll positions & target bounds
 
-    // convert target coordinates to zoomTarget coordinates
-    Point2D posInZoomTarget = iconPane.parentToLocal(mapGroup.parentToLocal(mousePoint));
+      // convert target coordinates to zoomTarget coordinates
+      Point2D posInZoomTarget = iconPane.parentToLocal(mapGroup.parentToLocal(mousePoint));
 
-    // calculate adjustment of scroll position (pixels)
-    Point2D adjustment =
-        iconPane
-            .getLocalToParentTransform()
-            .deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
+      // calculate adjustment of scroll position (pixels)
+      Point2D adjustment =
+          iconPane
+              .getLocalToParentTransform()
+              .deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
 
-    // convert back to [0, 1] range
-    // (too large/small values are automatically corrected by ScrollPane)
-    Bounds updatedInnerBounds = mapGroup.getBoundsInLocal();
-    scrollPane.setHvalue(
-        (valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
-    scrollPane.setVvalue(
-        (valY + adjustment.getY()) / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+      // convert back to [0, 1] range
+      // (too large/small values are automatically corrected by ScrollPane)
+      Bounds updatedInnerBounds = mapGroup.getBoundsInLocal();
+      scrollPane.setHvalue(
+          (valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
+      scrollPane.setVvalue(
+          (valY + adjustment.getY())
+              / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+    }
   }
 
   public void initializeScroll() {
