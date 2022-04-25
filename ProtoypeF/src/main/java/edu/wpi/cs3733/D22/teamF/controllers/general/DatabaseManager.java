@@ -8,7 +8,11 @@ import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.EquipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Class for managing instances of the various DAO implementations for the different tables To Use
@@ -107,13 +111,13 @@ public class DatabaseManager {
 
     System.out.println("Attempting Connection to Remote: " + url);
     try {
-      Class.forName("org.apache.derby.jdbc.ClientDriver");
+      // Class.forName("org.apache.derby.jdbc.ClientDriver");
 
       System.out.println("Remote Driver Registered");
 
       tempConn = DriverManager.getConnection(url); // CONNECT TO DATABASE
-    } catch (ClassNotFoundException | SQLException e) {
-      System.out.println("Embedded Driver not Found");
+    } catch (SQLException e) {
+      System.out.println("Remote Driver not Found");
       e.printStackTrace();
     }
     if (tempConn != null) {
@@ -129,7 +133,7 @@ public class DatabaseManager {
 
     System.out.println("Attempting Connection to Embedded");
     try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+      // Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
       System.out.println("Embedded Driver Registered");
       tempConn = null;
@@ -137,9 +141,9 @@ public class DatabaseManager {
       tempConn = DriverManager.getConnection("jdbc:derby:myDB;create=true"); // CONNECT TO DATABASE
       assert (tempConn != null);
 
-    } catch (ClassNotFoundException e) {
-      System.out.println("Remote Driver not Found");
-      e.printStackTrace();
+      //    } catch (ClassNotFoundException e) {
+      //      System.out.println("Embedded Driver not Found");
+      //      e.printStackTrace();
     } catch (SQLException e) {
       System.out.println("Embedded Connection Failed");
       System.out.println("You done ****ed up your project");

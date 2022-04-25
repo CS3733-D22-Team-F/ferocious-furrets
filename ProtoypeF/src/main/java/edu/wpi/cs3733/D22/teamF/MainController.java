@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import edu.wpi.cs3733.D22.teamD.API.StartAPI;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
@@ -359,7 +360,9 @@ public class MainController implements Initializable {
 
   public void changeToFacilities() throws IOException {
     // TODO add your page name before ".fxml"
-    changeTo("views/facilitiesPage.fxml");
+    // changeTo("views/facilitiesPage.fxml");
+    StartAPI.appLaunch(
+        0, 0, 0, 0, "edu/wpi/cs3733/D22/teamF/stylesheets/RequestPages.css", "FSTAI00201");
   }
 
   public void changeToMaintenance() throws IOException {
