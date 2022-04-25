@@ -6,13 +6,13 @@
 }
 
 #upArrow{
-    -fx-text-fill: white;
-    -fx-background-color: #123090;
+    -fx-text-fill: transparent;
+    -fx-background-color: transparent;
 }
 
 #downArrow{
-    -fx-text-fill: white;
-    -fx-background-color: #123090;
+    -fx-text-fill: transparent;
+    -fx-background-color: transparent;
 }
 
 #facadeButton{
@@ -33,5 +33,132 @@
     -fx-start-margin: 20px;
     -fx-end-margin: 20px;
     -fx-padding: 10px;
-    /**-jfx-rippler-fill: pink;**/
+}
+
+#cBed{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#dBed{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#pBed{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#iBed{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#cInfusionPump{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#dInfusionPump{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#pInfusionPump{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#iInfusionPump{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#cXRay{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#dXRay{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#pXRay{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#iXRay{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#cRecliner{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#dRecliner {
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#pRecliner{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+#iRecliner{
+    -fx-font-family: Serif;
+    -fx-text-fill: f-blue;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
 }

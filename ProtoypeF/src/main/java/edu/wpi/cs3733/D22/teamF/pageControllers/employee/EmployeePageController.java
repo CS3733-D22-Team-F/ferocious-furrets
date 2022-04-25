@@ -60,24 +60,7 @@ public class EmployeePageController extends PageController implements Initializa
     firstName.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastName"));
     salary.setCellValueFactory(new PropertyValueFactory<Employee, String>("salary"));
-    ArrayList<Employee> employees = new ArrayList<>();
-    try {
-      ResultSet rset = DatabaseManager.getInstance().getEmployeeDAO().get();
-      while (rset.next()) {
-        String empID = rset.getString("EMPLOYEEID");
-        String first = rset.getString("FIRSTNAME");
-        String last = rset.getString("LASTNAME");
-        String salary = rset.getString("SALARY");
-        Employee emp = new Employee(empID, first, last, salary);
-        employees.add(emp);
-      }
-    } catch (SQLException | IOException e) {
-      e.printStackTrace();
-    }
-    // employees is a list of all employees in the table
-
-    ObservableList<Employee> eList = FXCollections.observableList(employees);
-    employeeTable.setItems(eList);
+    update();
   }
 
   @FXML
@@ -90,6 +73,7 @@ public class EmployeePageController extends PageController implements Initializa
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    update();
   }
 
   @FXML
@@ -102,6 +86,7 @@ public class EmployeePageController extends PageController implements Initializa
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    update();
   }
 
   @FXML
@@ -114,11 +99,34 @@ public class EmployeePageController extends PageController implements Initializa
     Scene scene1 = new Scene(root);
     popupwindow.setScene(scene1);
     popupwindow.showAndWait();
+    update();
   }
 
   public void submit() throws SQLException {}
 
   public void reset() {}
+
+  public void update() {
+    ArrayList<Employee> employees = new ArrayList<>();
+    try {
+      ResultSet rset = DatabaseManager.getInstance().getEmployeeDAO().get();
+      while (rset.next()) {
+        String empID = rset.getString("EMPLOYEEID");
+        String first = rset.getString("FIRSTNAME");
+        String last = rset.getString("LASTNAME");
+        String salary = rset.getString("SALARY");
+        System.out.println(empID + first + last + salary);
+        Employee emp = new Employee(empID, first, last, salary);
+        employees.add(emp);
+      }
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
+    // employees is a list of all employees in the table
+
+    ObservableList<Employee> eList = FXCollections.observableList(employees);
+    employeeTable.setItems(eList);
+  }
 
   /**
    * Method to create a class specifics context menu

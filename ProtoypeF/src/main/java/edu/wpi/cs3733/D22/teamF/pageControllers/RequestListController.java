@@ -4,10 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
 import edu.wpi.cs3733.D22.teamF.reports.PDFConverter;
 import java.io.File;
+import edu.wpi.cs3733.D22.teamF.filter.EmployeeFilter;
+import edu.wpi.cs3733.D22.teamF.filter.RequestFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -76,24 +79,28 @@ public class RequestListController extends PageController implements Initializab
   TreeItem<RequestTree> treeRoot =
       new TreeItem<>(new RequestTree(reqID, nodeID, assignedEmpID, requesterEmpID, status));
 
-  public String employeeIDFinder(String name) throws SQLException {
-    String empID = "";
-    String[] employeeName = name.split(",");
-    String last = employeeName[0].trim();
-    String first = employeeName[1].trim();
-    last = last.strip();
-    first = first.strip();
-    String cmd =
-        String.format(
-            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-            first, last);
-    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
-    if (rset.next()) {
-      empID = rset.getString("EMPLOYEEID");
-    }
-    rset.close();
-    return empID;
-  }
+  //  public String employeeIDFinder(String name) throws SQLException {
+  //
+  ////    EmployeeFilter employeeFilter= new EmployeeFilter(name);
+  ////    String empID = employeeFilter.employeeIDFinder();
+  //
+  ////    String empID = "";
+  ////    String[] employeeName = name.split(",");
+  ////    String last = employeeName[0].trim();
+  ////    String first = employeeName[1].trim();
+  ////    last = last.strip();
+  ////    first = first.strip();
+  ////    String cmd =
+  ////        String.format(
+  ////            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
+  ////            first, last);
+  ////    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+  ////    if (rset.next()) {
+  ////      empID = rset.getString("EMPLOYEEID");
+  ////    }
+  //   // rset.close();
+  //    //return empID;
+  //  }
 
   public void f() throws SQLException, IOException {
     if (filterEmployee.getText().equals("ALL")) {
@@ -109,14 +116,20 @@ public class RequestListController extends PageController implements Initializab
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
     employeeName = filterEmployee.getText();
+//    System.out.println(employeeName);
 
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
-    String empID = employeeIDFinder(employeeName);
+    //    String empID = employeeIDFinder(employeeName);
+    EmployeeFilter employeeFilter = new EmployeeFilter(employeeName);
+    String empID = employeeFilter.employeeIDFinder();
 
-    String cmd =
-        String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
-    ResultSet filteredReq = DatabaseManager.getInstance().runQuery(cmd);
+    RequestFilter requestFilter = new RequestFilter(empID);
+    ResultSet filteredReq = requestFilter.filterByEmpID();
+
+    //    String cmd =
+    //        String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
+    //    ResultSet filteredReq = DatabaseManager.getInstance().runQuery(cmd);
 
     //    while(employee.next()){
     //      currentEmployeeFirstName = employee.getString("FIRSTNAME");

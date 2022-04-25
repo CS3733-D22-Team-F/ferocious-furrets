@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.observers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -125,34 +126,17 @@ public class DashboardController implements Initializable {
     inUseLabels.add(iRecliner);
     inUseLabels.add(iXRay);
 
-    //    equipCountLabels.add(ll2Count);
-    //    equipCountLabels.add(ll1Count);
-    //    equipCountLabels.add(fl1Count);
-    //    equipCountLabels.add(fl2Count);
-    //    equipCountLabels.add(fl3Count);
-    //    equipCountLabels.add(fl4Count);
-    //    equipCountLabels.add(fl5Count);
-
-    /*
-    for (DashboardObserver observer : floorObservers) {
-      observer.setLabels(cleanLabels, dirtyLabels, podLabels, inUseLabels);
-      FloorObservable.getInstance().addPropertyChangeListener(observer);
-    }
+    FloorWatchManager.getInstance()
+        .setLabelsToUpdate(cleanLabels, dirtyLabels, podLabels, inUseLabels);
+    FloorWatchManager.getInstance().setEquipCountLabels(equipCountLabels);
+    setLabels();
+    setAlerts();
 
     try {
       FloorObservable.getInstance().setState();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
-     */
-    // currentFloor = Floor.FL3;
-
-    FloorWatchManager.getInstance()
-        .setLabelsToUpdate(cleanLabels, dirtyLabels, podLabels, inUseLabels);
-    FloorWatchManager.getInstance().setEquipCountLabels(equipCountLabels);
-    setLabels();
-    setAlerts();
   }
 
   public void setFloor(Floor floorToSet) {

@@ -609,12 +609,15 @@ public class MapTableHolder {
         String temp;
         if (MapIconModifier.getLocType(lo).equals("location")) {
           temp = lo.getLongName();
-        } else if (MapIconModifier.getLocType(lo).equals("service")) {
+          output.add(temp);
+        } else if (MapIconModifier.getLocType(lo).equals("service")
+            && !lo.getShortName().equals("done")) {
           temp = lo.getNodeType() + " - " + lo.getLongName();
-        } else {
+          output.add(temp);
+        } else if (MapIconModifier.getLocType(lo).equals("equipment")) {
           temp = lo.getLongName();
+          output.add(temp);
         }
-        output.add(temp);
       }
     }
     return output;
