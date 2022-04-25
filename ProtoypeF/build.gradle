@@ -47,6 +47,7 @@ dependencies {
     )
 
     implementation(files("APIJARs/CS3733-D22-Team-D-SanitationRequestAPI-all.jar"))
+    implementation(files("APIJARs/CS3733-D22-Team-X-MealServiceRequestAPI.jar"))
     implementation name : 'edu.wpi.cs3733.D22.teamF'
 
     testCompile(

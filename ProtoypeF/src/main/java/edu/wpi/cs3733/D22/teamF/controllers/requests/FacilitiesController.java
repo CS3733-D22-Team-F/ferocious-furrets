@@ -3,17 +3,21 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamD.API.SanitationReqAPI;
+import edu.wpi.cs3733.D22.teamD.backend.Dao;
+import edu.wpi.cs3733.D22.teamD.request.IRequest;
+import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.FacilitiesRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,13 +62,18 @@ public class FacilitiesController extends PageController
   private String nodeIDO;
   private String assignedEmpID;
   private String requesterEmpID;
-  private String status;
+  private IRequest.RequestStatus status;
   private String accessObject;
 
-  private TreeItem<FacilitiesRequest> treeRoot =
+  private TreeItem<SanitationIRequest> treeRoot =
       new TreeItem<>(
-          new FacilitiesRequest(
-              requestID, nodeIDO, assignedEmpID, requesterEmpID, status, accessObject));
+          new SanitationIRequest(
+              IRequest.Priority.MEDIUM,
+              nodeIDO,
+              assignedEmpID,
+              requesterEmpID,
+              accessObject,
+              status));
 
   //  Timeline timeline =
   //      new Timeline(
@@ -123,18 +132,38 @@ public class FacilitiesController extends PageController
 
   /** @return facilitiesRequest */
   public void submit() throws SQLException, IOException {
-    RequestSystem req = new RequestSystem("Facilities");
-    ArrayList<String> fields = new ArrayList<String>();
-    fields.add(generateReqID());
-    fields.add(nodeIDFinder(nodeID.getValue().toString()));
-    fields.add(employeeIDFinder(assigned.getValue().toString()));
-    fields.add(employeeIDFinder(employeeID.getValue().toString()));
-    fields.add(statusChoice.getValue().toString());
+    //    RequestSystem req = new RequestSystem("Facilities");
+    //    ArrayList<String> fields = new ArrayList<String>();
+    //    fields.add(generateReqID());
+    //    fields.add(nodeIDFinder(nodeID.getValue().toString()));
+    //    fields.add(employeeIDFinder(assigned.getValue().toString()));
+    //    fields.add(employeeIDFinder(employeeID.getValue().toString()));
+    //    fields.add(statusChoice.getValue().toString());
+    String type = "";
     if (requestType.getValue().toString().length() > 16)
-      fields.add(requestType.getValue().toString().substring(0, 15));
-    else fields.add(requestType.getValue().toString());
+      type = requestType.getValue().toString().substring(0, 15);
+    else type = requestType.getValue().toString();
     //    System.out.println(fields);
-    req.placeRequest(fields);
+    //    req.placeRequest(fields);
+
+    IRequest.RequestStatus status = IRequest.RequestStatus.REQUESTED;
+    if (statusChoice.getValue().toString().equals("Processing"))
+      status = IRequest.RequestStatus.IN_PROGRESS;
+    else status = IRequest.RequestStatus.COMPLETED;
+
+    SanitationIRequest requestObj =
+        new SanitationIRequest(
+            IRequest.Priority.MEDIUM,
+            nodeIDFinder(nodeID.getValue().toString()),
+            employeeIDFinder(assigned.getValue().toString()),
+            employeeIDFinder(employeeID.getValue().toString()),
+            type,
+            status);
+
+    SanitationReqAPI reqAPI = new SanitationReqAPI();
+
+    Dao<SanitationIRequest> request = new Dao(requestObj);
+    request.add(requestObj);
 
     startTable();
 
@@ -154,85 +183,89 @@ public class FacilitiesController extends PageController
   public void startTable() throws SQLException, IOException {
     clearTable();
 
-    ResultSet facilitiesRequestList =
-        DatabaseManager.getInstance().getFacilitiesDAO().get(); // CHANGE THIS TO CURRENT DAO
-    ResultSet servRequest;
-    ArrayList<FacilitiesRequest> secReqs = new ArrayList<>();
-    FacilitiesRequest er;
-    String currentFacilityReq;
+    //    ResultSet facilitiesRequestList =
+    //        DatabaseManager.getInstance().getFacilitiesDAO().get(); // CHANGE THIS TO CURRENT DAO
+    //    ResultSet servRequest;
+    //    ArrayList<FacilitiesRequest> secReqs = new ArrayList<>();
+    //    FacilitiesRequest er;
+    //    String currentFacilityReq;
+    //
+    //    while (facilitiesRequestList.next()) {
+    //      currentFacilityReq = facilitiesRequestList.getString("reqID");
+    //      //      System.out.println(currentFacilityReq);
+    //      servRequest = DatabaseManager.getInstance().getRequestDAO().get();
+    //      while (servRequest.next()) {
+    //        if (servRequest.getString("reqID").equals(currentFacilityReq)) {
+    //          er =
+    //              new FacilitiesRequest(
+    //                  facilitiesRequestList.getString("reqID"),
+    //                  servRequest.getString("nodeID"),
+    //                  servRequest.getString("assignedEmployeeID"),
+    //                  servRequest.getString("requesterEmployeeID"),
+    //                  servRequest.getString("status"),
+    //                  facilitiesRequestList.getString("accessObject"));
+    //          secReqs.add(er);
+    //          servRequest.close();
+    //          break;
+    //        }
+    //      }
+    //    }
+    //
+    //    facilitiesRequestList.close();
 
-    while (facilitiesRequestList.next()) {
-      currentFacilityReq = facilitiesRequestList.getString("reqID");
-      //      System.out.println(currentFacilityReq);
-      servRequest = DatabaseManager.getInstance().getRequestDAO().get();
-      while (servRequest.next()) {
-        if (servRequest.getString("reqID").equals(currentFacilityReq)) {
-          er =
-              new FacilitiesRequest(
-                  facilitiesRequestList.getString("reqID"),
-                  servRequest.getString("nodeID"),
-                  servRequest.getString("assignedEmployeeID"),
-                  servRequest.getString("requesterEmployeeID"),
-                  servRequest.getString("status"),
-                  facilitiesRequestList.getString("accessObject"));
-          secReqs.add(er);
-          servRequest.close();
-          break;
-        }
-      }
-    }
-
-    facilitiesRequestList.close();
+    SanitationReqAPI sanitationReqAPI = new SanitationReqAPI();
+    List<SanitationIRequest> facilitiesRequestList = sanitationReqAPI.getAllRequests();
 
     treeRoot.setExpanded(true);
-    secReqs.stream()
+    facilitiesRequestList.stream()
         .forEach(
             (facilitiesRequest) -> {
               treeRoot.getChildren().add(new TreeItem<>(facilitiesRequest));
             });
 
-    TreeTableColumn<FacilitiesRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
+    TreeTableColumn<SanitationIRequest, String> reqIDCol = new TreeTableColumn<>("Request ID");
     reqIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<FacilitiesRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
+        (TreeTableColumn.CellDataFeatures<SanitationIRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
-    TreeTableColumn<FacilitiesRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
+    TreeTableColumn<SanitationIRequest, String> nodeIDCol = new TreeTableColumn<>("Location");
     nodeIDCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<FacilitiesRequest, String> param) -> {
+        (TreeTableColumn.CellDataFeatures<SanitationIRequest, String> param) -> {
           try {
-            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getRoomID()));
           } catch (SQLException e) {
             e.printStackTrace();
           }
           return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
         });
 
-    TreeTableColumn<FacilitiesRequest, String> assignedToCol = new TreeTableColumn<>("Assigned To");
+    TreeTableColumn<SanitationIRequest, String> assignedToCol =
+        new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<FacilitiesRequest, String> param) -> {
+        (TreeTableColumn.CellDataFeatures<SanitationIRequest, String> param) -> {
           try {
             return new ReadOnlyStringWrapper(
-                empIDToFirstName(param.getValue().getValue().getAssignedEmpID())
+                empIDToFirstName(param.getValue().getValue().getAssigneeID())
                     + " "
-                    + empIDToLastName(param.getValue().getValue().getAssignedEmpID()));
+                    + empIDToLastName(param.getValue().getValue().getAssigneeID()));
           } catch (SQLException e) {
             e.printStackTrace();
           }
-          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getAssigneeID());
         });
 
-    TreeTableColumn<FacilitiesRequest, String> statusCol = new TreeTableColumn<>("Status");
+    TreeTableColumn<SanitationIRequest, String> statusCol = new TreeTableColumn<>("Status");
     statusCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<FacilitiesRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
+        (TreeTableColumn.CellDataFeatures<SanitationIRequest, String> param) ->
+            new ReadOnlyObjectWrapper(param.getValue().getValue().getCleanStatus()));
 
-    TreeTableColumn<FacilitiesRequest, String> accessObjectCol =
+    TreeTableColumn<SanitationIRequest, String> accessObjectCol =
         new TreeTableColumn<>("Facilities Needed");
     accessObjectCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<FacilitiesRequest, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getAccessObject()));
+        (TreeTableColumn.CellDataFeatures<SanitationIRequest, String> param) ->
+            new ReadOnlyStringWrapper(param.getValue().getValue().getSanitationType()));
 
-    TreeTableView<FacilitiesRequest> treeTableView = new TreeTableView<>(treeRoot);
+    TreeTableView<SanitationIRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
         .setAll(reqIDCol, nodeIDCol, assignedToCol, accessObjectCol, statusCol);
