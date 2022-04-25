@@ -16,7 +16,7 @@ public class AudioPlayer {
 
   // constructor to initialize streams and clip
   public AudioPlayer(String filePath)
-          throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+      throws UnsupportedAudioFileException, IOException, LineUnavailableException {
     // create AudioInputStream object
     audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
@@ -29,16 +29,14 @@ public class AudioPlayer {
     clip.loop(Clip.LOOP_CONTINUOUSLY);
   }
 
-
   public void play() {
     clip.start();
   }
 
   public boolean playFor(int sec) {
     clip.start();
-    while (clip.getMicrosecondPosition() <= (sec * 1000)) {
+    while (clip.getMicrosecondPosition() <= (sec * 1000)) {}
 
-    }
     clip.stop();
     return true;
   }
@@ -46,6 +44,4 @@ public class AudioPlayer {
   public void stop() {
     clip.stop();
   }
-
-
 }
