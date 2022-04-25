@@ -104,6 +104,29 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws SQLException
    */
   public void delete(String empID) throws SQLException {
+    ResultSet rset =
+        DatabaseManager.getInstance()
+            .runQuery(
+                String.format(
+                    "SELECT * FROM SERVICEREQUEST WHERE ASSIGNEDEMPLOYEEID = '%s' OR REQUESTEREMPLOYEEID = '%s'",
+                    empID, empID));
+    while (rset.next()) {
+      if (rset.getString("ASSIGNEDEMPLOYEEID").equals(empID)) {
+        DatabaseManager.getInstance()
+            .runStatement(
+                String.format(
+                    "UPDATE SERVICEREQUEST SET ASSIGNEDEMPLOYEEID = NULL WHERE REQID = '%s'",
+                    rset.getString("REQID")));
+      }
+      if (rset.getString("REQUESTEREMPLOYEEID").equals(empID)) {
+        DatabaseManager.getInstance()
+            .runStatement(
+                String.format(
+                    "UPDATE SERVICEREQUEST SET REQUESTEREMPLOYEEID = NULL WHERE REQID = '%s'",
+                    rset.getString("REQID")));
+      }
+    }
+    rset.close();
     DatabaseManager.getInstance()
         .runStatement(String.format("DELETE FROM Employee WHERE employeeID = '%s'", empID));
   }

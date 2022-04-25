@@ -15,7 +15,7 @@
    <children>
       <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
          <children>
-            <VBox fx:id="titleBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+            <VBox fx:id="titleBox" fillWidth="false" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1270.0" style="-fx-background-color: #123090;" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1270.0" text="Brigham And Women's Hospital" textFill="WHITE">
                      <font>
@@ -38,14 +38,14 @@
                <left>
                   <StackPane fx:id="stackHolder" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" BorderPane.alignment="TOP_LEFT">
                      <children>
-                        <StackPane fx:id="pageHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="723.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" StackPane.alignment="TOP_LEFT">
+                        <StackPane fx:id="pageHolder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
-                              <Insets left="30.0" />
+                              <Insets left="50.0" />
                            </StackPane.margin>
                         </StackPane>
-                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="660.0" prefWidth="198.0" resizeContent="true" StackPane.alignment="TOP_LEFT">
+                        <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="767.0" prefWidth="198.0" resizeContent="true" StackPane.alignment="TOP_LEFT">
                            <children>
-                              <VBox fx:id="homeMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="homeMenu" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
                                  <children>
                                     <VBox fx:id="v1" prefHeight="200.0" prefWidth="200.0">
                                        <children>
@@ -105,7 +105,7 @@
                                     </VBox>
                                  </children>
                               </VBox>
-                              <VBox fx:id="serviceMenu" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="serviceMenu" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
                                  <children>
                                     <VBox fx:id="v5" prefHeight="200.0" prefWidth="200.0">
                                        <children>

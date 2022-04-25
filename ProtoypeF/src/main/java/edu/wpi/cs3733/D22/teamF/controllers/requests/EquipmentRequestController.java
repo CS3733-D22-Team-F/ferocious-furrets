@@ -79,20 +79,6 @@ public class EquipmentRequestController extends PageController
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    masterPane.setMinHeight(500);
-    masterPane.setMinWidth(500);
-
-    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    rectangle2.widthProperty().bind(masterPane.widthProperty().divide(2).add(2));
-    leftHBox1.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
-    leftHBox2.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
-    leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(4));
-    leftHBox1.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
-    leftHBox2.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
-    leftHBox3.maxWidthProperty().bind(rectangle1.widthProperty().subtract(15));
-    leftVBox.maxWidthProperty().bind(rectangle1.widthProperty().divide(2));
-    leftVBox.layoutXProperty().bind(rectangle1.widthProperty().divide(2).subtract(300));
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Object> equipmentType = new ArrayList<>();
     statusDrop.add("");

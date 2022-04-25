@@ -60,6 +60,53 @@ public class EmployeePageController extends PageController implements Initializa
     firstName.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastName"));
     salary.setCellValueFactory(new PropertyValueFactory<Employee, String>("salary"));
+    update();
+  }
+
+  @FXML
+  private void addEmployee(ActionEvent event) throws IOException {
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/addEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+    update();
+  }
+
+  @FXML
+  private void modifyEmployee(ActionEvent event) throws IOException {
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/modifyEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+    update();
+  }
+
+  @FXML
+  private void deleteEmployee(ActionEvent event) throws IOException {
+    Parent root =
+        FXMLLoader.load(
+            Objects.requireNonNull(Fapp.class.getResource("views/employee/deleteEmployee.fxml")));
+    Stage popupwindow = new Stage();
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.showAndWait();
+    update();
+  }
+
+  public void submit() throws SQLException {}
+
+  public void reset() {}
+
+  public void update() {
     ArrayList<Employee> employees = new ArrayList<>();
     try {
       ResultSet rset = DatabaseManager.getInstance().getEmployeeDAO().get();
@@ -80,46 +127,6 @@ public class EmployeePageController extends PageController implements Initializa
     ObservableList<Employee> eList = FXCollections.observableList(employees);
     employeeTable.setItems(eList);
   }
-
-  @FXML
-  private void addEmployee(ActionEvent event) throws IOException {
-    Parent root =
-        FXMLLoader.load(
-            Objects.requireNonNull(Fapp.class.getResource("views/employee/addEmployee.fxml")));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
-  }
-
-  @FXML
-  private void modifyEmployee(ActionEvent event) throws IOException {
-    Parent root =
-        FXMLLoader.load(
-            Objects.requireNonNull(Fapp.class.getResource("views/employee/modifyEmployee.fxml")));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
-  }
-
-  @FXML
-  private void deleteEmployee(ActionEvent event) throws IOException {
-    Parent root =
-        FXMLLoader.load(
-            Objects.requireNonNull(Fapp.class.getResource("views/employee/deleteEmployee.fxml")));
-    Stage popupwindow = new Stage();
-    popupwindow.initModality(Modality.APPLICATION_MODAL);
-    Scene scene1 = new Scene(root);
-    popupwindow.setScene(scene1);
-    popupwindow.showAndWait();
-  }
-
-  public void submit() throws SQLException {}
-
-  public void reset() {}
 
   /**
    * Method to create a class specifics context menu
