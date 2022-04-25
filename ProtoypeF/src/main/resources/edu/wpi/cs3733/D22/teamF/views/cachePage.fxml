@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
-<BorderPane fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.CachePageController" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <StackPane prefHeight="269.0" prefWidth="348.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="25.0" right="25.0" top="50.0" />
-         </BorderPane.margin>
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4169E1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.CachePageController">
+   <children>
+      <StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #123090;">
          <children>
-            <ImageView fitHeight="156.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Dinner.png" />
+                  <Image url="@../labimage.jpg" />
                </image>
             </ImageView>
+            <ImageView fitHeight="116.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../BWHlogo-new.png" />
+               </image>
+            </ImageView>
+            <JFXSpinner startingAngle="-40" styleClass="materialDesign-purple, first-spinner" />
+            <JFXSpinner startingAngle="-90" styleClass="materialDesign-blue, second-spinner" />
+            <JFXSpinner startingAngle="-120" styleClass="materialDesign-cyan, third-spinner" />
+            <JFXSpinner startingAngle="-150" styleClass="materialDesign-green, fourth-spinner" />
+            <JFXSpinner startingAngle="-180" styleClass="materialDesign-yellow, fifth-spinner" />
+            <JFXSpinner startingAngle="-210" styleClass="materialDesign-orange, sixth-spinner" />
+            <JFXSpinner startingAngle="-240" styleClass="materialDesign-red, seventh-spinner" />
          </children>
-
-         <JFXSpinner startingAngle="-40" styleClass="materialDesign-purple, first-spinner" />
-         <JFXSpinner startingAngle="-90" styleClass="materialDesign-blue, second-spinner" />
-         <JFXSpinner startingAngle="-120" styleClass="materialDesign-cyan, third-spinner" />
-         <JFXSpinner startingAngle="-150" styleClass="materialDesign-green, fourth-spinner" />
-         <JFXSpinner startingAngle="-180" styleClass="materialDesign-yellow, fifth-spinner" />
-         <JFXSpinner startingAngle="-210" styleClass="materialDesign-orange, sixth-spinner" />
-         <JFXSpinner startingAngle="-240" styleClass="materialDesign-red, seventh-spinner" />
       </StackPane>
-   </center>
-   <bottom>
-      <Label fx:id="statusLabel" BorderPane.alignment="CENTER">
+      <Label fx:id="statusLabel" alignment="CENTER" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
-         <BorderPane.margin>
-            <Insets bottom="25.0" top="25.0" />
-         </BorderPane.margin>
       </Label>
-   </bottom>
-</BorderPane>
+   </children>
+</VBox>

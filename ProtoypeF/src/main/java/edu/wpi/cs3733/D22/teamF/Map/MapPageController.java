@@ -166,12 +166,14 @@ public class MapPageController implements Initializable {
     alertbtnList.add(alertButton);
 
     AlertObserver.getInstance().setAlertNotifications(alertbtnList);
+
     FloorWatchManager.getInstance(); // instantiation
     try {
       FloorObservable.getInstance().setState();
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    AlertObserver.getInstance().updateButtons();
   }
 
   /** change map to floor 1, same for f2, f3, l1, l2 */
