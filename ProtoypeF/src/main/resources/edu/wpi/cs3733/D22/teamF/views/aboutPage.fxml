@@ -206,7 +206,7 @@
                      <children>
                         <HBox prefHeight="60.0" prefWidth="291.0">
                            <children>
-                              <ImageView fx:id="connor" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#connorCredit" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="conner" fitHeight="40.0" fitWidth="43.0" onMouseClicked="#connorCredit" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Cropped-Edits/Conner-modified.png" />
                                  </image>
@@ -219,7 +219,7 @@
                                     <Insets left="10.0" top="15.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="215.0" text="Connor McKevitt (Doc. Analyst)">
+                                    <Label prefHeight="17.0" prefWidth="215.0" text="Conner McKevitt (Doc. Analyst)">
                                        <font>
                                           <Font name="SansSerif Regular" size="12.0" />
                                        </font></Label>

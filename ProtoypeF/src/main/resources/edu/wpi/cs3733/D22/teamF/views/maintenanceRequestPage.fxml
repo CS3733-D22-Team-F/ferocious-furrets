@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.maintenancePageController">
+   <left>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fill="#123090" height="660.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+            <Rectangle fill="ROYALBLUE" height="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+            <HBox alignment="CENTER" layoutY="27.0" prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="716.0" text="Maintenance" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fx:id="logo" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../MenuIcon/tool.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <VBox fx:id="leftVBox" layoutX="1.0" layoutY="149.0" prefHeight="283.0" prefWidth="610.0" spacing="10.0" stylesheets="@../stylesheets/combobox.css">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Location:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="locationBox" prefHeight="50.0" prefWidth="300.0" promptText="Location">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Assigned To:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="assignedEmployeeBox" prefHeight="50.0" prefWidth="300.0" promptText="Employee Assigned">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Requested By:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="requestedEmployeeBox" prefHeight="50.0" prefWidth="300.0" promptText="Employee Requested">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Status:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="statusBox" prefHeight="50.0" prefWidth="300.0" promptText="Status">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Equipment Type:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="equipmentBox" prefHeight="50.0" prefWidth="300.0" promptText="Equipment Type">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="259.0" text="Maintenance Type:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <JFXComboBox fx:id="maintenanceBox" prefHeight="50.0" prefWidth="300.0" promptText="Maintenance Type">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="350.0">
+               <children>
+                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox layoutX="147.0" layoutY="572.0" prefHeight="43.0" />
+         </children>
+      </Pane>
+   </left>
+   <center>
+      <Pane fx:id="tablePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <JFXTreeTableView fx:id="table" prefHeight="660.0" prefWidth="620.0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

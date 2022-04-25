@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/** Controller for the about page */
 public class AboutPageController implements Initializable {
 
   @FXML VBox creditVbox;
@@ -32,7 +33,7 @@ public class AboutPageController implements Initializable {
   @FXML ImageView nikola;
   @FXML ImageView jack;
   @FXML ImageView will;
-  @FXML ImageView connor;
+  @FXML ImageView conner;
   @FXML ImageView evans;
   @FXML ImageView cole;
   @FXML ImageView john;
@@ -183,7 +184,7 @@ public class AboutPageController implements Initializable {
 
   @FXML
   public void connorCredit() {
-    connor.setOnMouseClicked(
+    conner.setOnMouseClicked(
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
@@ -198,7 +199,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
             Stage popupwindow = new Stage();
-            popupwindow.setTitle("Connor McKevitt");
+            popupwindow.setTitle("Conner McKevitt");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             Scene scene1 = new Scene(root);
             popupwindow.setScene(scene1);

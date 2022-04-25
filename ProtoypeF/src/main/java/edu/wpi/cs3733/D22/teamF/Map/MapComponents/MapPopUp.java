@@ -51,9 +51,12 @@ public class MapPopUp {
    * @throws IOException
    * @throws SQLException
    */
-  public static void popUpAdd() throws IOException, SQLException {
+  public static void popUpAdd(TableView<Location> table, AnchorPane iconPane)
+      throws IOException, SQLException {
+    LocTempHolder.setLocationTable(table);
+    LocTempHolder.setPassIconPane(iconPane);
     Parent root =
-        FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("Map/mapAddPage.fxml")));
+        FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource("Map/mapLocAddPage.fxml")));
     Stage popupwindow = new Stage();
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     Scene scene1 = new Scene(root);

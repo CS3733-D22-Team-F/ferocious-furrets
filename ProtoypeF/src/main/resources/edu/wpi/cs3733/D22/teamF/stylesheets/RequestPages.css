@@ -1,9 +1,13 @@
 /*** variable declarations***/
+
+/*This is the normal CSS with the hospital colors*/
+
 @import url(vars.css);
 
 {
-    f-blue: #123090;
-    f-gold: #f3ba48;
+    f-maincolor: #123090;
+    f-subcolor: #3E8CD0;
+    f-ripple: #f3ba48;
     f-white: #ffffff;
 }
 
@@ -16,19 +20,19 @@
 #TextTitle {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
-    -fx-text-fill: f-blue;
+    -fx-text-fill: f-maincolor;
 }
 
 #TextTitle2 {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
-    -fx-text-fill: f-blue;
+    -fx-text-fill: f-maincolor;
 }
 
 #TextTitle3 {
     -fx-font-family: Serif;
     -fx-font-size: 64px;
-    -fx-text-fill: f-blue;
+    -fx-text-fill: f-maincolor;
 }
 
 .text-field {
@@ -41,23 +45,42 @@
 .menu-bar .label {
     -fx-font-family: Serif;
     -fx-font-size: 18px;
-    -fx-text-fill: f-blue;
+    -fx-text-fill: f-maincolor;
 }
 
-.button {
-    -fx-background-color: f-blue;
+#submitButton {
+    -fx-background-color: f-maincolor;
+    -fx-pref-height: 60;
+    -fx-pref-width: 200;
     -fx-text-fill: f-white;
     -fx-font-family: Serif;
     -fx-font-size: 24px;
 }
 
+#resetButton {
+    -fx-background-color: f-maincolor;
+    -fx-pref-height: 60;
+    -fx-pref-width: 200;
+    -fx-text-fill: f-white;
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
+}
+
+#rectangle1 {
+    -fx-fill: f-maincolor;
+}
+
+#rectangle2 {
+    -fx-fill: f-subcolor;
+}
+
 .jfx-rippler.jfx-button {
-    -jfx-rippler-fill: f-gold;
+    -jfx-rippler-fill: f-ripple;
 }
 
 .combo-box {
     -fx-background-color: white;
     -fx-font-family: Serif;
-    -fx-text-fill: f-blue;
+    -fx-text-fill: f-maincolor;
     -fx-font-size: 24px;
 }

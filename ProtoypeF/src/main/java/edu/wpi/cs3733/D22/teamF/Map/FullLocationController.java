@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
-import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapTableHolder;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -17,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 /** controller for the locations full */
 public class FullLocationController implements Initializable {
@@ -32,8 +30,6 @@ public class FullLocationController implements Initializable {
   @FXML TableColumn<Location, String> nodeType;
   @FXML TableColumn<Location, String> longName;
   @FXML TableColumn<Location, String> shortName;
-
-  @FXML JFXButton cancel;
 
   /**
    * inits the locations
@@ -57,12 +53,6 @@ public class FullLocationController implements Initializable {
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /** cancels the scene */
-  public void cancel() {
-    Stage stage = (Stage) cancel.getScene().getWindow();
-    stage.close();
   }
 
   /**

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXDrawer;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/** main menu object for the sidebar */
 public class HomeMenu extends MainMenu {
 
   public HomeMenu(
@@ -11,6 +12,7 @@ public class HomeMenu extends MainMenu {
     super(pageHolder, menu, homeMenu, mapMenu, serviceMenu);
   }
 
+  /** changes to the homemenu sidebar */
   @Override
   void changeTo() {
     menu.setSidePane(homeMenu);
