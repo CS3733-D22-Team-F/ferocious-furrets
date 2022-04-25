@@ -651,7 +651,6 @@ public class MapIconModifier {
                     i = loList.indexOf(lo);
                   }
                 }
-                System.out.println(i + "123");
                 table.scrollTo(i);
                 table.getSelectionModel().select(i);
                 newButton.setCursor(Cursor.HAND);
