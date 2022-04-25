@@ -56,7 +56,8 @@ public class ThemeDAOImpl {
     ResultSet currentThemes = get();
 
     while (currentThemes.next()) {
-      currentThemesList.add(new Theme(
+      currentThemesList.add(
+          new Theme(
               currentThemes.getString("name"),
               currentThemes.getString("mainColor"),
               currentThemes.getString("subColor"),
@@ -67,7 +68,6 @@ public class ThemeDAOImpl {
 
     return currentThemesList;
   }
-
 
   public void add(Theme theme) throws SQLException {
     DatabaseManager.getInstance().runStatement(generateInsertStatement(theme));
@@ -122,6 +122,5 @@ public class ThemeDAOImpl {
     currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
-
   }
 }

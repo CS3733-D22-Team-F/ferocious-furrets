@@ -8,17 +8,24 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.SettingController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" style="-fx-background-color: #4169E1;" text="Setting" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Serif Regular" size="48.0" />
-         </font>
-      </Label>
+      <StackPane prefHeight="60.0" prefWidth="1220.0">
+         <children>
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="1220.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" text="Setting" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
       <HBox prefHeight="600.0" prefWidth="1220.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0">
@@ -31,7 +38,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXComboBox fx:id="choiceBox" prefHeight="40.0" prefWidth="257.0">
+                  <JFXComboBox fx:id="choiceBox" onAction="#changeCSS" prefHeight="40.0" prefWidth="257.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>

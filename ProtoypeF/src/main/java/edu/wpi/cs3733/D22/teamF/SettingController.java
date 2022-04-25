@@ -1,16 +1,16 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import static org.reflections.scanners.Scanners.Resources;
-
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.theme.Theme;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.reflections.Reflections;
-import org.reflections.scanners.Scanners;
 
 public class SettingController implements Initializable {
   @FXML private Label userFromLogin;
@@ -34,6 +32,10 @@ public class SettingController implements Initializable {
   JFXColorPicker textPicker;
   JFXColorPicker backPicker;
   JFXColorPicker titlePicker;
+  File theme;
+  String main = "";
+  String sub = "";
+  String text = "";
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +46,11 @@ public class SettingController implements Initializable {
     pickerBox.getChildren().add(backPicker);
     pickerBox.getChildren().add(titlePicker);
     userFromLogin.setText("Current User: " + UserType.getUserType());
-    loadCSS();
+    try {
+      loadCSS();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -99,30 +105,66 @@ public class SettingController implements Initializable {
     popupwindow.showAndWait();
   }
 
-  public void saveCSS() throws IOException, URISyntaxException {
+  public void saveCSS() throws IOException, SQLException {
     String name = nameField.getText();
     String textColor = textPicker.getValue().toString().substring(2, 8);
-    String backColor = backPicker.getValue().toString().substring(2, 8);
-    String titleColor = titlePicker.getValue().toString().substring(2, 8);
+    String mainColor = backPicker.getValue().toString().substring(2, 8);
+    String subColor = titlePicker.getValue().toString().substring(2, 8);
 
-    File myObj =
-        new File("src/main/resources/edu/wpi/cs3733/D22/teamF/stylesheets/" + name + ".css");
-    myObj.createNewFile();
-    FileWriter writer = new FileWriter(myObj);
+    Theme newTheme = new Theme(name, mainColor, subColor, textColor);
+    DatabaseManager.getInstance().getThemeDAO().add(newTheme);
+    DatabaseManager.getInstance().backUpDatabaseToCSV();
+    loadCSS();
+  }
+
+  public void loadCSS() throws SQLException, IOException {
+    ArrayList<Theme> themeList = DatabaseManager.getInstance().getThemeDAO().getArrayList();
+    ArrayList<String> names = new ArrayList<>();
+    for (Theme t : themeList) {
+      names.add(t.getName());
+    }
+    choiceBox.getItems().clear();
+    choiceBox.getItems().addAll(names);
+  }
+
+  public void changeCSS() throws SQLException, IOException {
+    ArrayList<Theme> themes = DatabaseManager.getInstance().getThemeDAO().getArrayList();
+    for (Theme t : themes) {
+      if (t.getName().equals(choiceBox.getValue())) {
+        System.out.println(choiceBox.getValue());
+        System.out.println("find exist theme");
+        main = t.getMainColor();
+        sub = t.getSubColor();
+        text = t.getTextColor();
+      }
+    }
+    theme = generateCSS(main, sub, text);
+    //    SceneManager.getInstance().getStage().getScene().getStylesheets().clear();
+    //    SceneManager.getInstance()
+    //        .getStage()
+    //        .getScene()
+    //        .getStylesheets()
+    //        .addAll(generateCSS(main, sub, text).getAbsolutePath());
+  }
+
+  public void applyCSS() throws IOException {
+    SceneManager.getInstance().getStage().getScene().getStylesheets().clear();
+    SceneManager.getInstance().getStage().getScene().getStylesheets().add(theme.toURI().toString());
+  }
+
+  public File generateCSS(String main, String sub, String text) throws IOException {
+    theme = new File("theme.css");
+    FileWriter writer = new FileWriter(theme);
     writer.flush();
     writer.write(
         String.format(
-            "/*** variable declarations***/\n"
-                + "\n"
-                + "/*This is the normal CSS with the hospital colors*/\n"
-                + "\n"
-                + "@import url(vars.css);\n"
-                + "\n"
-                + "{\n"
+            "{\n"
                 + "    f-maincolor: #%s;\n"
                 + "    f-subcolor: #%s;\n"
                 + "    f-ripple: #3E8CD0;\n"
                 + "    f-white: #%s;\n"
+                + "    f-blue: #123090;\n"
+                + "    f-gold: #f3ba48;\n"
                 + "}\n"
                 + "\n"
                 + "#TextTitleWhite {\n"
@@ -198,46 +240,9 @@ public class SettingController implements Initializable {
                 + "    -fx-text-fill: f-maincolor;\n"
                 + "    -fx-font-size: 24px;\n"
                 + "}",
-            titleColor, backColor, textColor));
+            main, sub, text));
     writer.flush();
     writer.close();
-    choiceBox.getItems().add("stylesheets/" + name + ".css");
-  }
-
-  public void loadCSS() {
-    ArrayList<String> exceptions =
-        new ArrayList<>(
-            List.of(
-                "stylesheets/combobox.css",
-                "stylesheets/DashBoard.css",
-                "stylesheets/vars.css",
-                "stylesheets/RequestPages.css"));
-
-    Reflections reflections = new Reflections("edu.wpi.cs3733.D22.teamF", Scanners.values());
-    Set<String> cssPaths = reflections.get(Resources.with(".*\\.css"));
-    ArrayList<String> s = new ArrayList<>();
-    for (String path : cssPaths) {
-      path = path.substring(25); // Strip "edu/wpi/cs3733/D22/teamF/"
-      if (exceptions.contains(path)) continue; // Skip pages that can't be cached
-
-      try {
-        s.add(path);
-      } catch (Exception e) {
-        System.out.println("Loading Error: " + path);
-        e.printStackTrace();
-      }
-    }
-    choiceBox.getItems().clear();
-    choiceBox.getItems().addAll(s);
-  }
-
-  public void applyCSS() {
-    String name = choiceBox.getValue();
-    SceneManager.getInstance().getStage().getScene().getStylesheets().clear();
-    SceneManager.getInstance()
-        .getStage()
-        .getScene()
-        .getStylesheets()
-        .add(Fapp.class.getResource(name).toExternalForm());
+    return theme;
   }
 }
