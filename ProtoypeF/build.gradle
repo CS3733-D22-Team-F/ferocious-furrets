@@ -16,6 +16,7 @@ shadowJar {
 repositories {
     flatDir {
         dirs 'APIJARs'
+        dirs 'libs'
     }
     mavenCentral()
     maven {
@@ -27,6 +28,7 @@ javafx {
     version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media']
 }
+
 
 
 dependencies {
@@ -45,6 +47,8 @@ dependencies {
             'org.slf4j:slf4j-api:1.7.36',
             'org.slf4j:slf4j-simple:1.7.36',
     )
+
+    compile fileTree(dir: 'lib', includes: ['*.jar'])
 
     implementation name : 'edu.wpi.cs3733.D22.teamF'
 
