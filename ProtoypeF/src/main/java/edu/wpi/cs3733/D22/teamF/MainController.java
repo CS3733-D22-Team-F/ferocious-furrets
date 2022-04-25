@@ -6,7 +6,6 @@ import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamX.api.MealRequestAPI;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -312,19 +311,7 @@ public class MainController implements Initializable {
   }
 
   public void changeToMeal() throws IOException {
-    // changeTo("views/mealPage.fxml");
-    try {
-      MealRequestAPI.run(
-          0,
-          0,
-          0,
-          0,
-          "edu/wpi/cs3733/D22/teamF/stylesheets/DarkMode.css",
-          "FSTAI00201",
-          "FSTAI00201");
-    } catch (edu.wpi.cs3733.D22.teamX.api.exceptions.ServiceException e) {
-      e.printStackTrace();
-    }
+    changeTo("views/mealPage.fxml");
   }
 
   public void changeToMedicine() throws IOException, ServiceException {
