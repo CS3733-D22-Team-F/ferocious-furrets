@@ -123,16 +123,6 @@ public class SecurityController extends PageController
    */
   public void initialize(URL location, ResourceBundle resources) {
 
-    masterPane.setMinHeight(500);
-    masterPane.setMinWidth(500);
-
-    //        treeTable.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    //        treeTable.minHeightProperty().bind(masterPane.heightProperty());
-
-    rectangle1.heightProperty().bind(masterPane.heightProperty());
-    rectangle1.widthProperty().bind(masterPane.widthProperty().divide(2));
-    //    bottomRect.widthProperty().bind(masterPane.widthProperty().divide(2));
-
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
     userField.getItems().addAll(employees);

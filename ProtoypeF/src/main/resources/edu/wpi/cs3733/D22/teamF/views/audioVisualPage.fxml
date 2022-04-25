@@ -14,121 +14,127 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.AudioVisualController">
+<BorderPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.AudioVisualController">
    <left>
-      <Pane prefHeight="819.0" prefWidth="744.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="597.0" layoutX="-4.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="126.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <HBox fx:id="topHBox" layoutX="5.0" layoutY="18.0" prefHeight="100.0" prefWidth="732.0" spacing="50.0">
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <HBox fx:id="topHBox" layoutX="-4.0" layoutY="26.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <Label contentDisplay="TOP" prefHeight="71.0" prefWidth="570.0" text="Audio/Visual Request" textFill="WHITE">
+                  <Label contentDisplay="TOP" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="522.0" text="Audio/Visual" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
                   </Label>
-                  <ImageView fx:id="logo" fitHeight="90.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logo" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../BWHlogo-new.png" />
+                        <Image url="@../MenuIcon/audio.png" />
                      </image>
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="bottomHBox" layoutX="210.0" layoutY="638.0" prefHeight="59.0" prefWidth="421.0">
+            <HBox fx:id="bottomHBox" layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="350.0">
                <children>
-                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="59.0" prefWidth="136.0" ripplerFill="#f3ba48" text="Submit" textFill="WHITE">
+                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="59.0" prefWidth="137.0" ripplerFill="#f3ba48" text="Reset" textFill="WHITE">
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#reset" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
                      <font>
-                        <Font size="28.0" />
+                        <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="middleHBox" layoutX="43.0" layoutY="189.0" prefHeight="410.0" prefWidth="588.0">
+            <HBox fx:id="middleHBox" layoutX="-11.0" layoutY="143.0" prefHeight="410.0" prefWidth="536.0">
                <children>
-                  <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0">
+                  <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="130.0" text="Location: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="130.0" text="Location: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="209.0" text="Assigned Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="230.0" text="Requesting Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="132.0" text="Category: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="132.0" text="Category: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="240.0" text="Accessibility Device: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="240.0" text="Accessibility Device: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="25.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="110.0" text="Status: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="110.0" text="Status: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox prefHeight="401.0" prefWidth="288.0">
+                  <VBox prefHeight="387.0" prefWidth="288.0" spacing="10.0">
                      <children>
-                        <JFXComboBox fx:id="nodeField" prefHeight="54.0" prefWidth="287.0" promptText="Location">
+                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="287.0" promptText="Location">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="employeeIDField" prefHeight="52.0" prefWidth="531.0" promptText="Assigned Employee">
+                        <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="531.0" promptText="Assigned Employee">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="userField" prefHeight="55.0" prefWidth="531.0" promptText="Requested Employee">
+                        <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="531.0" promptText="Requested Employee">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="49.0" prefWidth="541.0" promptText="Category">
+                        <JFXComboBox fx:id="typeChoice" onAction="#fillObjectChoiceBox" prefHeight="50.0" prefWidth="541.0" promptText="Category">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="objectChoice" prefHeight="49.0" prefWidth="541.0" promptText="Accessibility Device">
+                        <JFXComboBox fx:id="objectChoice" prefHeight="50.0" prefWidth="541.0" promptText="Accessibility Device">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="statusChoice" prefHeight="49.0" prefWidth="608.0" promptText="Status">
+                        <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="608.0" promptText="Status">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets />
                            </VBox.margin>
                         </JFXComboBox>
                      </children>
@@ -139,9 +145,9 @@
       </Pane>
    </left>
    <center>
-      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="tablePane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="TOP_RIGHT">
          <children>
-            <JFXTreeTableView prefHeight="720.0" prefWidth="536.0" />
+            <JFXTreeTableView prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
    </center>
