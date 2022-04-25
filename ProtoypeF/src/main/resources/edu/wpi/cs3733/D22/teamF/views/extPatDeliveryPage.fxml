@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,13 +15,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
+<BorderPane fx:id="masterPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
    <left>
-      <Pane prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="640.0" />
-            <HBox fx:id="topHBox" layoutY="30.0" prefHeight="100.0" prefWidth="640.0" spacing="50.0">
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <HBox fx:id="topHBox" layoutY="30.0" prefHeight="100.0" prefWidth="600.0" spacing="50.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="536.0" text="Patient Delivery" textFill="WHITE">
                      <font>
@@ -30,7 +31,10 @@
                         <Insets left="50.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" />
+                  <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../MenuIcon/patient.png" />
+                     </image></ImageView>
                </children>
             </HBox>
             <HBox fx:id="bottomHBox" layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="300.0">
@@ -47,7 +51,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="middleHBox" layoutX="2.0" layoutY="149.0" prefHeight="363.0" prefWidth="588.0">
+            <HBox fx:id="middleHBox" layoutX="-20.0" layoutY="157.0" prefHeight="363.0" prefWidth="588.0">
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
@@ -97,17 +101,17 @@
                   </VBox>
                   <VBox prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
-                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="287.0" promptText=" Location">
+                        <JFXComboBox fx:id="nodeField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText=" Location">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="531.0" promptText=" Assigned Employee">
+                        <JFXComboBox fx:id="employeeIDField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText=" Assigned Employee">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="531.0" promptText=" Requested Employee">
+                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText=" Requested Employee">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -135,9 +139,9 @@
       </Pane>
    </left>
    <center>
-      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="tablePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView fx:id="treeTable" prefHeight="720.0" prefWidth="640.0" />
+            <JFXTreeTableView fx:id="treeTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
    </center>

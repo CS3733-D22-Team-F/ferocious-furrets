@@ -14,20 +14,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.LabRequestController">
+<BorderPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.LabRequestController">
    <left>
-      <Pane prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fill="#123090" height="720.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
-            <Rectangle fill="ROYALBLUE" height="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
-            <HBox layoutY="30.0" prefHeight="100.0" prefWidth="640.0">
+            <Rectangle fill="#123090" height="660.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+            <Rectangle fill="ROYALBLUE" height="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+            <HBox layoutY="30.0" prefHeight="100.0" prefWidth="600.0">
                <children>
                   <Label contentDisplay="TOP" prefHeight="94.0" prefWidth="565.0" text="Laboratory Request" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
                      <padding>
-                        <Insets left="50.0" />
+                        <Insets left="20.0" />
                      </padding>
                   </Label>
                   <ImageView fitHeight="100.0" fitWidth="71.0" pickOnBounds="true">
@@ -51,84 +51,87 @@
                   </JFXButton>
                </children>
             </HBox>
-            <VBox layoutX="260.0" layoutY="180.0" prefHeight="265.0" prefWidth="354.0">
+            <HBox layoutX="15.0" layoutY="158.0" prefHeight="368.0" prefWidth="570.0">
                <children>
-                  <JFXComboBox fx:id="nodeField" prefHeight="47.0" prefWidth="388.0" promptText="Location" style="-fx-background-color: white;" />
-                  <JFXComboBox fx:id="employeeIDField" prefHeight="47.0" prefWidth="388.0" promptText="Assigned Employee" style="-fx-background-color: white;">
-                     <VBox.margin>
-                        <Insets top="6.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="userField" prefHeight="47.0" prefWidth="374.0" promptText="Requesting Employee" style="-fx-background-color: white;">
-                     <VBox.margin>
-                        <Insets top="7.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="WHITE" prefHeight="43.0" prefWidth="393.0" promptText="Lab Type" style="-fx-background-color: white;" unFocusColor="WHITE">
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="46.0" prefWidth="384.0" promptText="Current Status" style="-fx-background-color: white;" unFocusColor="WHITE">
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </JFXComboBox>
+                  <VBox alignment="TOP_RIGHT" prefHeight="251.0" prefWidth="245.0" spacing="10.0">
+                     <children>
+                        <Label minHeight="-Infinity" prefHeight="50.0" prefWidth="112.0" text="Location:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="-Infinity" prefHeight="50.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="-Infinity" prefHeight="50.0" prefWidth="208.0" text="Request Employee:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="-Infinity" prefHeight="50.0" prefWidth="120.0" text="Lab Type:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="-Infinity" prefHeight="50.0" prefWidth="164.0" text="Current Status:" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="265.0" prefWidth="248.0" spacing="10.0">
+                     <children>
+                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location" style="-fx-background-color: white;" unFocusColor="#4d4d4d00" />
+                        <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+                           <VBox.margin>
+                              <Insets top="6.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+                           <VBox.margin>
+                              <Insets top="7.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="typeChoice" focusColor="WHITE" prefHeight="50.0" prefWidth="300.0" promptText="Lab Type" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="statusChoice" focusColor="#2aa7d0" prefHeight="50.0" prefWidth="300.0" promptText="Current Status" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <HBox layoutX="152.0" layoutY="482.0" prefHeight="43.0" />
-            <VBox alignment="TOP_RIGHT" layoutX="15.0" layoutY="184.0" prefHeight="251.0" prefWidth="245.0" spacing="23.0">
-               <children>
-                  <Label prefHeight="28.0" prefWidth="112.0" text="Location:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="219.0" text="Assigned Employee:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="208.0" text="Request Employee:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="120.0" text="Lab Type:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="28.0" prefWidth="164.0" text="Current Status:" textFill="WHITE">
-                     <font>
-                        <Font name="Serif Regular" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
+            </HBox>
          </children>
       </Pane>
    </left>
-   <right>
-      <Pane fx:id="tablePane" prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+   <center>
+      <Pane fx:id="tablePane" prefHeight="660.0" prefWidth="580.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView fx:id="table" prefHeight="720.0" prefWidth="642.0" />
+            <JFXTreeTableView fx:id="table" prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
-   </right>
+   </center>
 </BorderPane>

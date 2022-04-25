@@ -16,13 +16,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
     <left>
-        <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="TOP_LEFT">
+        <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="640.0" />
-                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
-            <HBox layoutX="35.0" layoutY="28.0" prefHeight="94.0" prefWidth="596.0">
+                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#123090" strokeType="INSIDE" width="600.0" />
+                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+            <HBox layoutY="30.0" prefHeight="94.0" prefWidth="600.0">
                <children>
                       <Label prefHeight="80.0" prefWidth="531.0" text="Physical Therapy" textFill="WHITE">
                           <font>
@@ -38,8 +38,11 @@
                      </image>
                   </ImageView>
                </children>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
             </HBox>
-              <HBox fx:id="infoHBox" layoutX="24.0" layoutY="149.0" prefHeight="434.0" prefWidth="554.0">
+              <HBox fx:id="infoHBox" layoutX="10.0" layoutY="151.0" prefHeight="434.0" prefWidth="554.0">
               <children>
                   <VBox fx:id="labelVBox" prefHeight="432.0" prefWidth="237.0" spacing="10.0">
                       <children>
@@ -98,19 +101,19 @@
                           <Insets right="15.0" />
                       </HBox.margin>
                   </VBox>
-                  <VBox fx:id="comboVBox" prefHeight="428.0" prefWidth="304.0" spacing="10.0">
+                  <VBox fx:id="comboVBox" prefHeight="428.0" prefWidth="300.0" spacing="10.0">
                   <children>
-                      <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="307.0" promptText="Location">
+                      <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="566.0" promptText="Assigned Employee">
+                      <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="566.0" promptText="Requesting Employee">
+                      <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
@@ -159,11 +162,11 @@
         </children>
         </Pane>
         </left>
-<right>
-      <Pane fx:id="tablePane" BorderPane.alignment="CENTER">
+   <center>
+      <Pane fx:id="tablePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="TOP_RIGHT">
          <children>
-      <JFXTreeTableView fx:id="treeTable" prefHeight="720.0" prefWidth="651.0" />
+      <JFXTreeTableView fx:id="treeTable" prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
-</right>
+   </center>
         </BorderPane>

@@ -14,15 +14,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.AudioVisualController">
+<BorderPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.AudioVisualController">
    <left>
-      <Pane prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="TRANSPARENT" strokeType="INSIDE" width="640.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="640.0" />
-            <HBox fx:id="topHBox" layoutX="-4.0" layoutY="26.0" maxWidth="-Infinity" prefHeight="100.0" prefWidth="640.0">
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <HBox fx:id="topHBox" layoutX="-4.0" layoutY="26.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <Label contentDisplay="TOP" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="562.0" text="Audio/Visual" textFill="WHITE">
+                  <Label contentDisplay="TOP" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="522.0" text="Audio/Visual" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
@@ -54,7 +54,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <HBox fx:id="middleHBox" layoutX="17.0" layoutY="143.0" prefHeight="410.0" prefWidth="588.0">
+            <HBox fx:id="middleHBox" layoutX="-11.0" layoutY="143.0" prefHeight="410.0" prefWidth="536.0">
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="401.0" prefWidth="288.0" spacing="10.0">
                      <children>
@@ -145,9 +145,9 @@
       </Pane>
    </left>
    <center>
-      <Pane fx:id="tablePane" prefHeight="720.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="tablePane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="TOP_RIGHT">
          <children>
-            <JFXTreeTableView prefHeight="720.0" prefWidth="640.0" />
+            <JFXTreeTableView prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
    </center>

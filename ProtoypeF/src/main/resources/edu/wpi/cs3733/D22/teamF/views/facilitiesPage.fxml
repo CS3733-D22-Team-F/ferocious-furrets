@@ -15,13 +15,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1345.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController">
     <left>
-        <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="640.0" BorderPane.alignment="TOP_LEFT">
+        <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="720.0" stroke="#123090" strokeType="INSIDE" width="640.0" />
-                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="#3e8cd0" strokeType="INSIDE" width="640.0" />
-              <HBox fx:id="infoHBox" layoutX="16.0" layoutY="150.0" prefHeight="306.0" prefWidth="553.0">
+                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#123090" strokeType="INSIDE" width="600.0" />
+                <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="#3e8dcf00" strokeType="INSIDE" width="600.0" />
+              <HBox fx:id="infoHBox" layoutX="14.0" layoutY="154.0" prefHeight="306.0" prefWidth="585.0">
               <children>
                   <VBox fx:id="labelVBox" prefHeight="327.0" prefWidth="239.0" spacing="10.0">
                       <children>
@@ -72,27 +72,27 @@
                   </VBox>
                   <VBox fx:id="comboVBox" prefHeight="428.0" prefWidth="304.0" spacing="10.0">
                   <children>
-                      <JFXComboBox fx:id="nodeID" prefHeight="50.0" prefWidth="307.0" promptText="Location">
+                      <JFXComboBox fx:id="nodeID" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Location">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="assigned" prefHeight="50.0" prefWidth="566.0" promptText="Assigned Employee">
+                      <JFXComboBox fx:id="assigned" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="employeeID" prefHeight="50.0" prefWidth="566.0" promptText="Requesting Employee">
+                      <JFXComboBox fx:id="employeeID" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="requestType" focusColor="#123090" prefHeight="50.0" prefWidth="690.0" promptText="Request Type" unFocusColor="#00000080">
+                  <JFXComboBox fx:id="requestType" focusColor="#123090" prefHeight="50.0" prefWidth="300.0" promptText="Request Type" unFocusColor="#00000080">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="50.0" prefWidth="690.0" promptText=" Status" unFocusColor="#0000007e">
+                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="50.0" prefWidth="300.0" promptText=" Status" unFocusColor="#0000007e">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
@@ -101,7 +101,7 @@
           </VBox>
       </children>
   </HBox>
-            <HBox layoutY="27.0" prefHeight="100.0" prefWidth="640.0">
+            <HBox layoutY="27.0" prefHeight="100.0" prefWidth="600.0">
                <children>
                       <Label prefHeight="100.0" prefWidth="553.0" text="Facilities" textFill="WHITE">
                           <font>
@@ -142,9 +142,9 @@
         </Pane>
         </left>
    <center>
-      <Pane fx:id="tablePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="717.0" BorderPane.alignment="TOP_LEFT">
+      <Pane fx:id="tablePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="TOP_LEFT">
          <children>
-      <JFXTreeTableView fx:id="table" prefHeight="721.0" prefWidth="718.0" />
+      <JFXTreeTableView fx:id="table" prefHeight="660.0" prefWidth="620.0" />
          </children>
       </Pane>
    </center>
