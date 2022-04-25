@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class AlertObserver implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent evt) {
     allFloorAlerts = DashboardObserver.getAllFloorAlerts();
     setFloorAlertCount();
-    //    System.out.println("AlertObserver found new alerts");
     updateButtons();
   }
 
@@ -58,9 +56,10 @@ public class AlertObserver implements PropertyChangeListener {
   }
 
   public void updateButtons() {
-    if (!buttonsToUpdate.isEmpty()
-        && SceneManager.getInstance().getCurrentScene().equals("views/mapPage.fxml")) {
-      System.out.println("Floor Alert Counts");
+    //    System.out.println("In class & button are" + !buttonsToUpdate.isEmpty());
+
+    if (!buttonsToUpdate.isEmpty()) {
+      //      System.out.println("Floor Alert Counts");
       buttonsToUpdate.get(0).setText(ll2Count + "  LL2");
       buttonsToUpdate.get(1).setText(ll1Count + "  LL1");
       buttonsToUpdate.get(2).setText(fl1Count + "  FL1");

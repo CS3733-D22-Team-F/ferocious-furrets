@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
-import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.controllers.requests.FacilitiesController;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.Equipment;
@@ -164,34 +163,32 @@ class DashboardObserver implements PropertyChangeListener {
   }
 
   public void updateLabels() {
-    if (SceneManager.getInstance().getCurrentScene().equals("views/dashboardPage.fxml")) {
-      if (!clabels.isEmpty()) {
-        clabels.get(0).setText(String.valueOf(cBedCount.size()));
-        clabels.get(1).setText(String.valueOf(cInfusionPumpCount.size()));
-        clabels.get(2).setText(String.valueOf(cRecliner.size()));
-        clabels.get(3).setText(String.valueOf(cXRay.size()));
-      }
+    if (!clabels.isEmpty()) {
+      clabels.get(0).setText(String.valueOf(cBedCount.size()));
+      clabels.get(1).setText(String.valueOf(cInfusionPumpCount.size()));
+      clabels.get(2).setText(String.valueOf(cRecliner.size()));
+      clabels.get(3).setText(String.valueOf(cXRay.size()));
+    }
 
-      if (!dlabels.isEmpty()) {
-        dlabels.get(0).setText(String.valueOf(dBedCount.size()));
-        dlabels.get(1).setText(String.valueOf(dInfusionPumpCount.size()));
-        dlabels.get(2).setText(String.valueOf(dRecliner.size()));
-        dlabels.get(3).setText(String.valueOf(dXRay.size()));
-      }
+    if (!dlabels.isEmpty()) {
+      dlabels.get(0).setText(String.valueOf(dBedCount.size()));
+      dlabels.get(1).setText(String.valueOf(dInfusionPumpCount.size()));
+      dlabels.get(2).setText(String.valueOf(dRecliner.size()));
+      dlabels.get(3).setText(String.valueOf(dXRay.size()));
+    }
 
-      if (!plabels.isEmpty()) {
-        plabels.get(0).setText(String.valueOf(pBedCount.size()));
-        plabels.get(1).setText(String.valueOf(pInfusionPumpCount.size()));
-        plabels.get(2).setText(String.valueOf(pRecliner.size()));
-        plabels.get(3).setText(String.valueOf(pXRay.size()));
-      }
+    if (!plabels.isEmpty()) {
+      plabels.get(0).setText(String.valueOf(pBedCount.size()));
+      plabels.get(1).setText(String.valueOf(pInfusionPumpCount.size()));
+      plabels.get(2).setText(String.valueOf(pRecliner.size()));
+      plabels.get(3).setText(String.valueOf(pXRay.size()));
+    }
 
-      if (!ilabels.isEmpty()) {
-        ilabels.get(0).setText(String.valueOf(iBedCount.size()));
-        ilabels.get(1).setText(String.valueOf(iInfusionPumpCount.size()));
-        ilabels.get(2).setText(String.valueOf(iRecliner.size()));
-        ilabels.get(3).setText(String.valueOf(iXRay.size()));
-      }
+    if (!ilabels.isEmpty()) {
+      ilabels.get(0).setText(String.valueOf(iBedCount.size()));
+      ilabels.get(1).setText(String.valueOf(iInfusionPumpCount.size()));
+      ilabels.get(2).setText(String.valueOf(iRecliner.size()));
+      ilabels.get(3).setText(String.valueOf(iXRay.size()));
     }
   }
 
