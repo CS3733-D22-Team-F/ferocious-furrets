@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -45,11 +46,12 @@
             </HBox>
             <HBox prefHeight="21.0" prefWidth="664.0" spacing="15.0">
                <children>
-                  <JFXButton fx:id="filterButton" onAction="#f" text="Search Employee:">
+                  <JFXButton fx:id="filterButton" onAction="#f" prefHeight="44.0" prefWidth="117.0" text="Filter:">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font></JFXButton>
-                  <TextField fx:id="filterEmployee" prefHeight="44.0" prefWidth="431.0" />
+                  <JFXComboBox fx:id="filterType" prefHeight="44.0" prefWidth="181.0" />
+                  <TextField fx:id="filterInput" prefHeight="44.0" prefWidth="319.0" />
                </children>
                <padding>
                   <Insets top="10.0" />

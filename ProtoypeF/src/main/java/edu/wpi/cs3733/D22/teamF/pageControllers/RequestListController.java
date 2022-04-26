@@ -49,7 +49,8 @@ public class RequestListController extends PageController implements Initializab
   private String requesterEmpID;
   private String status;
   @FXML private JFXButton filterButton;
-  @FXML private TextField filterEmployee;
+  @FXML private TextField filterInput;
+  @FXML private ComboBox filterType;
 
   /**
    * inits
@@ -64,6 +65,16 @@ public class RequestListController extends PageController implements Initializab
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
+
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("");
+    temp.add("Employee");
+    temp.add("ReqID");
+    temp.add("Location");
+    temp.add("Status");
+    filterType.getItems().addAll(temp);
+    filterType.setValue("");
+
   }
 
   TreeItem<RequestTree> treeRoot =
@@ -93,29 +104,57 @@ public class RequestListController extends PageController implements Initializab
   //  }
 
   public void f() throws SQLException, IOException {
-    if (filterEmployee.getText().equals("ALL")) {
+    if (filterInput.getText().equals("ALL")) {
       startTable();
       return;
     }
-    startFilteredTable(filterEmployee.getText());
+    startFilteredTable(filterInput.getText());
   }
 
-  public void startFilteredTable(String employeeName) throws SQLException, IOException {
+  public void startFilteredTable(String input) throws SQLException, IOException {
 
     clearTable();
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
-    employeeName = filterEmployee.getText();
-    System.out.println(employeeName);
+    input = filterInput.getText();
+    System.out.println(input);
+    ResultSet filteredReq = null;
 
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
     //    String empID = employeeIDFinder(employeeName);
-    EmployeeFilter employeeFilter = new EmployeeFilter(employeeName);
-    String empID = employeeFilter.employeeIDFinder();
-
-    RequestFilter requestFilter = new RequestFilter(empID);
-    ResultSet filteredReq = requestFilter.filterByEmpID();
+    if (((String) filterType.getValue()).equals("Employee")) {
+      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      String empID = employeeFilter.employeeIDFinder();
+      System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(empID);
+      filteredReq = requestFilter.filterByEmpID();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("ReqID")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByReqID();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("Location")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByLocation();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("Status")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByStatus();
+      System.out.println(filteredReq);
+    }
 
     //    String cmd =
     //        String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
