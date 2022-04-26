@@ -8,14 +8,10 @@ import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.ResourceBundle;
+import java.util.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -126,11 +122,11 @@ public class InternalPatientController extends PageController implements Initial
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
 
-    //    try {
-    //      startTable();
-    //    } catch (SQLException e) {
-    //      e.printStackTrace();
-    //    }
+    try {
+      startTable();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -142,14 +138,7 @@ public class InternalPatientController extends PageController implements Initial
         || startNodeField.getValue().equals("")
         || endNodeField.getValue().equals("")
         || prioritiesChoice.getValue().equals("")) {
-      // Adds alert for empty fields for ext-patient request
-      //      AGlobalMethods.showAlert("Empty Field(s)", submitButton);
     } else {
-      //            requestList.clear();
-      //            requestList.add("External Patient Transport Request for: " +
-      // addressField.getText());
-      //            requestList.add("Status: " + statusChoice.getValue());
-      //            ServiceRequestStorage.addToArrayList(requestList);
       Request transportReq =
           new Request(
               generateReqID(),
@@ -167,11 +156,9 @@ public class InternalPatientController extends PageController implements Initial
       for (Request r : dbc.listRequests()) {
         System.out.println(r.getRequestID());
       }
-
       reset();
     }
-
-    //    startTable();
+    startTable();
   }
 
   @FXML
@@ -188,29 +175,15 @@ public class InternalPatientController extends PageController implements Initial
 
     clearTable();
 
-    LinkedList<Request> allReqs = dbc.listRequests();
-    //        ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT * FROM
-    // externalPatientRequest");
-    //        ArrayList<ExtPatientDeliveryRequest> externalPatientReqs =
-    //                new ArrayList<ExtPatientDeliveryRequest>();
-    //        ExtPatientDeliveryRequest avr;
+    List<Request> allReqs = dbc.listRequests();
 
-    //        while (rset.next()) {
-    //            avr =
-    //                    new ExtPatientDeliveryRequest(
-    //                            rset.getString("reqID"), rset.getString("address"),
-    // rset.getString("method"));
-    //            externalPatientReqs.add(avr);
-    //        }
-    //        rset.close();
 
     treeRoot.setExpanded(true);
     allReqs.stream()
         .forEach(
-            (request) -> {
-              treeRoot.getChildren().add(new TreeItem<>(request));
+            (intPatientRequest) -> {
+              treeRoot.getChildren().add(new TreeItem<>(intPatientRequest));
             });
-    final Scene scene = new Scene(new Group(), 400, 400);
 
     TreeTableColumn<Request, String> reqIDCol = new TreeTableColumn<>("Request ID");
     reqIDCol.setCellValueFactory(
@@ -224,8 +197,7 @@ public class InternalPatientController extends PageController implements Initial
             return new ReadOnlyStringWrapper(
                 nodeIDToName(param.getValue().getValue().getStartLocation().getNodeID()));
           } catch (SQLException | NullPointerException e) {
-            return new ReadOnlyStringWrapper(
-                param.getValue().getValue().getStartLocation().getNodeID());
+            return new ReadOnlyStringWrapper("");
           }
         });
 
@@ -236,15 +208,18 @@ public class InternalPatientController extends PageController implements Initial
             return new ReadOnlyStringWrapper(
                 nodeIDToName(param.getValue().getValue().getFinishLocation().getNodeID()));
           } catch (SQLException | NullPointerException e) {
-            return new ReadOnlyStringWrapper(
-                param.getValue().getValue().getFinishLocation().getNodeID());
+            return new ReadOnlyStringWrapper("");
           }
         });
 
     TreeTableColumn<Request, String> prioritiesCol = new TreeTableColumn<>("Priority");
     prioritiesCol.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<Request, String> param) ->
-            new ReadOnlyStringWrapper("" + param.getValue().getValue().getPriority()));
+        (TreeTableColumn.CellDataFeatures<Request, String> param) -> {
+          if (param.getValue().getValue().getPriority() != 0) {
+            return new ReadOnlyStringWrapper(
+                String.valueOf(param.getValue().getValue().getPriority()));
+          } else return new ReadOnlyStringWrapper("");
+        });
 
     TreeTableColumn<Request, String> assignedToCol = new TreeTableColumn<>("Assigned To");
     assignedToCol.setCellValueFactory(
@@ -255,7 +230,7 @@ public class InternalPatientController extends PageController implements Initial
                     + " "
                     + empIDToLastName(param.getValue().getValue().getEmployeeID()));
           } catch (SQLException | NullPointerException e) {
-            return new ReadOnlyStringWrapper(param.getValue().getValue().getEmployeeID());
+            return new ReadOnlyStringWrapper("");
           }
         });
 
