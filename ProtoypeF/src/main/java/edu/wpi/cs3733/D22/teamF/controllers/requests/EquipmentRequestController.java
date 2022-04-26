@@ -2,11 +2,15 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.ServiceRequestStorage;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.EquipmentDeliveryRequest;
 import edu.wpi.cs3733.D22.teamF.pageControllers.PageController;
+import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
+import edu.wpi.cs3733.D22.teamF.reports.PDFConverter;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -25,7 +29,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.docx4j.openpackaging.exceptions.Docx4JException;
 
 public class EquipmentRequestController extends PageController
     implements Initializable, IRequestController {
@@ -46,6 +52,7 @@ public class EquipmentRequestController extends PageController
   @FXML private Rectangle rectangle2;
   @FXML private Label label1;
   @FXML private VBox leftVBox;
+  @FXML private VBox buttonVBox;
   @FXML private HBox leftHBox1;
   @FXML private HBox leftHBox2;
   @FXML private HBox leftHBox3;
@@ -53,10 +60,13 @@ public class EquipmentRequestController extends PageController
   @FXML private JFXButton resolveReq;
   @FXML private Button resetButton;
   @FXML private Button submitButton;
-  @FXML private TreeTableView table;
+  @FXML private JFXTreeTableView table;
   @FXML private Pane tablePane;
   @FXML private JFXButton filterButton;
   @FXML private TextField filterEmployee;
+  @FXML private CheckBox saveAsPDF;
+
+  @FXML private JFXButton reportButton;
 
   private String requestID;
   private String nodeID;
@@ -69,6 +79,8 @@ public class EquipmentRequestController extends PageController
       new TreeItem<>(
           new EquipmentDeliveryRequest(
               requestID, nodeID, assignedEmpID, requesterEmpID, status, requestedEquipmentID));
+
+  TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>();
 
   public EquipmentRequestController() {}
 
@@ -167,6 +179,10 @@ public class EquipmentRequestController extends PageController
   @Override
   public void reset() {}
 
+  public void displayReportButton() {
+    reportButton.setVisible(true);
+  }
+
   public void startTable() throws SQLException, IOException {
 
     clearTable();
@@ -254,7 +270,7 @@ public class EquipmentRequestController extends PageController
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
-    TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
         .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, statusCol);
@@ -268,6 +284,11 @@ public class EquipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    treeTableView.setOnMouseClicked(
+        e -> {
+          buttonVBox.toFront();
+          reportButton.toFront();
+        });
   }
 
   public void f() throws SQLException, IOException {
@@ -362,7 +383,7 @@ public class EquipmentRequestController extends PageController
         (TreeTableColumn.CellDataFeatures<EquipmentDeliveryRequest, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getStatus()));
 
-    TreeTableView<EquipmentDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView
         .getColumns()
         .setAll(reqIDCol, nodeIDCol, assignedToCol, equipmentIDCol, statusCol);
@@ -376,6 +397,7 @@ public class EquipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    reportButton.toFront();
   }
 
   /* Helpers */
@@ -449,6 +471,56 @@ public class EquipmentRequestController extends PageController
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
+  }
+
+  public void generateReport() {
+
+    // TODO Format Word template
+    if (treeTableView.getSelectionModel().getSelectedItem() == null) {
+      showAlert("Please select a request from the table!", masterPane);
+      return;
+    }
+    FileChooser fChoose = new FileChooser();
+    fChoose.setTitle("Save to:");
+    Stage stage = (Stage) tablePane.getScene().getWindow();
+    File file = fChoose.showSaveDialog(stage);
+    String filepath = file.getPath() + ".docx";
+
+    TreeItem<EquipmentDeliveryRequest> req = treeTableView.getSelectionModel().getSelectedItem();
+    if (req != null) {
+      EquipmentDeliveryRequest request = req.getValue();
+
+      GenerateReport rep =
+          new GenerateReport(
+              request.getReqID(),
+              request.getReqType(),
+              request.getNodeID(),
+              request.getAssignedEmpID(),
+              request.getRequesterEmpID(),
+              request.getStatus());
+      try {
+        rep.generateEquipmentServiceRequestReport(filepath, request.getRequestedEquipmentID());
+        showAlert("Report created!", tablePane);
+      } catch (Throwable e) {
+        System.out.println("Report failed");
+        showAlert("Failed to create report!", tablePane);
+        e.printStackTrace();
+      }
+      if (saveAsPDF.isSelected()) {
+        PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
+        try {
+          pdfConverter.convertToPDF();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } catch (Docx4JException e) {
+          showAlert(
+              "Sorry, this feature is not currently available on systems without MS Word:(",
+              tablePane);
+          e.printStackTrace();
+        }
+      }
+      saveAsPDF.setSelected(false);
+    }
   }
 
   public String nodeIDToName(String nID) throws SQLException {

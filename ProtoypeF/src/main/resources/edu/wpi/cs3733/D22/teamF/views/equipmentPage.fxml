@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
@@ -38,7 +39,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="350.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="124.0" layoutY="575.0" prefHeight="53.0" prefWidth="460.0" style="-fx-background-color: #123090;">
                <children>
                   <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
                      <font>
@@ -143,13 +144,26 @@
       </Pane>
    </left>
    <right>
-      <Pane fx:id="tablePane" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="tablePane" onMouseClicked="#displayReportButton" prefHeight="660.0" prefWidth="620.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView fx:id="table" prefHeight="660.0" prefWidth="620.0">
+            <JFXTreeTableView fx:id="table" onMouseClicked="#displayReportButton" prefHeight="660.0" prefWidth="620.0">
                <columnResizePolicy>
                   <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </JFXTreeTableView>
+            <VBox fx:id="buttonVBox" alignment="TOP_RIGHT" layoutX="-17.0" layoutY="550.0" prefHeight="86.0" prefWidth="309.0">
+               <children>
+                  <JFXButton fx:id="reportButton" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#generateReport" prefHeight="61.0" prefWidth="235.0" ripplerFill="#f5bc4b" style="-fx-background-color: #123090;" text="Generate Report" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <CheckBox fx:id="saveAsPDF" mnemonicParsing="false" prefHeight="28.0" prefWidth="207.0" text="Save as PDF" />
+               </children>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </VBox>
          </children>
       </Pane>
    </right>

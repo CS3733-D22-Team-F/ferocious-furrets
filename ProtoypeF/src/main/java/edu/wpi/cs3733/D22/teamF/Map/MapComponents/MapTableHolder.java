@@ -3,6 +3,8 @@ package edu.wpi.cs3733.D22.teamF.Map.MapComponents;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.api.Request;
+import edu.wpi.cs3733.D22.teamD.API.SanitationReqAPI;
+import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.location.Location;
@@ -49,7 +51,6 @@ public class MapTableHolder {
         y = fetchedNode.getYcoord();
         floor = fetchedNode.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + med.getNodeID());
         continue;
       }
 
@@ -177,7 +178,6 @@ public class MapTableHolder {
       if (reqInfo.next()) {
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("nodeID");
-        System.out.println("Node = " + nodeID);
       }
 
       Location node = Cache.getLocation(nodeID); // Location is null
@@ -187,10 +187,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        //        System.out.println("X Coord = " + node.getXcoord());
-        //        System.out.println("Y Coord = " + node.getYcoord());
-        //        System.out.println("Floor = " + node.getFloor());
-        //        System.out.println("Error couldn't get node: " + nodeID);
       }
       scans.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -208,7 +204,6 @@ public class MapTableHolder {
     ResultSet labReqs = DatabaseManager.getInstance().getLabRequestDAO().get();
     while (labReqs.next()) {
       String reqID = labReqs.getString("reqID");
-      System.out.println(reqID);
       ResultSet reqInfo =
           DatabaseManager.getInstance()
               .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
@@ -219,10 +214,8 @@ public class MapTableHolder {
       String floor = "";
       String type = "Lab";
       if (reqInfo.next()) {
-        System.out.println("Result set populated");
         status = reqInfo.getString("status");
         nodeID = reqInfo.getString("NODEID");
-        System.out.println(nodeID);
       }
       Location node = Cache.getLocation(nodeID);
 
@@ -231,7 +224,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       labs.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -268,7 +260,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       gifts.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -306,7 +297,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       medi.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -344,7 +334,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       equip.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -382,7 +371,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       pt.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -420,7 +408,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       meals.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -458,7 +445,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       maint.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -496,7 +482,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       audiovis.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -534,7 +519,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       sec.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
@@ -549,34 +533,26 @@ public class MapTableHolder {
    */
   public static ArrayList<Location> getAllFacilities() throws SQLException, IOException {
     ArrayList<Location> facil = new ArrayList<>();
-    // equipment delivery requests
-    ResultSet facilReqs = DatabaseManager.getInstance().getFacilitiesDAO().get();
-    while (facilReqs.next()) {
-      String reqID = facilReqs.getString("reqID");
-      ResultSet reqInfo =
-          DatabaseManager.getInstance()
-              .runQuery(String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", reqID));
-      String status = "";
-      String nodeID = "";
+
+    SanitationReqAPI reqAPI = new SanitationReqAPI();
+    List<SanitationIRequest> sanitationRequests = reqAPI.getAllRequests();
+    for (SanitationIRequest i : sanitationRequests) {
+      String reqID = i.getNodeID();
+      String status = i.getCleanStatus().toString();
+      String nodeID = i.getRoomID();
       int x = -1;
       int y = -1;
       String floor = "";
       String type = "Facilities";
-      if (reqInfo.next()) {
-        status = reqInfo.getString("status");
-        nodeID = reqInfo.getString("nodeID");
-      }
       Location node = Cache.getLocation(nodeID);
       try {
         x = node.getXcoord();
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       facil.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
-    facilReqs.close();
     return facil;
   }
 
@@ -610,7 +586,6 @@ public class MapTableHolder {
         y = node.getYcoord();
         floor = node.getFloor();
       } catch (NullPointerException e) {
-        System.out.println("Error couldn't get node: " + nodeID);
       }
       pats.add(new Location(nodeID, x, y, floor, "N/A", type, reqID, status));
     }
