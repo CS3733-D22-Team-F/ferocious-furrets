@@ -182,7 +182,10 @@ public class GiftResizedController extends PageController
     nodeIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<GiftDeliveryRequest, String> param) -> {
           try {
-            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+            return new ReadOnlyStringWrapper(
+                DatabaseManager.getInstance()
+                    .getLocationDAO()
+                    .nodeIDToName(param.getValue().getValue().getNodeID()));
           } catch (SQLException e) {
             e.printStackTrace();
           }
@@ -261,16 +264,6 @@ public class GiftResizedController extends PageController
 
   public void clearTable() {
     treeRoot.getChildren().remove(0, treeRoot.getChildren().size());
-  }
-
-  public String nodeIDToName(String nID) throws SQLException {
-    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
-    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
-    String lName = "";
-    while (rset.next()) {
-      lName = rset.getString("longName");
-    }
-    return lName;
   }
 
   public String empIDToFirstName(String eID) throws SQLException {

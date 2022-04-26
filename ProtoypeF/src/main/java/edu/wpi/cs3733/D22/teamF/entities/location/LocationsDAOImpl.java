@@ -98,7 +98,19 @@ public class LocationsDAOImpl implements LocationDAO {
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
     return lName;
+  }
+
+  public String NameToLocation(String longName) throws SQLException {
+    String cmd = String.format("SELECT * FROM Locations WHERE longName = '%s'", longName);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String nID = "";
+    while (rset.next()) {
+      nID = rset.getString("nodeID");
+    }
+    rset.close();
+    return nID;
   }
 
   /**
@@ -192,6 +204,13 @@ public class LocationsDAOImpl implements LocationDAO {
     return allLocations;
   }
 
+  public ResultSet get() throws SQLException {
+    Statement stm = DatabaseManager.getInstance().getDatabaseConnection().createStatement();
+    String q = "SELECT * FROM LOCATIONS";
+    ResultSet rset = stm.executeQuery(q);
+    return rset;
+  }
+
   /**
    * Taking user input for the ID of the new location node. A new Java Location object is created
    * and the node is added to the SQL table.
@@ -267,294 +286,4 @@ public class LocationsDAOImpl implements LocationDAO {
     String shortName = currentLineSplit[7];
     return new Location(nID, x, y, floor, building, nodeType, longName, shortName);
   }
-
-  /*
-  /**
-   * Taking User input for the name of a CSV file. The program first loads all of the contents of
-   * the SQL Location table into Java Location objects. Then the CSV file is created from the Java
-   * objects.
-   * @deprecated
-  public void saveLocationToCSV() throws SQLException {
-
-    String csvName = "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv";
-
-    Statement stm = null;
-    try {
-      stm = DatabaseManager.getConn().createStatement();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    try {
-
-      ResultSet rset;
-      rset = stm.executeQuery("SELECT * FROM Locations");
-
-      ArrayList<Location> allLocations = locationsFromRSET(rset);
-
-      rset.close();
-      File newCSV = new File(csvName);
-      FileWriter fw = new FileWriter(csvName);
-      fw.write("nodeID,xcoord,ycoord,floor,building,nodeType,longName,shortName\n");
-      for (Location l : allLocations) {
-        fw.write(
-                l.getNodeID()
-                        + ","
-                        + l.getXcoord()
-                        + ","
-                        + l.getYcoord()
-                        + ","
-                        + l.getFloor()
-                        + ","
-                        + l.getBuilding()
-                        + ","
-                        + l.getNodeType()
-                        + ","
-                        + l.getLongName()
-                        + ","
-                        + l.getShortName()
-                        + "\n");
-      }
-      fw.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    stm.close();
-  }
-  */
-  /*
-   public ArrayList<Location> getLocations() {
-     return Locations;
-   }
-
-   public void setLocations(ArrayList<Location> locations) {
-     this.Locations = locations;
-   }
-
-   public ArrayList<Location> getUpdatedLocations() {
-     return updatedLocations;
-   }
-
-   public void setUpdatedLocations(ArrayList<Location> updatedLocations) {
-     this.updatedLocations = updatedLocations;
-   }
-
-   public ArrayList<String> getCsvIDS() {
-     return csvIDS;
-   }
-
-   public void setCsvIDS(ArrayList<String> csvIDS) {
-     this.csvIDS = csvIDS;
-   }
-
-   public TextField getNewCSVName() {
-     return newCSVName;
-   }
-
-   public void setNewCSVName(TextField newCSVName) {
-     this.newCSVName = newCSVName;
-   }
-
-   public TextField getNewLocNodeID() {
-     return newLocNodeID;
-   }
-
-   public void setNewLocNodeID(TextField newLocNodeID) {
-     this.newLocNodeID = newLocNodeID;
-   }
-
-   public TextField getOldLocNodeID() {
-     return oldLocNodeID;
-   }
-
-   public void setOldLocNodeID(TextField oldLocNodeID) {
-     this.oldLocNodeID = oldLocNodeID;
-   }
-
-   public TextField getNodeToUpdate() {
-     return nodeToUpdate;
-   }
-
-   public void setNodeToUpdate(TextField nodeToUpdate) {
-     this.nodeToUpdate = nodeToUpdate;
-   }
-
-   public TextField getNewFloor() {
-     return newFloor;
-   }
-
-   public void setNewFloor(TextField newFloor) {
-     this.newFloor = newFloor;
-   }
-
-   public TextField getNewLocType() {
-     return newLocType;
-   }
-
-   public void setNewLocType(TextField newLocType) {
-     this.newLocType = newLocType;
-   }
-
-   public TextField getNewXcoord() {
-     return newXcoord;
-   }
-
-   public void setNewXcoord(TextField newXcoord) {
-     this.newXcoord = newXcoord;
-   }
-
-   public TextField getNewYcoord() {
-     return newYcoord;
-   }
-
-   public void setNewYcoord(TextField newYcoord) {
-     this.newYcoord = newYcoord;
-   }
-
-   public TextField getNewLongName() {
-     return newLongName;
-   }
-
-   public void setNewLongName(TextField newLongName) {
-     this.newLongName = newLongName;
-   }
-
-   public TextField getNewShortName() {
-     return newShortName;
-   }
-
-   public void setNewShortName(TextField newShortName) {
-     this.newShortName = newShortName;
-   }
-
-  */
-  /* JACKS OLD CODE
-  /**
-   * Replicates the initTable method but with a user specified filename, drops old Locations table
-   * and recreates with specified file
-   *
-   * @param filename csv file that contains the location nodes replacing the old map
-   * @throws IOException
-   * @throws SQLException
-   * @deprecated
-  private void resetMapFromCSV(String filename) throws IOException, SQLException {
-    csvLocations.clear();
-    csvIDS.clear();
-    updatedLocations.clear();
-    BufferedReader lineReader =
-        new BufferedReader(
-            new InputStreamReader(
-                LocationsDAOImpl.class.getResourceAsStream(filename), StandardCharsets.UTF_8));
-    String lineText;
-    lineReader.readLine(); // skip header line
-
-    while ((lineText = lineReader.readLine()) != null) {
-      String[] data = lineText.split(",");
-      String nID = data[0];
-      int x = Integer.parseInt(data[1]);
-      int y = Integer.parseInt(data[2]);
-      String floor = data[3];
-      String building = data[4];
-      String nodeType = data[5];
-      String longName = data[6];
-      String shortName = data[7];
-      Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
-      csvLocations.add(l);
-      csvIDS.add(l.getNodeID());
-    }
-    Statement stm = DatabaseManager.getConn().createStatement();
-    DatabaseMetaData databaseMetadata = DatabaseManager.getConn().getMetaData();
-    ResultSet resultSet =
-        databaseMetadata.getTables(
-            null, null, "LOCATIONS", null); // CARTERS IF STATEMENT IF TABLE EXIST
-    if (resultSet.next()) {
-      stm.execute("DROP TABLE LOCATIONS");
-    }
-    stm.execute(
-        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
-
-    for (Location currentLocation : csvLocations) {
-      stm.execute(currentLocation.generateInsertStatement());
-    }
-    resultSet.close();
-    stm.close();
-  }
-
-  public void initTable(File file) throws IOException, SQLException {
-    csvLocations.clear();
-    csvIDS.clear();
-    updatedLocations.clear();
-    BufferedReader lineReader = new BufferedReader(new FileReader(file));
-    String lineText;
-    lineReader.readLine(); // skip header line
-
-    while ((lineText = lineReader.readLine()) != null) {
-      String[] data = lineText.split(",");
-      String nID = data[0];
-      int x = Integer.parseInt(data[1]);
-      int y = Integer.parseInt(data[2]);
-      String floor = data[3];
-      String building = data[4];
-      String nodeType = data[5];
-      String longName = data[6];
-      String shortName = data[7];
-      Location l = new Location(nID, x, y, floor, building, nodeType, longName, shortName);
-      csvLocations.add(l);
-      csvIDS.add(l.getNodeID());
-    }
-    Statement stm = DatabaseManager.getConn().createStatement();
-    DatabaseMetaData databaseMetadata = DatabaseManager.getConn().getMetaData();
-    ResultSet resultSet =
-        databaseMetadata.getTables(
-            null, null, "LOCATIONS", null); // CARTERS IF STATEMENT IF TABLE EXIST
-    if (resultSet.next()) {
-      stm.execute("DROP TABLE LOCATIONS");
-    }
-    stm.execute(
-        "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
-
-    for (Location currentLocation : csvLocations) {
-      stm.execute(currentLocation.generateInsertStatement());
-    }
-    resultSet.close();
-    stm.close();
-  }
-
-   */
-  /*
-    /**
-   * Taking user input for the ID of the location node and the new values of the floor and location
-   * type. The Location is then updated in the Locations DB
-   *
-   * @throws SQLException
-  public void updateLocation() throws SQLException {
-
-    String oldLocNodeID = nodeToUpdate.getText();
-    String nFloor = newFloor.getText();
-    String newType = newLocType.getText();
-    int newX = Integer.parseInt(newXcoord.getText());
-    int newY = Integer.parseInt(newYcoord.getText());
-    String newLName = newLongName.getText();
-    String newSName = newShortName.getText();
-
-    String updatedID = "";
-
-    Statement stm = DatabaseManager.getConn().createStatement();
-    String cmd =
-            "UPDATE Locations SET floor = '"
-                    + newFloor
-                    + "', nodeType = '"
-                    + newLocType
-                    + "', nodeID = '"
-                    + updatedID
-                    + "' WHERE nodeID = '"
-                    + oldLocNodeID
-                    + "'";
-    stm.execute(cmd);
-    stm.close();
-  }
-   */
-
 }
