@@ -1,15 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: white;" stylesheets="@../stylesheets/DashBoard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: white;" stylesheets="@../stylesheets/DashBoard.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
    <center>
-      <Pane prefHeight="403.0" prefWidth="699.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="660.0" prefWidth="1217.0" BorderPane.alignment="CENTER">
          <children>
-            <MFXTableView fx:id="table" layoutX="10.0" layoutY="6.0" prefHeight="645.0" prefWidth="1201.0" />
+            <VBox prefHeight="660.0" prefWidth="933.0">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="378.0" text="Welcome Admin!">
+                     <font>
+                        <Font name="Serif Regular" size="50.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="325.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="34.0" prefWidth="543.0" text="There are ___ outstanding Service Requests">
+                     <font>
+                        <Font name="Serif Regular" size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="250.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox prefHeight="666.0" prefWidth="1226.0">
+                     <children>
+                        <HBox prefHeight="380.0" prefWidth="1220.0">
+                           <children>
+                              <VBox prefHeight="254.0" prefWidth="247.0">
+                                 <children>
+                                    <Label prefHeight="163.0" prefWidth="243.0" text="Viewing Requests Assigned To:" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="Serif Regular" size="37.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <JFXComboBox prefHeight="49.0" prefWidth="230.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <Pane prefHeight="252.0" prefWidth="658.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <MFXTableView fx:id="table" layoutY="-2.0" prefHeight="239.0" prefWidth="655.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <Label prefHeight="34.0" prefWidth="386.0" text="Viewing Equipment On Floor:" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Serif Regular" size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="250.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="429.0" prefWidth="1006.0">
+                           <children>
+                              <VBox prefHeight="254.0" prefWidth="242.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <Pane prefHeight="266.0" prefWidth="675.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <MFXTableView fx:id="table1" layoutY="-2.0" prefHeight="272.0" prefWidth="660.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Line endX="100.79270935058594" endY="-51.246971130371094" startX="99.99981689453125" startY="608.6640625" />
+            <VBox prefHeight="660.0" prefWidth="277.0">
+               <children>
+                  <Label contentDisplay="CENTER" prefHeight="91.0" prefWidth="226.0" text="Alerts:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Serif Regular" size="80.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </VBox>
          </children>
-      </Pane>
+      </HBox>
    </center>
 </BorderPane>
