@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import edu.wpi.cs3733.D22.teamF.filter.EmployeeFilter;
 import edu.wpi.cs3733.D22.teamF.filter.RequestFilter;
@@ -61,7 +60,7 @@ public class RequestListController extends PageController implements Initializab
   @FXML private JFXButton filterButton;
   @FXML private TextField filterInput;
   @FXML private ComboBox filterType;
-  //@FXML private TextField filterEmployee;
+  // @FXML private TextField filterEmployee;
   @FXML private CheckBox saveAsPDF;
 
   /**
@@ -86,7 +85,6 @@ public class RequestListController extends PageController implements Initializab
     temp.add("Status");
     filterType.getItems().addAll(temp);
     filterType.setValue("");
-
   }
 
   TreeItem<RequestTree> treeRoot =
