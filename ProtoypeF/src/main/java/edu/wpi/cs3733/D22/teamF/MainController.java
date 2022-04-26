@@ -2,16 +2,20 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXNodesList;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
+import edu.wpi.cs3733.D22.teamF.observers.Alert;
+import edu.wpi.cs3733.D22.teamF.observers.AlertObserver;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -65,8 +70,12 @@ public class MainController implements Initializable {
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
   @FXML JFXButton patientButton;
+  @FXML JFXButton alertIcon;
   @FXML TextField emergencyLocation;
   @FXML Pane emergencyPane;
+  @FXML Pane alertsPane;
+  @FXML JFXNodesList alertsList;
+  @FXML Label alertLabel;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -93,7 +102,7 @@ public class MainController implements Initializable {
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    showEmergency();
+
     Thread shutDownHook =
         new Thread(
             () -> {
@@ -140,7 +149,7 @@ public class MainController implements Initializable {
             applyResize(SceneManager.getInstance().getStage().getWidth(), (double) newValue);
           }
         };
-
+    setAlerts();
     SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
     SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
     SceneManager.getInstance().getStage().widthProperty().addListener(widthResizeCallback);
@@ -395,6 +404,7 @@ public class MainController implements Initializable {
 
   public void showEmergency() {
     emergencyPane.setVisible(!emergencyPane.isVisible());
+    alertIcon.setDisable(!alertIcon.isDisabled());
   }
 
   public void callSecurity() throws SQLException {
@@ -424,5 +434,21 @@ public class MainController implements Initializable {
 
     String nID = "f" + nNodeType + reqNum;
     return nID;
+  }
+
+  public void openAlerts() {
+    alertsPane.setVisible(!alertsPane.isVisible());
+    callSecurity.setDisable(!callSecurity.isDisabled());
+  }
+
+  public void setAlerts() {
+    List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
+    alertLabel.setText(Integer.toString(allFloorAlerts.size()));
+    for (List<Alert> floorAlert : allFloorAlerts)
+      for (Alert inFloorAlert : floorAlert) {
+        JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
+        alertsList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
+      }
   }
 }

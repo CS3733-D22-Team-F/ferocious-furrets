@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXNodesList?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -22,7 +23,7 @@
          <children>
             <HBox fx:id="titleBox" prefHeight="60.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
                <children>
-                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1157.0" text="       Brigham And Women's Hospital" textFill="WHITE">
+                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1046.0" text="       Brigham And Women's Hospital" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="48.0" />
                      </font>
@@ -36,13 +37,31 @@
                   </Label>
                   <JFXButton fx:id="callSecurity" buttonType="RAISED" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#showEmergency" prefHeight="56.0" prefWidth="112.0" ripplerFill="#f3ba48" textFill="TRANSPARENT">
                      <graphic>
-                        <ImageView fitHeight="47.0" fitWidth="56.0" pickOnBounds="true">
+                        <ImageView fitHeight="47.0" fitWidth="73.0" onMouseClicked="#showEmergency" pickOnBounds="true">
                            <image>
                               <Image url="@../MenuIcon/call.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
+                  <Pane>
+                     <children>
+                        <JFXButton fx:id="alertIcon" buttonType="RAISED" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#openAlerts" prefHeight="56.0" prefWidth="112.0" ripplerFill="#f3ba48" textFill="TRANSPARENT">
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="50.0" onMouseClicked="#openAlerts" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../MenuIcon/bell.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <Label fx:id="alertLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openAlerts" prefHeight="27.0" prefWidth="14.0" text="1" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </HBox>
             <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1270.0" VBox.vgrow="NEVER">
@@ -194,7 +213,7 @@
                               </VBox>
                            </children>
                         </JFXDrawer>
-                        <Pane fx:id="emergencyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="278.0" style="-fx-background-color: #123090; -fx-border-color: #F3BA48; -fx-border-width: 5;" StackPane.alignment="TOP_RIGHT">
+                        <Pane fx:id="emergencyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="278.0" style="-fx-background-color: #123090; -fx-border-color: #F3BA48; -fx-border-width: 5;" visible="false" StackPane.alignment="TOP_RIGHT">
                            <children>
                               <Label layoutX="60.0" layoutY="8.0" text="Emergency Call" textFill="WHITE">
                                  <font>
@@ -220,6 +239,33 @@
                                     </JFXButton>
                                  </children>
                               </HBox>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="alertsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: #123090; -fx-border-color: #F3BA48; -fx-border-width: 5;" visible="false" StackPane.alignment="TOP_RIGHT">
+                           <children>
+                              <VBox prefHeight="300.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="210.0" text="Alerts" textFill="WHITE">
+                                       <font>
+                                          <Font name="Serif Regular" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <JFXNodesList fx:id="alertsList" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="facadeButton" buttonType="RAISED" maxHeight="76.0" minHeight="20.0" prefHeight="47.0" prefWidth="154.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alerts" textFill="WHITE">
+                                             <font>
+                                                <Font size="12.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children></JFXNodesList>
+                                 </children>
+                              </VBox>
                            </children>
                         </Pane>
                      </children>
