@@ -48,6 +48,7 @@ public class SceneManager {
     /*
      * Checks the hashmap to see if filename already exists.
      */
+
     if (!h_map.containsKey(filename)) {
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource(filename));
       // alt enter while hover over/cursor in red
