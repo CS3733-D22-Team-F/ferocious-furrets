@@ -119,9 +119,7 @@ public class AboutPageController implements Initializable {
               e.printStackTrace();
             }
 
-            AudioPlayer.getInstance()
-                .setAudioInputStream(
-                    "C:\\Users\\cmmck\\IdeaProjects\\ferocious-furrets\\ProtoypeF\\src\\main\\resources\\Flyysoulja - I'm An Island Boy ft. Kodiyakredd (Official Music Video).wav");
+            AudioPlayer.getInstance().setAudioInputStream("Music/island.wav");
             AudioPlayer.getInstance().playFrom(45000);
 
             Stage popupwindow = new Stage();

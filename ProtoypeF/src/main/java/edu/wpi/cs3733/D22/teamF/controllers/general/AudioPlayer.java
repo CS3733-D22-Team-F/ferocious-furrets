@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import java.io.File;
+import edu.wpi.cs3733.D22.teamF.Fapp;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.sound.sampled.*;
 
 public class AudioPlayer {
@@ -32,7 +34,11 @@ public class AudioPlayer {
 
   public void setAudioInputStream(String filePath) {
     try {
-      audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+      InputStream in = Fapp.class.getResourceAsStream(filePath);
+      BufferedInputStream bin = new BufferedInputStream(in);
+      // System.out.println(in.getAbsolutePath());
+
+      audioInputStream = AudioSystem.getAudioInputStream(bin);
 
       // create clip reference
       clip = AudioSystem.getClip();
