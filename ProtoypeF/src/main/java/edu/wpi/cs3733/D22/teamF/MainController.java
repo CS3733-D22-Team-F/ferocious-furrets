@@ -363,8 +363,17 @@ public class MainController implements Initializable {
     changeTo("views/extPatDeliveryPage.fxml");
   }
 
-  public void goToIntTransport() throws IOException {
+  public void goToIntTransport() throws IOException, edu.wpi.cs3733.D22.teamB.api.ServiceException {
     changeTo("views/internalPatientPage.fxml");
+    //    API intPatientAPI = new API();
+    //    intPatientAPI.run(
+    //        100,
+    //        100,
+    //        1220,
+    //        660,
+    //        "edu/wpi/cs3733/D22/teamF/stylesheets/PurpleMode.css",
+    //        "FDEPT00301",
+    //        "FDEPT00301");
   }
 
   public void changeTo(String path) throws IOException {

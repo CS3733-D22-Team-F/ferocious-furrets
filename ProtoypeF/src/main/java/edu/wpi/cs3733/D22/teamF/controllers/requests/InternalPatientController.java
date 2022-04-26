@@ -49,6 +49,7 @@ public class InternalPatientController extends PageController implements Initial
   @FXML private JFXComboBox startNodeField;
   @FXML private JFXComboBox endNodeField;
   @FXML private JFXComboBox prioritiesChoice;
+  @FXML private JFXComboBox nodeField;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -96,19 +97,24 @@ public class InternalPatientController extends PageController implements Initial
    */
   public void initialize(URL location, ResourceBundle resources) {
 
+    try {
+      populateAPIEmployeeDatabase();
+      populateAPILocationsDatabase();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
     ArrayList<Object> statusDrop = new ArrayList<>();
     ArrayList<Integer> priorities = new ArrayList<>();
 
     statusDrop.add("Processing");
     statusDrop.add("Done");
     statusChoice.getItems().addAll(statusDrop);
-    statusChoice.setValue("");
 
     ArrayList<Object> locations = locationNames();
+    nodeField.getItems().addAll(locations);
     startNodeField.getItems().addAll(locations);
     endNodeField.getItems().addAll(locations);
-    startNodeField.setValue("");
-    endNodeField.setValue("");
 
     priorities.add(1);
     priorities.add(2);
@@ -116,11 +122,9 @@ public class InternalPatientController extends PageController implements Initial
     priorities.add(4);
     priorities.add(5);
     prioritiesChoice.getItems().addAll(priorities);
-    prioritiesChoice.setValue("");
 
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
-    employeeIDField.setValue("");
 
     try {
       startTable();
@@ -154,19 +158,10 @@ public class InternalPatientController extends PageController implements Initial
               nodeIDFinder(endNodeField.getValue().toString()),
               statusChoice.getValue().toString(),
               (Integer) prioritiesChoice.getValue(),
-              null,
-              null,
-              null,
-              null);
-      //            ArrayList<String> fields = new ArrayList<String>();
-      //            fields.add(generateReqID());
-      //            fields.add(nodeIDFinder(startNodeField.getValue().toString()));
-      //            fields.add(nodeIDFinder(endNodeField.getValue().toString()));
-      //            fields.add(employeeIDFinder(employeeIDField.getValue().toString()));
-      //            fields.add(employeeIDFinder(userField.getValue().toString()));
-      //            fields.add(statusChoice.getValue().toString());
-      //            fields.add(addressField.getText());
-      //            fields.add(methodField.getValue().toString());
+              "null",
+              new Date(),
+              new Date(),
+              new Date());
 
       dbc.add(transportReq);
 
@@ -208,8 +203,8 @@ public class InternalPatientController extends PageController implements Initial
     treeRoot.setExpanded(true);
     allReqs.stream()
         .forEach(
-            (Request) -> {
-              treeRoot.getChildren().add(new TreeItem<>(Request));
+            (request) -> {
+              treeRoot.getChildren().add(new TreeItem<>(request));
             });
     final Scene scene = new Scene(new Group(), 400, 400);
 
@@ -224,11 +219,10 @@ public class InternalPatientController extends PageController implements Initial
           try {
             return new ReadOnlyStringWrapper(
                 nodeIDToName(param.getValue().getValue().getStartLocation().getNodeID()));
-          } catch (SQLException e) {
-            e.printStackTrace();
+          } catch (SQLException | NullPointerException e) {
+            return new ReadOnlyStringWrapper(
+                param.getValue().getValue().getStartLocation().getNodeID());
           }
-          return new ReadOnlyStringWrapper(
-              param.getValue().getValue().getStartLocation().getNodeID());
         });
 
     TreeTableColumn<Request, String> endNodeIDCol = new TreeTableColumn<>("End Location");
@@ -237,11 +231,10 @@ public class InternalPatientController extends PageController implements Initial
           try {
             return new ReadOnlyStringWrapper(
                 nodeIDToName(param.getValue().getValue().getFinishLocation().getNodeID()));
-          } catch (SQLException e) {
-            e.printStackTrace();
+          } catch (SQLException | NullPointerException e) {
+            return new ReadOnlyStringWrapper(
+                param.getValue().getValue().getFinishLocation().getNodeID());
           }
-          return new ReadOnlyStringWrapper(
-              param.getValue().getValue().getFinishLocation().getNodeID());
         });
 
     TreeTableColumn<Request, String> prioritiesCol = new TreeTableColumn<>("Priority");
@@ -257,10 +250,9 @@ public class InternalPatientController extends PageController implements Initial
                 empIDToFirstName(param.getValue().getValue().getEmployeeID())
                     + " "
                     + empIDToLastName(param.getValue().getValue().getEmployeeID()));
-          } catch (SQLException e) {
-            e.printStackTrace();
+          } catch (SQLException | NullPointerException e) {
+            return new ReadOnlyStringWrapper(param.getValue().getValue().getEmployeeID());
           }
-          return new ReadOnlyStringWrapper(param.getValue().getValue().getEmployeeID());
         });
 
     TreeTableColumn<Request, String> statusCol = new TreeTableColumn<>("Status");
@@ -319,11 +311,11 @@ public class InternalPatientController extends PageController implements Initial
   }
 
   public String nodeIDToName(String nID) throws SQLException {
-    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    String cmd = String.format("SELECT LONGNAME FROM Locations WHERE nodeID = '%s'", nID);
     ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
     String lName = "";
     while (rset.next()) {
-      lName = rset.getString("longName");
+      lName = rset.getString("LONGNAME");
     }
     return lName;
   }
@@ -346,5 +338,45 @@ public class InternalPatientController extends PageController implements Initial
       lName = rset.getString("lastName");
     }
     return lName;
+  }
+
+  public void populateAPIEmployeeDatabase() throws SQLException {
+    LinkedList<IPTEmployee> employees = new LinkedList<>();
+    String cmd = "SELECT * FROM EMPLOYEE";
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    while (rset.next()) {
+      String firstName = rset.getString("FIRSTNAME");
+      String lastName = rset.getString("LASTNAME");
+      String id = rset.getString("EMPLOYEEID");
+      IPTEmployee employee = new IPTEmployee(id, lastName, firstName, "Foo", "Foo");
+      employees.add(employee);
+    }
+    rset.close();
+    for (IPTEmployee employee : employees) {
+      dbc.add(employee);
+    }
+  }
+
+  public void populateAPILocationsDatabase() throws SQLException {
+    LinkedList<Location> locations = new LinkedList<>();
+    String cmd = "SELECT * FROM LOCATIONS";
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    while (rset.next()) {
+      String nodeID = rset.getString("NODEID");
+      int xcoord = Integer.parseInt(rset.getString("XCOORD"));
+      int ycoord = Integer.parseInt(rset.getString("YCOORD"));
+      String floor = rset.getString("FLOOR");
+      String building = rset.getString("BUILDING");
+      String nodeType = rset.getString("NODETYPE");
+      String longName = rset.getString("LONGNAME");
+      String shortName = rset.getString("SHORTNAME");
+      Location location =
+          new Location(nodeID, xcoord, ycoord, floor, building, nodeType, longName, shortName);
+      locations.add(location);
+    }
+    rset.close();
+    for (Location location : locations) {
+      dbc.add(location);
+    }
   }
 }
