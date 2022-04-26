@@ -4,10 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import edu.wpi.cs3733.D22.teamF.filter.EmployeeFilter;
 import edu.wpi.cs3733.D22.teamF.filter.RequestFilter;
+import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
+import edu.wpi.cs3733.D22.teamF.reports.PDFConverter;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -25,8 +27,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.docx4j.openpackaging.exceptions.Docx4JException;
 
 /**
  * controller for request list
@@ -41,6 +45,11 @@ public class RequestListController extends PageController implements Initializab
   @FXML JFXTreeTableView requestList;
   @FXML Pane tablePane;
   @FXML private AnchorPane masterPane;
+  @FXML private JFXButton reportButton;
+
+  TreeTableView<RequestTree> treeTableView = new TreeTableView<>();
+
+  private String selectedRequestIDForReport;
 
   private String employee;
   private String nodeID;
@@ -49,7 +58,10 @@ public class RequestListController extends PageController implements Initializab
   private String requesterEmpID;
   private String status;
   @FXML private JFXButton filterButton;
-  @FXML private TextField filterEmployee;
+  @FXML private TextField filterInput;
+  @FXML private ComboBox filterType;
+  // @FXML private TextField filterEmployee;
+  @FXML private CheckBox saveAsPDF;
 
   /**
    * inits
@@ -64,6 +76,15 @@ public class RequestListController extends PageController implements Initializab
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
+
+    ArrayList<Object> temp = new ArrayList<>();
+    temp.add("");
+    temp.add("Employee");
+    temp.add("ReqID");
+    temp.add("Location");
+    temp.add("Status");
+    filterType.getItems().addAll(temp);
+    filterType.setValue("");
   }
 
   TreeItem<RequestTree> treeRoot =
@@ -93,29 +114,57 @@ public class RequestListController extends PageController implements Initializab
   //  }
 
   public void f() throws SQLException, IOException {
-    if (filterEmployee.getText().equals("ALL")) {
+    if (filterInput.getText().equals("ALL")) {
       startTable();
       return;
     }
-    startFilteredTable(filterEmployee.getText());
+    startFilteredTable(filterInput.getText());
   }
 
-  public void startFilteredTable(String employeeName) throws SQLException, IOException {
+  public void startFilteredTable(String input) throws SQLException, IOException {
 
     clearTable();
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
-    employeeName = filterEmployee.getText();
-    System.out.println(employeeName);
+    input = filterInput.getText();
+    System.out.println(input);
+    ResultSet filteredReq = null;
 
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
     //    String empID = employeeIDFinder(employeeName);
-    EmployeeFilter employeeFilter = new EmployeeFilter(employeeName);
-    String empID = employeeFilter.employeeIDFinder();
-
-    RequestFilter requestFilter = new RequestFilter(empID);
-    ResultSet filteredReq = requestFilter.filterByEmpID();
+    if (((String) filterType.getValue()).equals("Employee")) {
+      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      String empID = employeeFilter.employeeIDFinder();
+      System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(empID);
+      filteredReq = requestFilter.filterByEmpID();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("ReqID")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByReqID();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("Location")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByLocation();
+      System.out.println(filteredReq);
+    }
+    if (((String) filterType.getValue()).equals("Status")) {
+      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
+      //      String empID = employeeFilter.employeeIDFinder();
+      // System.out.println(empID);
+      RequestFilter requestFilter = new RequestFilter(input);
+      filteredReq = requestFilter.filterByStatus();
+      System.out.println(filteredReq);
+    }
 
     //    String cmd =
     //        String.format("SELECT * FROM ServiceRequest WHERE assignedEmployeeID = '%s'", empID);
@@ -166,7 +215,7 @@ public class RequestListController extends PageController implements Initializab
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
-    TreeTableView<RequestTree> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
@@ -228,8 +277,10 @@ public class RequestListController extends PageController implements Initializab
           return new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID());
         });
 
-    TreeTableView<RequestTree> treeTableView = new TreeTableView<>(treeRoot);
+    treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
@@ -299,8 +350,8 @@ public class RequestListController extends PageController implements Initializab
 
   void onChangePress() throws IOException {
     // TODO replace "new" items with defined items
-    TreeTableView<Request> table = new TreeTableView<>();
-    TreeItem<Request> selectedItem = table.getSelectionModel().getSelectedItem();
+    TreeTableView<RequestTree> table = requestList;
+    TreeItem<RequestTree> selectedItem = table.getSelectionModel().getSelectedItem();
     selectedID = selectedItem.getValue().getReqID();
     selectedType = selectedItem.getValue().getReqType();
     popUpModifyReq();
@@ -318,5 +369,55 @@ public class RequestListController extends PageController implements Initializab
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
+  }
+
+  public void generateReport() {
+
+    // TODO Format Word template
+    if (treeTableView.getSelectionModel().getSelectedItem() == null) {
+      showAlert("Please select a request from the table!", masterPane);
+      return;
+    }
+    FileChooser fChoose = new FileChooser();
+    fChoose.setTitle("Save to:");
+    Stage stage = (Stage) tablePane.getScene().getWindow();
+    File file = fChoose.showSaveDialog(stage);
+    String filepath = file.getPath() + ".docx";
+
+    TreeItem<RequestTree> req = treeTableView.getSelectionModel().getSelectedItem();
+    if (req != null) {
+      RequestTree request = req.getValue();
+
+      GenerateReport rep =
+          new GenerateReport(
+              request.getReqID(),
+              request.getReqType(),
+              request.getNodeID(),
+              request.getAssignedEmpID(),
+              request.getRequesterEmpID(),
+              request.getStatus());
+      try {
+        rep.generateGenericServiceRequestReport(filepath);
+        showAlert("Report created!", tablePane);
+      } catch (Throwable e) {
+        System.out.println("Report failed");
+        showAlert("Failed to create report!", tablePane);
+        e.printStackTrace();
+      }
+      if (saveAsPDF.isSelected()) {
+        PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
+        try {
+          pdfConverter.convertToPDF();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } catch (Docx4JException e) {
+          showAlert(
+              "Sorry, this feature is not currently available on systems without MS Word:(",
+              tablePane);
+          e.printStackTrace();
+        }
+      }
+    }
+    saveAsPDF.setSelected(false);
   }
 }
