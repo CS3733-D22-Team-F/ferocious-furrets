@@ -24,22 +24,6 @@
                             <children>
                                 <VBox fx:id="labelVBox" prefHeight="297.0" prefWidth="239.0" spacing="10.0">
                                     <children>
-                                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="239.0" text="Location:" textFill="WHITE">
-                                            <font>
-                                                <Font name="Serif Regular" size="24.0" />
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="277.0" text="Assigned Employee:" textFill="WHITE">
-                                            <font>
-                                                <Font name="Serif Regular" size="24.0" />
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                        </Label>
                                         <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" text="Start Location:" textFill="WHITE">
                                             <font>
                                                 <Font name="Serif Regular" size="24.0" />
@@ -53,6 +37,14 @@
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>
                               </Label>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="277.0" text="Assigned Employee:" textFill="WHITE">
+                                            <font>
+                                                <Font name="Serif Regular" size="24.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </Label>
                                         <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" text="Priority:" textFill="WHITE">
                                             <font>
                                                 <Font name="Serif Regular" size="24.0" />
@@ -73,22 +65,17 @@
                                 </VBox>
                                 <VBox fx:id="comboVBox" prefHeight="271.0" prefWidth="308.0" spacing="10.0">
                                     <children>
-                                        <JFXComboBox fx:id="nodeField" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Location">
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                        </JFXComboBox>
-                                        <JFXComboBox fx:id="employeeIDField" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                        </JFXComboBox>
                                         <JFXComboBox fx:id="startNodeField" focusColor="#123090" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Start Location" unFocusColor="#00000080">
                                             <VBox.margin>
                                                 <Insets />
                                             </VBox.margin>
                                         </JFXComboBox>
                                         <JFXComboBox fx:id="endNodeField" focusColor="#123090" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="End Location" unFocusColor="#00000080">
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </JFXComboBox>
+                                        <JFXComboBox fx:id="employeeIDField" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
                                             <VBox.margin>
                                                 <Insets />
                                             </VBox.margin>

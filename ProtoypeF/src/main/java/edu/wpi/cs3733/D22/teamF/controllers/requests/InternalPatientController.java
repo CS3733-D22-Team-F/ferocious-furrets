@@ -45,7 +45,6 @@ public class InternalPatientController extends PageController implements Initial
   @FXML private JFXComboBox startNodeField;
   @FXML private JFXComboBox endNodeField;
   @FXML private JFXComboBox prioritiesChoice;
-  @FXML private JFXComboBox nodeField;
 
   @FXML private TextField reqID;
   @FXML private Button resolveReq;
@@ -108,7 +107,6 @@ public class InternalPatientController extends PageController implements Initial
     statusChoice.getItems().addAll(statusDrop);
 
     ArrayList<Object> locations = locationNames();
-    nodeField.getItems().addAll(locations);
     startNodeField.getItems().addAll(locations);
     endNodeField.getItems().addAll(locations);
 
@@ -163,7 +161,6 @@ public class InternalPatientController extends PageController implements Initial
 
   @FXML
   public void reset() {
-    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
     startNodeField.valueProperty().setValue(null);
