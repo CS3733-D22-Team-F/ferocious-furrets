@@ -12,10 +12,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="mainPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.MainController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="1500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="60.0" StackPane.alignment="TOP_LEFT" />
       <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
          <children>
             <HBox fx:id="titleBox" prefHeight="60.0" prefWidth="1270.0" style="-fx-background-color: #123090;">

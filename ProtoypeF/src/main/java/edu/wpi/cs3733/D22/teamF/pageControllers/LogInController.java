@@ -43,6 +43,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
   @FXML private JFXComboBox databaseChooser;
   @FXML private VBox loginVBox;
   @FXML private ImageView backgroundImage;
+  @FXML private ImageView islandBois;
   @FXML private BorderPane masterPane;
   @FXML private Pane imagePane;
   @FXML private AnchorPane imageAnchor;
@@ -98,6 +99,10 @@ public class LogInController extends ReturnHomePage implements Initializable {
     } else if (usernameField.getText().equals("staff") && passwordField.getText().equals("staff")) {
       userType.setUserType("staff");
       success = true;
+    } else if (usernameField.getText().equals("Nick") && passwordField.getText().equals("Grozdani")) {
+      islandBois.setVisible(true);
+      usernameField.clear();
+      passwordField.clear();
     } else if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
       AGlobalMethods.showAlert("At least one required field is empty", popUpLabel);
     } else {

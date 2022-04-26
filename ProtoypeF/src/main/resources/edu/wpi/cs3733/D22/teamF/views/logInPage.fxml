@@ -116,6 +116,11 @@
                   <Image url="@../BWHupdated.jpg" />
                </image>
             </ImageView>
+            <ImageView fx:id="islandBois" fitHeight="704.0" fitWidth="831.0" pickOnBounds="true" visible="false">
+               <image>
+                  <Image url="@../MenuIcon/islandBois.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
