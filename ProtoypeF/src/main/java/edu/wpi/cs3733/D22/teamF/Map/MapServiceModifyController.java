@@ -64,7 +64,7 @@ public class MapServiceModifyController implements Initializable {
           "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
     } else if (requestOrm.get(reqID) != null) {
       isFacilities = true;
-      //requestOrm.updateAttribute(reqID, 7, "COMPLETED");
+      // requestOrm.updateAttribute(reqID, 7, "COMPLETED");
       AGlobalMethods.showAlert("Facilities request", cancel);
     } else {
       cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
