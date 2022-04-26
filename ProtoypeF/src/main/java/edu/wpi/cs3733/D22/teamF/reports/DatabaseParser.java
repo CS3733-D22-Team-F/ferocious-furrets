@@ -6,13 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Parse thy database
- */
+/** Parse thy database */
 public class DatabaseParser {
 
   /**
-   * Returns an arraylist of all requests on  the database
+   * Returns an arraylist of all requests on the database
+   *
    * @return ArrayList </RequestTree>
    * @throws SQLException
    */

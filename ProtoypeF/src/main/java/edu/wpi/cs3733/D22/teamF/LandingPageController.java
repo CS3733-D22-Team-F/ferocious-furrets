@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import java.io.IOException;
 import java.net.URL;
@@ -10,26 +11,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /** Controller for the landing page */
 public class LandingPageController implements Initializable {
 
-  @FXML Label security;
-  @FXML Label meal;
-  @FXML Label gift;
-  @FXML Label therapy;
-  @FXML Label lab;
-  @FXML Label scan;
-  @FXML Label facility;
-  @FXML Label equipment;
-  @FXML Label audio;
-  @FXML Label patient;
-  @FXML Label medicine;
-  @FXML Label maintenance;
-  @FXML Label map;
+  @FXML JFXButton security;
+  @FXML JFXButton meal;
+  @FXML JFXButton gift;
+  @FXML JFXButton therapy;
+  @FXML JFXButton lab;
+  @FXML JFXButton scan;
+  @FXML JFXButton facility;
+  @FXML JFXButton equipment;
+  @FXML JFXButton audio;
+  @FXML JFXButton patient;
+  @FXML JFXButton medicine;
+  @FXML JFXButton maintenance;
+  @FXML JFXButton map;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
