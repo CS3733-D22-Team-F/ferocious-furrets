@@ -78,7 +78,7 @@ public class RequestListController extends PageController implements Initializab
     }
 
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("");
+    temp.add("Select Filter");
     temp.add("Employee");
     temp.add("ReqID");
     temp.add("Location");
@@ -121,6 +121,16 @@ public class RequestListController extends PageController implements Initializab
     startFilteredTable(filterInput.getText());
   }
 
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    return lName;
+  }
+
   public void startFilteredTable(String input) throws SQLException, IOException {
 
     clearTable();
@@ -149,12 +159,14 @@ public class RequestListController extends PageController implements Initializab
       filteredReq = requestFilter.filterByReqID();
       System.out.println(filteredReq);
     }
+
     if (((String) filterType.getValue()).equals("Location")) {
       //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
       //      String empID = employeeFilter.employeeIDFinder();
       // System.out.println(empID);
       RequestFilter requestFilter = new RequestFilter(input);
       filteredReq = requestFilter.filterByLocation();
+
       System.out.println(filteredReq);
     }
     if (((String) filterType.getValue()).equals("Status")) {
@@ -205,10 +217,21 @@ public class RequestListController extends PageController implements Initializab
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
 
-    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
-    nodeIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+    TreeTableColumn<RequestTree, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    //    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
+    //    nodeIDColumn.setCellValueFactory(
+    //        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
+    //            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<RequestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
@@ -216,12 +239,12 @@ public class RequestListController extends PageController implements Initializab
             new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getColumns().setAll(reqIDColumn, nodeIDCol, assignedEmpIDColumn);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     reqIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
-    nodeIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     assignedEmpIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -265,11 +288,21 @@ public class RequestListController extends PageController implements Initializab
           return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
         });
 
-    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
-    nodeIDColumn.setCellValueFactory(
+    TreeTableColumn<RequestTree, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
           return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
         });
+    //    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
+    //    nodeIDColumn.setCellValueFactory(
+    //        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+    //          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+    //        });
 
     TreeTableColumn<RequestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
@@ -278,14 +311,14 @@ public class RequestListController extends PageController implements Initializab
         });
 
     treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getColumns().setAll(reqIDColumn, nodeIDCol, assignedEmpIDColumn);
     treeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     reqIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
-    nodeIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     assignedEmpIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
