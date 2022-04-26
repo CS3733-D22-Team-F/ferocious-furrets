@@ -40,9 +40,7 @@ public class ModifyRequestPageController extends PageController implements Initi
 
   public ModifyRequestPageController(StringProperty reqTypeField, StringProperty reqIDField) {
     this.reqTypeField = reqTypeField;
-    System.out.println(reqTypeField.get());
     this.reqIDField = reqIDField;
-    System.out.println(reqIDField.get());
   }
 
   public ModifyRequestPageController() {}
@@ -64,9 +62,7 @@ public class ModifyRequestPageController extends PageController implements Initi
       this.reqType = RequestListController.selectedType;
     } else {
       this.reqID = reqIDField.get();
-      System.out.println(reqID);
       this.reqType = reqTypeField.get();
-      System.out.println();
     }
 
     requestIDField.setText(reqID);

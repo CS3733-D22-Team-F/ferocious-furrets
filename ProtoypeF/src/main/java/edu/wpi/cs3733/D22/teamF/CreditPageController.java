@@ -80,14 +80,17 @@ public class CreditPageController implements Initializable {
         });
 
     ObservableList<CreditAPI> credits = FXCollections.observableArrayList();
-    credits.add(new CreditAPI("Computer Department", "23", "CD 1"));
-    credits.add(new CreditAPI("Sales Department", "22", "Employee 1"));
-    credits.add(new CreditAPI("Sales Department", "22", "Employee 2"));
-    credits.add(new CreditAPI("Sales Department", "25", "Employee 4"));
-    credits.add(new CreditAPI("Sales Department", "25", "Employee 5"));
-    credits.add(new CreditAPI("IT Department", "42", "ID 2"));
-    credits.add(new CreditAPI("HR Department", "22", "HR 1"));
-    credits.add(new CreditAPI("HR Department", "22", "HR 2"));
+    credits.add(new CreditAPI("FranzXaver", "0.1", "afester"));
+    credits.add(new CreditAPI("Reflections", "0.10.2", "Reflections"));
+    credits.add(new CreditAPI("JFoenix", "9.0.10", "JFoenix"));
+    credits.add(new CreditAPI("Apache Derby", "10.15.2.0", "Apache"));
+    credits.add(new CreditAPI("Docx4j", "8.3.3", "Docx4j"));
+    credits.add(new CreditAPI("Documents4j", "1.1.7", "Documents4j"));
+    credits.add(new CreditAPI("slf4j", "1.7.36", "slf4j"));
+    credits.add(new CreditAPI("jakarta.xml.bind-api", "3.0.1", "Jakarta"));
+    credits.add(new CreditAPI("JAXB", "3.0.2", "Sun"));
+    credits.add(new CreditAPI("JAXB-runtime", "2.3.2", "Glassfish"));
+    credits.add(new CreditAPI("JAXB-api", "2.3.1", "Javax"));
 
     final TreeItem<CreditAPI> root =
         new RecursiveTreeItem<CreditAPI>(credits, RecursiveTreeObject::getChildren);
