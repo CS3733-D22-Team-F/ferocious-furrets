@@ -4,13 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
+import edu.wpi.cs3733.D22.teamF.filter.EmployeeFilter;
+import edu.wpi.cs3733.D22.teamF.filter.RequestFilter;
 import edu.wpi.cs3733.D22.teamF.reports.GenerateReport;
 import edu.wpi.cs3733.D22.teamF.reports.PDFConverter;
 import java.io.File;
-import edu.wpi.cs3733.D22.teamF.filter.EmployeeFilter;
-import edu.wpi.cs3733.D22.teamF.filter.RequestFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -60,6 +59,7 @@ public class RequestListController extends PageController implements Initializab
   private String status;
   @FXML private JFXButton filterButton;
   @FXML private TextField filterEmployee;
+  @FXML private CheckBox saveAsPDF;
 
   /**
    * inits
@@ -116,7 +116,7 @@ public class RequestListController extends PageController implements Initializab
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
     employeeName = filterEmployee.getText();
-//    System.out.println(employeeName);
+    //    System.out.println(employeeName);
 
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
@@ -365,17 +365,20 @@ public class RequestListController extends PageController implements Initializab
         showAlert("Failed to create report!", tablePane);
         e.printStackTrace();
       }
-      PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
-      try {
-        pdfConverter.convertToPDF();
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (Docx4JException e) {
-        showAlert(
-            "Sorry, this feature is not currently available on systems without MS Word:(",
-            tablePane);
-        e.printStackTrace();
+      if (saveAsPDF.isSelected()) {
+        PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
+        try {
+          pdfConverter.convertToPDF();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } catch (Docx4JException e) {
+          showAlert(
+              "Sorry, this feature is not currently available on systems without MS Word:(",
+              tablePane);
+          e.printStackTrace();
+        }
       }
     }
+    saveAsPDF.setSelected(false);
   }
 }

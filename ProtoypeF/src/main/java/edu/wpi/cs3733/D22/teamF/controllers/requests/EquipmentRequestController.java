@@ -52,6 +52,7 @@ public class EquipmentRequestController extends PageController
   @FXML private Rectangle rectangle2;
   @FXML private Label label1;
   @FXML private VBox leftVBox;
+  @FXML private VBox buttonVBox;
   @FXML private HBox leftHBox1;
   @FXML private HBox leftHBox2;
   @FXML private HBox leftHBox3;
@@ -63,6 +64,7 @@ public class EquipmentRequestController extends PageController
   @FXML private Pane tablePane;
   @FXML private JFXButton filterButton;
   @FXML private TextField filterEmployee;
+  @FXML private CheckBox saveAsPDF;
 
   @FXML private JFXButton reportButton;
 
@@ -177,6 +179,10 @@ public class EquipmentRequestController extends PageController
   @Override
   public void reset() {}
 
+  public void displayReportButton() {
+    reportButton.setVisible(true);
+  }
+
   public void startTable() throws SQLException, IOException {
 
     clearTable();
@@ -278,6 +284,11 @@ public class EquipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    treeTableView.setOnMouseClicked(
+        e -> {
+          buttonVBox.toFront();
+          reportButton.toFront();
+        });
   }
 
   public void f() throws SQLException, IOException {
@@ -386,6 +397,7 @@ public class EquipmentRequestController extends PageController
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    reportButton.toFront();
   }
 
   /* Helpers */
@@ -494,17 +506,20 @@ public class EquipmentRequestController extends PageController
         showAlert("Failed to create report!", tablePane);
         e.printStackTrace();
       }
-      PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
-      try {
-        pdfConverter.convertToPDF();
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (Docx4JException e) {
-        showAlert(
-            "Sorry, this feature is not currently available on systems without MS Word:(",
-            tablePane);
-        e.printStackTrace();
+      if (saveAsPDF.isSelected()) {
+        PDFConverter pdfConverter = new PDFConverter(filepath, file.getPath() + ".pdf");
+        try {
+          pdfConverter.convertToPDF();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } catch (Docx4JException e) {
+          showAlert(
+              "Sorry, this feature is not currently available on systems without MS Word:(",
+              tablePane);
+          e.printStackTrace();
+        }
       }
+      saveAsPDF.setSelected(false);
     }
   }
 
