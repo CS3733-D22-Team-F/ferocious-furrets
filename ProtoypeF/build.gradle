@@ -48,7 +48,7 @@ dependencies {
 
     implementation(files("APIJARs/CS3733-D22-Team-D-SanitationRequestAPI v2.0.jar"))
     implementation(files("APIJARs/TeamBAPI.jar"))
-    implementation name : 'edu.wpi.cs3733.D22.teamF'
+    implementation(files('APIJARs/edu.wpi.cs3733.D22.teamF.jar'))
 
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
