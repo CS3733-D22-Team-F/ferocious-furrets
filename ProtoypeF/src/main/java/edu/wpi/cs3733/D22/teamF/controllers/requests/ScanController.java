@@ -144,7 +144,6 @@ public class ScanController extends PageController implements Initializable, IRe
 
     while (scanRequestTable.next()) {
       currentEquipDelReqID = scanRequestTable.getString("reqID");
-      System.out.println(currentEquipDelReqID);
       servRequest = DatabaseManager.getInstance().getRequestDAO().get();
       while (servRequest.next()) {
         if (servRequest.getString("reqID").equals(currentEquipDelReqID)) {

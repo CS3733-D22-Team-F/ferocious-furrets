@@ -1,17 +1,19 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
+import com.jfoenix.animation.alert.JFXAlertAnimation;
+import com.jfoenix.controls.JFXAlert;
+import com.jfoenix.controls.JFXDialogLayout;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 
 /** abstract class for all pages in application */
 public abstract class PageController {
@@ -266,5 +268,16 @@ public abstract class PageController {
     }
     rset.close();
     return empID;
+  }
+
+  public void showAlert(String info, Node random) {
+    JFXDialogLayout layout = new JFXDialogLayout();
+    layout.setBody(new Label(info));
+    JFXAlert<Void> alert = new JFXAlert<>(random.getScene().getWindow());
+    alert.setOverlayClose(true);
+    alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
+    alert.setContent(layout);
+    alert.initModality(Modality.NONE);
+    alert.showAndWait();
   }
 }

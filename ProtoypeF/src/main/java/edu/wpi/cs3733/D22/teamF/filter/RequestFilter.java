@@ -24,4 +24,24 @@ public class RequestFilter implements IFilter {
     ResultSet filteredReq = DatabaseManager.getInstance().runQuery(cmd);
     return filteredReq;
   }
+
+  public ResultSet filterByReqID() throws SQLException {
+    String reqIDs = " ";
+    String cmd = String.format("SELECT * FROM SERVICEREQUEST WHERE REQID = '%s'", filterBy);
+    ResultSet filteredReqs = DatabaseManager.getInstance().runQuery(cmd);
+
+    return filteredReqs;
+  }
+
+  public ResultSet filterByLocation() throws SQLException {
+    String cmd = String.format("SELECT * FROM SERVICEREQUEST WHERE NODEID = '%s'", filterBy);
+    ResultSet filteredReqs = DatabaseManager.getInstance().runQuery(cmd);
+    return filteredReqs;
+  }
+
+  public ResultSet filterByStatus() throws SQLException {
+    String cmd = String.format("SELECT * FROM SERVICEREQUEST WHERE STATUS = '%s'", filterBy);
+    ResultSet filteredReqs = DatabaseManager.getInstance().runQuery(cmd);
+    return filteredReqs;
+  }
 }

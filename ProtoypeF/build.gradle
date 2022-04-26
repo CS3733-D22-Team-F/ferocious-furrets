@@ -18,6 +18,7 @@ repositories {
     flatDir {
         dirs 'APIJARs'
     }
+
     mavenCentral()
     maven {
         url 'https://apisite.crmyers.dev/maven'
@@ -43,8 +44,21 @@ dependencies {
             'org.apache.derby:derbyclient:10.15.2.0',
             'org.apache.derby:derbytools:10.15.2.0',
 
+//            'org.docx4j:docx4j-JAXB-Internal:8.3.3',
+            'org.docx4j:docx4j-JAXB-ReferenceImpl:8.3.3',
+            'org.docx4j:docx4j-core:8.3.3',
+            'org.docx4j:docx4j-documents4j-local:8.3.3',
+            'com.documents4j:documents4j-api:1.1.7',
+            'com.documents4j:documents4j-local:1.1.7',
+
             'org.slf4j:slf4j-api:1.7.36',
             'org.slf4j:slf4j-simple:1.7.36',
+
+            'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1',
+            'com.sun.xml.bind:jaxb-impl:3.0.2',
+            'com.sun.xml.bind:jaxb-core:3.0.2',
+            'org.glassfish.jaxb:jaxb-runtime:2.3.2',
+            'javax.xml.bind:jaxb-api:2.3.1'
             'io.github.palexdev:materialfx:11.13.5'
     )
 
