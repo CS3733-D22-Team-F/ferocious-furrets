@@ -169,12 +169,7 @@
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="43.0" prefWidth="201.0" text="Ext. Transport" textFill="WHITE">
-                                             <font>
-                                                <Font name="Serif Regular" size="24.0" />
-                                             </font>
-                                          </JFXButton>
-                                          <JFXButton fx:id="intPatientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" layoutX="10.0" layoutY="536.0" minHeight="-Infinity" onAction="#goToIntTransport" prefHeight="43.0" prefWidth="201.0" text="Int. Transport" textFill="WHITE">
+                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="43.0" prefWidth="201.0" text="Pt. Transport" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
