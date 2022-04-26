@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamD.backend.Orm;
+import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.LocTempHolder;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
@@ -46,7 +48,10 @@ public class MapServiceModifyController implements Initializable {
    */
   public void submit() throws SQLException, IOException {
     String reqID = LocTempHolder.getLocation().getLongName(); // request ID store in Long Name
+    SanitationIRequest sanitationIRequest = new SanitationIRequest();
+    Orm<SanitationIRequest> requestOrm = new Orm<>(sanitationIRequest);
     boolean isMedicine = false;
+    boolean isFacilities = false;
     String cmd = "";
     ResultSet rset =
         DatabaseManager.getInstance()
@@ -57,11 +62,17 @@ public class MapServiceModifyController implements Initializable {
       cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(
           "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
-    } else {
+    } else if(requestOrm.get(reqID) != null){
+      isFacilities = true;
+      requestOrm.updateAttribute(reqID, 7, "COMPLETED");
+    }
+    else {
       cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
     }
     MapIconModifier.deleteIcon(LocTempHolder.getLocation());
-    DatabaseManager.getInstance().runStatement(cmd);
+    if(!isFacilities) {
+      DatabaseManager.getInstance().runStatement(cmd);
+    }
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }
