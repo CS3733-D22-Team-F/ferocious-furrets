@@ -11,9 +11,7 @@ import java.util.HashMap;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 
-/**
- * Generates a reports on the service request
- */
+/** Generates a reports on the service request */
 public class GenerateReport {
 
   DatabaseParser dbParser = new DatabaseParser();
@@ -26,7 +24,6 @@ public class GenerateReport {
   String status;
 
   /**
-   *
    * @param reqID
    * @param reqType
    * @param nodeID
@@ -51,6 +48,7 @@ public class GenerateReport {
 
   /**
    * generates a report of generic service request taking in the file path of the report
+   *
    * @param reportFilepath
    * @throws Throwable
    */
@@ -93,6 +91,7 @@ public class GenerateReport {
 
   /**
    * Generates a service request for the equipment service requests for a a specific equipment ID
+   *
    * @param reportFilepath
    * @param equipmentID
    * @throws Throwable
@@ -153,6 +152,7 @@ public class GenerateReport {
 
   /**
    * Returns the employee name of the employeeID
+   *
    * @param employeeID
    * @return
    * @throws SQLException
@@ -173,6 +173,7 @@ public class GenerateReport {
 
   /**
    * Returns the equipmentName from the equipmentID
+   *
    * @param equipID
    * @return
    * @throws SQLException
@@ -190,9 +191,7 @@ public class GenerateReport {
   }
 
   /**
-   *
-   * @return gets the request type of something im not really sure what
-   * TODO find out what
+   * @return gets the request type of something im not really sure what TODO find out what
    * @throws SQLException
    */
   public String requestTypeFinder() throws SQLException {

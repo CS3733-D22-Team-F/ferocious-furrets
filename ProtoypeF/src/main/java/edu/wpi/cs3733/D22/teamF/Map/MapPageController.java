@@ -19,19 +19,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -40,13 +39,11 @@ import javafx.scene.layout.VBox;
  * views
  */
 public class MapPageController implements Initializable {
-  private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
-  private static final String FX_BACKGROUND_BLUE = "-fx-background-color:#123090";
+
   private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
   private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
-  private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
-  private double scaleValue = 1;
-  private double zoomIntensity = 0.02;
+  private SimpleDoubleProperty mapScale;
+
   public static boolean inButton = false;
 
   @FXML ImageView mapHolder;
@@ -255,72 +252,24 @@ public class MapPageController implements Initializable {
     reclinerButton.setGraphic(MapIconModifier.getIcon("Recliner"));
   }
 
-  private Node outerNode(Node node) {
-    Node outerNode = centeredNode(node);
-    outerNode.setOnScroll(
-        e -> {
-          e.consume();
-          onScroll(e.getTextDeltaY(), new Point2D(e.getX(), e.getY()));
-        });
-    return outerNode;
-  }
-
-  private Node centeredNode(Node node) {
-    VBox vBox = new VBox(node);
-    vBox.setAlignment(Pos.CENTER);
-    return vBox;
-  }
-
-  private void updateScale() {
-    iconPane.setScaleX(scaleValue);
-    iconPane.setScaleY(scaleValue);
-  }
-
   private void onScroll(double wheelDelta, Point2D mousePoint) {
-    if (!inButton) {
-      double zoomFactor = Math.exp(wheelDelta * zoomIntensity);
-
-      Bounds innerBounds = mapGroup.getLayoutBounds();
-      Bounds viewportBounds = scrollPane.getViewportBounds();
-
-      // calculate pixel offsets from [0, 1] range
-      double valX = scrollPane.getHvalue() * (innerBounds.getWidth() - viewportBounds.getWidth());
-      double valY = scrollPane.getVvalue() * (innerBounds.getHeight() - viewportBounds.getHeight());
-
-      scaleValue = scaleValue * zoomFactor;
-      updateScale();
-      scrollPane.layout(); // refresh ScrollPane scroll positions & target bounds
-
-      // convert target coordinates to zoomTarget coordinates
-      Point2D posInZoomTarget = iconPane.parentToLocal(mapGroup.parentToLocal(mousePoint));
-
-      // calculate adjustment of scroll position (pixels)
-      Point2D adjustment =
-          iconPane
-              .getLocalToParentTransform()
-              .deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
-
-      // convert back to [0, 1] range
-      // (too large/small values are automatically corrected by ScrollPane)
-      Bounds updatedInnerBounds = mapGroup.getBoundsInLocal();
-      scrollPane.setHvalue(
-          (valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
-      scrollPane.setVvalue(
-          (valY + adjustment.getY())
-              / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
-    }
+    if (!inButton) {}
   }
 
   public void initializeScroll() {
-    scrollPane.setContent(outerNode(mapGroup));
-
-    scrollPane.setPannable(true);
+    mapScale = new SimpleDoubleProperty(1.0);
+    scrollPane.addEventFilter(
+        ScrollEvent.SCROLL,
+        event -> {
+          if (event.getDeltaY() != 0) {
+            zoomSlider.setValue(zoomSlider.getValue() + event.getDeltaY());
+          }
+          event.consume();
+        });
+    mapGroup.scaleXProperty().bind(mapScale);
+    mapGroup.scaleYProperty().bind(mapScale);
     scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-    scrollPane.setFitToHeight(true); // center
-    scrollPane.setFitToWidth(true); // center
-
-    updateScale();
   }
 
   public void iniSlider() {
@@ -335,8 +284,7 @@ public class MapPageController implements Initializable {
                   double sliderValue = new_val.doubleValue();
                   // double d = SettlementMapPanel.DEFAULT_SCALE;
                   double newScale = 1 + sliderValue * 0.01;
-                  iconPane.setScaleX(scaleValue * newScale);
-                  iconPane.setScaleY(scaleValue * newScale);
+                  mapScale.setValue(newScale);
                 }
               }
             });

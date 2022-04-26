@@ -40,6 +40,7 @@ public class DatabaseManager {
   private final FacilitiesDAOImpl facilitiesDAO = new FacilitiesDAOImpl();
   private final SecurityDAOImpl securityDAO = new SecurityDAOImpl();
   private final ExtPatientDAOImpl extPatDAO = new ExtPatientDAOImpl();
+  private final ThemeDAOImpl themeDAO = new ThemeDAOImpl();
 
   /** DatabaseManager variables */
   private ConnType connType = ConnType.EMBEDDED;
@@ -198,6 +199,7 @@ public class DatabaseManager {
     facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     extPatDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
+    themeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/themes.csv");
   }
 
   /**
@@ -305,6 +307,7 @@ public class DatabaseManager {
     securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
+    themeDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/themes.csv");
     System.out.println("Files backed up");
   }
 
@@ -391,5 +394,9 @@ public class DatabaseManager {
 
   public ExtPatientDAOImpl getExtPatDAO() {
     return extPatDAO;
+  }
+
+  public ThemeDAOImpl getThemeDAO() {
+    return themeDAO;
   }
 }
