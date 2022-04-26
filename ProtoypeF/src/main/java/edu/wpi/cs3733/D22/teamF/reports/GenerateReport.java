@@ -11,6 +11,9 @@ import java.util.HashMap;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 
+/**
+ * Generates a reports on the service request
+ */
 public class GenerateReport {
 
   DatabaseParser dbParser = new DatabaseParser();
@@ -22,6 +25,15 @@ public class GenerateReport {
   String requestedEmployee;
   String status;
 
+  /**
+   *
+   * @param reqID
+   * @param reqType
+   * @param nodeID
+   * @param assignedEmployee
+   * @param requestedEmployee
+   * @param status
+   */
   public GenerateReport(
       String reqID,
       String reqType,
@@ -37,6 +49,11 @@ public class GenerateReport {
     this.status = status;
   }
 
+  /**
+   * generates a report of generic service request taking in the file path of the report
+   * @param reportFilepath
+   * @throws Throwable
+   */
   public void generateGenericServiceRequestReport(String reportFilepath) throws Throwable {
     String srcDoc =
         "src/main/resources/edu/wpi/cs3733/D22/teamF/ReportTemplates/Request_Template.docx";
@@ -74,6 +91,12 @@ public class GenerateReport {
     wordMLPackage.save(new java.io.File(reportFilepath));
   }
 
+  /**
+   * Generates a service request for the equipment service requests for a a specific equipment ID
+   * @param reportFilepath
+   * @param equipmentID
+   * @throws Throwable
+   */
   public void generateEquipmentServiceRequestReport(String reportFilepath, String equipmentID)
       throws Throwable {
     String srcDoc =
@@ -128,6 +151,13 @@ public class GenerateReport {
     return name;
   }
 
+  /**
+   * Returns the employee name of the employeeID
+   * @param employeeID
+   * @return
+   * @throws SQLException
+   * @throws SQLException
+   */
   public String employeeIDFinder(String employeeID) throws SQLException, SQLException {
     String employeeName = "";
     String cmd =
@@ -141,6 +171,12 @@ public class GenerateReport {
     return employeeName;
   }
 
+  /**
+   * Returns the equipmentName from the equipmentID
+   * @param equipID
+   * @return
+   * @throws SQLException
+   */
   public String equipmentTypeFinder(String equipID) throws SQLException {
     String equipmentType = "";
     String cmd =
@@ -153,6 +189,12 @@ public class GenerateReport {
     return equipmentType;
   }
 
+  /**
+   *
+   * @return gets the request type of something im not really sure what
+   * TODO find out what
+   * @throws SQLException
+   */
   public String requestTypeFinder() throws SQLException {
     String requestType = "";
 
