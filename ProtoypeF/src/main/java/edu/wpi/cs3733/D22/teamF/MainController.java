@@ -78,18 +78,6 @@ public class MainController implements Initializable {
   ObservableList<Transform> baseTransformsTop;
   ObservableList<Transform> baseTransformsMenu;
 
-  //  Timeline timeline =
-  //      new Timeline(
-  //          new KeyFrame(
-  //              Duration.seconds(10),
-  //              event -> {
-  //                try {
-  //                  DatabaseManager.getInstance().backUpDatabaseToCSV();
-  //                } catch (SQLException | IOException e) {
-  //                  e.printStackTrace();
-  //                }
-  //              }));
-
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
