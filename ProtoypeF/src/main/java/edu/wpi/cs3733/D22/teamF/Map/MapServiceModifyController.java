@@ -62,15 +62,15 @@ public class MapServiceModifyController implements Initializable {
       cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(
           "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
-    } else if(requestOrm.get(reqID) != null){
+    } else if (requestOrm.get(reqID) != null) {
       isFacilities = true;
       requestOrm.updateAttribute(reqID, 7, "COMPLETED");
-    }
-    else {
+      AGlobalMethods.showAlert("Facilities request", cancel);
+    } else {
       cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
     }
     MapIconModifier.deleteIcon(LocTempHolder.getLocation());
-    if(!isFacilities) {
+    if (!isFacilities) {
       DatabaseManager.getInstance().runStatement(cmd);
     }
     Stage stage = (Stage) cancel.getScene().getWindow();
