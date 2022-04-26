@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -35,7 +35,7 @@ public class LandingPageController implements Initializable {
   @FXML JFXButton maintenance;
   @FXML JFXButton map;
 
-  @FXML StackPane pagePane;
+  @FXML BorderPane bPane;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -119,8 +119,7 @@ public class LandingPageController implements Initializable {
 
   public void changeTo(String path) throws IOException {
     SubScene scene = SceneManager.getInstance().setScene(path);
-    pagePane.getChildren().clear();
-    pagePane.getChildren().addAll(scene);
+    bPane.getChildren().addAll(scene);
   }
 
   /** opens the credit page */

@@ -9,102 +9,99 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="pagePane" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.LandingPageController">
-   <children>
-      <BorderPane prefHeight="724.0" prefWidth="1245.0" stylesheets="@../stylesheets/RequestPages.css">
-         <center>
-            <StackPane prefHeight="770.0" prefWidth="1220.0">
+
+<BorderPane fx:id="bPane" prefHeight="724.0" prefWidth="1245.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.LandingPageController">
+   <center>
+      <StackPane prefHeight="770.0" prefWidth="1220.0">
+         <children>
+            <ImageView fitHeight="724.0" fitWidth="1253.0" focusTraversable="true" pickOnBounds="true">
+               <image>
+                  <Image url="@../hospitalImage.jpg" />
+               </image>
+            </ImageView>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0">
                <children>
-                  <ImageView fitHeight="724.0" fitWidth="1253.0" focusTraversable="true" pickOnBounds="true">
-                     <image>
-                        <Image url="@../hospitalImage.jpg" />
-                     </image>
-                  </ImageView>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0">
+                  <VBox alignment="CENTER" prefHeight="660.0" prefWidth="610.0" spacing="15.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="660.0" prefWidth="610.0" spacing="15.0">
-                           <children>
-                              <JFXButton fx:id="security" onAction="#changeToSecurity" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Security Request - Jack" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="meal" onAction="#changeToMeal" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Meal Request - Evans" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="gift" onAction="#changeToGift" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Gifts Request - Carter" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="therapy" onAction="#changeToPhysical" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="PT Request - Owen" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="lab" onAction="#changeToLab" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Lab Request - Nik" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="scan" onAction="#changeToScan" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Scan Request - Azu" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="facility" onAction="#changeToFacilities" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Facility Request - Cole" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="680.0" prefWidth="610.0" spacing="15.0" stylesheets="@../stylesheets/RequestPages.css">
-                           <children>
-                              <JFXButton fx:id="equipment" onAction="#changeToEquipment" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Equip. Request - Nik" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="audio" onAction="#changeToAudio" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="A/V Request - Raffi" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="patient" onAction="#changeToExtPatient" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Ext. Pati. Trans. Request - Conner" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="medicine" onAction="#changeToMedicine" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Medicine Request - John" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="maintenance" onAction="#changeToMaintenance" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Maintenance Request - Will" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="map" onAction="#changeToMap" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Map Page - Azu" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Credits Page" textFill="WHITE">
-                                 <font>
-                                    <Font name="Serif Regular" size="24.0" />
-                                 </font>
-                              </JFXButton>
-                           </children>
-                        </VBox>
+                        <JFXButton fx:id="security" onAction="#changeToSecurity" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Security Request - Jack" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="meal" onAction="#changeToMeal" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Meal Request - Evans" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="gift" onAction="#changeToGift" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Gifts Request - Carter" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="therapy" onAction="#changeToPhysical" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="PT Request - Owen" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="lab" onAction="#changeToLab" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Lab Request - Nik" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="scan" onAction="#changeToScan" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Scan Request - Azu" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="facility" onAction="#changeToFacilities" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Facility Request - Cole" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
                      </children>
-                  </HBox>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="680.0" prefWidth="610.0" spacing="15.0" stylesheets="@../stylesheets/RequestPages.css">
+                     <children>
+                        <JFXButton fx:id="equipment" onAction="#changeToEquipment" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Equip. Request - Nik" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="audio" onAction="#changeToAudio" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="A/V Request - Raffi" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="patient" onAction="#changeToExtPatient" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Ext. Pati. Trans. Request - Conner" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="medicine" onAction="#changeToMedicine" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Medicine Request - John" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="maintenance" onAction="#changeToMaintenance" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Maintenance Request - Will" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="map" onAction="#changeToMap" prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Map Page - Azu" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton prefHeight="60.0" prefWidth="389.0" style="-fx-background-color: #123090;" text="Credits Page" textFill="WHITE">
+                           <font>
+                              <Font name="Serif Regular" size="24.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
                </children>
-            </StackPane>
-         </center>
-      </BorderPane>
-   </children>
-</StackPane>
+            </HBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
