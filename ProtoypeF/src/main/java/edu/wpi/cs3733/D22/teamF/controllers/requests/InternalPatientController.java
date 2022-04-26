@@ -177,7 +177,6 @@ public class InternalPatientController extends PageController implements Initial
 
     List<Request> allReqs = dbc.listRequests();
 
-
     treeRoot.setExpanded(true);
     allReqs.stream()
         .forEach(

@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.Request;
@@ -13,6 +14,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -190,6 +192,21 @@ public class RequestListController extends PageController implements Initializab
     // ServiceRequest");
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
+
+    DatabaseController dbc = new DatabaseController();
+    List<edu.wpi.cs3733.D22.teamB.api.Request> intPatientRequests = dbc.listRequests();
+    for (edu.wpi.cs3733.D22.teamB.api.Request r : intPatientRequests) {
+      if(r.getStatus().equalsIgnoreCase("Processing")) {
+        rt =
+                new RequestTree(
+                        r.getRequestID(),
+                        r.getStartLocation().getNodeID(),
+                        r.getEmployeeID(),
+                        r.getEmployeeID(),
+                        r.getStatus());
+        reqs.add(rt);
+      }
+    }
 
     while (rset.next()) {
       rt =
