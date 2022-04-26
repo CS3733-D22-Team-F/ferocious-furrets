@@ -126,11 +126,11 @@ public class InternalPatientController extends PageController implements Initial
     ArrayList<Object> employees = employeeNames();
     employeeIDField.getItems().addAll(employees);
 
-    try {
-      startTable();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    //    try {
+    //      startTable();
+    //    } catch (SQLException e) {
+    //      e.printStackTrace();
+    //    }
   }
 
   @FXML
@@ -164,15 +164,19 @@ public class InternalPatientController extends PageController implements Initial
               new Date());
 
       dbc.add(transportReq);
+      for (Request r : dbc.listRequests()) {
+        System.out.println(r.getRequestID());
+      }
 
       reset();
     }
 
-    startTable();
+    //    startTable();
   }
 
   @FXML
   public void reset() {
+    nodeField.valueProperty().setValue(null);
     employeeIDField.valueProperty().setValue(null);
     statusChoice.valueProperty().setValue(null);
     startNodeField.valueProperty().setValue(null);
