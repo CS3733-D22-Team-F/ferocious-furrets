@@ -34,6 +34,7 @@ public class MainController implements Initializable {
   @FXML VBox menuBar;
   @FXML VBox homeMenu;
   @FXML VBox serviceMenu;
+  @FXML VBox titleBox;
   @FXML JFXButton serviceButton;
   @FXML JFXButton linksButton;
   @FXML JFXButton settingsButton;
@@ -63,7 +64,9 @@ public class MainController implements Initializable {
   @FXML VBox v5;
 
   ChangeListener<Boolean> maxScreenCallback;
-  ObservableList<Transform> baseTransformsScene;
+  ChangeListener<Number> widthResizeCallback;
+  ChangeListener<Number> heightResizeCallback;
+  ObservableList<Transform> baseTransformsTop;
   ObservableList<Transform> baseTransformsMenu;
 
   //  Timeline timeline =
@@ -91,8 +94,9 @@ public class MainController implements Initializable {
               }
             });
     Runtime.getRuntime().addShutdownHook(shutDownHook);
+    titleBox.maxWidthProperty().bind(SceneManager.getInstance().getStage().widthProperty());
     serviceMenu.setVisible(false);
-    baseTransformsScene = pageHolder.getTransforms();
+    baseTransformsTop = titleBox.getTransforms();
     baseTransformsMenu = stackHolder.getTransforms();
     menu.setSidePane(homeMenu);
     onOpen();
@@ -109,41 +113,28 @@ public class MainController implements Initializable {
             applyResize(newValue);
           }
         };
+    widthResizeCallback =
+        new ChangeListener<Number>() {
+          @Override
+          public void changed(
+              ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            applyResize((double) newValue, SceneManager.getInstance().getStage().getHeight());
+          }
+        };
+
+    heightResizeCallback =
+        new ChangeListener<Number>() {
+          @Override
+          public void changed(
+              ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            applyResize(SceneManager.getInstance().getStage().getWidth(), (double) newValue);
+          }
+        };
+
     SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
     SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
-
-    // TODO: make this work
-    //    SceneManager.getInstance()
-    //        .getStage()
-    //        .widthProperty()
-    //        .addListener(
-    //            new ChangeListener<Number>() {
-    //              @Override
-    //              public void changed(
-    //                  ObservableValue<? extends Number> observable, Number oldValue, Number
-    // newValue) {
-    //                applyResize((double) newValue,
-    // SceneManager.getInstance().getStage().getHeight());
-    //              }
-    //            });
-    //    SceneManager.getInstance()
-    //        .getStage()
-    //        .heightProperty()
-    //        .addListener(
-    //            new ChangeListener<Number>() {
-    //              @Override
-    //              public void changed(
-    //                  ObservableValue<? extends Number> observable, Number oldValue, Number
-    // newValue) {
-    //                applyResize(SceneManager.getInstance().getStage().getWidth(), (double)
-    // newValue);
-    //              }
-    //            });
-    //    v2.prefHeightProperty().bind(menu.heightProperty().divide(11));
-    //    v4.prefHeightProperty().bind(menu.heightProperty().divide(11));
-    //    v6.prefHeightProperty().bind(menu.heightProperty().divide(11));
-    //    timeline.setCycleCount(Timeline.INDEFINITE);
-    //    timeline.play();
+    SceneManager.getInstance().getStage().widthProperty().addListener(widthResizeCallback);
+    SceneManager.getInstance().getStage().heightProperty().addListener(heightResizeCallback);
   }
 
   /**
@@ -153,24 +144,22 @@ public class MainController implements Initializable {
    */
   private void applyResize(boolean newValue) {
     //    pageHolder.getTransforms().setAll(baseTransforms);
-    //    menu.getTransforms().setAll(baseTransformsScene);
+    titleBox.getTransforms().setAll(baseTransformsTop);
     stackHolder.getTransforms().setAll(baseTransformsMenu);
     homeMenu.getTransforms().setAll(baseTransformsMenu);
     serviceMenu.getTransforms().setAll(baseTransformsMenu);
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     if (newValue) {
-      double maxWidth = screenBounds.getWidth() - 30;
+      double maxWidth = screenBounds.getWidth();
       double maxHeight = screenBounds.getHeight();
-      double contentWidth = stackHolder.getWidth();
-      double contentHeight = stackHolder.getHeight();
+      double contentWidth = stackHolder.getPrefWidth();
+      double contentHeight = stackHolder.getPrefHeight();
       double widthRatio = maxWidth / contentWidth;
       double heightRatio = maxHeight / contentHeight;
       double preservedAspectRatio = Math.min(widthRatio, heightRatio);
       //      menu.getTransforms().add(new Scale(1, (float) preservedAspectRatio));
-      stackHolder
-          .getTransforms()
-          .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio * 1.15));
-
+      menu.minHeightProperty().bind(stackHolder.heightProperty());
+      stackHolder.getTransforms().add(new Scale((float) widthRatio, (float) (heightRatio * 0.9)));
     } else {
       stackHolder.getTransforms().add(new Scale(1, 1));
     }
@@ -184,18 +173,19 @@ public class MainController implements Initializable {
    */
   private void applyResize(double width, double height) {
     // TODO: Make this work
-    pageHolder.getTransforms().setAll(baseTransformsScene);
-
+    stackHolder.getTransforms().setAll(baseTransformsMenu);
+    titleBox.getTransforms().setAll(baseTransformsTop);
+    homeMenu.getTransforms().setAll(baseTransformsMenu);
+    serviceMenu.getTransforms().setAll(baseTransformsMenu);
+    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     double maxWidth = width;
     double maxHeight = height;
-    double contentWidth = SceneManager.getInstance().getStage().widthProperty().get();
-    double contentHeight = SceneManager.getInstance().getStage().heightProperty().get();
+    double contentWidth = stackHolder.getPrefWidth();
+    double contentHeight = stackHolder.getPrefHeight();
     double widthRatio = maxWidth / contentWidth;
     double heightRatio = maxHeight / contentHeight;
-    double preservedAspectRatio = Math.min(widthRatio, heightRatio);
-    pageHolder
-        .getTransforms()
-        .add(new Scale((float) preservedAspectRatio, (float) preservedAspectRatio));
+    stackHolder.getTransforms().add(new Scale((float) widthRatio, (float) (heightRatio * 0.9)));
+    titleBox.getTransforms().add(new Scale((float) widthRatio, 1));
   }
 
   public void menuClose() throws InterruptedException {
