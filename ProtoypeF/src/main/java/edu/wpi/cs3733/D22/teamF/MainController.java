@@ -64,6 +64,7 @@ public class MainController implements Initializable {
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
+  @FXML JFXButton apiLandingButton;
   @FXML JFXButton patientButton;
   @FXML TextField emergencyLocation;
   @FXML Pane emergencyPane;
@@ -233,6 +234,8 @@ public class MainController implements Initializable {
     linksButton.setText("");
     landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
     landingButton.setText("");
+    apiLandingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
+    apiLandingButton.setText("");
     patientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
     patientButton.setText("");
   }
@@ -261,6 +264,7 @@ public class MainController implements Initializable {
     employeeButton.setText("Employee");
     linksButton.setText("Links");
     landingButton.setText("Landing");
+    apiLandingButton.setText("API Landing");
     patientButton.setText("Pt. Transport");
   }
 
@@ -357,6 +361,10 @@ public class MainController implements Initializable {
 
   public void goToTransport() throws IOException {
     changeTo("views/extPatDeliveryPage.fxml");
+  }
+
+  public void changeToAPILandingPage() throws IOException {
+    changeTo("views/apiLandingPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {

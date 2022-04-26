@@ -98,6 +98,11 @@
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
+                                          <JFXButton fx:id="apiLandingButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToAPILandingPage" prefHeight="45.0" prefWidth="286.0" text="API Landing" textFill="WHITE">
+                                             <font>
+                                                <Font name="Serif Regular" size="24.0" />
+                                             </font>
+                                          </JFXButton>
                                        </children>
                                     </VBox>
                                     <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
