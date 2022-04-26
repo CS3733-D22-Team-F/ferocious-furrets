@@ -59,38 +59,38 @@ public class CachePageController implements Initializable {
     switch (mod) {
       case 0:
         fact =
-            "Thank YOU for making Brigham & Women's Hospital \na leader in the healthcare industry!";
+            "Thank YOU for making Brigham & Women's \nHospital a leader in the healthcare industry!";
         break;
       case 1:
         fact =
-            "Thank YOU for helping us provide leading healthcare \nto thousands of patients annually!";
+            "Thank YOU for helping us provide leading \nhealthcare to thousands of patients annually!";
         break;
       case 2:
         fact = "Thank YOU, we wouldn't be the same without you!";
         break;
       case 3:
-        fact = "Thank YOU for your tireless work to improve our patient's lives!";
+        fact = "Thank YOU for your tireless work\n to improve our patient's lives!";
         break;
       case 4:
         fact = "Improving our patient's lives since 1980!";
         break;
       case 5:
         fact =
-            "Thank YOU for making Brigham & Women's Hospital a \nleader in the healthcare industry!";
+            "Thank YOU for making Brigham & Women's Hospital\n a leader in the healthcare industry!";
         break;
       case 6:
         fact =
-            "Thank YOU for helping us provide leading healthcare \nto thousands of patients annually!";
+            "Thank YOU for helping us provide leading\n healthcareto thousands of patients annually!";
         break;
       case 7:
         fact = "Thank YOU, we wouldn't be the same without you!";
         break;
       case 8:
-        fact = "Thank YOU for your tireless work to improve our patient's lives!";
+        fact = "Thank YOU for your tireless work\n to improve our patient's lives!";
         break;
       case 9:
         fact =
-            "Thank YOU for your tireless work! Every one of you is an \nessential part of this hospital!";
+            "Thank YOU for your tireless work! Every one\n of you is an essential part of this hospital!";
         break;
       default:
         break;
