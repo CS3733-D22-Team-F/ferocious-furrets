@@ -121,16 +121,6 @@ public class RequestListController extends PageController implements Initializab
     startFilteredTable(filterInput.getText());
   }
 
-  public String nodeIDToName(String nID) throws SQLException {
-    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
-    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
-    String lName = "";
-    while (rset.next()) {
-      lName = rset.getString("longName");
-    }
-    return lName;
-  }
-
   public void startFilteredTable(String input) throws SQLException, IOException {
 
     clearTable();
@@ -221,7 +211,7 @@ public class RequestListController extends PageController implements Initializab
     nodeIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
           try {
-            return new ReadOnlyStringWrapper(nodeIDToName(param.getValue().getValue().getNodeID()));
+            return new ReadOnlyStringWrapper(DatabaseManager.getInstance().getLocationDAO().nodeIDToName(param.getValue().getValue().getNodeID()));
           } catch (SQLException e) {
             e.printStackTrace();
           }
