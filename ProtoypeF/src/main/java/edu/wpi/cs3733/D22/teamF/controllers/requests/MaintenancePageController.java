@@ -20,7 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class maintenancePageController extends PageController
+public class MaintenancePageController extends PageController
     implements Initializable, IRequestController {
 
   @FXML JFXComboBox locationBox;
