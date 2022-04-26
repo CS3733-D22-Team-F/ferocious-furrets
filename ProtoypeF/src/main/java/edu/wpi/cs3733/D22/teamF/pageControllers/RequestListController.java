@@ -196,14 +196,14 @@ public class RequestListController extends PageController implements Initializab
     DatabaseController dbc = new DatabaseController();
     List<edu.wpi.cs3733.D22.teamB.api.Request> intPatientRequests = dbc.listRequests();
     for (edu.wpi.cs3733.D22.teamB.api.Request r : intPatientRequests) {
-      if(r.getStatus().equalsIgnoreCase("Processing")) {
+      if (r.getStatus().equalsIgnoreCase("Processing")) {
         rt =
-                new RequestTree(
-                        r.getRequestID(),
-                        r.getStartLocation().getNodeID(),
-                        r.getEmployeeID(),
-                        r.getEmployeeID(),
-                        r.getStatus());
+            new RequestTree(
+                r.getRequestID(),
+                r.getStartLocation().getNodeID(),
+                r.getEmployeeID(),
+                r.getEmployeeID(),
+                r.getStatus());
         reqs.add(rt);
       }
     }
