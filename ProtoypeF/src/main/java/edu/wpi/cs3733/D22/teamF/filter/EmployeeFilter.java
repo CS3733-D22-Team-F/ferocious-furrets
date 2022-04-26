@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.filter;
 
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class EmployeeFilter implements IFilter {
   }
 
   @Override
-  public ArrayList<Object> apply(ResultSet rSet) {
+  public ArrayList<RequestTree> apply(ResultSet rSet) {
     this.rset = rSet;
     return null;
   }

@@ -105,9 +105,8 @@ public class RequestListController extends PageController implements Initializab
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
     input = filterInput.getText();
     System.out.println(input);
-    ResultSet filteredReq = null;
 
-    ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
+    ArrayList<RequestTree> reqs;
     RequestTree rt;
     //    String empID = employeeIDFinder(employeeName);
     if (((String) filterType.getValue()).equals("Employee")) {
@@ -115,29 +114,28 @@ public class RequestListController extends PageController implements Initializab
       String empID = employeeFilter.employeeIDFinder();
       System.out.println(empID);
       RequestFilter requestFilter = new RequestFilter(empID);
-      filteredReq = requestFilter.filterByEmpID();
-      System.out.println(filteredReq);
+      reqs = requestFilter.filterByEmpID();
+      System.out.println(reqs);
     }
     if (((String) filterType.getValue()).equals("ReqID")) {
       //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
       //      String empID = employeeFilter.employeeIDFinder();
       // System.out.println(empID);
       RequestFilter requestFilter = new RequestFilter(input);
-      filteredReq = requestFilter.filterByReqID();
-      System.out.println(filteredReq);
+      reqs = requestFilter.filterByReqID();
+      System.out.println(reqs);
     }
 
     if (((String) filterType.getValue()).equals("Location")) {
       RequestFilter requestFilter = new RequestFilter(input);
-      filteredReq = requestFilter.filterByLocationLongName();
+      reqs = requestFilter.filterByLocationLongName();
 
-      ResultSet locationsCurrent = DatabaseManager.getInstance().getLocationDAO().get();
-
-      while (locationsCurrent.next()) {
-        System.out.println(locationsCurrent.getString("LongName"));
-      }
-
-      locationsCurrent.close();
+      //      ResultSet locationsCurrent = DatabaseManager.getInstance().getLocationDAO().get();
+      //
+      //      while (locationsCurrent.next()) {
+      //        System.out.println(locationsCurrent.getString("LongName"));
+      //      }
+      //      locationsCurrent.close();
 
       System.out.println("here");
     }
@@ -146,8 +144,11 @@ public class RequestListController extends PageController implements Initializab
       //      String empID = employeeFilter.employeeIDFinder();
       // System.out.println(empID);
       RequestFilter requestFilter = new RequestFilter(input);
-      filteredReq = requestFilter.filterByStatus();
-      System.out.println(filteredReq);
+      reqs = requestFilter.filterByStatus();
+      System.out.println(reqs);
+    } else {
+      reqs = new ArrayList<>();
+      System.out.println("IS EMPTY");
     }
 
     //    String cmd =
@@ -163,18 +164,18 @@ public class RequestListController extends PageController implements Initializab
     //      }
     //    }
 
-    while (filteredReq.next()) {
-      rt =
-          new RequestTree(
-              filteredReq.getString("reqID"),
-              filteredReq.getString("nodeID"),
-              filteredReq.getString("assignedEmployeeID"),
-              filteredReq.getString("requesterEmployeeID"),
-              filteredReq.getString("status"));
-      reqs.add(rt);
-    }
-
-    filteredReq.close();
+    //    while (filteredReq.next()) {
+    //      rt =
+    //          new RequestTree(
+    //              filteredReq.getString("reqID"),
+    //              filteredReq.getString("nodeID"),
+    //              filteredReq.getString("assignedEmployeeID"),
+    //              filteredReq.getString("requesterEmployeeID"),
+    //              filteredReq.getString("status"));
+    //      reqs.add(rt);
+    //    }
+    //
+    //    filteredReq.close();
 
     treeRoot.setExpanded(true);
     reqs.stream()
