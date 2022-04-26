@@ -6,9 +6,12 @@ import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +20,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SubScene;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
@@ -34,13 +40,14 @@ public class MainController implements Initializable {
   @FXML VBox menuBar;
   @FXML VBox homeMenu;
   @FXML VBox serviceMenu;
-  @FXML VBox titleBox;
+  @FXML HBox titleBox;
   @FXML JFXButton serviceButton;
   @FXML JFXButton linksButton;
   @FXML JFXButton settingsButton;
   @FXML JFXButton outButton;
   @FXML JFXButton mapViewButton;
   @FXML JFXButton dashboardButton;
+  @FXML JFXButton callSecurity;
 
   @FXML JFXButton labButton;
   @FXML JFXButton scanButton;
@@ -58,6 +65,8 @@ public class MainController implements Initializable {
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
   @FXML JFXButton patientButton;
+  @FXML TextField emergencyLocation;
+  @FXML Pane emergencyPane;
 
   @FXML VBox v1;
   @FXML VBox v2;
@@ -84,6 +93,7 @@ public class MainController implements Initializable {
   @SneakyThrows
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    showEmergency();
     Thread shutDownHook =
         new Thread(
             () -> {
@@ -381,5 +391,38 @@ public class MainController implements Initializable {
 
   public void onClose() {
     menu.setMaxWidth(50);
+  }
+
+  public void showEmergency() {
+    emergencyPane.setVisible(!emergencyPane.isVisible());
+  }
+
+  public void callSecurity() throws SQLException {
+    RequestSystem req = new RequestSystem("Security");
+    ArrayList<String> fields = new ArrayList<String>();
+    fields.add(generateReqID());
+    fields.add(emergencyLocation.getText());
+    fields.add("EMERGENCY");
+    fields.add("EMERGENCY");
+    fields.add("EMERGENCY");
+    fields.add("EMERGENCY");
+    fields.add("EMERGENCY");
+    req.placeRequest(fields);
+    showEmergency();
+    AGlobalMethods.showAlert("HELP IS ON THE WAY", pageHolder);
+  }
+
+  public String generateReqID() throws SQLException {
+    String nNodeType = "EMER";
+    int reqNum = 1;
+
+    ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT * FROM SERVICEREQUEST");
+    while (rset.next()) {
+      reqNum++;
+    }
+    rset.close();
+
+    String nID = "f" + nNodeType + reqNum;
+    return nID;
   }
 }
