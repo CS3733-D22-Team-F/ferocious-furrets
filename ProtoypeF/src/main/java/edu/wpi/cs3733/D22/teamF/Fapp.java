@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoConnection;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -29,6 +30,11 @@ public class Fapp extends Application {
    */
   @Override
   public void start(Stage primaryStage) throws IOException, SQLException {
+    try {
+      ArduinoConnection.getArduinoConnection().startConnection("COM9");
+    } catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
     Cache.startDB(true);
     UserType.setUserType("admin");

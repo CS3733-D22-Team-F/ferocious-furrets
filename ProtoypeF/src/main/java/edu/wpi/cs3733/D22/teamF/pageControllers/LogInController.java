@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.ReturnHomePage;
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoLogin;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
@@ -59,6 +60,8 @@ public class LogInController extends ReturnHomePage implements Initializable {
     // StageManager.getInstance().setDisplay("homePage.fxml");
   }
 
+  ArduinoLogin ardLogin = new ArduinoLogin();
+
   /**
    * backs up the db to csvs then quits the application
    *
@@ -71,11 +74,20 @@ public class LogInController extends ReturnHomePage implements Initializable {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn(ActionEvent event) throws SQLException, IOException {
+  private void logIn(ActionEvent event) throws SQLException, IOException, InterruptedException {
 
     boolean success = false;
     UserType userType = new UserType();
-    if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
+    if (usernameField.getText().equals("admin") && passwordField.getText().equals("")) {
+      if (ardLogin.login()) {
+        userType.setUserType("admin");
+        success = true;
+      } else {
+        userType.setUserType("");
+        popUpLabel.setStyle("-fx-text-fill: red;");
+        popUpLabel.setText("Incorrect fingerprint, try again");
+      }
+    } else if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
       userType.setUserType("admin");
       success = true;
     } else if (usernameField.getText().equals("nurse") && passwordField.getText().equals("nurse")) {
