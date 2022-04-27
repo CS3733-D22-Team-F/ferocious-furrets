@@ -46,12 +46,11 @@ public class ThemeManager {
       throws IOException, SQLException {
     Theme newTheme = new Theme(name, mainColor, subColor, textColor);
     DatabaseManager.getInstance().getThemeDAO().add(newTheme);
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
   }
 
   public void deleteCSS(String name) throws SQLException, IOException {
     DatabaseManager.getInstance().getThemeDAO().delete(name);
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
+    toDefaultTheme();
   }
 
   public ArrayList<String> getCSS() throws SQLException, IOException {
@@ -225,26 +224,6 @@ public class ThemeManager {
                 + "    -fx-text-fill: f-maincolor;\n"
                 + "    -fx-border-color: f-subcolor;\n"
                 + "}\n"
-                + "\n"
-                + ".dashboardArrow {\n"
-                + "    -fx-background-color: f-subcolor;\n"
-                + "}\n"
-                + "\n"
-                + ".dashboardLine {\n"
-                + "    -fx-stroke: f-maincolor;\n"
-                + "}\n"
-                + "\n"
-                + ".dashboardButton {\n"
-                + "    -fx-background-color: f-maincolor;\n"
-                + "    -fx-text-fill: f-white;\n"
-                + "}\n"
-                + "\n"
-                + ".dashboardLabel {\n"
-                + "    -fx-font-family: Serif;\n"
-                + "    -fx-font-size: 36px;\n"
-                + "    -fx-text-fill: f-maincolor;\n"
-                + "}\n"
-                + "\n"
                 + ".linkBox {\n"
                 + "    -fx-background-color: f-maincolor;\n"
                 + "}\n"
@@ -293,6 +272,52 @@ public class ThemeManager {
                 + "    -fx-font-family: Serif;\n"
                 + "    -fx-font-size: 24px;\n"
                 + "    -fx-text-fill: f-white;\n"
+                + "}\n"
+                + "\n"
+                + ".dashboardArrow {\n"
+                + "    -fx-background-color: f-maincolor;\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 14px;\n"
+                + "    -fx-text-fill: f-white;\n"
+                + "}\n"
+                + "\n"
+                + ".dashboardLine {\n"
+                + "    -fx-stroke: f-maincolor;\n"
+                + "}\n"
+                + "\n"
+                + ".dashboardButton {\n"
+                + "    -fx-background-color: f-maincolor;\n"
+                + "    -fx-text-fill: f-white;\n"
+                + "}\n"
+                + "\n"
+                + ".dashboardLabel {\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 36px;\n"
+                + "    -fx-text-fill: f-maincolor;\n"
+                + "}\n"
+                + "\n"
+                + ".dashboardTitle{\n"
+                + "    -fx-text-fill: f-maincolor;\n"
+                + "}"
+                + "\n"
+                + "\n"
+                + ".alertButton{\n"
+                + "    -fx-background-color: f-maincolor;\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 14px;\n"
+                + "    -fx-text-fill: f-white;\n"
+                + "}"
+                + "\n"
+                + ".dashChart{\n"
+                + "    -fx-fill: f-maincolor;\n"
+                + "}"
+                + "\n"
+                + ".default-color0.chart-bar{\n"
+                + "    -fx-bar-fill: f-maincolor;\n"
+                + "}\n"
+                + "\n"
+                + ".default-color1.chart-bar{\n"
+                + "    -fx-bar-fill: f-subcolor;\n"
                 + "}",
             main, sub, text));
     writer.flush();

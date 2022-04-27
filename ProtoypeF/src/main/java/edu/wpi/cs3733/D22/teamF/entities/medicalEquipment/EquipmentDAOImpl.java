@@ -22,11 +22,17 @@ public class EquipmentDAOImpl implements IEquipmentDAO {
    */
   public void initTable(String Filepath) throws SQLException, IOException {
     ArrayList<Equipment> equipmentList = new ArrayList<>();
-    DatabaseManager.getInstance().dropTableIfExist("MedicalEquipment");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16), status varchar(16))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE MedicalEquipment (equipID varchar(16) PRIMARY KEY, equipType varchar(16), nodeID varchar(16), status varchar(16))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(Filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

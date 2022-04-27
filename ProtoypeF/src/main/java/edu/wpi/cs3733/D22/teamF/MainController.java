@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXDrawer;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
-import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.io.IOException;
@@ -87,16 +86,7 @@ public class MainController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     showEmergency();
-    Thread shutDownHook =
-        new Thread(
-            () -> {
-              try {
-                DatabaseManager.getInstance().backUpDatabaseToCSV();
-              } catch (SQLException | IOException e) {
-                e.printStackTrace();
-              }
-            });
-    Runtime.getRuntime().addShutdownHook(shutDownHook);
+
     titleBox.maxWidthProperty().bind(SceneManager.getInstance().getStage().widthProperty());
     serviceMenu.setVisible(false);
     baseTransformsTop = titleBox.getTransforms();

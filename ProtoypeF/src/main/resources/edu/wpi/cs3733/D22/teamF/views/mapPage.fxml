@@ -25,7 +25,7 @@
          <children>
             <VBox prefHeight="660.0" prefWidth="810.0">
                <children>
-                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" pannable="true" pickOnBounds="false" scaleShape="false" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" onScroll="#onScroll" pannable="true" pickOnBounds="false" scaleShape="false" VBox.vgrow="ALWAYS">
                      <content>
                         <StackPane cacheShape="false" centerShape="false" scaleShape="false">
                            <children>

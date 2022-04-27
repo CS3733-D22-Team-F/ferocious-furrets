@@ -1,8 +1,34 @@
 ----------------------------------------------------------------
-Tue Apr 26 16:56:48 EDT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-67a9-92ce-00000f465f60 
+Wed Apr 27 05:01:23 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-6a40-f448-00000f49c200 
+on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14.1+1-LTS
+user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Apr 27 05:01:30 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance 22290109-0180-6a40-f448-00000f49c200 
 on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\CS3733-TeamB-TransferAPI-Database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
-Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/APIJARs/TeamBAPI.jar
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14.1+1-LTS
+user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Apr 27 05:01:31 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance 44c541fa-0180-6a40-f448-00000f49c200 
+on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\BaW_database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
 java.vendor=Microsoft
 java.runtime.version=11.0.14.1+1-LTS
 user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets

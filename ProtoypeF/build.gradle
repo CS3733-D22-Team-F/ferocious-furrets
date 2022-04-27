@@ -6,7 +6,6 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc6"
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
-
 }
 mainClassName = 'edu.wpi.cs3733.D22.teamF.Main'
 
@@ -18,7 +17,6 @@ repositories {
     flatDir {
         dirs 'APIJARs'
     }
-
     mavenCentral()
     maven {
         url 'https://apisite.crmyers.dev/maven'
@@ -62,6 +60,9 @@ dependencies {
             'io.github.palexdev:materialfx:11.13.5'
     )
 
+    compile fileTree(dir: 'lib', includes: ['*.jar'])
+
+    implementation name : 'edu.wpi.cs3733.D22.teamF'
     implementation(files("APIJARs/CS3733-D22-Team-D-SanitationRequestAPI v2.0.jar"))
     implementation(files("APIJARs/teamBAPI.jar"))
     implementation(files('APIJARs/edu.wpi.cs3733.D22.teamF.jar'))

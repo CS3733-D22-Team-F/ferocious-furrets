@@ -39,10 +39,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("Employee");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
 
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
@@ -177,5 +184,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
               currentRow.getString("salary")));
     }
     CSVWriter.writeAll(file, toAdd);
+  }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
   }
 }

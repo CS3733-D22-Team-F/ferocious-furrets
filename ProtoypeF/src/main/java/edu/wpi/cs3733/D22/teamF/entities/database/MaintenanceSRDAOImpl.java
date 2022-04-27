@@ -28,12 +28,18 @@ public class MaintenanceSRDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("MaintenanceRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE MaintenanceRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), maintenanceType varchar(16), "
-                + "Foreign Key (reqID) references SERVICEREQUEST(reqID), FOREIGN KEY (equipID) references MedicalEquipment)");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE MaintenanceRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), maintenanceType varchar(16), "
+                  + "Foreign Key (reqID) references SERVICEREQUEST(reqID), FOREIGN KEY (equipID) references MedicalEquipment)");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

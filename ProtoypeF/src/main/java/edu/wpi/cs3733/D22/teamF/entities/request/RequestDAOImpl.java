@@ -29,12 +29,18 @@ public class RequestDAOImpl implements IRequestDAO {
    * @throws IOException
    */
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("SERVICEREQUEST");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
-                + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE ServiceRequest (reqID varchar(16) PRIMARY KEY, nodeID varchar(16), assignedEmployeeID varchar(16), requesterEmployeeID varchar(16), status varChar(16), "
+                  + "Foreign Key(assignedEmployeeID) references EMPLOYEE(EMPLOYEEID), Foreign Key(requesterEmployeeID) references EMPLOYEE(EMPLOYEEID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

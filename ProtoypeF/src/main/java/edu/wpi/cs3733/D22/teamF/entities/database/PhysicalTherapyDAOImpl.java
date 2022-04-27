@@ -28,11 +28,17 @@ public class PhysicalTherapyDAOImpl implements IRequestDAO {
 
   @Override
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("PTRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

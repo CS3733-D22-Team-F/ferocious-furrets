@@ -24,7 +24,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -252,20 +251,19 @@ public class MapPageController implements Initializable {
     reclinerButton.setGraphic(MapIconModifier.getIcon("Recliner"));
   }
 
-  private void onScroll(double wheelDelta, Point2D mousePoint) {
-    if (!inButton) {}
+  @FXML
+  private void onScroll(ScrollEvent event) {
+    if (!inButton) {
+      if (event.getDeltaY() != 0) {
+        zoomSlider.setValue(zoomSlider.getValue() + event.getDeltaY());
+      }
+      event.consume();
+    }
   }
 
   public void initializeScroll() {
     mapScale = new SimpleDoubleProperty(1.0);
-    scrollPane.addEventFilter(
-        ScrollEvent.SCROLL,
-        event -> {
-          if (event.getDeltaY() != 0) {
-            zoomSlider.setValue(zoomSlider.getValue() + event.getDeltaY());
-          }
-          event.consume();
-        });
+    scrollPane.addEventFilter(ScrollEvent.SCROLL, this::onScroll);
     mapGroup.scaleXProperty().bind(mapScale);
     mapGroup.scaleYProperty().bind(mapScale);
     scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
