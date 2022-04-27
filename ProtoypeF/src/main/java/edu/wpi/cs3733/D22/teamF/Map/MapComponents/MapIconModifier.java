@@ -447,11 +447,9 @@ public class MapIconModifier {
     if (showIconButton.getText().equals("All Icon")) {
       showFloorIcon(MapLocationModifier.currentFloor);
       showIconButton.setText("Hide Icon");
-      showIconButton.setStyle("-fx-background-color: red");
     } else if (showIconButton.getText().equals("Hide Icon")) {
       showFloorIcon("99");
       showIconButton.setText("All Icon");
-      showIconButton.setStyle("-fx-background-color: #123090");
     }
   }
 

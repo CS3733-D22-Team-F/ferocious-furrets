@@ -57,7 +57,7 @@
                      <children>
                         <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
-                              <JFXNodesList fx:id="menuNodeList" maxHeight="31.0" minHeight="30.0" prefHeight="31.0" prefWidth="80.0" styleClass="mapNode">
+                              <JFXNodesList fx:id="menuNodeList" maxHeight="31.0" minHeight="30.0" prefHeight="31.0" prefWidth="80.0" styleClass="mapButton">
                                  <children>
                                     <JFXButton fx:id="openMenu" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="80.0" styleClass="mapButton" text="Menu" textFill="WHITE">
                                        <font>
@@ -161,7 +161,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <JFXNodesList fx:id="alertNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="mapNode">
+                              <JFXNodesList fx:id="alertNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="mapButton">
                                  <children>
                                     <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" styleClass="mapButton" text="Alert: 0" textFill="WHITE">
                                        <font>
