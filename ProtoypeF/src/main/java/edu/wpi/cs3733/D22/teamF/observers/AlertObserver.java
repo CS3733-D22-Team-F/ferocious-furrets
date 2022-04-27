@@ -101,7 +101,6 @@ public class AlertObserver implements PropertyChangeListener {
           newLabel.setMaxWidth(170);
           newLabel.setStyle("-fx-background-color: #123090");
           newLabel.setStyle("-fx-border-color: #ffffff");
-          newLabel.setStyle("-fx-border-radius: 1");
           newLabel.setTextAlignment(TextAlignment.CENTER);
           newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
           appAlertVbox.getChildren().add(newLabel);
