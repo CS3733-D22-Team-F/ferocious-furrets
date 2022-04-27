@@ -50,6 +50,7 @@ public class Cache {
                 "medicinePage.fxml",
                 "externalPatientPage.fxml",
                 "medicinePage.fxml",
+                "views/pageHolder.fxml",
                 "Map/mapEquipModifyPage.fxml",
                 "Map/mapLocAddPage.fxml",
                 "views/request/modifyRequestPage.fxml",

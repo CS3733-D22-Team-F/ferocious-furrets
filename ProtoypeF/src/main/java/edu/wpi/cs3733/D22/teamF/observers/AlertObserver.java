@@ -7,6 +7,10 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class AlertObserver implements PropertyChangeListener {
   private static List<List<Alert>> allFloorAlerts = new ArrayList<>();
@@ -22,7 +26,7 @@ public class AlertObserver implements PropertyChangeListener {
   private int fl5Count = 0;
   private int totalAlertCount = 0;
 
-  private JFXNodesList appAlertNodeList;
+  private VBox appAlertVbox;
   private JFXNodesList dashBoardNodeList;
 
   private boolean isDashAlertsReady;
@@ -61,7 +65,7 @@ public class AlertObserver implements PropertyChangeListener {
     }
   }
 
-  //TODO
+  // TODO
   public void setAlertNotifications(List<JFXButton> buttons) {
     this.buttonsToUpdate = buttons;
   }
@@ -71,8 +75,8 @@ public class AlertObserver implements PropertyChangeListener {
     isDashAlertsReady = true;
   }
 
-  public void setAppAlertNodeList(JFXNodesList newList) {
-    this.appAlertNodeList = newList;
+  public void setAppAlertVbox(VBox newVbox) {
+    this.appAlertVbox = newVbox;
     isAppAlertsReady = true;
   }
 
@@ -82,21 +86,46 @@ public class AlertObserver implements PropertyChangeListener {
 
   public void updateAppAlerts() {
 
-    if (isAppAlertsReady & isDashAlertsReady) {
-      this.appAlertNodeList.getChildren().removeAll();
-      this.dashBoardNodeList.getChildren().removeAll();
+    if (isDashAlertsReady && isAppAlertsReady) {
+      appAlertVbox.getChildren().clear();
+      dashBoardNodeList.getChildren().removeAll();
 
-      for (List<Alert> floorAlert : allFloorAlerts)
-        for (Alert inFloorAlert : floorAlert) {
-          JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+      for (int count = 0; count < totalAlertCount; count++) {
+        for (int i = 0; i < allFloorAlerts.get(count).size(); i++) {
+          String message = allFloorAlerts.get(count).get(i).getMessage();
+          JFXButton newAlert = new JFXButton(message);
+          Label newLabel = new Label(message);
+          newLabel.textFillProperty().set(Color.WHITE);
+          newLabel.fontProperty().setValue(Font.font("Serif", 16));
+          newLabel.setWrapText(true);
+          newLabel.setMaxWidth(170);
+          newLabel.setStyle("-fx-background-color: #123090");
+          newLabel.setStyle("-fx-border-color: #ffffff");
+          newLabel.setStyle("-fx-border-radius: 1");
+          newLabel.setTextAlignment(TextAlignment.CENTER);
           newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
+          appAlertVbox.getChildren().add(newLabel);
+          dashBoardNodeList.getChildren().add(newAlert);
 
-          appAlertNodeList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
-          dashBoardNodeList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
-
-          this.appAlertLabel.setText(String.valueOf(totalAlertCount)); 
-          System.out.println(totalAlertCount);
+          this.appAlertLabel.setText(String.valueOf(totalAlertCount));
         }
+      }
+      //      for (List<Alert> floorAlert : allFloorAlerts) {
+      //        for (Alert inFloorAlert : floorAlert) {
+      //          JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+      //          Label newLabel = new Label(inFloorAlert.getMessage());
+      //          newLabel.textFillProperty().set(Color.WHITE);
+      //          newLabel.fontProperty().setValue(Font.font("Serif", 12));
+      //          newLabel.setWrapText(true);
+      //          newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
+      //          appAlertVbox.getChildren().add(newLabel);
+      //          dashBoardNodeList.getChildren().add(newAlert);
+      //
+      //          this.appAlertLabel.setText(String.valueOf(totalAlertCount));
+      //
+      //          System.out.println(totalAlertCount);
+      //        }
+      //      }
     }
   }
 

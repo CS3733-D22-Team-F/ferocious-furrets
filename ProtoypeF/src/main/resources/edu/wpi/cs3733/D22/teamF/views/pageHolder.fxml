@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
-<?import com.jfoenix.controls.JFXNodesList?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -21,7 +20,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="1500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="60.0" StackPane.alignment="TOP_LEFT" />
       <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
          <children>
-            <HBox fx:id="titleBox" prefHeight="60.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="titleBox" prefHeight="56.0" prefWidth="1301.0" style="-fx-background-color: #123090;">
                <children>
                   <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1046.0" text="       Brigham And Women's Hospital" textFill="WHITE">
                      <font>
@@ -44,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="112.0">
                      <children>
                         <JFXButton fx:id="alertIcon" buttonType="RAISED" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#openAlerts" prefHeight="56.0" prefWidth="112.0" ripplerFill="#f3ba48" textFill="TRANSPARENT">
                            <graphic>
@@ -243,7 +242,7 @@
                         </Pane>
                         <Pane fx:id="alertsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: #123090; -fx-border-color: #F3BA48; -fx-border-width: 5;" visible="false" StackPane.alignment="TOP_RIGHT">
                            <children>
-                              <VBox prefHeight="300.0" prefWidth="200.0">
+                              <VBox layoutX="-2.0" prefHeight="300.0" prefWidth="197.0">
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="210.0" text="Alerts" textFill="WHITE">
                                        <font>
@@ -256,17 +255,17 @@
                                           <Insets top="5.0" />
                                        </padding>
                                     </Label>
-                                    <JFXNodesList fx:id="alertsList" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="200.0">
-                                       <children>
-                                          <JFXButton fx:id="facadeButton" buttonType="RAISED" maxHeight="76.0" minHeight="20.0" prefHeight="47.0" prefWidth="154.0" ripplerFill="WHITE" style="-fx-background-color: #123090;" text="Alerts" textFill="WHITE">
-                                             <font>
-                                                <Font size="12.0" />
-                                             </font>
-                                          </JFXButton>
-                                       </children></JFXNodesList>
+                                    <VBox fx:id="alertVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="253.0" prefWidth="178.0" spacing="5.0" VBox.vgrow="NEVER">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </children>
+                           <StackPane.margin>
+                              <Insets right="10.0" />
+                           </StackPane.margin>
                         </Pane>
                      </children>
                   </StackPane>

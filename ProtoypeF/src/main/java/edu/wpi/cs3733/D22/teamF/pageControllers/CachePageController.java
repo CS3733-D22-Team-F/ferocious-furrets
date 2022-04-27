@@ -37,10 +37,10 @@ public class CachePageController implements Initializable {
     loader.setOnSucceeded(
         e -> {
           try {
-            Cache.loadViews();
             Stage stage = SceneManager.getInstance().getStage();
             Scene scene =
                 new Scene(FXMLLoader.load(Fapp.class.getResource("views/pageHolder.fxml")));
+            Cache.loadViews();
             stage.setScene(scene);
             stage.show();
           } catch (IOException ex) {

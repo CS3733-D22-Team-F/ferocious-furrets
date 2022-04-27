@@ -43,6 +43,7 @@ public class MainController implements Initializable {
   @FXML VBox menuBar;
   @FXML VBox homeMenu;
   @FXML VBox serviceMenu;
+  @FXML VBox alertVbox;
   @FXML HBox titleBox;
   @FXML JFXButton serviceButton;
   @FXML JFXButton linksButton;
@@ -147,6 +148,7 @@ public class MainController implements Initializable {
             applyResize(SceneManager.getInstance().getStage().getWidth(), (double) newValue);
           }
         };
+
     setAlerts();
     SceneManager.getInstance().getStage().maximizedProperty().addListener(maxScreenCallback);
     SceneManager.getInstance().getStage().fullScreenProperty().addListener(maxScreenCallback);
@@ -440,7 +442,21 @@ public class MainController implements Initializable {
   }
 
   public void setAlerts() {
-    AlertObserver.getInstance().setAppAlertNodeList(alertsList);
+
     AlertObserver.getInstance().setAppAlertsLabel(alertLabel);
+    AlertObserver.getInstance().setAppAlertVbox(alertVbox);
+
+    //    alertVbox.getChildren().removeAll();
+    //
+    //    List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
+    //
+    //    for (List<Alert> floorAlert : allFloorAlerts)
+    //      for (Alert inFloorAlert : floorAlert) {
+    //        Label newAlert = new Label(inFloorAlert.getMessage());
+    //        newAlert.textFillProperty().set(Color.WHITE);
+    //        newAlert.fontProperty().setValue(Font.font("Serif", 24));
+    //        newAlert.setWrapText(true);
+    //        alertVbox.getChildren().add(newAlert);
+    //      }
   }
 }
