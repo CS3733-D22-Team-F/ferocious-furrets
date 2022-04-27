@@ -13,15 +13,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
+<BorderPane fx:id="masterPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ExternalPatientController">
    <left>
       <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle1" width="600.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="rectangle2" width="600.0" />
             <HBox fx:id="topHBox" layoutY="30.0" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="611.0" text="Ext. Patient Delivery" textFill="WHITE">
+                  <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="611.0" styleClass="serviceTitle" text="Ext. Patient Delivery" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>

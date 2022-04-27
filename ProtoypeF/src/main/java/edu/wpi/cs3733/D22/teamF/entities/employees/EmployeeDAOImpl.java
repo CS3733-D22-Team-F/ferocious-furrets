@@ -185,4 +185,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
     CSVWriter.writeAll(file, toAdd);
   }
+
+  public String empIDToFirstName(String eID) throws SQLException {
+    String cmd = String.format("SELECT firstName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String fName = "";
+    while (rset.next()) {
+      fName = rset.getString("firstName");
+    }
+    return fName;
+  }
+
+  public String empIDToLastName(String eID) throws SQLException {
+    String cmd = String.format("SELECT lastName FROM Employee WHERE employeeID = '%s'", eID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("lastName");
+    }
+    return lName;
+  }
 }
