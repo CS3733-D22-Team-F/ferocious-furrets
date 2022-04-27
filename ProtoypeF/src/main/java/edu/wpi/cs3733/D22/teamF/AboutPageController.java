@@ -91,6 +91,9 @@ public class AboutPageController implements Initializable {
             } catch (IOException e) {
               e.printStackTrace();
             }
+            AudioPlayer.getInstance().setAudioInputStream("Music/grandpa.wav");
+            AudioPlayer.getInstance().playFrom(1000);
+
             Stage popupwindow = new Stage();
             popupwindow.setTitle("Carter Bullock");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -98,6 +101,7 @@ public class AboutPageController implements Initializable {
             popupwindow.setScene(scene1);
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.showAndWait();
+            AudioPlayer.getInstance().stop();
           }
         });
   }
