@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDrawer;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.io.IOException;
@@ -79,6 +80,8 @@ public class MainController implements Initializable {
   ChangeListener<Number> heightResizeCallback;
   ObservableList<Transform> baseTransformsTop;
   ObservableList<Transform> baseTransformsMenu;
+
+  AudioPlayer audio = AudioPlayer.getInstance();
 
   @SneakyThrows
   @Override
@@ -273,38 +276,54 @@ public class MainController implements Initializable {
   }
 
   public void changeToHomeMenu() throws IOException {
+    audio.setAudioInputStream("Music/Home.wav");
+    audio.play();
     menu.setSidePane(homeMenu);
     homeMenu.setVisible(true);
     serviceMenu.setVisible(false);
   }
 
   public void changeToMap() throws IOException {
+    audio.setAudioInputStream("Music/Mappage.wav");
+    audio.play();
     changeTo("views/mapPage.fxml");
   }
 
   public void changeToServiceMenu() throws IOException {
+    audio.setAudioInputStream("Music/Service.wav");
+    audio.play();
     menu.setSidePane(serviceMenu);
     homeMenu.setVisible(false);
     serviceMenu.setVisible(true);
   }
 
   public void changeToLinks() throws IOException {
+    audio.setAudioInputStream("Music/Links.wav");
+    audio.play();
     changeTo("views/linksPage.fxml");
   }
 
   public void changeToLab() throws IOException {
+    audio.setAudioInputStream("Music/Lab.wav");
+    audio.play();
     changeTo("views/labRequestPage.fxml");
   }
 
   public void changeToScan() throws IOException {
+    audio.setAudioInputStream("Music/Scan.wav");
+    audio.play();
     changeTo("views/scanPage.fxml");
   }
 
   public void changeToEquipment() throws IOException {
+    audio.setAudioInputStream("Music/Equipment.wav");
+    audio.play();
     changeTo("views/equipmentPage.fxml");
   }
 
   public void changeToAudio() throws IOException {
+    audio.setAudioInputStream("Music/Audio.wav");
+    audio.play();
     changeTo("views/audioVisualPage.fxml");
   }
 
@@ -313,47 +332,69 @@ public class MainController implements Initializable {
   }
 
   public void changeToGift() throws IOException {
+    audio.setAudioInputStream("Music/Gift.wav");
+    audio.play();
     changeTo("views/giftPageResized.fxml");
   }
 
   public void changeToMeal() throws IOException {
+    audio.setAudioInputStream("Music/Meal.wav");
+    audio.play();
     changeTo("views/mealPage.fxml");
   }
 
   public void changeToMedicine() throws IOException, ServiceException {
+    audio.setAudioInputStream("Music/Medicine.wav");
+    audio.play();
     MedicineRequest.run(0, 0, 0, 0, "stylesheets/RequestPages.css", "FDEPT00301");
   }
 
   public void changeToDashboard() throws IOException {
+    audio.setAudioInputStream("Music/Dashboard.wav");
+    audio.play();
     changeTo("views/dashboardPage.fxml");
   }
 
   public void changeToSetting() throws IOException {
+    audio.setAudioInputStream("Music/Settings.wav");
+    audio.play();
     changeTo("views/settings.fxml");
   }
 
   public void changeToQueue() throws IOException {
+    audio.setAudioInputStream("Music/Que.wav");
+    audio.play();
     changeTo("views/requestListPage.fxml");
   }
 
   public void changeToEmployee() throws IOException {
+    audio.setAudioInputStream("Music/Employee.wav");
+    audio.play();
     changeTo("views/employee/employeePage.fxml");
   }
 
   public void changeToSecurity() throws IOException {
     // TODO add your page name before ".fxml"
+    audio.setAudioInputStream("Music/Security.wav");
+    audio.play();
     changeTo("views/securityPage.fxml");
   }
 
   public void changeToPhysical() throws IOException {
+    audio.setAudioInputStream("Music/PT.wav");
+    audio.play();
     changeTo("views/physicalTherapyPage.fxml");
   }
 
   public void changeToLanding() throws IOException {
+    audio.setAudioInputStream("Music/Landing.wav");
+    audio.play();
     changeTo("views/landingPage.fxml");
   }
 
   public void changeToFacilities() throws IOException {
+    audio.setAudioInputStream("Music/Sanitation.wav");
+    audio.play();
     // TODO add your page name before ".fxml"
     changeTo("views/facilitiesPage.fxml");
     //    StartAPI.appLaunch(
@@ -361,15 +402,21 @@ public class MainController implements Initializable {
   }
 
   public void changeToMaintenance() throws IOException {
+    audio.setAudioInputStream("Music/Maint.wav");
+    audio.play();
     // TODO add your page name before ".fxml"
     changeTo("views/maintenanceRequestPage.fxml");
   }
 
   public void goToTransport() throws IOException {
+    audio.setAudioInputStream("Music/extpat.wav");
+    audio.play();
     changeTo("views/extPatDeliveryPage.fxml");
   }
 
   public void goToIntTransport() throws IOException, edu.wpi.cs3733.D22.teamB.api.ServiceException {
+    audio.setAudioInputStream("Music/intpat.wav");
+    audio.play();
     changeTo("views/internalPatientPage.fxml");
     //    API intPatientAPI = new API();
     //    intPatientAPI.run(
@@ -383,6 +430,8 @@ public class MainController implements Initializable {
   }
 
   public void changeToAPILandingPage() throws IOException {
+    audio.setAudioInputStream("Music/apiland.wav");
+    audio.play();
     changeTo("views/apiLandingPage.fxml");
   }
 
@@ -393,7 +442,12 @@ public class MainController implements Initializable {
   }
 
   public void exit() throws SQLException, IOException {
+    audio.setAudioInputStream("Music/exit.wav");
+    audio.play();
+
     DatabaseManager.getInstance().backUpDatabaseToCSV();
+    while (audio.getPlaying()) {}
+
     System.exit(0);
   }
 

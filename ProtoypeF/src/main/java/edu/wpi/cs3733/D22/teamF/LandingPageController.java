@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamF.Exceptions.ServiceException;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -37,6 +38,8 @@ public class LandingPageController implements Initializable {
 
   @FXML StackPane pagePane;
 
+  AudioPlayer audioP = AudioPlayer.getInstance();
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     maintenance.setGraphic(MapIconModifier.getIcon("toolMenu"));
@@ -59,43 +62,63 @@ public class LandingPageController implements Initializable {
   }
 
   public void changeToLab() throws IOException {
+    audioP.setAudioInputStream("Music/Lab.wav");
+    audioP.play();
     changeTo("views/labRequestPage.fxml");
   }
 
   public void changeToScan() throws IOException {
+    audioP.setAudioInputStream("Music/Scan.wav");
+    audioP.play();
     changeTo("views/scanPage.fxml");
   }
 
   public void changeToEquipment() throws IOException {
+    audioP.setAudioInputStream("Music/Equipment.wav");
+    audioP.play();
     changeTo("views/equipmentPage.fxml");
   }
 
   public void changeToAudio() throws IOException {
+    audioP.setAudioInputStream("Music/Audio.wav");
+    audioP.play();
     changeTo("views/audioVisualPage.fxml");
   }
 
   public void changeToExtPatient() throws IOException {
+    audioP.setAudioInputStream("Music/extpat.wav");
+    audioP.play();
     changeTo("views/extPatDeliveryPage.fxml");
   }
 
   public void changeToGift() throws IOException {
+    audioP.setAudioInputStream("Music/Gift.wav");
+    audioP.play();
     changeTo("views/giftPageResized.fxml");
   }
 
   public void changeToMeal() throws IOException {
+    audioP.setAudioInputStream("Music/Meal.wav");
+    audioP.play();
     changeTo("views/mealPage.fxml");
   }
 
   public void changeToMedicine() throws IOException, ServiceException {
+    audioP.setAudioInputStream("Music/Medicine.wav");
+    audioP.play();
     MedicineRequest.run(0, 0, 0, 0, "stylesheets/RequestPages.css", "FDEPT00301");
   }
 
   public void changeToSecurity() throws IOException {
-    // TODO add your page name before ".fxml"
+
+    audioP.setAudioInputStream("Music/Security.wav");
+    audioP.play();
     changeTo("views/securityPage.fxml");
   }
 
   public void changeToPhysical() throws IOException {
+    audioP.setAudioInputStream("Music/PT.wav");
+    audioP.play();
     changeTo("views/physicalTherapyPage.fxml");
   }
 
@@ -104,12 +127,14 @@ public class LandingPageController implements Initializable {
   }
 
   public void changeToFacilities() throws IOException {
-    // TODO add your page name before ".fxml"
+    audioP.setAudioInputStream("Music/Sanitation.wav");
+    audioP.play();
     changeTo("views/facilitiesPage.fxml");
   }
 
   public void changeToMaintenance() throws IOException {
-    // TODO add your page name before ".fxml"
+    audioP.setAudioInputStream("Music/Maint.wav");
+    audioP.play();
     changeTo("views/maintenanceRequestPage.fxml");
   }
 

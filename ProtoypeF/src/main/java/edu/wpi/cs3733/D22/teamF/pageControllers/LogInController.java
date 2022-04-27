@@ -6,6 +6,7 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.ReturnHomePage;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
 import java.io.IOException;
@@ -107,6 +108,8 @@ public class LogInController extends ReturnHomePage implements Initializable {
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
+      AudioPlayer.getInstance().setAudioInputStream("Music/hi.wav");
+      AudioPlayer.getInstance().play();
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new CachePageController(embedded));
       Scene scene = null;
