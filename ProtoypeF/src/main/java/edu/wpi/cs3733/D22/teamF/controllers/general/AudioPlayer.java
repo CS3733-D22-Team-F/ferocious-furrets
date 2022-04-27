@@ -46,7 +46,6 @@ public class AudioPlayer {
       // open audioInputStream to the clip
       clip.open(audioInputStream);
 
-      clip.loop(Clip.LOOP_CONTINUOUSLY);
     } catch (UnsupportedAudioFileException e) {
       e.printStackTrace();
     } catch (LineUnavailableException e) {
@@ -77,5 +76,9 @@ public class AudioPlayer {
     if (clip != null && clip.isRunning()) {
       clip.stop();
     }
+  }
+
+  public boolean getPlaying() {
+    return clip.isRunning();
   }
 }

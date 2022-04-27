@@ -7,6 +7,7 @@ import edu.wpi.cs3733.D22.teamF.ReturnHomePage;
 import edu.wpi.cs3733.D22.teamF.arduino.ArduinoLogin;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
 import java.io.IOException;
 import java.net.URL;
@@ -70,6 +71,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
    */
   @FXML
   private void helpQuit() throws SQLException, IOException {
+    // DatabaseManager.getInstance().backUpDatabaseToCSV();
     System.exit(0);
   }
   /** logs in, or states message the username or password are wrong */
@@ -117,6 +119,8 @@ public class LogInController extends ReturnHomePage implements Initializable {
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
+      AudioPlayer.getInstance().setAudioInputStream("Music/hi.wav");
+      AudioPlayer.getInstance().play();
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new CachePageController(embedded));
       Scene scene = null;

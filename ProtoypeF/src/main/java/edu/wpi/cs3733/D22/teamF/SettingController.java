@@ -115,7 +115,11 @@ public class SettingController implements Initializable {
   public void deleteCSS() throws SQLException, IOException {
 
     try {
-      if (choiceBox.getValue().equals("default")) {
+      if (choiceBox.getValue().equals("default")
+          || choiceBox.getValue().equals("Dark")
+          || choiceBox.getValue().equals("Color Blind 1")
+          || choiceBox.getValue().equals("Color Blind 2")
+          || choiceBox.getValue().equals("Color Blind 3")) {
         AGlobalMethods.showAlert("Cannot delete default theme", userFromLogin);
       } else {
         ThemeManager.getInstance().deleteCSS(choiceBox.getValue());

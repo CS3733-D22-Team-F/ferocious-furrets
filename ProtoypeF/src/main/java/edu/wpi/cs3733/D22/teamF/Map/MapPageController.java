@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextArea;
-import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.*;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -24,7 +23,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -252,20 +250,19 @@ public class MapPageController implements Initializable {
     reclinerButton.setGraphic(MapIconModifier.getIcon("Recliner"));
   }
 
-  private void onScroll(double wheelDelta, Point2D mousePoint) {
-    if (!inButton) {}
+  @FXML
+  private void onScroll(ScrollEvent event) {
+    if (!inButton) {
+      if (event.getDeltaY() != 0) {
+        zoomSlider.setValue(zoomSlider.getValue() + event.getDeltaY());
+      }
+      event.consume();
+    }
   }
 
   public void initializeScroll() {
     mapScale = new SimpleDoubleProperty(1.0);
-    scrollPane.addEventFilter(
-        ScrollEvent.SCROLL,
-        event -> {
-          if (event.getDeltaY() != 0) {
-            zoomSlider.setValue(zoomSlider.getValue() + event.getDeltaY());
-          }
-          event.consume();
-        });
+    scrollPane.addEventFilter(ScrollEvent.SCROLL, this::onScroll);
     mapGroup.scaleXProperty().bind(mapScale);
     mapGroup.scaleYProperty().bind(mapScale);
     scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -424,55 +421,11 @@ public class MapPageController implements Initializable {
     menuNodeList.setRotate(180);
     floorNodeList.setRotate(180);
     alertNodeList.setRotate(180);
-    AGlobalMethods.setCircleButton(openFloorMenu, 55);
-    openFloorMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToF5, 40);
-    changeToF5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToF4, 40);
-    changeToF4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToF3, 40);
-    changeToF3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToF2, 40);
-    changeToF2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToF1, 40);
-    changeToF1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToL1, 40);
-    changeToL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(changeToL2, 40);
-    changeToL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(openMenu, 55);
-    openMenu.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     openMenu.setGraphic(MapIconModifier.getIcon("menu"));
-    AGlobalMethods.setCircleButton(addButton, 40);
-    addButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     addButton.setGraphic(MapIconModifier.getIcon("add"));
-    AGlobalMethods.setCircleButton(saveButton, 40);
-    saveButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     saveButton.setGraphic(MapIconModifier.getIcon("save"));
-    AGlobalMethods.setCircleButton(loadButton, 40);
-    loadButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     loadButton.setGraphic(MapIconModifier.getIcon("load"));
-    AGlobalMethods.setCircleButton(tableButton, 40);
-    tableButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     tableButton.setGraphic(MapIconModifier.getIcon("table"));
-    AGlobalMethods.setCircleButton(historyButton, 40);
-    historyButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
     historyButton.setGraphic(MapIconModifier.getIcon("history"));
-    AGlobalMethods.setCircleButton(alertButton, 55);
-    alertButton.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton1, 40);
-    alertButton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton2, 40);
-    alertButton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton3, 40);
-    alertButton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton4, 40);
-    alertButton4.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButton5, 40);
-    alertButton5.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButtonL1, 40);
-    alertButtonL1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-    AGlobalMethods.setCircleButton(alertButtonL2, 40);
-    alertButtonL2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
   }
 }

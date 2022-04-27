@@ -35,7 +35,10 @@ public class MapServiceModifyController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    currentNode.setText(LocTempHolder.getLocation().getLongName());
+    currentNode.setText(
+        LocTempHolder.getLocation().getNodeType()
+            + ": "
+            + LocTempHolder.getLocation().getLongName());
   }
 
   /** Cancel add, close window */

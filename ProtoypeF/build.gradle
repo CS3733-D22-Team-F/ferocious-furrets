@@ -31,7 +31,7 @@ javafx {
 
 dependencies {
     implementation(
-            'com.github.afester.javafx:FranzXaver:0.1',
+
             'org.reflections:reflections:0.10.2',
 
             'com.jfoenix:jfoenix:9.0.10',

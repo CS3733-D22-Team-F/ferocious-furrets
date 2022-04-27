@@ -25,7 +25,7 @@
          <children>
             <VBox prefHeight="660.0" prefWidth="810.0">
                <children>
-                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" pannable="true" pickOnBounds="false" scaleShape="false" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" onScroll="#onScroll" pannable="true" pickOnBounds="false" scaleShape="false" VBox.vgrow="ALWAYS">
                      <content>
                         <StackPane cacheShape="false" centerShape="false" scaleShape="false">
                            <children>
@@ -33,9 +33,9 @@
                                  <children>
                                     <Group fx:id="mapGroup">
                                        <children>
-                                          <AnchorPane fx:id="iconPane" prefHeight="630.0" prefWidth="811.0">
+                                          <AnchorPane fx:id="iconPane" prefHeight="618.0" prefWidth="811.0">
                                              <children>
-                                                <ImageView fx:id="mapHolder" cacheHint="SCALE" fitHeight="630.0" fitWidth="811.0" pickOnBounds="true" smooth="false">
+                                                <ImageView fx:id="mapHolder" cacheHint="SCALE" fitHeight="611.0" fitWidth="811.0" pickOnBounds="true" smooth="false">
                                                    <image>
                                                       <Image url="@../Map/FloorMap/Floor1.jpg" />
                                                    </image>
@@ -57,7 +57,7 @@
                      <children>
                         <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
-                              <JFXNodesList fx:id="menuNodeList" maxHeight="31.0" minHeight="30.0" prefHeight="31.0" prefWidth="80.0" styleClass="mapNode">
+                              <JFXNodesList fx:id="menuNodeList" maxHeight="31.0" minHeight="30.0" prefHeight="31.0" prefWidth="80.0" styleClass="mapButton">
                                  <children>
                                     <JFXButton fx:id="openMenu" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="80.0" styleClass="mapButton" text="Menu" textFill="WHITE">
                                        <font>
@@ -161,7 +161,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <JFXNodesList fx:id="alertNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="mapNode">
+                              <JFXNodesList fx:id="alertNodeList" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="mapButton">
                                  <children>
                                     <JFXButton fx:id="alertButton" buttonType="RAISED" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="110.0" ripplerFill="WHITE" styleClass="mapButton" text="Alert: 0" textFill="WHITE">
                                        <font>
@@ -216,6 +216,9 @@
                            </children>
                         </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -315,6 +318,9 @@
                         <TableColumn fx:id="Floor" prefWidth="70.18011474609375" text="Floor" />
                         <TableColumn fx:id="longName" prefWidth="274.31988525390625" text="longName" />
                      </columns>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
                   </TableView>
                </children>
             </VBox>
