@@ -6,6 +6,7 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc6"
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
+
 }
 mainClassName = 'edu.wpi.cs3733.D22.teamF.Main'
 
@@ -57,7 +58,8 @@ dependencies {
             'com.sun.xml.bind:jaxb-impl:3.0.2',
             'com.sun.xml.bind:jaxb-core:3.0.2',
             'org.glassfish.jaxb:jaxb-runtime:2.3.2',
-            'javax.xml.bind:jaxb-api:2.3.1'
+            'javax.xml.bind:jaxb-api:2.3.1',
+            'io.github.palexdev:materialfx:11.13.5'
     )
 
     implementation(files("APIJARs/CS3733-D22-Team-D-SanitationRequestAPI v2.0.jar"))

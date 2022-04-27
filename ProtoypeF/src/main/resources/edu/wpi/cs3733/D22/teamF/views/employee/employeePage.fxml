@@ -18,9 +18,9 @@
    <left>
       <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="670.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Rectangle fx:id="lowerRect" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" width="675.0" />
-            <Rectangle fx:id="upperRect" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
-            <Label fx:id="employeeTitle" layoutX="74.0" layoutY="51.0" prefHeight="80.0" prefWidth="287.0" text="Employees" textFill="WHITE">
+            <Rectangle fx:id="lowerRect" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="721.0" stroke="#123090" strokeType="INSIDE" styleClass="rectangle1" width="675.0" />
+            <Rectangle fx:id="upperRect" fill="ROYALBLUE" height="169.0" layoutX="-8.0" layoutY="-2.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" styleClass="rectangle2" width="681.0" />
+            <Label fx:id="employeeTitle" layoutX="74.0" layoutY="51.0" prefHeight="80.0" prefWidth="287.0" styleClass="serviceTitle" text="Employees" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="64.0" />
                </font>
@@ -35,7 +35,7 @@
             </ImageView>
             <VBox fx:id="buttons" layoutX="188.0" layoutY="200.0" prefHeight="396.0" prefWidth="290.0">
                <children>
-                  <JFXButton fx:id="modifyButton" buttonType="RAISED" onAction="#modifyEmployee" prefHeight="76.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Modify" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton fx:id="modifyButton" buttonType="RAISED" onAction="#modifyEmployee" prefHeight="76.0" prefWidth="290.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Modify" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="addButton" buttonType="RAISED" onAction="#addEmployee" prefHeight="86.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Add" textFill="WHITE">
+                  <JFXButton fx:id="addButton" buttonType="RAISED" onAction="#addEmployee" prefHeight="86.0" prefWidth="290.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Add" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="deleteButton" buttonType="RAISED" onAction="#deleteEmployee" prefHeight="79.0" prefWidth="290.0" ripplerFill="#f2ba49" text="Delete" textFill="WHITE">
+                  <JFXButton fx:id="deleteButton" buttonType="RAISED" onAction="#deleteEmployee" prefHeight="79.0" prefWidth="290.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Delete" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>

@@ -1,13 +1,14 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.ThemeManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import java.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,19 +16,36 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/** Controller for the settings page */
 public class SettingController implements Initializable {
-  @FXML private Label themeSetLabel;
-  @FXML private JFXComboBox themeSetCombo;
-  @FXML private ImageView furretImage;
   @FXML private Label userFromLogin;
-  @FXML private JFXButton logoutButton;
+  @FXML JFXComboBox<String> choiceBox;
+  @FXML VBox pickerBox;
+  @FXML TextField nameField;
+  JFXColorPicker textPicker;
+  JFXColorPicker backPicker;
+  JFXColorPicker titlePicker;
 
-  /** Switch for logging out of the current user */
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    textPicker = new JFXColorPicker();
+    backPicker = new JFXColorPicker();
+    titlePicker = new JFXColorPicker();
+    pickerBox.getChildren().add(textPicker);
+    pickerBox.getChildren().add(backPicker);
+    pickerBox.getChildren().add(titlePicker);
+    userFromLogin.setText("Current User: " + UserType.getUserType());
+    try {
+      loadCSS();
+    } catch (SQLException | IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   @FXML
   public void logoutSwitch() {
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
@@ -43,12 +61,6 @@ public class SettingController implements Initializable {
     stage.show();
   }
 
-  /**
-   * pulls of the about page
-   *
-   * @param event
-   * @throws IOException
-   */
   @FXML
   public void aboutButton(ActionEvent event) throws IOException {
 
@@ -66,27 +78,8 @@ public class SettingController implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
-
-    //    SceneManager.getInstance().setScene("views/aboutPage.fxml");
-    //    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/aboutPage.fxml"));
-    //    Scene scene = null;
-    //    try {
-    //      scene = new Scene(fxmlLoader.load());
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    }
-    //    Stage stage = SceneManager.getInstance().getStage();
-    //    SceneManager.getInstance().setStage(stage);
-    //    stage.setScene(scene);
-    //    stage.show();
   }
 
-  /**
-   * pulles up the credit page
-   *
-   * @param event
-   * @throws IOException
-   */
   @FXML
   public void creditButton(ActionEvent event) throws IOException {
 
@@ -103,50 +96,42 @@ public class SettingController implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
-
-    //    SceneManager.getInstance().setScene("views/aboutPage.fxml");
-    //    FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/aboutPage.fxml"));
-    //    Scene scene = null;
-    //    try {
-    //      scene = new Scene(fxmlLoader.load());
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    }
-    //    Stage stage = SceneManager.getInstance().getStage();
-    //    SceneManager.getInstance().setStage(stage);
-    //    stage.setScene(scene);
-    //    stage.show();
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    userFromLogin.setText(UserType.getUserType());
-    //    themeSetLabel.setVisible(false);
-    //    themeSetCombo.setVisible(false);
-    //    furretImage.setPickOnBounds(true);
-    //    furretImage.setOnMouseClicked(
-    //        new EventHandler<MouseEvent>() {
-    //          @Override
-    //          public void handle(MouseEvent event) {
-    //            Parent root = null;
-    //            try {
-    //              root =
-    //                  FXMLLoader.load(
-    //                      Objects.requireNonNull(Fapp.class.getResource("views/aboutPage.fxml")));
-    //            } catch (IOException e) {
-    //              e.printStackTrace();
-    //            }
-    //            Stage popupwindow = new Stage();
-    //            popupwindow.initModality(Modality.APPLICATION_MODAL);
-    //            Scene scene1 = new Scene(root);
-    //            popupwindow.setScene(scene1);
-    //            popupwindow.initModality(Modality.APPLICATION_MODAL);
-    //            // popupwindow.showAndWait();
-    //          }
-    //        });
+  public void saveCSS() throws SQLException, IOException {
+    String name = nameField.getText();
+    String textColor = textPicker.getValue().toString().substring(2, 8);
+    String mainColor = backPicker.getValue().toString().substring(2, 8);
+    String subColor = titlePicker.getValue().toString().substring(2, 8);
+    if (choiceBox.getItems().contains(name)) {
+      AGlobalMethods.showAlert("This theme already exist", userFromLogin);
+    } else {
+      ThemeManager.getInstance().saveCSS(name, textColor, mainColor, subColor);
+      loadCSS();
+      nameField.clear();
+    }
   }
 
-  //  public void myFunction(String text) {
-  //    userFromLogin.setText(text);
-  //  }
+  public void deleteCSS() throws SQLException, IOException {
+    try {
+      ThemeManager.getInstance().deleteCSS(choiceBox.getValue());
+    } catch (Exception ignored) {
+      AGlobalMethods.showAlert("Please select a theme", userFromLogin);
+    }
+    loadCSS();
+  }
+
+  public void loadCSS() throws SQLException, IOException {
+    ArrayList<String> names = ThemeManager.getInstance().getCSS();
+    choiceBox.getItems().clear();
+    choiceBox.getItems().setAll(names);
+  }
+
+  public void changeCSS() throws SQLException, IOException {
+    ThemeManager.getInstance().changeCSS(choiceBox.getValue());
+  }
+
+  public void applyCSS() {
+    ThemeManager.getInstance().applyCSS();
+  }
 }

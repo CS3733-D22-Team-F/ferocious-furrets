@@ -18,11 +18,11 @@
          <top>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" style="-fx-background-color: #4169E1;" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1220.0" spacing="10.0" styleClass="linkBox2" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label prefHeight="42.0" prefWidth="401.0" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Label prefHeight="42.0" prefWidth="401.0" styleClass="linkLabel" text="DIGITAL RESOURCES" textFill="WHITE" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="SansSerif Regular" size="36.0" />
+                              <Font name="Serif Regular" size="36.0" />
                            </font>
                         </Label>
                         <ImageView fitHeight="56.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
@@ -40,7 +40,7 @@
                <children>
                   <VBox fx:id="websiteVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="NEVER">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" styleClass="linkBox">
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
@@ -100,7 +100,7 @@
                   </VBox>
                   <VBox fx:id="loginVBox" alignment="CENTER" maxHeight="560.0" prefHeight="560.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" styleClass="linkBox">
                            <VBox.margin>
                               <Insets top="-20.0" />
                            </VBox.margin>
@@ -153,7 +153,7 @@
                   </VBox>
                   <VBox fx:id="covidVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="301.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" styleClass="linkBox">
                            <children>
                               <Label prefHeight="54.0" prefWidth="168.0" text="HEALTH &amp; SAFETY" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
@@ -206,7 +206,7 @@
                   </VBox>
                   <VBox fx:id="signUpVBox" alignment="CENTER" maxHeight="560.0" prefHeight="563.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" style="-fx-background-color: #123090;">
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="278.0" styleClass="linkBox">
                            <children>
                               <Label prefHeight="61.0" prefWidth="184.0" text="CREATE A PATIENT ACCOUNT" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
