@@ -52,6 +52,7 @@ public class ThemeManager {
   public void deleteCSS(String name) throws SQLException, IOException {
     DatabaseManager.getInstance().getThemeDAO().delete(name);
     DatabaseManager.getInstance().backUpDatabaseToCSV();
+    toDefaultTheme();
   }
 
   public ArrayList<String> getCSS() throws SQLException, IOException {
