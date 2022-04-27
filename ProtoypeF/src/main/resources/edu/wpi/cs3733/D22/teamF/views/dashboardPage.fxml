@@ -58,7 +58,7 @@
                               </VBox>
                               <Pane prefHeight="422.0" prefWidth="885.0" style="-fx-background-color: white;">
                                  <children>
-                                    <MFXTableView fx:id="table" layoutX="16.0" layoutY="8.0" pickOnBounds="false" prefHeight="226.0" prefWidth="730.0" />
+                                    <MFXTableView fx:id="table" layoutX="54.0" layoutY="8.0" pickOnBounds="false" prefHeight="226.0" prefWidth="652.0" />
                                  </children>
                                  <HBox.margin>
                                     <Insets right="50.0" />
@@ -66,9 +66,9 @@
                               </Pane>
                            </children>
                         </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="319.0" prefWidth="932.0" spacing="10.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="296.0" prefWidth="928.0" spacing="10.0">
                            <children>
-                              <VBox prefHeight="234.0" prefWidth="89.0" spacing="10.0">
+                              <VBox prefHeight="292.0" prefWidth="107.0" spacing="10.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="Floor" textFill="#123090">
                                        <font>
@@ -84,7 +84,7 @@
                                     <JFXButton onAction="#prevFloor" prefHeight="26.0" prefWidth="214.0" styleClass="dashboardArrow" text="Down" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets right="120.0" />
+                                    <Insets right="50.0" />
                                  </HBox.margin>
                               </VBox>
                               <HBox prefHeight="224.0" prefWidth="583.0" spacing="10.0">
@@ -341,6 +341,9 @@
                                        </children>
                                     </VBox>
                                  </children>
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="100.0" />
+                                 </HBox.margin>
                               </HBox>
                            </children>
                         </HBox>
@@ -380,7 +383,7 @@
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
-                        <Insets top="200.0" />
+                        <Insets top="225.0" />
                      </VBox.margin>
                   </StackedBarChart>
                </children>
