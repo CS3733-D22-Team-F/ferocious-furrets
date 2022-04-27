@@ -38,7 +38,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXComboBox fx:id="choiceBox" onAction="#changeCSS" prefHeight="40.0" prefWidth="257.0">
+                  <JFXComboBox fx:id="choiceBox"  prefHeight="40.0" prefWidth="257.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>

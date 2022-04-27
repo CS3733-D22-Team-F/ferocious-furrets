@@ -113,8 +113,14 @@ public class SettingController implements Initializable {
   }
 
   public void deleteCSS() throws SQLException, IOException {
+
     try {
-      ThemeManager.getInstance().deleteCSS(choiceBox.getValue());
+      if (choiceBox.getValue().equals("default")) {
+        AGlobalMethods.showAlert("Cannot delete default theme", userFromLogin);
+      } else {
+        ThemeManager.getInstance().deleteCSS(choiceBox.getValue());
+      }
+
     } catch (Exception ignored) {
       AGlobalMethods.showAlert("Please select a theme", userFromLogin);
     }
@@ -131,7 +137,17 @@ public class SettingController implements Initializable {
     ThemeManager.getInstance().changeCSS(choiceBox.getValue());
   }
 
-  public void applyCSS() {
-    ThemeManager.getInstance().applyCSS();
+  public void applyCSS() throws SQLException, IOException {
+    try {
+      if (choiceBox.getValue() == "default") {
+        AGlobalMethods.showAlert("Already default theme", userFromLogin);
+      } else {
+        changeCSS();
+        ThemeManager.getInstance().applyCSS();
+      }
+    } catch (Exception ignored) {
+      AGlobalMethods.showAlert("PLease select a theme", userFromLogin);
+    }
+    loadCSS();
   }
 }
