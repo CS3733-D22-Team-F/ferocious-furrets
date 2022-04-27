@@ -243,7 +243,6 @@ public class DashboardController implements Initializable {
     for (List<Alert> floorAlert : allFloorAlerts)
       for (Alert inFloorAlert : floorAlert) {
         JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
-        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
         layoutAlerts.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
       }
   }
