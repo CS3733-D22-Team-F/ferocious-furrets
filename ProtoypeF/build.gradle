@@ -62,6 +62,8 @@ dependencies {
 
     implementation name : 'edu.wpi.cs3733.D22.teamF'
 
+    compile 'com.fazecast:jSerialComm:[2.0.0,3.0.0)'
+
     testCompile(
             "org.testfx:testfx-core:4.0.16-alpha",
             'org.junit.jupiter:junit-jupiter:5.8.2',

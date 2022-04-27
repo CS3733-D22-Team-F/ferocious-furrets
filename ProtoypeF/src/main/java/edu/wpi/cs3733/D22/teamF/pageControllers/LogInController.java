@@ -99,7 +99,8 @@ public class LogInController extends ReturnHomePage implements Initializable {
     } else if (usernameField.getText().equals("staff") && passwordField.getText().equals("staff")) {
       userType.setUserType("staff");
       success = true;
-    } else if (usernameField.getText().equals("Nick") && passwordField.getText().equals("Grozdani")) {
+    } else if (usernameField.getText().equals("Nick")
+        && passwordField.getText().equals("Grozdani")) {
       islandBois.setVisible(true);
       usernameField.clear();
       passwordField.clear();

@@ -6,9 +6,7 @@ import org.docx4j.Docx4jProperties;
 import org.docx4j.documents4j.local.Documents4jLocalServices;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
 
-/**
- * converts files to PDFs
- */
+/** converts files to PDFs */
 public class PDFConverter {
 
   String inputFile;
@@ -16,6 +14,7 @@ public class PDFConverter {
 
   /**
    * contructor taking in the String of the input file path and output file path
+   *
    * @param inputFile
    * @param outputFile
    */
@@ -26,6 +25,7 @@ public class PDFConverter {
 
   /**
    * converts the input file into a pdf
+   *
    * @throws IOException
    * @throws Docx4JException
    */
