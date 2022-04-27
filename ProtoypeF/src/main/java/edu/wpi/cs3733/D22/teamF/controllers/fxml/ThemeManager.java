@@ -307,6 +307,18 @@ public class ThemeManager {
                 + "    -fx-font-family: Serif;\n"
                 + "    -fx-font-size: 14px;\n"
                 + "    -fx-text-fill: f-white;\n"
+                + "}"
+                + "\n"
+                + ".dashChart{\n"
+                + "    -fx-fill: f-maincolor;\n"
+                + "}"
+                + "\n"
+                + ".default-color0.chart-bar{\n"
+                + "    -fx-bar-fill: f-maincolor;\n"
+                + "}\n"
+                + "\n"
+                + ".default-color1.chart-bar{\n"
+                + "    -fx-bar-fill: f-subcolor;\n"
                 + "}",
             main, sub, text));
     writer.flush();
