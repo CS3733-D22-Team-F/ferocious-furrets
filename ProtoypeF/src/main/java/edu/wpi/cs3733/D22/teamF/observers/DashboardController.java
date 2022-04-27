@@ -221,7 +221,6 @@ public class DashboardController implements Initializable {
     for (List<Alert> floorAlert : allFloorAlerts)
       for (Alert inFloorAlert : floorAlert) {
         JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
-        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
         layoutAlerts.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
       }
   }
@@ -257,10 +256,7 @@ public class DashboardController implements Initializable {
     //            + floorObservers.get(currentFloor.toInt()).getInUse().size());
 
     List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
-    for (int alert = 0; alert < currentAlerts.size(); alert++)
-      //      System.out.println(currentAlerts.get(alert).getMessage());
-
-      floorObservers.get(currentFloor.toInt()).updateLabels();
+    floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
     AlertObserver.getInstance().setFloorAlertCount();
   }
