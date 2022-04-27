@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Updated side drawer to set sanitation button as &quot;Facilities&quot; to match page title">
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Updated report feature so user selects template file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/EquipmentRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/EquipmentRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/RequestListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/RequestListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/reports/GenerateReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/reports/GenerateReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/mapPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/CachePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/pageControllers/CachePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/cachePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/cachePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/theme.css" afterDir="false" />
     </list>
     <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -282,8 +280,8 @@
       <list>
         <item itemvalue="JAR Application.ProtoypeF-all.jar" />
         <item itemvalue="Gradle.ProtoypeF [shadowJar]" />
-        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle.ProtoypeF [runShadow]" />
+        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
       </list>
     </recent_temporary>
@@ -651,7 +649,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651093513980</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Updated report feature so user selects template file">
+      <created>1651096773715</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1651096773715</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +711,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Abstracted employeeIDFinder and nodeIDFinder to the superclass PageController" />
     <MESSAGE value="Fixed database bug, changed logInController to set the connection type in DatabaseInitializer, then call initialize database in the Load class, fixed table not found error" />
     <MESSAGE value="Fixed filepath error that sent user to medical request page when you clicked on the equipment tab" />
     <MESSAGE value="Added JFXTreeTableView to physicalTherapy request" />
@@ -731,7 +735,8 @@
     <MESSAGE value="Physical therapy requests now display as request on map, not location" />
     <MESSAGE value="Facilities requests now get deleted from map when marked as done" />
     <MESSAGE value="Updated side drawer to set sanitation button as &quot;Facilities&quot; to match page title" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated side drawer to set sanitation button as &quot;Facilities&quot; to match page title" />
+    <MESSAGE value="Updated report feature so user selects template file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated report feature so user selects template file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
