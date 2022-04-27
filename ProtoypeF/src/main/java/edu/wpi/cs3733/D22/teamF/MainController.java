@@ -442,6 +442,7 @@ public class MainController implements Initializable {
   }
 
   public void setAlerts() {
+
     List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
     alertLabel.setText(Integer.toString(allFloorAlerts.size()));
     for (List<Alert> floorAlert : allFloorAlerts)
