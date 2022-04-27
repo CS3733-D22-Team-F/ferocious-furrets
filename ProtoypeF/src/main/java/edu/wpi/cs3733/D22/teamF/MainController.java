@@ -8,14 +8,12 @@ import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
-import edu.wpi.cs3733.D22.teamF.observers.Alert;
 import edu.wpi.cs3733.D22.teamF.observers.AlertObserver;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -442,14 +440,7 @@ public class MainController implements Initializable {
   }
 
   public void setAlerts() {
-
-    List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
-    alertLabel.setText(Integer.toString(allFloorAlerts.size()));
-    for (List<Alert> floorAlert : allFloorAlerts)
-      for (Alert inFloorAlert : floorAlert) {
-        JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
-        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
-        alertsList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
-      }
+    AlertObserver.getInstance().setAppAlertNodeList(alertsList);
+    AlertObserver.getInstance().setAppAlertsLabel(alertLabel);
   }
 }

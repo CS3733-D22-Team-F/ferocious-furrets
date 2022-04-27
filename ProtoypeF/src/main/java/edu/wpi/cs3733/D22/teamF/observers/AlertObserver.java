@@ -1,10 +1,12 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
 
 public class AlertObserver implements PropertyChangeListener {
   private static List<List<Alert>> allFloorAlerts = new ArrayList<>();
@@ -20,11 +22,19 @@ public class AlertObserver implements PropertyChangeListener {
   private int fl5Count = 0;
   private int totalAlertCount = 0;
 
+  private JFXNodesList appAlertNodeList;
+  private JFXNodesList dashBoardNodeList;
+
+  private boolean isDashAlertsReady;
+  private boolean isAppAlertsReady;
+  private Label appAlertLabel;
+
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
     allFloorAlerts = DashboardObserver.getAllFloorAlerts();
     setFloorAlertCount();
     updateButtons();
+    updateAppAlerts();
   }
 
   public static AlertObserver getInstance() {
@@ -51,8 +61,43 @@ public class AlertObserver implements PropertyChangeListener {
     }
   }
 
+  //TODO
   public void setAlertNotifications(List<JFXButton> buttons) {
     this.buttonsToUpdate = buttons;
+  }
+
+  public void setDashBoardNodeList(JFXNodesList newList) {
+    this.dashBoardNodeList = newList;
+    isDashAlertsReady = true;
+  }
+
+  public void setAppAlertNodeList(JFXNodesList newList) {
+    this.appAlertNodeList = newList;
+    isAppAlertsReady = true;
+  }
+
+  public void setAppAlertsLabel(Label newLabel) {
+    this.appAlertLabel = newLabel;
+  };
+
+  public void updateAppAlerts() {
+
+    if (isAppAlertsReady & isDashAlertsReady) {
+      this.appAlertNodeList.getChildren().removeAll();
+      this.dashBoardNodeList.getChildren().removeAll();
+
+      for (List<Alert> floorAlert : allFloorAlerts)
+        for (Alert inFloorAlert : floorAlert) {
+          JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
+          newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
+
+          appAlertNodeList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
+          dashBoardNodeList.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
+
+          this.appAlertLabel.setText(String.valueOf(totalAlertCount)); 
+          System.out.println(totalAlertCount);
+        }
+    }
   }
 
   public void updateButtons() {

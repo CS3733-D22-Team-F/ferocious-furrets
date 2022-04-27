@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.observers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import java.net.URL;
 import java.sql.SQLException;
@@ -163,17 +162,7 @@ public class DashboardController implements Initializable {
   }
 
   public void setAlerts() {
-
-    layoutAlerts.getChildren().removeAll();
-
-    List<List<Alert>> allFloorAlerts = AlertObserver.getInstance().getAllFloorAlerts();
-
-    for (List<Alert> floorAlert : allFloorAlerts)
-      for (Alert inFloorAlert : floorAlert) {
-        JFXButton newAlert = new JFXButton(inFloorAlert.getMessage());
-        newAlert.buttonTypeProperty().set(JFXButton.ButtonType.RAISED);
-        layoutAlerts.getChildren().add(new JFXButton(inFloorAlert.getMessage()));
-      }
+    AlertObserver.getInstance().setDashBoardNodeList(layoutAlerts);
   }
 
   public void readFloorInput() {
