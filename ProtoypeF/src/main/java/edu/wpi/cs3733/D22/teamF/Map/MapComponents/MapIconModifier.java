@@ -580,7 +580,8 @@ public class MapIconModifier {
       VBox infoBox,
       JFXTextArea locationArea)
       throws FileNotFoundException, SQLException {
-    if (!location.getShortName().equalsIgnoreCase("done")) {
+    if (!(location.getShortName().equalsIgnoreCase("done")
+        || location.getShortName().equalsIgnoreCase("COMPLETED"))) {
       JFXButton newButton = new JFXButton("", MapIconModifier.getIcon(location.getNodeType()));
       newButton.setPrefSize(20, 20);
       newButton.setMinSize(20, 20);
@@ -685,7 +686,8 @@ public class MapIconModifier {
                     .set(locationArea.scrollTopProperty().get() + 1 * e.getDeltaY());
               });
         } else if (getLocType(location).equalsIgnoreCase("service")
-            && !location.getShortName().equalsIgnoreCase("done")) {
+            && !(location.getShortName().equalsIgnoreCase("done")
+                || location.getShortName().equalsIgnoreCase("COMPLETED"))) {
           newButton.setOnAction(
               e -> {
                 if (MapIconModifier.locationIconList.containsValue(newButton)) {
@@ -852,7 +854,7 @@ public class MapIconModifier {
     if (location.getNodeType().equals("Infusion Pump")
         || location.getNodeType().equals("Bed")
         || location.getNodeType().equals("Recliner")
-        || location.getNodeType().equals("Xray")) {
+        || location.getNodeType().equals("X-Ray")) {
       return "equipment";
     } else if (location.getNodeType().equals("Audio/Visual")
         || location.getNodeType().equals("Equipment")
