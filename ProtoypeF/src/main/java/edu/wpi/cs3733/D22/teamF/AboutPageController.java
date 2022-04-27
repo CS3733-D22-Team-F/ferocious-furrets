@@ -354,11 +354,5 @@ public class AboutPageController implements Initializable {
     raffi.setPickOnBounds(true);
     carter.setPickOnBounds(true);
     nikola.setPickOnBounds(true);
-
-    //    bannerAnchor.maxWidthProperty().bind(creditPane.maxHeightProperty());
-    //    creditVbox.layoutXProperty().bind(creditPane.maxWidthProperty());
-    //    creditVbox.layoutYProperty().bind(creditPane.maxHeightProperty());
-    //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
-    //    ((Stage) (creditVbox.getScene().getWindow())).setResizable(false);
   }
 }
