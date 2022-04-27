@@ -11,7 +11,7 @@
 
 <StackPane fx:id="pagePane" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.APILandingPageController">
    <children>
-      <BorderPane prefHeight="724.0" prefWidth="1245.0" stylesheets="@../stylesheets/RequestPages.css">
+      <BorderPane prefHeight="724.0" prefWidth="1245.0" >
          <center>
             <StackPane prefHeight="770.0" prefWidth="1220.0">
                <children>
@@ -22,19 +22,19 @@
                   </ImageView>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="660.0" prefWidth="1214.0" spacing="15.0" stylesheets="@../stylesheets/RequestPages.css">
+                        <VBox alignment="CENTER" prefHeight="660.0" prefWidth="1214.0" spacing="15.0">
                            <children>
-                              <JFXButton fx:id="medicineTeamF" onAction="#changeToMedicine" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #123090;" text="Medicine Request - Team F" textFill="WHITE">
+                              <JFXButton fx:id="medicineTeamF" onAction="#changeToMedicine" prefHeight="60.0" prefWidth="500.0" styleClass="apiButton" text="Medicine Request - Team F" textFill="WHITE">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="facilitiesTeamD" onAction="#changeToFacilities" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #123090;" text="Sanitation Request - Team D" textFill="WHITE">
+                              <JFXButton fx:id="facilitiesTeamD" onAction="#changeToFacilities" prefHeight="60.0" prefWidth="500.0" styleClass="apiButton" text="Sanitation Request - Team D" textFill="WHITE">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="internalPatientTransportTeamB" onAction="#changeToIntPatient" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #123090;" text="Internal Patient Transport Request - Team B" textFill="WHITE">
+                              <JFXButton fx:id="internalPatientTransportTeamB" onAction="#changeToIntPatient" prefHeight="60.0" prefWidth="500.0" styleClass="apiButton" text="Internal Patient Transport Request - Team B" textFill="WHITE">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>

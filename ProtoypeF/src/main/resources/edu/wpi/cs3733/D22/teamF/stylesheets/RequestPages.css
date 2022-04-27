@@ -84,3 +84,7 @@
     -fx-text-fill: f-maincolor;
     -fx-font-size: 24px;
 }
+
+#serviceMenu {
+    -fx-background-color: f-subcolor;
+}

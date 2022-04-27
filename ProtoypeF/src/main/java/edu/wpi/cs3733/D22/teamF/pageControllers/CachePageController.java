@@ -4,6 +4,7 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Load;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.fxml.ThemeManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,6 +44,7 @@ public class CachePageController implements Initializable {
                 new Scene(FXMLLoader.load(Fapp.class.getResource("views/pageHolder.fxml")));
             stage.setScene(scene);
             stage.show();
+            ThemeManager.getInstance().toDefaultTheme();
           } catch (IOException ex) {
             ex.printStackTrace();
           }

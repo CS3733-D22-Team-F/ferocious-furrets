@@ -18,7 +18,7 @@
    <children>
       <StackPane prefHeight="60.0" prefWidth="1220.0">
          <children>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="1220.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle2" width="1220.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" text="Setting" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="48.0" />
@@ -50,7 +50,7 @@
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" prefHeight="40.0" text="Default">
+                        <JFXButton buttonType="RAISED" onAction="#deleteCSS" prefHeight="40.0" text="Delete">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -145,12 +145,12 @@
                         <Image url="@../loginpfp.png" />
                      </image>
                   </ImageView>
-                  <JFXButton fx:id="logoutButton" buttonType="RAISED" onAction="#logoutSwitch" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="Logout" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#logoutSwitch" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Logout" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="About Page" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="About Page" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -158,7 +158,7 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #123090;" text="Credits" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Credits" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>

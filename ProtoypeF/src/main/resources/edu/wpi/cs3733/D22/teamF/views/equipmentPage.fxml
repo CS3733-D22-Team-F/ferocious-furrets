@@ -16,15 +16,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.EquipmentRequestController">
+<BorderPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.EquipmentRequestController">
    <left>
       <Pane prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#f2ba4900" strokeType="INSIDE" width="600.0" />
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="#f2ba4900" strokeType="INSIDE" width="600.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#f2ba4900" strokeType="INSIDE" styleClass="rectangle1" width="600.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="130.0" stroke="#f2ba4900" strokeType="INSIDE" styleClass="rectangle2" width="600.0" />
             <HBox fx:id="leftHBox3" layoutX="-5.0" layoutY="26.0" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="587.0" text="Equipment Request" textFill="WHITE">
+                  <Label fx:id="topLabel" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="587.0" styleClass="serviceTitle" text="Equipment Request" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>
@@ -39,25 +39,25 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="124.0" layoutY="575.0" prefHeight="53.0" prefWidth="460.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="leftHBox1" alignment="TOP_CENTER" layoutX="124.0" layoutY="575.0" prefHeight="53.0" prefWidth="460.0">
                <children>
-                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+                  <JFXButton fx:id="submitButton" buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="174.0" ripplerFill="#f3ba48" styleClass="serviceButton" text="Submit" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#resetFunction" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f5bc4b" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                  <JFXButton fx:id="resetButton" buttonType="RAISED" onAction="#resetFunction" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f5bc4b" styleClass="serviceButton" text="Reset" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
                </children>
             </HBox>
-            <VBox fx:id="leftVBox" layoutY="156.0" prefHeight="340.0" prefWidth="600.0" spacing="10.0" stylesheets="@../stylesheets/combobox.css">
+            <VBox fx:id="leftVBox" layoutY="156.0" prefHeight="340.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="258.0" text="Location:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="258.0" styleClass="serviceLabel" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location">
+                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location" styleClass="serviceCombo">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -77,12 +77,12 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" text="Assigned Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" styleClass="serviceLabel" text="Assigned Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="employeeIDField" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
+                        <JFXComboBox fx:id="employeeIDField" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee" styleClass="serviceCombo">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -94,12 +94,12 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" text="Request Employee: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" styleClass="serviceLabel" text="Request Employee: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee" />
+                        <JFXComboBox fx:id="userField" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee" styleClass="serviceCombo" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -107,12 +107,12 @@
                   </HBox>
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" text="Equipment Type: " textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" styleClass="serviceLabel" text="Equipment Type: " textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <JFXComboBox fx:id="typeChoice" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Equipment Type" unFocusColor="#ffffff00" />
+                        <JFXComboBox fx:id="typeChoice" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Equipment Type" styleClass="serviceCombo" unFocusColor="#ffffff00" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -120,7 +120,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="621.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="263.0" text="Status:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="263.0" styleClass="serviceLabel" text="Status:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -131,7 +131,7 @@
                               <Insets right="-7.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="300.0" promptText="Status" unFocusColor="#ffffff00" />
+                        <JFXComboBox fx:id="statusChoice" prefHeight="50.0" prefWidth="300.0" promptText="Status" styleClass="serviceCombo" unFocusColor="#ffffff00" />
                      </children>
                      <VBox.margin>
                         <Insets />

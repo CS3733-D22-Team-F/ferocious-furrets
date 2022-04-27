@@ -16,15 +16,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../combobox.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController">
     <left>
         <Pane fx:id="leftPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#123090" strokeType="INSIDE" width="600.0" />
-                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+                <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="#123090" strokeType="INSIDE" styleClass="rectangle1" width="600.0" />
+                <Rectangle fx:id="rectangle2" fill="ROYALBLUE" height="130.0" smooth="false" stroke="#3e8cd0" strokeType="INSIDE" strokeWidth="0.0" styleClass="rectangle2" width="600.0" />
             <HBox layoutY="30.0" prefHeight="94.0" prefWidth="600.0">
                <children>
-                      <Label prefHeight="80.0" prefWidth="531.0" text="Physical Therapy" textFill="WHITE">
+                      <Label prefHeight="80.0" prefWidth="531.0" styleClass="serviceTitle" text="Physical Therapy" textFill="WHITE">
                           <font>
                               <Font name="Serif Regular" size="49.0" />
                           </font>
@@ -46,7 +46,7 @@
               <children>
                   <VBox fx:id="labelVBox" prefHeight="432.0" prefWidth="237.0" spacing="10.0">
                       <children>
-                          <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="50.0" prefWidth="239.0" text="Location:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="50.0" prefWidth="239.0" styleClass="serviceLabel" text="Location:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
@@ -54,7 +54,7 @@
                                   <Insets />
                               </VBox.margin>
                           </Label>
-                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="277.0" text="Assigned Employee:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="277.0" styleClass="serviceLabel" text="Assigned Employee:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
@@ -62,7 +62,7 @@
                                   <Insets />
                               </VBox.margin>
                           </Label>
-                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="268.0" text="Requesting Employee:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="268.0" styleClass="serviceLabel" text="Requesting Employee:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
@@ -70,7 +70,7 @@
                                   <Insets />
                               </VBox.margin>
                           </Label>
-                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" text="PT Type:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" styleClass="serviceLabel" text="PT Type:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
@@ -78,17 +78,17 @@
                                   <Insets />
                               </VBox.margin>
                           </Label>
-                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" text="Duration:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="364.0" styleClass="serviceLabel" text="Duration:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
                           </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="239.0" text="Doctor's Notes:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="239.0" styleClass="serviceLabel" text="Doctor's Notes:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="398.0" text="Status:" textFill="WHITE">
+                          <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="398.0" styleClass="serviceLabel" text="Status:" textFill="WHITE">
                               <font>
                                   <Font name="Serif Regular" size="24.0" />
                               </font>
@@ -103,37 +103,37 @@
                   </VBox>
                   <VBox fx:id="comboVBox" prefHeight="428.0" prefWidth="300.0" spacing="10.0">
                   <children>
-                      <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location">
+                      <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="300.0" promptText="Location" styleClass="serviceCombo">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee">
+                      <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="300.0" promptText="Assigned Employee" styleClass="serviceCombo">
                           <VBox.margin>
                               <Insets />
                           </VBox.margin>
                       </JFXComboBox>
-                      <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee">
+                      <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="300.0" promptText="Requesting Employee" styleClass="serviceCombo">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="typeChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText="Physical Therapy Type" unFocusColor="#00000080">
+                  <JFXComboBox fx:id="typeChoice" focusColor="#123090" prefHeight="51.0" prefWidth="690.0" promptText="Physical Therapy Type" styleClass="serviceCombo" unFocusColor="#00000080">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
                   </JFXComboBox>
-                        <TextField fx:id="durationTime" prefHeight="51.0" prefWidth="690.0" promptText="Duration">
+                        <TextField fx:id="durationTime" prefHeight="51.0" prefWidth="690.0" promptText="Duration" styleClass="serviceCombo">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </TextField>
-                        <TextArea fx:id="notes" prefHeight="50.0" prefWidth="304.0" promptText="Notes:">
+                        <TextArea fx:id="notes" prefHeight="50.0" prefWidth="304.0" promptText="Notes:" styleClass="serviceCombo">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </TextArea>
-                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="50.0" prefWidth="690.0" promptText=" Status" unFocusColor="#0000007e">
+                  <JFXComboBox fx:id="statusChoice" focusColor="#123090" layoutX="10.0" layoutY="214.0" prefHeight="50.0" prefWidth="690.0" promptText=" Status" styleClass="serviceCombo" unFocusColor="#0000007e">
                       <VBox.margin>
                           <Insets />
                       </VBox.margin>
@@ -144,7 +144,7 @@
   </HBox>
   <HBox fx:id="leftHbox" layoutX="120.0" layoutY="575.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="350.0">
       <children>
-          <JFXButton fx:id="submitButton" buttonType="RAISED" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#submit" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f2ba49" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+          <JFXButton fx:id="submitButton" buttonType="RAISED" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#submit" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Submit" textFill="WHITE">
               <font>
                   <Font name="Serif Regular" size="24.0" />
               </font>
@@ -152,7 +152,7 @@
                   <Insets />
               </HBox.margin>
           </JFXButton>
-          <JFXButton fx:id="resetButton" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f2ba49" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+          <JFXButton fx:id="resetButton" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Reset" textFill="WHITE">
               <font>
                   <Font name="Serif Regular" size="24.0" />
               </font>
