@@ -2,6 +2,9 @@ package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
+import edu.wpi.cs3733.D22.teamD.API.SanitationReqAPI;
+import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
@@ -15,6 +18,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -240,6 +244,35 @@ public class RequestListController extends PageController implements Initializab
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
 
+    DatabaseController dbc = new DatabaseController();
+    List<edu.wpi.cs3733.D22.teamB.api.Request> intPatientRequests = dbc.listRequests();
+    for (edu.wpi.cs3733.D22.teamB.api.Request r : intPatientRequests) {
+      if (r.getStatus().equalsIgnoreCase("Processing")) {
+        rt =
+            new RequestTree(
+                r.getRequestID(),
+                r.getStartLocation().getNodeID(),
+                r.getEmployeeID(),
+                r.getEmployeeID(),
+                r.getStatus());
+        reqs.add(rt);
+      }
+    }
+
+    SanitationReqAPI reqAPI = new SanitationReqAPI();
+    List<SanitationIRequest> sanitationRequests = reqAPI.getAllRequests();
+    for (SanitationIRequest i : sanitationRequests) {
+      if (i.getCleanStatus().toString().equals("IN_PROGRESS")) {
+        rt =
+            new RequestTree(
+                i.getNodeID(),
+                i.getRoomID(),
+                i.getAssigneeID(),
+                i.getRequesterID(),
+                i.getCleanStatus().toString());
+        reqs.add(rt);
+      }
+    }
     while (rset.next()) {
       rt =
           new RequestTree(

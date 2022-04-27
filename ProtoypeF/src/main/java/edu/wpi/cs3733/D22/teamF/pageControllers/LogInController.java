@@ -74,6 +74,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
   /** logs in, or states message the username or password are wrong */
   @FXML
   private void logIn(ActionEvent event) throws SQLException, IOException {
+
     boolean success = false;
     UserType userType = new UserType();
     if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
@@ -103,10 +104,9 @@ public class LogInController extends ReturnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      System.out.println(databaseChooser.getValue().toString());
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
-      System.out.println(embedded);
+
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new CachePageController(embedded));
       Scene scene = null;

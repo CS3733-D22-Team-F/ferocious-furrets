@@ -1,7 +1,8 @@
 package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
+import edu.wpi.cs3733.D22.teamB.api.API;
+import edu.wpi.cs3733.D22.teamD.API.*;
 import edu.wpi.cs3733.D22.teamF.Exceptions.ServiceException;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.MedicineRequest;
@@ -31,9 +32,19 @@ public class APILandingPageController implements Initializable {
     medicineTeamF.setGraphic(MapIconModifier.getIcon("medicineMenu"));
   }
 
-  public void changeToIntPatient() throws IOException {
+  public void changeToIntPatient()
+      throws IOException, edu.wpi.cs3733.D22.teamB.api.ServiceException {
     // TODO add Team B run() method
-    AGlobalMethods.showAlert("Team B API Page", pagePane);
+    // AGlobalMethods.showAlert("Team B API Page", pagePane);
+    API internalPatientPage = new API();
+    internalPatientPage.run(
+        100,
+        100,
+        1220,
+        660,
+        "edu/wpi/cs3733/D22/teamF/stylesheets/RequestPages.css",
+        "FDEPT00201",
+        "FDEPT00301");
   }
 
   public void changeToMedicine() throws IOException, ServiceException {
@@ -42,7 +53,9 @@ public class APILandingPageController implements Initializable {
 
   public void changeToFacilities() throws IOException {
     // TODO add Team D run() method
-    AGlobalMethods.showAlert("Team D API Page", pagePane);
+    // AGlobalMethods.showAlert("Team D API Page", pagePane);
+    StartAPI.appLaunch(
+        0, 0, 0, 0, "edu/wpi/cs3733/D22/teamF/stylesheets/RequestPages.css", "FDEPT00301");
   }
 
   public void changeTo(String path) throws IOException {

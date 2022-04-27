@@ -161,3 +161,4 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/java,macos,gradle,intellij+all
 
 /myDB/
+TEAMC_API_DB/*
