@@ -46,11 +46,17 @@ public class LocationsDAOImpl implements LocationDAO {
   public void initTable(String Filepath) throws SQLException, IOException {
     Cache.clearLocations();
     ArrayList<Location> locations = new ArrayList<>();
-    DatabaseManager.getInstance().dropTableIfExist("Locations");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE Locations (nodeID varchar(16) PRIMARY KEY, Xcoord int, Ycoord int, Floor varchar(4), Building varchar(255), NodeType varchar(255), LongName varchar(255), ShortName varchar(128))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        Cache.updateDBCache(Cache.DBType.DBT_LOC);
+        return;
+      }
+      e.printStackTrace();
+    }
     List<String> lines = CSVReader.readResourceFilepath(Filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

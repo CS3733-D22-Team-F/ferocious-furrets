@@ -6,7 +6,6 @@ import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.ReturnHomePage;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
-import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
 import java.io.IOException;
 import java.net.URL;
@@ -68,7 +67,6 @@ public class LogInController extends ReturnHomePage implements Initializable {
    */
   @FXML
   private void helpQuit() throws SQLException, IOException {
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
     System.exit(0);
   }
   /** logs in, or states message the username or password are wrong */

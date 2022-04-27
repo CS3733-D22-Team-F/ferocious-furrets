@@ -46,12 +46,10 @@ public class ThemeManager {
       throws IOException, SQLException {
     Theme newTheme = new Theme(name, mainColor, subColor, textColor);
     DatabaseManager.getInstance().getThemeDAO().add(newTheme);
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
   }
 
   public void deleteCSS(String name) throws SQLException, IOException {
     DatabaseManager.getInstance().getThemeDAO().delete(name);
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
     toDefaultTheme();
   }
 

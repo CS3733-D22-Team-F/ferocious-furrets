@@ -25,9 +25,17 @@ public class MealDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String file) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("mealRequest");
-    DatabaseManager.getInstance()
-        .runStatement("CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE mealRequest (reqID varchar(16) PRIMARY KEY, meal varChar(32))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

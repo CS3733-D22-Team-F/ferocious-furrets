@@ -39,10 +39,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("Employee");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE Employee (employeeID varchar(16) PRIMARY KEY, firstName varchar(16), lastName varchar(16), salary varChar(16))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
 
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
