@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.ReturnHomePage;
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoConnection;
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoLogin;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
@@ -53,12 +55,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
 
   private ConnType dbType;
 
-  /*
-   * method to send user to the homepage after a successful authentication of username and password
-   */
-  public void loginSuccess() throws IOException {
-    // StageManager.getInstance().setDisplay("homePage.fxml");
-  }
+  ArduinoLogin ardLogin = new ArduinoLogin();
 
   /**
    * backs up the db to csvs then quits the application
@@ -73,7 +70,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
   }
   /** logs in, or states message the username or password are wrong */
   @FXML
-  private void logIn(ActionEvent event) throws SQLException, IOException {
+  private void logIn(ActionEvent event) throws SQLException, IOException, InterruptedException {
 
     //    FXMLLoader settingLoader = new
     // FXMLLoader(getClass().getResource("views/settingsPage.fxml"));
@@ -82,7 +79,13 @@ public class LogInController extends ReturnHomePage implements Initializable {
 
     boolean success = false;
     UserType userType = new UserType();
-    if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
+
+    if (usernameField.getText().equals("admin") && passwordField.getText().equals("")) {
+      if (ardLogin.login()) {
+        userType.setUserType("admin");
+        success = true;
+      }
+    } else if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
       userType.setUserType("admin");
       success = true;
     } else if (usernameField.getText().equals("nurse") && passwordField.getText().equals("nurse")) {
@@ -145,6 +148,12 @@ public class LogInController extends ReturnHomePage implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    try {
+      ArduinoConnection.getArduinoConnection().startConnection("COM9");
+    } catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
+
     ArrayList<Object> databaseDrop = new ArrayList<>();
     databaseDrop.add("");
     databaseDrop.add("Embedded");
