@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 public class ArduinoConnection {
 
   SerialPort arduinoPort;
+  static SerialPort[] allPorts;
 
   private ArduinoConnection() {}
 
@@ -23,6 +24,8 @@ public class ArduinoConnection {
   public SerialPort getSerialPort() throws IOException, InterruptedException {
     return arduinoPort;
   }
+
+  public void startConnectionSearchPorts() {}
 
   public void startConnection(String port) throws InterruptedException, IOException {
     //    arduinoPort = SerialPort.getCommPorts()[0];

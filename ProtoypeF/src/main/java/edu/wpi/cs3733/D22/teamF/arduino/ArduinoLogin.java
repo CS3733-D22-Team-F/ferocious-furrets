@@ -10,6 +10,9 @@ public class ArduinoLogin {
   public ArduinoLogin() {}
 
   public boolean login() throws IOException, InterruptedException {
+    if (!conn.getSerialPort().openPort()) {
+      conn.startConnectionSearchPorts();
+    }
     boolean retVal = false;
     sendUserEnteredUsername();
     waitUntilUsernameAck();
