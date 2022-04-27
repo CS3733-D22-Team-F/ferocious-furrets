@@ -146,7 +146,7 @@ public class DashboardController implements Initializable {
     int outstandingSR = 0;
     for (RequestObject r : requests) {
       if (r.getStatus().equalsIgnoreCase("PROCESSING")) {
-        outstandingSR ++;
+        outstandingSR++;
       }
     }
     outstandingServiceRequestLabel.setText(
