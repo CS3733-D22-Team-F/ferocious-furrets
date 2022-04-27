@@ -29,12 +29,9 @@ public class Fapp extends Application {
    * @throws SQLException
    */
   @Override
-  public void start(Stage primaryStage) throws IOException, SQLException {
-    try {
-      ArduinoConnection.getArduinoConnection().startConnection("COM9");
-    } catch (InterruptedException | IOException e) {
-      e.printStackTrace();
-    }
+  public void start(Stage primaryStage) throws IOException, SQLException, InterruptedException {
+    ArduinoConnection.getArduinoConnection().startConnectionSearchPorts();
+
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
     Cache.startDB(true);
     UserType.setUserType("admin");

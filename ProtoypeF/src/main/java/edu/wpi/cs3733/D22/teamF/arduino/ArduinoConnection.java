@@ -25,7 +25,26 @@ public class ArduinoConnection {
     return arduinoPort;
   }
 
-  public void startConnectionSearchPorts() {}
+  public void startConnectionSearchPorts() throws InterruptedException {
+    allPorts = SerialPort.getCommPorts();
+    for (int i = allPorts.length - 1; i >= 0; i--) {
+      allPorts[i].openPort();
+      if (allPorts[i].isOpen()) {
+        arduinoPort = allPorts[i];
+        System.out.println(arduinoPort.getDescriptivePortName());
+        arduinoPort.setComPortParameters(115200, 8, 1, 0);
+        arduinoPort.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0);
+        break;
+      }
+    }
+    Thread.sleep(2000);
+    if (arduinoPort.openPort()) {
+      System.out.println(arduinoPort.getDescriptivePortName());
+      System.out.println("Port opened");
+    } else {
+      System.out.println("Port not opened");
+    }
+  }
 
   public void startConnection(String port) throws InterruptedException, IOException {
     //    arduinoPort = SerialPort.getCommPorts()[0];
