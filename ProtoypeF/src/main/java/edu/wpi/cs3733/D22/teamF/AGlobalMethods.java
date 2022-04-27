@@ -3,10 +3,18 @@ package edu.wpi.cs3733.D22.teamF;
 import com.jfoenix.animation.alert.JFXAlertAnimation;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXDialogLayout;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class AGlobalMethods {
 
@@ -49,5 +57,41 @@ public class AGlobalMethods {
     alert.setContent(layout);
     alert.initModality(Modality.NONE);
     alert.showAndWait();
+  }
+
+  public void helper(String file, String name) {
+    Parent root = null;
+    try {
+      root = FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource(file)));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Stage popupwindow = new Stage();
+    popupwindow.setTitle(name);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+  }
+
+  public void helperForAudio(String file, String name, String musicFile) {
+    Parent root = null;
+    try {
+      root = FXMLLoader.load(Objects.requireNonNull(Fapp.class.getResource(file)));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    AudioPlayer.getInstance().setAudioInputStream(musicFile);
+    AudioPlayer.getInstance().playFrom(1000);
+
+    Stage popupwindow = new Stage();
+    popupwindow.setTitle(name);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    Scene scene1 = new Scene(root);
+    popupwindow.setScene(scene1);
+    popupwindow.initModality(Modality.APPLICATION_MODAL);
+    popupwindow.showAndWait();
+    AudioPlayer.getInstance().stop();
   }
 }
