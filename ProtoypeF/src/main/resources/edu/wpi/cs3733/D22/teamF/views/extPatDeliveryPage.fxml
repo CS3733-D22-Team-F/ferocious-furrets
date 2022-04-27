@@ -6,8 +6,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -31,10 +29,6 @@
                         <Insets left="50.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../MenuIcon/patient.png" />
-                     </image></ImageView>
                </children>
             </HBox>
             <HBox fx:id="bottomHBox" layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="300.0">

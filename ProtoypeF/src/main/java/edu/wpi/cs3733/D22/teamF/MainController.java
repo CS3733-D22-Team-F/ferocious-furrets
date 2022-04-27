@@ -66,6 +66,7 @@ public class MainController implements Initializable {
   @FXML JFXButton landingButton;
   @FXML JFXButton apiLandingButton;
   @FXML JFXButton patientButton;
+  @FXML JFXButton intPatientButton;
   @FXML TextField emergencyLocation;
   @FXML Pane emergencyPane;
 
@@ -238,6 +239,8 @@ public class MainController implements Initializable {
     apiLandingButton.setText("");
     patientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
     patientButton.setText("");
+    intPatientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
+    intPatientButton.setText("");
   }
 
   public void menuOpen() {
@@ -266,6 +269,7 @@ public class MainController implements Initializable {
     landingButton.setText("Landing");
     apiLandingButton.setText("API Landing");
     patientButton.setText("Pt. Transport");
+    intPatientButton.setText("Int. Transport");
   }
 
   public void changeToHomeMenu() throws IOException {
