@@ -103,9 +103,13 @@ public class SettingController implements Initializable {
     String textColor = textPicker.getValue().toString().substring(2, 8);
     String mainColor = backPicker.getValue().toString().substring(2, 8);
     String subColor = titlePicker.getValue().toString().substring(2, 8);
-    ThemeManager.getInstance().saveCSS(name, textColor, mainColor, subColor);
-    loadCSS();
-    nameField.clear();
+    if (choiceBox.getItems().contains(name)) {
+      AGlobalMethods.showAlert("This theme already exist", userFromLogin);
+    } else {
+      ThemeManager.getInstance().saveCSS(name, textColor, mainColor, subColor);
+      loadCSS();
+      nameField.clear();
+    }
   }
 
   public void deleteCSS() throws SQLException, IOException {
