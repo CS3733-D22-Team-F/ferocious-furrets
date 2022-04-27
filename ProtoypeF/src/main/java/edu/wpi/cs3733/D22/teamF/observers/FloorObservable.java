@@ -61,6 +61,5 @@ public class FloorObservable {
     List<Equipment> newEquip = pullFloorData();
     observers.firePropertyChange("equip", this.equip, newEquip);
     this.equip = newEquip;
-    System.out.println("Fired event from FloorObservable equip size: " + equip.size());
   }
 }

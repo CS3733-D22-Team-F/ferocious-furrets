@@ -147,7 +147,6 @@ public class DatabaseManager {
       //      e.printStackTrace();
     } catch (SQLException e) {
       System.out.println("Embedded Connection Failed");
-      System.out.println("You done ****ed up your project");
       e.printStackTrace();
       return null;
     }
@@ -312,7 +311,6 @@ public class DatabaseManager {
     facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
     themeDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/themes.csv");
-    System.out.println("Files backed up");
   }
 
   /**

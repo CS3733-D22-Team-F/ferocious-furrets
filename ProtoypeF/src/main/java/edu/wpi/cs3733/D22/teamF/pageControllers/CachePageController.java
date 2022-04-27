@@ -32,8 +32,6 @@ public class CachePageController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     statusLabel.setText(randomFact());
     statusLabel.setTextAlignment(TextAlignment.CENTER);
-    // Task<Void> loader = new Load();
-    System.out.println(useEmbedded.get());
     Task<Void> loader = new Load(useEmbedded.get());
     loader.setOnSucceeded(
         e -> {
