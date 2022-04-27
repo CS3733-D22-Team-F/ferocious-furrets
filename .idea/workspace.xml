@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="Finished modify API requests from map functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/themes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv/themes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/views/extPatDeliveryPage.fxml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="made helper function for about page controller and fixed audio clips">
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AGlobalMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AGlobalMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AboutPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AboutPageController.java" afterDir="false" />
     </list>
     <list id="aae91997-02d2-4820-bbd6-eecb3e257de2" name="Changes by bhsostek" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,9 +68,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,30 +86,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/ScanController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/MealsController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/MaintenancePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/PhysicalTherapyController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/LabRequestController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/EquipmentRequestController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/SecurityController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/MedicineController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/ScanController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/MaintenancePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/LabRequestController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/PhysicalTherapyController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/AudioVisualController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/EquipmentRequestController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/MealsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/SecurityController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="27F4rhBPSgmbzg50QYJvc0kAZdh" />
   <component name="ProjectViewState">
@@ -126,7 +115,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/csv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FoodPriceObserver" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -146,11 +135,11 @@
       <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\APIJARs" />
+      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/cs3733/D22/teamF/Music" />
+      <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\MenuIcon" />
+      <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\views" />
       <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\APIJARs" />
       <recent name="C:\Users\carte\OneDrive\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\cs3733\D22\teamF\Map\FloorMap" />
-      <recent name="C:\Users\Evans Owusu\Documents\GitHub\ferocious-furrets\ProtoypeF\src\main\resources\edu\wpi\furious_furrets\Images\GiftQueue" />
-      <recent name="$PROJECT_DIR$/ProtoypeF/src/main/resources/edu/wpi/furious_furrets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="edu.wpi.cs3733.D22.teamF.pageControllers" />
@@ -203,6 +192,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ProtoypeF [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProtoypeF [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -224,18 +234,18 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ProtoypeF [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ProtoypeF [startShadowScripts]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/ProtoypeF" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="run" />
+            <option value="startShadowScripts" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -266,25 +276,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CS3733-D22-Team-X-MealServiceRequestAPI.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/ProtoypeF/APIJARs/CS3733-D22-Team-X-MealServiceRequestAPI.jar" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle./Users/jmp/Documents/GitHub/furious-ferrets/Fapp [run]" />
-      <item itemvalue="Gradle.ProtoypeF [run]" />
       <item itemvalue="Gradle.ProtoypeF [build]" />
       <item itemvalue="Gradle.ProtoypeF [runShadow]" />
+      <item itemvalue="Gradle.ProtoypeF [startShadowScripts]" />
       <item itemvalue="Gradle.HandlerTester.testConnection" />
-      <item itemvalue="JAR Application.CS3733-D22-Team-X-MealServiceRequestAPI.jar" />
+      <item itemvalue="Gradle.ProtoypeF [clean]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ProtoypeF [runShadow]" />
-        <item itemvalue="JAR Application.CS3733-D22-Team-X-MealServiceRequestAPI.jar" />
-        <item itemvalue="Gradle.ProtoypeF [run]" />
-        <item itemvalue="Gradle.HandlerTester.testConnection" />
+        <item itemvalue="Gradle.ProtoypeF [clean]" />
         <item itemvalue="Gradle.ProtoypeF [build]" />
+        <item itemvalue="Gradle.HandlerTester.testConnection" />
+        <item itemvalue="Gradle.ProtoypeF [startShadowScripts]" />
       </list>
     </recent_temporary>
   </component>
@@ -314,12 +320,9 @@
       <workItem from="1649991096807" duration="3522000" />
       <workItem from="1650421939175" duration="2873000" />
       <workItem from="1650445658005" duration="1244000" />
-      <workItem from="1650564927108" duration="14832000" />
-      <workItem from="1650595565414" duration="2783000" />
-      <workItem from="1650598643628" duration="8184000" />
-      <workItem from="1650670904607" duration="6871000" />
-      <workItem from="1650902296535" duration="270000" />
-      <workItem from="1651015349847" duration="1156000" />
+      <workItem from="1650582655355" duration="30181000" />
+      <workItem from="1650855389147" duration="32000" />
+      <workItem from="1650911871090" duration="7579000" />
     </task>
     <task id="LOCAL-00001" summary="Merged csv-save branch into master">
       <created>1649080027261</created>
@@ -566,49 +569,42 @@
       <option name="project" value="LOCAL" />
       <updated>1650437522414</updated>
     </task>
-    <task id="LOCAL-00036" summary="Incorporated Team D API into our project and imported Team X's API">
-      <created>1650858234928</created>
+    <task id="LOCAL-00036" summary="removed unused team member controllers">
+      <created>1651004676921</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1650858234928</updated>
+      <updated>1651004676921</updated>
     </task>
-    <task id="LOCAL-00037" summary="Save checkpoint">
-      <created>1651012353826</created>
+    <task id="LOCAL-00037" summary="commented no use code">
+      <created>1651022612858</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1651012353826</updated>
+      <updated>1651022612858</updated>
     </task>
-    <task id="LOCAL-00038" summary="Team B API submit request and display on local table functionality finished">
-      <created>1651014356055</created>
+    <task id="LOCAL-00038" summary="audio clip">
+      <created>1651022813943</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1651014356055</updated>
+      <updated>1651022813943</updated>
     </task>
-    <task id="LOCAL-00039" summary="Team B API request display on map functionality done">
-      <created>1651015864516</created>
+    <task id="LOCAL-00039" summary="audio clip">
+      <created>1651026885188</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1651015864516</updated>
+      <updated>1651026885188</updated>
     </task>
-    <task id="LOCAL-00040" summary="Team B API Internal Patient Request page fixed">
-      <created>1651016188208</created>
+    <task id="LOCAL-00040" summary="made helper function for about page controller and fixed audio clips">
+      <created>1651028339698</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1651016188208</updated>
+      <updated>1651028339698</updated>
     </task>
-    <task id="LOCAL-00041" summary="Finished modify API requests from map functionality">
-      <created>1651023656646</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1651023656646</updated>
-    </task>
-    <option name="localTasksCounter" value="42" />
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +621,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="api-incorporation" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -643,7 +639,7 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
-                  <option value="api-incorporation" />
+                  <option value="master" />
                 </option>
               </RecentGroup>
             </list>
@@ -653,6 +649,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated service request csvs" />
+    <MESSAGE value="Updated med equip csv" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
     <MESSAGE value="Fixed resolveRequest bug" />
     <MESSAGE value="Controller updates" />
@@ -672,13 +670,28 @@
     <MESSAGE value="added alert to audioVisualController" />
     <MESSAGE value="rm sysout audio" />
     <MESSAGE value="Refactored project to follow naming conventions and combine DatabaseManager and DatabaseInitializer to a single Singleton class" />
-    <MESSAGE value="Incorporated Team D API into our project and imported Team X's API" />
-    <MESSAGE value="Save checkpoint" />
-    <MESSAGE value="Team B API submit request and display on local table functionality finished" />
-    <MESSAGE value="Team B API request display on map functionality done" />
-    <MESSAGE value="Team B API Internal Patient Request page fixed" />
-    <MESSAGE value="Finished modify API requests from map functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished modify API requests from map functionality" />
+    <MESSAGE value="removed unused team member controllers" />
+    <MESSAGE value="commented no use code" />
+    <MESSAGE value="audio clip" />
+    <MESSAGE value="made helper function for about page controller and fixed audio clips" />
+    <option name="LAST_COMMIT_MESSAGE" value="made helper function for about page controller and fixed audio clips" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/AudioVisualController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/controllers/requests/PhysicalTherapyController.java</url>
+          <line>24</line>
+          <properties field="nodeField" class="edu.wpi.cs3733.D22.teamF.controllers.requests.PhysicalTherapyController" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

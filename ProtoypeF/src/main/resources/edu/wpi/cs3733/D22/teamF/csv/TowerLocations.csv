@@ -7,36 +7,36 @@ FEXIT00101,2230,356,1,Tower,EXIT,Shattuck Street Lobby Exit,Shattuck St. Exit
 FEXIT00201,1990,3396,1,Tower,EXIT,75 Francis Valet Drop-off,75 Francis Exit
 FEXIT00301,3890,3495,1,Tower,EXIT,Emergency Department Entrance,Emergency Entrance
 FHALL00101,3880,1696,1,Tower,HALL,Lower Pike Hallway Exit Lobby,Hallway F00101
-FHALL00301,3350,1696,1,Tower,HALL,Shattuck Street Lobby 1,Hallway F00301
-FHALL00401,3206,1696,1,Tower,HALL,Shattuck Street Lobby 2,Hallway F00401
+FHALL00301,3391,1748,1,Tower,HALL,Shattuck Street Lobby 1,Hallway F00301
+FHALL00401,3210,1800,1,Tower,HALL,Shattuck Street Lobby 2,Hallway F00401
 FHALL00501,2950,1763,1,Tower,HALL,Shattuck Street Lobby 3,Hallway F00501
 FHALL00601,2686,1763,1,Tower,HALL,Tower Lobby Entrance 1,Tower Entrance
-FHALL00701,2457,1762,1,Tower,HALL,Tower Elevator Entrance,Hallway F00701
-FHALL00801,2509,1424,1,Tower,HALL,Tower Hallway 1,Hallway F00801
-FHALL00901,1918,1448,1,Tower,HALL,Tower Hallway 2,Hallway F00901
-FHALL01001,1930,1239,1,Tower,HALL,Tower Hallway 3,Hallway F01001
-FHALL01101,1918,1780,1,Tower,HALL,Tower Hallway 4,Hallway F01101
-FHALL01201,1530,1780,1,Tower,HALL,Tower Staff Entrance,Hallway F01201
-FHALL01301,1918,1335,1,Tower,HALL,Tower Hallway 5,Hallway F01301
-FHALL01401,1900,2196,1,Tower,HALL,Tower Hallway 6,Hallway F01401
-FHALL01501,1900,2328,1,Tower,HALL,Tower Hallway 7,Hallway F01501
-FHALL01601,2437,2303,1,Tower,HALL,Tower Hallway 8,Hallway F01601
-FHALL01701,2309,1888,1,Tower,HALL,Tower Hallway 9,Hallway F01701
-FHALL01801,2454,1896,1,Tower,HALL,Tower Hallway 10,Hallway F01801
-FHALL01901,2454,2440,1,Tower,HALL,Tower Hallway 11,Hallway F01901
-FHALL02001,2200,2562,1,Tower,HALL,Tower Hallway 12,Hallway F02001
-FHALL02101,2461,2550,1,Tower,HALL,Tower Hallway Entrance,Tower Entrance 2
+FHALL00701,2530,1709,1,Tower,HALL,Tower Elevator Entrance,Hallway F00701
+FHALL00801,2532,1471,1,Tower,HALL,Tower Hallway 1,Hallway F00801
+FHALL00901,1950,1490,1,Tower,HALL,Tower Hallway 2,Hallway F00901
+FHALL01001,2123,1233,1,Tower,HALL,Tower Hallway 3,Hallway F01001
+FHALL01101,1930,1817,1,Tower,HALL,Tower Hallway 4,Hallway F01101
+FHALL01201,1585,1813,1,Tower,HALL,Tower Staff Entrance,Hallway F01201
+FHALL01301,1958,1259,1,Tower,HALL,Tower Hallway 5,Hallway F01301
+FHALL01401,1946,2110,1,Tower,HALL,Tower Hallway 6,Hallway F01401
+FHALL01501,1946,2380,1,Tower,HALL,Tower Hallway 7,Hallway F01501
+FHALL01601,2515,2364,1,Tower,HALL,Tower Hallway 8,Hallway F01601
+FHALL01701,2373,1911,1,Tower,HALL,Tower Hallway 9,Hallway F01701
+FHALL01801,2532,1933,1,Tower,HALL,Tower Hallway 10,Hallway F01801
+FHALL01901,2241,2383,1,Tower,HALL,Tower Hallway 11,Hallway F01901
+FHALL02001,2232,2637,1,Tower,HALL,Tower Hallway 12,Hallway F02001
+FHALL02101,2530,2644,1,Tower,HALL,Tower Hallway Entrance,Tower Entrance 2
 FHALL02201,2500,3179,1,Tower,HALL,Hallway Lobby Entrance,Entrance Hallway
-FHALL02301,2790,3200,1,Tower,HALL,Lobby Hallway 1,Hallway F02301
-FHALL02401,3250,3200,1,Tower,HALL,Lobby Hallway 2,Hallway F02401
-FHALL02501,3318,3062,1,Tower,HALL,Lobby Hallway 3,Hallway F02501
-FHALL02601,3539,2990,1,Tower,HALL,Lobby Hallway 4,Hallway F02601
-FHALL02701,3703,3008,1,Tower,HALL,Lobby Hallway 7,Hallway F02701
-FHALL02801,3400,3188,1,Tower,HALL,Lobby Entrance Hallway,HallwayF02801
+FHALL02301,2748,3237,1,Tower,HALL,Lobby Hallway 1,Hallway F02301
+FHALL02401,3189,3309,1,Tower,HALL,Lobby Hallway 2,Hallway F02401
+FHALL02501,3285,3019,1,Tower,HALL,Lobby Hallway 3,Hallway F02501
+FHALL02601,3515,3127,1,Tower,HALL,Lobby Hallway 4,Hallway F02601
+FHALL02701,3716,2751,1,Tower,HALL,Lobby Hallway 7,Hallway F02701
+FHALL02801,3418,3287,1,Tower,HALL,Lobby Entrance Hallway,HallwayF02801
 FHALL02901,2190,3188,1,Tower,HALL,75 Lobby,75 Lobby
-FHALL03001,1975,3047,1,Tower,HALL,Lobby Hallway 5,Hallway F02701
+FHALL03001,1993,3156,1,Tower,HALL,Lobby Hallway 5,Hallway F02701
 FHALL03101,3554,1928,1,Tower,HALL,Lobby Hallway 6,Hallway F02801
-FHALL03201,2450,2155,1,Tower,HALL,Tower Hallway 13,Hallway F03201
+FHALL03201,2533,2169,1,Tower,HALL,Tower Hallway 13,Hallway F03201
 FHALL03301,3714,3123,1,Tower,HALL,Emergency Hallway,Hallway F03301
 FINFO00101,2214,3007,1,Tower,INFO,75 Lobby Information Desk,Lobby Info Desk
 FLABS00101,2818,3023,1,Tower,LABS,Obstetrics Admitting,Obs Admitting
@@ -99,21 +99,21 @@ WELEV00L03,2681,1767,3,Tower,ELEV,Elevator L Floor 3,Elevator L3
 WELEV00M03,2793,3355,3,Tower,ELEV,Elevator M Floor 3,Elevator M3
 CDEPT002L1,3509,1430,L1,Tower,DEPT,Day Surgery Family Waiting Floor L1,Department C002L1
 CDEPT003L1,2920,1400,L1,Tower,DEPT,Day Surgery Family Waiting Exit Floor L1,Department C003L1
-CHALL001L1,2440,1770,L1,Tower,HALL,Hallway 1 Floor L1,Hallway C001L1
+CHALL001L1,2518,1812,L1,Tower,HALL,Hallway 1 Floor L1,Hallway C001L1
 CHALL005L1,2525,3288,L1,Tower,HALL,Hallway 5 Floor L1,Hallway C005L1
 CHALL006L1,4120,3270,L1,Tower,HALL,Hallway 6 Floor L1,Hallway C006L1
-CHALL007L1,4120,2290,L1,Tower,HALL,Hallway 7 Floor L1,Hallway C007L1
-CHALL014L1,2912,1760,L1,Tower,HALL,Hallway 14 Floor L1,Hallway C014L1
+CHALL007L1,4267,2361,L1,Tower,HALL,Hallway 7 Floor L1,Hallway C007L1
+CHALL014L1,2999,1793,L1,Tower,HALL,Hallway 14 Floor L1,Hallway C014L1
 CLABS001L1,3538,3126,L1,Tower,LABS,Outpatient Fluoroscopy Floor L1,Lab C001L1
 CLABS002L1,2460,2380,L1,Tower,LABS,Pre-Op PACU Floor L1,Lab C002L1
 CREST001L1,2350,2170,L1,Tower,REST,Restroom L Elevator Floor L1,Restroom C001L1
 WELEV00LL1,2680,1762,L1,Tower,ELEV,Elevator L Floor L1,Elevator LL1
 WELEV00ML1,2804,3400,L1,Tower,ELEV,Elevator M Floor L1,Elevator ML1
 CHALL005L2,2500,3280,L2,Tower,HALL,Hallway 5 Floor L2,Hallway C005L2
-CHALL006L2,2500,2100,L2,Tower,HALL,Hallway 6 Floor L2,Hallway C006L2
-CHALL007L2,2433,2091,L2,Tower,HALL,Hallway 7 Floor L2,Hallway C007L2
-CHALL008L2,2470,1762,L2,Tower,HALL,Hallway 8 Floor L2,Hallway C008L2
-CHALL009L2,2437,1475,L2,Tower,HALL,Hallway 9 Floor L2,Hallway C009L2
+CHALL006L2,2578,2389,L2,Tower,HALL,Hallway 6 Floor L2,Hallway C006L2
+CHALL007L2,2511,2124,L2,Tower,HALL,Hallway 7 Floor L2,Hallway C007L2
+CHALL008L2,2525,1809,L2,Tower,HALL,Hallway 8 Floor L2,Hallway C008L2
+CHALL009L2,2497,1493,L2,Tower,HALL,Hallway 9 Floor L2,Hallway C009L2
 CHALL010L2,4100,1460,L2,Tower,HALL,Hallway 10 Floor L2,Hallway C010L2
 WELEV00LL2,2680,1770,L2,Tower,ELEV,Elevator L Floor L2,Elevator LL2
 WELEV00ML2,2825,3375,L2,Tower,ELEV,Elevator M Floor L2,Elevator ML2
