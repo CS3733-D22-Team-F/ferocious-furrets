@@ -2,15 +2,26 @@ package edu.wpi.cs3733.D22.teamF.observers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import edu.wpi.cs3733.D22.teamF.entities.request.Request;
+import io.github.palexdev.materialfx.controls.MFXTableColumn;
+import io.github.palexdev.materialfx.controls.MFXTableView;
+import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
+import io.github.palexdev.materialfx.filter.StringFilter;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,6 +30,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 public class DashboardController implements Initializable {
+
+  ObservableList<RequestObject> requests = FXCollections.observableArrayList();
+
+  @FXML BorderPane masterPane;
+  @FXML MFXTableView table;
   @FXML Label clock;
 
   List<Label> cleanLabels = new ArrayList<>();
@@ -29,7 +45,6 @@ public class DashboardController implements Initializable {
 
   static Floor currentFloor = Floor.FL3;
 
-  @FXML BorderPane masterPane;
   @FXML JFXNodesList layoutAlerts;
   @FXML TextField floorSelect;
 
@@ -72,39 +87,9 @@ public class DashboardController implements Initializable {
                 setLabels();
               }));
 
-  /**
-   * Initializes the DashboardController to be used with the corresponding FXML
-   *
-   * @param location
-   * @param resources
-   */
-  @Override
   public void initialize(URL location, ResourceBundle resources) {
-
-    clock.setText(clockWork.getCurrentTime());
-    timeline.setCycleCount(Timeline.INDEFINITE);
-    timeline.play();
-    FloorObservable.getInstance();
-
-    /*
-    DashboardObserver ll2Observer = new DashboardObserver(Floor.LL2);
-    floorObservers.add(ll2Observer);
-    DashboardObserver ll1Observer = new DashboardObserver(Floor.LL1);
-    floorObservers.add(ll1Observer);
-    DashboardObserver f1Observer = new DashboardObserver(Floor.FL1);
-    floorObservers.add(f1Observer);
-    DashboardObserver f2Observer = new DashboardObserver(Floor.FL2);
-    floorObservers.add(f2Observer);
-    DashboardObserver f3Observer = new DashboardObserver(Floor.FL3);
-    floorObservers.add(f3Observer);
-    DashboardObserver f4Observer = new DashboardObserver(Floor.FL4);
-    floorObservers.add(f4Observer);
-
-    // made into alert just for ease of test
-    DashboardObserver f5Observer = new DashboardObserver(Floor.FL5);
-    f5Observer.addPropertyChangeListener(AlertObserver.getInstance());
-    floorObservers.add(f5Observer);
-     */
+    updateRequest();
+    initServiceRequestTable();
 
     cleanLabels.add(cBed);
     cleanLabels.add(cInfusionPump);
@@ -135,6 +120,71 @@ public class DashboardController implements Initializable {
     try {
       FloorObservable.getInstance().setState();
     } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void initServiceRequestTable() {
+    MFXTableColumn<RequestObject> reqIDColumn =
+        new MFXTableColumn<>("RequestID", true, Comparator.comparing(RequestObject::getReqID));
+    MFXTableColumn<RequestObject> getNodeIDColumn =
+        new MFXTableColumn<>("NodeID", true, Comparator.comparing(RequestObject::getNodeID));
+    MFXTableColumn<RequestObject> getAssignedEmpColumn =
+        new MFXTableColumn<>(
+            "Assigned Employee ID", true, Comparator.comparing(RequestObject::getAssignedEmpID));
+    MFXTableColumn<RequestObject> getRequesterEmpColumn =
+        new MFXTableColumn<>(
+            "Requester Employee ID", true, Comparator.comparing(RequestObject::getRequesterEmpID));
+    MFXTableColumn<RequestObject> statusColumn =
+        new MFXTableColumn<>("Status", true, Comparator.comparing(RequestObject::getStatus));
+
+    reqIDColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getReqID));
+    getNodeIDColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getNodeID));
+    getAssignedEmpColumn.setRowCellFactory(
+        request -> new MFXTableRowCell<>(RequestObject::getAssignedEmpID));
+    getRequesterEmpColumn.setRowCellFactory(
+        request -> new MFXTableRowCell<>(RequestObject::getRequesterEmpID));
+    statusColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getStatus));
+
+    table
+        .getTableColumns()
+        .addAll(
+            reqIDColumn,
+            getNodeIDColumn,
+            getAssignedEmpColumn,
+            getRequesterEmpColumn,
+            statusColumn);
+    table
+        .getFilters()
+        .addAll(
+            new StringFilter<>("RequestID", Request::getReqID),
+            new StringFilter<>("NodeID", Request::getNodeID),
+            new StringFilter<>("Assigned Employee ID", Request::getAssignedEmpID),
+            new StringFilter<>("Requester Employee ID", Request::getRequesterEmpID),
+            new StringFilter<>("Status", Request::getStatus));
+
+    table.setItems(requests); // INSERT OBSERVABLE ARRAYLIST OF ALL REQUEST HERE
+  }
+
+  private void updateRequest() {
+
+    try {
+      ResultSet allRequestRset = DatabaseManager.getInstance().getRequestDAO().get();
+
+      while (allRequestRset.next()) {
+        String reqID = allRequestRset.getString("reqID");
+        String nodeID = allRequestRset.getString("nodeID");
+        String assignedEmployeeID = allRequestRset.getString("assignedEmployeeID");
+        String requesterEmployeeID = allRequestRset.getString("requesterEmployeeID");
+        String status = allRequestRset.getString("status");
+
+        requests.add(
+            new RequestObject(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status));
+      }
+
+      allRequestRset.close();
+
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -213,5 +263,71 @@ public class DashboardController implements Initializable {
       floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
     AlertObserver.getInstance().setFloorAlertCount();
+  }
+}
+
+class RequestObject {
+
+  private String reqID; // id of request
+  private String assignedEmpID; // Employee that is assigned the task (First name, Last name)
+  private String requesterEmpID; // ID of the employee that requested the task (5 Digit int)
+  private String nodeID;
+  private String status;
+  // TODO enum
+
+  /**
+   * @param reqID reqID
+   * @param nodeID location node ID
+   * @param assignedEmpID requester name
+   * @param requesterEmpID requester id
+   * @param status request status processing/done
+   */
+  public RequestObject(
+      String reqID, String nodeID, String assignedEmpID, String requesterEmpID, String status) {
+    this.reqID = reqID;
+    this.nodeID = nodeID;
+    this.assignedEmpID = assignedEmpID;
+    this.requesterEmpID = requesterEmpID;
+    this.status = status;
+  }
+
+  public String getReqID() {
+    return reqID;
+  }
+
+  public void setReqID(String reqID) {
+    this.reqID = reqID;
+  }
+
+  public String getAssignedEmpID() {
+    return assignedEmpID;
+  }
+
+  public void setAssignedEmpID(String assignedEmpID) {
+    this.assignedEmpID = assignedEmpID;
+  }
+
+  public String getRequesterEmpID() {
+    return requesterEmpID;
+  }
+
+  public void setRequesterEmpID(String requesterEmpID) {
+    this.requesterEmpID = requesterEmpID;
+  }
+
+  public String getNodeID() {
+    return nodeID;
+  }
+
+  public void setNodeID(String nodeID) {
+    this.nodeID = nodeID;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 }
