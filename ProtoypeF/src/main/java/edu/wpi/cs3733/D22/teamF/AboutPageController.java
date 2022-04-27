@@ -118,10 +118,6 @@ public class AboutPageController implements Initializable {
             } catch (IOException e) {
               e.printStackTrace();
             }
-
-            AudioPlayer.getInstance().setAudioInputStream("Music/island.wav");
-            AudioPlayer.getInstance().playFrom(45000);
-
             Stage popupwindow = new Stage();
             popupwindow.setTitle("Nikola Grozdani");
             popupwindow.initModality(Modality.APPLICATION_MODAL);
