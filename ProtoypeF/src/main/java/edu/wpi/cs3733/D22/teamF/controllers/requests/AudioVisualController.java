@@ -174,8 +174,8 @@ public class AudioVisualController extends PageController
           break;
         }
       }
-      avrReqTable.close();
     }
+    avrReqTable.close();
 
     treeRoot.setExpanded(true);
     avrReqs.stream()
