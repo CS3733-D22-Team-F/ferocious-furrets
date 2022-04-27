@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDrawer;
 import edu.wpi.cs3733.D22.teamF.Exceptions.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
+import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
 import java.io.IOException;
@@ -435,7 +436,6 @@ public class MainController implements Initializable {
     audio.setAudioInputStream("Music/exit.wav");
     audio.play();
 
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
     while (audio.getPlaying()) {}
 
     System.exit(0);
