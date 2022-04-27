@@ -5,6 +5,9 @@
 <?import com.jfoenix.controls.JFXNodesList?>
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -365,6 +368,20 @@
                         <JFXNodesList fx:id="layoutAlerts" prefHeight="0.0" prefWidth="0.0" />
                      </graphic>
                   </JFXButton>
+                  <StackedBarChart fx:id="stackedBarChart" prefHeight="286.0" prefWidth="276.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="200.0" />
+                     </VBox.margin>
+                  </StackedBarChart>
                </children>
                <HBox.margin>
                   <Insets left="10.0" />

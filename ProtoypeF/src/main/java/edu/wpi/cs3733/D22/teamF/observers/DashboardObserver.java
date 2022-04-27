@@ -98,6 +98,14 @@ class DashboardObserver implements PropertyChangeListener {
     return allFloorAlerts;
   }
 
+  public int getFloorCleanEquipmentCount() {
+    return cleanList.size();
+  }
+
+  public int getFloorDirtyEquipmentCount() {
+    return dirtyList.size();
+  }
+
   public void setFloor(Floor floorToSet) {
     currFloor = floorToSet;
     setFloorFilter();

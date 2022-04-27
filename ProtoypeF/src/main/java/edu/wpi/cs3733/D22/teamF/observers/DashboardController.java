@@ -24,6 +24,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -67,6 +71,13 @@ public class DashboardController implements Initializable {
   @FXML Label iXRay;
   @FXML Label iRecliner;
   @FXML Label iInfusionPump;
+
+  CategoryAxis xAxis = new CategoryAxis();
+  NumberAxis yAxis = new NumberAxis();
+  @FXML StackedBarChart stackedBarChart = new StackedBarChart(xAxis, yAxis);
+
+  XYChart.Series cleanEquipment = new XYChart.Series();
+  XYChart.Series dirtyEquipment = new XYChart.Series();
 
   //  @FXML Label ll2Count;
   //  @FXML Label ll1Count;
@@ -122,6 +133,8 @@ public class DashboardController implements Initializable {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
+    initializeChart();
   }
 
   private void initServiceRequestTable() {
@@ -257,12 +270,54 @@ public class DashboardController implements Initializable {
     //            + floorObservers.get(currentFloor.toInt()).getInUse().size());
 
     List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
-    for (int alert = 0; alert < currentAlerts.size(); alert++)
-      //      System.out.println(currentAlerts.get(alert).getMessage());
+    // for (int alert = 0; alert < currentAlerts.size(); alert++)
+    //      System.out.println(currentAlerts.get(alert).getMessage());
 
-      floorObservers.get(currentFloor.toInt()).updateLabels();
+    floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
     AlertObserver.getInstance().setFloorAlertCount();
+  }
+
+  private void initializeChart() {
+    List<DashboardObserver> observerList = FloorWatchManager.getInstance().getAllFloorObservers();
+
+    xAxis.setLabel("Floor");
+    xAxis.getCategories().addAll("Clean", "Dirty");
+    yAxis.setLabel("Equipment #s");
+    yAxis.setTickUnit(1);
+
+    stackedBarChart.setTitle("Clean and Dirty Equipment");
+
+    cleanEquipment.setName("Clean");
+
+    cleanEquipment
+        .getData()
+        .add(new XYChart.Data("F3", observerList.get(4).getFloorCleanEquipmentCount()));
+    cleanEquipment
+        .getData()
+        .add(new XYChart.Data("F4", observerList.get(5).getFloorCleanEquipmentCount()));
+    cleanEquipment
+        .getData()
+        .add(new XYChart.Data("F5", observerList.get(6).getFloorCleanEquipmentCount()));
+
+    stackedBarChart.getData().add(cleanEquipment);
+
+    dirtyEquipment.setName("Dirty");
+
+    dirtyEquipment
+        .getData()
+        .add(new XYChart.Data("F3", observerList.get(4).getFloorDirtyEquipmentCount()));
+    dirtyEquipment
+        .getData()
+        .add(new XYChart.Data("F4", observerList.get(5).getFloorDirtyEquipmentCount()));
+    dirtyEquipment
+        .getData()
+        .add(new XYChart.Data("F5", observerList.get(6).getFloorDirtyEquipmentCount()));
+
+    stackedBarChart.getData().add(dirtyEquipment);
+
+    stackedBarChart.setHorizontalGridLinesVisible(false);
+    stackedBarChart.setVerticalGridLinesVisible(false);
   }
 }
 
