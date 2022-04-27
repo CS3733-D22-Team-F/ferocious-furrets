@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXNodesList?>
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: white;" stylesheets="@../stylesheets/DashBoard.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
@@ -78,13 +78,13 @@
                                           <Font name="Serif Regular" size="36.0" />
                                        </font>
                                     </Label>
-                                    <Polygon fill="ROYALBLUE" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 17.333251953125, -9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <JFXButton onAction="#nextFloor" text="Up" />
                                     <TextField fx:id="floorSelect" alignment="CENTER" prefHeight="71.0" prefWidth="105.0" promptText="Floor">
                                        <font>
                                           <Font name="Serif Regular" size="24.0" />
                                        </font>
                                     </TextField>
-                                    <Polygon fill="ROYALBLUE" layoutX="37.0" layoutY="69.0" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 16.333251953125, 76.3333969116211" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <JFXButton onAction="#prevFloor" text="Down" />
                                  </children>
                                  <HBox.margin>
                                     <Insets right="120.0" />
@@ -361,6 +361,9 @@
                      <VBox.margin>
                         <Insets top="35.0" />
                      </VBox.margin>
+                     <graphic>
+                        <JFXNodesList fx:id="layoutAlerts" prefHeight="0.0" prefWidth="0.0" />
+                     </graphic>
                   </JFXButton>
                </children>
                <HBox.margin>
