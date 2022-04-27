@@ -75,12 +75,12 @@
                      <children>
                         <VBox alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="200.0" spacing="15.0">
                            <children>
-                              <Label prefHeight="40.0" text="Text Color: ">
+                              <Label prefHeight="40.0" text="Main Color: ">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="40.0" text="Background Color: ">
+                              <Label prefHeight="40.0" text="Sub Color: ">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Label prefHeight="40.0" text="Title Color: ">
+                              <Label prefHeight="40.0" text="TextColor: ">
                                  <font>
                                     <Font name="Serif Regular" size="24.0" />
                                  </font>

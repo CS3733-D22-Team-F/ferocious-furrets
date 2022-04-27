@@ -105,6 +105,7 @@ public class SettingController implements Initializable {
     String subColor = titlePicker.getValue().toString().substring(2, 8);
     ThemeManager.getInstance().saveCSS(name, textColor, mainColor, subColor);
     loadCSS();
+    nameField.clear();
   }
 
   public void deleteCSS() throws SQLException, IOException {
