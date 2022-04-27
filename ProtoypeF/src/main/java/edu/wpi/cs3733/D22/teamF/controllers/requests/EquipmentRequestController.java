@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.ServiceRequestStorage;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -158,6 +159,12 @@ public class EquipmentRequestController extends PageController
       newStatus = statusChoice.getValue().toString();
       fields.add(4, newStatus);
       newEquipID = getAvailableEquipment();
+      if (newEquipID.equals("")) {
+        AGlobalMethods.showAlert(
+            "Sorry, there's no available equipment matching your request!", tablePane);
+        resetFunction();
+        return;
+      }
       fields.add(5, newEquipID);
       req.placeRequest(fields);
 
