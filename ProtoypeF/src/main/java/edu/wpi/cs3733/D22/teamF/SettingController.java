@@ -191,5 +191,12 @@ public class SettingController implements Initializable {
     DatabaseManager.getInstance().getRequestDAO().backUpToCSV(file.getPath() + "/Requests.csv");
   }
 
-  public void reloadDatabase() {}
+  public void reloadDatabase() throws SQLException, IOException {
+    DirectoryChooser fChoose = new DirectoryChooser();
+    fChoose.setTitle("Select Directory to Save Database:");
+    Stage stage = (Stage) saveToCSV.getScene().getWindow();
+    File file = fChoose.showDialog(stage);
+    System.out.println("cd: " + file.getPath());
+    DatabaseManager.getInstance().initializeReloadedDatabase(file.getPath());
+  }
 }

@@ -183,7 +183,7 @@ public class DatabaseManager {
    * @throws IOException
    */
   public void initializeDatabaseManager() throws SQLException, IOException {
-
+    dropAllTables();
     employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
@@ -202,6 +202,37 @@ public class DatabaseManager {
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
     extPatDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
     themeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/themes.csv");
+  }
+
+  /**
+   * inits the dao objects
+   *
+   * @return DatabaseManager
+   * @throws SQLException
+   * @throws IOException
+   */
+  public void initializeReloadedDatabase(String filename) throws SQLException, IOException {
+    System.out.println("Filepath: " + filename + "/CSVFILE");
+    DatabaseManager.getInstance().dropAllTables();
+    employeeDAO.initTable(filename + "/employees.csv");
+    locationsDAO.initTable(filename + "/TowerLocations.csv");
+    RequestDAO.initTable(filename + "/serviceRequest.csv");
+    medicalEquipmentDAO.initTable(filename + "/equipment.csv");
+    medicalEquipmentDeliveryRequestDAO.initTable(filename + "/MedEquipReq.csv");
+    // medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
+    MedicineRequest.initializeDatabase(
+        filename + "/apiCSV/medicine.csv", filename + "/apiCSV/employees.csv");
+    giftDAO.initTable(filename + "/gifts.csv");
+    labRequestDAO.initTable(filename + "/labs.csv");
+    scanRequestDAO.initTable(filename + "/scans.csv");
+    mealDAO.initTable(filename + "/meals.csv");
+    audioVisualDAO.initTable(filename + "/audioVis.csv");
+    maintenanceDAO.initTable(filename + "/maintenanceSR.csv");
+    ptDAO.initTable(filename + "/physicaltherapy.csv");
+    facilitiesDAO.initTable(filename + "/facilities.csv");
+    securityDAO.initTable(filename + "/security.csv");
+    extPatDAO.initTable(filename + "/extPatDelivery.csv");
+    themeDAO.initTable(filename + "/themes.csv");
   }
 
   /**

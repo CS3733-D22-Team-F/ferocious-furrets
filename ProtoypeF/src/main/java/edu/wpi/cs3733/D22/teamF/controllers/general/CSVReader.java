@@ -25,12 +25,32 @@ public class CSVReader {
   }
 
   public static List<String> readResourceFilepath(String filepath) throws IOException {
+    System.out.println("cd in CSVReader: " + System.getProperty("user.dir"));
+    System.out.println("Filepath passing in to CSVReader: " + filepath);
     List<String> fileList;
     br =
         new BufferedReader(
             new InputStreamReader(
                 Objects.requireNonNull(CSVReader.class.getResourceAsStream(filepath)),
                 StandardCharsets.UTF_8));
+    fileList = bufferedReaderToString();
+    br.close();
+    return fileList;
+  }
+
+  public static List<String> readResourceFilepathFromDirectory(String filepath) throws IOException {
+    System.out.println("cd in CSVReader: " + System.getProperty("user.dir"));
+    System.out.println("Filepath passing in to CSVReader: " + filepath);
+    List<String> fileList;
+    br =
+            new BufferedReader(
+                    new InputStreamReader(new InputStream() {
+                      @Override
+                      public int read() throws IOException {
+                        return 0;
+                      }
+                    },
+                            StandardCharsets.UTF_8));
     fileList = bufferedReaderToString();
     br.close();
     return fileList;
