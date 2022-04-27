@@ -440,6 +440,7 @@ public class EquipmentRequestController extends PageController
     } else {
       eID = rset.getString("equipID");
     }
+    rset.close();
     return eID;
   }
 
@@ -530,6 +531,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
     return lName;
   }
 
@@ -540,6 +542,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       fName = rset.getString("firstName");
     }
+    rset.close();
     return fName;
   }
 
@@ -550,6 +553,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       lName = rset.getString("lastName");
     }
+    rset.close();
     return lName;
   }
 }

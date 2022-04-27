@@ -171,6 +171,7 @@ public class SettingController implements Initializable {
     DatabaseManager.getInstance()
         .getMedEquipDelReqDAO()
         .backUpToCSV(file.getPath() + "/EquipmentDelivery.csv");
+    DatabaseManager.getInstance().getMedEquipDAO().backUpToCSV(file.getPath() + "/Equipment.csv");
     DatabaseManager.getInstance()
         .getExtPatDAO()
         .backUpToCSV(file.getPath() + "/ExternalPatientTransport.csv");
@@ -189,6 +190,7 @@ public class SettingController implements Initializable {
     DatabaseManager.getInstance().getSecurityDAO().backUpToCSV(file.getPath() + "/Security.csv");
     DatabaseManager.getInstance().getThemeDAO().backUpToCSV(file.getPath() + "/Themes.csv");
     DatabaseManager.getInstance().getRequestDAO().backUpToCSV(file.getPath() + "/Requests.csv");
+    DatabaseManager.getInstance().getEmployeeDAO().backUpToCSV(file.getPath() + "/Employees.csv");
   }
 
   public void reloadDatabase() throws SQLException, IOException {
@@ -197,6 +199,27 @@ public class SettingController implements Initializable {
     Stage stage = (Stage) saveToCSV.getScene().getWindow();
     File file = fChoose.showDialog(stage);
     System.out.println("cd: " + file.getPath());
-    DatabaseManager.getInstance().initializeReloadedDatabase(file.getPath());
+    DatabaseManager.getInstance().dropAllTables();
+    DatabaseManager.getInstance().getEmployeeDAO().initTable(file.getPath() + "/employees.csv");
+    DatabaseManager.getInstance()
+        .getLocationDAO()
+        .initTable(file.getPath() + "/TowerLocations.csv");
+    DatabaseManager.getInstance().getRequestDAO().initTable(file.getPath() + "/serviceRequest.csv");
+    DatabaseManager.getInstance().getMedEquipDAO().initTable(file.getPath() + "/equipment.csv");
+    DatabaseManager.getInstance()
+        .getMedEquipDelReqDAO()
+        .initTable(file.getPath() + "/MedEquipReq.csv");
+    DatabaseManager.getInstance().getGiftDAO().initTable(file.getPath() + "/gifts.csv");
+    DatabaseManager.getInstance().getLabRequestDAO().initTable(file.getPath() + "/labs.csv");
+    DatabaseManager.getInstance().getScanRequestDAO().initTable(file.getPath() + "/scans.csv");
+    DatabaseManager.getInstance().getAudioVisDAO().initTable(file.getPath() + "/audioVis.csv");
+    DatabaseManager.getInstance()
+        .getMaintenanceDAO()
+        .initTable(file.getPath() + "/maintenanceSR.csv");
+    DatabaseManager.getInstance().getPTDAO().initTable(file.getPath() + "/physicaltherapy.csv");
+    DatabaseManager.getInstance().getSecurityDAO().initTable(file.getPath() + "/security.csv");
+    DatabaseManager.getInstance().getExtPatDAO().initTable(file.getPath() + "/extPatDelivery.csv");
+    DatabaseManager.getInstance().getThemeDAO().initTable(file.getPath() + "/themes.csv");
+    DatabaseManager.getInstance().getMealDAO().initTable(file.getPath() + "/meals.csv");
   }
 }
