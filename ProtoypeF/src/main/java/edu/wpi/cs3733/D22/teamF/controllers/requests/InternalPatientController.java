@@ -151,9 +151,6 @@ public class InternalPatientController extends PageController implements Initial
               new Date());
 
       dbc.add(transportReq);
-      for (Request r : dbc.listRequests()) {
-        System.out.println(r.getRequestID());
-      }
       reset();
     }
     startTable();

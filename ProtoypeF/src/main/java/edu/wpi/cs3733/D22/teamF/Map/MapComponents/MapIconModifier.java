@@ -846,6 +846,7 @@ public class MapIconModifier {
         || location.getNodeType().equals("Security")
         || location.getNodeType().equals("Facilities")
         || location.getNodeType().equals("ExternalPatient")
+        || location.getNodeType().equals("InternalPatient")
         || location.getNodeType().equals("Scan")) {
       return "service";
     } else {

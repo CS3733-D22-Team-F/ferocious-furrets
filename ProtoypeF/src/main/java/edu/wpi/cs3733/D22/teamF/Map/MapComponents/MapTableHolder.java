@@ -142,7 +142,6 @@ public class MapTableHolder {
     ArrayList<Location> reqList = new ArrayList<>();
     reqList.addAll(getAllPT());
     reqList.addAll(getAllPatientTransports());
-    reqList.addAll(getAllInternalPatientTransports());
     reqList.addAll(getAllFacilities());
     reqList.addAll(getAllSecurity());
     reqList.addAll(getAllAudioVis());
@@ -153,6 +152,7 @@ public class MapTableHolder {
     reqList.addAll(getAllGift());
     reqList.addAll(getAllScan());
     reqList.addAll(getAllLab());
+    reqList.addAll(getAllInternalPatientTransports());
     return reqList;
   }
 
