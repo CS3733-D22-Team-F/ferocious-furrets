@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class ArduinoLogin {
 
-  String ardString = "No Match";
+  String ardString = "";
   ArduinoConnection conn = ArduinoConnection.getArduinoConnection();
 
   public ArduinoLogin() {}
@@ -41,11 +41,15 @@ public class ArduinoLogin {
   public boolean waitForFingerprintValidation() throws IOException, InterruptedException {
     boolean valid = false;
     while (conn.getSerialPort().bytesAvailable() == 0) {}
-    ardString = conn.readSerialString();
+    ardString = conn.readSerialString(); // will either be "Match" or "No Match"
     return valid;
   }
 
   public void addFingerprint(String employeeID) throws IOException, InterruptedException {
     conn.sendSerialString(employeeID);
+  }
+
+  public void resetArdString() {
+    ardString = "";
   }
 }

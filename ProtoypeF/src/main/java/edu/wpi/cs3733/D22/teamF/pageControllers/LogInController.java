@@ -77,6 +77,10 @@ public class LogInController extends ReturnHomePage implements Initializable {
       if (ardLogin.login()) {
         userType.setUserType("admin");
         success = true;
+      } else {
+        userType.setUserType("");
+        popUpLabel.setStyle("-fx-text-fill: red;");
+        popUpLabel.setText("Incorrect fingerprint, try again");
       }
     } else if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
       userType.setUserType("admin");
