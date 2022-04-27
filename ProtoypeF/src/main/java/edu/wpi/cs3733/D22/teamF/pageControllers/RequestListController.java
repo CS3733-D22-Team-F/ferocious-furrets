@@ -2,9 +2,6 @@ package edu.wpi.cs3733.D22.teamF.pageControllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
-import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
-import edu.wpi.cs3733.D22.teamD.API.SanitationReqAPI;
-import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.Fapp;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.deliveryRequest.RequestTree;
@@ -18,7 +15,6 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -82,7 +78,7 @@ public class RequestListController extends PageController implements Initializab
     }
 
     ArrayList<Object> temp = new ArrayList<>();
-    temp.add("");
+    temp.add("Select Filter");
     temp.add("Employee");
     temp.add("ReqID");
     temp.add("Location");
@@ -93,29 +89,6 @@ public class RequestListController extends PageController implements Initializab
 
   TreeItem<RequestTree> treeRoot =
       new TreeItem<>(new RequestTree(reqID, nodeID, assignedEmpID, requesterEmpID, status));
-
-  //  public String employeeIDFinder(String name) throws SQLException {
-  //
-  ////    EmployeeFilter employeeFilter= new EmployeeFilter(name);
-  ////    String empID = employeeFilter.employeeIDFinder();
-  //
-  ////    String empID = "";
-  ////    String[] employeeName = name.split(",");
-  ////    String last = employeeName[0].trim();
-  ////    String first = employeeName[1].trim();
-  ////    last = last.strip();
-  ////    first = first.strip();
-  ////    String cmd =
-  ////        String.format(
-  ////            "SELECT EMPLOYEEID FROM EMPLOYEE WHERE FIRSTNAME = '%s' AND LASTNAME = '%s'",
-  ////            first, last);
-  ////    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
-  ////    if (rset.next()) {
-  ////      empID = rset.getString("EMPLOYEEID");
-  ////    }
-  //   // rset.close();
-  //    //return empID;
-  //  }
 
   public void f() throws SQLException, IOException {
     if (filterInput.getText().equals("ALL")) {
@@ -153,13 +126,20 @@ public class RequestListController extends PageController implements Initializab
       filteredReq = requestFilter.filterByReqID();
       System.out.println(filteredReq);
     }
+
     if (((String) filterType.getValue()).equals("Location")) {
-      //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
-      //      String empID = employeeFilter.employeeIDFinder();
-      // System.out.println(empID);
       RequestFilter requestFilter = new RequestFilter(input);
-      filteredReq = requestFilter.filterByLocation();
-      System.out.println(filteredReq);
+      filteredReq = requestFilter.filterByLocationLongName();
+
+      ResultSet locationsCurrent = DatabaseManager.getInstance().getLocationDAO().get();
+
+      while (locationsCurrent.next()) {
+        System.out.println(locationsCurrent.getString("LongName"));
+      }
+
+      locationsCurrent.close();
+
+      System.out.println("here");
     }
     if (((String) filterType.getValue()).equals("Status")) {
       //      EmployeeFilter employeeFilter = new EmployeeFilter(input);
@@ -209,10 +189,24 @@ public class RequestListController extends PageController implements Initializab
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
             new ReadOnlyStringWrapper(param.getValue().getValue().getReqID()));
 
-    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
-    nodeIDColumn.setCellValueFactory(
-        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
-            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
+    TreeTableColumn<RequestTree, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
+        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                DatabaseManager.getInstance()
+                    .getLocationDAO()
+                    .nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+        });
+
+    //    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
+    //    nodeIDColumn.setCellValueFactory(
+    //        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) ->
+    //            new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID()));
 
     TreeTableColumn<RequestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
@@ -220,12 +214,12 @@ public class RequestListController extends PageController implements Initializab
             new ReadOnlyStringWrapper(param.getValue().getValue().getAssignedEmpID()));
 
     treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getColumns().setAll(reqIDColumn, nodeIDCol, assignedEmpIDColumn);
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     reqIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
-    nodeIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     assignedEmpIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -244,35 +238,6 @@ public class RequestListController extends PageController implements Initializab
     ArrayList<RequestTree> reqs = new ArrayList<RequestTree>();
     RequestTree rt;
 
-    DatabaseController dbc = new DatabaseController();
-    List<edu.wpi.cs3733.D22.teamB.api.Request> intPatientRequests = dbc.listRequests();
-    for (edu.wpi.cs3733.D22.teamB.api.Request r : intPatientRequests) {
-      if (r.getStatus().equalsIgnoreCase("Processing")) {
-        rt =
-            new RequestTree(
-                r.getRequestID(),
-                r.getStartLocation().getNodeID(),
-                r.getEmployeeID(),
-                r.getEmployeeID(),
-                r.getStatus());
-        reqs.add(rt);
-      }
-    }
-
-    SanitationReqAPI reqAPI = new SanitationReqAPI();
-    List<SanitationIRequest> sanitationRequests = reqAPI.getAllRequests();
-    for (SanitationIRequest i : sanitationRequests) {
-      if (i.getCleanStatus().toString().equals("IN_PROGRESS")) {
-        rt =
-            new RequestTree(
-                i.getNodeID(),
-                i.getRoomID(),
-                i.getAssigneeID(),
-                i.getRequesterID(),
-                i.getCleanStatus().toString());
-        reqs.add(rt);
-      }
-    }
     while (rset.next()) {
       rt =
           new RequestTree(
@@ -298,11 +263,24 @@ public class RequestListController extends PageController implements Initializab
           return new ReadOnlyStringWrapper(param.getValue().getValue().getReqID());
         });
 
-    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
-    nodeIDColumn.setCellValueFactory(
+    TreeTableColumn<RequestTree, String> nodeIDCol = new TreeTableColumn<>("Location");
+    nodeIDCol.setCellValueFactory(
         (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+          try {
+            return new ReadOnlyStringWrapper(
+                DatabaseManager.getInstance()
+                    .getLocationDAO()
+                    .nodeIDToName(param.getValue().getValue().getNodeID()));
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
           return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
         });
+    //    TreeTableColumn<RequestTree, String> nodeIDColumn = new TreeTableColumn<>("Node ID");
+    //    nodeIDColumn.setCellValueFactory(
+    //        (TreeTableColumn.CellDataFeatures<RequestTree, String> param) -> {
+    //          return new ReadOnlyStringWrapper(param.getValue().getValue().getNodeID());
+    //        });
 
     TreeTableColumn<RequestTree, String> assignedEmpIDColumn = new TreeTableColumn<>("Employee ID");
     assignedEmpIDColumn.setCellValueFactory(
@@ -311,14 +289,14 @@ public class RequestListController extends PageController implements Initializab
         });
 
     treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(reqIDColumn, nodeIDColumn, assignedEmpIDColumn);
+    treeTableView.getColumns().setAll(reqIDColumn, nodeIDCol, assignedEmpIDColumn);
     treeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
     tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
     tablePane.minHeightProperty().bind(masterPane.heightProperty());
     tablePane.getChildren().add(treeTableView);
     reqIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
-    nodeIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
+    nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     assignedEmpIDColumn.minWidthProperty().bind(tablePane.widthProperty().divide(3));
     treeTableView.minHeightProperty().bind(masterPane.heightProperty());
     treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
@@ -328,48 +306,6 @@ public class RequestListController extends PageController implements Initializab
   public ContextMenu makeContextMenu() {
     return null;
   }
-
-  // TreeItem<ArrayList<Object>> treeRoot = new TreeItem<>(new ArrayList<Object>());
-  // TreeItem<requestObject> treeRoot = new TreeItem<>(new requestObject(employee, nodeID));
-
-  /** adds items to the list to requestList ArrayList */
-  /*public void populateList() {
-  clearTable();
-  ArrayList<ArrayList<Object>> reqs = serviceRequestStorage.getArrayList();
-
-  treeRoot.setExpanded(true);
-  reqs.stream()
-      .forEach(
-          (ArrayList<Object> list) -> {
-            treeRoot.getChildren().add(new TreeItem<ArrayList<Object>>(list));
-          });
-  final Scene scene = new Scene(new Group(), 400, 400);
-
-  TreeTableColumn<ArrayList<Object>, String> RequestTypeColumn =
-      new TreeTableColumn<>("Request Type");
-  RequestTypeColumn.setCellValueFactory(
-      (TreeTableColumn.CellDataFeatures<ArrayList<Object>, String> param) -> {
-        if (param.getValue().getValue().size() > 0)
-          return new ReadOnlyStringWrapper(param.getValue().getValue().get(0).toString());
-        return new ReadOnlyStringWrapper("");
-      });
-  /*TreeTableColumn<audioVisualRequest, String> accessObjectColumn =
-          new TreeTableColumn<>("Access Object");
-  accessObjectColumn.setCellValueFactory(
-          (TreeTableColumn.CellDataFeatures<audioVisualRequest, String> param) ->
-                  new ReadOnlyStringWrapper(param.getValue().getValue().getAccessObject()));
-  */
-
-  /*TreeTableView<ArrayList<Object>> treeTableView = new TreeTableView<>(treeRoot);
-    treeTableView.getColumns().setAll(RequestTypeColumn);
-    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    tablePane.minHeightProperty().bind(masterPane.heightProperty());
-    tablePane.getChildren().add(treeTableView);
-    // accessObjectColumn.minWidthProperty().bind(tablePane.widthProperty().divide(2));
-    RequestTypeColumn.minWidthProperty().bind(tablePane.widthProperty());
-    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
-    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-  }*/
 
   /** clears the table in the request page */
   public void clearTable() {
