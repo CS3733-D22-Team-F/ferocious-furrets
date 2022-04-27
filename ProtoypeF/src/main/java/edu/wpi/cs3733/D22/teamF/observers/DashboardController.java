@@ -3,7 +3,6 @@ package edu.wpi.cs3733.D22.teamF.observers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
-import edu.wpi.cs3733.D22.teamF.entities.request.Request;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
@@ -22,6 +21,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -67,6 +67,11 @@ public class DashboardController implements Initializable {
   @FXML Label iXRay;
   @FXML Label iRecliner;
   @FXML Label iInfusionPump;
+
+  @FXML Label outstandingServiceRequestLabel;
+  @FXML Label welcomeLabel;
+
+  @FXML JFXButton updateTableButton;
 
   //  @FXML Label ll2Count;
   //  @FXML Label ll1Count;
@@ -124,6 +129,11 @@ public class DashboardController implements Initializable {
     }
   }
 
+  private void updateOutstandingSRLabel() {
+    outstandingServiceRequestLabel.setText(
+        String.format("There are %s outstanding Service Requests", requests.size()));
+  }
+
   private void initServiceRequestTable() {
     MFXTableColumn<RequestObject> reqIDColumn =
         new MFXTableColumn<>("RequestID", true, Comparator.comparing(RequestObject::getReqID));
@@ -148,7 +158,7 @@ public class DashboardController implements Initializable {
 
     table
         .getTableColumns()
-        .addAll(
+        .setAll(
             reqIDColumn,
             getNodeIDColumn,
             getAssignedEmpColumn,
@@ -156,17 +166,23 @@ public class DashboardController implements Initializable {
             statusColumn);
     table
         .getFilters()
-        .addAll(
-            new StringFilter<>("RequestID", Request::getReqID),
-            new StringFilter<>("NodeID", Request::getNodeID),
-            new StringFilter<>("Assigned Employee ID", Request::getAssignedEmpID),
-            new StringFilter<>("Requester Employee ID", Request::getRequesterEmpID),
-            new StringFilter<>("Status", Request::getStatus));
+        .setAll(
+            new StringFilter<>("RequestID", RequestObject::getReqID),
+            new StringFilter<>("NodeID", RequestObject::getNodeID),
+            new StringFilter<>("Assigned Employee ID", RequestObject::getAssignedEmpID),
+            new StringFilter<>("Requester Employee ID", RequestObject::getRequesterEmpID),
+            new StringFilter<>("Status", RequestObject::getStatus));
 
     table.setItems(requests); // INSERT OBSERVABLE ARRAYLIST OF ALL REQUEST HERE
   }
 
+  public void updateTable(ActionEvent event) {
+    updateRequest();
+  }
+
   private void updateRequest() {
+
+    ObservableList<RequestObject> newRequests = FXCollections.observableArrayList();
 
     try {
       ResultSet allRequestRset = DatabaseManager.getInstance().getRequestDAO().get();
@@ -178,7 +194,7 @@ public class DashboardController implements Initializable {
         String requesterEmployeeID = allRequestRset.getString("requesterEmployeeID");
         String status = allRequestRset.getString("status");
 
-        requests.add(
+        newRequests.add(
             new RequestObject(reqID, nodeID, assignedEmployeeID, requesterEmployeeID, status));
       }
 
@@ -187,6 +203,11 @@ public class DashboardController implements Initializable {
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
+
+    requests = newRequests;
+
+    initServiceRequestTable();
+    updateOutstandingSRLabel();
   }
 
   public void setFloor(Floor floorToSet) {
@@ -210,6 +231,7 @@ public class DashboardController implements Initializable {
     // allFloorsObserver.setFloor(currentFloor);
     setLabels();
     //    System.out.println("Prev observer");
+
   }
 
   public void setAlerts() {
@@ -257,10 +279,7 @@ public class DashboardController implements Initializable {
     //            + floorObservers.get(currentFloor.toInt()).getInUse().size());
 
     List<Alert> currentAlerts = floorObservers.get(currentFloor.toInt()).getFloorAlerts();
-    for (int alert = 0; alert < currentAlerts.size(); alert++)
-      //      System.out.println(currentAlerts.get(alert).getMessage());
-
-      floorObservers.get(currentFloor.toInt()).updateLabels();
+    floorObservers.get(currentFloor.toInt()).updateLabels();
     floorSelect.setText(currentFloor.toFloorString());
     AlertObserver.getInstance().setFloorAlertCount();
   }
