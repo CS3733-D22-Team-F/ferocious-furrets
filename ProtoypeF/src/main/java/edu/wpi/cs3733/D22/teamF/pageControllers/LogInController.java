@@ -72,11 +72,6 @@ public class LogInController extends ReturnHomePage implements Initializable {
   @FXML
   private void logIn(ActionEvent event) throws SQLException, IOException, InterruptedException {
 
-    //    FXMLLoader settingLoader = new
-    // FXMLLoader(getClass().getResource("views/settingsPage.fxml"));
-    //    settingController aSettingController = settingLoader.getController();
-    //    aSettingController.myFunction(usernameField.getText());
-
     boolean success = false;
     UserType userType = new UserType();
 
@@ -102,11 +97,6 @@ public class LogInController extends ReturnHomePage implements Initializable {
     } else if (usernameField.getText().equals("staff") && passwordField.getText().equals("staff")) {
       userType.setUserType("staff");
       success = true;
-    } else if (usernameField.getText().equals("Nick")
-        && passwordField.getText().equals("Grozdani")) {
-      islandBois.setVisible(true);
-      usernameField.clear();
-      passwordField.clear();
     } else if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
       AGlobalMethods.showAlert("At least one required field is empty", popUpLabel);
     } else {
@@ -117,11 +107,8 @@ public class LogInController extends ReturnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
-      System.out.println(databaseChooser.getValue().toString());
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
-
-      System.out.println(embedded);
 
       FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/cachePage.fxml"));
       fxmlLoader.setControllerFactory(c -> new CachePageController(embedded));
@@ -139,11 +126,6 @@ public class LogInController extends ReturnHomePage implements Initializable {
     } else {
       popUpLabel.setVisible(true);
     }
-    //        if (databaseChooser.getValue().toString().equals("Client-Server")) {
-    //          dbType = DatabaseInitializer.ConnType.CLIENTSERVER;
-    //        } else {
-    //          dbType = DatabaseInitializer.ConnType.EMBEDDED;
-    //        }
   }
 
   @Override

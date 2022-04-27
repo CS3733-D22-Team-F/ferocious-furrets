@@ -1,6 +1,11 @@
 package edu.wpi.cs3733.D22.teamF.Map;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
+import edu.wpi.cs3733.D22.teamB.api.Request;
+import edu.wpi.cs3733.D22.teamD.backend.Orm;
+import edu.wpi.cs3733.D22.teamD.request.IRequest;
+import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.LocTempHolder;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.MapIconModifier;
@@ -46,7 +51,12 @@ public class MapServiceModifyController implements Initializable {
    */
   public void submit() throws SQLException, IOException {
     String reqID = LocTempHolder.getLocation().getLongName(); // request ID store in Long Name
+    SanitationIRequest sanitationIRequest = new SanitationIRequest();
+    Orm<SanitationIRequest> requestOrm = new Orm<>(sanitationIRequest);
+    DatabaseController dbc = new DatabaseController();
     boolean isMedicine = false;
+    boolean isFacilities = false;
+    boolean isIntTransport = false;
     String cmd = "";
     ResultSet rset =
         DatabaseManager.getInstance()
@@ -57,11 +67,35 @@ public class MapServiceModifyController implements Initializable {
       cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(
           "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
+    } else if (dbc.getRequestByID(reqID) != null) {
+      isIntTransport = true;
+      Request request = dbc.getRequestByID(reqID);
+      Request finishedRequest =
+          new Request(
+              reqID,
+              request.getEmployeeID(),
+              request.getStart(),
+              request.getFinish(),
+              "Done",
+              request.getPriority(),
+              request.getInformation(),
+              request.getTimeCreated(),
+              request.getLastEdited(),
+              request.getDeadline());
+      dbc.update(finishedRequest);
+    } else if (LocTempHolder.getLocation().getNodeType().equals("Facilities")) {
+      isFacilities = true;
+      SanitationIRequest request = requestOrm.get(reqID);
+      request.setCleanStatus(IRequest.RequestStatus.COMPLETED);
+      requestOrm.delete(reqID);
+      requestOrm.add(request);
     } else {
       cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
     }
     MapIconModifier.deleteIcon(LocTempHolder.getLocation());
-    DatabaseManager.getInstance().runStatement(cmd);
+    if (!isFacilities && !isIntTransport) {
+      DatabaseManager.getInstance().runStatement(cmd);
+    }
     Stage stage = (Stage) cancel.getScene().getWindow();
     stage.close();
   }

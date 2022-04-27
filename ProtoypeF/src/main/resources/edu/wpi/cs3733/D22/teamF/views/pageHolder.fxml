@@ -20,9 +20,9 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="1500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="60.0" StackPane.alignment="TOP_LEFT" />
       <VBox fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1270.0" StackPane.alignment="TOP_LEFT">
          <children>
-            <HBox fx:id="titleBox" prefHeight="60.0" prefWidth="1270.0" style="-fx-background-color: #123090;">
+            <HBox fx:id="titleBox" prefHeight="60.0" prefWidth="1270.0" styleClass="titleBox">
                <children>
-                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1157.0" text="       Brigham And Women's Hospital" textFill="WHITE">
+                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1157.0" styleClass="titleLabel" text="       Brigham And Women's Hospital" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="48.0" />
                      </font>
@@ -59,7 +59,7 @@
                         </StackPane>
                         <JFXDrawer fx:id="menu" defaultDrawerSize="200.0" maxWidth="-Infinity" miniDrawerSize="50.0" onDrawerClosed="#onClose" onDrawerOpened="#onOpen" onMouseEntered="#menuOpen" onMouseExited="#menuClose" overLayVisible="false" prefHeight="767.0" prefWidth="198.0" resizeContent="true" StackPane.alignment="TOP_LEFT">
                            <children>
-                              <VBox fx:id="homeMenu" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="homeMenu" prefHeight="660.0" prefWidth="200.0" styleClass="homeMenu">
                                  <children>
                                     <VBox fx:id="v1" prefHeight="200.0" prefWidth="200.0">
                                        <children>
@@ -98,6 +98,11 @@
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
+                                          <JFXButton fx:id="apiLandingButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#changeToAPILandingPage" prefHeight="45.0" prefWidth="286.0" text="API Landing" textFill="WHITE">
+                                             <font>
+                                                <Font name="Serif Regular" size="24.0" />
+                                             </font>
+                                          </JFXButton>
                                        </children>
                                     </VBox>
                                     <VBox fx:id="v2" prefHeight="200.0" prefWidth="200.0">
@@ -119,7 +124,7 @@
                                     </VBox>
                                  </children>
                               </VBox>
-                              <VBox fx:id="serviceMenu" prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #4169E1;">
+                              <VBox fx:id="serviceMenu" prefHeight="660.0" prefWidth="200.0" styleClass="homeMenu">
                                  <children>
                                     <VBox fx:id="v5" prefHeight="200.0" prefWidth="200.0">
                                        <children>
@@ -183,7 +188,12 @@
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
                                           </JFXButton>
-                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="43.0" prefWidth="201.0" text="Pt. Transport" textFill="WHITE">
+                                          <JFXButton fx:id="patientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" minHeight="-Infinity" onAction="#goToTransport" prefHeight="43.0" prefWidth="201.0" text="Ext. Transport" textFill="WHITE">
+                                             <font>
+                                                <Font name="Serif Regular" size="24.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="intPatientButton" alignment="TOP_LEFT" buttonType="RAISED" graphicTextGap="15.0" layoutX="10.0" layoutY="536.0" minHeight="-Infinity" onAction="#goToIntTransport" prefHeight="43.0" prefWidth="201.0" text="Int. Transport" textFill="WHITE">
                                              <font>
                                                 <Font name="Serif Regular" size="24.0" />
                                              </font>
@@ -194,7 +204,7 @@
                               </VBox>
                            </children>
                         </JFXDrawer>
-                        <Pane fx:id="emergencyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="278.0" style="-fx-background-color: #123090; -fx-border-color: #F3BA48; -fx-border-width: 5;" StackPane.alignment="TOP_RIGHT">
+                        <Pane fx:id="emergencyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="278.0" style="-fx-border-color: #F3BA48; -fx-border-width: 5;" styleClass="basePane" StackPane.alignment="TOP_RIGHT">
                            <children>
                               <Label layoutX="60.0" layoutY="8.0" text="Emergency Call" textFill="WHITE">
                                  <font>
@@ -208,12 +218,12 @@
                               </TextField>
                               <HBox layoutX="33.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" spacing="10.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" onAction="#showEmergency" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Cancel" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" onAction="#showEmergency" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergencyButton" text="Cancel" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#callSecurity" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" onAction="#callSecurity" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergenctButton" text="Submit" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>

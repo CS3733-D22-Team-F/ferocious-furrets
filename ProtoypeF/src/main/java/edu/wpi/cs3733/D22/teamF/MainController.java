@@ -64,7 +64,9 @@ public class MainController implements Initializable {
   @FXML JFXButton employeeButton;
   @FXML JFXButton queueButton;
   @FXML JFXButton landingButton;
+  @FXML JFXButton apiLandingButton;
   @FXML JFXButton patientButton;
+  @FXML JFXButton intPatientButton;
   @FXML TextField emergencyLocation;
   @FXML Pane emergencyPane;
 
@@ -77,18 +79,6 @@ public class MainController implements Initializable {
   ChangeListener<Number> heightResizeCallback;
   ObservableList<Transform> baseTransformsTop;
   ObservableList<Transform> baseTransformsMenu;
-
-  //  Timeline timeline =
-  //      new Timeline(
-  //          new KeyFrame(
-  //              Duration.seconds(10),
-  //              event -> {
-  //                try {
-  //                  DatabaseManager.getInstance().backUpDatabaseToCSV();
-  //                } catch (SQLException | IOException e) {
-  //                  e.printStackTrace();
-  //                }
-  //              }));
 
   @SneakyThrows
   @Override
@@ -245,8 +235,12 @@ public class MainController implements Initializable {
     linksButton.setText("");
     landingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
     landingButton.setText("");
+    apiLandingButton.setGraphic(MapIconModifier.getIcon("apiMenu"));
+    apiLandingButton.setText("");
     patientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
     patientButton.setText("");
+    intPatientButton.setGraphic(MapIconModifier.getIcon("patientMenu"));
+    intPatientButton.setText("");
   }
 
   public void menuOpen() {
@@ -273,7 +267,9 @@ public class MainController implements Initializable {
     employeeButton.setText("Employee");
     linksButton.setText("Links");
     landingButton.setText("Landing");
+    apiLandingButton.setText("API Landing");
     patientButton.setText("Pt. Transport");
+    intPatientButton.setText("Int. Transport");
   }
 
   public void changeToHomeMenu() throws IOException {
@@ -360,6 +356,8 @@ public class MainController implements Initializable {
   public void changeToFacilities() throws IOException {
     // TODO add your page name before ".fxml"
     changeTo("views/facilitiesPage.fxml");
+    //    StartAPI.appLaunch(
+    //        0, 0, 0, 0, "edu/wpi/cs3733/D22/teamF/stylesheets/DarkMode.css", "FSTAI00201");
   }
 
   public void changeToMaintenance() throws IOException {
@@ -369,6 +367,23 @@ public class MainController implements Initializable {
 
   public void goToTransport() throws IOException {
     changeTo("views/extPatDeliveryPage.fxml");
+  }
+
+  public void goToIntTransport() throws IOException, edu.wpi.cs3733.D22.teamB.api.ServiceException {
+    changeTo("views/internalPatientPage.fxml");
+    //    API intPatientAPI = new API();
+    //    intPatientAPI.run(
+    //        100,
+    //        100,
+    //        1220,
+    //        660,
+    //        "edu/wpi/cs3733/D22/teamF/stylesheets/PurpleMode.css",
+    //        "FDEPT00301",
+    //        "FDEPT00301");
+  }
+
+  public void changeToAPILandingPage() throws IOException {
+    changeTo("views/apiLandingPage.fxml");
   }
 
   public void changeTo(String path) throws IOException {

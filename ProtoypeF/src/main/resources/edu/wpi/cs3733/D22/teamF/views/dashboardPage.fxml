@@ -18,10 +18,10 @@
 
 <BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" style="-fx-background-color: white;" stylesheets="@../stylesheets/DashBoard.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.observers.DashboardController">
    <left>
-      <Pane prefHeight="660.0" prefWidth="308.0" style="-fx-background-color: #123090;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="660.0" prefWidth="308.0" styleClass="basePane" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="135.0" layoutX="-57.0" layoutY="-13.0" stroke="TRANSPARENT" strokeType="INSIDE" width="390.0" />
-            <Label contentDisplay="TOP" layoutX="6.0" layoutY="33.0" prefHeight="71.0" prefWidth="296.0" text="Dashboard" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="135.0" layoutX="-57.0" layoutY="-13.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="rectangle2" width="390.0" />
+            <Label contentDisplay="TOP" layoutX="6.0" layoutY="33.0" prefHeight="71.0" prefWidth="296.0" styleClass="serviceTitle" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="64.0" />
                </font>
@@ -41,26 +41,26 @@
                <children>
                   <VBox prefHeight="234.0" prefWidth="89.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="137.0" text="Floor" textFill="#123090">
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="Floor" textFill="#123090">
                            <font>
                               <Font name="Serif Regular" size="36.0" />
                            </font>
                         </Label>
-                        <Polygon fill="ROYALBLUE" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 17.333251953125, -9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Polygon fill="ROYALBLUE" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 17.333251953125, -9.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dashboardArrow" />
                         <TextField fx:id="floorSelect" alignment="CENTER" prefHeight="71.0" prefWidth="105.0" promptText="Floor">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </TextField>
-                        <Polygon fill="ROYALBLUE" layoutX="37.0" layoutY="69.0" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 16.333251953125, 76.3333969116211" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Polygon fill="ROYALBLUE" layoutX="37.0" layoutY="69.0" points="-27.333404541015625, 33.66668701171875, 61.66656494140625, 33.66668701171875, 16.333251953125, 76.3333969116211" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dashboardArrow" />
                      </children>
                   </VBox>
-                  <Line endX="97.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" />
+                  <Line endX="97.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" styleClass="dashboardLine" />
                   <HBox prefHeight="224.0" prefWidth="583.0" spacing="10.0">
                      <children>
                         <VBox prefHeight="145.0" prefWidth="124.0" spacing="25.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="137.0" text="Clean" textFill="#123090">
+                              <Label prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="Clean" textFill="#123090">
                                  <font>
                                     <Font name="Serif Regular" size="36.0" />
                                  </font>
@@ -119,14 +119,14 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Line endX="97.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0">
+                        <Line endX="97.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" styleClass="dashboardLine">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Line>
                         <VBox prefHeight="228.0" prefWidth="124.0" spacing="25.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="137.0" text="Pods" textFill="#123090">
+                              <Label prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="Pods" textFill="#123090">
                                  <font>
                                     <Font name="Serif Regular" size="36.0" />
                                  </font>
@@ -185,10 +185,10 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Line endX="97.0" layoutX="49.0" layoutY="12.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" />
+                        <Line endX="97.0" layoutX="49.0" layoutY="12.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" styleClass="dashboardLine" />
                         <VBox prefHeight="205.0" prefWidth="141.0" spacing="25.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="137.0" text="Dirty" textFill="#123090">
+                              <Label prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="Dirty" textFill="#123090">
                                  <font>
                                     <Font name="Serif Regular" size="36.0" />
                                  </font>
@@ -247,10 +247,10 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Line endX="97.0" layoutX="196.0" layoutY="12.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" />
+                        <Line endX="97.0" layoutX="196.0" layoutY="12.0" startX="97.0" startY="250.0" stroke="#123090" strokeWidth="3.0" styleClass="dashboardLine" />
                         <VBox prefHeight="205.0" prefWidth="141.0" spacing="25.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="137.0" text="In-use" textFill="#123090">
+                              <Label prefHeight="28.0" prefWidth="137.0" styleClass="dashboardLabel" text="In-use" textFill="#123090">
                                  <font>
                                     <Font name="Serif Regular" size="36.0" />
                                  </font>

@@ -144,7 +144,6 @@ public class Cache {
         isLocationsUpdated = true;
         buildMaps(DBType.DBT_ALL);
     }
-    System.out.println("Updated Cache");
   }
 
   private static void buildMaps(DBType type) {

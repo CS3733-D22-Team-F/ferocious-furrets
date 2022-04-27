@@ -15,43 +15,40 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ScanController">
+<BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.controllers.requests.ScanController">
    <left>
       <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="600.0" style="-fx-background-color: #4169E1#4169E1;">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#123090" height="660.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="rectangle1" width="600.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0473da" height="130.0" stroke="#ffffff00" strokeType="INSIDE" styleClass="rectangle2" width="600.0" />
+            <HBox layoutY="29.0" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <HBox layoutY="29.0" prefHeight="100.0" prefWidth="600.0">
-                     <children>
-                        <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="582.0" text="Scan Requests" textFill="WHITE">
-                           <font>
-                              <Font name="Serif Regular" size="64.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </Label>
-                        <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../MenuIcon/scan.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <Label contentDisplay="TOP" prefHeight="100.0" prefWidth="582.0" text="Scan Requests" textFill="WHITE">
+                     <font>
+                        <Font name="Serif Regular" size="64.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../MenuIcon/scan.png" />
+                     </image>
+                  </ImageView>
                </children>
-            </Pane>
+            </HBox>
             <HBox layoutX="120.0" layoutY="575.0" prefHeight="53.0" prefWidth="350.0">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f2ba49" style="-fx-background-color: #123090;" text="Submit" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#submit" prefHeight="85.0" prefWidth="175.0" ripplerFill="#f2ba49" styleClass="serviceButton" text="Submit" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="reset" buttonType="RAISED" onAction="#reset" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" style="-fx-background-color: #123090;" text="Reset" textFill="WHITE">
+                  <JFXButton fx:id="reset" buttonType="RAISED" onAction="#reset" prefHeight="53.0" prefWidth="175.0" ripplerFill="#f3ba48" styleClass="serviceButton" text="Reset" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="24.0" />
                      </font>
@@ -62,27 +59,27 @@
                <children>
                   <VBox prefHeight="316.0" prefWidth="242.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" text="Location:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" styleClass="serviceLabel" text="Location:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="252.0" text="Assigned Employee:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="252.0" styleClass="serviceLabel" text="Assigned Employee:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" text="Request Employee:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" styleClass="serviceLabel" text="Request Employee:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" text="Scan Type:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" styleClass="serviceLabel" text="Scan Type:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" text="Status:" textFill="WHITE">
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="306.0" styleClass="serviceLabel" text="Status:" textFill="WHITE">
                            <font>
                               <Font name="Serif Regular" size="24.0" />
                            </font>
@@ -94,27 +91,27 @@
                   </VBox>
                   <VBox prefHeight="308.0" prefWidth="300.0" spacing="10.0">
                      <children>
-                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="318.0" promptText="Location" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+                        <JFXComboBox fx:id="nodeField" prefHeight="50.0" prefWidth="318.0" promptText="Location" styleClass="serviceCombo" unFocusColor="#4d4d4d00">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+                        <JFXComboBox fx:id="employeeIDField" prefHeight="50.0" prefWidth="318.0" promptText="Assigned Employee" styleClass="serviceCombo" unFocusColor="#4d4d4d00">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Request Employee" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+                        <JFXComboBox fx:id="userField" prefHeight="50.0" prefWidth="318.0" promptText="Request Employee" styleClass="serviceCombo" unFocusColor="#4d4d4d00">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="typeChoice" prefHeight="50.0" prefWidth="337.0" promptText="Scan Type" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+                        <JFXComboBox fx:id="typeChoice" prefHeight="50.0" prefWidth="337.0" promptText="Scan Type" styleClass="serviceCombo" unFocusColor="#ffffff00">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="statusChoice" focusColor="#415aa6" prefHeight="50.0" prefWidth="348.0" promptText="Status" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+                        <JFXComboBox fx:id="statusChoice" focusColor="#415aa6" prefHeight="50.0" prefWidth="348.0" promptText="Status" styleClass="serviceCombo" unFocusColor="#ffffff00">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

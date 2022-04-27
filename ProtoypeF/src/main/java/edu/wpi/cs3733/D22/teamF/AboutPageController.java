@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF;
 
-import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +8,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -17,11 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /** Controller for the about page */
-public class AboutPageController implements Initializable {
+public class AboutPageController extends AGlobalMethods implements Initializable {
 
   @FXML VBox creditVbox;
   @FXML BorderPane creditPane;
@@ -54,23 +51,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/raffi.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Raffi Alexander");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/raffi.fxml", "Raffi Alexander");
           }
         });
   }
@@ -81,23 +62,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/carter.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Carter Bullock");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helperForAudio("views/teammembers/carter.fxml", "Carter Bullock", "Music/grandpa.wav");
           }
         });
   }
@@ -108,28 +73,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/nikola.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-
-            AudioPlayer.getInstance().setAudioInputStream("Music/island.wav");
-            AudioPlayer.getInstance().playFrom(45000);
-
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Nikola Grozdani");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
-            AudioPlayer.getInstance().stop();
+            helper("views/teammembers/nikola.fxml", "Nikola Grozdani");
           }
         });
   }
@@ -140,23 +84,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/jack.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Jack Hanlon");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/jack.fxml", "Jack Hanlon");
           }
         });
   }
@@ -167,23 +95,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/will.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Will Huang");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/will.fxml", "Will Huang");
           }
         });
   }
@@ -194,23 +106,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/connor.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Conner McKevitt");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/connor.fxml", "Conner McKevitt");
           }
         });
   }
@@ -221,23 +117,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/evans.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Evans Owusu");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/evans.fxml", "Evans Owusu");
           }
         });
   }
@@ -248,23 +128,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/cole.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Cole Parks");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/cole.fxml", "Cole Parks");
           }
         });
   }
@@ -275,23 +139,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/john.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("John Petrarca");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/john.fxml", "John Petrarca");
           }
         });
   }
@@ -302,23 +150,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(
-                          Fapp.class.getResource("views/teammembers/owen.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Owen Radcliffe");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/owen.fxml", "Owen Radcliffe");
           }
         });
   }
@@ -329,22 +161,7 @@ public class AboutPageController implements Initializable {
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-            Parent root = null;
-            try {
-              root =
-                  FXMLLoader.load(
-                      Objects.requireNonNull(Fapp.class.getResource("views/teammembers/azu.fxml")));
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-            Stage popupwindow = new Stage();
-            popupwindow.setTitle("Shiming De (Azu)");
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            Scene scene1 = new Scene(root);
-            popupwindow.setScene(scene1);
-            popupwindow.initModality(Modality.APPLICATION_MODAL);
-            popupwindow.showAndWait();
+            helper("views/teammembers/azu.fxml", "Shiming De (Azu)");
           }
         });
   }
@@ -354,11 +171,13 @@ public class AboutPageController implements Initializable {
     raffi.setPickOnBounds(true);
     carter.setPickOnBounds(true);
     nikola.setPickOnBounds(true);
-
-    //    bannerAnchor.maxWidthProperty().bind(creditPane.maxHeightProperty());
-    //    creditVbox.layoutXProperty().bind(creditPane.maxWidthProperty());
-    //    creditVbox.layoutYProperty().bind(creditPane.maxHeightProperty());
-    //    creditVbox.maxHeightProperty().bind(creditVbox.heightProperty());
-    //    ((Stage) (creditVbox.getScene().getWindow())).setResizable(false);
+    jack.setPickOnBounds(true);
+    will.setPickOnBounds(true);
+    conner.setPickOnBounds(true);
+    evans.setPickOnBounds(true);
+    cole.setPickOnBounds(true);
+    john.setPickOnBounds(true);
+    owen.setPickOnBounds(true);
+    azu.setPickOnBounds(true);
   }
 }

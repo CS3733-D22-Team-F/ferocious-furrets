@@ -405,6 +405,13 @@ public class MapIconModifier {
                   Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/patient.png")));
           break;
         }
+      case "logo":
+        {
+          image =
+              new Image(
+                  Objects.requireNonNull(Fapp.class.getResourceAsStream("MenuIcon/logo.png")));
+          break;
+        }
     }
     ImageView imageView = new ImageView(image);
     imageView.setFitHeight(20);
@@ -644,6 +651,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                MapPageController.inButton = true;
                 int i = 0;
                 ArrayList<Location> loList = new ArrayList<>(table.getItems());
                 for (Location lo : loList) {
@@ -666,6 +674,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseExited(
               e -> {
+                MapPageController.inButton = false;
                 locationArea.clear();
                 infoBox.setVisible(false);
               });
@@ -695,6 +704,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                MapPageController.inButton = true;
                 int i = 0;
                 ArrayList<Location> loList = new ArrayList<>(table.getItems());
                 for (Location lo : loList) {
@@ -702,6 +712,9 @@ public class MapIconModifier {
                     i = loList.indexOf(lo);
                   }
                 }
+                table.scrollTo(i);
+                table.getSelectionModel().select(i);
+                newButton.setCursor(Cursor.HAND);
                 infoBox.setVisible(true);
                 try {
                   for (String s : MapTableHolder.getAllLocOnNID(location)) {
@@ -714,6 +727,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseExited(
               e -> {
+                MapPageController.inButton = false;
                 locationArea.clear();
                 infoBox.setVisible(false);
               });
@@ -788,6 +802,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseEntered(
               e -> {
+                MapPageController.inButton = true;
                 int i = 0;
                 ArrayList<Location> loList = new ArrayList<>(table.getItems());
                 for (Location lo : loList) {
@@ -795,6 +810,8 @@ public class MapIconModifier {
                     i = loList.indexOf(lo);
                   }
                 }
+                table.scrollTo(i);
+                table.getSelectionModel().select(i);
                 newButton.setCursor(Cursor.HAND);
                 infoBox.setVisible(true);
                 try {
@@ -808,6 +825,7 @@ public class MapIconModifier {
               });
           newButton.setOnMouseExited(
               e -> {
+                MapPageController.inButton = false;
                 locationArea.clear();
                 infoBox.setVisible(false);
               });
@@ -846,6 +864,7 @@ public class MapIconModifier {
         || location.getNodeType().equals("Security")
         || location.getNodeType().equals("Facilities")
         || location.getNodeType().equals("ExternalPatient")
+        || location.getNodeType().equals("InternalPatient")
         || location.getNodeType().equals("Scan")) {
       return "service";
     } else {
