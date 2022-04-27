@@ -27,11 +27,17 @@ public class ThemeDAOImpl {
   }
 
   public void initTable(String filePath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("Theme");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE Theme (name varchar(64) PRIMARY KEY, mainColor varChar(64), subColor varchar(64), textColor varchar(64))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE Theme (name varchar(64) PRIMARY KEY, mainColor varChar(64), subColor varchar(64), textColor varchar(64))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filePath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

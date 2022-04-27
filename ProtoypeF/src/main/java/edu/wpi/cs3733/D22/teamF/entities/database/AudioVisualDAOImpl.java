@@ -26,10 +26,17 @@ public class AudioVisualDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String file) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("audioVisualRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(64), objectType varChar(64), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE audioVisualRequest (reqID varchar(16) PRIMARY KEY, accessObject varChar(64), objectType varChar(64), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

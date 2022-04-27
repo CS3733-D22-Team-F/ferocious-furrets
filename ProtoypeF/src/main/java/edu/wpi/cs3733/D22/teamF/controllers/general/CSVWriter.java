@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import edu.wpi.cs3733.D22.teamF.Fapp;
+import java.io.*;
 import java.util.List;
 
 public class CSVWriter {
@@ -16,8 +15,11 @@ public class CSVWriter {
     writer.close();
   }
 
-  private static void write(String dir, String data) throws FileNotFoundException {
-    PrintWriter writer = new PrintWriter(dir);
+  private static void write(String dir, String data) throws IOException {
+    System.out.println("Opening: " + dir);
+    dir = Fapp.class.getResource(dir).getPath();
+
+    FileWriter writer = new FileWriter(dir);
     writer.write(data);
     writer.flush();
     writer.close();
@@ -31,7 +33,7 @@ public class CSVWriter {
     write(file, dataAll);
   }
 
-  public static void writeAllToDir(String dir, List<String> data) throws FileNotFoundException {
+  public static void writeAllToDir(String dir, List<String> data) throws IOException {
     String dataAll = "";
     for (String str : data) {
       dataAll = dataAll + str + "\n";

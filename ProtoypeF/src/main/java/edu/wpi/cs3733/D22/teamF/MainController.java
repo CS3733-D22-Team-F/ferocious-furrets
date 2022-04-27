@@ -84,16 +84,7 @@ public class MainController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     showEmergency();
-    Thread shutDownHook =
-        new Thread(
-            () -> {
-              try {
-                DatabaseManager.getInstance().backUpDatabaseToCSV();
-              } catch (SQLException | IOException e) {
-                e.printStackTrace();
-              }
-            });
-    Runtime.getRuntime().addShutdownHook(shutDownHook);
+
     titleBox.maxWidthProperty().bind(SceneManager.getInstance().getStage().widthProperty());
     serviceMenu.setVisible(false);
     baseTransformsTop = titleBox.getTransforms();
@@ -393,7 +384,6 @@ public class MainController implements Initializable {
   }
 
   public void exit() throws SQLException, IOException {
-    DatabaseManager.getInstance().backUpDatabaseToCSV();
     System.exit(0);
   }
 

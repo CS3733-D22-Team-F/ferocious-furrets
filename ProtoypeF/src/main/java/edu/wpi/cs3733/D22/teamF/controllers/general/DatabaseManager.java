@@ -7,7 +7,7 @@ import edu.wpi.cs3733.D22.teamF.entities.employees.EmployeeDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.location.LocationsDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.medicalEquipment.EquipmentDAOImpl;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestDAOImpl;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -184,7 +184,6 @@ public class DatabaseManager {
    */
   public void initializeDatabaseManager() throws SQLException, IOException {
 
-    dropAllTables();
     employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
@@ -222,11 +221,7 @@ public class DatabaseManager {
   public void runStatement(String statement) throws SQLException {
     Statement stm = dbConnection.createStatement();
     // System.out.println("SQL: " + statement);
-    try {
-      stm.execute(statement);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    stm.execute(statement);
     // System.out.println(statement);
     stm.close();
   }
@@ -283,34 +278,6 @@ public class DatabaseManager {
     } else {
       //      System.out.println(droppingTable + " table does not Exist!");
     }
-  }
-
-  /**
-   * Functions to run before exiting the program
-   *
-   * @throws SQLException
-   * @throws IOException
-   */
-  public void backUpDatabaseToCSV() throws SQLException, IOException {
-    locationsDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
-    medicalEquipmentDAO.backUpToCSV(
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
-    medicalEquipmentDeliveryRequestDAO.backUpToCSV(
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
-    giftDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
-    labRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
-    mealDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
-    // medicineDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
-    MedicineRequest.backUpDatabase(
-        "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
-    scanRequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
-    RequestDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
-    audioVisualDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
-    ptDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
-    securityDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/security.csv");
-    facilitiesDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
-    extPatDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/extPatDelivery.csv");
-    themeDAO.backUpToCSV("src/main/resources/edu/wpi/cs3733/D22/teamF/csv/themes.csv");
   }
 
   /**

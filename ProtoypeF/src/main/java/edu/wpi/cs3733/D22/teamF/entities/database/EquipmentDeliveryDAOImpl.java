@@ -32,12 +32,18 @@ public class EquipmentDeliveryDAOImpl implements IRequestDAO {
    * @throws IOException
    */
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("EquipmentDeliveryRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), "
-                + "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE EquipmentDeliveryRequest (reqID varchar(16) PRIMARY KEY, equipID varchar(16), "
+                  + "Foreign Key(reqID) References ServiceRequest(reqID), Foreign Key(equipID) References MedicalEquipment(equipID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

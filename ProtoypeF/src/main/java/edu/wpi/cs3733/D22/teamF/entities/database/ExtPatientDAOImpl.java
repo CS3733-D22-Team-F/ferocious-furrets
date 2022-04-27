@@ -26,10 +26,17 @@ public class ExtPatientDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String file) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("externalPatientRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE externalPatientRequest (reqID varchar(16) PRIMARY KEY, address varChar(32), method varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE externalPatientRequest (reqID varchar(16) PRIMARY KEY, address varChar(32), method varChar(32), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(file);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);

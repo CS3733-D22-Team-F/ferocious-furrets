@@ -27,11 +27,17 @@ public class GiftDAOImpl implements IRequestDAO {
   }
 
   public void initTable(String filepath) throws SQLException, IOException {
-    DatabaseManager.getInstance().dropTableIfExist("GiftRequest");
-    DatabaseManager.getInstance()
-        .runStatement(
-            "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(64), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
-
+    try {
+      DatabaseManager.getInstance()
+          .runStatement(
+              "CREATE TABLE GiftRequest (reqID varchar(16) PRIMARY KEY, gift varChar(64), FOREIGN KEY (reqID) REFERENCES ServiceRequest(reqID))");
+    } catch (SQLException e) {
+      if (e.getSQLState().equals("X0Y32")) {
+        return;
+      }
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
     List<String> lines = CSVReader.readResourceFilepath(filepath);
     for (String currentLine : lines) {
       //      System.out.println(currentLine);
