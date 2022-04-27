@@ -411,9 +411,14 @@ public class RequestListController extends PageController implements Initializab
       showAlert("Please select a request from the table!", masterPane);
       return;
     }
+    FileChooser templateChoose = new FileChooser();
+    templateChoose.setTitle("Choose .docx Template:");
+    Stage stage = (Stage) tablePane.getScene().getWindow();
+    File template = templateChoose.showOpenDialog(stage);
+    String templatePath = template.getPath();
+
     FileChooser fChoose = new FileChooser();
     fChoose.setTitle("Save to:");
-    Stage stage = (Stage) tablePane.getScene().getWindow();
     File file = fChoose.showSaveDialog(stage);
     String filepath = file.getPath() + ".docx";
 
@@ -430,7 +435,7 @@ public class RequestListController extends PageController implements Initializab
               request.getRequesterEmpID(),
               request.getStatus());
       try {
-        rep.generateGenericServiceRequestReport(filepath);
+        rep.generateGenericServiceRequestReport(filepath, templatePath);
         showAlert("Report created!", tablePane);
       } catch (Throwable e) {
         System.out.println("Report failed");
