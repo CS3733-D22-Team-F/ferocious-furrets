@@ -255,7 +255,7 @@ public class MainController implements Initializable {
     homeButton2.setText("Home");
     physicalButton.setText("Phy. Therapy");
     securityButton.setText("Security");
-    sanitationButton.setText("Sanitation");
+    sanitationButton.setText("Facilities");
     maintenanceButton.setText("Maintenance");
     queueButton.setText("Queue");
     employeeButton.setText("Employee");
