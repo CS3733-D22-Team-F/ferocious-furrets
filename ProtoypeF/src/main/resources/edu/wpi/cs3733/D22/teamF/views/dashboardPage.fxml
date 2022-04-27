@@ -55,7 +55,7 @@
                               </VBox>
                               <Pane prefHeight="422.0" prefWidth="885.0" style="-fx-background-color: white;">
                                  <children>
-                                    <MFXTableView fx:id="table" layoutX="16.0" layoutY="8.0" prefHeight="226.0" prefWidth="730.0" />
+                                    <MFXTableView fx:id="table" layoutX="16.0" layoutY="8.0" pickOnBounds="false" prefHeight="226.0" prefWidth="730.0" />
                                  </children>
                                  <HBox.margin>
                                     <Insets right="50.0" />

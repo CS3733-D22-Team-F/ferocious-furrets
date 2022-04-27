@@ -141,19 +141,21 @@ public class DashboardController implements Initializable {
         new MFXTableColumn<>("NodeID", true, Comparator.comparing(RequestObject::getNodeID));
     MFXTableColumn<RequestObject> getAssignedEmpColumn =
         new MFXTableColumn<>(
-            "Assigned Employee ID", true, Comparator.comparing(RequestObject::getAssignedEmpID));
+            "Assigned Employee", true, Comparator.comparing(RequestObject::getAssignedEmpFullName));
     MFXTableColumn<RequestObject> getRequesterEmpColumn =
         new MFXTableColumn<>(
-            "Requester Employee ID", true, Comparator.comparing(RequestObject::getRequesterEmpID));
+            "Requester Employee ID",
+            true,
+            Comparator.comparing(RequestObject::getRequesterEmpFullName));
     MFXTableColumn<RequestObject> statusColumn =
         new MFXTableColumn<>("Status", true, Comparator.comparing(RequestObject::getStatus));
 
     reqIDColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getReqID));
     getNodeIDColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getNodeID));
     getAssignedEmpColumn.setRowCellFactory(
-        request -> new MFXTableRowCell<>(RequestObject::getAssignedEmpID));
+        request -> new MFXTableRowCell<>(RequestObject::getAssignedEmpFullName));
     getRequesterEmpColumn.setRowCellFactory(
-        request -> new MFXTableRowCell<>(RequestObject::getRequesterEmpID));
+        request -> new MFXTableRowCell<>(RequestObject::getRequesterEmpFullName));
     statusColumn.setRowCellFactory(request -> new MFXTableRowCell<>(RequestObject::getStatus));
 
     table
@@ -169,8 +171,8 @@ public class DashboardController implements Initializable {
         .setAll(
             new StringFilter<>("RequestID", RequestObject::getReqID),
             new StringFilter<>("NodeID", RequestObject::getNodeID),
-            new StringFilter<>("Assigned Employee ID", RequestObject::getAssignedEmpID),
-            new StringFilter<>("Requester Employee ID", RequestObject::getRequesterEmpID),
+            new StringFilter<>("Assigned Employee", RequestObject::getAssignedEmpFullName),
+            new StringFilter<>("Requester Employee", RequestObject::getRequesterEmpFullName),
             new StringFilter<>("Status", RequestObject::getStatus));
 
     table.setItems(requests); // INSERT OBSERVABLE ARRAYLIST OF ALL REQUEST HERE
@@ -347,5 +349,31 @@ class RequestObject {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public String getAssignedEmpFullName() {
+    String first;
+    String last;
+    try {
+      last = DatabaseManager.getInstance().getEmployeeDAO().empIDToLastName(this.assignedEmpID);
+      first = DatabaseManager.getInstance().getEmployeeDAO().empIDToFirstName(this.assignedEmpID);
+      return String.format("%s, %s", last, first);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  public String getRequesterEmpFullName() {
+    String first;
+    String last;
+    try {
+      last = DatabaseManager.getInstance().getEmployeeDAO().empIDToLastName(this.requesterEmpID);
+      first = DatabaseManager.getInstance().getEmployeeDAO().empIDToFirstName(this.requesterEmpID);
+      return String.format("%s, %s", last, first);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 }
