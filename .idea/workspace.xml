@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="audio clip">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="26af7afb-bd1c-4c1f-9061-6249aaad0143" name="Changes" comment="made helper function for about page controller and fixed audio clips">
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AGlobalMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AGlobalMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AboutPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProtoypeF/src/main/java/edu/wpi/cs3733/D22/teamF/AboutPageController.java" afterDir="false" />
     </list>
@@ -598,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651026885188</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="made helper function for about page controller and fixed audio clips">
+      <created>1651028339698</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1651028339698</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +649,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed map tracker bug with floor numbers" />
     <MESSAGE value="Updated service request csvs" />
     <MESSAGE value="Updated med equip csv" />
     <MESSAGE value="Fixed getAvailableEquipment method for equipmentDeliveryRequest" />
@@ -668,7 +673,8 @@
     <MESSAGE value="removed unused team member controllers" />
     <MESSAGE value="commented no use code" />
     <MESSAGE value="audio clip" />
-    <option name="LAST_COMMIT_MESSAGE" value="audio clip" />
+    <MESSAGE value="made helper function for about page controller and fixed audio clips" />
+    <option name="LAST_COMMIT_MESSAGE" value="made helper function for about page controller and fixed audio clips" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

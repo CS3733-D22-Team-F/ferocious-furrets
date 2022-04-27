@@ -4,6 +4,8 @@ import com.jfoenix.animation.alert.JFXAlertAnimation;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXDialogLayout;
 import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
+import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -12,9 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Objects;
 
 public class AGlobalMethods {
 
