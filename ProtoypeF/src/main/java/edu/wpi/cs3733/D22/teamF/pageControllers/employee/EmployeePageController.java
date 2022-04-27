@@ -118,6 +118,7 @@ public class EmployeePageController extends PageController implements Initializa
         Employee emp = new Employee(empID, first, last, salary);
         employees.add(emp);
       }
+      rset.close();
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }

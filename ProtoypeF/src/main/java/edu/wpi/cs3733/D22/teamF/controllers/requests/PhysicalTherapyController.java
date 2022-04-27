@@ -114,6 +114,7 @@ public class PhysicalTherapyController extends PageController
         }
       }
     }
+    ptRequestTables.close();
 
     treeRoot.setExpanded(true);
     secReqs.stream()
@@ -277,6 +278,8 @@ public class PhysicalTherapyController extends PageController
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
+
     return lName;
   }
 
@@ -287,6 +290,8 @@ public class PhysicalTherapyController extends PageController
     while (rset.next()) {
       fName = rset.getString("firstName");
     }
+    rset.close();
+
     return fName;
   }
 
@@ -297,6 +302,8 @@ public class PhysicalTherapyController extends PageController
     while (rset.next()) {
       lName = rset.getString("lastName");
     }
+    rset.close();
+
     return lName;
   }
 }

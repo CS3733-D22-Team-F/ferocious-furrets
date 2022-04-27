@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.ServiceRequestStorage;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -158,6 +159,12 @@ public class EquipmentRequestController extends PageController
       newStatus = statusChoice.getValue().toString();
       fields.add(4, newStatus);
       newEquipID = getAvailableEquipment();
+      if (newEquipID.equals("")) {
+        AGlobalMethods.showAlert(
+            "Sorry, there's no available equipment matching your request!", tablePane);
+        resetFunction();
+        return;
+      }
       fields.add(5, newEquipID);
       req.placeRequest(fields);
 
@@ -440,6 +447,7 @@ public class EquipmentRequestController extends PageController
     } else {
       eID = rset.getString("equipID");
     }
+    rset.close();
     return eID;
   }
 
@@ -480,9 +488,14 @@ public class EquipmentRequestController extends PageController
       showAlert("Please select a request from the table!", masterPane);
       return;
     }
+    FileChooser templateChoose = new FileChooser();
+    templateChoose.setTitle("Choose .docx Template:");
+    Stage stage = (Stage) tablePane.getScene().getWindow();
+    File template = templateChoose.showOpenDialog(stage);
+    String templatePath = template.getPath();
+
     FileChooser fChoose = new FileChooser();
     fChoose.setTitle("Save to:");
-    Stage stage = (Stage) tablePane.getScene().getWindow();
     File file = fChoose.showSaveDialog(stage);
     String filepath = file.getPath() + ".docx";
 
@@ -499,7 +512,8 @@ public class EquipmentRequestController extends PageController
               request.getRequesterEmpID(),
               request.getStatus());
       try {
-        rep.generateEquipmentServiceRequestReport(filepath, request.getRequestedEquipmentID());
+        rep.generateEquipmentServiceRequestReport(
+            filepath, request.getRequestedEquipmentID(), templatePath);
         showAlert("Report created!", tablePane);
       } catch (Throwable e) {
         System.out.println("Report failed");
@@ -530,6 +544,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
     return lName;
   }
 
@@ -540,6 +555,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       fName = rset.getString("firstName");
     }
+    rset.close();
     return fName;
   }
 
@@ -550,6 +566,7 @@ public class EquipmentRequestController extends PageController
     while (rset.next()) {
       lName = rset.getString("lastName");
     }
+    rset.close();
     return lName;
   }
 }

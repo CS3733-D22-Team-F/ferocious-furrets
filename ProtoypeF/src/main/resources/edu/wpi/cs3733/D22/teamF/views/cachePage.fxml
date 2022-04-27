@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
-<VBox alignment="CENTER" prefHeight="518.0" prefWidth="689.0" style="-fx-background-color: #4169E1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.CachePageController">
+<VBox alignment="CENTER" style="-fx-background-color: #4169E1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.CachePageController">
    <children>
-      <StackPane prefHeight="459.0" prefWidth="600.0" style="-fx-background-color: #123090;">
+      <StackPane style="-fx-background-color: #123090;">
          <children>
             <ImageView fitHeight="459.0" fitWidth="709.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,7 +31,7 @@
             <JFXSpinner startingAngle="-240" styleClass="materialDesign-red, seventh-spinner" />
          </children>
       </StackPane>
-      <Label fx:id="statusLabel" alignment="CENTER" prefHeight="60.0" textFill="WHITE">
+      <Label fx:id="statusLabel" alignment="CENTER" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>

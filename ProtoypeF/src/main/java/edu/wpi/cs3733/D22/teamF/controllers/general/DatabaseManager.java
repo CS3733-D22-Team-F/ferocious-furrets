@@ -183,7 +183,6 @@ public class DatabaseManager {
    * @throws IOException
    */
   public void initializeDatabaseManager() throws SQLException, IOException {
-
     employeeDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/employees.csv");
     locationsDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/TowerLocations.csv");
     RequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/serviceRequest.csv");
@@ -196,7 +195,7 @@ public class DatabaseManager {
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
     mealDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/meals.csv");
     audioVisualDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/audioVis.csv");
-    maintenanceDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/request/maintenanceSR.csv");
+    maintenanceDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/maintenanceSR.csv");
     ptDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/physicaltherapy.csv");
     facilitiesDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/facilities.csv");
     securityDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/security.csv");
@@ -266,6 +265,7 @@ public class DatabaseManager {
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");
     dropTableIfExist("Locations");
+    dropTableIfExist("EMPLOYEE");
   }
 
   public void dropTableIfExist(String droppingTable) throws SQLException {

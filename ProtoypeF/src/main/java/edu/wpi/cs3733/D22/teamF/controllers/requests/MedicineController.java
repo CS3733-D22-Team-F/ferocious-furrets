@@ -338,6 +338,8 @@ public class MedicineController extends PageController
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
+
     return lName;
   }
 }

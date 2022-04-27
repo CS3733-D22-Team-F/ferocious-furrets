@@ -39,6 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(String filePath) throws SQLException, IOException {
+    System.out.println("Employee init");
     try {
       DatabaseManager.getInstance()
           .runStatement(
