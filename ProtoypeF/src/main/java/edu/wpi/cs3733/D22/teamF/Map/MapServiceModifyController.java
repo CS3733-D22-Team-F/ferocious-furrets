@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.D22.teamB.api.DatabaseController;
 import edu.wpi.cs3733.D22.teamB.api.Request;
 import edu.wpi.cs3733.D22.teamD.backend.Orm;
+import edu.wpi.cs3733.D22.teamD.request.IRequest;
 import edu.wpi.cs3733.D22.teamD.request.SanitationIRequest;
 import edu.wpi.cs3733.D22.teamF.*;
 import edu.wpi.cs3733.D22.teamF.Map.MapComponents.LocTempHolder;
@@ -82,11 +83,12 @@ public class MapServiceModifyController implements Initializable {
               request.getLastEdited(),
               request.getDeadline());
       dbc.update(finishedRequest);
-    } else if (requestOrm.get(reqID) != null) {
+    } else if (LocTempHolder.getLocation().getNodeType().equals("Facilities")) {
       isFacilities = true;
-      // requestOrm.updateAttribute(reqID, 7, "COMPLETED");
-      AGlobalMethods.showAlert("Facilities request", cancel);
-
+      SanitationIRequest request = requestOrm.get(reqID);
+      request.setCleanStatus(IRequest.RequestStatus.COMPLETED);
+      requestOrm.delete(reqID);
+      requestOrm.add(request);
     } else {
       cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
     }
