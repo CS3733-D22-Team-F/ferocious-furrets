@@ -1,10 +1,13 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.ThemeManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
+import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -18,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,6 +30,9 @@ public class SettingController implements Initializable {
   @FXML JFXComboBox<String> choiceBox;
   @FXML VBox pickerBox;
   @FXML TextField nameField;
+  @FXML JFXButton saveToCSV;
+  @FXML JFXButton loadFromCSV;
+
   JFXColorPicker textPicker;
   JFXColorPicker backPicker;
   JFXColorPicker titlePicker;
@@ -150,4 +157,39 @@ public class SettingController implements Initializable {
     }
     loadCSS();
   }
+
+  public void backUpDatabase() throws SQLException, IOException {
+    DirectoryChooser fChoose = new DirectoryChooser();
+    fChoose.setTitle("Select Directory to Save Database:");
+    Stage stage = (Stage) saveToCSV.getScene().getWindow();
+    File file = fChoose.showDialog(stage);
+
+    DatabaseManager.getInstance()
+        .getLocationDAO()
+        .backUpToCSV(file.getPath() + "/TowerLocations.csv");
+    DatabaseManager.getInstance().getAudioVisDAO().backUpToCSV(file.getPath() + "/AudioVisual.csv");
+    DatabaseManager.getInstance()
+        .getMedEquipDelReqDAO()
+        .backUpToCSV(file.getPath() + "/EquipmentDelivery.csv");
+    DatabaseManager.getInstance()
+        .getExtPatDAO()
+        .backUpToCSV(file.getPath() + "/ExternalPatientTransport.csv");
+    DatabaseManager.getInstance().getGiftDAO().backUpToCSV(file.getPath() + "/Gifts.csv");
+    DatabaseManager.getInstance()
+        .getLabRequestDAO()
+        .backUpToCSV(file.getPath() + "/LabRequests.csv");
+    DatabaseManager.getInstance()
+        .getMaintenanceDAO()
+        .backUpToCSV(file.getPath() + "/Maintenance.csv");
+    DatabaseManager.getInstance().getMealDAO().backUpToCSV(file.getPath() + "/Meals.csv");
+    DatabaseManager.getInstance().getPTDAO().backUpToCSV(file.getPath() + "/PhysicalTherapy.csv");
+    DatabaseManager.getInstance()
+        .getScanRequestDAO()
+        .backUpToCSV(file.getPath() + "/ScanRequests.csv");
+    DatabaseManager.getInstance().getSecurityDAO().backUpToCSV(file.getPath() + "/Security.csv");
+    DatabaseManager.getInstance().getThemeDAO().backUpToCSV(file.getPath() + "/Themes.csv");
+    DatabaseManager.getInstance().getRequestDAO().backUpToCSV(file.getPath() + "/Requests.csv");
+  }
+
+  public void reloadDatabase() {}
 }

@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.D22.teamF.controllers.general;
 
-import edu.wpi.cs3733.D22.teamF.Fapp;
 import java.io.*;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class CSVWriter {
 
   private static void write(String dir, String data) throws IOException {
     System.out.println("Opening: " + dir);
-    dir = Fapp.class.getResource(dir).getPath();
+    //    dir = Fapp.class.getResource(dir).getPath();
 
     FileWriter writer = new FileWriter(dir);
     writer.write(data);

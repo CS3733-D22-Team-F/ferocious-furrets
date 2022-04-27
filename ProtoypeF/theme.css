@@ -137,26 +137,6 @@
     -fx-text-fill: f-maincolor;
     -fx-border-color: f-subcolor;
 }
-
-.dashboardArrow {
-    -fx-background-color: f-subcolor;
-}
-
-.dashboardLine {
-    -fx-stroke: f-maincolor;
-}
-
-.dashboardButton {
-    -fx-background-color: f-maincolor;
-    -fx-text-fill: f-white;
-}
-
-.dashboardLabel {
-    -fx-font-family: Serif;
-    -fx-font-size: 36px;
-    -fx-text-fill: f-maincolor;
-}
-
 .linkBox {
     -fx-background-color: f-maincolor;
 }
@@ -205,4 +185,47 @@
     -fx-font-family: Serif;
     -fx-font-size: 24px;
     -fx-text-fill: f-white;
+}
+
+.dashboardArrow {
+    -fx-background-color: f-maincolor;
+    -fx-font-family: Serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: f-white;
+}
+
+.dashboardLine {
+    -fx-stroke: f-maincolor;
+}
+
+.dashboardButton {
+    -fx-background-color: f-maincolor;
+    -fx-text-fill: f-white;
+}
+
+.dashboardLabel {
+    -fx-font-family: Serif;
+    -fx-font-size: 36px;
+    -fx-text-fill: f-maincolor;
+}
+
+.dashboardTitle{
+    -fx-text-fill: f-maincolor;
+}
+
+.alertButton{
+    -fx-background-color: f-maincolor;
+    -fx-font-family: Serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: f-white;
+}
+.dashChart{
+    -fx-fill: f-maincolor;
+}
+.default-color0.chart-bar{
+    -fx-bar-fill: f-maincolor;
+}
+
+.default-color1.chart-bar{
+    -fx-bar-fill: f-subcolor;
 }
