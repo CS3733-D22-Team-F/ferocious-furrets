@@ -140,6 +140,7 @@ public class MaintenanceSRDAOImpl implements IRequestDAO {
               currentRow.getString("equipID"),
               currentRow.getString("maintenanceType")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -157,6 +158,7 @@ public class MaintenanceSRDAOImpl implements IRequestDAO {
               currentRow.getString("equipID"),
               currentRow.getString("maintenanceType")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

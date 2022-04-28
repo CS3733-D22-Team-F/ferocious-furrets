@@ -163,6 +163,7 @@ public class EquipmentDeliveryDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("equipID")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -176,6 +177,7 @@ public class EquipmentDeliveryDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("equipID")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

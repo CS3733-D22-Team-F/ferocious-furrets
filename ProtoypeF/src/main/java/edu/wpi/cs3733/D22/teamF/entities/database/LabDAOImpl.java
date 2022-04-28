@@ -115,6 +115,7 @@ public class LabDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -129,6 +130,8 @@ public class LabDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("type")));
     }
+
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

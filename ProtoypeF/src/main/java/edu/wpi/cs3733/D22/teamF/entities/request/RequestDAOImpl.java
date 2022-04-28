@@ -141,6 +141,8 @@ public class RequestDAOImpl implements IRequestDAO {
               currentRow.getString("status")));
     }
 
+    currentRow.close();
+
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
   /**
@@ -165,6 +167,8 @@ public class RequestDAOImpl implements IRequestDAO {
               currentRow.getString("requesterEmployeeID"),
               currentRow.getString("status")));
     }
+
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }
