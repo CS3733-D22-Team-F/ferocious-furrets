@@ -27,6 +27,10 @@ public class ArduinoConnection {
 
   public void startConnectionSearchPorts() throws InterruptedException {
     allPorts = SerialPort.getCommPorts();
+    if (allPorts.length == 0) {
+      System.out.println("No Ports Detected");
+      return;
+    }
     for (int i = allPorts.length - 1; i >= 0; i--) {
       allPorts[i].openPort();
       if (allPorts[i].isOpen()) {
