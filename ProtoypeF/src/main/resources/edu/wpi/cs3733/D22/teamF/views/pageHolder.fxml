@@ -218,12 +218,12 @@
                               </TextField>
                               <HBox layoutX="33.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" spacing="10.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" onAction="#showEmergency" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergencyButton" text="Cancel" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#showEmergency" pickOnBounds="false" prefHeight="40.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergencyButton" text="Cancel" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" onAction="#callSecurity" prefHeight="50.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergenctButton" text="Submit" textFill="WHITE">
+                                    <JFXButton buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#callSecurity" prefHeight="40.0" prefWidth="100.0" ripplerFill="#f3ba48" styleClass="emergenctButton" text="Submit" textFill="WHITE">
                                        <font>
                                           <Font name="Serif Regular" size="14.0" />
                                        </font>

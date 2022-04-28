@@ -175,7 +175,6 @@ public class ThemeManager {
                 + "    -fx-font-family: Serif;\n"
                 + "    -fx-prompt-text-fill: rgba(128, 128, 128, 0.64);\n"
                 + "    -fx-text-fill: #000000;\n"
-                + "    -fx-font-size: 24px;\n"
                 + "}\n"
                 + "\n"
                 + ".menu-bar .label {\n"
