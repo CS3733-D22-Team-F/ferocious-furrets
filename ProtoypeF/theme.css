@@ -251,3 +251,10 @@
 .mealLine{
     -fx-fill: f-white;
 }
+.dashButton{
+    -fx-background-color: f-maincolor;
+    -fx-alignment: center;
+    -fx-text-fill: f-white;
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
+}

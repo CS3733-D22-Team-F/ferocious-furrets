@@ -146,7 +146,14 @@ public class MaintenancePageController extends PageController
   }
 
   /** clears the fields in the request page */
-  public void reset() {}
+  public void reset() {
+    locationBox.valueProperty().setValue(null);
+    assignedEmployeeBox.valueProperty().setValue(null);
+    requestedEmployeeBox.valueProperty().setValue(null);
+    statusBox.valueProperty().setValue(null);
+    equipmentBox.valueProperty().setValue(null);
+    maintenanceBox.valueProperty().setValue(null);
+  }
 
   /* resolve request */
   public void resolve() {

@@ -17,7 +17,7 @@ public class PhysicalTherapyDAOImpl implements IRequestDAO {
     DatabaseManager.getInstance().dropTableIfExist("PTRequest");
     DatabaseManager.getInstance()
         .runStatement(
-            "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+            "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(64), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
 
     List<String> lines = CSVReader.readFile(file);
     for (String currentLine : lines) {
@@ -31,7 +31,7 @@ public class PhysicalTherapyDAOImpl implements IRequestDAO {
     try {
       DatabaseManager.getInstance()
           .runStatement(
-              "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(16), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
+              "CREATE TABLE PTREQUEST (reqID varchar(16) PRIMARY KEY, type varchar(64), duration varchar(16), notes varchar(256), Foreign Key (reqID) references SERVICEREQUEST(reqID))");
     } catch (SQLException e) {
       if (e.getSQLState().equals("X0Y32")) {
         return;
