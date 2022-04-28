@@ -133,6 +133,8 @@ public class MedicineDAOImpl implements IRequestDAO {
               currentRow.getString("pharmacyAddress")));
     }
 
+    currentRow.close();
+
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
 
@@ -152,6 +154,7 @@ public class MedicineDAOImpl implements IRequestDAO {
               currentRow.getString("totalAmount"),
               currentRow.getString("pharmacyAddress")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

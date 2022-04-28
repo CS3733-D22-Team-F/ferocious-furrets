@@ -136,6 +136,7 @@ public class ExtPatientDAOImpl implements IRequestDAO {
               currentRow.getString("address"),
               currentRow.getString("method")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(filename, toAdd);
   }
@@ -153,6 +154,7 @@ public class ExtPatientDAOImpl implements IRequestDAO {
               currentRow.getString("address"),
               currentRow.getString("method")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

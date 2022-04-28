@@ -127,6 +127,8 @@ public class MealDAOImpl implements IRequestDAO {
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
     }
 
+    currentRow.close();
+
     CSVWriter.writeAllToDir(filename, toAdd);
   }
 
@@ -139,6 +141,8 @@ public class MealDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("meal")));
     }
+
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

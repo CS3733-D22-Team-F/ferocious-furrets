@@ -203,6 +203,7 @@ public class SettingController implements Initializable {
     Stage stage = (Stage) saveToCSV.getScene().getWindow();
     File file = fChoose.showDialog(stage);
     System.out.println("cd: " + file.getPath());
+
     DatabaseManager.getInstance().dropAllTables();
     DatabaseManager.getInstance().getEmployeeDAO().initTable(file.getPath() + "/employees.csv");
     DatabaseManager.getInstance()

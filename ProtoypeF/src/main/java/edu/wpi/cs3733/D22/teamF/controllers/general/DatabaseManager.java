@@ -246,21 +246,18 @@ public class DatabaseManager {
   public void dropAllTables() throws SQLException {
 
     // DROP ALL REQUEST
-    dropTableIfExist("externalPatientRequest");
     dropTableIfExist("MAINTENANCEREQUEST");
+    dropTableIfExist("externalPatientRequest");
     dropTableIfExist("FACILITIESREQUEST");
     dropTableIfExist("securityRequest");
     dropTableIfExist("PTREQUEST");
     dropTableIfExist("audioVisualRequest");
-    dropTableIfExist("facilitiesRequest");
     dropTableIfExist("ScanRequest");
     dropTableIfExist("LabRequest");
     dropTableIfExist("GIFTREQUEST");
     dropTableIfExist("MEALREQUEST");
-    dropTableIfExist("MEDICINEREQUEST");
     dropTableIfExist("EquipmentDeliveryRequest");
-    dropTableIfExist("MaintenanceRequest");
-    dropTableIfExist("externalPatientRequest");
+    dropTableIfExist("THEME");
     // DROP BIG TABLES
     dropTableIfExist("ServiceRequest");
     dropTableIfExist("MedicalEquipment");

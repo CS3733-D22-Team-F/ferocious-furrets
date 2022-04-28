@@ -136,6 +136,7 @@ public class AudioVisualDAOImpl implements IRequestDAO {
               currentRow.getString("accessObject"),
               currentRow.getString("objectType")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(filename, toAdd);
   }
@@ -153,6 +154,7 @@ public class AudioVisualDAOImpl implements IRequestDAO {
               currentRow.getString("accessObject"),
               currentRow.getString("accessObject")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }
