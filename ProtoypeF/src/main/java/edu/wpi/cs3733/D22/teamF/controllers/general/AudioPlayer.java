@@ -12,6 +12,7 @@ public class AudioPlayer {
   // to store current position
   Long currentFrame;
   static Clip clip;
+  boolean isPlay;
   // current status of clip
   String status;
   AudioInputStream audioInputStream;
@@ -30,7 +31,9 @@ public class AudioPlayer {
   }
 
   // constructor to initialize streams and clip
-  public AudioPlayer() {}
+  public AudioPlayer() {
+    isPlay = true;
+  }
 
   public void setAudioInputStream(String filePath) {
     try {
@@ -56,7 +59,9 @@ public class AudioPlayer {
   }
 
   public void play() {
-    clip.start();
+    if (isPlay) {
+      clip.start();
+    }
   }
 
   public void playFrom(long secs) {
@@ -80,5 +85,9 @@ public class AudioPlayer {
 
   public boolean getPlaying() {
     return clip.isRunning();
+  }
+
+  public void setIsPlay(boolean b) {
+    isPlay = b;
   }
 }
