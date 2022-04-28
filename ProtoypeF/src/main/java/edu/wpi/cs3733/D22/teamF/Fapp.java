@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.D22.teamF;
 
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoConnection;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.Cache;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import java.io.IOException;
@@ -27,7 +28,9 @@ public class Fapp extends Application {
    * @throws SQLException
    */
   @Override
-  public void start(Stage primaryStage) throws IOException, SQLException {
+  public void start(Stage primaryStage) throws IOException, SQLException, InterruptedException {
+    ArduinoConnection.getArduinoConnection().startConnectionSearchPorts();
+
     FXMLLoader fxmlLoader = new FXMLLoader(Fapp.class.getResource("views/logInPage.fxml"));
     Cache.startDB(true);
 
