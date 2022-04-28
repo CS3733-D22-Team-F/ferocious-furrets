@@ -38,7 +38,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXComboBox fx:id="choiceBox"  prefHeight="40.0" prefWidth="257.0">
+                  <JFXComboBox fx:id="choiceBox" prefHeight="40.0" prefWidth="257.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -159,6 +159,14 @@
                      </VBox.margin>
                   </JFXButton>
                   <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Credits" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#rescanFinger" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Finger Rescan" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>

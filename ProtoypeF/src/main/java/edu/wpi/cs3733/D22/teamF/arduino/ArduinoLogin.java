@@ -24,9 +24,35 @@ public class ArduinoLogin {
     return retVal;
   }
 
+  public boolean reenrollFingerprint() throws IOException, InterruptedException {
+    //    if (!conn.getSerialPort().openPort()) {
+    //      conn.startConnectionSearchPorts();
+    //    }
+    boolean retVal = false;
+    sendUserEnteredUsername();
+    waitUntilUsernameAck();
+    sendUserEnteredReEnroll();
+    waitUntilUsernameAck();
+    System.out.println("Press Finger onto Sensor");
+    sendUserID("30");
+    waitUntilNewFingerprintStored();
+    if (ardString.equals("Stored!")) {
+      retVal = true;
+    }
+    else if(ardString.equals("No Enroll Match")){
+      retVal = false;
+    }
+    return retVal;
+  }
+
   /** Arduino interprets 200 as the command that the user entered their username */
   public void sendUserEnteredUsername() throws IOException, InterruptedException {
     conn.sendSerialString("200");
+  }
+
+  /** Arduino interprets 202 as the command that the user entered their username */
+  public void sendUserEnteredReEnroll() throws IOException, InterruptedException {
+    conn.sendSerialString("202");
   }
 
   public void waitUntilUsernameAck() throws IOException, InterruptedException {
@@ -43,6 +69,11 @@ public class ArduinoLogin {
     while (conn.getSerialPort().bytesAvailable() == 0) {}
     ardString = conn.readSerialString(); // will either be "Match" or "No Match"
     return valid;
+  }
+
+  public void waitUntilNewFingerprintStored() throws IOException, InterruptedException {
+    while (conn.getSerialPort().bytesAvailable() == 0) {}
+    ardString = conn.readSerialString();
   }
 
   public void addFingerprint(String employeeID) throws IOException, InterruptedException {
