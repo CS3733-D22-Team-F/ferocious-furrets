@@ -106,7 +106,7 @@ public class AboutPageController extends AGlobalMethods implements Initializable
         new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-            helper("views/teammembers/connor.fxml", "Conner McKevitt");
+            helper("views/teammembers/conner.fxml", "Conner McKevitt");
           }
         });
   }
