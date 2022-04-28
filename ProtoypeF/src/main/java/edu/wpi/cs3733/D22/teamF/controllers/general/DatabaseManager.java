@@ -189,7 +189,7 @@ public class DatabaseManager {
     medicalEquipmentDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/equipment.csv");
     medicalEquipmentDeliveryRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/MedEquipReq.csv");
     // medicineDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/medicine.csv");
-    MedicineRequest.initializeDatabase("/apiCSV/medicine.csv", "/apiCSV/employees.csv");
+    MedicineRequest.initializeDatabase();
     giftDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/gifts.csv");
     labRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/labs.csv");
     scanRequestDAO.initTable("/edu/wpi/cs3733/D22/teamF/csv/scans.csv");
