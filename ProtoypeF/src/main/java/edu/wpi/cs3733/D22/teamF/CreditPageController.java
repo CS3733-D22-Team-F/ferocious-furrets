@@ -91,6 +91,7 @@ public class CreditPageController implements Initializable {
     credits.add(new CreditAPI("JAXB", "3.0.2", "Sun"));
     credits.add(new CreditAPI("JAXB-runtime", "2.3.2", "Glassfish"));
     credits.add(new CreditAPI("JAXB-api", "2.3.1", "Javax"));
+    credits.add(new CreditAPI("jSerialComm", "2.9.1", "Will Hedgecock"));
 
     final TreeItem<CreditAPI> root =
         new RecursiveTreeItem<CreditAPI>(credits, RecursiveTreeObject::getChildren);

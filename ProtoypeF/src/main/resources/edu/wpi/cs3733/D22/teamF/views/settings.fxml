@@ -185,6 +185,14 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#rescanFinger" prefHeight="10.0" prefWidth="420.0" styleClass="regularButton" text="Fingerprint Rescan" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
                </children>
             </VBox>
          </children>

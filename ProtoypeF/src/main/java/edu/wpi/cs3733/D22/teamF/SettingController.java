@@ -3,6 +3,7 @@ package edu.wpi.cs3733.D22.teamF;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.D22.teamF.arduino.ArduinoLogin;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.ThemeManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
@@ -36,6 +37,8 @@ public class SettingController implements Initializable {
   JFXColorPicker textPicker;
   JFXColorPicker backPicker;
   JFXColorPicker titlePicker;
+
+  ArduinoLogin ardLogin = new ArduinoLogin();
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -103,6 +106,16 @@ public class SettingController implements Initializable {
     popupwindow.setScene(scene1);
     popupwindow.initModality(Modality.APPLICATION_MODAL);
     popupwindow.showAndWait();
+  }
+
+  @FXML
+  public void rescanFinger(ActionEvent event) throws IOException, InterruptedException {
+
+    if (ardLogin.reenrollFingerprint()) {
+      System.out.println("Fingerprint Reenrolled");
+    } else {
+      System.out.println("Fingerprint Reenroll Unsuccessful");
+    }
   }
 
   public void saveCSS() throws SQLException, IOException {
@@ -199,7 +212,7 @@ public class SettingController implements Initializable {
 
   public void reloadDatabase() throws SQLException, IOException {
     DirectoryChooser fChoose = new DirectoryChooser();
-    fChoose.setTitle("Select Directory to Save Database:");
+    fChoose.setTitle("Select Directory to Load Database:");
     Stage stage = (Stage) saveToCSV.getScene().getWindow();
     File file = fChoose.showDialog(stage);
     System.out.println("cd: " + file.getPath());

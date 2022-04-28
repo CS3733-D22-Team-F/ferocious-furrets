@@ -1,8 +1,8 @@
 {
-    f-maincolor: #d7ccc8;
-    f-subcolor: #ffccbc;
+    f-maincolor: #123090;
+    f-subcolor: #4169E1;
     f-ripple: #3E8CD0;
-    f-white: #ffe0b2;
+    f-white: #FFFFFF;
 }
 
 #TextTitleWhite {
@@ -226,4 +226,8 @@
 
 .default-color1.chart-bar{
     -fx-bar-fill: f-subcolor;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #000000;
 }
