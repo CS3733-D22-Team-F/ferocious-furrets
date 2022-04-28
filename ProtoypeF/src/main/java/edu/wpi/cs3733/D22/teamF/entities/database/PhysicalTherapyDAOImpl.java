@@ -145,6 +145,7 @@ public class PhysicalTherapyDAOImpl implements IRequestDAO {
               currentRow.getString("DURATION"),
               currentRow.getString("NOTES")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -164,6 +165,7 @@ public class PhysicalTherapyDAOImpl implements IRequestDAO {
               currentRow.getString("duration"),
               currentRow.getString("notes")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

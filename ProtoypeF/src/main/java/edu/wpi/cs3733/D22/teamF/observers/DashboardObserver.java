@@ -318,6 +318,7 @@ class DashboardObserver implements PropertyChangeListener {
 
         ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "INF", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
+        dirtyInfusionList.close();
         //        fController.startTable();
       } else {
         dirtyInfusionList.close();
@@ -337,6 +338,7 @@ class DashboardObserver implements PropertyChangeListener {
 
         ArrayList<String> reqArrayString = generateFacilitiesRequest(fController, "BED", floor);
         facilitiesReqSystem.placeRequest(reqArrayString);
+        dirtyBedList.close();
         //        fController.startTable();
       } else {
         dirtyBedList.close();

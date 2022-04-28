@@ -80,7 +80,7 @@ public class CachePageController implements Initializable {
         break;
       case 6:
         fact =
-            "Thank YOU for helping us provide leading\n healthcareto thousands of patients annually!";
+            "Thank YOU for helping us provide leading\n healthcare to thousands of patients annually!";
         break;
       case 7:
         fact = "Thank YOU, we wouldn't be the same without you!";

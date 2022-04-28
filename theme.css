@@ -3,8 +3,6 @@
     f-subcolor: #4169E1;
     f-ripple: #3E8CD0;
     f-white: #FFFFFF;
-    f-blue: #123090;
-    f-gold: #f3ba48;
 }
 
 #TextTitleWhite {
@@ -137,26 +135,6 @@
     -fx-text-fill: f-maincolor;
     -fx-border-color: f-subcolor;
 }
-
-.dashboardArrow {
-    -fx-background-color: f-subcolor;
-}
-
-.dashboardLine {
-    -fx-stroke: f-maincolor;
-}
-
-.dashboardButton {
-    -fx-background-color: f-maincolor;
-    -fx-text-fill: f-white;
-}
-
-.dashboardLabel {
-    -fx-font-family: Serif;
-    -fx-font-size: 36px;
-    -fx-text-fill: f-maincolor;
-}
-
 .linkBox {
     -fx-background-color: f-maincolor;
 }
@@ -190,14 +168,14 @@
 }
 
 .mapButton{
-    -fx-background-color: #123090;
+    -fx-background-color: f-maincolor;
     -fx-font-family: Serif;
     -fx-font-size: 12px;
     -fx-text-fill: f-white;
 }
 
 .mapNode{
-    -fx-fill: #123090;
+    -fx-fill: f-maincolor;
 }
 
 .apiButton {
@@ -205,4 +183,47 @@
     -fx-font-family: Serif;
     -fx-font-size: 24px;
     -fx-text-fill: f-white;
+}
+
+.dashboardArrow {
+    -fx-background-color: f-maincolor;
+    -fx-font-family: Serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: f-white;
+}
+
+.dashboardLine {
+    -fx-stroke: f-maincolor;
+}
+
+.dashboardButton {
+    -fx-background-color: f-maincolor;
+    -fx-text-fill: f-white;
+}
+
+.dashboardLabel {
+    -fx-font-family: Serif;
+    -fx-font-size: 36px;
+    -fx-text-fill: f-maincolor;
+}
+
+.dashboardTitle{
+    -fx-text-fill: f-maincolor;
+}
+
+.alertButton{
+    -fx-background-color: f-maincolor;
+    -fx-font-family: Serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: f-white;
+}
+.dashChart{
+    -fx-fill: f-maincolor;
+}
+.default-color0.chart-bar{
+    -fx-bar-fill: f-maincolor;
+}
+
+.default-color1.chart-bar{
+    -fx-bar-fill: f-subcolor;
 }

@@ -2,6 +2,7 @@ package edu.wpi.cs3733.D22.teamF.controllers.requests;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
+import edu.wpi.cs3733.D22.teamF.AGlobalMethods;
 import edu.wpi.cs3733.D22.teamF.ServiceRequestStorage;
 import edu.wpi.cs3733.D22.teamF.controllers.general.DatabaseManager;
 import edu.wpi.cs3733.D22.teamF.entities.request.RequestSystem;
@@ -35,6 +36,7 @@ public class MealsController extends PageController implements Initializable, IR
   @FXML private ComboBox<Object> assignedEmployee;
   @FXML private ComboBox<Object> requestedEmployee;
   @FXML private ComboBox<Object> status;
+  @FXML Pane visiblePane;
 
   @FXML private TabPane mealMenu;
   @FXML private Tab b;
@@ -47,6 +49,7 @@ public class MealsController extends PageController implements Initializable, IR
   @FXML private JFXComboBox breakfastChoice;
   @FXML private JFXComboBox lunchChoice;
   @FXML private JFXComboBox dinnerChoice;
+  @FXML Pane tabPane;
 
   private String requestID;
   private String nID;
@@ -74,7 +77,7 @@ public class MealsController extends PageController implements Initializable, IR
     breakfast.add("Belgian Waffles");
     breakfast.add("Corned Beef Hash");
     breakfastChoice.getItems().addAll(breakfast);
-    breakfastChoice.setValue("Choose Breakfast Food");
+    breakfastChoice.setValue(null);
 
     ArrayList<Object> lunch = new ArrayList<>();
     lunch.add("Pizza");
@@ -86,7 +89,7 @@ public class MealsController extends PageController implements Initializable, IR
     lunch.add("Chicken Tenders");
     lunch.add("Meatball Sub");
     lunchChoice.getItems().addAll(lunch);
-    lunchChoice.setValue("Choose Lunch Food");
+    lunchChoice.setValue(null);
 
     ArrayList<Object> dinner = new ArrayList<>();
     dinner.add("Grilled Tofu");
@@ -98,7 +101,7 @@ public class MealsController extends PageController implements Initializable, IR
     dinner.add("Hamburger");
     dinner.add("Pork Loin");
     dinnerChoice.getItems().addAll(dinner);
-    dinnerChoice.setValue("Choose Dinner Food");
+    dinnerChoice.setValue(null);
 
     ArrayList<Object> temp = new ArrayList<>();
     temp.add("");
@@ -136,9 +139,9 @@ public class MealsController extends PageController implements Initializable, IR
     status.valueProperty().setValue(null);
     assignedEmployee.valueProperty().setValue(null);
     requestedEmployee.valueProperty().setValue(null);
-    breakfastChoice.valueProperty().setValue("Choose Breakfast Food");
-    lunchChoice.valueProperty().setValue("Choose Lunch Food");
-    dinnerChoice.valueProperty().setValue("Choose Dinner Food");
+    breakfastChoice.valueProperty().setValue(null);
+    lunchChoice.valueProperty().setValue(null);
+    dinnerChoice.valueProperty().setValue(null);
   }
 
   /**
@@ -231,16 +234,16 @@ public class MealsController extends PageController implements Initializable, IR
 
     TreeTableView<MealDeliveryRequest> treeTableView = new TreeTableView<>(treeRoot);
     treeTableView.getColumns().setAll(reqIDCol, nodeIDCol, assignedToCol, mealCol, statusCol);
-    tablePane.minWidthProperty().bind(masterPane.widthProperty().divide(2));
-    tablePane.minHeightProperty().bind(masterPane.heightProperty());
-    tablePane.getChildren().add(treeTableView);
+    visiblePane.minWidthProperty().bind(tablePane.widthProperty());
+    visiblePane.minHeightProperty().bind(tablePane.heightProperty());
+    visiblePane.getChildren().add(treeTableView);
     reqIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     nodeIDCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     mealCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
+    assignedToCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
     statusCol.minWidthProperty().bind(tablePane.widthProperty().divide(5));
-    treeTableView.minHeightProperty().bind(masterPane.heightProperty());
-    treeTableView.minWidthProperty().bind(masterPane.widthProperty().divide(2));
+    treeTableView.minHeightProperty().bind(tablePane.heightProperty());
+    treeTableView.minWidthProperty().bind(tablePane.widthProperty());
   }
 
   public void submit() throws SQLException, IOException {
@@ -249,27 +252,27 @@ public class MealsController extends PageController implements Initializable, IR
     returnList.add(status.getAccessibleText());
     returnList.add(foodList);
 
-    System.out.println("Meal Not Sent");
-
     requestList.clear();
     requestList.add("Meal Request");
     // requestList.add("Assigned Doctor: " + employeeName.getText());
     requestList.add("Status: " + status.getValue());
     ServiceRequestStorage.addToArrayList(requestList);
 
-    if (nodeID.getValue().toString().equals("")
-        || status.getValue().toString().equals("")
-        || assignedEmployee.getValue().toString().equals("")
-        || requestedEmployee.getValue().toString().equals("")) {
-      MealDeliveryRequest sendMealRequest = null;
-      System.out.println("Meal Not Sent");
+    if (nodeID.getValue() == null
+        || status.getValue() == null
+        || assignedEmployee.getValue() == null
+        || requestedEmployee.getValue() == null
+        || (breakfastChoice.getValue() == null
+            && lunchChoice.getValue() == null
+            && dinnerChoice.getValue() == null)) {
+      AGlobalMethods.showAlert("Please Fill All Required Fields", masterPane);
     } else {
       String meal = "";
-      if (!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")) {
+      if (!(breakfastChoice.getValue() == null)) {
         meal = breakfastChoice.getValue().toString();
-      } else if (!lunchChoice.getValue().toString().equals("Choose Lunch Food")) {
+      } else if (!(lunchChoice.getValue() == null)) {
         meal = lunchChoice.getValue().toString();
-      } else if (!dinnerChoice.getValue().toString().equals("Choose Dinner Food")) {
+      } else if (!(dinnerChoice.getValue() == null)) {
         meal = dinnerChoice.getValue().toString();
       }
       RequestSystem req = new RequestSystem("Meal");
@@ -288,14 +291,19 @@ public class MealsController extends PageController implements Initializable, IR
     }
   }
 
+  public void toggleTable() {
+    visiblePane.setVisible(!visiblePane.isVisible());
+    tabPane.setVisible(!tabPane.isVisible());
+  }
+
   public String generateReqID() throws SQLException {
     String nNodeType = "";
-    if (!breakfastChoice.getValue().toString().equals("Choose Breakfast Food")) {
+    if (!(breakfastChoice.getValue() == null)) {
       // breakfast meal requested
       nNodeType = breakfastChoice.getValue().toString();
-    } else if (!lunchChoice.getValue().toString().equals("Choose Lunch Food")) {
+    } else if (!(lunchChoice.getValue() == null)) {
       nNodeType = lunchChoice.getValue().toString();
-    } else if (!dinnerChoice.getValue().toString().equals("Choose Dinner Food")) {
+    } else if (!(dinnerChoice.getValue() == null)) {
       nNodeType = dinnerChoice.getValue().toString();
     }
     nNodeType = nNodeType.substring(0, 3);

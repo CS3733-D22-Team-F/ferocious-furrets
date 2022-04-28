@@ -52,13 +52,11 @@ public class GenerateReport {
    * @param reportFilepath
    * @throws Throwable
    */
-  public void generateGenericServiceRequestReport(String reportFilepath) throws Throwable {
-    String srcDoc =
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/ReportTemplates/Request_Template.docx";
+  public void generateGenericServiceRequestReport(String reportFilepath, String templatePath)
+      throws Throwable {
 
-    boolean save = true;
-
-    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(srcDoc));
+    WordprocessingMLPackage wordMLPackage =
+        WordprocessingMLPackage.load(new java.io.File(templatePath));
     org.docx4j.model.datastorage.migration.VariablePrepare.prepare(wordMLPackage);
     MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
@@ -96,14 +94,11 @@ public class GenerateReport {
    * @param equipmentID
    * @throws Throwable
    */
-  public void generateEquipmentServiceRequestReport(String reportFilepath, String equipmentID)
-      throws Throwable {
-    String srcDoc =
-        "src/main/resources/edu/wpi/cs3733/D22/teamF/ReportTemplates/EquipmentRequest_Template.docx";
+  public void generateEquipmentServiceRequestReport(
+      String reportFilepath, String equipmentID, String templatePath) throws Throwable {
 
-    boolean save = true;
-
-    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new java.io.File(srcDoc));
+    WordprocessingMLPackage wordMLPackage =
+        WordprocessingMLPackage.load(new java.io.File(templatePath));
     org.docx4j.model.datastorage.migration.VariablePrepare.prepare(wordMLPackage);
     MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 

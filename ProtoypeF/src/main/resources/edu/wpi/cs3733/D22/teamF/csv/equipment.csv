@@ -19,7 +19,7 @@ equipID,equipType,nodeID,status
 18,Bed,fPATI01803,available
 19,Bed,fPATI01903,available
 20,Bed,fPATI01703,available
-21,Xray,fSTOR00103,available
+21,X-Ray,fSTOR00103,available
 22,Infusion Pump,fSTOR00503,unavailable
 23,Infusion Pump,fSTOR00203,unavailable
 24,Infusion Pump,fSTOR00203,unavailable
@@ -56,7 +56,7 @@ equipID,equipType,nodeID,status
 55,Recliner,fSTOR00403,available
 56,Recliner,fSTOR00403,available
 57,Recliner,fSTOR00403,available
-58,Xray,fSTOR00104,available
+58,X-Ray,fSTOR00104,available
 59,Infusion Pump,fSTOR00204,available
 60,Infusion Pump,fSTOR00204,available
 61,Infusion Pump,fSTOR00204,available
@@ -87,7 +87,7 @@ equipID,equipType,nodeID,status
 86,Recliner,fSTOR00304,available
 87,Recliner,fSTOR00304,available
 88,Recliner,fSTOR00304,available
-89,Xray,fSTOR00105,available
+89,X-Ray,fSTOR00105,available
 90,Infusion Pump,fSTOR00205,available
 91,Infusion Pump,fSTOR00205,available
 92,Infusion Pump,fSTOR00205,available

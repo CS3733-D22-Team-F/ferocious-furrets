@@ -129,6 +129,8 @@ public class GiftDAOImpl implements IRequestDAO {
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
     }
 
+    currentRow.close();
+
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
 
@@ -141,6 +143,8 @@ public class GiftDAOImpl implements IRequestDAO {
       toAdd.add(
           String.format("%s,%s", currentRow.getString("reqID"), currentRow.getString("gift")));
     }
+
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }
