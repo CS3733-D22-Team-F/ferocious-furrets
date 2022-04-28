@@ -32,16 +32,17 @@ public class ArduinoLogin {
     sendUserEnteredUsername();
     waitUntilUsernameAck();
     sendUserEnteredReEnroll();
-    waitUntilUsernameAck();
-    System.out.println("Press Finger onto Sensor");
+    waitUntilUsernameAck(); // wait until "Adding Fingerprint"
     sendUserID("30");
+    System.out.println("Press Finger onto Sensor");
+    waitUntilUsernameAck(); // wait until "EnrollingEmployee"
     waitUntilNewFingerprintStored();
     if (ardString.equals("Stored!")) {
       retVal = true;
     }
-    else if(ardString.equals("No Enroll Match")){
-      retVal = false;
-    }
+    //    else if (ardString.equals("No Enroll Match")) {
+    //      retVal = false;
+    //    }
     return retVal;
   }
 

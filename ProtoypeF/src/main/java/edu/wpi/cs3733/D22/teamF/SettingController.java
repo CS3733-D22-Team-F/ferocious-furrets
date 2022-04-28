@@ -2,7 +2,6 @@ package edu.wpi.cs3733.D22.teamF;
 
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
-import edu.wpi.cs3733.D22.teamF.arduino.ArduinoConnection;
 import edu.wpi.cs3733.D22.teamF.arduino.ArduinoLogin;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.ThemeManager;
