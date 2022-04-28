@@ -1,10 +1,36 @@
 ----------------------------------------------------------------
-Thu Apr 28 04:14:25 UTC 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-6e60-960d-000007603bb0 
-on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\ProtoypeF\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7aec35a 
-Loaded from file:/C:/Users/radcl/AppData/Roaming/JetBrains/IntelliJIdea2021.3/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=JetBrains s.r.o.
-java.runtime.version=11.0.13+7-b1751.25
+Thu Apr 28 00:25:02 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0180-6e6a-5085-00000f426400 
+on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14.1+1-LTS
+user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Apr 28 00:25:10 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance 52da80c5-0180-6e6a-5085-00000f426400 
+on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\CS3733-TeamB-TransferAPI-Database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14.1+1-LTS
+user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Apr 28 00:25:11 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance c575c1b6-0180-6e6a-5085-00000f426400 
+on database directory C:\Users\radcl\IdeaProjects\ferocious-furrets\BaW_database with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09 
+Loaded from file:/C:/Users/radcl/IdeaProjects/ferocious-furrets/ProtoypeF/build/libs/ProtoypeF-all.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14.1+1-LTS
 user.dir=C:\Users\radcl\IdeaProjects\ferocious-furrets
 os.name=Windows 10
 os.arch=amd64

@@ -1,8 +1,8 @@
 {
-    f-maincolor: #123090;
-    f-subcolor: #4169E1;
+    f-maincolor: #ffccbc;
+    f-subcolor: #ffe0b2;
     f-ripple: #3E8CD0;
-    f-white: #FFFFFF;
+    f-white: #d7ccc8;
 }
 
 #TextTitleWhite {
@@ -84,7 +84,6 @@
     -fx-font-family: Serif;
     -fx-prompt-text-fill: rgba(128, 128, 128, 0.64);
     -fx-text-fill: #000000;
-    -fx-font-size: 24px;
 }
 
 .menu-bar .label {
@@ -226,4 +225,35 @@
 
 .default-color1.chart-bar{
     -fx-bar-fill: f-subcolor;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #000000;
+}
+.mealButton{
+    -fx-background-color: f-white;
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
+    -fx-text-fill: f-maincolor;
+}
+
+.mealRectangle{
+    -fx-fill: f-maincolor;
+    -fx-stroke: f-white;
+}
+.mealTitle{
+    -fx-background-color: f-white;
+    -fx-font-family: Serif;
+    -fx-font-size: 48px;
+    -fx-text-fill: f-maincolor;
+}
+.mealLine{
+    -fx-fill: f-white;
+}
+.dashButton{
+    -fx-background-color: f-maincolor;
+    -fx-alignment: center;
+    -fx-text-fill: f-white;
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
 }

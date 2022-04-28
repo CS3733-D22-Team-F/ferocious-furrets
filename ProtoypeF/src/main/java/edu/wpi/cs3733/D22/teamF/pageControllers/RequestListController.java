@@ -273,14 +273,16 @@ public class RequestListController extends PageController implements Initializab
 
     ResultSet medReqs = MedicineRequest.getRequestData();
     while (medReqs.next()) {
-      rt =
-          new RequestTree(
-              medReqs.getString("reqID"),
-              medReqs.getString("nodeID"),
-              medReqs.getString("assignedEmployee"),
-              medReqs.getString("requestedEmployee"),
-              medReqs.getString("status"));
-      reqs.add(rt);
+      if (medReqs.getString("status").equalsIgnoreCase("processing")) {
+        rt =
+            new RequestTree(
+                medReqs.getString("reqID"),
+                medReqs.getString("nodeID"),
+                medReqs.getString("assignedEmployee"),
+                medReqs.getString("requestedEmployee"),
+                medReqs.getString("status"));
+        reqs.add(rt);
+      }
     }
     medReqs.close();
 
