@@ -175,7 +175,6 @@ public class ThemeManager {
                 + "    -fx-font-family: Serif;\n"
                 + "    -fx-prompt-text-fill: rgba(128, 128, 128, 0.64);\n"
                 + "    -fx-text-fill: #000000;\n"
-                + "    -fx-font-size: 24px;\n"
                 + "}\n"
                 + "\n"
                 + ".menu-bar .label {\n"
@@ -342,7 +341,14 @@ public class ThemeManager {
                 + "}\n"
                 + ".mealLine{\n"
                 + "    -fx-fill: f-white;\n"
-                + "}",
+                + "}\n"
+                + ".dashButton{\n"
+                + "    -fx-background-color: f-maincolor;\n"
+                + "    -fx-alignment: center;\n"
+                + "    -fx-text-fill: f-white;\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 24px;\n"
+                + "}\n",
             main, sub, text));
     writer.flush();
     writer.close();
