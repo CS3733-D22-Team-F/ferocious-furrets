@@ -79,6 +79,6 @@ public class AudioPlayer {
   }
 
   public boolean getPlaying() {
-    return clip.isRunning();
+    return (clip.getMicrosecondPosition() <= clip.getMicrosecondLength());
   }
 }
