@@ -9,6 +9,7 @@ import edu.wpi.cs3733.D22.teamF.controllers.fxml.SceneManager;
 import edu.wpi.cs3733.D22.teamF.controllers.fxml.UserType;
 import edu.wpi.cs3733.D22.teamF.controllers.general.AudioPlayer;
 import edu.wpi.cs3733.D22.teamF.entities.database.ConnType;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,9 +28,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -42,17 +40,30 @@ public class LogInController extends ReturnHomePage implements Initializable {
   @FXML private PasswordField passwordField;
   @FXML private Label popUpLabel;
   @FXML private JFXComboBox databaseChooser;
-  @FXML private VBox loginVBox;
   @FXML private ImageView backgroundImage;
-  @FXML private ImageView islandBois;
-  @FXML private BorderPane masterPane;
-  @FXML private Pane imagePane;
   @FXML private AnchorPane imageAnchor;
+  @FXML private MFXCheckbox volumeChecker;
 
   private Parent root;
   private Scene scene;
 
   private ConnType dbType;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ArrayList<Object> databaseDrop = new ArrayList<>();
+    databaseDrop.add("");
+    databaseDrop.add("Embedded");
+    databaseDrop.add("Client-Server");
+    databaseChooser.getItems().addAll(databaseDrop);
+    databaseChooser.setValue("Embedded");
+
+    backgroundImage.setManaged(false);
+    backgroundImage.fitWidthProperty().bind(imageAnchor.widthProperty());
+    backgroundImage.fitHeightProperty().bind(imageAnchor.heightProperty());
+
+    volumeChecker.setSelected(true);
+  }
 
   /*
    * method to send user to the homepage after a successful authentication of username and password
@@ -116,6 +127,7 @@ public class LogInController extends ReturnHomePage implements Initializable {
     if (success) {
       usernameField.clear();
       passwordField.clear();
+      AudioPlayer.getInstance().setIsPlay(volumeChecker.isSelected());
       final BooleanProperty embedded =
           new SimpleBooleanProperty(databaseChooser.getValue().toString().equals("Embedded"));
 
@@ -137,19 +149,5 @@ public class LogInController extends ReturnHomePage implements Initializable {
     } else {
       popUpLabel.setVisible(true);
     }
-  }
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    ArrayList<Object> databaseDrop = new ArrayList<>();
-    databaseDrop.add("");
-    databaseDrop.add("Embedded");
-    databaseDrop.add("Client-Server");
-    databaseChooser.getItems().addAll(databaseDrop);
-    databaseChooser.setValue("Embedded");
-
-    backgroundImage.setManaged(false);
-    backgroundImage.fitWidthProperty().bind(imageAnchor.widthProperty());
-    backgroundImage.fitHeightProperty().bind(imageAnchor.heightProperty());
   }
 }

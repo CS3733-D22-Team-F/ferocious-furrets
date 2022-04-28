@@ -1,8 +1,0 @@
-@import url(vars.css);
-
-.combo-box{
-    -fx-background-color: white;
-    -fx-font-family: Serif;
-    -fx-text-fill: f-blue;
-    -fx-font-size: 24px;
-}
