@@ -436,7 +436,7 @@ public class MainController implements Initializable {
     audio.setAudioInputStream("Music/exit.wav");
     audio.play();
 
-    //while (audio.getPlaying()) {}
+    // while (audio.getPlaying()) {}
 
     System.exit(0);
   }
