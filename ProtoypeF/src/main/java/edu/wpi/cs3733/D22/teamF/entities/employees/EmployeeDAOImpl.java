@@ -39,6 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
    * @throws IOException
    */
   public void initTable(String filePath) throws SQLException, IOException {
+    System.out.println("Employee init");
     try {
       DatabaseManager.getInstance()
           .runStatement(
@@ -165,6 +166,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
               currentRow.getString("lastName"),
               currentRow.getString("salary")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -183,6 +185,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
               currentRow.getString("lastName"),
               currentRow.getString("salary")));
     }
+    currentRow.close();
     CSVWriter.writeAll(file, toAdd);
   }
 
@@ -193,6 +196,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     while (rset.next()) {
       fName = rset.getString("firstName");
     }
+    rset.close();
     return fName;
   }
 
@@ -203,6 +207,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     while (rset.next()) {
       lName = rset.getString("lastName");
     }
+    rset.close();
     return lName;
   }
 }

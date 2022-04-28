@@ -67,7 +67,7 @@ public class MapServiceModifyController implements Initializable {
     if (rset.next()) isMedicine = true;
     rset.close();
     if (isMedicine) {
-      cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
+      cmd = String.format("UPDATE MEDICINEREQUEST SET status = 'Done' WHERE reqID = '%s'", reqID);
       MedicineRequest.backUpDatabase(
           "src/main/resources/apiCSV/medicine.csv", "src/main/resources/apiCSV/employees.csv");
     } else if (dbc.getRequestByID(reqID) != null) {
@@ -93,7 +93,7 @@ public class MapServiceModifyController implements Initializable {
       requestOrm.delete(reqID);
       requestOrm.add(request);
     } else {
-      cmd = String.format("UPDATE SERVICEREQUEST SET status = 'done' WHERE reqID = '%s'", reqID);
+      cmd = String.format("UPDATE SERVICEREQUEST SET status = 'Done' WHERE reqID = '%s'", reqID);
     }
     MapIconModifier.deleteIcon(LocTempHolder.getLocation());
     if (!isFacilities && !isIntTransport) {

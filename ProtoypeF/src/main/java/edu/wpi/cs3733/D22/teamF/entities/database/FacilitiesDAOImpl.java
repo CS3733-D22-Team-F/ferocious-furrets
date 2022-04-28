@@ -133,6 +133,7 @@ public class FacilitiesDAOImpl implements IRequestDAO {
           String.format(
               "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -148,6 +149,7 @@ public class FacilitiesDAOImpl implements IRequestDAO {
           String.format(
               "%s,%s", currentRow.getString("reqID"), currentRow.getString("accessObject")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

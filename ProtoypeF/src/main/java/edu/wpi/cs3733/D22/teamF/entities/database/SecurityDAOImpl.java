@@ -137,6 +137,7 @@ public class SecurityDAOImpl implements IRequestDAO {
               currentRow.getString("needs"),
               currentRow.getString("urgency")));
     }
+    currentRow.close();
 
     CSVWriter.writeAllToDir(fileDir, toAdd);
   }
@@ -154,6 +155,7 @@ public class SecurityDAOImpl implements IRequestDAO {
               currentRow.getString("needs"),
               currentRow.getString("urgency")));
     }
+    currentRow.close();
 
     CSVWriter.writeAll(file, toAdd);
   }

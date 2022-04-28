@@ -19,7 +19,7 @@
       <StackPane prefHeight="60.0" prefWidth="1220.0">
          <children>
             <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle2" width="1220.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" text="Setting" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1220.0" text="Settings" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Serif Regular" size="48.0" />
                </font>
@@ -38,7 +38,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXComboBox fx:id="choiceBox"  prefHeight="40.0" prefWidth="257.0">
+                  <JFXComboBox fx:id="choiceBox" prefHeight="40.0" prefWidth="257.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -126,7 +126,7 @@
                   <Insets top="70.0" />
                </HBox.margin>
             </Line>
-            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" spacing="30.0">
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" spacing="5.0">
                <children>
                   <HBox alignment="CENTER" spacing="10.0">
                      <children>
@@ -140,17 +140,12 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <ImageView fitHeight="171.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="148.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../loginpfp.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#logoutSwitch" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Logout" textFill="WHITE">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="About Page" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#logoutSwitch" prefHeight="10.0" prefWidth="420.0" styleClass="regularButton" text="Logout" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -158,12 +153,36 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="30.0" prefWidth="250.0" styleClass="regularButton" text="Credits" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#aboutButton" prefHeight="54.0" prefWidth="420.0" styleClass="regularButton" text="About Page" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#creditButton" prefHeight="10.0" prefWidth="420.0" styleClass="regularButton" text="Credits" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="saveToCSV" buttonType="RAISED" onAction="#backUpDatabase" prefHeight="10.0" prefWidth="420.0" styleClass="regularButton" text="Back Up Data to CSV" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="loadFromCSV" buttonType="RAISED" onAction="#reloadDatabase" prefHeight="10.0" prefWidth="420.0" styleClass="regularButton" text="Load Data From CSV" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
                      </VBox.margin>
                   </JFXButton>
                </children>

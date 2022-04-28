@@ -76,12 +76,16 @@ public class MaintenancePageController extends PageController
     statusDrop.add("Done");
     statusBox.getItems().addAll(statusDrop);
 
-    ArrayList<Object> equipmentType = new ArrayList<>();
-    equipmentType.add("Bed");
-    equipmentType.add("X-Ray");
-    equipmentType.add("Infusion Pump");
-    equipmentType.add("Recliner");
-    equipmentBox.getItems().addAll(equipmentType);
+    ArrayList<Object> equipmentIDs = new ArrayList<>();
+    try {
+      for (String id : getEquipment()) {
+        equipmentIDs.add(id);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    equipmentBox.getItems().addAll(equipmentIDs);
 
     ArrayList<Object> maintenanceType = new ArrayList<>();
     maintenanceType.add("Routine");
@@ -130,7 +134,7 @@ public class MaintenancePageController extends PageController
         fields.add(2, employeeIDFinder(assignedEmployeeBox.getValue().toString()));
         fields.add(3, employeeIDFinder(requestedEmployeeBox.getValue().toString()));
         fields.add(4, statusBox.getValue().toString());
-        fields.add(5, getAvailableEquipment());
+        fields.add(5, equipmentBox.getValue().toString());
         fields.add(6, maintenanceBox.getValue().toString());
         req.placeRequest(fields);
         startTable();
@@ -285,7 +289,7 @@ public class MaintenancePageController extends PageController
    * @throws SQLException
    */
   public String generateReqID() throws SQLException, IOException {
-    String nNodeType = equipmentBox.getValue().toString().substring(0, 3);
+    String nNodeType = maintenanceBox.getValue().toString().substring(0, 3);
     int reqNum = 1;
 
     ResultSet rset = DatabaseManager.getInstance().getRequestDAO().get();
@@ -326,21 +330,14 @@ public class MaintenancePageController extends PageController
     return empID;
   }
 
-  public String getAvailableEquipment() throws SQLException {
-    ResultSet rset =
-        DatabaseManager.getInstance()
-            .runQuery(
-                "SELECT EQUIPID FROM MEDICALEQUIPMENT WHERE STATUS = 'available' AND EQUIPTYPE = '"
-                    + equipmentBox.getValue().toString()
-                    + "'");
-    String eID = "";
-    if (!rset.next()) {
-      System.out.println("No Available Equipment"); // TODO Make popup?
-    } else {
-      eID = rset.getString("equipID");
+  public ArrayList<String> getEquipment() throws SQLException {
+    ArrayList<String> equipIDs = new ArrayList<>();
+    ResultSet rset = DatabaseManager.getInstance().runQuery("SELECT EQUIPID FROM MEDICALEQUIPMENT");
+    while (rset.next()) {
+      equipIDs.add(rset.getString("EQUIPID"));
     }
     rset.close();
-    return eID;
+    return equipIDs;
   }
 
   public String nodeIDToName(String nID) throws SQLException {
@@ -350,6 +347,8 @@ public class MaintenancePageController extends PageController
     while (rset.next()) {
       lName = rset.getString("longName");
     }
+    rset.close();
+
     return lName;
   }
 
@@ -360,6 +359,8 @@ public class MaintenancePageController extends PageController
     while (rset.next()) {
       fName = rset.getString("firstName");
     }
+    rset.close();
+
     return fName;
   }
 
@@ -370,6 +371,8 @@ public class MaintenancePageController extends PageController
     while (rset.next()) {
       lName = rset.getString("lastName");
     }
+    rset.close();
+
     return lName;
   }
 }

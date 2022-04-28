@@ -19,13 +19,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapPageController">
+<StackPane prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.Map.MapPageController">
    <children>
       <HBox prefHeight="660.0" prefWidth="1220.0">
          <children>
-            <VBox prefHeight="660.0" prefWidth="810.0">
+            <VBox prefHeight="660.0" prefWidth="835.0">
                <children>
-                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" onScroll="#onScroll" pannable="true" pickOnBounds="false" scaleShape="false" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="scrollPane" cacheHint="SCALE" cacheShape="false" centerShape="false" onScroll="#onScroll" pannable="true" pickOnBounds="false" prefHeight="630.0" prefWidth="835.0" scaleShape="false" VBox.vgrow="ALWAYS">
                      <content>
                         <StackPane cacheShape="false" centerShape="false" scaleShape="false">
                            <children>
@@ -53,7 +53,7 @@
                         </StackPane>
                      </content>
                   </ScrollPane>
-                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="816.0" styleClass="mapMenu">
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="835.0" styleClass="mapMenu">
                      <children>
                         <VBox prefHeight="30.0" prefWidth="80.0">
                            <children>
