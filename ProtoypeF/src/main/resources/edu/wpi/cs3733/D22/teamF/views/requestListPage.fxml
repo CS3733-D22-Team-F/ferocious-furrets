@@ -16,15 +16,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" stylesheets="@../stylesheets/RequestPages.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.RequestListController">
+<AnchorPane fx:id="masterPane" prefHeight="660.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.D22.teamF.pageControllers.RequestListController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="897.0" layoutY="507.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
-      <JFXButton fx:id="myBackButton" buttonType="RAISED" layoutX="896.0" layoutY="507.0" onAction="#startTable" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" text="Reset Table" textFill="#123090">
+      <JFXButton fx:id="myBackButton" buttonType="RAISED" layoutX="896.0" layoutY="507.0" onAction="#startTable" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" styleClass="queueButton" text="Reset Table" textFill="#123090">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="reportButton" buttonType="RAISED" layoutX="896.0" layoutY="566.0" onAction="#generateReport" prefHeight="59.0" prefWidth="208.0" ripplerFill="#ffc44d" text="Generate Report" textFill="#123090">
+      <JFXButton fx:id="reportButton" buttonType="RAISED" layoutX="896.0" layoutY="566.0" onAction="#generateReport" prefHeight="59.0" prefWidth="201.0" ripplerFill="#ffc44d" styleClass="queueButton" text="Generate Report" textFill="#123090">
          <font>
             <Font size="24.0" />
          </font>
@@ -44,7 +44,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #123090;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="667.0" text="Current List" textFill="WHITE">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="667.0" styleClass="queueTitle" text="Current List" textFill="WHITE">
                      <font>
                         <Font name="Serif Regular" size="64.0" />
                      </font>

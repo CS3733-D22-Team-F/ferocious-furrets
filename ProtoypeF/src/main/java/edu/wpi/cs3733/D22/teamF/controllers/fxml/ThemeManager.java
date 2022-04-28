@@ -37,6 +37,10 @@ public class ThemeManager {
     return themeManager;
   }
 
+  public File getTheme() {
+    return theme;
+  }
+
   public void toDefaultTheme() throws IOException {
     theme = generateCSS("123090", "4169E1", "FFFFFF");
     applyCSS();
@@ -317,6 +321,27 @@ public class ThemeManager {
                 + "\n"
                 + ".check-box:selected .box {\n"
                 + "    -fx-background-color: #000000;\n"
+                + "}"
+                + "\n"
+                + ".mealButton{\n"
+                + "    -fx-background-color: f-white;\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 24px;\n"
+                + "    -fx-text-fill: f-maincolor;\n"
+                + "}\n"
+                + "\n"
+                + ".mealRectangle{\n"
+                + "    -fx-fill: f-maincolor;\n"
+                + "    -fx-stroke: f-white;\n"
+                + "}\n"
+                + ".mealTitle{\n"
+                + "    -fx-background-color: f-white;\n"
+                + "    -fx-font-family: Serif;\n"
+                + "    -fx-font-size: 48px;\n"
+                + "    -fx-text-fill: f-maincolor;\n"
+                + "}\n"
+                + ".mealLine{\n"
+                + "    -fx-fill: f-white;\n"
                 + "}",
             main, sub, text));
     writer.flush();
