@@ -354,6 +354,17 @@
             <Line endX="100.79270935058594" endY="-51.246971130371094" startX="99.99981689453125" startY="608.6640625" />
             <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="277.0">
                <children>
+                  <Label fx:id="clock" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="292.0" styleClass="dashboardLabel" text="00:00" textFill="#123090">
+                     <font>
+                        <Font name="Serif Regular" size="48.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </Label>
                   <JFXNodesList fx:id="layoutAlerts" alignment="CENTER" prefHeight="0.0" prefWidth="0.0" stylesheets="@../stylesheets/DashBoard.css">
                      <padding>
                         <Insets top="50.0" />

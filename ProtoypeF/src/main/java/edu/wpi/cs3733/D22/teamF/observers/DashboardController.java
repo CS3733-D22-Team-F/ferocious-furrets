@@ -140,6 +140,9 @@ public class DashboardController implements Initializable {
     }
 
     initializeChart();
+    clock.setText(clockWork.getCurrentTime());
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
   }
 
   private void updateOutstandingSRLabel() {
