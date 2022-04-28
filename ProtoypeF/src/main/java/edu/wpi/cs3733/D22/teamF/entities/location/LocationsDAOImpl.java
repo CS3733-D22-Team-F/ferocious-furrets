@@ -97,6 +97,10 @@ public class LocationsDAOImpl implements LocationDAO {
     Cache.updateDBCache(Cache.DBType.DBT_LOC);
   }
 
+  public ResultSet get() throws SQLException {
+    return DatabaseManager.getInstance().runQuery("SELECT * FROM Locations");
+  }
+
   /**
    * Saves the Locations' table to a csv file
    *
@@ -186,6 +190,28 @@ public class LocationsDAOImpl implements LocationDAO {
     rset.close();
     stm.close();
     return allLocations;
+  }
+
+  public String nodeIDToName(String nID) throws SQLException {
+    String cmd = String.format("SELECT longName FROM Locations WHERE nodeID = '%s'", nID);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String lName = "";
+    while (rset.next()) {
+      lName = rset.getString("longName");
+    }
+    rset.close();
+    return lName;
+  }
+
+  public String NameToLocation(String longName) throws SQLException {
+    String cmd = String.format("SELECT * FROM Locations WHERE longName = '%s'", longName);
+    ResultSet rset = DatabaseManager.getInstance().runQuery(cmd);
+    String nID = "";
+    while (rset.next()) {
+      nID = rset.getString("nodeID");
+    }
+    rset.close();
+    return nID;
   }
 
   /**

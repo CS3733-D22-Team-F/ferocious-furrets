@@ -1,0 +1,15 @@
+
+.check-box .box {
+    -fx-font-family: Serif;
+    -fx-font-size: 24px;
+    -fx-text-fill: #123090;
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #000000;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
