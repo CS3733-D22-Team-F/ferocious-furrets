@@ -84,7 +84,7 @@ public class AudioPlayer {
   }
 
   public boolean getPlaying() {
-    return clip.isRunning();
+    return (clip.getMicrosecondPosition() <= clip.getMicrosecondLength());
   }
 
   public void setIsPlay(boolean b) {
