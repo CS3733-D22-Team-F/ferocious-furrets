@@ -81,9 +81,6 @@ public class DashboardController implements Initializable {
   NumberAxis yAxis = new NumberAxis();
   @FXML StackedBarChart stackedBarChart = new StackedBarChart(xAxis, yAxis);
 
-  XYChart.Series cleanEquipment = new XYChart.Series();
-  XYChart.Series dirtyEquipment = new XYChart.Series();
-
   //  @FXML Label ll2Count;
   //  @FXML Label ll1Count;
   //  @FXML Label fl1Count;
@@ -140,6 +137,7 @@ public class DashboardController implements Initializable {
     }
 
     initializeChart();
+
     clock.setText(clockWork.getCurrentTime());
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -315,6 +313,10 @@ public class DashboardController implements Initializable {
     yAxis.setLabel("Equipment #s");
     yAxis.setTickUnit(1);
 
+    stackedBarChart.getData().clear();
+    XYChart.Series cleanEquipment = new XYChart.Series();
+    XYChart.Series dirtyEquipment = new XYChart.Series();
+
     stackedBarChart.setTitle("Clean and Dirty Equipment");
 
     cleanEquipment.setName("Clean");
@@ -347,5 +349,7 @@ public class DashboardController implements Initializable {
 
     stackedBarChart.setHorizontalGridLinesVisible(false);
     stackedBarChart.setVerticalGridLinesVisible(false);
+
+    DashboardObserver.setChart(stackedBarChart);
   }
 }

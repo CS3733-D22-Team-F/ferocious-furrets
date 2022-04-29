@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
 /**
@@ -63,6 +65,9 @@ class DashboardObserver implements PropertyChangeListener {
   private List<Label> dlabels = new ArrayList<>();
   private List<Label> plabels = new ArrayList<>();
   private List<Label> ilabels = new ArrayList<>();
+
+  private static StackedBarChart dataChart;
+  private static boolean isGraphReady = false;
 
   public DashboardObserver() {}
 
@@ -225,6 +230,46 @@ class DashboardObserver implements PropertyChangeListener {
     this.alertSystem.removePropertyChangeListener(listener);
   }
 
+  public static void setChart(StackedBarChart newChart) {
+    dataChart = newChart;
+    isGraphReady = true;
+  }
+
+  public void updateChart() {
+    if (isGraphReady) {
+      List<DashboardObserver> floorObserverList =
+          FloorWatchManager.getInstance().getAllFloorObservers();
+      dataChart.getData().clear();
+
+      XYChart.Series cleanEquipment = new XYChart.Series();
+      XYChart.Series dirtyEquipment = new XYChart.Series();
+
+      cleanEquipment.setName("Clean");
+      dirtyEquipment.setName("Dirty");
+
+      for (DashboardObserver observer : floorObserverList) {
+        if (observer.getFloorCleanEquipmentCount() > 0) {
+          cleanEquipment
+              .getData()
+              .add(
+                  new XYChart.Data(
+                      observer.currFloor.toFloorString(), observer.getFloorCleanEquipmentCount()));
+        }
+
+        if (observer.getFloorDirtyEquipmentCount() > 0) {
+          dirtyEquipment
+              .getData()
+              .add(
+                  new XYChart.Data(
+                      observer.currFloor.toFloorString(), observer.getFloorDirtyEquipmentCount()));
+        }
+      }
+
+      dataChart.getData().add(cleanEquipment);
+      dataChart.getData().add(dirtyEquipment);
+    }
+  }
+
   /**
    * receives any state changes in floor observable and applies approite filter
    *
@@ -248,6 +293,7 @@ class DashboardObserver implements PropertyChangeListener {
     } catch (SQLException | IOException e) {
       e.printStackTrace();
     }
+    updateChart();
   }
 
   /**
